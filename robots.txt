@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://site-url.invalid/ottbora/sitemap.xml
