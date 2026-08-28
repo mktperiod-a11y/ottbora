@@ -1,4 +1,12 @@
 # 오티티보라
-영화, 드라마, 예능 콘텐츠 정보와 웹하드 비교를 제공하는 한국어 가이드입니다.
-핵심 페이지: /, /content.html, /criteria.html
-작품 정보는 콘텐츠 상세 페이지의 기준과 출처를 우선해 확인해 주세요.
+영화·드라마·예능 작품 소개와 별도의 웹하드 서비스 비교를 제공합니다.
+
+## 주요 페이지
+- 홈: https://mktperiod-a11y.github.io/ottbora/
+- 웹하드 비교와 추천 이유: https://mktperiod-a11y.github.io/ottbora/webhard.html
+- 콘텐츠ZONE: https://mktperiod-a11y.github.io/ottbora/content.html
+- 이용 가이드: https://mktperiod-a11y.github.io/ottbora/criteria.html
+
+웹하드 목록은 온디스크·케이디스크 우선 소개 방침이 반영된 운영자 편집·홍보 순서입니다. 시장점유율·성능·이용자 평점 순위가 아닙니다.
+공식 안내 확인 내용과 추천 의견을 구분합니다. 추천 순위에 포함됐다는 사실이 특정 작품의 제공 또는 판권 계약을 의미하지 않습니다.
+정보 확인일과 근거는 각 페이지 본문의 출처를 확인하세요.
