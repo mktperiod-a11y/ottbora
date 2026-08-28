@@ -1,9 +1,36 @@
 {
   "checkedAt": "2026-08-28",
   "logos": [
-    {"name":"위디스크","file":"wedisk.png","source":"https://www.wedisk.co.kr/common/html/2017_mobile/images/top_logo.png"},
-    {"name":"파일조","file":"filejo.gif","source":"https://wimg.filejo.com/top/logo.gif"},
-    {"name":"미투디스크","file":"me2disk.jpg","source":"https://me2disk.com/images/main/me2disk_logo.jpg"},
-    {"name":"파일캐스트","file":"filecast.png","source":"https://filecast.co.kr/static/_img/common/logo_common.png"}
+    {
+      "name": "위디스크",
+      "file": "wedisk.png",
+      "source": "https://www.wedisk.co.kr/common/html/2017_mobile/images/top_logo.png"
+    },
+    {
+      "name": "파일조",
+      "file": "filejo.gif",
+      "source": "https://wimg.filejo.com/top/logo.gif"
+    },
+    {
+      "name": "미투디스크",
+      "file": "me2disk.jpg",
+      "source": "https://me2disk.com/images/main/me2disk_logo.jpg"
+    },
+    {
+      "name": "파일캐스트",
+      "file": "filecast.png",
+      "source": "https://filecast.co.kr/static/_img/common/logo_common.png"
+    },
+    {
+      "name": "스마트파일",
+      "file": "smartfile.png",
+      "source": "https://img.smartfile.co.kr/logo_2206.png"
+    },
+    {
+      "name": "파일썬",
+      "file": "filesun.png",
+      "source": "https://play-lh.googleusercontent.com/4Vm-qGQ3FeHRsRaPCRDzOXP-lZ4Hwdcu29iUHF2xfykLi0wJGjLIkNBSjKRZdin2Tk2S-koOsB87dYPH7wLTOQ=w240-h480",
+      "note": "공식 Google Play 앱 아이콘"
+    }
   ]
 }

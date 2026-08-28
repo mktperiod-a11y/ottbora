@@ -1,0 +1,243 @@
+{
+  "checkedAt": "2026-08-28",
+  "orderType": "운영자 선정·홍보 목적을 포함한 추천 순서",
+  "priorityDisclosure": "온디스크·케이디스크를 우선 소개하는 운영 편집 방침이 반영됩니다. 시장점유율·속도·이용자 평점 순위가 아닙니다.",
+  "services": [
+    {
+      "id": "ondisk",
+      "name": "온디스크",
+      "logo": "ondisk.svg",
+      "url": "go/ondisk/",
+      "official": "https://ondisk.co.kr/",
+      "tag": "PC·모바일 콘텐츠 탐색",
+      "features": [
+        "공식 홈페이지에서 영화·방송·애니·만화·웹툰 카테고리를 안내합니다.",
+        "iOS 앱 안내에 보관함·찜한자료·내자료 기능이 소개돼 있습니다."
+      ],
+      "reason": "여러 장르를 살펴보고, 구매한 자료와 관심 자료를 나누어 관리하려는 분의 첫 비교 후보로 추천합니다.",
+      "check": "앱 설치 가능 기기, 작품별 이용료와 포인트 사용 범위를 확인하세요.",
+      "sources": [
+        [
+          "공식 홈페이지",
+          "https://ondisk.co.kr/"
+        ],
+        [
+          "App Store 앱 안내",
+          "https://apps.apple.com/us/app/%EC%98%A8%EB%94%94%EC%8A%A4%ED%81%AC-ondisk/id1536892993"
+        ]
+      ],
+      "compare": "장르별 메뉴 · 자료 관리",
+      "short": "PC와 모바일에서 장르별 탐색과 자료 관리를 함께"
+    },
+    {
+      "id": "kdisk",
+      "name": "케이디스크",
+      "logo": "kdisk.svg",
+      "url": "go/kdisk/",
+      "official": "https://www.kdisk.co.kr/",
+      "tag": "모바일 다운로드 이용",
+      "features": [
+        "공식 앱에서 영화·드라마·방송·애니메이션을 안내합니다.",
+        "iOS 다운로드 전용 앱과 1:1 고객 상담 게시판을 안내합니다."
+      ],
+      "reason": "모바일에서 콘텐츠를 이용하면서 다운로드 전용 앱과 문의 경로를 함께 살펴보려는 분께 추천합니다.",
+      "check": "기기별 앱 지원 범위와 개별 작품의 이용 조건을 먼저 확인하세요.",
+      "sources": [
+        [
+          "Google Play 앱 안내",
+          "https://play.google.com/store/apps/details?hl=ko&id=com.kdisk.mobileapp5"
+        ],
+        [
+          "App Store 앱 안내",
+          "https://apps.apple.com/kr/app/%EC%BC%80%EC%9D%B4%EB%94%94%EC%8A%A4%ED%81%AC-kdisk-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C-%EC%A0%84%EC%9A%A9%EC%95%B1/id1492405942?l=en-GB"
+        ]
+      ],
+      "compare": "다운로드 전용 앱 · 상담",
+      "short": "다운로드 전용 앱과 고객지원 경로를 함께 확인"
+    },
+    {
+      "id": "wedisk",
+      "name": "위디스크",
+      "logo": "wedisk.png",
+      "url": "https://www.wedisk.co.kr/",
+      "official": "https://www.wedisk.co.kr/",
+      "tag": "모바일 이용 메뉴",
+      "features": [
+        "공식 모바일 페이지에 찜한자료·다시보기·캐시충전 메뉴가 있습니다.",
+        "미러캐스트·크롬캐스트 메뉴와 로그인 도움말을 제공합니다."
+      ],
+      "reason": "모바일 이용 메뉴와 화면 전송 관련 안내를 함께 확인하고 싶은 분의 비교 후보입니다.",
+      "check": "메뉴 표시는 모든 기기와 작품의 기능 지원을 보장하지 않습니다.",
+      "sources": [
+        [
+          "공식 모바일 안내",
+          "https://www.wedisk.co.kr/mobile/login.jsp"
+        ]
+      ],
+      "compare": "찜한자료 · 화면 전송 안내",
+      "short": "모바일 메뉴와 화면 전송 안내를 살펴볼 때"
+    },
+    {
+      "id": "filejo",
+      "name": "파일조",
+      "logo": "filejo.gif",
+      "url": "https://www.filejo.com/main/",
+      "official": "https://www.filejo.com/main/",
+      "tag": "TOP100·카테고리 탐색",
+      "features": [
+        "공식 앱에서 TOP100과 영화·방송·애니·웹툰 등의 카테고리를 안내합니다.",
+        "모바일 스트리밍과 다운로드 기능을 소개합니다."
+      ],
+      "reason": "인기 목록에서 관심 콘텐츠를 찾은 뒤, 스트리밍과 다운로드 이용 방식을 비교하려는 분께 추천합니다.",
+      "check": "TOP100은 파일조 내부 목록이며 전체 시장의 인기 순위가 아닙니다.",
+      "sources": [
+        [
+          "Google Play 앱 안내",
+          "https://play.google.com/store/apps/details?hl=ko&id=com.funbox.jlsco"
+        ]
+      ],
+      "compare": "TOP100 · 스트리밍",
+      "short": "인기 목록에서 관심 콘텐츠를 탐색할 때"
+    },
+    {
+      "id": "me2disk",
+      "name": "미투디스크",
+      "logo": "me2disk.jpg",
+      "url": "https://me2disk.com/",
+      "official": "https://me2disk.com/",
+      "tag": "이용 안내·고객지원",
+      "features": [
+        "공식 홈페이지에 1:1 고객센터와 원격지원 요청 메뉴가 있습니다.",
+        "저작권 공지사항·보호 목록과 이용약관을 구분해 제공합니다."
+      ],
+      "reason": "서비스 이용 중 문의할 곳과 저작권 관련 공지를 먼저 확인하려는 분의 비교 후보입니다.",
+      "check": "원격지원 범위와 상담 가능 시간은 문의 전에 확인하세요.",
+      "sources": [
+        [
+          "공식 홈페이지·고객지원",
+          "https://me2disk.com/"
+        ]
+      ],
+      "compare": "1:1 문의 · 원격지원 안내",
+      "short": "고객지원과 이용 공지를 먼저 살펴볼 때"
+    },
+    {
+      "id": "filecast",
+      "name": "파일캐스트",
+      "logo": "filecast.png",
+      "url": "https://filecast.co.kr/",
+      "official": "https://filecast.co.kr/",
+      "tag": "바로보기·이용권 비교",
+      "features": [
+        "공식 앱은 모바일 실시간 감상과 다운로드를 안내합니다.",
+        "공식 홈페이지에 자유이용권 전용 정액관 안내가 있습니다."
+      ],
+      "reason": "개별 이용과 이용권 방식의 차이를 살펴보고, 모바일 감상 방식도 함께 비교하려는 분께 추천합니다.",
+      "check": "정액관의 대상 콘텐츠와 별도 과금 여부를 확인하세요.",
+      "sources": [
+        [
+          "공식 홈페이지",
+          "https://filecast.co.kr/"
+        ],
+        [
+          "Google Play 앱 안내",
+          "https://play.google.com/store/apps/details?hl=ko&id=com.mverselab.filecast.filecast_mobile_flutter_store"
+        ]
+      ],
+      "compare": "모바일 감상 · 정액관 안내",
+      "short": "모바일 감상과 이용권 조건을 함께 비교할 때"
+    },
+    {
+      "id": "ggulfile",
+      "name": "꿀파일",
+      "logo": "ggul.svg",
+      "url": "https://ggulfile.com/",
+      "official": "https://ggulfile.com/",
+      "tag": "앱 이용·쿠폰 안내",
+      "features": [
+        "공식 앱은 스트리밍·다운로드와 웹툰·만화·소설을 안내합니다.",
+        "공식 홈페이지에 쿠폰등록·이벤트·1:1 문의 메뉴가 있습니다."
+      ],
+      "reason": "영상과 읽을거리 카테고리를 함께 둘러보고, 쿠폰 조건도 따로 확인하려는 분의 비교 후보입니다.",
+      "check": "쿠폰 액면보다 사용 대상·유효기간·제외 콘텐츠를 먼저 확인하세요.",
+      "sources": [
+        [
+          "공식 홈페이지",
+          "https://ggulfile.com/"
+        ],
+        [
+          "Google Play 앱 안내",
+          "https://play.google.com/store/apps/details?id=com.ggulfile.app.ggulfile_app"
+        ]
+      ],
+      "compare": "영상·읽을거리 · 쿠폰등록",
+      "short": "영상과 읽을거리, 쿠폰 조건을 함께 살펴볼 때"
+    },
+    {
+      "id": "smartfile",
+      "name": "스마트파일",
+      "logo": "smartfile.png",
+      "url": "https://smartfile.co.kr/",
+      "official": "https://smartfile.co.kr/",
+      "tag": "화질 선택·모바일 이용",
+      "features": [
+        "공식 앱 안내에 일반·고화질·초고화질 선택 기능이 소개돼 있습니다.",
+        "바로보기와 다운로드, 회원가입·쿠폰 관련 이벤트를 안내합니다."
+      ],
+      "reason": "모바일 데이터와 저장 공간을 고려해 화질 선택 기능을 먼저 살펴보려는 분께 추천합니다.",
+      "check": "실제 선택 가능한 화질과 이용료는 작품·기기에 따라 확인하세요.",
+      "sources": [
+        [
+          "Google Play 앱 안내",
+          "https://play.google.com/store/apps/details?hl=ko&id=kr.smartfile.smartcrew3down"
+        ]
+      ],
+      "compare": "화질 선택 · 바로보기",
+      "short": "화질 선택과 모바일 데이터 사용을 고려할 때"
+    },
+    {
+      "id": "ssadafile",
+      "name": "싸다파일",
+      "logo": "ssada.svg",
+      "url": "https://ssadafile.com/",
+      "official": "https://ssadafile.com/",
+      "tag": "모바일 메뉴·설정 안내",
+      "features": [
+        "공식 모바일 페이지에 영화·드라마·동영상·애니·E북 메뉴가 있습니다.",
+        "고객센터 페이지에서 다운로드 관련 배터리 설정을 안내합니다."
+      ],
+      "reason": "카테고리 구성과 모바일 다운로드 설정 안내를 함께 확인하려는 분의 비교 후보입니다.",
+      "check": "서비스 이름만으로 최저가로 판단하지 말고 실제 결제 조건을 비교하세요.",
+      "sources": [
+        [
+          "공식 모바일 고객센터",
+          "https://m.ssadafile.com/cs"
+        ]
+      ],
+      "compare": "모바일 카테고리 · 설정 안내",
+      "short": "모바일 메뉴와 다운로드 설정을 확인할 때"
+    },
+    {
+      "id": "filesun",
+      "name": "파일썬",
+      "logo": "filesun.png",
+      "url": "https://www.filesun.com/",
+      "official": "https://www.filesun.com/",
+      "tag": "앱 저장·출석 안내",
+      "features": [
+        "공식 앱은 실시간 감상·다운로드와 저장 폴더 권한을 안내합니다.",
+        "출석 체크·쿠폰 등록 이벤트를 앱 설명에서 소개합니다."
+      ],
+      "reason": "모바일 저장 기능과 앱 권한을 확인하고, 출석·쿠폰 조건을 비교하려는 분께 추천합니다.",
+      "check": "앱 호환성·저장 권한과 이벤트의 실제 적용 조건을 확인하세요.",
+      "sources": [
+        [
+          "Google Play 앱 안내",
+          "https://play.google.com/store/apps/details?hl=ko&id=com.is.filesun.version4"
+        ]
+      ],
+      "compare": "저장 폴더 안내 · 출석 이벤트",
+      "short": "앱 저장 기능과 출석·쿠폰 조건을 살펴볼 때"
+    }
+  ]
+}
