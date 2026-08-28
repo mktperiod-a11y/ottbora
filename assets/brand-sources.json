@@ -1,0 +1,9 @@
+{
+  "checkedAt": "2026-08-28",
+  "logos": [
+    {"name":"위디스크","file":"wedisk.png","source":"https://www.wedisk.co.kr/common/html/2017_mobile/images/top_logo.png"},
+    {"name":"파일조","file":"filejo.gif","source":"https://wimg.filejo.com/top/logo.gif"},
+    {"name":"미투디스크","file":"me2disk.jpg","source":"https://me2disk.com/images/main/me2disk_logo.jpg"},
+    {"name":"파일캐스트","file":"filecast.png","source":"https://filecast.co.kr/static/_img/common/logo_common.png"}
+  ]
+}
