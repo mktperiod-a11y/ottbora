@@ -232,23 +232,6 @@ a:focus-visible,
   color: var(--seed-color-palette-static-white);
 }
 
-.group {
-  margin-top: 34px;
-}
-
-.group h2 {
-  font-size: var(--seed-font-size-t6);
-  line-height: var(--seed-line-height-t6);
-  letter-spacing: -0.5px;
-  margin: 0;
-}
-
-.group-note {
-  margin: 4px 0 16px;
-  font-size: var(--seed-font-size-t2);
-  color: var(--muted);
-}
-
 .cb .picked {
   align-self: flex-start;
   margin-bottom: 6px;
