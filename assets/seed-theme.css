@@ -60,21 +60,28 @@ body {
 }
 
 /*
- * 굵기·크기 조정.
- * SEED 본문 기본 굵기는 medium(500)이라, 700~800 을 쓰던 기존 페이지보다
- * 눈에 띄게 얇아 보입니다. 제목과 칩은 bold 로 되돌리고
- * 읽는 텍스트는 한 단계 큰 토큰을 씁니다.
- * "medium" 토큰 자체의 뜻을 바꾸지 않도록 컴포넌트 단위로만 지정합니다.
+ * 타이포 조정. SEED 토큰을 쓰되 두 가지를 덮습니다.
+ *
+ * 굵기 — SEED 본문 기본은 medium(500) 이라, 700~800 을 쓰던 기존 페이지보다
+ *   눈에 띄게 얇아 보입니다. 제목과 칩은 bold 로 되돌립니다.
+ * 행간 — --seed-line-height-* 은 전부 크기의 1.33~1.38 배입니다. 앱 UI 의
+ *   한 줄짜리 라벨 기준이라, 여러 줄로 읽는 문단에 그대로 쓰면 답답합니다.
+ *   크기는 토큰을 쓰고 행간만 따로 줍니다.
+ *
+ * "medium" 토큰 자체의 뜻은 바꾸지 않도록 컴포넌트 단위로만 지정합니다.
  */
 .seed-accordion__title {
   font-weight: var(--seed-font-weight-bold);
   font-size: var(--seed-font-size-t6);
-  line-height: var(--seed-line-height-t6);
+  line-height: 1.45; /* 질문이 두 줄로 넘어갈 때를 위해 */
 }
 
 .seed-accordion__description {
   font-size: var(--seed-font-size-t4);
-  line-height: var(--seed-line-height-t4);
+  /* 읽는 텍스트라 medium(500) 이 아니라 본문 굵기를 씁니다.
+     이 페이지의 다른 설명문과도 굵기가 맞습니다. */
+  font-weight: var(--seed-font-weight-regular);
+  line-height: 1.8;
 }
 
 .seed-action-chip {
