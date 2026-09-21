@@ -1,0 +1,392 @@
+nav{
+        height: 68px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+main{
+        padding: 46px 0 80px;
+      }
+.ey{
+        color: var(--r);
+        font-size: 9px;
+        font-weight: 900;
+        letter-spacing: 1.5px;
+      }
+h1{
+        margin: 8px 0 10px;
+        font-size: 32px;
+        letter-spacing: -1.8px;
+      }
+.sub{
+        color: var(--m);
+        font-size: 11px;
+        line-height: 1.7;
+      }
+.filters{
+        display: flex;
+        gap: 7px;
+        margin: 25px 0;
+      }
+
+
+.grid{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 17px;
+      }
+.card{
+        overflow: hidden;
+        border: 1px solid var(--l);
+        border-radius: 11px;
+        background: #fff;
+        transition: 0.2s;
+      }
+.card:hover{
+        transform: translateY(-5px);
+        box-shadow: 0 14px 30px #20273518;
+      }
+.card img{
+        display: block;
+        width: 100%;
+        aspect-ratio: 2/3;
+        object-fit: cover;
+      }
+.cb{
+        padding: 13px;
+      }
+.cb b{
+        font-size: 13px;
+      }
+.cb span{
+        display: block;
+        margin-top: 6px;
+        color: #7b8491;
+        font-size: 9px;
+      }
+.detail{
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 38px;
+        align-items: start;
+      }
+.detail-poster{
+        width: 100%;
+        border-radius: 14px;
+        box-shadow: 0 18px 35px #1b223025;
+      }
+.meta{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin: 16px 0 24px;
+      }
+.meta span{
+        padding: 7px 10px;
+        border-radius: 18px;
+        background: #fff;
+        border: 1px solid var(--l);
+        font-size: 9px;
+      }
+.copy{
+        padding: 25px;
+        border: 1px solid var(--l);
+        border-radius: 12px;
+        background: #fff;
+      }
+.copy h2{
+        font-size: 17px;
+        margin: 0 0 12px;
+      }
+.copy p,
+      .copy li{
+        color: #606c7b;
+        font-size: 11px;
+        line-height: 1.8;
+      }
+.copy ul{
+        padding-left: 19px;
+      }
+.download{
+        display: block;
+        margin-top: 17px;
+        padding: 15px;
+        border-radius: 8px;
+        background: var(--r);
+        color: #fff;
+        text-align: center;
+        font-size: 12px;
+        font-weight: 900;
+      }
+.note{
+        display: block;
+        margin-top: 8px;
+        color: #929ba6;
+        font-size: 8px;
+        text-align: center;
+      }
+@media (max-width: 800px){.grid{
+          grid-template-columns: repeat(3, 1fr);
+        }.detail{
+          grid-template-columns: 220px 1fr;
+        }}
+@media (max-width: 560px){.grid{
+          grid-template-columns: repeat(2, 1fr);
+          gap: 11px;
+        }.detail{
+          grid-template-columns: 1fr;
+        }.detail-poster{
+          max-width: 260px;
+          margin: auto;
+        }h1{
+          font-size: 26px;
+        }}
+/* Mobile responsive audit: 320px–430px */
+      @media (max-width: 600px){
+        main {
+          padding: 34px 0 58px;
+        }
+        .ey {
+          font-size: 11px;
+        }
+        h1 {
+          line-height: 1.25;
+        }
+        .sub {
+          font-size: 13px;
+        }
+        .filters {
+          overflow-x: auto;
+          padding-bottom: 2px;
+          scrollbar-width: none;
+        }
+        .filters::-webkit-scrollbar {
+          display: none;
+        }
+        
+        .grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 10px;
+        }
+        .card {
+          min-width: 0;
+        }
+        .cb {
+          padding: 11px;
+        }
+        .cb b {
+          display: block;
+          font-size: 14px;
+          line-height: 1.35;
+          overflow-wrap: anywhere;
+        }
+        .cb span {
+          font-size: 11px;
+          line-height: 1.45;
+        }
+        .card:hover {
+          transform: none;
+        }
+        footer {
+          font-size: 11px;
+          line-height: 1.5;
+        }
+      }
+@media (max-width: 350px){.cb{
+          padding: 9px;
+        }.cb b{
+          font-size: 13px;
+        }.cb span{
+          font-size: 10.5px;
+        }}
+@media (max-width: 600px){nav{
+          height: auto;
+          min-height: 68px;
+          flex-wrap: wrap;
+          padding-top: 10px;
+        }}
+a:focus-visible,
+      button:focus-visible{
+        outline: 3px solid #ff8290;
+        outline-offset: 3px;
+      }
+.card img{
+        object-fit: contain;
+        background: #111722;
+      }
+
+/* ===== 콘텐츠ZONE 재설계에서 추가된 규칙 ===== */
+
+.policy {
+  margin: 22px 0 6px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 22px 0 6px;
+}
+
+/* SEED action-chip 에는 선택 상태 variant 가 없어, 탭 선택은 여기서 표현합니다.
+   aria-selected 를 그대로 쓰므로 스크린리더에도 같은 상태가 전달됩니다. */
+.filters [aria-selected="true"] {
+  background: var(--seed-color-bg-brand-solid);
+  color: var(--seed-color-palette-static-white);
+}
+
+.group {
+  margin-top: 34px;
+}
+
+.group h2 {
+  font-size: var(--seed-font-size-t6);
+  line-height: var(--seed-line-height-t6);
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+.group-note {
+  margin: 4px 0 16px;
+  font-size: var(--seed-font-size-t2);
+  color: var(--muted);
+}
+
+.cb .picked {
+  align-self: flex-start;
+  margin-bottom: 6px;
+}
+
+.cb .where {
+  margin-top: 2px;
+  font-size: var(--seed-font-size-t1);
+  color: var(--muted);
+}
+
+.empty {
+  margin: 40px 0;
+  padding: 28px;
+  text-align: center;
+  color: var(--muted);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--seed-radius-r3);
+}
+
+/* 제휴 안내는 작품 카드와 분리해 페이지 하단에 둡니다.
+   특정 작품이 이 웹하드에서 제공된다는 뜻으로 읽히지 않게 하기 위한 배치입니다. */
+.partner {
+  margin: 46px 0 10px;
+  padding: 24px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--seed-radius-r3);
+}
+
+.partner h2 {
+  margin: 0;
+  font-size: var(--seed-font-size-t5);
+}
+
+.partner p {
+  margin: 8px 0 0;
+  font-size: var(--seed-font-size-t3);
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.partner-links {
+  margin-top: 16px;
+}
+
+/* ===== 지금 극장에서 (KOFIC 박스오피스) ===== */
+
+.boxoffice {
+  margin: 26px 0 8px;
+  padding: 22px 24px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--seed-radius-r3);
+}
+
+.boxoffice h2 {
+  margin: 0;
+  font-size: var(--seed-font-size-t5);
+}
+
+.boxoffice-list {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+}
+
+.boxoffice-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+  font-size: var(--seed-font-size-t3);
+}
+
+.boxoffice-list li:first-child {
+  border-top: 0;
+}
+
+.bo-rank {
+  flex-shrink: 0;
+  width: 22px;
+  font-weight: var(--seed-font-weight-bold);
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.bo-title {
+  font-weight: var(--seed-font-weight-bold);
+}
+
+.bo-open {
+  font-size: var(--seed-font-size-t1);
+  color: var(--muted);
+}
+
+.book {
+  margin-left: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.book a {
+  padding: 5px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--seed-radius-full);
+  font-size: var(--seed-font-size-t1);
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.book a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+@media (max-width: 650px) {
+  .boxoffice-list li {
+    flex-wrap: wrap;
+  }
+
+  .book {
+    margin-left: 0;
+    flex-basis: 100%;
+  }
+}
+
+/* 공통 예매 링크는 구역 상단에 한 번만 표시합니다. */
+.book-top {
+  margin-left: 10px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  vertical-align: middle;
+}

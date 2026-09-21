@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" data-seed-color-mode="light-only">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -8,193 +8,30 @@
       name="description"
       content="웹하드 혜택, 저작권, 결제와 보안 확인 방법을 안내합니다."
     />
-    <style>
-      body {
-        margin: 0;
-        background: #f6f7fa;
-        color: #141821;
-        font-family: Arial, "Noto Sans KR", sans-serif;
-      }
-      .w {
-        width: min(900px, calc(100% - 30px));
-        margin: auto;
-      }
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-      header {
-        background: #fff;
-        border-bottom: 1px solid #e3e6eb;
-      }
-      nav {
-        height: 68px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .logo {
-        font-size: 21px;
-        font-weight: 900;
-      }
-      .logo b {
-        color: #ff3b51;
-      }
-      .menu {
-        display: flex;
-        gap: 24px;
-        color: #65707d;
-        font-size: 12px;
-        font-weight: 800;
-      }
-      main {
-        padding: 50px 0 80px;
-      }
-      h1 {
-        font-size: 31px;
-      }
-      .sub {
-        color: #74808d;
-        font-size: 11px;
-      }
-      .grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 14px;
-        margin-top: 26px;
-      }
-      .card {
-        padding: 23px;
-        border: 1px solid #e3e6eb;
-        border-radius: 12px;
-        background: #fff;
-      }
-      .card b {
-        color: #ff3b51;
-        font-size: 10px;
-      }
-      .card h2 {
-        font-size: 16px;
-      }
-      .card p {
-        color: #667381;
-        font-size: 11px;
-        line-height: 1.8;
-      }
-      footer {
-        padding: 32px 0;
-        background: #fff;
-        border-top: 1px solid #e3e6eb;
-        color: #8b949f;
-        font-size: 9px;
-      }
-      @media (max-width: 550px) {
-        .menu {
-          display: none;
-        }
-        .grid {
-          grid-template-columns: 1fr;
-        }
-      }
-      /* Mobile responsive audit: 320px–430px */
-      @media (max-width: 600px) {
-        body {
-          overflow-x: hidden;
-        }
-        nav {
-          height: auto;
-          min-height: 68px;
-          flex-wrap: wrap;
-          padding-top: 10px;
-        }
-        .logo {
-          margin-bottom: 8px;
-        }
-        .menu {
-          display: flex;
-          width: 100%;
-          gap: 5px;
-          padding: 0 0 10px;
-          overflow-x: auto;
-          scrollbar-width: none;
-        }
-        .menu::-webkit-scrollbar {
-          display: none;
-        }
-        .menu a {
-          display: block;
-          flex: 1;
-          min-width: max-content;
-          padding: 9px 7px;
-          border-radius: 7px;
-          background: #f1f3f7;
-          text-align: center;
-          font-size: 11px;
-        }
-        main {
-          padding: 36px 0 58px;
-        }
-        h1 {
-          font-size: 27px;
-          line-height: 1.25;
-        }
-        .sub {
-          font-size: 13px;
-          line-height: 1.65;
-        }
-        .card {
-          padding: 19px;
-        }
-        .card b {
-          font-size: 12px;
-        }
-        .card h2 {
-          font-size: 19px;
-        }
-        .card p {
-          font-size: 14px;
-          line-height: 1.7;
-        }
-        footer {
-          font-size: 11px;
-          line-height: 1.5;
-        }
-      }
-      @media (max-width: 350px) {
-        .w {
-          width: calc(100% - 20px);
-        }
-        .logo {
-          font-size: 19px;
-        }
-        .menu a {
-          padding-inline: 5px;
-          font-size: 10.5px;
-        }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        * {
-          transition: none !important;
-        }
-      }
-      a:focus-visible {
-        outline: 3px solid #ff8290;
-        outline-offset: 3px;
-      }
-    </style>
+    <link
+      rel="stylesheet"
+      href="assets/fonts/pretendard/pretendardvariable-dynamic-subset.css"
+    />
+    <link rel="stylesheet" href="assets/seed/seed.css" />
+    <link rel="stylesheet" href="assets/seed-theme.css" />
+    <link rel="stylesheet" href="assets/site.css" />
+    <link rel="stylesheet" href="assets/criteria.css" />
   </head>
   <body>
-    <header>
-      <nav class="w" aria-label="주요 메뉴">
-        <a class="logo" href="index.html">오티티<b>보라</b></a>
+    <a class="skip" href="#main">본문으로 바로가기</a>
+    <header class="site-header">
+      <nav class="wrap nav" aria-label="주요 메뉴">
+        <a class="logo" href="index.html"
+          ><i aria-hidden="true">▶</i>오티티<span>보라</span></a
+        >
         <div class="menu">
           <a href="webhard.html">웹하드 순위</a
           ><a href="content.html">콘텐츠ZONE</a
-          ><a href="criteria.html">이용 가이드</a>
+          ><a class="on" aria-current="page" href="criteria.html">이용 가이드</a>
         </div>
       </nav>
     </header>
-    <main class="w">
+    <main class="wrap" id="main">
       <span class="sub">SAFE CONTENT GUIDE</span>
       <h1>안전한 이용 가이드</h1>
       <p class="sub">
@@ -242,6 +79,10 @@
         </article>
       </div>
     </main>
-    <footer><div class="w">© 2026 OTT BORA. All rights reserved.</div></footer>
+    <footer>
+      <div class="wrap footer-row">
+        <p>© 2026 OTT BORA. All rights reserved.</p>
+      </div>
+    </footer>
   </body>
 </html>
