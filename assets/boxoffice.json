@@ -7,67 +7,35 @@
   "keepDays": 45,
   "movies": [
     {
-      "movieCd": "20256308",
-      "title": "인턴",
-      "openedAt": "2026-09-16",
-      "audienceAcc": 403897,
-      "genres": [
-        "드라마"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20260920",
-      "lastSeenAt": "20260920",
-      "days": 1,
-      "bestRank": 1,
-      "showing": true
-    },
-    {
       "movieCd": "20250654",
       "title": "오디세이",
       "openedAt": "2026-08-05",
-      "audienceAcc": 11217635,
+      "audienceAcc": 11217633,
       "genres": [
         "액션",
         "드라마",
         "어드벤처"
       ],
       "type": "영화",
-      "firstSeenAt": "20260920",
+      "firstSeenAt": "20260824",
       "lastSeenAt": "20260920",
-      "days": 1,
-      "bestRank": 2,
+      "days": 28,
+      "bestRank": 1,
       "showing": true
     },
     {
-      "movieCd": "20265146",
-      "title": "옵세션",
-      "openedAt": "2026-09-02",
-      "audienceAcc": 701713,
+      "movieCd": "20256308",
+      "title": "인턴",
+      "openedAt": "2026-09-16",
+      "audienceAcc": 403895,
       "genres": [
-        "공포(호러)"
+        "드라마"
       ],
       "type": "영화",
-      "firstSeenAt": "20260920",
+      "firstSeenAt": "20260904",
       "lastSeenAt": "20260920",
-      "days": 1,
-      "bestRank": 3,
-      "showing": true
-    },
-    {
-      "movieCd": "20263870",
-      "title": "레지던트 이블: 0번째 밤",
-      "openedAt": "2026-09-17",
-      "audienceAcc": 103654,
-      "genres": [
-        "공포(호러)",
-        "액션",
-        "SF"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20260920",
-      "lastSeenAt": "20260920",
-      "days": 1,
-      "bestRank": 4,
+      "days": 8,
+      "bestRank": 1,
       "showing": true
     },
     {
@@ -81,25 +49,58 @@
         "판타지"
       ],
       "type": "영화",
-      "firstSeenAt": "20260920",
+      "firstSeenAt": "20260824",
       "lastSeenAt": "20260920",
-      "days": 1,
-      "bestRank": 5,
+      "days": 28,
+      "bestRank": 2,
       "showing": true
     },
     {
-      "movieCd": "20261807",
-      "title": "극장판 치이카와: 인어 섬의 비밀",
-      "openedAt": "2026-09-30",
-      "audienceAcc": 21203,
+      "movieCd": "20265146",
+      "title": "옵세션",
+      "openedAt": "2026-09-02",
+      "audienceAcc": 701713,
       "genres": [
-        "애니메이션"
+        "공포(호러)"
       ],
-      "type": "애니",
-      "firstSeenAt": "20260920",
+      "type": "영화",
+      "firstSeenAt": "20260902",
       "lastSeenAt": "20260920",
-      "days": 1,
-      "bestRank": 6,
+      "days": 19,
+      "bestRank": 2,
+      "showing": true
+    },
+    {
+      "movieCd": "20263870",
+      "title": "레지던트 이블: 0번째 밤",
+      "openedAt": "2026-09-17",
+      "audienceAcc": 103654,
+      "genres": [
+        "공포(호러)",
+        "액션",
+        "SF"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260917",
+      "lastSeenAt": "20260920",
+      "days": 4,
+      "bestRank": 3,
+      "showing": true
+    },
+    {
+      "movieCd": "20265423",
+      "title": "더 드라마",
+      "openedAt": "2026-09-09",
+      "audienceAcc": 80094,
+      "genres": [
+        "드라마",
+        "멜로/로맨스"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260909",
+      "lastSeenAt": "20260920",
+      "days": 11,
+      "bestRank": 4,
       "showing": true
     },
     {
@@ -113,41 +114,10 @@
         "멜로/로맨스"
       ],
       "type": "애니",
-      "firstSeenAt": "20260920",
+      "firstSeenAt": "20260916",
       "lastSeenAt": "20260920",
-      "days": 1,
-      "bestRank": 7,
-      "showing": true
-    },
-    {
-      "movieCd": "20265587",
-      "title": "디지몬 어드벤처 : 운명적 만남 & 우리들의 워 게임!",
-      "openedAt": "2026-09-16",
-      "audienceAcc": 17764,
-      "genres": [
-        "애니메이션"
-      ],
-      "type": "애니",
-      "firstSeenAt": "20260920",
-      "lastSeenAt": "20260920",
-      "days": 1,
-      "bestRank": 8,
-      "showing": true
-    },
-    {
-      "movieCd": "20265423",
-      "title": "더 드라마",
-      "openedAt": "2026-09-09",
-      "audienceAcc": 80094,
-      "genres": [
-        "드라마",
-        "멜로/로맨스"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20260920",
-      "lastSeenAt": "20260920",
-      "days": 1,
-      "bestRank": 9,
+      "days": 5,
+      "bestRank": 5,
       "showing": true
     },
     {
@@ -160,11 +130,520 @@
         "드라마"
       ],
       "type": "영화",
-      "firstSeenAt": "20260920",
+      "firstSeenAt": "20260914",
       "lastSeenAt": "20260920",
+      "days": 5,
+      "bestRank": 5,
+      "showing": true
+    },
+    {
+      "movieCd": "20261807",
+      "title": "극장판 치이카와: 인어 섬의 비밀",
+      "openedAt": "2026-09-30",
+      "audienceAcc": 21203,
+      "genres": [
+        "애니메이션"
+      ],
+      "type": "애니",
+      "firstSeenAt": "20260919",
+      "lastSeenAt": "20260920",
+      "days": 2,
+      "bestRank": 6,
+      "showing": true
+    },
+    {
+      "movieCd": "20265587",
+      "title": "디지몬 어드벤처 : 운명적 만남 & 우리들의 워 게임!",
+      "openedAt": "2026-09-16",
+      "audienceAcc": 17764,
+      "genres": [
+        "애니메이션"
+      ],
+      "type": "애니",
+      "firstSeenAt": "20260916",
+      "lastSeenAt": "20260920",
+      "days": 5,
+      "bestRank": 6,
+      "showing": true
+    },
+    {
+      "movieCd": "20264801",
+      "title": "포가튼 아일랜드",
+      "openedAt": "2026-09-23",
+      "audienceAcc": 15777,
+      "genres": [
+        "판타지",
+        "코미디",
+        "어드벤처"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260912",
+      "lastSeenAt": "20260919",
+      "days": 2,
+      "bestRank": 5,
+      "showing": false
+    },
+    {
+      "movieCd": "20255033",
+      "title": "암살자(들)",
+      "openedAt": "2026-09-23",
+      "audienceAcc": 18453,
+      "genres": [
+        "범죄",
+        "드라마"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260917",
+      "lastSeenAt": "20260918",
+      "days": 2,
+      "bestRank": 5,
+      "showing": false
+    },
+    {
+      "movieCd": "20224573",
+      "title": "부활남: 더 레드",
+      "openedAt": "2026-09-30",
+      "audienceAcc": 6350,
+      "genres": [
+        "액션"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260918",
+      "lastSeenAt": "20260918",
+      "days": 1,
+      "bestRank": 6,
+      "showing": false
+    },
+    {
+      "movieCd": "20241110",
+      "title": "아이유 콘서트 : 더 위닝",
+      "openedAt": "2025-01-24",
+      "audienceAcc": 80073,
+      "genres": [
+        "공연"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260916",
+      "lastSeenAt": "20260917",
+      "days": 2,
+      "bestRank": 8,
+      "showing": false
+    },
+    {
+      "movieCd": "20258102",
+      "title": "철들 무렵",
+      "openedAt": "2026-09-16",
+      "audienceAcc": 3341,
+      "genres": [
+        "드라마",
+        "가족"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260916",
+      "lastSeenAt": "20260916",
       "days": 1,
       "bestRank": 10,
-      "showing": true
+      "showing": false
+    },
+    {
+      "movieCd": "20247458",
+      "title": "경주기행",
+      "openedAt": "2026-08-26",
+      "audienceAcc": 338089,
+      "genres": [
+        "범죄"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260826",
+      "lastSeenAt": "20260915",
+      "days": 21,
+      "bestRank": 3,
+      "showing": false
+    },
+    {
+      "movieCd": "20204641",
+      "title": "비광",
+      "openedAt": "2026-09-02",
+      "audienceAcc": 100040,
+      "genres": [
+        "드라마",
+        "가족"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260824",
+      "lastSeenAt": "20260915",
+      "days": 12,
+      "bestRank": 4,
+      "showing": false
+    },
+    {
+      "movieCd": "20264918",
+      "title": "싱 어게인",
+      "openedAt": "2026-09-02",
+      "audienceAcc": 94795,
+      "genres": [
+        "드라마"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260902",
+      "lastSeenAt": "20260915",
+      "days": 14,
+      "bestRank": 4,
+      "showing": false
+    },
+    {
+      "movieCd": "20233219",
+      "title": "호프",
+      "openedAt": "2026-07-15",
+      "audienceAcc": 4573931,
+      "genres": [
+        "SF",
+        "스릴러",
+        "액션"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260824",
+      "lastSeenAt": "20260915",
+      "days": 13,
+      "bestRank": 5,
+      "showing": false
+    },
+    {
+      "movieCd": "20264915",
+      "title": "딥 워터",
+      "openedAt": "2026-09-09",
+      "audienceAcc": 15045,
+      "genres": [
+        "스릴러",
+        "공포(호러)"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260909",
+      "lastSeenAt": "20260915",
+      "days": 2,
+      "bestRank": 9,
+      "showing": false
+    },
+    {
+      "movieCd": "20265344",
+      "title": "오아시스: 돈 룩 백 인 앵거",
+      "openedAt": "2026-09-09",
+      "audienceAcc": 17173,
+      "genres": [
+        "다큐멘터리"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260909",
+      "lastSeenAt": "20260914",
+      "days": 4,
+      "bestRank": 7,
+      "showing": false
+    },
+    {
+      "movieCd": "20262381",
+      "title": "사랑의 하츄핑: 고래보석의 전설",
+      "openedAt": "2026-08-05",
+      "audienceAcc": 867933,
+      "genres": [
+        "애니메이션"
+      ],
+      "type": "애니",
+      "firstSeenAt": "20260824",
+      "lastSeenAt": "20260913",
+      "days": 9,
+      "bestRank": 5,
+      "showing": false
+    },
+    {
+      "movieCd": "20018158",
+      "title": "이누야샤 극장판: 시대를 초월한 마음",
+      "openedAt": "2026-09-09",
+      "audienceAcc": 19829,
+      "genres": [
+        "애니메이션",
+        "액션",
+        "어드벤처",
+        "판타지"
+      ],
+      "type": "애니",
+      "firstSeenAt": "20260909",
+      "lastSeenAt": "20260913",
+      "days": 5,
+      "bestRank": 6,
+      "showing": false
+    },
+    {
+      "movieCd": "20224597",
+      "title": "아가미",
+      "openedAt": "2026-09-09",
+      "audienceAcc": 8459,
+      "genres": [
+        "애니메이션"
+      ],
+      "type": "애니",
+      "firstSeenAt": "20260911",
+      "lastSeenAt": "20260911",
+      "days": 1,
+      "bestRank": 10,
+      "showing": false
+    },
+    {
+      "movieCd": "20264557",
+      "title": "오크 스트리트의 마지막 날",
+      "openedAt": "2026-08-26",
+      "audienceAcc": 132311,
+      "genres": [
+        "액션",
+        "어드벤처",
+        "미스터리",
+        "SF",
+        "스릴러"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260825",
+      "lastSeenAt": "20260908",
+      "days": 14,
+      "bestRank": 4,
+      "showing": false
+    },
+    {
+      "movieCd": "20242837",
+      "title": "왕과 사는 남자",
+      "openedAt": "2026-02-04",
+      "audienceAcc": 16924757,
+      "genres": [
+        "사극",
+        "드라마"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260907",
+      "lastSeenAt": "20260908",
+      "days": 2,
+      "bestRank": 7,
+      "showing": false
+    },
+    {
+      "movieCd": "20265573",
+      "title": "인 더 그레이",
+      "openedAt": "2026-09-02",
+      "audienceAcc": 10211,
+      "genres": [
+        "액션",
+        "범죄"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260902",
+      "lastSeenAt": "20260908",
+      "days": 5,
+      "bestRank": 7,
+      "showing": false
+    },
+    {
+      "movieCd": "20255509",
+      "title": "사진의 얼굴",
+      "openedAt": "2026-09-02",
+      "audienceAcc": 4831,
+      "genres": [
+        "다큐멘터리"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260908",
+      "lastSeenAt": "20260908",
+      "days": 1,
+      "bestRank": 10,
+      "showing": false
+    },
+    {
+      "movieCd": "20264635",
+      "title": "명탐정 코난: 하이웨이의 타천사",
+      "openedAt": "2026-08-12",
+      "audienceAcc": 421534,
+      "genres": [
+        "애니메이션"
+      ],
+      "type": "애니",
+      "firstSeenAt": "20260824",
+      "lastSeenAt": "20260907",
+      "days": 15,
+      "bestRank": 4,
+      "showing": false
+    },
+    {
+      "movieCd": "20127108",
+      "title": "모모와 다락방의 수상한 요괴들",
+      "openedAt": "2012-07-05",
+      "audienceAcc": 310413,
+      "genres": [
+        "애니메이션",
+        "드라마",
+        "가족",
+        "판타지"
+      ],
+      "type": "애니",
+      "firstSeenAt": "20260902",
+      "lastSeenAt": "20260906",
+      "days": 3,
+      "bestRank": 8,
+      "showing": false
+    },
+    {
+      "movieCd": "20167922",
+      "title": "핵소 고지",
+      "openedAt": "2017-02-22",
+      "audienceAcc": 181576,
+      "genres": [
+        "드라마",
+        "전쟁"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260902",
+      "lastSeenAt": "20260902",
+      "days": 1,
+      "bestRank": 9,
+      "showing": false
+    },
+    {
+      "movieCd": "20264035",
+      "title": "인시디어스: 그들이 넘어왔다",
+      "openedAt": "2026-08-20",
+      "audienceAcc": 154456,
+      "genres": [
+        "공포(호러)",
+        "미스터리",
+        "스릴러"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260824",
+      "lastSeenAt": "20260901",
+      "days": 9,
+      "bestRank": 3,
+      "showing": false
+    },
+    {
+      "movieCd": "20255484",
+      "title": "오케이 마담2",
+      "openedAt": "2026-08-12",
+      "audienceAcc": 337976,
+      "genres": [
+        "액션",
+        "코미디"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260824",
+      "lastSeenAt": "20260901",
+      "days": 8,
+      "bestRank": 5,
+      "showing": false
+    },
+    {
+      "movieCd": "20263307",
+      "title": "도그 스타: 마지막 희망",
+      "openedAt": "2026-08-26",
+      "audienceAcc": 14732,
+      "genres": [
+        "액션",
+        "SF"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260826",
+      "lastSeenAt": "20260901",
+      "days": 5,
+      "bestRank": 7,
+      "showing": false
+    },
+    {
+      "movieCd": "20262945",
+      "title": "퍼피 구조대: 더 다이노 무비",
+      "openedAt": "2026-08-13",
+      "audienceAcc": 106540,
+      "genres": [
+        "애니메이션"
+      ],
+      "type": "애니",
+      "firstSeenAt": "20260829",
+      "lastSeenAt": "20260830",
+      "days": 2,
+      "bestRank": 8,
+      "showing": false
+    },
+    {
+      "movieCd": "20265388",
+      "title": "고스트밴드",
+      "openedAt": "2026-08-26",
+      "audienceAcc": 13803,
+      "genres": [
+        "애니메이션"
+      ],
+      "type": "애니",
+      "firstSeenAt": "20260829",
+      "lastSeenAt": "20260830",
+      "days": 2,
+      "bestRank": 10,
+      "showing": false
+    },
+    {
+      "movieCd": "20253289",
+      "title": "극장판 귀멸의 칼날: 무한성편",
+      "openedAt": "2025-08-22",
+      "audienceAcc": 5822719,
+      "genres": [
+        "애니메이션"
+      ],
+      "type": "애니",
+      "firstSeenAt": "20260826",
+      "lastSeenAt": "20260829",
+      "days": 2,
+      "bestRank": 9,
+      "showing": false
+    },
+    {
+      "movieCd": "20264715",
+      "title": "드라큘라: 러브 테일",
+      "openedAt": "2026-08-26",
+      "audienceAcc": 8527,
+      "genres": [
+        "판타지",
+        "멜로/로맨스",
+        "공포(호러)"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260826",
+      "lastSeenAt": "20260828",
+      "days": 3,
+      "bestRank": 8,
+      "showing": false
+    },
+    {
+      "movieCd": "20100810",
+      "title": "마루 밑 아리에티",
+      "openedAt": "2010-09-09",
+      "audienceAcc": 1088832,
+      "genres": [
+        "애니메이션"
+      ],
+      "type": "애니",
+      "firstSeenAt": "20260824",
+      "lastSeenAt": "20260825",
+      "days": 2,
+      "bestRank": 9,
+      "showing": false
+    },
+    {
+      "movieCd": "20264080",
+      "title": "워페어",
+      "openedAt": "2026-08-19",
+      "audienceAcc": 16374,
+      "genres": [
+        "액션",
+        "드라마",
+        "전쟁"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260824",
+      "lastSeenAt": "20260825",
+      "days": 2,
+      "bestRank": 10,
+      "showing": false
     }
   ]
 }
