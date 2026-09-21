@@ -44,6 +44,11 @@
         볼 수 있습니다.
       </p>
 
+      <div class="filters" role="tablist" aria-label="분류 선택"></div>
+
+
+      <div id="sections"></div>
+
       <aside
         class="seed-callout__root seed-callout__root--tone_neutral policy"
         aria-label="선정 기준과 표시 방침"
@@ -58,11 +63,6 @@
           ></p>
         </div>
       </aside>
-
-      <div class="filters" role="tablist" aria-label="분류 선택"></div>
-
-
-      <div id="sections"></div>
 
       <aside class="partner" aria-labelledby="partner-title">
         <h2 id="partner-title">제휴 웹하드</h2>
@@ -120,23 +120,34 @@
       let active = "전체";
 
       function card(w) {
-        // 선정 근거와 시청 경로는 확인된 작품에만 표시합니다.
-        const badge = w.pickedBy
-          ? `<span class="seed-badge__root seed-badge__root--size_medium` +
-            ` seed-badge__root--variant_weak` +
-            ` seed-badge__root--tone_brand-variant_weak picked">` +
-            `<span class="seed-badge__label">${esc(w.pickedBy)}</span></span>`
-          : "";
+        // 제공처와 근거는 역할이 다르므로 표기도 나눕니다.
+        //  · 제공처(watch) = 어디서 볼 수 있는가 → 중립 칩
+        //  · 근거(pickedBy) = 왜 실렸는가 → 작은 회색 글씨
+        // 근거 문구에는 제공처 이름을 넣지 않습니다. 칩이 이미 말합니다.
         const where = w.watch.length
-          ? `<span class="where">${w.watch.map((x) => esc(x.name)).join(" · ")}</span>`
+          ? w.watch
+              .map(
+                (x) =>
+                  `<span class="seed-badge__root seed-badge__root--size_medium` +
+                  ` seed-badge__root--variant_weak` +
+                  ` seed-badge__root--tone_neutral-variant_weak">` +
+                  `<span class="seed-badge__label">${esc(x.name)}</span></span>`,
+              )
+              .join("")
           : "";
+        const why = w.pickedBy
+          ? `<span class="why">${esc(w.pickedBy)}</span>`
+          : "";
+        const meta = where || why ? `<div class="meta-row">${where}${why}</div>` : "";
+        // 분류는 탭이 이미 말하므로, 전체 탭에서만 함께 적습니다.
+        const line = active === "전체" ? `${w.type} · ${w.genre}` : w.genre;
         return (
           `<a class="card" href="content-detail.html?id=${encodeURIComponent(w.id)}">` +
           `<img src="${poster(w.id)}" alt="${esc(w.title)} 포스터" loading="lazy"` +
           ` referrerpolicy="no-referrer"` +
           ` onerror="this.onerror=null;this.src='${FALLBACK}'">` +
-          `<div class="cb">${badge}<b>${esc(w.title)}</b>` +
-          `<span>${esc(w.type)} · ${esc(w.genre)}</span>${where}</div></a>`
+          `<div class="cb"><b>${esc(w.title)}</b>` +
+          `<span class="genre">${esc(line)}</span>${meta}</div></a>`
         );
       }
 
