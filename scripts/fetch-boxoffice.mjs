@@ -21,11 +21,10 @@ if (!KEY) {
   process.exit(1);
 }
 
-/** KOFIC 는 전날 집계를 제공하므로 어제 날짜를 조회합니다. */
-function targetDate() {
-  const d = new Date(Date.now() - 24 * 60 * 60 * 1000);
-  const kst = new Date(d.getTime() + 9 * 60 * 60 * 1000); // 집계 기준이 한국 시간
-  return kst.toISOString().slice(0, 10).replace(/-/g, "");
+/** KOFIC 는 전날 집계를 제공합니다. 집계 기준이 한국 시간이라 KST 로 환산해 셉니다. */
+function kstDateBefore(days) {
+  const t = Date.now() + 9 * 60 * 60 * 1000 - days * 24 * 60 * 60 * 1000;
+  return new Date(t).toISOString().slice(0, 10).replace(/-/g, "");
 }
 
 function fail(msg, got) {
@@ -37,24 +36,41 @@ function fail(msg, got) {
   process.exit(1);
 }
 
-const targetDt = targetDate();
-const url = `${ENDPOINT}?key=${encodeURIComponent(KEY)}&targetDt=${targetDt}`;
+/** 하루치를 조회합니다. 아직 집계 전이면 빈 목록이 오므로 null 을 돌려줍니다. */
+async function fetchDay(targetDt) {
+  const url = `${ENDPOINT}?key=${encodeURIComponent(KEY)}&targetDt=${targetDt}`;
+  const res = await fetch(url, { headers: { accept: "application/json" } });
+  if (!res.ok) fail(`HTTP ${res.status} (targetDt=${targetDt})`);
 
-const res = await fetch(url, { headers: { accept: "application/json" } });
-if (!res.ok) fail(`HTTP ${res.status}`);
+  let body;
+  try {
+    body = await res.json();
+  } catch {
+    fail(
+      "JSON 이 아닙니다. KOFIC_API_KEY 가 없거나 잘못되면 HTML 오류 페이지가 옵니다. " +
+        "저장소 Secrets 의 이름이 정확히 KOFIC_API_KEY 인지 확인하세요.",
+    );
+  }
+  if (body?.faultInfo) {
+    fail(body.faultInfo.message || "faultInfo 반환 (키를 확인하세요)", body.faultInfo);
+  }
 
-let body;
-try {
-  body = await res.json();
-} catch {
-  fail("JSON 이 아닙니다 (키가 잘못됐을 때 HTML 오류 페이지가 옵니다)");
+  const list = body?.boxOfficeResult?.dailyBoxOfficeList;
+  if (!Array.isArray(list)) {
+    fail("boxOfficeResult.dailyBoxOfficeList 가 배열이 아님", body);
+  }
+  return list.length ? list : null;
 }
 
-if (body?.faultInfo) fail(body.faultInfo.message || "faultInfo 반환", body.faultInfo);
-
-const list = body?.boxOfficeResult?.dailyBoxOfficeList;
-if (!Array.isArray(list)) fail("boxOfficeResult.dailyBoxOfficeList 가 배열이 아님", body);
-if (!list.length) fail("목록이 비어 있음 (targetDt=" + targetDt + ")", body);
+// 집계가 아직 안 올라온 시각에 돌 수 있으므로 하루 더 거슬러 시도합니다.
+let targetDt = kstDateBefore(1);
+let list = await fetchDay(targetDt);
+if (!list) {
+  targetDt = kstDateBefore(2);
+  console.log(`전날(${kstDateBefore(1)}) 집계가 아직 없어 ${targetDt} 로 재시도합니다.`);
+  list = await fetchDay(targetDt);
+}
+if (!list) fail(`최근 2일간 집계가 비어 있습니다 (${kstDateBefore(1)}, ${targetDt})`);
 
 const REQUIRED = ["rank", "movieCd", "movieNm"];
 const missing = REQUIRED.filter((f) => !(f in list[0]));
