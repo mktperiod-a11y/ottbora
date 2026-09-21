@@ -117,7 +117,7 @@ button:focus-visible,
   border-radius: 50% 50% 50% 8px;
   background: var(--accent);
   color: #fff;
-  font-size: 12px;
+  font-size: 14px;
   font-style: normal;
   margin-right: 8px;
 }
