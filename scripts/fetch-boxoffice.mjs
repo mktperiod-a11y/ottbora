@@ -100,7 +100,13 @@ async function fetchGenres(movieCd) {
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const body = await res.json();
   if (body?.faultInfo) throw new Error(body.faultInfo.message || "faultInfo");
-  const genres = body?.movieInfoResult?.movieInfo?.genres;
+  const info = body?.movieInfoResult?.movieInfo;
+  // 진단: 상세 응답에 어떤 필드가 오는지 한 번만 찍습니다(포스터 제공 여부 확인용).
+  if (!globalThis.__loggedInfoKeys) {
+    globalThis.__loggedInfoKeys = true;
+    console.log("  [진단] movieInfo 필드:", Object.keys(info || {}).join(", "));
+  }
+  const genres = info?.genres;
   if (!Array.isArray(genres)) throw new Error("movieInfoResult.movieInfo.genres 없음");
   return genres.map((g) => String(g.genreNm || "")).filter(Boolean);
 }
