@@ -1,8 +1,14 @@
 /**
  * 영화진흥위원회(KOFIC) 오픈API 에서 일별 박스오피스를 받아
- * assets/boxoffice.json 으로 저장합니다.
+ * assets/boxoffice.json 에 누적합니다.
  *
- * 실행: KOFIC_API_KEY=... node scripts/fetch-boxoffice.mjs
+ * 실행:
+ *   KOFIC_API_KEY=... node scripts/fetch-boxoffice.mjs            하루치(전날)
+ *   KOFIC_API_KEY=... node scripts/fetch-boxoffice.mjs --days=28  지난 28일치
+ *
+ * 하루치만 받으면 10편뿐이라 목록이 되지 않습니다. 그래서 받은 날짜를
+ * 덮어쓰지 않고 작품 단위로 합칩니다. 같은 작품이 여러 날 나오면
+ * 처음 본 날 / 마지막으로 본 날 / 오른 날 수를 갱신합니다.
  *
  * 이 스크립트는 응답 형태를 먼저 검증합니다. API 가 예상과 다른 모양을 주면
  * 파일을 건드리지 않고 실제로 받은 구조를 출력한 뒤 종료합니다.
@@ -21,15 +27,36 @@ const DETAIL_ENDPOINT =
 /** 장르에 이 값이 있으면 애니 탭으로 분류합니다. */
 const ANIMATION_GENRE = "애니메이션";
 
+/**
+ * 마지막으로 차트에 오른 지 이 일수가 지나면 목록에서 내립니다.
+ * 내려간 작품은 예매할 수 없으니 남겨 둘 이유가 없습니다.
+ */
+const KEEP_DAYS = 45;
+
+/** 한 번에 거슬러 올라갈 수 있는 최대 일수. 실수로 API 를 과하게 두드리지 않도록. */
+const MAX_DAYS = 60;
+
 if (!KEY) {
   console.error("KOFIC_API_KEY 가 없습니다. 저장소 Secrets 에 등록하세요.");
   process.exit(1);
 }
 
+const daysArg = process.argv.find((a) => a.startsWith("--days="));
+const DAYS = Math.min(
+  MAX_DAYS,
+  Math.max(1, Number(daysArg?.slice(7)) || 1),
+);
+
 /** KOFIC 는 전날 집계를 제공합니다. 집계 기준이 한국 시간이라 KST 로 환산해 셉니다. */
 function kstDateBefore(days) {
   const t = Date.now() + 9 * 60 * 60 * 1000 - days * 24 * 60 * 60 * 1000;
   return new Date(t).toISOString().slice(0, 10).replace(/-/g, "");
+}
+
+/** "20260920" 사이의 날짜 차이(일). 둘 다 KST 기준 날짜 문자열입니다. */
+function daysBetween(a, b) {
+  const p = (s) => Date.UTC(+s.slice(0, 4), +s.slice(4, 6) - 1, +s.slice(6, 8));
+  return Math.round((p(a) - p(b)) / 86400000);
 }
 
 function fail(msg, got) {
@@ -41,7 +68,6 @@ function fail(msg, got) {
   process.exit(1);
 }
 
-/** 하루치를 조회합니다. 아직 집계 전이면 빈 목록이 오므로 null 을 돌려줍니다. */
 /**
  * KOFIC 에 붙습니다. 연결이 실패하거나 느릴 때가 있어 몇 번 다시 시도합니다.
  * 응답 이상과 달리 연결 실패는 상대 사정이라, 재시도 후에도 안 되면
@@ -66,6 +92,7 @@ async function getJson(url, label) {
   throw last;
 }
 
+/** 하루치를 조회합니다. 아직 집계 전이면 빈 목록이 오므로 null 을 돌려줍니다. */
 async function fetchDay(targetDt) {
   const url = `${ENDPOINT}?key=${encodeURIComponent(KEY)}&targetDt=${targetDt}`;
   let res;
@@ -99,27 +126,48 @@ async function fetchDay(targetDt) {
   return list.length ? list : null;
 }
 
-// 집계가 아직 안 올라온 시각에 돌 수 있으므로 하루 더 거슬러 시도합니다.
-let targetDt = kstDateBefore(1);
-let list = await fetchDay(targetDt);
-if (!list) {
-  targetDt = kstDateBefore(2);
-  console.log(`전날(${kstDateBefore(1)}) 집계가 아직 없어 ${targetDt} 로 재시도합니다.`);
-  list = await fetchDay(targetDt);
+/**
+ * 이전 파일을 읽어 movieCd 로 찾을 수 있게 돌려줍니다.
+ * 누적 이전의 옛 형식(하루치만 담긴 파일)도 그대로 받아들입니다.
+ * 파일이 없거나 깨져 있으면 빈 상태에서 시작합니다 — 다시 모으면 되기 때문입니다.
+ */
+async function loadPrev() {
+  let raw;
+  try {
+    raw = await readFile(OUT, "utf8");
+  } catch {
+    return new Map();
+  }
+
+  let prev;
+  try {
+    prev = JSON.parse(raw);
+  } catch {
+    console.warn(`${OUT} 을 읽지 못해 새로 모읍니다.`);
+    return new Map();
+  }
+
+  const movies = Array.isArray(prev?.movies) ? prev.movies : [];
+  const out = new Map();
+  for (const m of movies) {
+    if (!m?.movieCd) continue;
+    // 옛 형식에는 firstSeenAt 이 없고 그 파일이 받은 날짜(targetDt)만 있습니다.
+    const seen = m.lastSeenAt || prev.targetDt || "";
+    out.set(String(m.movieCd), {
+      movieCd: String(m.movieCd),
+      title: String(m.title || ""),
+      openedAt: m.openedAt || "",
+      audienceAcc: m.audienceAcc ?? null,
+      genres: Array.isArray(m.genres) ? m.genres : [],
+      type: m.type || "영화",
+      firstSeenAt: m.firstSeenAt || seen,
+      lastSeenAt: seen,
+      days: Number(m.days) || 1,
+      bestRank: Number(m.bestRank) || Number(m.rank) || 99,
+    });
+  }
+  return out;
 }
-if (!list) fail(`최근 2일간 집계가 비어 있습니다 (${kstDateBefore(1)}, ${targetDt})`);
-
-const REQUIRED = ["rank", "movieCd", "movieNm"];
-const missing = REQUIRED.filter((f) => !(f in list[0]));
-if (missing.length) fail("항목에 " + missing.join(", ") + " 필드가 없음", list[0]);
-
-const movies = list.map((m) => ({
-  rank: Number(m.rank),
-  movieCd: String(m.movieCd),
-  title: String(m.movieNm),
-  openedAt: m.openDt || "",
-  audienceAcc: m.audiAcc ? Number(m.audiAcc) : null,
-}));
 
 /**
  * 작품 상세에서 장르를 받아 옵니다.
@@ -143,8 +191,107 @@ async function fetchGenres(movieCd) {
   return genres.map((g) => String(g.genreNm || "")).filter(Boolean);
 }
 
+// ---- 1. 날짜별로 받아서 작품 단위로 합치기 -------------------------------
+
+const movies = await loadPrev();
+const before = movies.size;
+const fetched = [];
+
+for (let back = 1; back <= DAYS; back += 1) {
+  const targetDt = kstDateBefore(back);
+  const list = await fetchDay(targetDt);
+  if (!list) {
+    // 전날 집계가 아직 안 올라온 시각일 수 있습니다. 하루치만 받는 중이라면
+    // 하루 더 거슬러 올라가고, 여러 날을 훑는 중이라면 그 날만 건너뜁니다.
+    console.log(`${targetDt} 집계 없음 — 건너뜁니다.`);
+    if (DAYS === 1) {
+      const retryDt = kstDateBefore(2);
+      const retry = await fetchDay(retryDt);
+      if (!retry) fail(`최근 2일간 집계가 비어 있습니다 (${targetDt}, ${retryDt})`);
+      fetched.push({ targetDt: retryDt, list: retry });
+    }
+    continue;
+  }
+  fetched.push({ targetDt, list });
+  if (DAYS > 1) await new Promise((r) => setTimeout(r, 200));
+}
+
+if (!fetched.length) fail(`${DAYS}일을 훑었지만 집계가 하나도 없습니다.`);
+
+const REQUIRED = ["rank", "movieCd", "movieNm"];
+const sample = fetched[0].list[0];
+const missing = REQUIRED.filter((f) => !(f in sample));
+if (missing.length) fail("항목에 " + missing.join(", ") + " 필드가 없음", sample);
+
+// 날짜별 행을 작품 단위로 먼저 모읍니다. 하루씩 바로 합치면, 이미 알고 있는
+// 기간 안쪽으로 거슬러 올라갈 때 오른 날 수를 잘못 세게 됩니다.
+const seen = new Map(); // movieCd -> { dates, top, row, rowDt }
+for (const { targetDt, list } of fetched) {
+  for (const m of list) {
+    const movieCd = String(m.movieCd);
+    let e = seen.get(movieCd);
+    if (!e) seen.set(movieCd, (e = { dates: new Set(), top: 99, row: null, rowDt: "" }));
+    e.dates.add(targetDt);
+    e.top = Math.min(e.top, Number(m.rank));
+    // 가장 최근 날의 행을 남깁니다. 누적 관객(audiAcc)이 최신값이 되도록.
+    if (targetDt > e.rowDt) {
+      e.row = m;
+      e.rowDt = targetDt;
+    }
+  }
+}
+
+for (const [movieCd, e] of seen) {
+  const dates = [...e.dates].sort();
+  const first = dates[0];
+  const last = dates[dates.length - 1];
+  const m = e.row;
+  const prev = movies.get(movieCd);
+
+  if (!prev) {
+    movies.set(movieCd, {
+      movieCd,
+      title: String(m.movieNm),
+      openedAt: m.openDt || "",
+      audienceAcc: m.audiAcc ? Number(m.audiAcc) : null,
+      genres: [],
+      type: "영화",
+      firstSeenAt: first,
+      lastSeenAt: last,
+      days: dates.length,
+      bestRank: e.top,
+    });
+    continue;
+  }
+
+  // 이미 알고 있던 기간(firstSeenAt~lastSeenAt) 안쪽 날짜는 지난 실행에서 세었습니다.
+  // 바깥으로 늘어난 날만 더합니다.
+  const fresh = dates.filter((d) => d < prev.firstSeenAt || d > prev.lastSeenAt);
+  prev.days += fresh.length;
+  if (first < prev.firstSeenAt) prev.firstSeenAt = first;
+  if (last > prev.lastSeenAt) prev.lastSeenAt = last;
+  prev.bestRank = Math.min(prev.bestRank, e.top);
+  prev.title = String(m.movieNm);
+  prev.openedAt = m.openDt || prev.openedAt;
+  prev.audienceAcc = m.audiAcc ? Number(m.audiAcc) : prev.audienceAcc;
+}
+
+// ---- 2. 오래된 작품 내리기 -----------------------------------------------
+
+const latestDt = fetched[0].targetDt;
+let dropped = 0;
+for (const [movieCd, m] of movies) {
+  if (daysBetween(latestDt, m.lastSeenAt) > KEEP_DAYS) {
+    movies.delete(movieCd);
+    dropped += 1;
+  }
+}
+
+// ---- 3. 장르 채우기 (아직 모르는 작품만) ---------------------------------
+
+const needGenre = [...movies.values()].filter((m) => !m.genres.length);
 let failed = 0;
-for (const m of movies) {
+for (const m of needGenre) {
   try {
     const genres = await fetchGenres(m.movieCd);
     m.genres = genres;
@@ -158,40 +305,58 @@ for (const m of movies) {
   await new Promise((r) => setTimeout(r, 200)); // 연속 호출 간격
 }
 if (failed) {
-  console.warn(`장르 조회 ${failed}/${movies.length}건 실패 — 해당 작품은 영화로 둡니다.`);
+  console.warn(`장르 조회 ${failed}/${needGenre.length}건 실패 — 해당 작품은 영화로 둡니다.`);
 }
 
+// ---- 4. 정렬하고 저장 ----------------------------------------------------
+
+// 최근까지 걸려 있던 작품이 앞으로 옵니다. 같은 날까지 걸렸다면 더 높이 올라갔던 쪽이 먼저.
+// 지금 극장에 걸려 있는 작품이 위에 오게 하려는 정렬입니다.
+const sorted = [...movies.values()].sort(
+  (a, b) =>
+    b.lastSeenAt.localeCompare(a.lastSeenAt) ||
+    a.bestRank - b.bestRank ||
+    a.title.localeCompare(b.title, "ko"),
+);
+
+// showing 은 "마지막 집계일에도 차트에 있었는가" 입니다.
+// 예매 링크를 붙일 근거로 쓰므로, 추측하지 않고 이 사실만 기록합니다.
+for (const m of sorted) m.showing = m.lastSeenAt === latestDt;
+
 const out = {
-  note: "현재 화면에는 표시하지 않습니다. 수집만 계속해 두는 데이터입니다.",
+  note: "일별 박스오피스를 작품 단위로 누적한 목록입니다. 콘텐츠ZONE 의 영화·애니 탭에서 씁니다.",
   source: "영화진흥위원회 오픈API 일별 박스오피스",
   sourceUrl: "https://www.kobis.or.kr/kobisopenapi/",
-  targetDt,
-  fetchedAt: new Date().toISOString().slice(0, 10),
-  movies,
+  updatedAt: new Date().toISOString().slice(0, 10),
+  latestDt,
+  keepDays: KEEP_DAYS,
+  movies: sorted,
 };
 
 // 내용이 같으면 커밋이 생기지 않도록 그대로 둡니다.
+// updatedAt 은 매일 바뀌므로 비교에서 뺍니다.
 const next = JSON.stringify(out, null, 2) + "\n";
-let prev = "";
+let prevMovies = null;
 try {
-  prev = await readFile(OUT, "utf8");
+  prevMovies = JSON.stringify(JSON.parse(await readFile(OUT, "utf8")).movies);
 } catch {}
-const same =
-  prev &&
-  JSON.stringify(JSON.parse(prev).movies) === JSON.stringify(out.movies);
 
-if (same) {
-  console.log("순위 변동 없음 — 파일을 그대로 둡니다.");
+if (prevMovies === JSON.stringify(out.movies)) {
+  console.log("변동 없음 — 파일을 그대로 둡니다.");
 } else {
   await writeFile(OUT, next);
-  console.log(`${OUT} 갱신: ${movies.length}편 (기준일 ${targetDt})`);
-  movies
+  const showing = sorted.filter((m) => m.showing).length;
+  console.log(
+    `${OUT} 갱신: ${sorted.length}편 (새로 ${sorted.length - before + dropped}편, ` +
+      `내림 ${dropped}편, 상영 중 ${showing}편, 기준일 ${latestDt})`,
+  );
+  sorted
     .slice(0, 5)
     .forEach((m) =>
-      console.log(`  ${m.rank}. ${m.title} [${m.type}] ${m.genres.join("·")}`),
+      console.log(`  ${m.title} [${m.type}] ${m.genres.join("·")} — ${m.days}일`),
     );
-  const anime = movies.filter((m) => m.type === "애니");
+  const anime = sorted.filter((m) => m.type === "애니");
   if (anime.length) {
-    console.log(`  애니로 분류: ${anime.map((m) => m.title).join(", ")}`);
+    console.log(`  애니로 분류: ${anime.length}편`);
   }
 }
