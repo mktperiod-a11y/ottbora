@@ -152,8 +152,10 @@ nav{
 .rank-info span{
         display: block;
         margin-top: 5px;
-        color: #7c8591;
-        font-size: 9px;
+        /* 9px + #7c8591 은 흰 카드에서 대비 3.74:1 로 읽기 어려웠습니다. */
+        color: var(--muted);
+        font-size: var(--seed-font-size-t2);
+        line-height: 1.5;
       }
 .go{
         padding: 9px 10px;
@@ -409,3 +411,69 @@ a:focus-visible,
 @media (max-width: 360px){.rank-card{
           grid-template-columns: 24px 86px minmax(0, 1fr);
         }}
+
+/* ===== 홈 화면 정리 ===== */
+
+/* 추천 순서 고지는 목록 아래로 내렸습니다. */
+.rank-note {
+  margin: 18px 0 0;
+  color: #c0c8d4;
+  font-size: var(--seed-font-size-t3);
+  line-height: 1.7;
+}
+
+.rank-note a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* 섹션 제목 옆 부제 */
+.head-note {
+  margin: 6px 0 0;
+  font-size: var(--seed-font-size-t3);
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* 순위 카드의 공식 홈페이지 버튼이 9px 이었습니다. */
+.rank-card a {
+  font-size: var(--seed-font-size-t2);
+}
+
+/*
+ * 이용 전 확인하세요 — 카드가 보이지 않던 문제.
+ * article 이 #ffffff13 테두리와 #ffffff08 배경을 쓰고 있었는데,
+ * 이 섹션은 어두운 배경이 아니라 밝은 배경이라 둘 다 사실상 투명했습니다.
+ * 설명 글자도 #aeb4be 로 대비 1.96:1 이었습니다.
+ */
+.guide-grid article {
+  padding: 22px 20px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--seed-radius-r3);
+}
+
+.guide-grid b {
+  font-size: var(--seed-font-size-t1);
+  line-height: 1.4;
+}
+
+.guide-grid h3 {
+  margin: 10px 0 0;
+  font-size: var(--seed-font-size-t4);
+  line-height: 1.4;
+}
+
+.guide-grid p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: var(--seed-font-size-t3);
+  line-height: 1.6;
+}
+
+/* SAFE GUIDE 제목은 내용 대비 과했습니다. 28 -> 24px.
+   .head h2 는 다른 섹션도 쓰므로 이 섹션으로만 범위를 좁힙니다. */
+section:has(.guide-grid) .head h2 {
+  font-size: var(--seed-font-size-t9);
+  letter-spacing: -1px;
+}
