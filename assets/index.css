@@ -25,7 +25,7 @@ nav{
         border-radius: 20px;
         background: #ffffff13;
         color: #ff9eaa;
-        font-size: 10px;
+        font-size: 12px;
         font-weight: 800;
       }
 .hero h1{
@@ -40,7 +40,7 @@ nav{
       }
 .hero p{
         color: #b8bec8;
-        font-size: 14px;
+        font-size: 16px;
         line-height: 1.8;
       }
 .poster-stack{
@@ -70,7 +70,7 @@ nav{
       }
 .head span{
         color: var(--red);
-        font-size: 9px;
+        font-size: 11px;
         font-weight: 900;
         letter-spacing: 1.5px;
       }
@@ -81,7 +81,7 @@ nav{
       }
 .head a{
         color: #6d7683;
-        font-size: 10px;
+        font-size: 12px;
         font-weight: 800;
       }
 .content-grid{
@@ -105,12 +105,12 @@ nav{
         padding: 13px;
       }
 .content-body b{
-        font-size: 13px;
+        font-size: 15px;
       }
 .content-body p{
         margin: 6px 0 0;
         color: #7b8491;
-        font-size: 9px;
+        font-size: 11px;
       }
 .ranking{
         display: grid;
@@ -147,7 +147,7 @@ nav{
         object-fit: contain;
       }
 .rank-info b{
-        font-size: 13px;
+        font-size: 15px;
       }
 .rank-info span{
         display: block;
@@ -162,7 +162,7 @@ nav{
         border-radius: 6px;
         background: #1c222d;
         color: #fff;
-        font-size: 9px;
+        font-size: 11px;
         font-weight: 800;
       }
 .dark{
@@ -185,14 +185,14 @@ nav{
       }
 .guide-grid b{
         color: #ff7a89;
-        font-size: 10px;
+        font-size: 12px;
       }
 .guide-grid h3{
-        font-size: 14px;
+        font-size: 16px;
       }
 .guide-grid p{
         color: #aeb4be;
-        font-size: 10px;
+        font-size: 12px;
         line-height: 1.7;
       }
 @media (max-width: 760px){.hero-grid{
@@ -232,7 +232,7 @@ nav{
           letter-spacing: -2px;
         }
         .hero p {
-          font-size: 14px;
+          font-size: 16px;
         }
         .poster-stack {
           width: 100%;
@@ -250,17 +250,17 @@ nav{
           gap: 14px;
         }
         .head a {
-          font-size: 11px;
+          font-size: 13px;
           text-align: right;
         }
         .content-body {
           padding: 12px;
         }
         .content-body b {
-          font-size: 15px;
+          font-size: 16px;
         }
         .content-body p {
-          font-size: 11px;
+          font-size: 13px;
           line-height: 1.45;
         }
         .rank-card {
@@ -272,10 +272,10 @@ nav{
           min-width: 0;
         }
         .rank-info b {
-          font-size: 14px;
+          font-size: 16px;
         }
         .rank-info span {
-          font-size: 11px;
+          font-size: 13px;
           line-height: 1.45;
           overflow-wrap: anywhere;
         }
@@ -285,19 +285,19 @@ nav{
           place-items: center;
           min-height: 44px;
           padding: 9px 12px;
-          font-size: 12px;
+          font-size: 14px;
         }
         .guide-grid article {
           padding: 19px;
         }
         .guide-grid b {
-          font-size: 12px;
+          font-size: 14px;
         }
         .guide-grid h3 {
-          font-size: 17px;
+          font-size: 19px;
         }
         .guide-grid p {
-          font-size: 13px;
+          font-size: 15px;
           line-height: 1.65;
         }
       }
@@ -334,7 +334,7 @@ a:focus-visible,
       }
 .release-tag{
         display: block;
-        font-size: 11px;
+        font-size: 13px;
         color: #d82e46;
         font-weight: 700;
         margin-bottom: 8px;
@@ -348,11 +348,11 @@ a:focus-visible,
       }
 .content-body b{
         display: block;
-        font-size: 16px;
+        font-size: 17px;
         line-height: 1.45;
       }
 .content-body p{
-        font-size: 12px;
+        font-size: 14px;
         line-height: 1.5;
       }
 .poster-stack img{
@@ -369,7 +369,7 @@ a:focus-visible,
         }.head{
           align-items: start;
         }.content-body b{
-          font-size: 14px;
+          font-size: 16px;
         }.cinema-grid{
           max-width: none;
         }.poster-stack a:nth-child(2){
@@ -383,7 +383,7 @@ a:focus-visible,
         text-align: center;
         color: #263b62;
         font-weight: 900;
-        font-size: 16px;
+        font-size: 17px;
         letter-spacing: -0.7px;
         white-space: nowrap;
       }
@@ -391,7 +391,7 @@ a:focus-visible,
         white-space: nowrap;
       }
 @media (max-width: 600px){.brand-name{
-          font-size: 13px;
+          font-size: 15px;
         }}
 .brand{
         background: #fff;
@@ -418,7 +418,7 @@ a:focus-visible,
 .rank-note {
   margin: 18px 0 0;
   color: #c0c8d4;
-  font-size: var(--seed-font-size-t3);
+  font-size: var(--seed-font-size-t4);
   line-height: 1.7;
 }
 
@@ -430,7 +430,7 @@ a:focus-visible,
 /* 섹션 제목 옆 부제 */
 .head-note {
   margin: 6px 0 0;
-  font-size: var(--seed-font-size-t3);
+  font-size: var(--seed-font-size-t4);
   line-height: 1.6;
   color: var(--muted);
 }
@@ -467,7 +467,7 @@ a:focus-visible,
 .guide-grid p {
   margin: 8px 0 0;
   color: var(--muted);
-  font-size: var(--seed-font-size-t3);
+  font-size: var(--seed-font-size-t4);
   line-height: 1.6;
 }
 

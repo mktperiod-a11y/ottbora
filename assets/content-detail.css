@@ -34,7 +34,7 @@ h1{
         border-radius: 20px;
         background: #fff;
         color: #68717e;
-        font-size: 10px;
+        font-size: 12px;
         font-weight: 800;
         cursor: pointer;
       }
@@ -76,7 +76,7 @@ h1{
         display: block;
         margin-top: 6px;
         color: var(--muted);
-        font-size: var(--seed-font-size-t2);
+        font-size: var(--seed-font-size-t3);
         line-height: 1.5;
       }
 .detail{
@@ -134,14 +134,14 @@ h1{
         background: var(--r);
         color: #fff;
         text-align: center;
-        font-size: 12px;
+        font-size: 14px;
         font-weight: 900;
       }
 .note{
         display: block;
         margin-top: 8px;
         color: #929ba6;
-        font-size: 8px;
+        font-size: 11px;
         text-align: center;
       }
 @media (max-width: 800px){.grid{
@@ -172,7 +172,7 @@ h1{
           max-width: 220px;
         }
         .ey {
-          font-size: 11px;
+          font-size: 13px;
         }
         h1 {
           font-size: 28px;
@@ -180,10 +180,10 @@ h1{
           overflow-wrap: anywhere;
         }
         .sub {
-          font-size: 13px;
+          font-size: 15px;
         }
         .meta span {
-          font-size: 11px;
+          font-size: 13px;
         }
         .copy {
           padding: 18px;
@@ -193,21 +193,21 @@ h1{
         }
         .copy p,
         .copy li {
-          font-size: 14px;
+          font-size: 16px;
           line-height: 1.72;
         }
         .official-link {
           display: grid;
           place-items: center;
           min-height: 48px;
-          font-size: 14px;
+          font-size: 16px;
         }
         .note {
-          font-size: 10px;
+          font-size: 12px;
           line-height: 1.5;
         }
         footer {
-          font-size: 11px;
+          font-size: 13px;
           line-height: 1.5;
         }
       }
@@ -240,7 +240,7 @@ a:focus-visible,
 
 .pending {
   margin: 12px 0 0;
-  font-size: var(--seed-font-size-t2);
+  font-size: var(--seed-font-size-t3);
   color: var(--muted);
 }
 

@@ -77,7 +77,7 @@ body {
 }
 
 .seed-accordion__description {
-  font-size: var(--seed-font-size-t3);
+  font-size: var(--seed-font-size-t4);
   /* 읽는 텍스트라 medium(500) 이 아니라 본문 굵기를 씁니다.
      이 페이지의 다른 설명문과도 굵기가 맞습니다. */
   font-weight: var(--seed-font-weight-regular);
