@@ -45,8 +45,40 @@
   --seed-color-fg-neutral-subtle: #657080; /* 기존 --muted */
   --seed-color-fg-neutral-muted: #657080; /* 기존 --muted */
 
-  /* --- 타이포: 본문 폰트를 기존 사이트와 맞춤 --- */
-  --seed-font-family: Arial, "Noto Sans KR", sans-serif;
+  /* 서체는 SEED 기본값(base.css 의 --seed-font-family)을 그대로 씁니다.
+     애플 기기에서는 시스템 서체, 그 외에는 아래에서 불러오는
+     Pretendard Variable 이 잡히는 native-first 스택입니다. */
+}
+
+/*
+ * SEED 는 --seed-font-family 를 정의만 하고 어디에도 적용하지 않습니다
+ * (base.css 에는 전역 셀렉터가 없습니다). 컴포넌트는 font-family:inherit 이라
+ * body 에서 물려받으므로, 실제로 서체를 바꾸려면 여기서 걸어줘야 합니다.
+ */
+body {
+  font-family: var(--seed-font-family);
+}
+
+/*
+ * 굵기·크기 조정.
+ * SEED 본문 기본 굵기는 medium(500)이라, 700~800 을 쓰던 기존 페이지보다
+ * 눈에 띄게 얇아 보입니다. 제목과 칩은 bold 로 되돌리고
+ * 읽는 텍스트는 한 단계 큰 토큰을 씁니다.
+ * "medium" 토큰 자체의 뜻을 바꾸지 않도록 컴포넌트 단위로만 지정합니다.
+ */
+.seed-accordion__title {
+  font-weight: var(--seed-font-weight-bold);
+  font-size: var(--seed-font-size-t6);
+  line-height: var(--seed-line-height-t6);
+}
+
+.seed-accordion__description {
+  font-size: var(--seed-font-size-t4);
+  line-height: var(--seed-line-height-t4);
+}
+
+.seed-action-chip {
+  font-weight: var(--seed-font-weight-bold);
 }
 
 /*
