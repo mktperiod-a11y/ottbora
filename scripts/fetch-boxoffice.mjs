@@ -42,9 +42,41 @@ function fail(msg, got) {
 }
 
 /** 하루치를 조회합니다. 아직 집계 전이면 빈 목록이 오므로 null 을 돌려줍니다. */
+/**
+ * KOFIC 에 붙습니다. 연결이 실패하거나 느릴 때가 있어 몇 번 다시 시도합니다.
+ * 응답 이상과 달리 연결 실패는 상대 사정이라, 재시도 후에도 안 되면
+ * 그대로 멈추고 기존 파일을 유지합니다.
+ */
+async function getJson(url, label) {
+  const ATTEMPTS = 3;
+  let last;
+  for (let i = 1; i <= ATTEMPTS; i += 1) {
+    try {
+      return await fetch(url, {
+        headers: { accept: "application/json" },
+        signal: AbortSignal.timeout(20000),
+      });
+    } catch (e) {
+      last = e;
+      const why = e?.cause?.code || e?.name || e?.message;
+      console.warn(`  ${label} 연결 실패 (${i}/${ATTEMPTS}): ${why}`);
+      if (i < ATTEMPTS) await new Promise((r) => setTimeout(r, i * 3000));
+    }
+  }
+  throw last;
+}
+
 async function fetchDay(targetDt) {
   const url = `${ENDPOINT}?key=${encodeURIComponent(KEY)}&targetDt=${targetDt}`;
-  const res = await fetch(url, { headers: { accept: "application/json" } });
+  let res;
+  try {
+    res = await getJson(url, `박스오피스 ${targetDt}`);
+  } catch (e) {
+    fail(
+      `KOFIC 에 연결하지 못했습니다 (${e?.cause?.code || e?.name}). ` +
+        "일시적인 장애일 수 있으니 잠시 뒤 다시 실행해 보세요.",
+    );
+  }
   if (!res.ok) fail(`HTTP ${res.status} (targetDt=${targetDt})`);
 
   let body;
@@ -96,7 +128,7 @@ const movies = list.map((m) => ({
  */
 async function fetchGenres(movieCd) {
   const url = `${DETAIL_ENDPOINT}?key=${encodeURIComponent(KEY)}&movieCd=${encodeURIComponent(movieCd)}`;
-  const res = await fetch(url, { headers: { accept: "application/json" } });
+  const res = await getJson(url, `상세 ${movieCd}`);
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const body = await res.json();
   if (body?.faultInfo) throw new Error(body.faultInfo.message || "faultInfo");
