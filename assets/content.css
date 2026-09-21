@@ -381,3 +381,12 @@ a:focus-visible,
     flex-basis: 100%;
   }
 }
+
+/* 공통 예매 링크는 구역 상단에 한 번만 표시합니다. */
+.book-top {
+  margin-left: 10px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  vertical-align: middle;
+}

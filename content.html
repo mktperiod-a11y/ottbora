@@ -127,41 +127,78 @@
 
       // 예매 링크는 cinema-links.json 의 패턴으로 만듭니다.
       // 패턴이 비어 있거나 호스트가 아래 목록에 없으면 링크를 만들지 않습니다.
+      // CGV 는 www 없는 호스트를 씁니다. 둘 다 허용합니다.
       const CINEMA_HOSTS = new Set([
+        "cgv.co.kr",
         "www.cgv.co.kr",
         "www.megabox.co.kr",
         "www.lottecinema.co.kr",
       ]);
 
-      function bookingLinks(title, chains) {
+      /** 생성된 주소를 쓰기 전에 검사합니다. https 이고, 허용 호스트이며,
+       *  체인이 선언한 host 와 실제 호스트가 같아야 링크가 됩니다. */
+      function checkedUrl(raw, chain) {
+        try {
+          const u = new URL(raw);
+          if (u.protocol !== "https:") return null;
+          if (!CINEMA_HOSTS.has(u.hostname)) return null;
+          if (u.hostname !== chain.host) return null;
+          return u.href;
+        } catch {
+          return null;
+        }
+      }
+
+      /** 예매 메인 페이지. 모든 작품에 공통이라 구역 상단에 한 번만 씁니다. */
+      function bookingEntries(chains) {
         return (chains || [])
           .map((c) => {
-            if (!c.searchUrl) return null;
-            const href = c.searchUrl.replace(
-              "{title}",
-              encodeURIComponent(title),
-            );
-            try {
-              const u = new URL(href);
-              if (u.protocol !== "https:") return null;
-              if (!CINEMA_HOSTS.has(u.hostname)) return null;
-              if (u.hostname !== c.host) return null;
-              return { name: c.name, href: u.href };
-            } catch {
-              return null;
+            const href = c.bookingUrl && checkedUrl(c.bookingUrl, c);
+            return href ? { name: c.name, href } : null;
+          })
+          .filter(Boolean);
+      }
+
+      /** 작품별 링크. 검색 주소가 설정돼 있거나, 그 작품의 극장 코드가 있을 때만 생깁니다. */
+      function perWorkLinks(title, chains, codes) {
+        return (chains || [])
+          .map((c) => {
+            let raw = null;
+            if (c.searchUrl) {
+              raw = c.searchUrl.replace("{title}", encodeURIComponent(title));
+            } else if (c.deepLink && codes && codes[c.id]) {
+              raw = c.deepLink
+                .replace("{code}", encodeURIComponent(codes[c.id]))
+                .replace("{title}", encodeURIComponent(title));
             }
+            if (!raw) return null;
+            const href = checkedUrl(raw, c);
+            return href ? { name: c.name, href } : null;
           })
           .filter(Boolean);
       }
 
       function renderBoxOffice(box, chains) {
         if (!box || !Array.isArray(box.movies) || !box.movies.length) return;
-        const host = document.querySelector("#boxoffice");
-        document.querySelector("#boxoffice-note").textContent =
-          `${box.source} · 기준일 ${box.targetDt}`;
+
+        const entries = bookingEntries(chains);
+        document.querySelector("#boxoffice-note").innerHTML =
+          `${esc(box.source)} · 기준일 ${esc(box.targetDt)}` +
+          (entries.length
+            ? '<span class="book book-top">예매 ' +
+              entries
+                .map(
+                  (l) =>
+                    `<a href="${l.href}" target="_blank"` +
+                    ` rel="noopener noreferrer">${esc(l.name)}</a>`,
+                )
+                .join("") +
+              "</span>"
+            : "");
+
         document.querySelector("#boxoffice-list").innerHTML = box.movies
           .map((m) => {
-            const links = bookingLinks(m.title, chains);
+            const links = perWorkLinks(m.title, chains, m.cinemaCodes);
             const book = links.length
               ? '<span class="book">' +
                 links
@@ -182,7 +219,7 @@
             );
           })
           .join("");
-        host.hidden = false;
+        document.querySelector("#boxoffice").hidden = false;
       }
 
       let DATA = null;
