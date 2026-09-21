@@ -15,6 +15,11 @@ const KEY = process.env.KOFIC_API_KEY;
 const OUT = "assets/boxoffice.json";
 const ENDPOINT =
   "https://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json";
+const DETAIL_ENDPOINT =
+  "https://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json";
+
+/** 장르에 이 값이 있으면 애니 탭으로 분류합니다. */
+const ANIMATION_GENRE = "애니메이션";
 
 if (!KEY) {
   console.error("KOFIC_API_KEY 가 없습니다. 저장소 Secrets 에 등록하세요.");
@@ -84,6 +89,40 @@ const movies = list.map((m) => ({
   audienceAcc: m.audiAcc ? Number(m.audiAcc) : null,
 }));
 
+/**
+ * 작품 상세에서 장르를 받아 옵니다.
+ * 이 호출은 보조 정보라, 실패해도 그 작품만 장르 없이 두고 넘어갑니다.
+ * 목록 자체가 날아가는 편보다 장르 한 칸이 비는 편이 낫기 때문입니다.
+ */
+async function fetchGenres(movieCd) {
+  const url = `${DETAIL_ENDPOINT}?key=${encodeURIComponent(KEY)}&movieCd=${encodeURIComponent(movieCd)}`;
+  const res = await fetch(url, { headers: { accept: "application/json" } });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const body = await res.json();
+  if (body?.faultInfo) throw new Error(body.faultInfo.message || "faultInfo");
+  const genres = body?.movieInfoResult?.movieInfo?.genres;
+  if (!Array.isArray(genres)) throw new Error("movieInfoResult.movieInfo.genres 없음");
+  return genres.map((g) => String(g.genreNm || "")).filter(Boolean);
+}
+
+let failed = 0;
+for (const m of movies) {
+  try {
+    const genres = await fetchGenres(m.movieCd);
+    m.genres = genres;
+    m.type = genres.includes(ANIMATION_GENRE) ? "애니" : "영화";
+  } catch (e) {
+    failed += 1;
+    console.warn(`  장르 조회 실패 — ${m.title}: ${e.message}`);
+    m.genres = [];
+    m.type = "영화"; // 확인 전까지는 애니로 분류하지 않습니다.
+  }
+  await new Promise((r) => setTimeout(r, 200)); // 연속 호출 간격
+}
+if (failed) {
+  console.warn(`장르 조회 ${failed}/${movies.length}건 실패 — 해당 작품은 영화로 둡니다.`);
+}
+
 const out = {
   source: "영화진흥위원회 오픈API 일별 박스오피스",
   sourceUrl: "https://www.kobis.or.kr/kobisopenapi/",
@@ -107,5 +146,13 @@ if (same) {
 } else {
   await writeFile(OUT, next);
   console.log(`${OUT} 갱신: ${movies.length}편 (기준일 ${targetDt})`);
-  movies.slice(0, 5).forEach((m) => console.log(`  ${m.rank}. ${m.title}`));
+  movies
+    .slice(0, 5)
+    .forEach((m) =>
+      console.log(`  ${m.rank}. ${m.title} [${m.type}] ${m.genres.join("·")}`),
+    );
+  const anime = movies.filter((m) => m.type === "애니");
+  if (anime.length) {
+    console.log(`  애니로 분류: ${anime.map((m) => m.title).join(", ")}`);
+  }
 }
