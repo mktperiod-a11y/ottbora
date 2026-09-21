@@ -337,11 +337,7 @@ a:focus-visible,
         font-weight: 700;
         margin-bottom: 8px;
       }
-.content-card img,
-      .poster-stack img{
-        object-fit: contain;
-        background: #111722;
-      }
+
 .poster-stack a{
         min-width: 0;
       }
