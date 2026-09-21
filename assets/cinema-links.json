@@ -1,0 +1,10 @@
+{
+  "note": "극장 예매 진입점. searchUrl 의 {title} 자리에 작품 제목이 들어갑니다. 값이 비어 있는 체인은 링크를 만들지 않습니다.",
+  "howToFill": "각 극장 사이트에서 아무 영화나 검색한 뒤 결과 페이지 주소를 복사해, 제목 부분을 {title} 로 바꿔 넣으세요. 예: https://example.com/movie?searchText={title}",
+  "warning": "여기 적힌 host 는 페이지의 허용 호스트 목록과 대조됩니다. 목록에 없는 호스트는 링크되지 않습니다.",
+  "chains": [
+    { "id": "cgv", "name": "CGV", "host": "www.cgv.co.kr", "searchUrl": "" },
+    { "id": "megabox", "name": "메가박스", "host": "www.megabox.co.kr", "searchUrl": "" },
+    { "id": "lotte", "name": "롯데시네마", "host": "www.lottecinema.co.kr", "searchUrl": "" }
+  ]
+}
