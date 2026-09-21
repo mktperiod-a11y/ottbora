@@ -231,7 +231,6 @@
        * 대신 지금 극장에 걸려 있는 작품에만 예매 칩을 답니다.
        */
       function boxCard(m) {
-        const genre = m.genres.join(" · ");
         const facts = [opened(m.openedAt), audience(m.audienceAcc)]
           .filter(Boolean)
           .join(" · ");
@@ -251,7 +250,13 @@
               `</div>`
             : "";
 
-        const top = [active === "전체" ? m.type : "", genre]
+        // 탭이 이미 말하는 것은 카드에 다시 적지 않습니다.
+        // 애니 탭에서는 모든 작품의 첫 장르가 "애니메이션" 이라 빼고 적습니다.
+        const rest =
+          active === "애니"
+            ? m.genres.filter((g) => g !== "애니메이션")
+            : m.genres;
+        const top = [active === "전체" ? m.type : "", rest.join(" · ")]
           .filter(Boolean)
           .join(" · ");
         return (

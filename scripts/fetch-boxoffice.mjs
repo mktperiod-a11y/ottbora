@@ -73,14 +73,14 @@ function fail(msg, got) {
  * 응답 이상과 달리 연결 실패는 상대 사정이라, 재시도 후에도 안 되면
  * 그대로 멈추고 기존 파일을 유지합니다.
  */
-async function getJson(url, label) {
-  const ATTEMPTS = 3;
+async function getJson(url, label, { attempts = 3, timeout = 20000 } = {}) {
+  const ATTEMPTS = attempts;
   let last;
   for (let i = 1; i <= ATTEMPTS; i += 1) {
     try {
       return await fetch(url, {
         headers: { accept: "application/json" },
-        signal: AbortSignal.timeout(20000),
+        signal: AbortSignal.timeout(timeout),
       });
     } catch (e) {
       last = e;
@@ -176,7 +176,9 @@ async function loadPrev() {
  */
 async function fetchGenres(movieCd) {
   const url = `${DETAIL_ENDPOINT}?key=${encodeURIComponent(KEY)}&movieCd=${encodeURIComponent(movieCd)}`;
-  const res = await getJson(url, `상세 ${movieCd}`);
+  // 장르는 없어도 목록이 서는 보조 정보입니다. 한 편에 오래 매달리지 않도록
+  // 목록 조회보다 짧게 끊고, 실패하면 다음 실행에서 다시 시도합니다.
+  const res = await getJson(url, `상세 ${movieCd}`, { attempts: 2, timeout: 8000 });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const body = await res.json();
   if (body?.faultInfo) throw new Error(body.faultInfo.message || "faultInfo");
@@ -290,8 +292,21 @@ for (const [movieCd, m] of movies) {
 // ---- 3. 장르 채우기 (아직 모르는 작품만) ---------------------------------
 
 const needGenre = [...movies.values()].filter((m) => !m.genres.length);
+/*
+ * 장르 조회는 작품 수만큼 늘어납니다. 며칠치를 한 번에 훑으면 수십 편이
+ * 한꺼번에 걸리는데, KOFIC 이 느린 날에는 이 단계만 몇십 분이 됩니다.
+ * 시간이 차면 남은 작품은 장르 없이 두고 넘어갑니다. 장르가 빈 작품은
+ * 다음 실행에서 다시 조회 대상이 되므로 스스로 메워집니다.
+ */
+const GENRE_BUDGET_MS = 6 * 60 * 1000;
+const genreStart = Date.now();
 let failed = 0;
+let skipped = 0;
 for (const m of needGenre) {
+  if (Date.now() - genreStart > GENRE_BUDGET_MS) {
+    skipped += 1;
+    continue;
+  }
   try {
     const genres = await fetchGenres(m.movieCd);
     m.genres = genres;
@@ -306,6 +321,12 @@ for (const m of needGenre) {
 }
 if (failed) {
   console.warn(`장르 조회 ${failed}/${needGenre.length}건 실패 — 해당 작품은 영화로 둡니다.`);
+}
+if (skipped) {
+  console.warn(
+    `시간이 차서 ${skipped}/${needGenre.length}건은 장르를 비워 뒀습니다. ` +
+      "다음 실행에서 다시 조회합니다.",
+  );
 }
 
 // ---- 4. 정렬하고 저장 ----------------------------------------------------
