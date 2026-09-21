@@ -1,0 +1,582 @@
+{
+  "checkedAt": "2026-09-21",
+  "selectionPolicy": "공개된 순위·편성 자료로 확인할 수 있는 작품만 싣습니다. 각 작품의 선정 근거를 카드에 표시합니다.",
+  "partnerDisclosure": "제휴 웹하드는 해당 작품의 제공이 확인된 경우에만 작품 카드에 표시합니다. 표시가 없으면 그 작품의 제공 여부가 확인되지 않은 것입니다.",
+  "watchNote": "시청 경로는 확인일 기준입니다. 서비스와 시점에 따라 제공 여부가 달라질 수 있습니다.",
+  "works": [
+    {
+      "id": "spider-man-brand-new-day",
+      "title": "스파이더맨: 브랜드 뉴 데이",
+      "type": "영화",
+      "genre": "액션 · 어드벤처",
+      "tagline": "극장 흥행작 · 2026년 7월 29일 국내 개봉",
+      "releasedAt": "2026.07.29 국내 개봉",
+      "cast": "감독 데스틴 대니얼 크레턴",
+      "synopsis": "모두에게 잊힌 피터 파커가 홀로 도시를 지키던 중, 자신의 몸에 일어나는 변화와 새로운 위협을 마주합니다.",
+      "points": [
+        "노 웨이 홈 이후 피터 파커의 새로운 출발",
+        "도시의 위협과 스스로의 변화를 함께 마주하는 이야기",
+        "2026.08.16 보도 기준 국내 누적 관객 700만 명 돌파"
+      ],
+      "imageCredit": "Sony Pictures / Marvel",
+      "status": "",
+      "pickedBy": "흥행 근거 · 2026.08.16 보도",
+      "pickedSource": "https://www.donga.com/news/Entertainment/article/all/20260816/134484052/1",
+      "official": {
+        "url": "https://www.sonypictures.com/movies/spidermanbrandnewday",
+        "label": "소니픽처스 공식 작품 정보 →"
+      },
+      "watch": [],
+      "partner": []
+    },
+    {
+      "id": "the-odyssey-2026",
+      "title": "오디세이",
+      "type": "영화",
+      "genre": "신화 · 모험",
+      "tagline": "극장 흥행작 · 2026년 8월 5일 국내 개봉",
+      "releasedAt": "2026.08.05 국내 개봉",
+      "cast": "감독 크리스토퍼 놀란",
+      "synopsis": "트로이 전쟁을 마친 오디세우스가 아내와 가족이 기다리는 고향으로 돌아가기 위해 기나긴 모험에 나서는 이야기입니다.",
+      "points": [
+        "호메로스의 서사시를 크리스토퍼 놀란이 영화로 옮긴 작품",
+        "맷 데이먼이 연기하는 오디세우스의 귀환 여정",
+        "2026.08.16 보도 기준 국내 누적 관객 400만 명 돌파"
+      ],
+      "imageCredit": "Universal Pictures",
+      "status": "",
+      "pickedBy": "흥행 근거 · 2026.08.16 보도",
+      "pickedSource": "https://www.donga.com/news/Entertainment/article/all/20260816/134484052/1",
+      "official": {
+        "url": "https://www.odysseymovie.com/",
+        "label": "오디세이 공식 작품 정보 →"
+      },
+      "watch": [],
+      "partner": []
+    },
+    {
+      "id": "blood-sacrifice",
+      "title": "Blood Sacrifice",
+      "type": "드라마",
+      "genre": "범죄 스릴러",
+      "tagline": "8월 17~23일 글로벌 비영어 시리즈 1위",
+      "releasedAt": "2026",
+      "cast": "Jakob Oftebro · Peter Andersson",
+      "synopsis": "경찰 살인 사건을 수사하는 형사가 소원해진 전직 경찰 아버지와 함께 범인을 추적합니다.",
+      "points": [
+        "해당 주간 조회수 700만회",
+        "넷플릭스 글로벌 비영어 시리즈 기준 · 국내 순위와 다릅니다.",
+        "확인일 2026.08.28 · 국가별 제공 여부는 공식 페이지에서 확인하세요."
+      ],
+      "imageCredit": "Netflix · 공식 홍보 이미지",
+      "status": "OTT",
+      "pickedBy": "넷플릭스 주간 톱10",
+      "pickedSource": "https://www.netflix.com/tudum/top10/tv-non-english?week=2026-08-23",
+      "official": null,
+      "watch": [
+        {
+          "name": "넷플릭스",
+          "url": "https://www.netflix.com/title/81768820",
+          "verifiedAt": "2026-08-28"
+        }
+      ],
+      "partner": []
+    },
+    {
+      "id": "our-sticky-love",
+      "title": "이런 엿같은 사랑",
+      "type": "드라마",
+      "genre": "로맨틱 코미디",
+      "tagline": "8월 17~23일 글로벌 비영어 시리즈 2위",
+      "releasedAt": "2026",
+      "cast": "정해인 · 하영 · 허성태",
+      "synopsis": "기억을 잃은 검사와 그녀의 연인이라고 주장하는 복싱 코치가 함께 살며 서로의 진실에 다가가는 로맨스입니다.",
+      "points": [
+        "해당 주간 조회수 370만회",
+        "넷플릭스 글로벌 비영어 시리즈 기준 · 국내 순위와 다릅니다.",
+        "확인일 2026.08.28 · 국가별 제공 여부는 공식 페이지에서 확인하세요."
+      ],
+      "imageCredit": "Netflix · 공식 포스터",
+      "status": "OTT",
+      "pickedBy": "넷플릭스 주간 톱10",
+      "pickedSource": "https://www.netflix.com/tudum/top10/tv-non-english?week=2026-08-23",
+      "official": null,
+      "watch": [
+        {
+          "name": "넷플릭스",
+          "url": "https://www.netflix.com/kr/title/82048302",
+          "verifiedAt": "2026-08-28"
+        }
+      ],
+      "partner": []
+    },
+    {
+      "id": "spooky-in-love",
+      "title": "오싹한 연애",
+      "type": "드라마",
+      "genre": "로맨틱 코미디",
+      "tagline": "8월 17~23일 글로벌 비영어 시리즈 4위",
+      "releasedAt": "2026",
+      "cast": "박은빈 · 양세종 · 옹성우",
+      "synopsis": "귀신을 보는 상속녀와 검사가 특별한 능력을 활용해 미제 사건을 추적하며 가까워지는 이야기입니다.",
+      "points": [
+        "해당 주간 조회수 270만회",
+        "넷플릭스 글로벌 비영어 시리즈 기준 · 국내 순위와 다릅니다.",
+        "확인일 2026.08.28 · 국가별 제공 여부는 공식 페이지에서 확인하세요."
+      ],
+      "imageCredit": "tvN · 공식 포스터",
+      "status": "OTT",
+      "pickedBy": "넷플릭스 주간 톱10",
+      "pickedSource": "https://www.netflix.com/tudum/top10/tv-non-english?week=2026-08-23",
+      "official": null,
+      "watch": [
+        {
+          "name": "넷플릭스",
+          "url": "https://www.netflix.com/kr/title/82682401",
+          "verifiedAt": "2026-08-28"
+        }
+      ],
+      "partner": []
+    },
+    {
+      "id": "1877",
+      "title": "눈동자",
+      "type": "드라마",
+      "genre": "스릴러",
+      "tagline": "한 번의 시선에서 시작되는 미스터리",
+      "releasedAt": "2026.06.24",
+      "cast": "신민아 · 김남희 · 이승룡",
+      "synopsis": "평범해 보이던 일상에 의심스러운 사건이 겹치며 인물들이 감춰 둔 진실을 추적하는 스릴러입니다.",
+      "points": [
+        "신민아 · 김남희 · 이승룡의 인물 조합",
+        "스릴러 장르의 분위기와 전개",
+        "공개 정보와 감상 포인트 한눈에 확인"
+      ],
+      "imageCredit": "",
+      "status": "",
+      "pickedBy": "",
+      "pickedSource": "",
+      "official": null,
+      "watch": [],
+      "partner": []
+    },
+    {
+      "id": "1873",
+      "title": "내일도 출근",
+      "type": "드라마",
+      "genre": "오피스 드라마",
+      "tagline": "오늘을 버티는 직장인들의 현실 공감기",
+      "releasedAt": "2026.07.04",
+      "cast": "서인국 · 박지현 · 강미나",
+      "synopsis": "서로 다른 목표를 가진 직장인들이 회사에서 부딪치고 성장하는 과정을 담은 오피스 드라마입니다.",
+      "points": [
+        "서인국 · 박지현 · 강미나의 인물 조합",
+        "오피스 드라마 장르의 분위기와 전개",
+        "공개 정보와 감상 포인트 한눈에 확인"
+      ],
+      "imageCredit": "",
+      "status": "",
+      "pickedBy": "",
+      "pickedSource": "",
+      "official": null,
+      "watch": [],
+      "partner": []
+    },
+    {
+      "id": "1868",
+      "title": "김부장",
+      "type": "드라마",
+      "genre": "액션 스릴러",
+      "tagline": "평범한 부장에게 숨겨진 또 하나의 얼굴",
+      "releasedAt": "2026.06.26",
+      "cast": "소지섭 · 최대훈 · 윤경호",
+      "synopsis": "회사에서는 평범한 부장으로 살아가던 남자가 거대한 사건에 휘말리며 숨겨 온 능력을 드러내는 액션 스릴러입니다.",
+      "points": [
+        "소지섭 · 최대훈 · 윤경호의 인물 조합",
+        "액션 스릴러 장르의 분위기와 전개",
+        "공개 정보와 감상 포인트 한눈에 확인"
+      ],
+      "imageCredit": "",
+      "status": "",
+      "pickedBy": "",
+      "pickedSource": "",
+      "official": null,
+      "watch": [],
+      "partner": []
+    },
+    {
+      "id": "1864",
+      "title": "참교육",
+      "type": "드라마",
+      "genre": "학교 드라마",
+      "tagline": "무너진 교실의 질서를 둘러싼 충돌",
+      "releasedAt": "2026.06.05",
+      "cast": "김무열 · 이성민 · 진기주",
+      "synopsis": "학교 안의 갈등과 교육 현장의 문제를 서로 다른 신념을 지닌 인물들의 대립을 통해 풀어내는 드라마입니다.",
+      "points": [
+        "김무열 · 이성민 · 진기주의 인물 조합",
+        "학교 드라마 장르의 분위기와 전개",
+        "공개 정보와 감상 포인트 한눈에 확인"
+      ],
+      "imageCredit": "",
+      "status": "",
+      "pickedBy": "",
+      "pickedSource": "",
+      "official": null,
+      "watch": [],
+      "partner": []
+    },
+    {
+      "id": "1860",
+      "title": "결혼의 완성",
+      "type": "드라마",
+      "genre": "가족 드라마",
+      "tagline": "완벽해 보인 결혼 뒤에 숨은 선택",
+      "releasedAt": "2026.07.04",
+      "cast": "남궁민 · 이설 · 김대명",
+      "synopsis": "한 부부와 가족이 예상하지 못한 변화를 맞으며 관계의 의미를 다시 찾아가는 가족 드라마입니다.",
+      "points": [
+        "남궁민 · 이설 · 김대명의 인물 조합",
+        "가족 드라마 장르의 분위기와 전개",
+        "공개 정보와 감상 포인트 한눈에 확인"
+      ],
+      "imageCredit": "",
+      "status": "",
+      "pickedBy": "",
+      "pickedSource": "",
+      "official": null,
+      "watch": [],
+      "partner": []
+    },
+    {
+      "id": "1855",
+      "title": "디스클로저 데이",
+      "type": "영화",
+      "genre": "SF 스릴러",
+      "tagline": "세상을 뒤흔들 진실이 공개되는 날",
+      "releasedAt": "2026.06.10",
+      "cast": "에밀리 블런트 · 조쉬 오코너 · 콜린 퍼스",
+      "synopsis": "인류가 믿어 온 질서를 바꿀 비밀이 드러나며 각자의 선택이 충돌하는 SF 스릴러입니다.",
+      "points": [
+        "에밀리 블런트 · 조쉬 오코너 · 콜린 퍼스의 인물 조합",
+        "SF 스릴러 장르의 분위기와 전개",
+        "공개 정보와 감상 포인트 한눈에 확인"
+      ],
+      "imageCredit": "",
+      "status": "",
+      "pickedBy": "",
+      "pickedSource": "",
+      "official": null,
+      "watch": [],
+      "partner": []
+    },
+    {
+      "id": "1851",
+      "title": "와일드 씽",
+      "type": "영화",
+      "genre": "코미디",
+      "tagline": "예측 불가 세 사람이 벌이는 소동",
+      "releasedAt": "2026.06.03",
+      "cast": "강동원 · 엄태구 · 박지현",
+      "synopsis": "전혀 어울리지 않는 인물들이 뜻밖의 사건으로 얽히며 벌어지는 유쾌한 코미디 영화입니다.",
+      "points": [
+        "강동원 · 엄태구 · 박지현의 인물 조합",
+        "코미디 장르의 분위기와 전개",
+        "공개 정보와 감상 포인트 한눈에 확인"
+      ],
+      "imageCredit": "",
+      "status": "",
+      "pickedBy": "",
+      "pickedSource": "",
+      "official": null,
+      "watch": [],
+      "partner": []
+    },
+    {
+      "id": "1847",
+      "title": "군체",
+      "type": "드라마",
+      "genre": "액션 스릴러",
+      "tagline": "하나처럼 움직이는 위협과의 사투",
+      "releasedAt": "2026.05.21",
+      "cast": "전지현 · 구교환 · 지창욱",
+      "synopsis": "정체를 알 수 없는 집단적 위협에 맞선 인물들이 생존과 진실을 위해 싸우는 액션 스릴러입니다.",
+      "points": [
+        "전지현 · 구교환 · 지창욱의 인물 조합",
+        "액션 스릴러 장르의 분위기와 전개",
+        "공개 정보와 감상 포인트 한눈에 확인"
+      ],
+      "imageCredit": "",
+      "status": "",
+      "pickedBy": "",
+      "pickedSource": "",
+      "official": null,
+      "watch": [],
+      "partner": []
+    },
+    {
+      "id": "1843",
+      "title": "신입사원 강회장",
+      "type": "드라마",
+      "genre": "오피스 코미디",
+      "tagline": "신입사원으로 돌아온 회장의 좌충우돌",
+      "releasedAt": "2026.05.30",
+      "cast": "이준영 · 손현주 · 이주명",
+      "synopsis": "기업의 생리를 누구보다 잘 아는 인물이 신입사원의 자리에서 다시 시작하며 벌어지는 오피스 코미디입니다.",
+      "points": [
+        "이준영 · 손현주 · 이주명의 인물 조합",
+        "오피스 코미디 장르의 분위기와 전개",
+        "공개 정보와 감상 포인트 한눈에 확인"
+      ],
+      "imageCredit": "",
+      "status": "",
+      "pickedBy": "",
+      "pickedSource": "",
+      "official": null,
+      "watch": [],
+      "partner": []
+    },
+    {
+      "id": "1838",
+      "title": "멋진 신세계",
+      "type": "드라마",
+      "genre": "로맨틱 코미디",
+      "tagline": "낯선 변화 속에서 피어나는 관계",
+      "releasedAt": "2026.05.08",
+      "cast": "임지연 · 허남준 · 장승조",
+      "synopsis": "서로 다른 방식으로 살아온 인물들이 새로운 환경에서 만나 사랑과 성장을 경험하는 로맨틱 코미디입니다.",
+      "points": [
+        "임지연 · 허남준 · 장승조의 인물 조합",
+        "로맨틱 코미디 장르의 분위기와 전개",
+        "공개 정보와 감상 포인트 한눈에 확인"
+      ],
+      "imageCredit": "",
+      "status": "",
+      "pickedBy": "",
+      "pickedSource": "",
+      "official": null,
+      "watch": [],
+      "partner": []
+    },
+    {
+      "id": "1834",
+      "title": "허수아비",
+      "type": "드라마",
+      "genre": "범죄 스릴러",
+      "tagline": "진짜 범인은 보이지 않는 곳에 있다",
+      "releasedAt": "2026.04.20",
+      "cast": "박해수 · 이희준 · 곽선영",
+      "synopsis": "연쇄적으로 이어지는 범죄와 조작된 단서를 추적하며 배후의 인물에게 다가가는 범죄 스릴러입니다.",
+      "points": [
+        "박해수 · 이희준 · 곽선영의 인물 조합",
+        "범죄 스릴러 장르의 분위기와 전개",
+        "공개 정보와 감상 포인트 한눈에 확인"
+      ],
+      "imageCredit": "",
+      "status": "",
+      "pickedBy": "",
+      "pickedSource": "",
+      "official": null,
+      "watch": [],
+      "partner": []
+    },
+    {
+      "id": "1830",
+      "title": "히든싱어8",
+      "type": "예능",
+      "genre": "음악 예능",
+      "tagline": "목소리만으로 진짜 가수를 찾아라",
+      "releasedAt": "2026.03.31",
+      "cast": "전현무",
+      "synopsis": "원조 가수와 모창 능력자들의 무대를 듣고 진짜 목소리의 주인공을 찾아가는 음악 예능입니다.",
+      "points": [
+        "전현무의 인물 조합",
+        "음악 예능 장르의 분위기와 전개",
+        "공개 정보와 감상 포인트 한눈에 확인"
+      ],
+      "imageCredit": "",
+      "status": "",
+      "pickedBy": "",
+      "pickedSource": "",
+      "official": null,
+      "watch": [],
+      "partner": []
+    },
+    {
+      "id": "1826",
+      "title": "유재석 캠프",
+      "type": "예능",
+      "genre": "리얼리티 예능",
+      "tagline": "함께 머물며 만들어 가는 특별한 캠프",
+      "releasedAt": "2026.05.26",
+      "cast": "유재석 · 이광수 · 변우석 · 지예은",
+      "synopsis": "출연진이 캠프 생활과 다양한 미션을 함께하며 자연스러운 웃음과 관계를 보여주는 리얼리티 예능입니다.",
+      "points": [
+        "유재석 · 이광수 · 변우석 · 지예은의 인물 조합",
+        "리얼리티 예능 장르의 분위기와 전개",
+        "공개 정보와 감상 포인트 한눈에 확인"
+      ],
+      "imageCredit": "",
+      "status": "",
+      "pickedBy": "",
+      "pickedSource": "",
+      "official": null,
+      "watch": [],
+      "partner": []
+    },
+    {
+      "id": "1819",
+      "title": "블러디 플라워",
+      "type": "드라마",
+      "genre": "범죄 스릴러",
+      "tagline": "아름다운 이름 뒤에 숨겨진 잔혹한 진실",
+      "releasedAt": "2026.02.04",
+      "cast": "려운 · 성동일 · 금새록",
+      "synopsis": "한 사건을 둘러싼 인물들의 비밀과 욕망이 드러나며 진실을 향해 달려가는 범죄 스릴러입니다.",
+      "points": [
+        "려운 · 성동일 · 금새록의 인물 조합",
+        "범죄 스릴러 장르의 분위기와 전개",
+        "공개 정보와 감상 포인트 한눈에 확인"
+      ],
+      "imageCredit": "",
+      "status": "",
+      "pickedBy": "",
+      "pickedSource": "",
+      "official": null,
+      "watch": [],
+      "partner": []
+    },
+    {
+      "id": "1815",
+      "title": "우주를 줄게",
+      "type": "드라마",
+      "genre": "판타지 드라마",
+      "tagline": "우주처럼 넓어진 우리들의 이야기",
+      "releasedAt": "2026.02.04",
+      "cast": "배인혁 · 노정의 · 박서함",
+      "synopsis": "낯선 인연으로 만난 청춘들이 특별한 사건을 함께 겪으며 서로의 세계를 이해해 가는 판타지 드라마입니다.",
+      "points": [
+        "배인혁 · 노정의 · 박서함의 인물 조합",
+        "판타지 드라마 장르의 분위기와 전개",
+        "공개 정보와 감상 포인트 한눈에 확인"
+      ],
+      "imageCredit": "",
+      "status": "",
+      "pickedBy": "",
+      "pickedSource": "",
+      "official": null,
+      "watch": [],
+      "partner": []
+    },
+    {
+      "id": "1811",
+      "title": "은애하는 도적님아",
+      "type": "드라마",
+      "genre": "사극 로맨스",
+      "tagline": "쫓는 자와 쫓기는 자의 운명적 만남",
+      "releasedAt": "2026.01.03",
+      "cast": "남지현 · 문상민 · 홍민기",
+      "synopsis": "도적과 그를 쫓는 인물의 운명이 뒤얽히며 펼쳐지는 유쾌하고 설레는 사극 로맨스입니다.",
+      "points": [
+        "남지현 · 문상민 · 홍민기의 인물 조합",
+        "사극 로맨스 장르의 분위기와 전개",
+        "공개 정보와 감상 포인트 한눈에 확인"
+      ],
+      "imageCredit": "",
+      "status": "",
+      "pickedBy": "",
+      "pickedSource": "",
+      "official": null,
+      "watch": [],
+      "partner": []
+    },
+    {
+      "id": "1807",
+      "title": "현역가왕3",
+      "type": "예능",
+      "genre": "음악 예능",
+      "tagline": "무대 위에서 다시 증명하는 현역의 힘",
+      "releasedAt": "2025.12.23",
+      "cast": "신동엽 · 린",
+      "synopsis": "실력파 현역 가수들이 새로운 무대와 경연을 통해 자신만의 음악과 매력을 선보이는 음악 예능입니다.",
+      "points": [
+        "신동엽 · 린의 인물 조합",
+        "음악 예능 장르의 분위기와 전개",
+        "공개 정보와 감상 포인트 한눈에 확인"
+      ],
+      "imageCredit": "",
+      "status": "",
+      "pickedBy": "",
+      "pickedSource": "",
+      "official": null,
+      "watch": [],
+      "partner": []
+    },
+    {
+      "id": "1803",
+      "title": "아너 : 그녀들의 법정",
+      "type": "드라마",
+      "genre": "법정 드라마",
+      "tagline": "법정에서 지켜 내는 명예와 진실",
+      "releasedAt": "2026.02.02",
+      "cast": "이나영 · 정은채 · 이청아",
+      "synopsis": "서로 다른 방식으로 정의를 추구하는 여성 법조인들이 복잡한 사건과 권력에 맞서는 법정 드라마입니다.",
+      "points": [
+        "이나영 · 정은채 · 이청아의 인물 조합",
+        "법정 드라마 장르의 분위기와 전개",
+        "공개 정보와 감상 포인트 한눈에 확인"
+      ],
+      "imageCredit": "",
+      "status": "",
+      "pickedBy": "",
+      "pickedSource": "",
+      "official": null,
+      "watch": [],
+      "partner": []
+    },
+    {
+      "id": "1799",
+      "title": "스프링 피버",
+      "type": "드라마",
+      "genre": "청춘 로맨스",
+      "tagline": "봄처럼 갑자기 찾아온 설렘",
+      "releasedAt": "2026.01.05",
+      "cast": "안보현 · 이주빈 · 차서원",
+      "synopsis": "새로운 계절과 함께 만난 청춘들이 상처를 보듬고 사랑을 키워 가는 로맨스 드라마입니다.",
+      "points": [
+        "안보현 · 이주빈 · 차서원의 인물 조합",
+        "청춘 로맨스 장르의 분위기와 전개",
+        "공개 정보와 감상 포인트 한눈에 확인"
+      ],
+      "imageCredit": "",
+      "status": "",
+      "pickedBy": "",
+      "pickedSource": "",
+      "official": null,
+      "watch": [],
+      "partner": []
+    },
+    {
+      "id": "1795",
+      "title": "휴민트",
+      "type": "영화",
+      "genre": "액션",
+      "tagline": "정보와 신뢰가 교차하는 첩보 작전",
+      "releasedAt": "2026.02.11",
+      "cast": "조인성 · 박정민 · 박해준",
+      "synopsis": "각자의 목적을 품은 요원들이 위험한 정보전을 벌이며 임무와 생존을 두고 맞서는 액션 영화입니다.",
+      "points": [
+        "조인성 · 박정민 · 박해준의 인물 조합",
+        "액션 장르의 분위기와 전개",
+        "공개 정보와 감상 포인트 한눈에 확인"
+      ],
+      "imageCredit": "",
+      "status": "",
+      "pickedBy": "",
+      "pickedSource": "",
+      "official": null,
+      "watch": [],
+      "partner": []
+    }
+  ]
+}

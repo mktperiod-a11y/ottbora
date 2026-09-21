@@ -1,0 +1,8 @@
+{
+  "source": "영화진흥위원회 오픈API 일별 박스오피스",
+  "sourceUrl": "https://www.kobis.or.kr/kobisopenapi/",
+  "targetDt": "",
+  "fetchedAt": "",
+  "note": "이 파일은 .github/workflows/boxoffice.yml 이 매일 덮어씁니다. movies 가 비어 있으면 '지금 극장에서' 구역이 표시되지 않습니다. 저장소 Secrets 에 KOFIC_API_KEY 를 등록하면 채워집니다.",
+  "movies": []
+}

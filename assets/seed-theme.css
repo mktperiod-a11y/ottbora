@@ -1,0 +1,125 @@
+/*
+ * 오티티보라 × SEED Design — 팔레트 브리지
+ *
+ * SEED 컴포넌트가 오티티보라의 기존 색을 그대로 쓰도록 semantic 토큰만 덮어씁니다.
+ * 여기서 바꾸는 이름은 모두 @seed-design/css 가 공개한 토큰입니다.
+ *   (vars/color/{bg,fg,stroke}.mjs 에 export 된 것들)
+ * 컴포넌트 전용 변수(--seed-*-component-*)는 SemVer 보장 대상이 아니라 건드리지 않습니다.
+ *
+ * 색 출처: assets/webhard.css 의 :root 변수와 동일한 값입니다.
+ *   accent #e52f49 / ink #17202d / rose #fff2f3 / featured border #edb7c0
+ */
+
+/*
+ * 셀렉터 주의:
+ * SEED 는 라이트 토큰을 :root[data-seed-color-mode="light-only"] 등
+ * 명시도 (0,2,0) 이상의 셀렉터로 정의합니다. 그냥 :root 로 덮으면
+ * 명시도에서 밀려 당근 기본색(carrot)이 그대로 나옵니다.
+ * 그래서 아래처럼 SEED 와 같은 셀렉터 목록을 그대로 맞춰 씁니다.
+ */
+:root,
+:root[data-seed-color-mode="light-only"],
+:root[data-seed-color-mode="system"][data-seed-user-color-scheme="light"] {
+  /* --- brand: accent(#e52f49) 계열 --- */
+  --seed-color-bg-brand-solid: #e52f49; /* .visit.primary 배경과 동일 */
+  --seed-color-bg-brand-solid-pressed: #c5283f; /* 누를 때 */
+  --seed-color-bg-brand-weak: #fff2f3; /* .provider-tag, .reason 배경(rose) */
+  --seed-color-bg-brand-weak-pressed: #ffe2e6;
+  --seed-color-fg-brand: #e52f49;
+  /* 기존 .provider-tag 와 같은 색을 유지합니다.
+     참고: #fff2f3 위에서 대비 3.98:1 로 WCAG AA(4.5:1)에 못 미칩니다.
+     기존 사이트에 있던 값이라 그대로 두었고, 개선하려면 #b02338 로 바꾸면 6.12:1 이 됩니다. */
+  --seed-color-fg-brand-contrast: #e52f49;
+  --seed-color-stroke-brand-solid: #e52f49;
+  --seed-color-stroke-brand-weak: #edb7c0; /* .provider.featured 테두리와 동일 */
+
+  /* --- neutral inverted: ink(#17202d) 계열 --- */
+  --seed-color-bg-neutral-inverted: #17202d; /* .visit 기본 버튼 배경과 동일 */
+  --seed-color-bg-neutral-inverted-pressed: #101620;
+
+  /* --- 중립 텍스트: 기존 --ink / --muted 를 그대로 씁니다 ---
+     이걸 비워 두면 SEED 기본 회색(gray-700 #868b94)이 나오는데,
+     흰 배경에서 대비 3.42:1 로 WCAG AA(4.5:1)에 못 미칩니다.
+     기존 사이트 값 #657080 은 5.02:1 로 통과합니다. */
+  --seed-color-fg-neutral: #17202d; /* 기존 --ink */
+  --seed-color-fg-neutral-subtle: #657080; /* 기존 --muted */
+  --seed-color-fg-neutral-muted: #657080; /* 기존 --muted */
+
+  /* 서체는 SEED 기본값(base.css 의 --seed-font-family)을 그대로 씁니다.
+     애플 기기에서는 시스템 서체, 그 외에는 아래에서 불러오는
+     Pretendard Variable 이 잡히는 native-first 스택입니다. */
+}
+
+/*
+ * SEED 는 --seed-font-family 를 정의만 하고 어디에도 적용하지 않습니다
+ * (base.css 에는 전역 셀렉터가 없습니다). 컴포넌트는 font-family:inherit 이라
+ * body 에서 물려받으므로, 실제로 서체를 바꾸려면 여기서 걸어줘야 합니다.
+ */
+body {
+  font-family: var(--seed-font-family);
+}
+
+/*
+ * 굵기·크기 조정.
+ * SEED 본문 기본 굵기는 medium(500)이라, 700~800 을 쓰던 기존 페이지보다
+ * 눈에 띄게 얇아 보입니다. 제목과 칩은 bold 로 되돌리고
+ * 읽는 텍스트는 한 단계 큰 토큰을 씁니다.
+ * "medium" 토큰 자체의 뜻을 바꾸지 않도록 컴포넌트 단위로만 지정합니다.
+ */
+.seed-accordion__title {
+  font-weight: var(--seed-font-weight-bold);
+  font-size: var(--seed-font-size-t6);
+  line-height: var(--seed-line-height-t6);
+}
+
+.seed-accordion__description {
+  font-size: var(--seed-font-size-t4);
+  line-height: var(--seed-line-height-t4);
+}
+
+.seed-action-chip {
+  font-weight: var(--seed-font-weight-bold);
+}
+
+/*
+ * 네이티브 <details> 로 아코디언을 구성하기 위한 브리지.
+ * SEED 아코디언의 열림 상태는 JS가 넣어주는 [data-state="open"] 과
+ * JS가 측정한 --collapsible-content-height 에 의존합니다.
+ * 이 사이트는 JS 없이 <details open> 을 쓰므로, 화살표 회전만 옮겨오고
+ * 열고 닫기는 브라우저 기본 동작에 맡깁니다.
+ */
+details.seed-accordion__item > summary {
+  list-style: none;
+}
+
+details.seed-accordion__item > summary::-webkit-details-marker {
+  display: none;
+}
+
+details.seed-accordion__item[open] .seed-accordion__suffixIcon {
+  transform: rotate(180deg);
+}
+
+/*
+ * SEED 의 .seed-accordion__content 는 height:0 으로 닫혀 있다가 JS 가 넣어주는
+ * --collapsible-content-height 로 열립니다. JS 가 없으면 내용이 영영 안 보이므로
+ * __content 를 쓰지 않고 __body 를 바로 둡니다. 그래서 trigger 가 가진
+ * 좌우 거터와 아래 여백을 여기서 맞춰 줍니다.
+ */
+.seed-accordion__body {
+  padding-inline: var(--seed-dimension-spacing-x-global-gutter);
+  padding-bottom: var(--seed-dimension-x4);
+}
+
+.seed-accordion__body > p {
+  margin: 0;
+  max-width: 940px;
+}
+
+/* 기존 사이트의 포커스 링을 SEED 컴포넌트에도 동일하게 적용 */
+.seed-action-button:focus-visible,
+.seed-action-chip:focus-visible,
+details.seed-accordion__item > summary:focus-visible {
+  outline: 3px solid #ff8b9c;
+  outline-offset: 4px;
+}
