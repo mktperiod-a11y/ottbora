@@ -5,6 +5,11 @@ on:
   schedule:
     - cron: "0 1 * * *" # 01:00 UTC = 10:00 KST
   workflow_dispatch: # 수동 실행
+    inputs:
+      days:
+        description: "거슬러 올라갈 일수 (1 = 전날만, 28 = 지난 4주치 한 번에 채우기)"
+        required: false
+        default: "1"
 
 permissions:
   contents: write
@@ -23,10 +28,12 @@ jobs:
         with:
           node-version: "24"
 
+      # 매일 도는 예약 실행은 전날 하루치만 받아 기존 목록에 더합니다.
+      # 수동 실행일 때만 며칠치를 한 번에 훑습니다.
       - name: 박스오피스 내려받기
         env:
           KOFIC_API_KEY: ${{ secrets.KOFIC_API_KEY }}
-        run: node scripts/fetch-boxoffice.mjs
+        run: node scripts/fetch-boxoffice.mjs --days=${{ inputs.days || '1' }}
 
       - name: 변경분 커밋
         run: |
@@ -37,5 +44,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add assets/boxoffice.json
-          git commit -m "Update daily box office from KOFIC"
+          git commit -m "Update box office from KOFIC"
           git push

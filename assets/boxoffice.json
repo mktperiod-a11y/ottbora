@@ -1,12 +1,12 @@
 {
-  "note": "현재 화면에는 표시하지 않습니다. 수집만 계속해 두는 데이터입니다. .github/workflows/boxoffice.yml 이 매일 덮어씁니다.",
+  "note": "일별 박스오피스를 작품 단위로 누적한 목록입니다. 콘텐츠ZONE 의 영화·애니 탭에서 씁니다.",
   "source": "영화진흥위원회 오픈API 일별 박스오피스",
   "sourceUrl": "https://www.kobis.or.kr/kobisopenapi/",
-  "targetDt": "20260920",
-  "fetchedAt": "2026-09-21",
+  "updatedAt": "2026-09-21",
+  "latestDt": "20260920",
+  "keepDays": 45,
   "movies": [
     {
-      "rank": 1,
       "movieCd": "20256308",
       "title": "인턴",
       "openedAt": "2026-09-16",
@@ -14,10 +14,14 @@
       "genres": [
         "드라마"
       ],
-      "type": "영화"
+      "type": "영화",
+      "firstSeenAt": "20260920",
+      "lastSeenAt": "20260920",
+      "days": 1,
+      "bestRank": 1,
+      "showing": true
     },
     {
-      "rank": 2,
       "movieCd": "20250654",
       "title": "오디세이",
       "openedAt": "2026-08-05",
@@ -27,10 +31,14 @@
         "드라마",
         "어드벤처"
       ],
-      "type": "영화"
+      "type": "영화",
+      "firstSeenAt": "20260920",
+      "lastSeenAt": "20260920",
+      "days": 1,
+      "bestRank": 2,
+      "showing": true
     },
     {
-      "rank": 3,
       "movieCd": "20265146",
       "title": "옵세션",
       "openedAt": "2026-09-02",
@@ -38,10 +46,14 @@
       "genres": [
         "공포(호러)"
       ],
-      "type": "영화"
+      "type": "영화",
+      "firstSeenAt": "20260920",
+      "lastSeenAt": "20260920",
+      "days": 1,
+      "bestRank": 3,
+      "showing": true
     },
     {
-      "rank": 4,
       "movieCd": "20263870",
       "title": "레지던트 이블: 0번째 밤",
       "openedAt": "2026-09-17",
@@ -51,10 +63,14 @@
         "액션",
         "SF"
       ],
-      "type": "영화"
+      "type": "영화",
+      "firstSeenAt": "20260920",
+      "lastSeenAt": "20260920",
+      "days": 1,
+      "bestRank": 4,
+      "showing": true
     },
     {
-      "rank": 5,
       "movieCd": "20262770",
       "title": "스파이더맨: 브랜드 뉴 데이",
       "openedAt": "2026-07-29",
@@ -64,10 +80,14 @@
         "어드벤처",
         "판타지"
       ],
-      "type": "영화"
+      "type": "영화",
+      "firstSeenAt": "20260920",
+      "lastSeenAt": "20260920",
+      "days": 1,
+      "bestRank": 5,
+      "showing": true
     },
     {
-      "rank": 6,
       "movieCd": "20261807",
       "title": "극장판 치이카와: 인어 섬의 비밀",
       "openedAt": "2026-09-30",
@@ -75,10 +95,14 @@
       "genres": [
         "애니메이션"
       ],
-      "type": "애니"
+      "type": "애니",
+      "firstSeenAt": "20260920",
+      "lastSeenAt": "20260920",
+      "days": 1,
+      "bestRank": 6,
+      "showing": true
     },
     {
-      "rank": 7,
       "movieCd": "20070216",
       "title": "시간을 달리는 소녀",
       "openedAt": "2007-06-14",
@@ -88,10 +112,14 @@
         "판타지",
         "멜로/로맨스"
       ],
-      "type": "애니"
+      "type": "애니",
+      "firstSeenAt": "20260920",
+      "lastSeenAt": "20260920",
+      "days": 1,
+      "bestRank": 7,
+      "showing": true
     },
     {
-      "rank": 8,
       "movieCd": "20265587",
       "title": "디지몬 어드벤처 : 운명적 만남 & 우리들의 워 게임!",
       "openedAt": "2026-09-16",
@@ -99,10 +127,14 @@
       "genres": [
         "애니메이션"
       ],
-      "type": "애니"
+      "type": "애니",
+      "firstSeenAt": "20260920",
+      "lastSeenAt": "20260920",
+      "days": 1,
+      "bestRank": 8,
+      "showing": true
     },
     {
-      "rank": 9,
       "movieCd": "20265423",
       "title": "더 드라마",
       "openedAt": "2026-09-09",
@@ -111,10 +143,14 @@
         "드라마",
         "멜로/로맨스"
       ],
-      "type": "영화"
+      "type": "영화",
+      "firstSeenAt": "20260920",
+      "lastSeenAt": "20260920",
+      "days": 1,
+      "bestRank": 9,
+      "showing": true
     },
     {
-      "rank": 10,
       "movieCd": "20256161",
       "title": "타짜: 벨제붑의 노래",
       "openedAt": "2026-09-23",
@@ -123,7 +159,12 @@
         "범죄",
         "드라마"
       ],
-      "type": "영화"
+      "type": "영화",
+      "firstSeenAt": "20260920",
+      "lastSeenAt": "20260920",
+      "days": 1,
+      "bestRank": 10,
+      "showing": true
     }
   ]
 }

@@ -306,3 +306,123 @@ a:focus-visible,
 .policy {
   margin: 40px 0 0;
 }
+
+/* ===== 포스터 없는 글자 카드 (박스오피스) ===== */
+
+/*
+ * KOFIC 은 포스터를 주지 않습니다. 빈 회색 네모를 두면 이미지가 깨진 것처럼
+ * 보이므로, 제목을 아래에 앉힌 글자 카드로 그 자리를 채웁니다.
+ * 포스터 카드와 같은 2/3 비율이라 그리드 줄이 흐트러지지 않습니다.
+ */
+.card--text {
+  display: flex;
+  flex-direction: column;
+}
+
+.panel {
+  display: grid;
+  /* 가운데 줄만 늘어나게 두어 제목이 판 한가운데 앉습니다.
+     위아래 줄(분류·개봉일)은 제 높이만 차지합니다. */
+  grid-template-rows: auto 1fr auto;
+  aspect-ratio: 2/3;
+  padding: 18px 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.panel-top {
+  color: #4a5666;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+/* 포스터가 없으니 제목 자체를 그림처럼 씁니다. 판 가운데에 크게 앉힙니다. */
+.panel-title {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.22;
+  letter-spacing: -1.2px;
+  overflow-wrap: anywhere;
+}
+
+.panel-facts {
+  color: #4a5666;
+  font-size: 13px;
+  line-height: 1.5;
+  align-self: end;
+}
+
+/*
+ * 바탕색 여섯 가지. 모두 옅어서 본문색(#17202d)이 7:1 이상으로 읽힙니다.
+ * 목록이 한 가지 색으로 깔리지 않게 하려는 것이라 채도는 낮게 둡니다.
+ */
+.panel--t0 { background: linear-gradient(165deg, #eef2f8, #dbe4f0); }
+.panel--t1 { background: linear-gradient(165deg, #f8eff1, #f0dfe3); }
+.panel--t2 { background: linear-gradient(165deg, #edf4ef, #dcebe1); }
+.panel--t3 { background: linear-gradient(165deg, #f7f2e8, #ece2d2); }
+.panel--t4 { background: linear-gradient(165deg, #f2eff7, #e2ddef); }
+.panel--t5 { background: linear-gradient(165deg, #eef3f4, #dde7e9); }
+
+/* 예매 칩은 카드 맨 아래에 붙습니다. 칩이 없으면 이 칸 자체가 없습니다. */
+.card--text .cb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.book {
+  display: contents;
+}
+
+/* 카드 안에 들어가는 칩이라 탭 칩보다 작게 둡니다.
+   세 개가 한 줄에 들어가야 카드 높이가 들쭉날쭉해지지 않습니다. */
+.book-chip {
+  height: auto;
+  padding: 6px 9px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+/* 글자 카드는 링크가 아니므로 들어올릴 이유가 없습니다.
+   안에 있는 예매 칩만 눌립니다. */
+.card--text:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* ===== 페이지 넘기기 ===== */
+
+.pager {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 30px 0 0;
+}
+
+.pager [aria-current="page"] {
+  background: var(--seed-color-bg-brand-solid);
+  color: var(--seed-color-palette-static-white);
+}
+
+@media (max-width: 560px) {
+  .panel {
+    padding: 14px 12px;
+  }
+
+  .panel-title {
+    font-size: 20px;
+    letter-spacing: -0.8px;
+  }
+
+  .panel-top,
+  .panel-facts {
+    font-size: 12px;
+  }
+
+  .book-chip {
+    padding: 6px 8px;
+  }
+}
