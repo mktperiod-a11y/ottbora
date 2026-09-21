@@ -1,10 +1,31 @@
 {
-  "note": "극장 예매 진입점. searchUrl 의 {title} 자리에 작품 제목이 들어갑니다. 값이 비어 있는 체인은 링크를 만들지 않습니다.",
-  "howToFill": "각 극장 사이트에서 아무 영화나 검색한 뒤 결과 페이지 주소를 복사해, 제목 부분을 {title} 로 바꿔 넣으세요. 예: https://example.com/movie?searchText={title}",
-  "warning": "여기 적힌 host 는 페이지의 허용 호스트 목록과 대조됩니다. 목록에 없는 호스트는 링크되지 않습니다.",
+  "note": "극장 예매 진입점. bookingUrl 은 예매 메인 페이지(모든 작품 공통), searchUrl 은 작품별 링크입니다.",
+  "bookingUrlNote": "쿼리 없이 예매 페이지로 보냅니다. 작품 구역 상단에 한 번만 표시합니다.",
+  "searchUrlNote": "{title} 자리에 제목이 들어가는 검색 결과 주소입니다. 채우면 작품마다 링크가 생깁니다. 비어 있으면 작품별 링크는 만들지 않습니다.",
+  "deepLinkNote": "롯데시네마는 movieCd 로 작품별 페이지가 열립니다. content-data.json 의 작품에 cinemaCodes.lotte 를 넣으면 그 작품만 딥링크가 생깁니다.",
+  "hostNote": "여기 host 는 페이지의 허용 호스트 목록과 대조됩니다. 목록에 없거나 선언과 다른 호스트는 링크되지 않습니다.",
   "chains": [
-    { "id": "cgv", "name": "CGV", "host": "www.cgv.co.kr", "searchUrl": "" },
-    { "id": "megabox", "name": "메가박스", "host": "www.megabox.co.kr", "searchUrl": "" },
-    { "id": "lotte", "name": "롯데시네마", "host": "www.lottecinema.co.kr", "searchUrl": "" }
+    {
+      "id": "cgv",
+      "name": "CGV",
+      "host": "cgv.co.kr",
+      "bookingUrl": "https://cgv.co.kr/cnm/movieBook/movie",
+      "searchUrl": ""
+    },
+    {
+      "id": "megabox",
+      "name": "메가박스",
+      "host": "www.megabox.co.kr",
+      "bookingUrl": "https://www.megabox.co.kr/booking",
+      "searchUrl": ""
+    },
+    {
+      "id": "lotte",
+      "name": "롯데시네마",
+      "host": "www.lottecinema.co.kr",
+      "bookingUrl": "https://www.lottecinema.co.kr/NLCHS/ticketing",
+      "searchUrl": "",
+      "deepLink": "https://www.lottecinema.co.kr/NLCHS/ticketing?movieCd={code}&movieName={title}"
+    }
   ]
 }
