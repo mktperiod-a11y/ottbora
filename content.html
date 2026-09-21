@@ -59,13 +59,14 @@
         </div>
       </aside>
 
+      <div class="filters" role="tablist" aria-label="분류 선택"></div>
+
       <section id="boxoffice" class="boxoffice" hidden>
         <h2>지금 극장에서</h2>
         <p class="group-note" id="boxoffice-note"></p>
         <ol id="boxoffice-list" class="boxoffice-list"></ol>
       </section>
 
-      <div class="filters" role="tablist" aria-label="분류 선택"></div>
 
       <div id="sections"></div>
 
@@ -178,12 +179,30 @@
           .filter(Boolean);
       }
 
-      function renderBoxOffice(box, chains) {
-        if (!box || !Array.isArray(box.movies) || !box.movies.length) return;
+      /** KOFIC 는 기준일을 YYYYMMDD 로 줍니다. 읽기 좋게 끊어 줍니다. */
+      const ymd = (s) =>
+        /^\d{8}$/.test(s || "")
+          ? `${s.slice(0, 4)}-${s.slice(4, 6)}-${s.slice(6)}`
+          : s || "";
 
-        const entries = bookingEntries(chains);
+      /** 박스오피스는 극장 상영작이라 영화·애니 탭에만 해당합니다.
+       *  드라마·예능 탭에서는 구역을 감춥니다. */
+      function renderBoxOffice() {
+        const host = document.querySelector("#boxoffice");
+        const all = BOX && Array.isArray(BOX.movies) ? BOX.movies : [];
+        const rows =
+          active === "전체"
+            ? all
+            : all.filter((m) => (m.type || "영화") === active);
+
+        if (!rows.length) {
+          host.hidden = true;
+          return;
+        }
+
+        const entries = bookingEntries(CHAINS);
         document.querySelector("#boxoffice-note").innerHTML =
-          `${esc(box.source)} · 기준일 ${esc(box.targetDt)}` +
+          `${esc(BOX.source)} · 기준일 ${esc(ymd(BOX.targetDt))}` +
           (entries.length
             ? '<span class="book book-top">예매 ' +
               entries
@@ -196,9 +215,9 @@
               "</span>"
             : "");
 
-        document.querySelector("#boxoffice-list").innerHTML = box.movies
+        document.querySelector("#boxoffice-list").innerHTML = rows
           .map((m) => {
-            const links = perWorkLinks(m.title, chains, m.cinemaCodes);
+            const links = perWorkLinks(m.title, CHAINS, m.cinemaCodes);
             const book = links.length
               ? '<span class="book">' +
                 links
@@ -219,10 +238,12 @@
             );
           })
           .join("");
-        document.querySelector("#boxoffice").hidden = false;
+        host.hidden = false;
       }
 
       let DATA = null;
+      let BOX = null;
+      let CHAINS = null;
       let active = "전체";
 
       function card(w) {
@@ -247,14 +268,17 @@
       }
 
       function render() {
+        renderBoxOffice();
         const pool = DATA.works.filter(
           (w) => active === "전체" || w.type === active,
         );
         const host = document.querySelector("#sections");
 
         if (!pool.length) {
-          host.innerHTML =
-            `<p class="empty">${esc(active)} 분류는 아직 준비 중입니다.</p>`;
+          const covered = !document.querySelector("#boxoffice").hidden;
+          host.innerHTML = covered
+            ? ""
+            : `<p class="empty">${esc(active)} 분류는 아직 준비 중입니다.</p>`;
           return;
         }
 
@@ -299,7 +323,8 @@
       ])
         .then(([d, box, links]) => {
           DATA = d;
-          renderBoxOffice(box, links && links.chains);
+          BOX = box;
+          CHAINS = links && links.chains;
           document.querySelector("#policy-text").textContent =
             `${d.selectionPolicy} ${d.watchNote} 확인일 ${d.checkedAt}.`;
           document.querySelector("#partner-text").textContent =
