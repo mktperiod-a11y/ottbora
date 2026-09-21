@@ -278,3 +278,10 @@ a:focus-visible,
 .partner-links {
   margin-top: 16px;
 }
+
+.count-note {
+  margin: 18px 0 0;
+  font-size: var(--seed-font-size-t2);
+  line-height: 1.7;
+  color: var(--muted);
+}
