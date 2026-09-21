@@ -232,17 +232,6 @@ a:focus-visible,
   color: var(--seed-color-palette-static-white);
 }
 
-.cb .picked {
-  align-self: flex-start;
-  margin-bottom: 6px;
-}
-
-.cb .where {
-  margin-top: 2px;
-  font-size: var(--seed-font-size-t1);
-  color: var(--muted);
-}
-
 .empty {
   margin: 40px 0;
   padding: 28px;
@@ -284,4 +273,31 @@ a:focus-visible,
   font-size: var(--seed-font-size-t2);
   line-height: 1.7;
   color: var(--muted);
+}
+
+/* ===== 카드 표기 ===== */
+
+.cb .genre {
+  color: var(--muted);
+}
+
+/* 제공처 칩과 근거를 한 줄에 둡니다. 둘 다 없으면 이 줄 자체가 없습니다. */
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+/* 근거는 편집 투명성용이라 제공처보다 약하게 둡니다. */
+.why {
+  font-size: var(--seed-font-size-t1);
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* 방침 안내는 목록 아래로 내려갔으므로 위쪽 여백을 줍니다. */
+.policy {
+  margin: 40px 0 0;
 }
