@@ -37,6 +37,14 @@
   --seed-color-bg-neutral-inverted: #17202d; /* .visit 기본 버튼 배경과 동일 */
   --seed-color-bg-neutral-inverted-pressed: #101620;
 
+  /* --- 중립 텍스트: 기존 --ink / --muted 를 그대로 씁니다 ---
+     이걸 비워 두면 SEED 기본 회색(gray-700 #868b94)이 나오는데,
+     흰 배경에서 대비 3.42:1 로 WCAG AA(4.5:1)에 못 미칩니다.
+     기존 사이트 값 #657080 은 5.02:1 로 통과합니다. */
+  --seed-color-fg-neutral: #17202d; /* 기존 --ink */
+  --seed-color-fg-neutral-subtle: #657080; /* 기존 --muted */
+  --seed-color-fg-neutral-muted: #657080; /* 기존 --muted */
+
   /* --- 타이포: 본문 폰트를 기존 사이트와 맞춤 --- */
   --seed-font-family: Arial, "Noto Sans KR", sans-serif;
 }
