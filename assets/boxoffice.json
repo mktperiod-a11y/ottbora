@@ -1,8 +1,78 @@
 {
   "source": "영화진흥위원회 오픈API 일별 박스오피스",
   "sourceUrl": "https://www.kobis.or.kr/kobisopenapi/",
-  "targetDt": "",
-  "fetchedAt": "",
-  "note": "이 파일은 .github/workflows/boxoffice.yml 이 매일 덮어씁니다. movies 가 비어 있으면 '지금 극장에서' 구역이 표시되지 않습니다. 저장소 Secrets 에 KOFIC_API_KEY 를 등록하면 채워집니다.",
-  "movies": []
+  "targetDt": "20260920",
+  "fetchedAt": "2026-09-21",
+  "movies": [
+    {
+      "rank": 1,
+      "movieCd": "20256308",
+      "title": "인턴",
+      "openedAt": "2026-09-16",
+      "audienceAcc": 403897
+    },
+    {
+      "rank": 2,
+      "movieCd": "20250654",
+      "title": "오디세이",
+      "openedAt": "2026-08-05",
+      "audienceAcc": 11217635
+    },
+    {
+      "rank": 3,
+      "movieCd": "20265146",
+      "title": "옵세션",
+      "openedAt": "2026-09-02",
+      "audienceAcc": 701713
+    },
+    {
+      "rank": 4,
+      "movieCd": "20263870",
+      "title": "레지던트 이블: 0번째 밤",
+      "openedAt": "2026-09-17",
+      "audienceAcc": 103654
+    },
+    {
+      "rank": 5,
+      "movieCd": "20262770",
+      "title": "스파이더맨: 브랜드 뉴 데이",
+      "openedAt": "2026-07-29",
+      "audienceAcc": 8990600
+    },
+    {
+      "rank": 6,
+      "movieCd": "20261807",
+      "title": "극장판 치이카와: 인어 섬의 비밀",
+      "openedAt": "2026-09-30",
+      "audienceAcc": 21203
+    },
+    {
+      "rank": 7,
+      "movieCd": "20070216",
+      "title": "시간을 달리는 소녀",
+      "openedAt": "2007-06-14",
+      "audienceAcc": 132656
+    },
+    {
+      "rank": 8,
+      "movieCd": "20265587",
+      "title": "디지몬 어드벤처 : 운명적 만남 & 우리들의 워 게임!",
+      "openedAt": "2026-09-16",
+      "audienceAcc": 17764
+    },
+    {
+      "rank": 9,
+      "movieCd": "20265423",
+      "title": "더 드라마",
+      "openedAt": "2026-09-09",
+      "audienceAcc": 80094
+    },
+    {
+      "rank": 10,
+      "movieCd": "20256161",
+      "title": "타짜: 벨제붑의 노래",
+      "openedAt": "2026-09-23",
+      "audienceAcc": 19183
+    }
+  ]
 }
