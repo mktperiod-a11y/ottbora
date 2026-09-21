@@ -40,8 +40,8 @@
       <span class="ey">CONTENT ZONE</span>
       <h1>오늘 뭐 볼까?</h1>
       <p class="sub">
-        극장 상영작과 OTT 공개작을 나누어 소개합니다. 포스터를 누르면 줄거리와
-        관전 포인트, 공식 시청 경로를 볼 수 있습니다.
+        분류를 고르고 포스터를 누르면 줄거리와 관전 포인트, 공식 시청 경로를
+        볼 수 있습니다.
       </p>
 
       <aside
@@ -89,13 +89,6 @@
       // 분류 탭. 데이터에 항목이 없어도 탭은 보여 주고 빈 상태를 안내합니다.
       const TYPES = ["전체", "영화", "드라마", "예능", "애니"];
 
-      // status 별 묶음. 값이 비어 있는 작품은 "확인 중" 묶음으로 모읍니다.
-      const SECTIONS = [
-        ["극장", "극장 상영작", "예매 링크로 연결됩니다."],
-        ["OTT", "OTT 공개작", "공개된 OTT 서비스로 연결됩니다."],
-        ["VOD", "VOD 구매·대여", "VOD 스토어로 연결됩니다."],
-        ["", "시청 경로 확인 중", "공식 제공처를 확인하는 중입니다."],
-      ];
 
       const CHIP =
         "seed-action-chip seed-action-chip--size_medium" +
@@ -145,26 +138,16 @@
       }
 
       function render() {
+        // 탭 안에는 그 분류의 작품만 놓습니다. 시청 경로는 카드가 직접
+        // 표시하므로(넷플릭스 등) status 로 다시 묶지 않습니다.
         const pool = DATA.works.filter(
           (w) => active === "전체" || w.type === active,
         );
         const host = document.querySelector("#sections");
 
-        if (!pool.length) {
-          host.innerHTML =
-            `<p class="empty">${esc(active)} 분류는 아직 준비 중입니다.</p>`;
-          return;
-        }
-
-        host.innerHTML = SECTIONS.map(([key, title, note]) => {
-          const rows = pool.filter((w) => (w.status || "") === key);
-          if (!rows.length) return "";
-          return (
-            `<section class="group"><h2>${esc(title)}</h2>` +
-            `<p class="group-note">${esc(note)}</p>` +
-            `<div class="grid">${rows.map(card).join("")}</div></section>`
-          );
-        }).join("");
+        host.innerHTML = pool.length
+          ? `<div class="grid">${pool.map(card).join("")}</div>`
+          : `<p class="empty">${esc(active)} 분류는 아직 준비 중입니다.</p>`;
       }
 
       function tabs() {
