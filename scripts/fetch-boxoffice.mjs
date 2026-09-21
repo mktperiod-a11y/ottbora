@@ -124,6 +124,7 @@ if (failed) {
 }
 
 const out = {
+  note: "현재 화면에는 표시하지 않습니다. 수집만 계속해 두는 데이터입니다.",
   source: "영화진흥위원회 오픈API 일별 박스오피스",
   sourceUrl: "https://www.kobis.or.kr/kobisopenapi/",
   targetDt,
