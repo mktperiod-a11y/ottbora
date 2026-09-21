@@ -59,6 +59,12 @@
         </div>
       </aside>
 
+      <section id="boxoffice" class="boxoffice" hidden>
+        <h2>지금 극장에서</h2>
+        <p class="group-note" id="boxoffice-note"></p>
+        <ol id="boxoffice-list" class="boxoffice-list"></ol>
+      </section>
+
       <div class="filters" role="tablist" aria-label="분류 선택"></div>
 
       <div id="sections"></div>
@@ -118,6 +124,66 @@
               "'": "&#39;",
             })[c],
         );
+
+      // 예매 링크는 cinema-links.json 의 패턴으로 만듭니다.
+      // 패턴이 비어 있거나 호스트가 아래 목록에 없으면 링크를 만들지 않습니다.
+      const CINEMA_HOSTS = new Set([
+        "www.cgv.co.kr",
+        "www.megabox.co.kr",
+        "www.lottecinema.co.kr",
+      ]);
+
+      function bookingLinks(title, chains) {
+        return (chains || [])
+          .map((c) => {
+            if (!c.searchUrl) return null;
+            const href = c.searchUrl.replace(
+              "{title}",
+              encodeURIComponent(title),
+            );
+            try {
+              const u = new URL(href);
+              if (u.protocol !== "https:") return null;
+              if (!CINEMA_HOSTS.has(u.hostname)) return null;
+              if (u.hostname !== c.host) return null;
+              return { name: c.name, href: u.href };
+            } catch {
+              return null;
+            }
+          })
+          .filter(Boolean);
+      }
+
+      function renderBoxOffice(box, chains) {
+        if (!box || !Array.isArray(box.movies) || !box.movies.length) return;
+        const host = document.querySelector("#boxoffice");
+        document.querySelector("#boxoffice-note").textContent =
+          `${box.source} · 기준일 ${box.targetDt}`;
+        document.querySelector("#boxoffice-list").innerHTML = box.movies
+          .map((m) => {
+            const links = bookingLinks(m.title, chains);
+            const book = links.length
+              ? '<span class="book">' +
+                links
+                  .map(
+                    (l) =>
+                      `<a href="${l.href}" target="_blank"` +
+                      ` rel="noopener noreferrer">${esc(l.name)}</a>`,
+                  )
+                  .join("") +
+                "</span>"
+              : "";
+            return (
+              `<li><span class="bo-rank">${m.rank}</span>` +
+              `<span class="bo-title">${esc(m.title)}</span>` +
+              (m.openedAt ? `<span class="bo-open">${esc(m.openedAt)} 개봉</span>` : "") +
+              book +
+              "</li>"
+            );
+          })
+          .join("");
+        host.hidden = false;
+      }
 
       let DATA = null;
       let active = "전체";
@@ -184,10 +250,19 @@
         });
       }
 
-      fetch("assets/content-data.json")
-        .then((r) => r.json())
-        .then((d) => {
+      const optional = (path) =>
+        fetch(path)
+          .then((r) => (r.ok ? r.json() : null))
+          .catch(() => null);
+
+      Promise.all([
+        fetch("assets/content-data.json").then((r) => r.json()),
+        optional("assets/boxoffice.json"),
+        optional("assets/cinema-links.json"),
+      ])
+        .then(([d, box, links]) => {
           DATA = d;
+          renderBoxOffice(box, links && links.chains);
           document.querySelector("#policy-text").textContent =
             `${d.selectionPolicy} ${d.watchNote} 확인일 ${d.checkedAt}.`;
           document.querySelector("#partner-text").textContent =
