@@ -220,3 +220,31 @@ a:focus-visible,
         object-fit: contain;
         background: #111722;
       }
+
+/* ===== 시청 경로 블록 ===== */
+
+.watch-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 12px 0 0;
+}
+
+.partner-inline {
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.pending {
+  margin: 12px 0 0;
+  font-size: var(--seed-font-size-t2);
+  color: var(--muted);
+}
+
+.credit {
+  margin-top: 26px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: var(--seed-font-size-t1);
+  color: var(--muted);
+}
