@@ -28,21 +28,8 @@ h1{
         gap: 7px;
         margin: 25px 0;
       }
-.filters button{
-        padding: 9px 15px;
-        border: 1px solid var(--l);
-        border-radius: 20px;
-        background: #fff;
-        color: #68717e;
-        font-size: 10px;
-        font-weight: 800;
-        cursor: pointer;
-      }
-.filters button.on{
-        border-color: var(--r);
-        background: var(--r);
-        color: #fff;
-      }
+
+
 .grid{
         display: grid;
         grid-template-columns: repeat(5, 1fr);
@@ -176,10 +163,7 @@ h1{
         .filters::-webkit-scrollbar {
           display: none;
         }
-        .filters button {
-          min-height: 42px;
-          font-size: 12px;
-        }
+        
         .grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 10px;
@@ -230,3 +214,87 @@ a:focus-visible,
         object-fit: contain;
         background: #111722;
       }
+
+/* ===== 콘텐츠ZONE 재설계에서 추가된 규칙 ===== */
+
+.policy {
+  margin: 22px 0 6px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 22px 0 6px;
+}
+
+/* SEED action-chip 에는 선택 상태 variant 가 없어, 탭 선택은 여기서 표현합니다.
+   aria-selected 를 그대로 쓰므로 스크린리더에도 같은 상태가 전달됩니다. */
+.filters [aria-selected="true"] {
+  background: var(--seed-color-bg-brand-solid);
+  color: var(--seed-color-palette-static-white);
+}
+
+.group {
+  margin-top: 34px;
+}
+
+.group h2 {
+  font-size: var(--seed-font-size-t6);
+  line-height: var(--seed-line-height-t6);
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+.group-note {
+  margin: 4px 0 16px;
+  font-size: var(--seed-font-size-t2);
+  color: var(--muted);
+}
+
+.cb .picked {
+  align-self: flex-start;
+  margin-bottom: 6px;
+}
+
+.cb .where {
+  margin-top: 2px;
+  font-size: var(--seed-font-size-t1);
+  color: var(--muted);
+}
+
+.empty {
+  margin: 40px 0;
+  padding: 28px;
+  text-align: center;
+  color: var(--muted);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--seed-radius-r3);
+}
+
+/* 제휴 안내는 작품 카드와 분리해 페이지 하단에 둡니다.
+   특정 작품이 이 웹하드에서 제공된다는 뜻으로 읽히지 않게 하기 위한 배치입니다. */
+.partner {
+  margin: 46px 0 10px;
+  padding: 24px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--seed-radius-r3);
+}
+
+.partner h2 {
+  margin: 0;
+  font-size: var(--seed-font-size-t5);
+}
+
+.partner p {
+  margin: 8px 0 0;
+  font-size: var(--seed-font-size-t3);
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.partner-links {
+  margin-top: 16px;
+}

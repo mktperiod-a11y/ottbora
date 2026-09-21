@@ -40,17 +40,40 @@
       <span class="ey">CONTENT ZONE</span>
       <h1>오늘 뭐 볼까?</h1>
       <p class="sub">
-        2026.08.28 업데이트 · 스파이더맨·오디세이 포함 25편. 극장 개봉작과 OTT
-        작품을 함께 소개합니다. 장르를 고르고 포스터를 누르면 작품 정보와
-        줄거리, 관전 포인트를 볼 수 있습니다.
+        극장 상영작과 OTT 공개작을 나누어 소개합니다. 포스터를 누르면 줄거리와
+        관전 포인트, 공식 시청 경로를 볼 수 있습니다.
       </p>
-      <div class="filters">
-        <button class="on" data-filter="전체">전체</button
-        ><button data-filter="영화">영화</button
-        ><button data-filter="드라마">드라마</button
-        ><button data-filter="예능">예능</button>
-      </div>
-      <section class="grid" id="grid"></section>
+
+      <aside
+        class="seed-callout__root seed-callout__root--tone_neutral policy"
+        aria-label="선정 기준과 표시 방침"
+      >
+        <div class="seed-callout__content">
+          <strong class="seed-callout__title seed-callout__title--tone_neutral"
+            >선정 기준과 표시 방침</strong
+          >
+          <p
+            class="seed-callout__description seed-callout__description--tone_neutral"
+            id="policy-text"
+          ></p>
+        </div>
+      </aside>
+
+      <div class="filters" role="tablist" aria-label="분류 선택"></div>
+
+      <div id="sections"></div>
+
+      <aside class="partner" aria-labelledby="partner-title">
+        <h2 id="partner-title">제휴 웹하드</h2>
+        <p id="partner-text"></p>
+        <p class="partner-links">
+          <a
+            class="seed-action-button seed-action-button--variant_neutralSolid seed-action-button--size_medium seed-action-button--layout_withText seed-action-button--size_medium-layout_withText"
+            href="webhard.html"
+            >웹하드 비교 보기</a
+          >
+        </p>
+      </aside>
     </main>
     <footer>
       <div class="wrap footer-row">
@@ -62,60 +85,120 @@
     <script src="assets/posters-featured-20260828.js"></script>
     <script src="assets/posters-archive-20260828.js"></script>
     <script>
-      const posterSource = (id) => (window.OTT_POSTERS || {})[id] || "";
-      const items = [
-        [
-          "스파이더맨: 브랜드 뉴 데이",
-          "영화",
-          "액션 · 어드벤처",
-          "spider-man-brand-new-day",
-          "",
-        ],
-        ["오디세이", "영화", "신화 · 모험", "the-odyssey-2026", ""],
-        ["Blood Sacrifice", "드라마", "범죄 스릴러", "blood-sacrifice", ""],
-        ["이런 엿같은 사랑", "드라마", "로맨틱 코미디", "our-sticky-love", ""],
-        ["오싹한 연애", "드라마", "로맨틱 코미디", "spooky-in-love", ""],
-        ["눈동자", "드라마", "스릴러", "1877", ""],
-        ["내일도 출근", "드라마", "오피스 드라마", "1873", ""],
-        ["김부장", "드라마", "액션 스릴러", "1868", ""],
-        ["참교육", "드라마", "학교 드라마", "1864", ""],
-        ["결혼의 완성", "드라마", "가족 드라마", "1860", ""],
-        ["디스클로저 데이", "영화", "SF 스릴러", "1855", ""],
-        ["와일드 씽", "영화", "코미디", "1851", ""],
-        ["군체", "드라마", "액션 스릴러", "1847", ""],
-        ["신입사원 강회장", "드라마", "오피스 코미디", "1843", ""],
-        ["멋진 신세계", "드라마", "로맨틱 코미디", "1838", ""],
-        ["허수아비", "드라마", "범죄 스릴러", "1834", ""],
-        ["히든싱어8", "예능", "음악 예능", "1830", ""],
-        ["유재석 캠프", "예능", "리얼리티 예능", "1826", ""],
-        ["블러디 플라워", "드라마", "범죄 스릴러", "1819", ""],
-        ["우주를 줄게", "드라마", "판타지 드라마", "1815", ""],
-        ["은애하는 도적님아", "드라마", "사극 로맨스", "1811", ""],
-        ["현역가왕3", "예능", "음악 예능", "1807", ""],
-        ["아너 : 그녀들의 법정", "드라마", "법정 드라마", "1803", ""],
-        ["스프링 피버", "드라마", "청춘 로맨스", "1799", ""],
-        ["휴민트", "영화", "액션", "1795", ""],
+      // 분류 탭. 데이터에 항목이 없어도 탭은 보여 주고 빈 상태를 안내합니다.
+      const TYPES = ["전체", "영화", "드라마", "예능", "애니"];
+
+      // status 별 묶음. 값이 비어 있는 작품은 "확인 중" 묶음으로 모읍니다.
+      const SECTIONS = [
+        ["극장", "극장 상영작", "예매 링크로 연결됩니다."],
+        ["OTT", "OTT 공개작", "공개된 OTT 서비스로 연결됩니다."],
+        ["VOD", "VOD 구매·대여", "VOD 스토어로 연결됩니다."],
+        ["", "시청 경로 확인 중", "공식 제공처를 확인하는 중입니다."],
       ];
-      const fallback =
-        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2 3'%3E%3Crect width='2' height='3' fill='%23eef1f5'/%3E%3C/svg%3E";
-      function render(f = "전체") {
-        document.querySelector("#grid").innerHTML = items
-          .filter((x) => f === "전체" || x[1] === f)
-          .map(
-            (x) =>
-              `<a class="card" href="content-detail.html?id=${x[3]}"><img src="${posterSource(x[3])}" alt="${x[0]} 포스터" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src=fallback"><div class="cb"><b>${x[0]}</b><span>${x[1]} · ${x[2]}</span></div></a>`,
-          )
-          .join("");
+
+      const CHIP =
+        "seed-action-chip seed-action-chip--size_medium" +
+        " seed-action-chip--layout_withText" +
+        " seed-action-chip--size_medium-layout_withText";
+
+      const FALLBACK =
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'" +
+        " viewBox='0 0 2 3'%3E%3Crect width='2' height='3' fill='%23eef1f5'/%3E%3C/svg%3E";
+
+      const poster = (id) => (window.OTT_POSTERS || {})[id] || FALLBACK;
+      const esc = (s) =>
+        String(s).replace(
+          /[&<>"']/g,
+          (c) =>
+            ({
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              '"': "&quot;",
+              "'": "&#39;",
+            })[c],
+        );
+
+      let DATA = null;
+      let active = "전체";
+
+      function card(w) {
+        // 선정 근거와 시청 경로는 확인된 작품에만 표시합니다.
+        const badge = w.pickedBy
+          ? `<span class="seed-badge__root seed-badge__root--size_medium` +
+            ` seed-badge__root--variant_weak` +
+            ` seed-badge__root--tone_brand-variant_weak picked">` +
+            `<span class="seed-badge__label">${esc(w.pickedBy)}</span></span>`
+          : "";
+        const where = w.watch.length
+          ? `<span class="where">${w.watch.map((x) => esc(x.name)).join(" · ")}</span>`
+          : "";
+        return (
+          `<a class="card" href="content-detail.html?id=${encodeURIComponent(w.id)}">` +
+          `<img src="${poster(w.id)}" alt="${esc(w.title)} 포스터" loading="lazy"` +
+          ` referrerpolicy="no-referrer"` +
+          ` onerror="this.onerror=null;this.src='${FALLBACK}'">` +
+          `<div class="cb">${badge}<b>${esc(w.title)}</b>` +
+          `<span>${esc(w.type)} · ${esc(w.genre)}</span>${where}</div></a>`
+        );
       }
-      document.querySelectorAll(".filters button").forEach(
-        (b) =>
-          (b.onclick = () => {
-            document.querySelector(".filters .on").classList.remove("on");
-            b.classList.add("on");
-            render(b.dataset.filter);
-          }),
-      );
-      render();
+
+      function render() {
+        const pool = DATA.works.filter(
+          (w) => active === "전체" || w.type === active,
+        );
+        const host = document.querySelector("#sections");
+
+        if (!pool.length) {
+          host.innerHTML =
+            `<p class="empty">${esc(active)} 분류는 아직 준비 중입니다.</p>`;
+          return;
+        }
+
+        host.innerHTML = SECTIONS.map(([key, title, note]) => {
+          const rows = pool.filter((w) => (w.status || "") === key);
+          if (!rows.length) return "";
+          return (
+            `<section class="group"><h2>${esc(title)}</h2>` +
+            `<p class="group-note">${esc(note)}</p>` +
+            `<div class="grid">${rows.map(card).join("")}</div></section>`
+          );
+        }).join("");
+      }
+
+      function tabs() {
+        const host = document.querySelector(".filters");
+        host.innerHTML = TYPES.map(
+          (t) =>
+            `<button class="${CHIP}" role="tab" data-type="${esc(t)}"` +
+            ` aria-selected="${t === active}">${esc(t)}</button>`,
+        ).join("");
+        host.querySelectorAll("button").forEach((b) => {
+          b.onclick = () => {
+            active = b.dataset.type;
+            host.querySelectorAll("button").forEach((x) =>
+              x.setAttribute("aria-selected", String(x === b)),
+            );
+            render();
+          };
+        });
+      }
+
+      fetch("assets/content-data.json")
+        .then((r) => r.json())
+        .then((d) => {
+          DATA = d;
+          document.querySelector("#policy-text").textContent =
+            `${d.selectionPolicy} ${d.watchNote} 확인일 ${d.checkedAt}.`;
+          document.querySelector("#partner-text").textContent =
+            d.partnerDisclosure;
+          tabs();
+          render();
+        })
+        .catch(() => {
+          document.querySelector("#sections").innerHTML =
+            '<p class="empty">작품 정보를 불러오지 못했습니다.</p>';
+        });
     </script>
   </body>
 </html>
