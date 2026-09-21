@@ -178,12 +178,18 @@
           .filter(Boolean);
       }
 
+      /** KOFIC 는 기준일을 YYYYMMDD 로 줍니다. 읽기 좋게 끊어 줍니다. */
+      const ymd = (s) =>
+        /^\d{8}$/.test(s || "")
+          ? `${s.slice(0, 4)}-${s.slice(4, 6)}-${s.slice(6)}`
+          : s || "";
+
       function renderBoxOffice(box, chains) {
         if (!box || !Array.isArray(box.movies) || !box.movies.length) return;
 
         const entries = bookingEntries(chains);
         document.querySelector("#boxoffice-note").innerHTML =
-          `${esc(box.source)} · 기준일 ${esc(box.targetDt)}` +
+          `${esc(box.source)} · 기준일 ${esc(ymd(box.targetDt))}` +
           (entries.length
             ? '<span class="book book-top">예매 ' +
               entries
