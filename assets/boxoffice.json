@@ -9,70 +9,120 @@
       "movieCd": "20256308",
       "title": "인턴",
       "openedAt": "2026-09-16",
-      "audienceAcc": 403897
+      "audienceAcc": 403897,
+      "genres": [
+        "드라마"
+      ],
+      "type": "영화"
     },
     {
       "rank": 2,
       "movieCd": "20250654",
       "title": "오디세이",
       "openedAt": "2026-08-05",
-      "audienceAcc": 11217635
+      "audienceAcc": 11217635,
+      "genres": [
+        "액션",
+        "드라마",
+        "어드벤처"
+      ],
+      "type": "영화"
     },
     {
       "rank": 3,
       "movieCd": "20265146",
       "title": "옵세션",
       "openedAt": "2026-09-02",
-      "audienceAcc": 701713
+      "audienceAcc": 701713,
+      "genres": [
+        "공포(호러)"
+      ],
+      "type": "영화"
     },
     {
       "rank": 4,
       "movieCd": "20263870",
       "title": "레지던트 이블: 0번째 밤",
       "openedAt": "2026-09-17",
-      "audienceAcc": 103654
+      "audienceAcc": 103654,
+      "genres": [
+        "공포(호러)",
+        "액션",
+        "SF"
+      ],
+      "type": "영화"
     },
     {
       "rank": 5,
       "movieCd": "20262770",
       "title": "스파이더맨: 브랜드 뉴 데이",
       "openedAt": "2026-07-29",
-      "audienceAcc": 8990600
+      "audienceAcc": 8990600,
+      "genres": [
+        "액션",
+        "어드벤처",
+        "판타지"
+      ],
+      "type": "영화"
     },
     {
       "rank": 6,
       "movieCd": "20261807",
       "title": "극장판 치이카와: 인어 섬의 비밀",
       "openedAt": "2026-09-30",
-      "audienceAcc": 21203
+      "audienceAcc": 21203,
+      "genres": [
+        "애니메이션"
+      ],
+      "type": "애니"
     },
     {
       "rank": 7,
       "movieCd": "20070216",
       "title": "시간을 달리는 소녀",
       "openedAt": "2007-06-14",
-      "audienceAcc": 132656
+      "audienceAcc": 132656,
+      "genres": [
+        "애니메이션",
+        "판타지",
+        "멜로/로맨스"
+      ],
+      "type": "애니"
     },
     {
       "rank": 8,
       "movieCd": "20265587",
       "title": "디지몬 어드벤처 : 운명적 만남 & 우리들의 워 게임!",
       "openedAt": "2026-09-16",
-      "audienceAcc": 17764
+      "audienceAcc": 17764,
+      "genres": [
+        "애니메이션"
+      ],
+      "type": "애니"
     },
     {
       "rank": 9,
       "movieCd": "20265423",
       "title": "더 드라마",
       "openedAt": "2026-09-09",
-      "audienceAcc": 80094
+      "audienceAcc": 80094,
+      "genres": [
+        "드라마",
+        "멜로/로맨스"
+      ],
+      "type": "영화"
     },
     {
       "rank": 10,
       "movieCd": "20256161",
       "title": "타짜: 벨제붑의 노래",
       "openedAt": "2026-09-23",
-      "audienceAcc": 19183
+      "audienceAcc": 19183,
+      "genres": [
+        "범죄",
+        "드라마"
+      ],
+      "type": "영화"
     }
   ]
 }
