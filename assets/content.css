@@ -9,7 +9,7 @@ main{
       }
 .ey{
         color: var(--r);
-        font-size: 9px;
+        font-size: 11px;
         font-weight: 900;
         letter-spacing: 1.5px;
       }
@@ -20,7 +20,7 @@ h1{
       }
 .sub{
         color: var(--m);
-        font-size: 11px;
+        font-size: 13px;
         line-height: 1.7;
       }
 .filters{
@@ -63,7 +63,7 @@ h1{
         display: block;
         margin-top: 6px;
         color: var(--muted);
-        font-size: var(--seed-font-size-t2);
+        font-size: var(--seed-font-size-t3);
         line-height: 1.5;
       }
 .detail{
@@ -97,13 +97,13 @@ h1{
         background: #fff;
       }
 .copy h2{
-        font-size: 17px;
+        font-size: 19px;
         margin: 0 0 12px;
       }
 .copy p,
       .copy li{
         color: #606c7b;
-        font-size: 11px;
+        font-size: 13px;
         line-height: 1.8;
       }
 .copy ul{
@@ -117,14 +117,14 @@ h1{
         background: var(--r);
         color: #fff;
         text-align: center;
-        font-size: 12px;
+        font-size: 14px;
         font-weight: 900;
       }
 .note{
         display: block;
         margin-top: 8px;
         color: #929ba6;
-        font-size: 8px;
+        font-size: 11px;
         text-align: center;
       }
 @media (max-width: 800px){.grid{
@@ -149,13 +149,13 @@ h1{
           padding: 34px 0 58px;
         }
         .ey {
-          font-size: 11px;
+          font-size: 13px;
         }
         h1 {
           line-height: 1.25;
         }
         .sub {
-          font-size: 13px;
+          font-size: 15px;
         }
         .filters {
           overflow-x: auto;
@@ -178,28 +178,28 @@ h1{
         }
         .cb b {
           display: block;
-          font-size: 14px;
+          font-size: 16px;
           line-height: 1.35;
           overflow-wrap: anywhere;
         }
         .cb span {
-          font-size: 11px;
+          font-size: 13px;
           line-height: 1.45;
         }
         .card:hover {
           transform: none;
         }
         footer {
-          font-size: 11px;
+          font-size: 13px;
           line-height: 1.5;
         }
       }
 @media (max-width: 350px){.cb{
           padding: 9px;
         }.cb b{
-          font-size: 13px;
+          font-size: 15px;
         }.cb span{
-          font-size: 10.5px;
+          font-size: 13px;
         }}
 @media (max-width: 600px){nav{
           height: auto;
@@ -263,7 +263,7 @@ a:focus-visible,
 
 .partner p {
   margin: 8px 0 0;
-  font-size: var(--seed-font-size-t3);
+  font-size: var(--seed-font-size-t4);
   color: var(--muted);
   line-height: 1.8;
 }
@@ -274,7 +274,7 @@ a:focus-visible,
 
 .count-note {
   margin: 18px 0 0;
-  font-size: var(--seed-font-size-t2);
+  font-size: var(--seed-font-size-t3);
   line-height: 1.7;
   color: var(--muted);
 }
@@ -297,7 +297,7 @@ a:focus-visible,
 /* 근거는 편집 투명성용이라 제공처보다 약하게 둡니다. */
 .cb .why {
   /* .cb span 이 명시도에서 이기므로 같은 수준으로 맞춥니다. */
-  font-size: var(--seed-font-size-t1);
+  font-size: var(--seed-font-size-t2);
   line-height: 1.5;
   color: var(--muted);
 }
