@@ -85,6 +85,10 @@ h1{
       }
 .detail-poster{
         width: 100%;
+        /* 원본 비율이 제각각이라(0.665~1.778) 상세 포스터 높이가 작품마다 달랐습니다.
+           카드와 같은 2:3 으로 고정합니다. */
+        aspect-ratio: 2/3;
+        object-fit: cover;
         border-radius: 14px;
         box-shadow: 0 18px 35px #1b223025;
       }
@@ -216,10 +220,7 @@ a:focus-visible,
         outline: 3px solid #ff8290;
         outline-offset: 3px;
       }
-.detail-poster{
-        object-fit: contain;
-        background: #111722;
-      }
+
 
 /* ===== 시청 경로 블록 ===== */
 
