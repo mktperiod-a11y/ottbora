@@ -25,6 +25,9 @@ jobs:
         with:
           node-version: "24"
 
+      - name: Install dependencies
+        run: npm ci
+
       - name: Generate drama and variety rankings
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
