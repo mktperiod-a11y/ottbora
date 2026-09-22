@@ -168,13 +168,13 @@
           sourceKind: "kofic",
           title: m.title,
           type: "영화",
-          tagline: "국내 극장 흥행 데이터를 바탕으로 자동 등록된 작품입니다.",
+          tagline: "국내 극장 흥행 데이터를 바탕으로 소개하는 작품이에요.",
           poster: m.poster || FALLBACK,
           meta: [
             prettyDate(m.openedAt),
             (m.genres || []).join(" · "),
           ].filter(Boolean),
-          synopsisText: "현재 자동 수집 데이터에는 줄거리 정보가 포함되어 있지 않습니다.",
+          synopsisText: "현재 줄거리 정보를 확인할 수 없어요.",
           detailPoints: points.length ? points : ["박스오피스 자동 수집 작품"],
           watch: [],
           partner: [],
@@ -197,14 +197,14 @@
           sourceKind: "tmdb",
           title: w.title,
           type: w.type || "TV",
-          tagline: "현재 인기 목록에서 자동 등록된 작품입니다.",
+          tagline: "현재 인기 목록에서 소개하는 작품이에요.",
           poster: w.poster || FALLBACK,
           meta: [
             w.firstAirDate ? `첫 방송 ${prettyDate(w.firstAirDate)}` : "",
             genres.join(" · "),
           ].filter(Boolean),
           synopsisText:
-            w.overview || "현재 자동 수집 데이터에는 줄거리 정보가 포함되어 있지 않습니다.",
+            w.overview || "현재 줄거리 정보를 확인할 수 없어요.",
           detailPoints: points.length ? points : ["자동 인기 목록 수록 작품"],
           watch: [],
           partner: [],
@@ -225,13 +225,13 @@
           sourceKind: "anime",
           title: a.title,
           type: "애니",
-          tagline: "현재 시즌 애니 목록에서 자동 등록된 작품입니다.",
+          tagline: "현재 방영 중인 애니 목록에서 소개하는 작품이에요.",
           poster: a.poster || FALLBACK,
           meta: [
             (a.genres || []).join(" · "),
             a.titleOriginal && a.titleOriginal !== a.title ? a.titleOriginal : "",
           ].filter(Boolean),
-          synopsisText: "현재 자동 수집 데이터에는 줄거리 정보가 포함되어 있지 않습니다.",
+          synopsisText: "현재 줄거리 정보를 확인할 수 없어요.",
           detailPoints: points.length ? points : ["현재 시즌 자동 수집 작품"],
           watch: [],
           partner: [],
@@ -270,7 +270,7 @@
 
         if (!links.length) {
           host.innerHTML =
-            '<h2>시청 경로</h2><p class="pending">공식 제공처 정보가 아직 연결되지 않았습니다.</p>';
+            '<h2>시청 경로</h2><p class="pending">현재 시청 가능한 공식 제공처를 확인할 수 없어요.</p>';
           return;
         }
 
