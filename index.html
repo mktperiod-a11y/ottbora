@@ -14,6 +14,7 @@
       content="JHCqGQSDLEkUNuxMIyLsiJ1MD7YUSj3L8IQckVgTCvo"
     />
     <link rel="canonical" href="https://mktperiod-a11y.github.io/ottbora/" />
+    <link rel="stylesheet" href="assets/fonts/gmarketsans/gmarketsans.css" />
     <link
       rel="stylesheet"
       href="assets/fonts/pretendard/pretendardvariable-dynamic-subset.css"
@@ -74,46 +75,41 @@
         </div>
       </section>
       <section class="section wrap">
-        <div class="head">
+        <div class="section-head">
           <div>
-            <span>CONTENT ZONE</span>
+            <span class="eyebrow">CONTENT ZONE</span>
             <h2>지금 볼 만한 것</h2>
             <p class="head-note">
-              극장 흥행작과 넷플릭스 주간 집계에서 골랐습니다. 확인일 2026.08.28.
+              극장 흥행작과 넷플릭스 주간 집계에서 골랐습니다.
             </p>
           </div>
-          <a href="content.html">전체 콘텐츠 보기 →</a>
+          <a class="head-action seed-action-button seed-action-button--variant_neutralWeak seed-action-button--size_medium seed-action-button--layout_withText seed-action-button--size_medium-layout_withText" href="content.html">전체 콘텐츠 보기</a>
         </div>
         <!-- 극장·OTT 를 섹션으로 나누면 머리글 두 벌에 큰 포스터 다섯 장이
-             화면을 다 먹습니다. 한 줄로 합치고, 어디서 왔는지는 포스터 위
-             칩으로 각 카드가 직접 말하게 합니다. -->
-        <div class="content-grid" id="picks"></div>
+             화면을 다 먹습니다. 한 줄로 합치고, 어디서 왔는지는 제목 아래
+             태그로 각 카드가 직접 말하게 합니다. -->
+        <div class="cards content-grid" id="picks"></div>
       </section>
       <section class="section dark">
         <div class="wrap">
-          <div class="head">
+          <div class="section-head">
             <div>
-              <span>WEBHARD PICK</span>
+              <span class="eyebrow">WEBHARD PICK</span>
               <h2>웹하드 추천 순위</h2>
             </div>
-            <a href="webhard.html">추천 이유·10곳 비교 →</a>
+            <a class="head-action seed-action-button seed-action-button--variant_neutralSolid seed-action-button--size_medium seed-action-button--layout_withText seed-action-button--size_medium-layout_withText" href="webhard.html">10곳 비교하기</a>
           </div>
           <div class="ranking" id="ranking"></div>
-          <p class="rank-note">
-            온디스크·케이디스크 우선 소개 방침을 반영한 운영자 추천 순서입니다.
-            시장점유율·성능 순위가 아닙니다.
-            <a href="webhard.html#methodology">선정 기준 보기</a>
-          </p>
         </div>
       </section>
       <section class="section wrap">
-        <div class="head">
+        <div class="section-head">
           <div>
-            <span>SAFE GUIDE</span>
+            <span class="eyebrow">SAFE GUIDE</span>
             <h2>이용 전 확인하세요</h2>
           </div>
         </div>
-        <div class="guide-grid">
+        <div class="cards guide-grid">
           <article>
             <b>01</b>
             <h3>저작권과 이용 가능 여부</h3>
@@ -330,7 +326,7 @@
       document.querySelector("#ranking").innerHTML = ranks
         .map(
           (x, i) =>
-            `<article class="rank-card"><div class="rank">${i + 1}</div><div class="brand"><img src="assets/${x[2]}" alt="${x[0]} 로고" loading="lazy" decoding="async"></div><div class="rank-info"><b>${x[0]}</b><span>${x[1]}</span></div><a class="go" href="${x[3]}" target="_blank" rel="${x[3].startsWith("go/") ? "noopener noreferrer sponsored nofollow" : "noopener noreferrer"}">공식 홈페이지</a></article>`,
+            `<article class="rank-card"><div class="rank">${i + 1}</div><div class="brand"><img src="assets/${x[2]}" alt="${x[0]} 로고" loading="lazy" decoding="async"></div><div class="rank-info"><b>${x[0]}</b><span>${x[1]}</span></div><a class="go" href="${x[3]}" target="_blank" rel="noopener noreferrer">공식 홈페이지</a></article>`,
         )
         .join("");
     </script>
