@@ -1,0 +1,410 @@
+{
+  "note": "지금 방영 중인 화제작입니다. 콘텐츠ZONE 의 애니 탭에서 씁니다.",
+  "source": "AniList",
+  "sourceUrl": "https://anilist.co/",
+  "rankedBy": "목록에 넣은 사람 수 순",
+  "season": "1999 fall",
+  "updatedAt": "2026-09-22",
+  "koreanTitles": "TMDB 에서 조회",
+  "works": [
+    {
+      "malId": 21,
+      "title": "원피스",
+      "titleKo": "원피스",
+      "titleOriginal": "ONE PIECE",
+      "genres": [
+        "액션",
+        "어드벤처",
+        "코미디",
+        "드라마",
+        "판타지"
+      ],
+      "episodes": null,
+      "score": 8.7,
+      "members": 752679,
+      "studio": "Toei Animation",
+      "season": "1999 fall",
+      "poster": "assets/posters/anime-21.webp",
+      "posterCredit": "AniList",
+      "scoreBy": "AniList",
+      "malUrl": "https://myanimelist.net/anime/21"
+    },
+    {
+      "malId": 61316,
+      "title": "Re:ZERO -Starting Life in Another World- Season 4",
+      "titleOriginal": "Re:ZERO -Starting Life in Another World- Season 4",
+      "genres": [
+        "액션",
+        "어드벤처",
+        "드라마",
+        "판타지",
+        "심리",
+        "로맨스",
+        "스릴러"
+      ],
+      "episodes": 19,
+      "score": 9,
+      "members": 141974,
+      "studio": "WHITE FOX",
+      "season": "2026 spring",
+      "poster": "assets/posters/anime-61316.webp",
+      "posterCredit": "AniList",
+      "scoreBy": "AniList",
+      "malUrl": "https://myanimelist.net/anime/61316"
+    },
+    {
+      "malId": 59970,
+      "title": "That Time I Got Reincarnated as a Slime Season 4",
+      "titleOriginal": "That Time I Got Reincarnated as a Slime Season 4",
+      "genres": [
+        "액션",
+        "어드벤처",
+        "코미디",
+        "판타지"
+      ],
+      "episodes": 24,
+      "score": 8.3,
+      "members": 136814,
+      "studio": "8-bit",
+      "season": "2026 spring",
+      "poster": "assets/posters/anime-59970.webp",
+      "posterCredit": "AniList",
+      "scoreBy": "AniList",
+      "malUrl": "https://myanimelist.net/anime/59970"
+    },
+    {
+      "malId": 62076,
+      "title": "슈퍼 뒤에서 담배 피우는 두 사람",
+      "titleKo": "슈퍼 뒤에서 담배 피우는 두 사람",
+      "titleOriginal": "Smoking Behind the Supermarket with You",
+      "genres": [
+        "코미디",
+        "로맨스",
+        "일상"
+      ],
+      "episodes": 12,
+      "score": 8.2,
+      "members": 122588,
+      "studio": "Asahi Production",
+      "season": "2026 summer",
+      "poster": "assets/posters/anime-62076.webp",
+      "posterCredit": "AniList",
+      "scoreBy": "AniList",
+      "malUrl": "https://myanimelist.net/anime/62076"
+    },
+    {
+      "malId": 49233,
+      "title": "유녀전기",
+      "titleKo": "유녀전기",
+      "titleOriginal": "Saga of Tanya the Evil Season 2",
+      "genres": [
+        "액션",
+        "판타지"
+      ],
+      "episodes": 12,
+      "score": 8,
+      "members": 93530,
+      "studio": "NUT",
+      "season": "2026 summer",
+      "poster": "assets/posters/anime-49233.webp",
+      "posterCredit": "AniList",
+      "scoreBy": "AniList",
+      "malUrl": "https://myanimelist.net/anime/49233"
+    },
+    {
+      "malId": 60636,
+      "title": "블리치",
+      "titleKo": "블리치",
+      "titleOriginal": "BLEACH: Thousand-Year Blood War - The Calamity",
+      "genres": [
+        "액션",
+        "어드벤처",
+        "초자연"
+      ],
+      "episodes": 10,
+      "score": 9,
+      "members": 88172,
+      "studio": "PIERROT FILMS",
+      "season": "2026 summer",
+      "poster": "assets/posters/anime-60636.webp",
+      "posterCredit": "AniList",
+      "scoreBy": "AniList",
+      "malUrl": "https://myanimelist.net/anime/60636"
+    },
+    {
+      "malId": 235,
+      "title": "명탐정 코난",
+      "titleKo": "명탐정 코난",
+      "titleOriginal": "Detective Conan",
+      "genres": [
+        "어드벤처",
+        "코미디",
+        "미스터리",
+        "심리"
+      ],
+      "episodes": null,
+      "score": 8.2,
+      "members": 80022,
+      "studio": "TMS Entertainment",
+      "season": "1996 winter",
+      "poster": "assets/posters/anime-235.webp",
+      "posterCredit": "AniList",
+      "scoreBy": "AniList",
+      "malUrl": "https://myanimelist.net/anime/235"
+    },
+    {
+      "malId": 59741,
+      "title": "추방당한 전생 중기사는 게임 지식으로 무쌍한다",
+      "titleKo": "추방당한 전생 중기사는 게임 지식으로 무쌍한다",
+      "titleOriginal": "The Exiled Heavy Knight Knows How to Game the System",
+      "genres": [
+        "액션",
+        "판타지"
+      ],
+      "episodes": 26,
+      "score": 6.7,
+      "members": 63395,
+      "studio": "GoHands",
+      "season": "2026 summer",
+      "poster": "assets/posters/anime-59741.webp",
+      "posterCredit": "AniList",
+      "scoreBy": "AniList",
+      "malUrl": "https://myanimelist.net/anime/59741"
+    },
+    {
+      "malId": 63832,
+      "title": "You and I Are Polar Opposites Season 2",
+      "titleOriginal": "You and I Are Polar Opposites Season 2",
+      "genres": [
+        "코미디",
+        "드라마",
+        "로맨스",
+        "일상"
+      ],
+      "episodes": 13,
+      "score": 8.2,
+      "members": 60692,
+      "studio": "Lapin Track",
+      "season": "2026 summer",
+      "poster": "assets/posters/anime-63832.webp",
+      "posterCredit": "AniList",
+      "scoreBy": "AniList",
+      "malUrl": "https://myanimelist.net/anime/63832"
+    },
+    {
+      "malId": 62856,
+      "title": "20세기 전기 목록",
+      "titleKo": "20세기 전기 목록",
+      "titleOriginal": "Sparks of Tomorrow",
+      "genres": [
+        "어드벤처",
+        "코미디",
+        "로맨스"
+      ],
+      "episodes": 13,
+      "score": 7.6,
+      "members": 57940,
+      "studio": "Kyoto Animation",
+      "season": "2026 summer",
+      "poster": "assets/posters/anime-62856.webp",
+      "posterCredit": "AniList",
+      "scoreBy": "AniList",
+      "malUrl": "https://myanimelist.net/anime/62856"
+    },
+    {
+      "malId": 61126,
+      "title": "네가 죽을 때까지 사랑하고 싶어",
+      "titleKo": "네가 죽을 때까지 사랑하고 싶어",
+      "titleOriginal": "I Want to Love You Till Your Dying Day",
+      "genres": [
+        "드라마",
+        "판타지",
+        "로맨스"
+      ],
+      "episodes": 13,
+      "score": 7.4,
+      "members": 55405,
+      "studio": "ROLL2",
+      "season": "2026 summer",
+      "poster": "assets/posters/anime-61126.webp",
+      "posterCredit": "AniList",
+      "scoreBy": "AniList",
+      "malUrl": "https://myanimelist.net/anime/61126"
+    },
+    {
+      "malId": 54000,
+      "title": "Trapped in a Dating Sim: The World of Otome Games is Tough for Mobs Season 2",
+      "titleOriginal": "Trapped in a Dating Sim: The World of Otome Games is Tough for Mobs Season 2",
+      "genres": [
+        "액션",
+        "판타지",
+        "메카",
+        "로맨스"
+      ],
+      "episodes": 12,
+      "score": 6.8,
+      "members": 54008,
+      "studio": "ENGI",
+      "season": "2026 summer",
+      "poster": "assets/posters/anime-54000.webp",
+      "posterCredit": "AniList",
+      "scoreBy": "AniList",
+      "malUrl": "https://myanimelist.net/anime/54000"
+    },
+    {
+      "malId": 62513,
+      "title": "클레바테스",
+      "titleKo": "클레바테스",
+      "titleOriginal": "Clevatess Season 2",
+      "genres": [
+        "액션",
+        "드라마",
+        "판타지"
+      ],
+      "episodes": 13,
+      "score": 7.6,
+      "members": 44953,
+      "studio": "Lay-duce",
+      "season": "2026 summer",
+      "poster": "assets/posters/anime-62513.webp",
+      "posterCredit": "AniList",
+      "scoreBy": "AniList",
+      "malUrl": "https://myanimelist.net/anime/62513"
+    },
+    {
+      "malId": 61897,
+      "title": "From Old Country Bumpkin to Master Swordsman II",
+      "titleOriginal": "From Old Country Bumpkin to Master Swordsman II",
+      "genres": [
+        "액션",
+        "어드벤처",
+        "코미디",
+        "판타지"
+      ],
+      "episodes": 12,
+      "score": 7,
+      "members": 44689,
+      "studio": "Hayabusa Film",
+      "season": "2026 summer",
+      "poster": "assets/posters/anime-61897.webp",
+      "posterCredit": "AniList",
+      "scoreBy": "AniList",
+      "malUrl": "https://myanimelist.net/anime/61897"
+    },
+    {
+      "malId": 62331,
+      "title": "라이어 게임",
+      "titleKo": "라이어 게임",
+      "titleOriginal": "LIAR GAME",
+      "genres": [
+        "드라마",
+        "심리"
+      ],
+      "episodes": 26,
+      "score": 6.2,
+      "members": 43141,
+      "studio": "MADHOUSE",
+      "season": "2026 spring",
+      "poster": "assets/posters/anime-62331.webp",
+      "posterCredit": "AniList",
+      "scoreBy": "AniList",
+      "malUrl": "https://myanimelist.net/anime/62331"
+    },
+    {
+      "malId": 60310,
+      "title": "Welcome to Demon School! Iruma-kun Season 4",
+      "titleOriginal": "Welcome to Demon School! Iruma-kun Season 4",
+      "genres": [
+        "코미디",
+        "판타지",
+        "초자연"
+      ],
+      "episodes": 24,
+      "score": 8,
+      "members": 41751,
+      "studio": "Bandai Namco Pictures",
+      "season": "2026 spring",
+      "poster": "assets/posters/anime-60310.webp",
+      "posterCredit": "AniList",
+      "scoreBy": "AniList",
+      "malUrl": "https://myanimelist.net/anime/60310"
+    },
+    {
+      "malId": 63817,
+      "title": "HELL MODE: The Hardcore Gamer Dominates in Another World with Garbage Balancing Season 2",
+      "titleOriginal": "HELL MODE: The Hardcore Gamer Dominates in Another World with Garbage Balancing Season 2",
+      "genres": [
+        "액션",
+        "어드벤처",
+        "판타지"
+      ],
+      "episodes": 13,
+      "score": 7.1,
+      "members": 40822,
+      "studio": "Yokohama Animation Lab",
+      "season": "2026 summer",
+      "poster": "assets/posters/anime-63817.webp",
+      "posterCredit": "AniList",
+      "scoreBy": "AniList",
+      "malUrl": "https://myanimelist.net/anime/63817"
+    },
+    {
+      "malId": 57466,
+      "title": "책벌레의 하극상 ~사서가 되기 위해서라면 뭐든지 할 수 있어~",
+      "titleKo": "책벌레의 하극상 ~사서가 되기 위해서라면 뭐든지 할 수 있어~",
+      "titleOriginal": "Ascendance of a Bookworm: Adopted Daughter of an Archduke",
+      "genres": [
+        "드라마",
+        "판타지",
+        "일상"
+      ],
+      "episodes": 24,
+      "score": 7.6,
+      "members": 39039,
+      "studio": "WIT STUDIO",
+      "season": "2026 spring",
+      "poster": "assets/posters/anime-57466.webp",
+      "posterCredit": "AniList",
+      "scoreBy": "AniList",
+      "malUrl": "https://myanimelist.net/anime/57466"
+    },
+    {
+      "malId": 63316,
+      "title": "도굴왕",
+      "titleKo": "도굴왕",
+      "titleOriginal": "Tomb Raider King",
+      "genres": [
+        "액션",
+        "어드벤처",
+        "판타지"
+      ],
+      "episodes": 12,
+      "score": 6.6,
+      "members": 36121,
+      "studio": "STUDIO EEK",
+      "season": "",
+      "poster": "assets/posters/anime-63316.webp",
+      "posterCredit": "AniList",
+      "scoreBy": "AniList",
+      "malUrl": "https://myanimelist.net/anime/63316"
+    },
+    {
+      "malId": 46488,
+      "title": "대전 감사합니다 ~숙녀는 격투 게임을 안 해요~",
+      "titleKo": "대전 감사합니다 ~숙녀는 격투 게임을 안 해요~",
+      "titleOriginal": "Young Ladies Don't Play Fighting Games",
+      "genres": [
+        "드라마"
+      ],
+      "episodes": 12,
+      "score": 7.4,
+      "members": 28357,
+      "studio": "diomedéa",
+      "season": "2026 summer",
+      "poster": "assets/posters/anime-46488.webp",
+      "posterCredit": "AniList",
+      "scoreBy": "AniList",
+      "malUrl": "https://myanimelist.net/anime/46488"
+    }
+  ]
+}
