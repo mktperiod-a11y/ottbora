@@ -311,15 +311,6 @@
         );
       }
 
-      /** 제공처와 분류를 합쳐 한 태그로. "넷플릭스" + 드라마 → "넷플릭스 시리즈" */
-      const KIND = { 드라마: "시리즈", 예능: "예능", 영화: "영화", 애니: "애니" };
-      function providerTag(w) {
-        const name = (w.watch || [])[0]?.name;
-        if (!name) return "";
-        const kind = KIND[w.type];
-        return kind ? `${name} ${kind}` : name;
-      }
-
       function badge(text) {
         return (
           `<span class="seed-badge__root seed-badge__root--size_medium` +
