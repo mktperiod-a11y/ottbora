@@ -54,6 +54,13 @@ jobs:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
         run: node scripts/fetch-anime.mjs
 
+      # 드라마/예능은 TMDB 한국 TV 후보를 받아 한국형 규칙으로 나눕니다.
+      # 실패해도 기존 파일 또는 수동 content-data.json이 fallback 역할을 합니다.
+      - name: 드라마 예능 내려받기
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+        run: node scripts/fetch-tv-ranking.mjs
+
       - name: 변경분 커밋
         run: |
           # 경로를 하나하나 적으면 아직 없는 파일에서 git add 가 exit 128 로
@@ -67,5 +74,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A assets
-          git commit -m "Update box office and anime"
+          git commit -m "Update content rankings"
           git push
