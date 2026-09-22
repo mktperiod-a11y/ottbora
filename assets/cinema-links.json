@@ -1,6 +1,6 @@
 {
   "note": "극장 예매 진입점. 콘텐츠ZONE 의 박스오피스 카드에서 씁니다.",
-  "bookingUrlNote": "쿼리 없이 예매 페이지로 보냅니다. 지금 차트에 올라 있는 작품 카드마다 세 체인 칩을 답니다.",
+  "bookingUrlNote": "작품별 override가 있으면 해당 극장만 노출하고 directUrl이 있으면 작품 선택 상태로 보냅니다. 없으면 해당 극장의 기본 예매 페이지를 씁니다.",
   "searchUrlNote": "{title} 자리에 제목이 들어가는 검색 결과 주소입니다. 채우면 작품마다 링크가 생깁니다. 비어 있으면 작품별 링크는 만들지 않습니다.",
   "deepLinkNote": "롯데시네마 주소의 movieCd 는 롯데 자체 코드(5자리)라 KOFIC 의 movieCd(8자리)와 다릅니다. 그대로 넣으면 엉뚱한 작품이 열리므로, 매칭표를 만들기 전까지는 쓰지 않습니다.",
   "hostNote": "여기 host 는 페이지의 허용 호스트 목록과 대조됩니다. 목록에 없거나 선언과 다른 호스트는 링크되지 않습니다.",
@@ -31,5 +31,25 @@
       "deepLink": "https://www.lottecinema.co.kr/NLCHS/ticketing?movieCd={code}&movieName={title}"
     }
   ],
-  "shortNote": "카드 안 칩에 쓰는 짧은 이름입니다. 칩 세 개가 한 줄에 들어가야 해서 따로 둡니다. 전체 이름은 링크 설명(title)에 들어갑니다."
+  "shortNote": "카드 안 칩에 쓰는 짧은 이름입니다. 칩 세 개가 한 줄에 들어가야 해서 따로 둡니다. 전체 이름은 링크 설명(title)에 들어갑니다.",
+  "movieOverrides": [
+    {
+      "movieCd": "20070216",
+      "title": "시간을 달리는 소녀",
+      "chainIds": [
+        "cgv"
+      ],
+      "directUrls": {},
+      "note": "2026-09 CGV 단독 재개봉 확인"
+    },
+    {
+      "movieCd": "20265587",
+      "title": "디지몬 어드벤처 : 운명적 만남 & 우리들의 워 게임!",
+      "chainIds": [
+        "megabox"
+      ],
+      "directUrls": {},
+      "note": "2026-09 메가박스 단독 개봉 확인"
+    }
+  ]
 }

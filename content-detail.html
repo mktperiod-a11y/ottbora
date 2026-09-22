@@ -314,8 +314,27 @@
         );
         if (!now) return;
 
-        const chains = (cinema?.chains || [])
-          .map((c) => ({ name: c.name, href: safe(c.bookingUrl, CINEMA_HOSTS) }))
+        const override = (cinema?.movieOverrides || []).find(
+          (x) =>
+            String(x.movieCd || "") === String(now.movieCd || "") ||
+            key(x.title) === key(now.title),
+        );
+
+        let chains = (cinema?.chains || []);
+        if (override?.chainIds?.length) {
+          const allowed = new Set(override.chainIds);
+          chains = chains.filter((c) => allowed.has(c.id));
+        }
+
+        chains = chains
+          .map((c) => {
+            const direct = override?.directUrls?.[c.id];
+            return {
+              name: c.name,
+              href: safe(direct || c.bookingUrl, CINEMA_HOSTS),
+              direct: Boolean(direct),
+            };
+          })
           .filter((c) => c.href);
         if (!chains.length) return;
 
