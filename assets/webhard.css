@@ -11,11 +11,10 @@ h1 em{font-style:normal;color:var(--accent)}
 .provider{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;scroll-margin-top:110px;min-width:0}
 .provider.featured{border-color:#edb7c0;border-top:4px solid #edb7c0;box-shadow:0 10px 28px #20273507}
 .provider-top{display:flex;align-items:center;gap:16px;min-height:56px}
-.rank{font-size:40px;font-weight:900;line-height:1;color:#c1c9d6;font-variant-numeric:tabular-nums}
+.rank{display:flex;align-items:baseline;gap:8px;font-weight:900;line-height:1;color:#c1c9d6;font-variant-numeric:tabular-nums}
 .featured .rank{color:var(--ink)}
 .brand{width:180px;height:62px;display:flex;align-items:center;justify-content:center;background:#fff;flex-shrink:1;min-width:0}
 .brand img{display:block;width:100%;height:100%;object-fit:contain}
-.provider-tag{margin-left:auto}
 .provider-title{margin:12px 0 14px;padding-bottom:13px;border-bottom:1px solid var(--line)}
 .provider h3{font-size:24px;letter-spacing:-1px;margin:0}
 .provider-title>span{font-size: 14px;color:var(--muted)}
@@ -69,3 +68,130 @@ tbody a:hover{color:var(--accent)}
 @media(max-width:900px){.provider{padding:19px}.provider-top{gap:12px}.brand{width:150px}.rank{font-size:34px}}
 @media(max-width:650px){.intro{padding-top:32px}.intro-row{display:block}h1{font-size:36px;letter-spacing:-1.8px}.lead{font-size: 16px}.section-links{gap:7px;margin-top:22px}.section{padding-top:35px;padding-bottom:36px}.provider-grid{grid-template-columns:1fr;gap:16px}.provider{padding:20px;scroll-margin-top:140px}.brand{width:170px}.provider-top{gap:16px}.rank{font-size:38px}.provider h3{font-size:23px}.facts ul,.reason p{font-size: 15px}.comparison-section{padding:34px 0}th,td{padding:13px 16px}.method-section{padding:35px 0}.method-intro{grid-template-columns:1fr;gap:16px}.criteria-grid{--cards-gap:10px;margin-top:23px}.criteria-grid article{padding:16px 13px}.criteria-grid h3{font-size: 16px}.criteria-grid p{font-size: 13px}}
 @media(max-width:360px){h1{font-size:32px}.provider{padding:17px}.provider-top{gap:10px}.brand{width:142px}.rank{font-size:32px}.provider-bottom{gap:12px}}
+
+
+/* ===== 추천 순서 자동 갱신 ===== */
+.ranking-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: var(--seed-font-size-t2);
+  line-height: 1.5;
+}
+
+.ranking-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #16a34a;
+  box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.10);
+}
+
+.ranking-status-time {
+  color: #7b8696;
+}
+
+/* 파일노리는 저장소에 로고 이미지가 없어 텍스트 워드마크로 안전하게 표시합니다. */
+.brand--text {
+  justify-content: flex-start;
+}
+
+.brand-text {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  color: var(--ink);
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: -1.2px;
+}
+
+/* 동적 순서의 상위 2개 카드는 기존 featured 위계를 그대로 재사용합니다. */
+.provider.featured .rank {
+  color: var(--ink);
+}
+
+@media (max-width: 650px) {
+  .ranking-status {
+    gap: 6px;
+    font-size: 12px;
+  }
+
+  .ranking-status-time {
+    flex-basis: 100%;
+    padding-left: 16px;
+  }
+
+  .brand-text {
+    font-size: 22px;
+  }
+}
+
+
+/* ===== 순위 변동 표시 ===== */
+.rank-number {
+  font-size: 40px;
+  line-height: 1;
+}
+
+.rank-move {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+}
+
+.rank-move.is-up {
+  color: #e0445e;
+}
+
+.rank-move.is-down {
+  color: #3d67c8;
+}
+
+.rank-move.is-same {
+  color: #9aa4b2;
+}
+
+.table-rank-number {
+  display: inline-block;
+  min-width: 24px;
+  margin-right: 7px;
+  font-variant-numeric: tabular-nums;
+}
+
+tbody td:first-child .rank-move {
+  vertical-align: 1px;
+}
+
+@media (max-width: 900px) {
+  .rank-number {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 650px) {
+  .rank {
+    gap: 6px;
+  }
+
+  .rank-number {
+    font-size: 38px;
+  }
+
+  .rank-move {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .rank-number {
+    font-size: 32px;
+  }
+}

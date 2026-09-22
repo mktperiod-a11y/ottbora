@@ -96,8 +96,12 @@
             <div>
               <span class="eyebrow">WEBHARD PICK</span>
               <h2>웹하드 추천 순위</h2>
+              <p class="home-ranking-status" aria-live="polite">
+                <span class="home-ranking-dot" aria-hidden="true"></span>
+                <span id="home-ranking-status">추천 순서 자동 갱신</span>
+              </p>
             </div>
-            <a class="head-action seed-action-button seed-action-button--variant_neutralSolid seed-action-button--size_medium seed-action-button--layout_withText seed-action-button--size_medium-layout_withText" href="webhard.html">10곳 비교하기</a>
+            <a class="head-action seed-action-button seed-action-button--variant_neutralSolid seed-action-button--size_medium seed-action-button--layout_withText seed-action-button--size_medium-layout_withText" href="webhard.html">11곳 비교하기</a>
           </div>
           <div class="ranking" id="ranking"></div>
         </div>
@@ -140,6 +144,7 @@
       </div>
     </footer>
     <script src="assets/posters-featured-20260828.js"></script>
+    <script src="assets/webhard-ranking.js"></script>
     <script>
       const posterSource = (id) => (window.OTT_POSTERS || {})[id] || "";
       // [제목, 장르, id, 태그들]
@@ -271,64 +276,46 @@
       document
         .querySelectorAll("[data-poster]")
         .forEach((img) => (img.src = posterSource(img.dataset.poster)));
-      const ranks = [
-        ["온디스크", "다양한 장르·폭넓은 콘텐츠", "ondisk.svg", "go/ondisk/"],
-        ["케이디스크", "PC·모바일 감상과 다운로드", "kdisk.svg", "go/kdisk/"],
-        [
-          "위디스크",
-          "찜·다시보기와 화면 전송",
-          "wedisk.png",
-          "https://www.wedisk.co.kr/",
-        ],
-        [
-          "파일조",
-          "인기 TOP100으로 콘텐츠 탐색",
-          "filejo.gif",
-          "https://www.filejo.com/main/",
-        ],
-        [
-          "미투디스크",
-          "다양한 자료와 고객지원",
-          "me2disk.jpg",
-          "https://me2disk.com/",
-        ],
-        [
-          "파일캐스트",
-          "모바일 감상·정액관 이용",
-          "filecast.png",
-          "https://filecast.co.kr/",
-        ],
-        [
-          "꿀파일",
-          "영상과 웹툰을 한곳에서",
-          "ggul.svg",
-          "https://ggulfile.com/",
-        ],
-        [
-          "스마트파일",
-          "화질을 골라 바로보기",
-          "smartfile.png",
-          "https://smartfile.co.kr/",
-        ],
-        [
-          "싸다파일",
-          "영상부터 E북까지 모바일 탐색",
-          "ssada.svg",
-          "https://ssadafile.com/",
-        ],
-        [
-          "파일썬",
-          "다양한 장르·출석 이벤트",
-          "filesun.png",
-          "https://www.filesun.com/",
-        ],
-      ];
-      document.querySelector("#ranking").innerHTML = ranks
-        .map(
-          (x, i) =>
-            `<article class="rank-card"><div class="rank">${i + 1}</div><div class="brand"><img src="assets/${x[2]}" alt="${x[0]} 로고" loading="lazy" decoding="async"></div><div class="rank-info"><b>${x[0]}</b><span>${x[1]}</span></div><a class="go" href="${x[3]}" target="_blank" rel="noopener noreferrer">공식 홈페이지</a></article>`,
-        )
-        .join("");
+      const rankingEngine = window.OTT_WEBHARD_RANKING;
+      const rankingHost = document.querySelector("#ranking");
+      const rankingStatus = document.querySelector("#home-ranking-status");
+
+      function drawRanking(data) {
+        if (!rankingEngine || !rankingHost) return;
+
+        rankingHost.innerHTML = data.order
+          .map((item) => {
+            const move = rankingEngine.deltaText(item.delta);
+            const moveClass = rankingEngine.deltaClass(item.delta);
+            const logo = item.logo
+              ? `<img src="assets/${item.logo}" alt="${esc(item.name)} 로고" loading="lazy" decoding="async">`
+              : `<span class="brand-name">${esc(item.name)}</span>`;
+
+            return (
+              `<article class="rank-card">` +
+              `<div class="rank">` +
+                `<span class="home-rank-number">${item.position}</span>` +
+                `<span class="home-rank-move ${moveClass}">${move}</span>` +
+              `</div>` +
+              `<div class="brand">${logo}</div>` +
+              `<div class="rank-info"><b>${esc(item.name)}</b><span>${esc(item.description)}</span></div>` +
+              `<a class="go" href="${item.url}" target="_blank" rel="noopener noreferrer">공식 홈페이지</a>` +
+              `</article>`
+            );
+          })
+          .join("");
+      }
+
+      if (rankingEngine) {
+        rankingEngine.watch((data, changed) => {
+          if (changed) drawRanking(data);
+          if (rankingStatus) {
+            rankingStatus.textContent =
+              `${data.startLabel} 기준 · 다음 갱신 ${data.remainingLabel}`;
+          }
+        });
+      }
+
     </script>
   </body>
 </html>

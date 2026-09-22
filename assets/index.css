@@ -521,3 +521,70 @@ section:has(.guide-grid) .head h2 {
     font-size: 11px;
   }
 }
+
+
+/* ===== 홈 웹하드 순위 자동 갱신 ===== */
+.home-ranking-status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 8px 0 0;
+  color: #c8cfda;
+  font-size: var(--seed-font-size-t2);
+  line-height: 1.5;
+}
+
+.home-ranking-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #36c66f;
+  box-shadow: 0 0 0 4px rgba(54, 198, 111, 0.12);
+  flex: 0 0 auto;
+}
+
+.rank {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+}
+
+.home-rank-number {
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.home-rank-move {
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.home-rank-move.is-up {
+  color: #e0445e;
+}
+
+.home-rank-move.is-down {
+  color: #4f7bd8;
+}
+
+.home-rank-move.is-same {
+  color: #929baa;
+}
+
+@media (max-width: 600px) {
+  .home-ranking-status {
+    font-size: 12px;
+  }
+
+  .home-rank-number {
+    font-size: 18px;
+  }
+
+  .home-rank-move {
+    font-size: 9px;
+  }
+}
