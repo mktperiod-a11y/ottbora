@@ -1,0 +1,43 @@
+name: TV ranking PR validation
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tv-ranking-pr-validation
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    if: github.head_ref == 'feat/content-ranking-pipeline'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Generate drama and variety rankings
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+        run: node scripts/fetch-tv-ranking.mjs
+
+      - name: Commit generated ranking to feature branch
+        run: |
+          if [ -z "$(git status --porcelain assets/tv-ranking.json)" ]; then
+            echo "tv-ranking.json 변경 없음"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/tv-ranking.json
+          git commit -m "Validate TV ranking data"
+          git push origin HEAD:${{ github.head_ref }}
