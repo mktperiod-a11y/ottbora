@@ -1,99 +1,110 @@
-nav{
-        height: 68px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-/* 위 여백은 공용 .page-head 가 줍니다. 여기서 또 주면 겹칩니다. */
-main{
-        padding: 0 0 80px;
-      }
-/* 글만 있는 안내 카드. 두 칸으로 벌어지는 폭입니다. */
-.grid{
-  --card-min: 400px;
-  --cards-gap: 14px;
-  margin-top: 26px;
+/* 이용 가이드 — 구조는 유지하고 카드 위계만 강화합니다. */
+
+main {
+  padding: 0 0 88px;
 }
-.card{
-        padding: 23px;
-        border: 1px solid #e3e6eb;
-        border-radius: 12px;
-        background: #fff;
-      }
-.card b{
-        /* 순번은 강조할 내용이 아닙니다. 흰 바탕에서 3.50:1 이기도 했습니다. */
-        color: var(--muted);
-        font-size: 12px;
-      }
-.card h2{
-        font-size: 17px;
-      }
-.card p{
-        color: #667381;
-        font-size: 13px;
-        line-height: 1.8;
-      }
-/* Mobile responsive audit: 320px–430px */
-      @media (max-width: 600px){
-        body {
-          overflow-x: hidden;
-        }
-        nav {
-          height: auto;
-          min-height: 68px;
-          flex-wrap: wrap;
-          padding-top: 10px;
-        }
-        .logo {
-          margin-bottom: 8px;
-        }
-        .menu {
-          display: flex;
-          width: 100%;
-          gap: 5px;
-          padding: 0 0 10px;
-          overflow-x: auto;
-          scrollbar-width: none;
-        }
-        .menu::-webkit-scrollbar {
-          display: none;
-        }
-        .menu a {
-          display: block;
-          flex: 1;
-          min-width: max-content;
-          padding: 9px 7px;
-          border-radius: 7px;
-          background: #f1f3f7;
-          text-align: center;
-          font-size: 13px;
-        }
-        main {
-          padding: 36px 0 58px;
-        }
-        h1 {
-          font-size: 27px;
-          line-height: 1.25;
-        }
-        .sub {
-          font-size: 15px;
-          line-height: 1.65;
-        }
-        .card {
-          padding: 19px;
-        }
-        .card b {
-          font-size: 14px;
-        }
-        .card h2 {
-          font-size: 19px;
-        }
-        .card p {
-          font-size: 16px;
-          line-height: 1.7;
-        }
-        footer {
-          font-size: 13px;
-          line-height: 1.5;
-        }
-      }
+
+.grid {
+  --card-min: 400px;
+  --cards-gap: 16px;
+  margin-top: 30px;
+}
+
+.card {
+  min-height: 190px;
+  padding: 28px 26px 26px;
+  border: 1px solid #dfe4eb;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 6px 22px rgba(23, 32, 45, 0.035);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: #d3d9e3;
+  box-shadow: 0 12px 30px rgba(23, 32, 45, 0.065);
+}
+
+/* 넘버링은 카드의 시작점을 잡는 원형 배지로 통일합니다. */
+.card > b {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 18px;
+  border: 1.5px solid #d6dce6;
+  border-radius: 50%;
+  background: #f8f9fb;
+  color: #344154;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.card h2 {
+  margin: 0 0 12px;
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.45;
+  letter-spacing: -0.35px;
+}
+
+.card p {
+  margin: 0;
+  max-width: 94%;
+  color: #657080;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* 작은 화면에서는 공용 헤더를 그대로 두고 카드만 1열로 접습니다. */
+@media (max-width: 700px) {
+  main {
+    padding: 0 0 60px;
+  }
+
+  .grid {
+    --card-min: 100%;
+    --cards-gap: 14px;
+    margin-top: 24px;
+  }
+
+  .card {
+    min-height: auto;
+    padding: 23px 21px 22px;
+    border-radius: 16px;
+  }
+
+  .card > b {
+    width: 38px;
+    height: 38px;
+    margin-bottom: 15px;
+    font-size: 12px;
+  }
+
+  .card h2 {
+    margin-bottom: 10px;
+    font-size: 17px;
+  }
+
+  .card p {
+    max-width: none;
+    font-size: 14px;
+    line-height: 1.72;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+}
