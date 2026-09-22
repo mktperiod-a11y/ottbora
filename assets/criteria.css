@@ -27,7 +27,8 @@ h1{
         background: #fff;
       }
 .card b{
-        color: #ff3b51;
+        /* 순번은 강조할 내용이 아닙니다. 흰 바탕에서 3.50:1 이기도 했습니다. */
+        color: var(--muted);
         font-size: 12px;
       }
 .card h2{

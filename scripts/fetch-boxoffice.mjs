@@ -73,14 +73,14 @@ function fail(msg, got) {
  * 응답 이상과 달리 연결 실패는 상대 사정이라, 재시도 후에도 안 되면
  * 그대로 멈추고 기존 파일을 유지합니다.
  */
-async function getJson(url, label) {
-  const ATTEMPTS = 3;
+async function getJson(url, label, { attempts = 3, timeout = 20000 } = {}) {
+  const ATTEMPTS = attempts;
   let last;
   for (let i = 1; i <= ATTEMPTS; i += 1) {
     try {
       return await fetch(url, {
         headers: { accept: "application/json" },
-        signal: AbortSignal.timeout(20000),
+        signal: AbortSignal.timeout(timeout),
       });
     } catch (e) {
       last = e;
@@ -164,6 +164,7 @@ async function loadPrev() {
       lastSeenAt: seen,
       days: Number(m.days) || 1,
       bestRank: Number(m.bestRank) || Number(m.rank) || 99,
+      rank: null,
     });
   }
   return out;
@@ -176,7 +177,9 @@ async function loadPrev() {
  */
 async function fetchGenres(movieCd) {
   const url = `${DETAIL_ENDPOINT}?key=${encodeURIComponent(KEY)}&movieCd=${encodeURIComponent(movieCd)}`;
-  const res = await getJson(url, `상세 ${movieCd}`);
+  // 장르는 없어도 목록이 서는 보조 정보입니다. 한 편에 오래 매달리지 않도록
+  // 목록 조회보다 짧게 끊고, 실패하면 다음 실행에서 다시 시도합니다.
+  const res = await getJson(url, `상세 ${movieCd}`, { attempts: 2, timeout: 8000 });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const body = await res.json();
   if (body?.faultInfo) throw new Error(body.faultInfo.message || "faultInfo");
@@ -223,6 +226,8 @@ const sample = fetched[0].list[0];
 const missing = REQUIRED.filter((f) => !(f in sample));
 if (missing.length) fail("항목에 " + missing.join(", ") + " 필드가 없음", sample);
 
+const latestDt = fetched[0].targetDt;
+
 // 날짜별 행을 작품 단위로 먼저 모읍니다. 하루씩 바로 합치면, 이미 알고 있는
 // 기간 안쪽으로 거슬러 올라갈 때 오른 날 수를 잘못 세게 됩니다.
 const seen = new Map(); // movieCd -> { dates, top, row, rowDt }
@@ -233,6 +238,9 @@ for (const { targetDt, list } of fetched) {
     if (!e) seen.set(movieCd, (e = { dates: new Set(), top: 99, row: null, rowDt: "" }));
     e.dates.add(targetDt);
     e.top = Math.min(e.top, Number(m.rank));
+    // bestRank 는 기간 중 최고 순위입니다. 화면에 "지금 몇 위"로 쓰려면
+    // 마지막 집계일의 순위가 따로 필요합니다.
+    if (targetDt === latestDt) e.rankNow = Number(m.rank);
     // 가장 최근 날의 행을 남깁니다. 누적 관객(audiAcc)이 최신값이 되도록.
     if (targetDt > e.rowDt) {
       e.row = m;
@@ -260,6 +268,8 @@ for (const [movieCd, e] of seen) {
       lastSeenAt: last,
       days: dates.length,
       bestRank: e.top,
+      // 마지막 집계일에 차트에 없었으면 "지금 순위"는 없습니다.
+      rank: e.rankNow ?? null,
     });
     continue;
   }
@@ -271,6 +281,7 @@ for (const [movieCd, e] of seen) {
   if (first < prev.firstSeenAt) prev.firstSeenAt = first;
   if (last > prev.lastSeenAt) prev.lastSeenAt = last;
   prev.bestRank = Math.min(prev.bestRank, e.top);
+  prev.rank = e.rankNow ?? null;
   prev.title = String(m.movieNm);
   prev.openedAt = m.openDt || prev.openedAt;
   prev.audienceAcc = m.audiAcc ? Number(m.audiAcc) : prev.audienceAcc;
@@ -278,7 +289,6 @@ for (const [movieCd, e] of seen) {
 
 // ---- 2. 오래된 작품 내리기 -----------------------------------------------
 
-const latestDt = fetched[0].targetDt;
 let dropped = 0;
 for (const [movieCd, m] of movies) {
   if (daysBetween(latestDt, m.lastSeenAt) > KEEP_DAYS) {
@@ -290,8 +300,21 @@ for (const [movieCd, m] of movies) {
 // ---- 3. 장르 채우기 (아직 모르는 작품만) ---------------------------------
 
 const needGenre = [...movies.values()].filter((m) => !m.genres.length);
+/*
+ * 장르 조회는 작품 수만큼 늘어납니다. 며칠치를 한 번에 훑으면 수십 편이
+ * 한꺼번에 걸리는데, KOFIC 이 느린 날에는 이 단계만 몇십 분이 됩니다.
+ * 시간이 차면 남은 작품은 장르 없이 두고 넘어갑니다. 장르가 빈 작품은
+ * 다음 실행에서 다시 조회 대상이 되므로 스스로 메워집니다.
+ */
+const GENRE_BUDGET_MS = 6 * 60 * 1000;
+const genreStart = Date.now();
 let failed = 0;
+let skipped = 0;
 for (const m of needGenre) {
+  if (Date.now() - genreStart > GENRE_BUDGET_MS) {
+    skipped += 1;
+    continue;
+  }
   try {
     const genres = await fetchGenres(m.movieCd);
     m.genres = genres;
@@ -306,6 +329,12 @@ for (const m of needGenre) {
 }
 if (failed) {
   console.warn(`장르 조회 ${failed}/${needGenre.length}건 실패 — 해당 작품은 영화로 둡니다.`);
+}
+if (skipped) {
+  console.warn(
+    `시간이 차서 ${skipped}/${needGenre.length}건은 장르를 비워 뒀습니다. ` +
+      "다음 실행에서 다시 조회합니다.",
+  );
 }
 
 // ---- 4. 정렬하고 저장 ----------------------------------------------------
