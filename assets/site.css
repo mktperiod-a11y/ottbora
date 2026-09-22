@@ -215,6 +215,117 @@ button:focus-visible,
   }
 }
 
+/* --- 카드 그리드 --- */
+
+/*
+ * 같은 "카드를 여러 칸으로 늘어놓기" 를 페이지마다 따로 적고 있었습니다.
+ *
+ *   index   .content-grid  5칸 / .guide-grid  3칸
+ *   content .grid          5칸
+ *   webhard .criteria-grid 4칸
+ *   criteria .grid         2칸
+ *
+ * 칸 수도 끊는 지점도 제각각이라, 같은 폭에서 페이지마다 다르게
+ * 접혔습니다. 여기 하나로 모읍니다.
+ *
+ * 칸 수를 못 박지 않고 auto-fill 로 둡니다. 카드 한 장의 최소 폭만
+ * 정하면 남는 폭에 맞춰 칸이 늘고 줄어, 끊는 지점을 따로 적지
+ * 않아도 모든 폭에서 같은 규칙으로 접힙니다.
+ */
+.cards {
+  display: grid;
+  gap: var(--cards-gap, 16px);
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(var(--card-min, 200px), 100%), 1fr)
+  );
+}
+
+/* --- 구역 머리 --- */
+
+/*
+ * 페이지 머리(.page-head)와 같은 문제가 구역 머리에도 있었습니다.
+ * 같은 모양을 index.css 는 .head, webhard.css 는 .section-head 로
+ * 따로 정의했고, 눈썹 글자도 한쪽은 빨강 11px/900, 다른 쪽은 회색
+ * 13px/800 이었습니다. 화면을 옮길 때마다 같은 자리가 다르게 보입니다.
+ *
+ * 한 벌로 모읍니다. 어두운 구역만 색을 덮어 씁니다.
+ */
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 25px;
+  margin-bottom: 23px;
+}
+
+.section-head .eyebrow {
+  display: block;
+  color: var(--muted);
+  font-size: var(--seed-font-size-t3);
+  font-weight: var(--seed-font-weight-bold);
+  letter-spacing: 1.6px;
+  line-height: 1.4;
+}
+
+.section-head h2 {
+  margin: 6px 0 0;
+  font-size: 28px;
+  line-height: 1.35;
+  letter-spacing: -1.2px;
+}
+
+/* 제목 아래 보조 설명. 머리 오른쪽에 오는 설명과 구분합니다. */
+.section-head .head-note {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: var(--seed-font-size-t4);
+  line-height: 1.7;
+}
+
+/* 머리 오른쪽에 오는 것: 설명 한 줄 또는 버튼 하나. */
+.section-head > p {
+  margin: 0;
+  max-width: 350px;
+  color: var(--muted);
+  font-size: var(--seed-font-size-t4);
+}
+
+.section-head > a,
+.section-head > .head-action {
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .section-head > p {
+    max-width: 240px;
+  }
+}
+
+@media (max-width: 650px) {
+  .section-head {
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .section-head h2 {
+    font-size: 25px;
+  }
+
+  .section-head > p {
+    margin-top: 8px;
+    max-width: none;
+    font-size: var(--seed-font-size-t3);
+  }
+
+  /* 버튼은 제목 아래로 내려 세로로 쌓습니다. */
+  .section-head > a,
+  .section-head > .head-action {
+    display: inline-flex;
+    margin-top: 14px;
+  }
+}
+
 /* --- 푸터 --- */
 
 footer {
@@ -228,6 +339,11 @@ footer {
   align-items: center;
   justify-content: space-between;
   gap: 22px;
+}
+
+/* 포스터 출처 표기. TMDB 이용 약관이 요구하는 한 줄이라 지우지 않습니다. */
+#poster-credit:not(:empty)::before {
+  content: " · ";
 }
 
 .footer-row p {

@@ -90,48 +90,96 @@ function giveUp(msg, got) {
 // ---- 1. 이번 분기 목록 받기 -----------------------------------------------
 
 /**
- * 한 페이지에 25편씩 옵니다. 상위 20편을 고르려면 분기 전체를 봐야
+ * 한 페이지에 25편씩 옵니다. 상위 20편을 고르려면 후보를 넉넉히 봐야
  * members 순으로 줄 세울 수 있으므로 몇 페이지를 이어 받습니다.
  */
 const PAGES = 3;
-const raw = [];
 
-for (let page = 1; page <= PAGES; page += 1) {
-  let body;
-  try {
-    body = await getJson(
-      `${JIKAN}/seasons/now?limit=25&sfw=true&page=${page}`,
-      `Jikan 분기 목록 ${page}쪽`,
-      // 504(게이트웨이 시간초과)를 자주 돌려줍니다. 대체로 일시적이라
-      // 조금 더 참고 기다립니다. 그래도 안 되면 다음 실행에 맡깁니다.
-      { attempts: 4, timeout: 20000, backoffMs: 5000 },
-    );
-  } catch (e) {
-    if (page === 1) {
-      giveUp(
-        `Jikan 에 연결하지 못했습니다 (${e.message}). ` +
-          "일시적인 장애일 수 있으니 잠시 뒤 다시 실행해 보세요.",
+/*
+ * 받아올 곳을 두 군데 둡니다.
+ *
+ * /seasons/now 를 먼저 썼는데 실제 실행에서 계속 HTTP 504 였습니다.
+ * 4회 재시도에 50초를 기다려도 한 번도 열리지 않았습니다. 이 엔드포인트는
+ * 요청마다 분기 전체를 다시 계산해 Jikan 쪽에서 자주 시간초과가 납니다.
+ *
+ *   2026-09-22 05:49  1/4 504 → 2/4 504 → 3/4 504 → 포기
+ *
+ * /top/anime?filter=airing 은 미리 계산해 캐시해 두는 목록이라 훨씬
+ * 잘 열립니다. "지금 방영 중" 이라는 조건도 같습니다. 정렬 기준이
+ * 평점이라는 점만 다른데, 어차피 아래에서 members 로 다시 줄 세우므로
+ * 후보를 어디서 가져오든 결과는 같습니다.
+ *
+ * 앞의 것이 안 되면 뒤의 것으로 넘어갑니다. 둘 다 안 되면 그때 포기합니다.
+ */
+const SOURCES = [
+  {
+    name: "지금 방영 인기작",
+    url: (page) => `${JIKAN}/top/anime?filter=airing&limit=25&sfw=true&page=${page}`,
+  },
+  {
+    name: "이번 분기 목록",
+    url: (page) => `${JIKAN}/seasons/now?limit=25&sfw=true&page=${page}`,
+  },
+];
+
+async function collect(source) {
+  const out = [];
+  for (let page = 1; page <= PAGES; page += 1) {
+    let body;
+    try {
+      body = await getJson(
+        source.url(page),
+        `Jikan ${source.name} ${page}쪽`,
+        // 504(게이트웨이 시간초과)를 돌려줄 때가 있습니다. 대체로
+        // 일시적이라 조금 참고 기다립니다.
+        { attempts: 3, timeout: 20000, backoffMs: 4000 },
       );
+    } catch (e) {
+      // 첫 쪽부터 안 열리면 이 출처는 버리고 다음 출처로 넘어갑니다.
+      if (page === 1) throw e;
+      console.warn(`  ${page}쪽을 받지 못해 여기까지로 마칩니다: ${e.message}`);
+      break;
     }
-    console.warn(`  ${page}쪽을 받지 못해 여기까지로 마칩니다: ${e.message}`);
-    break;
-  }
 
-  if (!Array.isArray(body?.data)) {
-    giveUp(`${page}쪽의 data 가 배열이 아님`, body);
+    if (!Array.isArray(body?.data)) {
+      throw new Error(`${page}쪽의 data 가 배열이 아님`);
+    }
+    out.push(...body.data);
+    if (!body.pagination?.has_next_page) break;
+    await sleep(GAP_MS);
   }
-  raw.push(...body.data);
-  if (!body.pagination?.has_next_page) break;
-  await sleep(GAP_MS);
+  return out;
 }
 
-if (!raw.length) giveUp("이번 분기 목록이 비어 있습니다.");
+let raw = [];
+const failures = [];
+for (const source of SOURCES) {
+  try {
+    raw = await collect(source);
+    if (raw.length) {
+      console.log(`Jikan ${source.name} 에서 ${raw.length}편을 받았습니다.`);
+      break;
+    }
+    failures.push(`${source.name}: 빈 목록`);
+  } catch (e) {
+    failures.push(`${source.name}: ${e.message}`);
+    console.warn(`  ${source.name} 실패 — 다음 출처로 넘어갑니다: ${e.message}`);
+  }
+}
+
+if (!raw.length) {
+  giveUp(
+    "Jikan 의 어느 목록도 받지 못했습니다 (" +
+      failures.join(" / ") +
+      "). 일시적인 장애일 수 있으니 잠시 뒤 다시 실행해 보세요.",
+  );
+}
 
 const REQUIRED = ["mal_id", "title", "images"];
 const missing = REQUIRED.filter((f) => !(f in raw[0]));
 if (missing.length) giveUp("항목에 " + missing.join(", ") + " 가 없음", raw[0]);
 
-console.log(`이번 분기 ${raw.length}편을 받았습니다.`);
+
 
 // ---- 2. 고르고 줄 세우기 ---------------------------------------------------
 

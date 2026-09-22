@@ -63,33 +63,11 @@ nav{
 .section{
         padding: 68px 0;
       }
-.head{
-        display: flex;
-        justify-content: space-between;
-        align-items: end;
-        margin-bottom: 23px;
-      }
-.head span{
-        color: var(--red);
-        font-size: 11px;
-        font-weight: 900;
-        letter-spacing: 1.5px;
-      }
-.head h2{
-        margin: 7px 0 0;
-        font-size: 28px;
-        letter-spacing: -1.5px;
-      }
-.head a{
-        color: #6d7683;
-        font-size: 12px;
-        font-weight: 800;
-      }
+/* 콘텐츠ZONE 목록과 같은 포스터 카드입니다. */
 .content-grid{
-        display: grid;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-        gap: 15px;
-      }
+  --card-min: 180px;
+  --cards-gap: 15px;
+}
 .content-card{
         overflow: hidden;
         border-radius: 11px;
@@ -226,17 +204,36 @@ nav{
         background: #191d27;
         color: #fff;
       }
-/* 이 섹션이 이끌고 싶은 행동입니다. 반복되는 카드 버튼보다 또렷해야 합니다.
-   #aab0ba 는 #191d27 위에서 8.0:1, #d2d7de 는 12.2:1 입니다. */
-.dark .head a{
-        color: #d2d7de;
-        font-size: var(--seed-font-size-t3);
-      }
+/*
+ * 어두운 구역 머리. 공용 .section-head 는 밝은 배경 기준이라
+ * 여기서만 색을 덮어 씁니다. #d2d7de 는 #191d27 위에서 12.2:1 입니다.
+ */
+.dark .section-head .eyebrow{
+  color: #d2d7de;
+}
+
+/*
+ * 이 구역이 이끌고 싶은 행동입니다. 전에는 화살표 붙은 글자 링크라
+ * 누를 수 있는 것처럼 보이지 않았습니다.
+ * 강조색은 네 자리에만 쓰기로 했으므로(site.css 주석) 여기서는
+ * 흰 판을 씁니다. 어두운 바탕에서 가장 또렷하고, 빨강을 하나 더
+ * 늘리지 않습니다.
+ */
+.dark .section-head .head-action{
+  background: #fff;
+  border-color: #fff;
+  color: var(--ink);
+}
+
+.dark .section-head .head-action:hover{
+  background: #e8ebf0;
+  border-color: #e8ebf0;
+}
+/* 글만 있는 안내 카드. 세 줄쯤 들어가는 폭입니다. */
 .guide-grid{
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 13px;
-      }
+  --card-min: 260px;
+  --cards-gap: 13px;
+}
 .guide-grid article{
         padding: 21px;
         border: 1px solid #ffffff13;
@@ -265,11 +262,7 @@ nav{
           font-size: 38px;
         }.poster-stack{
           max-width: 420px;
-        }.content-grid{
-          grid-template-columns: repeat(3, minmax(0, 1fr));
         }.ranking{
-          grid-template-columns: 1fr;
-        }.guide-grid{
           grid-template-columns: 1fr;
         }}
 @media (max-width: 480px){.hero h1{
@@ -460,27 +453,6 @@ a:focus-visible,
 
 /* ===== 홈 화면 정리 ===== */
 
-/* 추천 순서 고지는 목록 아래로 내렸습니다. */
-.rank-note {
-  margin: 18px 0 0;
-  color: #c0c8d4;
-  font-size: var(--seed-font-size-t4);
-  line-height: 1.7;
-}
-
-.rank-note a {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-/* 섹션 제목 옆 부제 */
-.head-note {
-  margin: 6px 0 0;
-  font-size: var(--seed-font-size-t4);
-  line-height: 1.6;
-  color: var(--muted);
-}
-
 /* 순위 카드의 공식 홈페이지 버튼이 9px 이었습니다. */
 .rank-card a {
   font-size: var(--seed-font-size-t2);
@@ -528,8 +500,8 @@ section:has(.guide-grid) .head h2 {
 /* 홈의 미리보기 카드는 좁은 화면에서 두 장씩. */
 @media (max-width: 560px) {
   .content-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
+    --card-min: 140px;
+    --cards-gap: 10px;
   }
 
   .content-body {

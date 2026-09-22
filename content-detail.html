@@ -9,6 +9,7 @@
       content="작품 줄거리, 출연진과 관전 포인트를 확인하세요."
     />
     <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="stylesheet" href="assets/fonts/gmarketsans/gmarketsans.css" />
     <link
       rel="stylesheet"
       href="assets/fonts/pretendard/pretendardvariable-dynamic-subset.css"
@@ -46,6 +47,7 @@
             <h2>관전 포인트</h2>
             <ul id="points"></ul>
             <div id="watch-block"></div>
+            <div id="booking-block"></div>
             <div id="official-action"></div>
             <p class="credit" id="credit"></p>
           </div>
@@ -54,7 +56,7 @@
     </main>
     <footer>
       <div class="wrap footer-row">
-        <p>© 2026 OTT BORA. 작품 정보는 이해를 돕기 위한 요약입니다.</p>
+        <p>© 2026 OTT BORA</p>
       </div>
     </footer>
     <script src="assets/posters-featured-20260828.js"></script>
@@ -73,6 +75,14 @@
         "www.megabox.co.kr",
         "www.lottecinema.co.kr",
       ]);
+      // 극장 예매 링크는 별도 목록으로 둡니다. 시청 경로(OTT)와 성격이
+      // 다르고, 지금 극장에 걸려 있을 때만 나타납니다.
+      const CINEMA_HOSTS = new Set([
+        "cgv.co.kr",
+        "www.megabox.co.kr",
+        "www.lottecinema.co.kr",
+      ]);
+
       const OFFICIAL_HOSTS = new Set([
         "www.netflix.com",
         "www.sonypictures.com",
@@ -99,7 +109,7 @@
 
       const id = new URLSearchParams(location.search).get("id") || "";
 
-      function renderWatch(w, note) {
+      function renderWatch(w) {
         const host = document.querySelector("#watch-block");
         const links = (w.watch || [])
           .map((x) => ({ ...x, href: safe(x.url, WATCH_HOSTS) }))
@@ -123,7 +133,6 @@
             )
             .join("") +
           "</div>" +
-          `<p class="pending">${note} 확인일 ${links[0].verifiedAt || "-"}.</p>` +
           // 제휴 웹하드는 해당 작품의 제공이 확인된 경우에만 나타납니다.
           ((w.partner || []).length
             ? '<div class="watch-links partner-inline">' +
@@ -137,9 +146,84 @@
             : "");
       }
 
-      fetch("assets/content-data.json")
-        .then((r) => r.json())
-        .then((d) => {
+      /** 제목 비교용. 공백과 문장부호를 떼고 맞춥니다. */
+      const key = (t) =>
+        String(t || "")
+          .toLowerCase()
+          .replace(/[^0-9a-z가-힣]/g, "");
+
+      /**
+       * 박스오피스 집계가 오래되면 예매를 권하지 않습니다.
+       * 갱신이 멈춘 채로 두면 이미 내려간 영화에 예매 링크가 계속
+       * 붙게 되는데, 그건 사실이 아닌 안내가 됩니다.
+       */
+      const STALE_DAYS = 10;
+      function isFresh(latestDt) {
+        const m = String(latestDt || "").match(/^(\d{4})-?(\d{2})-?(\d{2})$/);
+        if (!m) return false;
+        const then = Date.UTC(+m[1], +m[2] - 1, +m[3]);
+        const now = new Date();
+        const today = Date.UTC(
+          now.getUTCFullYear(),
+          now.getUTCMonth(),
+          now.getUTCDate(),
+        );
+        const age = (today - then) / 86400000;
+        return age >= 0 && age <= STALE_DAYS;
+      }
+
+      /*
+       * 지금 극장에 걸려 있는 작품이면 예매처를 답니다.
+       *
+       * 전에는 목록 카드마다 예매 칩 세 개가 붙어 있었습니다. 카드가
+       * 스무 장이면 예매 칩이 예순 개라, 정작 무슨 작품인지가 안 보였습니다.
+       * 예매는 "이 작품을 보기로 한 다음" 의 행동이므로 상세 페이지로
+       * 옮깁니다.
+       *
+       * 상영 여부는 KOFIC 박스오피스의 showing 을 그대로 씁니다.
+       * 우리가 짐작하지 않습니다.
+       */
+      function renderBooking(w, box, cinema) {
+        const host = document.querySelector("#booking-block");
+        if (!host) return;
+        if (w.type !== "영화" || !isFresh(box?.latestDt)) return;
+
+        const now = (box?.movies || []).find(
+          (m) => m.showing && key(m.title) === key(w.title),
+        );
+        if (!now) return;
+
+        const chains = (cinema?.chains || [])
+          .map((c) => ({ name: c.name, href: safe(c.bookingUrl, CINEMA_HOSTS) }))
+          .filter((c) => c.href);
+        if (!chains.length) return;
+
+        host.innerHTML =
+          "<h2>예매</h2>" +
+          '<div class="watch-links">' +
+          chains
+            .map(
+              (c) =>
+                `<a class="${BTN}" href="${c.href}" target="_blank"` +
+                ' rel="noopener noreferrer">' +
+                `${c.name} 예매</a>`,
+            )
+            .join("") +
+          "</div>";
+      }
+
+      /** 부가 데이터는 없어도 페이지가 뜨도록 따로 받습니다. */
+      const optional = (url) =>
+        fetch(url)
+          .then((r) => (r.ok ? r.json() : null))
+          .catch(() => null);
+
+      Promise.all([
+        fetch("assets/content-data.json").then((r) => r.json()),
+        optional("assets/boxoffice.json"),
+        optional("assets/cinema-links.json"),
+      ])
+        .then(([d, box, cinema]) => {
           const w = d.works.find((x) => x.id === id) || d.works[0];
           document.title = w.title + " | 콘텐츠ZONE - 오티티보라";
           const img = document.querySelector("#poster");
@@ -173,7 +257,8 @@
             ul.appendChild(li);
           });
 
-          renderWatch(w, d.watchNote);
+          renderWatch(w);
+          renderBooking(w, box, cinema);
 
           const off = w.official && safe(w.official.url, OFFICIAL_HOSTS);
           if (off) {

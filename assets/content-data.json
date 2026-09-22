@@ -1,8 +1,5 @@
 {
   "checkedAt": "2026-09-21",
-  "selectionPolicy": "공개된 순위·편성 자료로 확인할 수 있는 작품만 싣습니다.",
-  "partnerDisclosure": "해당 작품의 제공이 확인된 웹하드만 카드에 표시합니다.",
-  "watchNote": "시청 경로는 확인일 기준이며, 시점에 따라 달라질 수 있습니다.",
   "works": [
     {
       "id": "spider-man-brand-new-day",
@@ -76,8 +73,7 @@
       "watch": [
         {
           "name": "넷플릭스",
-          "url": "https://www.netflix.com/title/81768820",
-          "verifiedAt": "2026-08-28"
+          "url": "https://www.netflix.com/title/81768820"
         }
       ],
       "partner": []
@@ -104,8 +100,7 @@
       "watch": [
         {
           "name": "넷플릭스",
-          "url": "https://www.netflix.com/kr/title/82048302",
-          "verifiedAt": "2026-08-28"
+          "url": "https://www.netflix.com/kr/title/82048302"
         }
       ],
       "partner": []
@@ -132,8 +127,7 @@
       "watch": [
         {
           "name": "넷플릭스",
-          "url": "https://www.netflix.com/kr/title/82682401",
-          "verifiedAt": "2026-08-28"
+          "url": "https://www.netflix.com/kr/title/82682401"
         }
       ],
       "partner": []
