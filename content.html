@@ -332,7 +332,9 @@
       /** 손으로 고른 작품 — 포스터가 있고 상세 페이지로 넘어갑니다. */
       function pickedCard(w) {
         const genre = String(w.genre || "").split(" · ")[0];
-        const tags = [credit(w.title, w.pickedBy), providerTag(w)];
+        // 제공처는 선정 이유가 아니므로 태그에서 빼고, 수동 큐레이션은
+        // 모든 카드가 최소 한 가지 선정 근거를 갖도록 합니다.
+        const tags = [credit(w.title, w.pickedBy || "에디터 선정")];
         return (
           `<a class="card" href="content-detail.html?id=${encodeURIComponent(w.id)}">` +
           `<span class="thumb">` +
