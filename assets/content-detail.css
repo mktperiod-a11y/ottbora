@@ -7,11 +7,14 @@ nav{
 main{
         padding: 46px 0 80px;
       }
+/* --r 은 어디에도 정의돼 있지 않아 색이 먹지 않았습니다.
+   다른 페이지의 머리 라벨(.page-head .label)과 같은 값으로 맞춥니다. */
 .ey{
-        color: var(--r);
-        font-size: var(--seed-font-size-t1);
-        font-weight: 900;
-        letter-spacing: 1.5px;
+        color: var(--muted);
+        font-size: var(--seed-font-size-t3);
+        font-weight: var(--seed-font-weight-bold);
+        letter-spacing: 1.6px;
+        line-height: 1.4;
       }
 h1{
         margin: 8px 0 10px;

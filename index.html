@@ -146,18 +146,35 @@
     <script src="assets/posters-featured-20260828.js"></script>
     <script>
       const posterSource = (id) => (window.OTT_POSTERS || {})[id] || "";
-      // [제목, 장르, id, 출처 칩]
+      // [제목, 장르, id, 태그들]
+      // 태그는 "왜 실렸는가" 만 말합니다. 장르는 제목 아래 부제 자리에 둡니다.
+      // 콘텐츠ZONE 카드와 같은 자리, 같은 모양을 씁니다.
       const picks = [
         [
           "스파이더맨: 브랜드 뉴 데이",
           "액션 · 어드벤처",
           "spider-man-brand-new-day",
-          "극장 흥행작",
+          ["박스오피스 보도"],
         ],
-        ["오디세이", "신화 · 모험", "the-odyssey-2026", "극장 흥행작"],
-        ["Blood Sacrifice", "범죄 스릴러", "blood-sacrifice", "넷플릭스 주간"],
-        ["이런 엿같은 사랑", "로맨틱 코미디", "our-sticky-love", "넷플릭스 주간"],
-        ["오싹한 연애", "로맨틱 코미디", "spooky-in-love", "넷플릭스 주간"],
+        ["오디세이", "신화 · 모험", "the-odyssey-2026", ["박스오피스 보도"]],
+        [
+          "Blood Sacrifice",
+          "범죄 스릴러",
+          "blood-sacrifice",
+          ["주간 톱10", "넷플릭스 시리즈"],
+        ],
+        [
+          "이런 엿같은 사랑",
+          "로맨틱 코미디",
+          "our-sticky-love",
+          ["주간 톱10", "넷플릭스 시리즈"],
+        ],
+        [
+          "오싹한 연애",
+          "로맨틱 코미디",
+          "spooky-in-love",
+          ["주간 톱10", "넷플릭스 시리즈"],
+        ],
       ];
       /* 인라인 핸들러에서 전역 const 를 참조하면 브라우저에 따라 달라집니다.
          이름 있는 함수로 두면 확실합니다. */
@@ -167,17 +184,94 @@
       };
       const fallback =
         "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2 3'%3E%3Crect width='2' height='3' fill='%23eef1f5'/%3E%3C/svg%3E";
-      document.querySelector("#picks").innerHTML = picks
-        .map(
-          ([title, genre, id, tag]) =>
-            `<a class="content-card" href="content-detail.html?id=${id}">` +
-            `<span class="thumb"><img src="${posterSource(id)}" alt="${title} 포스터"` +
-            ` loading="lazy" referrerpolicy="no-referrer"` +
-            ` onerror="ottImgFail(this)">` +
-            `<span class="rank-chip">${tag}</span></span>` +
-            `<div class="content-body"><b>${title}</b><p>${genre}</p></div></a>`,
-        )
-        .join("");
+
+      const esc = (s) =>
+        String(s).replace(
+          /[&<>"']/g,
+          (c) =>
+            ({
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              '"': "&quot;",
+              "'": "&#39;",
+            })[c],
+        );
+
+      /** 카드 하나에 붙는 태그 수. 콘텐츠ZONE 과 같은 규칙입니다. */
+      const MAX_TAGS = 3;
+      const tagRow = (tags) => {
+        const shown = tags.filter(Boolean).slice(0, MAX_TAGS);
+        if (!shown.length) return "";
+        return (
+          `<div class="tags">` +
+          shown.map((t) => `<span class="tag">#${esc(t)}</span>`).join("") +
+          `</div>`
+        );
+      };
+
+      const drawPicks = () =>
+        (document.querySelector("#picks").innerHTML = picks
+          .map(
+            ([title, genre, id, tags]) =>
+              `<a class="content-card" href="content-detail.html?id=${id}">` +
+              `<span class="thumb"><img src="${posterSource(id)}" alt="${esc(title)} 포스터"` +
+              ` loading="lazy" referrerpolicy="no-referrer"` +
+              ` onerror="ottImgFail(this)"></span>` +
+              `<div class="content-body"><b>${esc(title)}</b>` +
+              `<p>${esc(genre)}</p>` +
+              tagRow(tags) +
+              `</div></a>`,
+          )
+          .join(""));
+      drawPicks();
+
+      /*
+       * 박스오피스 3위 안에 들어 있으면 편집 문구 대신 오늘 순위를 씁니다.
+       * 콘텐츠ZONE 이 쓰는 규칙과 같게 맞춥니다. 같은 작품이 두 화면에서
+       * 다른 근거로 읽히면 안 되기 때문입니다.
+       *
+       * 먼저 편집 문구로 그려 두고, 자료가 오면 그때 갈아 끼웁니다.
+       * 자료를 못 받아도 카드는 그대로 남습니다.
+       */
+      const TOP_N = 3;
+      const STALE_DAYS = 10; // 집계가 오래되면 순위를 쓰지 않습니다.
+      const titleKey = (t) =>
+        String(t || "")
+          .toLowerCase()
+          .replace(/[^0-9a-z가-힣]/g, "");
+
+      const isFresh = (latestDt) => {
+        const m = String(latestDt || "").match(/^(\d{4})(\d{2})(\d{2})$/);
+        if (!m) return false;
+        const then = Date.UTC(+m[1], +m[2] - 1, +m[3]);
+        const now = new Date();
+        const today = Date.UTC(
+          now.getFullYear(),
+          now.getMonth(),
+          now.getDate(),
+        );
+        return (today - then) / 86400000 <= STALE_DAYS;
+      };
+
+      fetch("assets/boxoffice.json")
+        .then((r) => (r.ok ? r.json() : null))
+        .then((data) => {
+          if (!data || !isFresh(data.latestDt)) return;
+          const rankByTitle = new Map();
+          for (const m of data.movies || [])
+            if (m.rank) rankByTitle.set(titleKey(m.title), m.rank);
+          let changed = false;
+          for (const p of picks) {
+            const r = rankByTitle.get(titleKey(p[0]));
+            if (!r || r > TOP_N) continue;
+            p[3] = [`국내 박스오피스 ${r}위`, ...p[3].slice(1)];
+            changed = true;
+          }
+          if (changed) drawPicks();
+        })
+        .catch(() => {});
+
       document
         .querySelectorAll("[data-poster]")
         .forEach((img) => (img.src = posterSource(img.dataset.poster)));

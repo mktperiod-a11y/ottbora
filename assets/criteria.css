@@ -4,15 +4,9 @@ nav{
         align-items: center;
         justify-content: space-between;
       }
+/* 위 여백은 공용 .page-head 가 줍니다. 여기서 또 주면 겹칩니다. */
 main{
-        padding: 50px 0 80px;
-      }
-h1{
-        font-size: 31px;
-      }
-.sub{
-        color: #74808d;
-        font-size: 13px;
+        padding: 0 0 80px;
       }
 .grid{
         display: grid;
