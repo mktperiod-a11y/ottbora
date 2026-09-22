@@ -25,7 +25,7 @@ const TMDB = process.env.TMDB_API_KEY;
 const TMDB_SEARCH = "https://api.themoviedb.org/3/search/tv";
 
 /** 화면에 보여 줄 편수. */
-const KEEP = 20;
+const KEEP = 60;
 
 /**
  * 목록에 넣은 사람이 이보다 적으면 뺍니다.
@@ -90,7 +90,7 @@ function giveUp(msg, got) {
 // ---- 1. 이번 분기 목록 받기 -----------------------------------------------
 
 /**
- * 한 페이지에 25편씩 옵니다. 상위 20편을 고르려면 분기 전체를 봐야
+ * 한 페이지에 25편씩 옵니다. 최대 60편을 고르려면 분기 전체를 봐야
  * members 순으로 줄 세울 수 있으므로 몇 페이지를 이어 받습니다.
  */
 const PAGES = 3;
@@ -246,6 +246,13 @@ for (const a of picked) {
     poster,
     posterCredit: "MyAnimeList",
     malUrl: a.url || `https://myanimelist.net/anime/${a.mal_id}`,
+    rankingSource: {
+      provider: "MyAnimeList",
+      metric: "members",
+      value: a.members ?? null,
+      observedAt: new Date().toISOString().slice(0, 10),
+    },
+    metadataSource: "Jikan",
   });
 }
 
