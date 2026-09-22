@@ -28,11 +28,6 @@ h4{font-size: 14px;margin:0 0 9px}
 .featured .reason{background:var(--rose)}
 .reason p{margin:0;font-size: 15px;line-height:1.65}
 .provider-bottom{margin-top:auto;display:flex;align-items:flex-start;gap:16px;padding-top:13px;border-top:1px solid var(--line)}
-.source{flex:1;font-size: 13px;min-width:0;margin-top:12px;color:var(--muted)}
-.source summary{cursor:pointer;list-style-position:inside}
-.source p{margin:9px 0;font-size: 13px;overflow-wrap:anywhere}
-.source a{color:var(--blue);text-decoration:underline;text-underline-offset:3px}
-.source span{font-size: 12px}
 .comparison-section{background:#edf0f5;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:45px 0}
 .table-wrap{border:1px solid #d8dfe8;background:#fff;border-radius:10px;overflow:auto}
 table{border-collapse:collapse;width:100%;font-size: 15px;min-width:680px;text-align:left}
@@ -73,4 +68,4 @@ tbody a:hover{color:var(--accent)}
 .faq{background:#fff;margin-bottom:10px}
 @media(max-width:900px){.provider{padding:19px}.provider-top{gap:12px}.brand{width:150px}.rank{font-size:34px}}
 @media(max-width:650px){.intro{padding-top:32px}.intro-row{display:block}h1{font-size:36px;letter-spacing:-1.8px}.lead{font-size: 16px}.section-links{gap:7px;margin-top:22px}.section{padding-top:35px;padding-bottom:36px}.provider-grid{grid-template-columns:1fr;gap:16px}.provider{padding:20px;scroll-margin-top:140px}.brand{width:170px}.provider-top{gap:16px}.rank{font-size:38px}.provider h3{font-size:23px}.facts ul,.reason p{font-size: 15px}.comparison-section{padding:34px 0}th,td{padding:13px 16px}.method-section{padding:35px 0}.method-intro{grid-template-columns:1fr;gap:16px}.criteria-grid{--cards-gap:10px;margin-top:23px}.criteria-grid article{padding:16px 13px}.criteria-grid h3{font-size: 16px}.criteria-grid p{font-size: 13px}}
-@media(max-width:360px){h1{font-size:32px}.provider{padding:17px}.provider-top{gap:10px}.brand{width:142px}.rank{font-size:32px}.provider-bottom{gap:12px}.source{font-size: 12px}}
+@media(max-width:360px){h1{font-size:32px}.provider{padding:17px}.provider-top{gap:10px}.brand{width:142px}.rank{font-size:32px}.provider-bottom{gap:12px}}
