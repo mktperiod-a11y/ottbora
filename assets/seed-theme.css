@@ -45,9 +45,14 @@
   --seed-color-fg-neutral-subtle: #657080; /* 기존 --muted */
   --seed-color-fg-neutral-muted: #657080; /* 기존 --muted */
 
-  /* 서체는 SEED 기본값(base.css 의 --seed-font-family)을 그대로 씁니다.
-     애플 기기에서는 시스템 서체, 그 외에는 아래에서 불러오는
-     Pretendard Variable 이 잡히는 native-first 스택입니다. */
+  /* 서체는 GMarketSans 를 먼저 씁니다. 글꼴이 아직 안 왔거나 없는 글자는
+     그 뒤 스택(시스템 서체 → Pretendard Variable)으로 내려갑니다.
+     SEED 기본 스택(base.css 의 --seed-font-family)을 앞에 한 겹 얹는 형태라,
+     SEED 가 값을 바꿔도 대체 서체는 따라갑니다. */
+  --seed-font-family: "GMarketSans", -apple-system, BlinkMacSystemFont,
+    "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 /*

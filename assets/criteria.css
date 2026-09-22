@@ -8,12 +8,12 @@ nav{
 main{
         padding: 0 0 80px;
       }
+/* 글만 있는 안내 카드. 두 칸으로 벌어지는 폭입니다. */
 .grid{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 14px;
-        margin-top: 26px;
-      }
+  --card-min: 400px;
+  --cards-gap: 14px;
+  margin-top: 26px;
+}
 .card{
         padding: 23px;
         border: 1px solid #e3e6eb;
@@ -33,9 +33,6 @@ main{
         font-size: 13px;
         line-height: 1.8;
       }
-@media (max-width: 550px){.grid{
-          grid-template-columns: 1fr;
-        }}
 /* Mobile responsive audit: 320px–430px */
       @media (max-width: 600px){
         body {
