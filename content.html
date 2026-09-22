@@ -540,29 +540,6 @@
           .sort((a, b) => Number(b.showing) - Number(a.showing))
           .map((m) => ({ kind: "box", m }));
 
-        // 영화 탭은 "현재 상영 중" 기준으로만 보여 줍니다.
-        // 수동 선정 영화도 KOFIC 현재 상영작과 제목이 맞을 때만 남깁니다.
-        if (active === "영화") {
-          const showingKeys = new Set(
-            (DATA.boxoffice || [])
-              .filter((m) => m.type === "영화" && m.showing)
-              .map((m) => key(m.title)),
-          );
-          const pickedShowing = picked.filter((x) => showingKeys.has(key(x.w.title)));
-          const pickedShowingKeys = new Set(
-            pickedShowing.map((x) => key(x.w.title)),
-          );
-          const boxShowing = (DATA.boxoffice || [])
-            .filter(
-              (m) =>
-                m.type === "영화" &&
-                m.showing &&
-                !pickedShowingKeys.has(key(m.title)),
-            )
-            .map((m) => ({ kind: "box", m }));
-          return [...pickedShowing, ...boxShowing];
-        }
-
         // 드라마·예능 탭은 자동 데이터가 주인공입니다. 손으로 고른 작품은
         // TMDB 에 없는 것들이라 뒤에 붙여 함께 남깁니다.
         if (active === "드라마" || active === "예능") return [...tv, ...picked];
@@ -605,8 +582,8 @@
         const host = document.querySelector("#sections");
 
         if (!shown.length) {
-          const countLabel = active === "영화" ? "상영영화" : active;
-          document.querySelector("#count").textContent = `${countLabel} 0건`;
+          document.querySelector("#count").textContent =
+            active === "전체" ? "전체 0건" : `${active} 상위 0건`;
           host.innerHTML = `<p class="empty">${esc(active)} 분류는 아직 준비 중입니다.</p>`;
           return;
         }
@@ -618,13 +595,12 @@
          * 읽는 사람이 알 길이 없었습니다. 화면에 실제로 있는 수만
          * 적고, 잘렸을 때만 어디로 가면 나머지를 볼 수 있는지 말합니다.
          */
-        const countLabel = active === "영화" ? "상영영화" : active;
         document.querySelector("#count").textContent =
-          all.length <= capped.length
-            ? `${countLabel} ${capped.length}건`
-            : active === "전체"
-              ? `${countLabel} ${capped.length}건 · 나머지는 분류 탭에서`
-              : `${countLabel} 상위 ${capped.length}건`;
+          active === "전체"
+            ? all.length <= capped.length
+              ? `전체 ${capped.length}건`
+              : `전체 ${capped.length}건 · 나머지는 분류 탭에서`
+            : `${active} 상위 ${capped.length}건`;
 
         host.innerHTML =
           `<div class="cards grid">` +
