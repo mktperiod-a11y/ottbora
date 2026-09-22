@@ -241,32 +241,6 @@ a:focus-visible,
   border-radius: var(--seed-radius-r3);
 }
 
-/* 제휴 안내는 작품 카드와 분리해 페이지 하단에 둡니다.
-   특정 작품이 이 웹하드에서 제공된다는 뜻으로 읽히지 않게 하기 위한 배치입니다. */
-.partner {
-  margin: 46px 0 10px;
-  padding: 24px;
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: var(--seed-radius-r3);
-}
-
-.partner h2 {
-  margin: 0;
-  font-size: var(--seed-font-size-t5);
-}
-
-.partner p {
-  margin: 8px 0 0;
-  font-size: var(--seed-font-size-t4);
-  color: var(--muted);
-  line-height: 1.8;
-}
-
-.partner-links {
-  margin-top: 16px;
-}
-
 /* 건수는 탭 종류와 화면 폭에 관계없이 항상 탭 아래에 둡니다. */
 .filter-row {
   display: grid;
