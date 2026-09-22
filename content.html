@@ -68,7 +68,7 @@
     </main>
     <footer>
       <div class="wrap footer-row">
-        <p>© 2026 OTT BORA<span id="poster-credit"></span></p>
+        <p>© 2026 OTT BORA<span id="poster-credit"></span><span class="content-sources"> · 데이터 출처 <a href="https://www.kobis.or.kr/kobisopenapi/" target="_blank" rel="noopener noreferrer">KOFIC</a> · <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a> · <a href="https://anilist.co/" target="_blank" rel="noopener noreferrer">AniList</a></span></p>
       </div>
     </footer>
     <script src="assets/posters-featured-20260828.js"></script>
@@ -133,16 +133,6 @@
 
       // 바깥으로 나가는 링크는 https 인지와 호스트가 목록에 있는지를
       // 확인한 뒤에만 겁니다.
-      const MAL_HOSTS = new Set(["myanimelist.net", "www.myanimelist.net"]);
-      const safe = (raw, allow) => {
-        try {
-          const u = new URL(raw);
-          return u.protocol === "https:" && allow.has(u.hostname) ? u.href : "";
-        } catch {
-          return "";
-        }
-      };
-
       let DATA = null;
       let RANKS = new Map(); // 제목 → 지금 박스오피스 순위
       let FRESH = false; // 박스오피스 집계가 순위를 말할 만큼 최근인가
@@ -377,22 +367,22 @@
 
         if (m.poster) {
           return (
-            `<article class="card">` +
+            `<a class="card" href="content-detail.html?id=${encodeURIComponent(`kofic-${m.movieCd}`)}">` +
             `<span class="thumb">` +
             `<img src="${esc(m.poster)}" alt="${esc(m.title)} 포스터" loading="lazy"` +
             ` onerror="ottImgFail(this)">` +
             `</span>` + body +
-            `</article>`
+            `</a>`
           );
         }
 
         // 포스터가 아직 없으면 제목을 판 한가운데 앉힌 글자 카드로 둡니다.
         return (
-          `<article class="card card--text">` +
+          `<a class="card card--text" href="content-detail.html?id=${encodeURIComponent(`kofic-${m.movieCd}`)}">` +
           `<div class="panel panel--t${tint(m.movieCd)}">` +
           `<b class="panel-title">${esc(m.title)}</b>` +
           `</div>` + body +
-          `</article>`
+          `</a>`
         );
       }
 
@@ -414,20 +404,8 @@
          * 어디서 온 평점인지는 항목이 들고 옵니다(AniList / MyAnimeList).
          */
         const tags = [
-          a.score ? `${a.scoreBy || "MAL"} 평점 ${a.score}` : "지금 방영 중",
+          a.score ? `평점 ${a.score}` : "지금 방영 중",
         ];
-
-        // MAL 번호가 있는 작품만 링크가 생깁니다. 화면이 허용하는
-        // 호스트가 myanimelist.net 뿐이라 그 밖은 링크 없이 둡니다.
-        const href = safe(a.malUrl, MAL_HOSTS);
-        const link = href
-          ? `<div class="sub-action">` +
-            `<span class="sub-action-label">출처</span>` +
-            `<a class="${CHIP} book-chip" href="${href}"` +
-            ` target="_blank" rel="noopener noreferrer"` +
-            ` title="MyAnimeList 작품 페이지로 이동합니다">MyAnimeList</a>` +
-            `</div>`
-          : "";
 
         const body =
           `<div class="cb"><b>${esc(a.title)}</b>` +
@@ -437,25 +415,25 @@
             a.episodes ? `${a.episodes}화` : "",
           ) +
           tagRow(tags) +
-          `</div>` + link;
+          `</div>`;
 
         if (a.poster) {
           return (
-            `<article class="card">` +
+            `<a class="card" href="content-detail.html?id=${encodeURIComponent(`anime-${a.malId}`)}">` +
             `<span class="thumb">` +
             `<img src="${esc(a.poster)}" alt="${esc(a.title)} 포스터" loading="lazy"` +
             ` onerror="ottImgFail(this)">` +
             `</span>` + body +
-            `</article>`
+            `</a>`
           );
         }
 
         return (
-          `<article class="card card--text">` +
+          `<a class="card card--text" href="content-detail.html?id=${encodeURIComponent(`anime-${a.malId}`)}">` +
           `<div class="panel panel--t${tint(String(a.malId))}">` +
           `<b class="panel-title">${esc(a.title)}</b>` +
           `</div>` + body +
-          `</article>`
+          `</a>`
         );
       }
 
@@ -479,7 +457,7 @@
             ? opened(w.firstAirDate, "첫 방송")
             : "";
 
-        const tags = [w.rank ? `TMDB 인기 ${w.rank}위` : "TMDB 인기"];
+        const tags = [w.rank ? `인기 ${w.rank}위` : "인기"];
 
         const body =
           `<div class="cb"><b>${esc(w.title)}</b>` +
@@ -489,21 +467,21 @@
 
         if (w.poster) {
           return (
-            `<article class="card">` +
+            `<a class="card" href="content-detail.html?id=${encodeURIComponent(`tmdb-${w.tmdbId}`)}">` +
             `<span class="thumb">` +
             `<img src="${esc(w.poster)}" alt="${esc(w.title)} 포스터" loading="lazy"` +
             ` referrerpolicy="no-referrer" onerror="ottImgFail(this)">` +
             `</span>` + body +
-            `</article>`
+            `</a>`
           );
         }
 
         return (
-          `<article class="card card--text">` +
+          `<a class="card card--text" href="content-detail.html?id=${encodeURIComponent(`tmdb-${w.tmdbId}`)}">` +
           `<div class="panel panel--t${tint(String(w.tmdbId))}">` +
           `<b class="panel-title">${esc(w.title)}</b>` +
           `</div>` + body +
-          `</article>`
+          `</a>`
         );
       }
 

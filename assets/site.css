@@ -371,6 +371,12 @@ footer {
   font-size: var(--seed-font-size-t2);
 }
 
+/* 콘텐츠 데이터 출처는 저작권/데이터 고지라 푸터와 같은 작은 위계로 둡니다. */
+.content-sources a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 /* --- 반응형 --- */
 
 @media (max-width: 650px) {

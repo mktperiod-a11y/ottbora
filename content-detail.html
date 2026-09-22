@@ -44,7 +44,7 @@
           <div class="copy">
             <h2>줄거리</h2>
             <p id="synopsis"></p>
-            <h2>관전 포인트</h2>
+            <h2 id="points-title">관전 포인트</h2>
             <ul id="points"></ul>
             <div id="watch-block"></div>
             <div id="booking-block"></div>
@@ -56,14 +56,12 @@
     </main>
     <footer>
       <div class="wrap footer-row">
-        <p>© 2026 OTT BORA</p>
+        <p>© 2026 OTT BORA<span class="content-sources"> · 데이터 출처 <a href="https://www.kobis.or.kr/kobisopenapi/" target="_blank" rel="noopener noreferrer">KOFIC</a> · <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a> · <a href="https://anilist.co/" target="_blank" rel="noopener noreferrer">AniList</a></span></p>
       </div>
     </footer>
     <script src="assets/posters-featured-20260828.js"></script>
     <script src="assets/posters-archive-20260828.js"></script>
     <script>
-      // 링크를 걸 수 있는 호스트를 명시적으로 제한합니다.
-      // 데이터에 어떤 URL 이 들어오든, 여기 없는 호스트는 링크가 되지 않습니다.
       const WATCH_HOSTS = new Set([
         "www.netflix.com",
         "www.disneyplus.com",
@@ -75,28 +73,16 @@
         "www.megabox.co.kr",
         "www.lottecinema.co.kr",
       ]);
-      // 극장 예매 링크는 별도 목록으로 둡니다. 시청 경로(OTT)와 성격이
-      // 다르고, 지금 극장에 걸려 있을 때만 나타납니다.
       const CINEMA_HOSTS = new Set([
         "cgv.co.kr",
         "www.megabox.co.kr",
         "www.lottecinema.co.kr",
       ]);
-
       const OFFICIAL_HOSTS = new Set([
         "www.netflix.com",
         "www.sonypictures.com",
         "www.odysseymovie.com",
       ]);
-
-      const safe = (raw, allow) => {
-        try {
-          const u = new URL(raw);
-          return u.protocol === "https:" && allow.has(u.hostname) ? u.href : null;
-        } catch {
-          return null;
-        }
-      };
 
       const FALLBACK =
         "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'" +
@@ -109,6 +95,173 @@
 
       const id = new URLSearchParams(location.search).get("id") || "";
 
+      const TMDB_TV_GENRE = {
+        10759: "액션",
+        16: "애니메이션",
+        35: "코미디",
+        80: "범죄",
+        99: "다큐",
+        18: "드라마",
+        10751: "가족",
+        10762: "어린이",
+        9648: "미스터리",
+        10763: "뉴스",
+        10764: "리얼리티",
+        10765: "SF·판타지",
+        10766: "일일드라마",
+        10767: "토크",
+        10768: "시사·교양",
+        37: "서부",
+      };
+
+      const safe = (raw, allow) => {
+        try {
+          const u = new URL(raw);
+          return u.protocol === "https:" && allow.has(u.hostname) ? u.href : null;
+        } catch {
+          return null;
+        }
+      };
+
+      const key = (t) =>
+        String(t || "")
+          .toLowerCase()
+          .replace(/[^0-9a-z가-힣]/g, "");
+
+      const optional = (url) =>
+        fetch(url)
+          .then((r) => (r.ok ? r.json() : null))
+          .catch(() => null);
+
+      function prettyDate(raw) {
+        const m = String(raw || "").match(/(\d{4})[-.]?(\d{2})[-.]?(\d{2})/);
+        return m ? `${+m[1]}.${String(+m[2]).padStart(2, "0")}.${String(+m[3]).padStart(2, "0")}` : String(raw || "");
+      }
+
+      function audience(n) {
+        if (!n) return "";
+        const num = Number(n);
+        return Number.isFinite(num) ? `누적 관객 ${num.toLocaleString("ko-KR")}명` : "";
+      }
+
+      function manualWork(w) {
+        if (!w) return null;
+        return {
+          ...w,
+          sourceKind: "manual",
+          poster: (window.OTT_POSTERS || {})[w.id] || FALLBACK,
+          meta: [w.releasedAt, w.genre, w.cast].filter(Boolean),
+          detailPoints: w.points || [],
+          synopsisText: w.synopsis || "줄거리 정보가 준비 중입니다.",
+        };
+      }
+
+      function boxWork(m) {
+        if (!m) return null;
+        const points = [
+          m.rank ? `현재 국내 박스오피스 ${m.rank}위` : "",
+          m.bestRank ? `기간 중 최고 ${m.bestRank}위` : "",
+          audience(m.audienceAcc),
+        ].filter(Boolean);
+        return {
+          id: `kofic-${m.movieCd}`,
+          sourceKind: "kofic",
+          title: m.title,
+          type: "영화",
+          tagline: "국내 극장 흥행 데이터를 바탕으로 자동 등록된 작품입니다.",
+          poster: m.poster || FALLBACK,
+          meta: [
+            prettyDate(m.openedAt),
+            (m.genres || []).join(" · "),
+          ].filter(Boolean),
+          synopsisText: "현재 자동 수집 데이터에는 줄거리 정보가 포함되어 있지 않습니다.",
+          detailPoints: points.length ? points : ["박스오피스 자동 수집 작품"],
+          watch: [],
+          partner: [],
+          imageCredit: m.posterCredit || "",
+        };
+      }
+
+      function tvWork(w) {
+        if (!w) return null;
+        const genres = (w.genres || [])
+          .map((g) => TMDB_TV_GENRE[g])
+          .filter(Boolean);
+        const points = [
+          w.rank ? `인기 ${w.rank}위` : "",
+          w.nextAirDate ? `다음 방송 ${prettyDate(w.nextAirDate)}` : "",
+          w.status ? `상태 · ${w.status}` : "",
+        ].filter(Boolean);
+        return {
+          id: `tmdb-${w.tmdbId}`,
+          sourceKind: "tmdb",
+          title: w.title,
+          type: w.type || "TV",
+          tagline: "현재 인기 목록에서 자동 등록된 작품입니다.",
+          poster: w.poster || FALLBACK,
+          meta: [
+            w.firstAirDate ? `첫 방송 ${prettyDate(w.firstAirDate)}` : "",
+            genres.join(" · "),
+          ].filter(Boolean),
+          synopsisText:
+            w.overview || "현재 자동 수집 데이터에는 줄거리 정보가 포함되어 있지 않습니다.",
+          detailPoints: points.length ? points : ["자동 인기 목록 수록 작품"],
+          watch: [],
+          partner: [],
+          imageCredit: w.posterCredit || "TMDB",
+        };
+      }
+
+      function animeWork(a) {
+        if (!a) return null;
+        const points = [
+          a.score ? `평점 ${a.score}` : "",
+          a.episodes ? `${a.episodes}화` : "",
+          a.studio ? `제작 · ${a.studio}` : "",
+          a.season ? `시즌 · ${a.season}` : "",
+        ].filter(Boolean);
+        return {
+          id: `anime-${a.malId}`,
+          sourceKind: "anime",
+          title: a.title,
+          type: "애니",
+          tagline: "현재 시즌 애니 목록에서 자동 등록된 작품입니다.",
+          poster: a.poster || FALLBACK,
+          meta: [
+            (a.genres || []).join(" · "),
+            a.titleOriginal && a.titleOriginal !== a.title ? a.titleOriginal : "",
+          ].filter(Boolean),
+          synopsisText: "현재 자동 수집 데이터에는 줄거리 정보가 포함되어 있지 않습니다.",
+          detailPoints: points.length ? points : ["현재 시즌 자동 수집 작품"],
+          watch: [],
+          partner: [],
+          imageCredit: a.posterCredit || "AniList",
+        };
+      }
+
+      function resolveWork(d, box, tv, anime) {
+        const manual = (d?.works || []).find((x) => x.id === id);
+        if (manual) return manualWork(manual);
+
+        if (id.startsWith("kofic-")) {
+          const code = id.slice("kofic-".length);
+          return boxWork((box?.movies || []).find((x) => String(x.movieCd) === code));
+        }
+        if (id.startsWith("tmdb-")) {
+          const code = id.slice("tmdb-".length);
+          const rows = [
+            ...(Array.isArray(tv?.drama) ? tv.drama : []),
+            ...(Array.isArray(tv?.variety) ? tv.variety : []),
+          ];
+          return tvWork(rows.find((x) => String(x.tmdbId) === code));
+        }
+        if (id.startsWith("anime-")) {
+          const code = id.slice("anime-".length);
+          return animeWork((anime?.works || []).find((x) => String(x.malId) === code));
+        }
+        return null;
+      }
+
       function renderWatch(w) {
         const host = document.querySelector("#watch-block");
         const links = (w.watch || [])
@@ -116,77 +269,44 @@
           .filter((x) => x.href);
 
         if (!links.length) {
-          // 확인되지 않은 경로를 추측해서 채우지 않습니다.
           host.innerHTML =
-            '<h2>시청 경로</h2><p class="pending">공식 제공처를 확인하는 중입니다.</p>';
+            '<h2>시청 경로</h2><p class="pending">공식 제공처 정보가 아직 연결되지 않았습니다.</p>';
           return;
         }
+
         host.innerHTML =
           "<h2>시청 경로</h2>" +
           '<div class="watch-links">' +
           links
             .map(
               (x) =>
-                `<a class="${BTN}" href="${x.href}" target="_blank"` +
-                ' rel="noopener noreferrer">' +
-                `${x.name}에서 보기</a>`,
+                `<a class="${BTN}" href="${x.href}" target="_blank" rel="noopener noreferrer">${x.name}에서 보기</a>`,
             )
             .join("") +
           "</div>" +
-          // 제휴 웹하드는 해당 작품의 제공이 확인된 경우에만 나타납니다.
           ((w.partner || []).length
             ? '<div class="watch-links partner-inline">' +
               w.partner
-                .map(
-                  (pn) =>
-                    `<a class="${BTN}" href="${pn.url}">${pn.name}</a>`,
-                )
+                .map((pn) => `<a class="${BTN}" href="${pn.url}">${pn.name}</a>`)
                 .join("") +
               "</div>"
             : "");
       }
 
-      /** 제목 비교용. 공백과 문장부호를 떼고 맞춥니다. */
-      const key = (t) =>
-        String(t || "")
-          .toLowerCase()
-          .replace(/[^0-9a-z가-힣]/g, "");
-
-      /**
-       * 박스오피스 집계가 오래되면 예매를 권하지 않습니다.
-       * 갱신이 멈춘 채로 두면 이미 내려간 영화에 예매 링크가 계속
-       * 붙게 되는데, 그건 사실이 아닌 안내가 됩니다.
-       */
       const STALE_DAYS = 10;
       function isFresh(latestDt) {
         const m = String(latestDt || "").match(/^(\d{4})-?(\d{2})-?(\d{2})$/);
         if (!m) return false;
         const then = Date.UTC(+m[1], +m[2] - 1, +m[3]);
         const now = new Date();
-        const today = Date.UTC(
-          now.getUTCFullYear(),
-          now.getUTCMonth(),
-          now.getUTCDate(),
-        );
+        const today = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
         const age = (today - then) / 86400000;
         return age >= 0 && age <= STALE_DAYS;
       }
 
-      /*
-       * 지금 극장에 걸려 있는 작품이면 예매처를 답니다.
-       *
-       * 전에는 목록 카드마다 예매 칩 세 개가 붙어 있었습니다. 카드가
-       * 스무 장이면 예매 칩이 예순 개라, 정작 무슨 작품인지가 안 보였습니다.
-       * 예매는 "이 작품을 보기로 한 다음" 의 행동이므로 상세 페이지로
-       * 옮깁니다.
-       *
-       * 상영 여부는 KOFIC 박스오피스의 showing 을 그대로 씁니다.
-       * 우리가 짐작하지 않습니다.
-       */
       function renderBooking(w, box, cinema) {
         const host = document.querySelector("#booking-block");
-        if (!host) return;
-        if (w.type !== "영화" || !isFresh(box?.latestDt)) return;
+        if (!host || w.type !== "영화" || !isFresh(box?.latestDt)) return;
 
         const now = (box?.movies || []).find(
           (m) => m.showing && key(m.title) === key(w.title),
@@ -204,58 +324,68 @@
           chains
             .map(
               (c) =>
-                `<a class="${BTN}" href="${c.href}" target="_blank"` +
-                ' rel="noopener noreferrer">' +
-                `${c.name} 예매</a>`,
+                `<a class="${BTN}" href="${c.href}" target="_blank" rel="noopener noreferrer">${c.name} 예매</a>`,
             )
             .join("") +
           "</div>";
       }
 
-      /** 부가 데이터는 없어도 페이지가 뜨도록 따로 받습니다. */
-      const optional = (url) =>
-        fetch(url)
-          .then((r) => (r.ok ? r.json() : null))
-          .catch(() => null);
+      function renderMeta(items) {
+        const host = document.querySelector("#meta");
+        host.innerHTML = "";
+        for (const text of items || []) {
+          if (!text) continue;
+          const span = document.createElement("span");
+          span.textContent = text;
+          host.appendChild(span);
+        }
+      }
+
+      function renderPoints(points) {
+        const ul = document.querySelector("#points");
+        ul.innerHTML = "";
+        for (const text of points || []) {
+          const li = document.createElement("li");
+          li.textContent = text;
+          ul.appendChild(li);
+        }
+      }
 
       Promise.all([
         fetch("assets/content-data.json").then((r) => r.json()),
         optional("assets/boxoffice.json"),
         optional("assets/cinema-links.json"),
+        optional("assets/tv-ranking.json"),
+        optional("assets/anime.json"),
       ])
-        .then(([d, box, cinema]) => {
-          const w = d.works.find((x) => x.id === id) || d.works[0];
+        .then(([d, box, cinema, tv, anime]) => {
+          const w = resolveWork(d, box, tv, anime);
+          if (!w) {
+            document.querySelector("#title").textContent = "작품 정보를 찾지 못했습니다.";
+            document.querySelector("#tagline").textContent =
+              "목록으로 돌아가 다른 작품을 선택해 주세요.";
+            document.querySelector("#poster").src = FALLBACK;
+            document.querySelector(".copy").hidden = true;
+            return;
+          }
+
           document.title = w.title + " | 콘텐츠ZONE - 오티티보라";
           const img = document.querySelector("#poster");
-          img.src = (window.OTT_POSTERS || {})[w.id] || FALLBACK;
+          img.src = w.poster || FALLBACK;
           img.alt = w.title + " 포스터";
           img.onerror = () => {
             img.onerror = null;
             img.src = FALLBACK;
           };
+
           document.querySelector("#category").textContent = w.type + " CONTENT";
           document.querySelector("#title").textContent = w.title;
-          document.querySelector("#tagline").textContent = w.tagline;
-          document.querySelector("#meta").innerHTML = [
-            w.releasedAt,
-            w.genre,
-            w.cast,
-          ]
-            .filter(Boolean)
-            .map((x) => "<span></span>")
-            .join("");
-          document
-            .querySelectorAll("#meta span")
-            .forEach((el, i) => {
-              el.textContent = [w.releasedAt, w.genre, w.cast].filter(Boolean)[i];
-            });
-          document.querySelector("#synopsis").textContent = w.synopsis;
-          const ul = document.querySelector("#points");
-          (w.points || []).forEach((t) => {
-            const li = document.createElement("li");
-            li.textContent = t;
-            ul.appendChild(li);
-          });
+          document.querySelector("#tagline").textContent = w.tagline || "";
+          renderMeta(w.meta || []);
+          document.querySelector("#synopsis").textContent = w.synopsisText || "";
+          document.querySelector("#points-title").textContent =
+            w.sourceKind === "manual" ? "관전 포인트" : "작품 정보";
+          renderPoints(w.detailPoints || []);
 
           renderWatch(w);
           renderBooking(w, box, cinema);
@@ -270,6 +400,7 @@
             a.textContent = w.official.label || "공식 작품 정보 보기 →";
             document.querySelector("#official-action").appendChild(a);
           }
+
           if (w.imageCredit) {
             document.querySelector("#credit").textContent =
               "이미지 출처 · " + w.imageCredit;
