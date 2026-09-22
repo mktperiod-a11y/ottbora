@@ -33,14 +33,19 @@ jobs:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
         run: node scripts/fetch-tv-ranking.mjs
 
-      - name: Commit generated ranking to feature branch
+      - name: Lookup curated variety titles
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+        run: node scripts/lookup-manual-variety.mjs
+
+      - name: Commit generated validation data to feature branch
         run: |
-          if [ -z "$(git status --porcelain assets/tv-ranking.json)" ]; then
-            echo "tv-ranking.json 변경 없음"
+          if [ -z "$(git status --porcelain assets/tv-ranking.json assets/tv-ranking-lookup.json)" ]; then
+            echo "검증 데이터 변경 없음"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/tv-ranking.json
+          git add assets/tv-ranking.json assets/tv-ranking-lookup.json
           git commit -m "Validate TV ranking data"
           git push origin HEAD:${{ github.head_ref }}
