@@ -63,7 +63,11 @@ export async function savePoster(url, file, referer) {
  * 연결이 실패하거나 느릴 때가 있어 몇 번 다시 시도합니다.
  * 보조 정보라 오래 매달리지 않습니다.
  */
-export async function getJson(url, label, { attempts = 2, timeout = 10000 } = {}) {
+export async function getJson(
+  url,
+  label,
+  { attempts = 2, timeout = 10000, backoffMs = 2000 } = {},
+) {
   let last;
   for (let i = 1; i <= attempts; i += 1) {
     try {
@@ -75,7 +79,11 @@ export async function getJson(url, label, { attempts = 2, timeout = 10000 } = {}
       return await res.json();
     } catch (e) {
       last = e;
-      if (i < attempts) await new Promise((r) => setTimeout(r, i * 2000));
+      const why = e?.cause?.code || e?.message;
+      if (i < attempts) {
+        console.warn(`  ${label} 실패 (${i}/${attempts}): ${why} — 다시 시도`);
+        await new Promise((r) => setTimeout(r, i * backoffMs));
+      }
     }
   }
   throw new Error(`${label}: ${last?.cause?.code || last?.message}`);
