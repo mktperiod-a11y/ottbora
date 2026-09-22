@@ -22,7 +22,9 @@
       "days": 29,
       "bestRank": 1,
       "rank": 2,
-      "showing": true
+      "showing": true,
+      "poster": "assets/posters/20250654.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20256308",
@@ -38,7 +40,9 @@
       "days": 9,
       "bestRank": 1,
       "rank": 1,
-      "showing": true
+      "showing": true,
+      "poster": "assets/posters/20256308.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20262770",
@@ -56,13 +60,15 @@
       "days": 29,
       "bestRank": 2,
       "rank": 6,
-      "showing": true
+      "showing": true,
+      "poster": "assets/posters/20262770.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20265146",
       "title": "옵세션",
       "openedAt": "2026-09-02",
-      "audienceAcc": 721278,
+      "audienceAcc": 721277,
       "genres": [
         "공포(호러)"
       ],
@@ -72,7 +78,9 @@
       "days": 20,
       "bestRank": 2,
       "rank": 3,
-      "showing": true
+      "showing": true,
+      "poster": "assets/posters/20265146.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20263870",
@@ -90,7 +98,9 @@
       "days": 5,
       "bestRank": 3,
       "rank": 4,
-      "showing": true
+      "showing": true,
+      "poster": "assets/posters/20263870.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20265423",
@@ -107,7 +117,9 @@
       "days": 12,
       "bestRank": 4,
       "rank": 9,
-      "showing": true
+      "showing": true,
+      "poster": "assets/posters/20265423.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20070216",
@@ -125,7 +137,9 @@
       "days": 6,
       "bestRank": 5,
       "rank": 8,
-      "showing": true
+      "showing": true,
+      "poster": "assets/posters/20070216.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20255033",
@@ -142,7 +156,9 @@
       "days": 3,
       "bestRank": 5,
       "rank": 5,
-      "showing": true
+      "showing": true,
+      "poster": "assets/posters/20255033.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20254904",
@@ -158,7 +174,9 @@
       "days": 1,
       "bestRank": 7,
       "rank": 7,
-      "showing": true
+      "showing": true,
+      "poster": "assets/posters/20254904.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20241110",
@@ -174,7 +192,9 @@
       "days": 3,
       "bestRank": 8,
       "rank": 10,
-      "showing": true
+      "showing": true,
+      "poster": "assets/posters/20241110.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20256161",
@@ -191,7 +211,9 @@
       "days": 5,
       "bestRank": 5,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20256161.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20261807",
@@ -207,7 +229,9 @@
       "days": 2,
       "bestRank": 6,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20261807.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20265587",
@@ -223,7 +247,9 @@
       "days": 5,
       "bestRank": 6,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20265587.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20264801",
@@ -241,7 +267,9 @@
       "days": 2,
       "bestRank": 5,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20264801.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20224573",
@@ -257,7 +285,9 @@
       "days": 1,
       "bestRank": 6,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20224573.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20258102",
@@ -274,7 +304,9 @@
       "days": 1,
       "bestRank": 10,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20258102.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20247458",
@@ -290,7 +322,9 @@
       "days": 21,
       "bestRank": 3,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20247458.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20204641",
@@ -307,7 +341,9 @@
       "days": 12,
       "bestRank": 4,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20204641.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20264918",
@@ -323,7 +359,9 @@
       "days": 14,
       "bestRank": 4,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20264918.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20233219",
@@ -341,7 +379,9 @@
       "days": 13,
       "bestRank": 5,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20233219.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20264915",
@@ -358,7 +398,9 @@
       "days": 2,
       "bestRank": 9,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20264915.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20265344",
@@ -374,7 +416,9 @@
       "days": 4,
       "bestRank": 7,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20265344.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20262381",
@@ -390,7 +434,9 @@
       "days": 9,
       "bestRank": 5,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20262381.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20018158",
@@ -425,7 +471,9 @@
       "days": 1,
       "bestRank": 10,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20224597.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20264557",
@@ -445,7 +493,9 @@
       "days": 14,
       "bestRank": 4,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20264557.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20242837",
@@ -462,7 +512,9 @@
       "days": 2,
       "bestRank": 7,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20242837.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20265573",
@@ -479,7 +531,9 @@
       "days": 5,
       "bestRank": 7,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20265573.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20255509",
@@ -495,7 +549,9 @@
       "days": 1,
       "bestRank": 10,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20255509.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20264635",
@@ -511,7 +567,9 @@
       "days": 15,
       "bestRank": 4,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20264635.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20127108",
@@ -530,7 +588,9 @@
       "days": 3,
       "bestRank": 8,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20127108.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20167922",
@@ -547,7 +607,9 @@
       "days": 1,
       "bestRank": 9,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20167922.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20264035",
@@ -565,7 +627,9 @@
       "days": 9,
       "bestRank": 3,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20264035.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20255484",
@@ -582,7 +646,9 @@
       "days": 8,
       "bestRank": 5,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20255484.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20263307",
@@ -599,7 +665,9 @@
       "days": 5,
       "bestRank": 7,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20263307.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20262945",
@@ -615,7 +683,9 @@
       "days": 2,
       "bestRank": 8,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20262945.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20265388",
@@ -631,7 +701,9 @@
       "days": 2,
       "bestRank": 10,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20265388.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20253289",
@@ -647,7 +719,9 @@
       "days": 2,
       "bestRank": 9,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20253289.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20264715",
@@ -665,7 +739,9 @@
       "days": 3,
       "bestRank": 8,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20264715.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20100810",
@@ -681,7 +757,9 @@
       "days": 2,
       "bestRank": 9,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20100810.webp",
+      "posterCredit": "TMDB"
     },
     {
       "movieCd": "20264080",
@@ -699,7 +777,9 @@
       "days": 2,
       "bestRank": 10,
       "rank": null,
-      "showing": false
+      "showing": false,
+      "poster": "assets/posters/20264080.webp",
+      "posterCredit": "TMDB"
     }
   ]
 }
