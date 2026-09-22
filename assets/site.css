@@ -48,9 +48,9 @@ body {
   margin: 0;
   color: var(--ink);
   background: var(--paper);
-  /* 서체는 SEED 기본 스택. seed.css 가 --seed-font-family 를 정의만 하고
-     적용하지 않으므로(전역 셀렉터가 없음) 여기서 걸어 줍니다. */
-  font-family: var(--seed-font-family);
+  /* 본문/카드/버튼은 Pretendard로 고정합니다.
+     헤더와 페이지 히어로는 아래에서 기존 SEED 스택을 다시 적용합니다. */
+  font-family: "Pretendard Variable", Pretendard, sans-serif;
   line-height: 1.65;
   word-break: keep-all;
 }
@@ -95,6 +95,8 @@ button:focus-visible,
 /* --- 헤더 --- */
 
 .site-header {
+  /* 헤더는 사용자가 현재 보던 시스템/SEED 글꼴을 유지합니다. */
+  font-family: var(--seed-font-family);
   background: #ffffffed;
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--line);
@@ -103,7 +105,7 @@ button:focus-visible,
   z-index: 20;
 }
 
-.nav {
+.site-header .nav {
   min-height: 74px;
   display: flex;
   align-items: center;
@@ -111,18 +113,18 @@ button:focus-visible,
   gap: 20px;
 }
 
-.logo {
+.site-header .logo {
   font-size: 22px;
   font-weight: 900;
   letter-spacing: -1px;
   white-space: nowrap;
 }
 
-.logo span {
+.site-header .logo span {
   color: var(--accent);
 }
 
-.logo i {
+.site-header .logo i {
   display: inline-grid;
   place-items: center;
   width: 32px;
@@ -141,20 +143,30 @@ button:focus-visible,
  * HTML 하나로 두 컴포넌트를 동시에 표현할 수 없기 때문입니다.
  * 대신 값은 SEED 토큰에서 가져와 컴포넌트들과 톤을 맞춥니다.
  */
-.menu {
+.site-header .menu {
   display: flex;
   gap: 28px;
   font-size: var(--seed-font-size-t3);
   font-weight: var(--seed-font-weight-bold);
 }
 
-.menu a {
+.site-header .menu a {
   padding: 24px 0;
 }
 
-.menu .on {
+.site-header .menu .on {
   color: var(--accent);
   box-shadow: inset 0 -3px var(--accent);
+}
+
+/* 홈 히어로도 헤더/페이지 머리와 같은 기존 서체를 유지합니다. */
+.hero {
+  font-family: var(--seed-font-family);
+}
+
+/* 페이지별 CSS의 모바일 main padding이 머리 위치를 흔들지 않게 합니다. */
+.site-header + main.wrap {
+  padding-top: 0;
 }
 
 /* --- 페이지 머리 --- */
@@ -172,6 +184,8 @@ button:focus-visible,
  * 여기서 한 벌로 맞춥니다. 제목 크기만 페이지가 정합니다.
  */
 .page-head {
+  /* 페이지 머리(히어로)는 기존 SEED/system 글꼴을 유지합니다. */
+  font-family: var(--seed-font-family);
   padding-top: 44px;
 }
 
@@ -368,23 +382,26 @@ footer {
     width: calc(100% - 30px);
   }
 
-  .nav {
+  .site-header .nav {
+    min-height: 74px;
+    height: auto;
     flex-wrap: wrap;
     gap: 0;
     padding-top: 12px;
   }
 
-  .logo {
+  .site-header .logo {
+    margin-bottom: 0;
     font-size: 21px;
   }
 
-  .menu {
+  .site-header .menu {
     width: 100%;
     gap: 6px;
     padding: 12px 0;
   }
 
-  .menu a {
+  .site-header .menu a {
     flex: 1;
     padding: 8px 5px;
     text-align: center;
@@ -393,7 +410,7 @@ footer {
     font-size: var(--seed-font-size-t1);
   }
 
-  .menu .on {
+  .site-header .menu .on {
     box-shadow: none;
     background: var(--rose);
   }
