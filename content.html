@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>콘텐츠ZONE | 영화·드라마·예능 - 오티티보라</title>
+    <title>콘텐츠ZONE | 영화·드라마·예능·애니 - 오티티보라</title>
     <meta
       name="description"
-      content="2026 최신 영화, 드라마, 예능 20편을 포스터와 줄거리, 출연진, 관전 포인트로 살펴보세요."
+      content="2026 최신 영화, 드라마, 예능, 애니를 자동 갱신 데이터와 함께 살펴보세요."
     />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <link
@@ -95,7 +95,7 @@
       // KOFIC 은 포스터를 주지 않으므로 박스오피스 쪽은 글자 카드로 그립니다.
 
       const PER_PAGE = 20;
-      const MAX_PAGES = 3; // 한 탭에 최대 60편
+      const MAX_PAGES = 3; // 20편 × 3페이지 = 한 탭 최대 60편
 
       const TYPES = ["전체", "영화", "드라마", "예능", "애니"];
 
@@ -165,8 +165,9 @@
        * 계속 붙게 되는데, 그건 사실이 아닌 안내가 됩니다.
        */
       const STALE_DAYS = 10;
-      function isFresh(latestDt) {
-        const m = String(latestDt || "").match(/^(\d{4})(\d{2})(\d{2})$/);
+      function isRecentDate(raw, days = STALE_DAYS) {
+        const s = String(raw || "");
+        const m = s.match(/^(\d{4})-?(\d{2})-?(\d{2})$/);
         if (!m) return false;
         const then = Date.UTC(+m[1], +m[2] - 1, +m[3]);
         const now = new Date();
@@ -175,7 +176,12 @@
           now.getUTCMonth(),
           now.getUTCDate(),
         );
-        return (today - then) / 86400000 <= STALE_DAYS;
+        const age = (today - then) / 86400000;
+        return age >= 0 && age <= days;
+      }
+
+      function isFresh(latestDt) {
+        return isRecentDate(latestDt, STALE_DAYS);
       }
 
       /** "20260916" 또는 "2026-09-16" → "9월 16일 개봉" */
@@ -381,9 +387,47 @@
         );
       }
 
-      /** 지금 탭에 보여 줄 작품 전체. 손으로 고른 작품이 앞에 옵니다. */
+      /** TMDB에서 자동 수집한 드라마/예능 카드. */
+      function tmdbCard(w) {
+        const top =
+          active === "전체"
+            ? [w.type, "TMDB 관심도"].filter(Boolean).join(" · ")
+            : "TMDB 관심도";
+        const chip = w.rank ? `TMDB 인기 ${w.rank}위` : "TMDB 인기";
+        const facts = [w.firstAirDate ? `${w.firstAirDate} 첫 방송` : ""]
+          .filter(Boolean)
+          .join(" · ");
+
+        if (w.poster) {
+          return (
+            `<article class="card">` +
+            `<span class="thumb">` +
+            `<img src="${esc(w.poster)}" alt="${esc(w.title)} 포스터" loading="lazy"` +
+            ` referrerpolicy="no-referrer" onerror="ottImgFail(this)">` +
+            overlay(chip) +
+            `</span>` +
+            `<div class="cb"><b>${esc(w.title)}</b>` +
+            `<span class="genre">${esc(top)}</span>` +
+            (facts ? `<span class="genre">${esc(facts)}</span>` : "") +
+            `<div class="card-foot"><span class="ended">자동 갱신</span></div></div></article>`
+          );
+        }
+
+        return (
+          `<article class="card card--text">` +
+          `<div class="panel panel--t${tint(String(w.tmdbId))}">` +
+          `<span class="panel-top">${overlay(chip)}<span class="panel-genre">${esc(top)}</span></span>` +
+          `<b class="panel-title">${esc(w.title)}</b>` +
+          `<span class="panel-facts">${esc(facts)}</span></div>` +
+          `<div class="cb"><div class="card-foot"><span class="ended">자동 갱신</span></div></div>` +
+          `</article>`
+        );
+      }
+
+      /** 지금 탭에 보여 줄 작품 전체. 자동 데이터가 있으면 우선 사용합니다. */
       function pool() {
         const anime = (DATA.anime || []).map((a) => ({ kind: "anime", a }));
+        const autoTv = (DATA.tv || []).map((w) => ({ kind: "tmdb", w }));
 
         // 애니 탭은 MyAnimeList 에서만 채웁니다.
         // "극장 개봉" 이 아니라 "지금 화제인 애니" 기준이라, KOFIC 의
@@ -393,6 +437,27 @@
         const picked = DATA.works
           .filter((w) => active === "전체" || w.type === active)
           .map((w) => ({ kind: "picked", w }));
+
+        // 드라마/예능은 자동 데이터가 있으면 먼저 보여 주고,
+        // 기존 수동 데이터는 누락을 막는 fallback으로 뒤에 붙입니다.
+        if (active === "드라마" || active === "예능") {
+          const auto = autoTv.filter((x) => x.w.type === active);
+          const autoSeen = new Set(auto.map((x) => key(x.w.title)));
+          const manual = picked.filter((x) => !autoSeen.has(key(x.w.title)));
+          const limit = PER_PAGE * MAX_PAGES;
+
+          // 자동 데이터가 60개를 꽉 채우면 수동 큐레이션이 화면에서 완전히
+          // 사라지는 문제가 있습니다. TMDB에 없는 현재작을 위해 최대 5칸을
+          // fallback으로 보장하고, 자동 데이터가 60개 미만이면 남은 칸만 채웁니다.
+          if (auto.length < limit) {
+            return [...auto, ...manual.slice(0, limit - auto.length)];
+          }
+          const reserve = Math.min(5, manual.length);
+          return [
+            ...auto.slice(0, limit - reserve),
+            ...manual.slice(0, reserve),
+          ];
+        }
 
         // 같은 작품이 양쪽에 있으면 포스터와 상세가 있는 쪽을 남깁니다.
         const seen = new Set(picked.map((x) => key(x.w.title)));
@@ -410,9 +475,12 @@
 
         // 전체 탭은 60건에서 잘립니다. 출처를 이어 붙이면 뒤쪽 출처가
         // 한 건도 안 보이므로 번갈아 섞습니다.
-        const lanes = [picked, box, anime];
+        const pickedSeen = new Set(picked.map((x) => key(x.w.title)));
+        const tv = autoTv.filter((x) => !pickedSeen.has(key(x.w.title)));
+        const lanes = [picked, box, anime, tv];
         const mixed = [];
-        for (let i = 0; mixed.length < picked.length + box.length + anime.length; i += 1) {
+        const total = lanes.reduce((sum, lane) => sum + lane.length, 0);
+        for (let i = 0; mixed.length < total; i += 1) {
           for (const lane of lanes) if (lane[i]) mixed.push(lane[i]);
         }
         return mixed;
@@ -462,7 +530,9 @@
                 ? pickedCard(x.w)
                 : x.kind === "box"
                   ? boxCard(x.m)
-                  : animeCard(x.a),
+                  : x.kind === "anime"
+                    ? animeCard(x.a)
+                    : tmdbCard(x.w),
             )
             .join("") +
           `</div>` +
@@ -523,11 +593,19 @@
         optional("assets/boxoffice.json"),
         optional("assets/cinema-links.json"),
         optional("assets/anime.json"),
+        optional("assets/tv-ranking.json"),
       ])
-        .then(([d, box, cinema, anime]) => {
+        .then(([d, box, cinema, anime, tv]) => {
           DATA = d;
           DATA.boxoffice = Array.isArray(box?.movies) ? box.movies : [];
           DATA.anime = Array.isArray(anime?.works) ? anime.works : [];
+          const tvFresh = isRecentDate(tv?.updatedAt, 14);
+          DATA.tv = tvFresh
+            ? [
+                ...(Array.isArray(tv?.drama) ? tv.drama : []),
+                ...(Array.isArray(tv?.variety) ? tv.variety : []),
+              ]
+            : [];
           FRESH = isFresh(box?.latestDt);
           // 손으로 고른 작품이 지금 차트에도 있으면 그 순위를 씁니다.
           // 같은 작품에 옛 근거 문구와 오늘 순위가 따로 놀지 않도록.
@@ -547,7 +625,7 @@
           // 밝히지 않으면 출처 표기 없이 남의 이미지를 싣는 셈이 됩니다.
           const sources = [
             ...new Set(
-              [...DATA.boxoffice, ...DATA.anime]
+              [...DATA.boxoffice, ...DATA.anime, ...DATA.tv]
                 .map((x) => x.posterCredit)
                 .filter(Boolean),
             ),
@@ -555,6 +633,7 @@
           document.querySelector("#policy-text").textContent =
             `${d.selectionPolicy} ${d.watchNote} 확인일 ${d.checkedAt}.` +
             (anime?.rankedBy ? ` 애니는 ${anime.rankedBy}입니다.` : "") +
+            (tvFresh && tv?.rankedBy ? ` 드라마·예능은 ${tv.rankedBy}입니다.` : "") +
             (sources.length ? ` 포스터 출처: ${sources.join(", ")}.` : "");
           document.querySelector("#partner-text").textContent =
             d.partnerDisclosure;
