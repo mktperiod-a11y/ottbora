@@ -69,3 +69,64 @@ tbody a:hover{color:var(--accent)}
 @media(max-width:900px){.provider{padding:19px}.provider-top{gap:12px}.brand{width:150px}.rank{font-size:34px}}
 @media(max-width:650px){.intro{padding-top:32px}.intro-row{display:block}h1{font-size:36px;letter-spacing:-1.8px}.lead{font-size: 16px}.section-links{gap:7px;margin-top:22px}.section{padding-top:35px;padding-bottom:36px}.provider-grid{grid-template-columns:1fr;gap:16px}.provider{padding:20px;scroll-margin-top:140px}.brand{width:170px}.provider-top{gap:16px}.rank{font-size:38px}.provider h3{font-size:23px}.facts ul,.reason p{font-size: 15px}.comparison-section{padding:34px 0}th,td{padding:13px 16px}.method-section{padding:35px 0}.method-intro{grid-template-columns:1fr;gap:16px}.criteria-grid{--cards-gap:10px;margin-top:23px}.criteria-grid article{padding:16px 13px}.criteria-grid h3{font-size: 16px}.criteria-grid p{font-size: 13px}}
 @media(max-width:360px){h1{font-size:32px}.provider{padding:17px}.provider-top{gap:10px}.brand{width:142px}.rank{font-size:32px}.provider-bottom{gap:12px}}
+
+
+/* ===== 추천 순서 자동 갱신 ===== */
+.ranking-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: var(--seed-font-size-t2);
+  line-height: 1.5;
+}
+
+.ranking-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #16a34a;
+  box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.10);
+}
+
+.ranking-status-time {
+  color: #7b8696;
+}
+
+/* 파일노리는 저장소에 로고 이미지가 없어 텍스트 워드마크로 안전하게 표시합니다. */
+.brand--text {
+  justify-content: flex-start;
+}
+
+.brand-text {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  color: var(--ink);
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: -1.2px;
+}
+
+/* 동적 순서의 상위 2개 카드는 기존 featured 위계를 그대로 재사용합니다. */
+.provider.featured .rank {
+  color: var(--ink);
+}
+
+@media (max-width: 650px) {
+  .ranking-status {
+    gap: 6px;
+    font-size: 12px;
+  }
+
+  .ranking-status-time {
+    flex-basis: 100%;
+    padding-left: 16px;
+  }
+
+  .brand-text {
+    font-size: 22px;
+  }
+}
