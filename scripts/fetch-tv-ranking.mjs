@@ -7,6 +7,7 @@
  * - 순위: 각 분류 안에서 TMDB popularity 내림차순
  * - 저장 상한: 드라마 60편 + 예능 60편
  * - 종영작 보정: TV 상세 status/last_air_date/next_episode_to_air 확인
+ * - 한국 제공처: TV 상세 watch/providers의 KR flatrate/free/ads 저장
  *
  * 외부 API가 실패하면 기존 파일을 보존하고 exit 0 합니다.
  * 기존 파일이 없으면 수동 content-data.json이 프론트 fallback 역할을 합니다.
@@ -118,6 +119,7 @@ for (const id of white) {
     const qs = new URLSearchParams({
       api_key: TMDB,
       language: "ko-KR",
+      append_to_response: "watch/providers",
     });
     const detail = await getJson(
       `${TV_DETAIL}/${id}?${qs}`,
@@ -164,6 +166,16 @@ function isDrama(x) {
   return new Set(x.genre_ids || []).has(GENRE.DRAMA);
 }
 function mapWork(x, type, rank) {
+  const kr = x["watch/providers"]?.results?.KR || {};
+  const providers = [
+    ...(Array.isArray(kr.flatrate) ? kr.flatrate : []),
+    ...(Array.isArray(kr.free) ? kr.free : []),
+    ...(Array.isArray(kr.ads) ? kr.ads : []),
+  ]
+    .map((p) => p.provider_name)
+    .filter(Boolean)
+    .filter((name, i, arr) => arr.indexOf(name) === i);
+
   return {
     tmdbId: x.id,
     title: x.name || x.original_name,
@@ -178,6 +190,7 @@ function mapWork(x, type, rank) {
     status: x.status || "",
     inProduction: Boolean(x.in_production),
     nextAirDate: x.next_episode_to_air?.air_date || "",
+    providers,
     poster: x.poster_path
       ? `https://image.tmdb.org/t/p/w500${x.poster_path}`
       : null,
@@ -208,6 +221,7 @@ for (const x of detailTargets) {
     const qs = new URLSearchParams({
       api_key: TMDB,
       language: "ko-KR",
+      append_to_response: "watch/providers",
     });
     const detail = await getJson(
       `${TV_DETAIL}/${x.id}?${qs}`,
