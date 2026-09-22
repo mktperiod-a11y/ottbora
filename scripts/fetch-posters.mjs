@@ -93,40 +93,48 @@ const norm = (t) =>
  */
 async function fromKmdb(title, year) {
   const q = new URLSearchParams({
-    collection: "kmdb_new2",
+    // 스펙상 고정값입니다. kmdb_new2 로 보내면 컬렉션을 찾지 못합니다.
+    collection: "kmdb_new",
     ServiceKey: KMDB,
+    // 통합검색(query)이 아니라 영화명(title)으로 좁혀 찾습니다.
     title,
-    listCount: "5",
-    detail: "N",
+    // 최소 3 이상이어야 합니다. 동명 작품이 있어 여유를 둡니다.
+    listCount: "10",
+    // 포스터는 상세정보에 들어 있습니다. N 이면 이미지가 오지 않습니다.
+    detail: "Y",
   });
-  if (year) q.set("releaseDts", `${year}0101`);
+  // 개봉일로 질의를 좁히지는 않습니다. KOFIC 의 개봉일과 KMDb 의 개봉일이
+  // 하루라도 다르면(재개봉·연말 개봉) 결과가 통째로 비어 버립니다.
+  // 대신 아래에서 제목으로 검증하고, 연도는 동명 작품을 가릴 때만 씁니다.
   const body = await getJson(`${KMDB_URL}?${q}`, `KMDb ${title}`);
 
   const list = body?.Data?.[0]?.Result;
   if (!Array.isArray(list)) return null;
 
-  // 제목이나 연도가 맞는 것만 씁니다.
-  // 맞지 않는데도 "결과 중 포스터가 있는 첫 장"을 쓰면 엉뚱한 작품의
-  // 포스터가 붙습니다. 이 사이트는 확인된 것만 싣는다는 방침이라
-  // 느슨한 대비 경로를 두지 않습니다 — 없으면 없는 채로 둡니다.
   const want = norm(title);
+
+  // 제목이 맞는 것만 후보로 둡니다. 연도만으로는 통과시키지 않습니다 —
+  // 같은 해 다른 작품의 포스터가 붙습니다.
+  // 부제가 붙고 떨어지는 경우가 있어 포함 관계까지 인정합니다.
+  const hits = [];
   for (const r of list) {
     // KMDb 제목에는 강조 태그(!HS, !HE)가 섞여 옵니다.
     const got = norm(String(r.title || "").replace(/!H[SE]/g, ""));
     const poster = String(r.posters || "").split("|").filter(Boolean)[0];
     if (!poster || !got) continue;
-    // 제목이 맞아야 합니다. 연도만으로는 통과시키지 않습니다 —
-    // 같은 해 다른 작품의 포스터가 붙을 수 있습니다.
-    // 부제가 붙고 떨어지는 경우가 있어 포함 관계까지 인정합니다.
     if (got === want || got.includes(want) || want.includes(got)) {
-        return {
-        url: poster,
-        credit: "KMDb · 한국영상자료원",
-        referer: "https://www.kmdb.or.kr/",
-      };
+      hits.push({ poster, year: yearOf(r.repRlsDate) || yearOf(r.prodYear) });
     }
   }
-  return null;
+  if (!hits.length) return null;
+
+  // 동명 작품이 여러 개면 개봉 연도가 맞는 쪽을 고릅니다.
+  const pick = (year && hits.find((h) => h.year === year)) || hits[0];
+  return {
+    url: pick.poster,
+    credit: "KMDb · 한국영상자료원",
+    referer: "https://www.kmdb.or.kr/",
+  };
 }
 
 /** TMDB 에서 포스터 주소를 찾습니다. */
