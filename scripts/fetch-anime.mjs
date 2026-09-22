@@ -1,10 +1,23 @@
 /**
- * MyAnimeList(Jikan) 에서 이번 분기 화제작을 받아 assets/anime.json 에 씁니다.
+ * 지금 방영 중인 화제작을 받아 assets/anime.json 에 씁니다.
  *
  * 실행: node scripts/fetch-anime.mjs
  *
- * Jikan 은 MAL 데이터를 키 없이 제공합니다. 포스터 주소까지 주므로
- * 애니 탭은 API 키 없이 자동으로 채울 수 있습니다.
+ * 받아오는 곳이 둘입니다. 둘 다 키가 필요 없습니다.
+ *
+ *   1. AniList (graphql.anilist.co)  — 먼저 씁니다
+ *   2. MyAnimeList (api.jikan.moe)   — AniList 가 안 되면
+ *
+ * 원래 Jikan 하나만 썼는데 실제 실행에서 계속 HTTP 504 였습니다.
+ * /seasons/now 가 무거워서 그런 줄 알고 /top/anime 로 바꿔 봤지만
+ * 그쪽도 같은 504 였습니다. 즉 특정 엔드포인트가 아니라 Jikan 자체가
+ * GitHub 러너에서 열리지 않습니다.
+ *
+ *   2026-09-22 06:34  top/anime 504 ×3 → seasons/now 504 ×3 → 포기
+ *
+ * AniList 는 공식 GraphQL API 이고 키가 없어도 열립니다. 받아온
+ * 값은 Jikan 모양으로 바꿔서 아래 코드가 출처를 몰라도 되게 합니다.
+ * AniList 항목에 MAL 번호가 같이 오므로 링크는 계속 MAL 로 겁니다.
  *
  * "인기"의 기준은 members(이 작품을 목록에 넣은 사람 수)입니다.
  * 분기 초에는 평점 표본이 적어 상위가 흔들리는데, members 는 그보다
@@ -16,11 +29,12 @@
 
 import { writeFile, readFile, mkdir } from "node:fs/promises";
 import { existsSync } from "node:fs";
-import { savePoster, getJson, norm } from "./lib/poster.mjs";
+import { savePoster, getJson, postJson, norm } from "./lib/poster.mjs";
 
 const OUT = "assets/anime.json";
 const DIR = "assets/posters";
 const JIKAN = "https://api.jikan.moe/v4";
+const ANILIST = "https://graphql.anilist.co";
 const TMDB = process.env.TMDB_API_KEY;
 const TMDB_SEARCH = "https://api.themoviedb.org/3/search/tv";
 
@@ -42,6 +56,12 @@ const BLOCKED_RATINGS = new Set(["Rx - Hentai", "R+ - Mild Nudity"]);
 
 /** MAL 장르는 영어로 옵니다. 자주 나오는 것만 옮깁니다. */
 const GENRE_KO = {
+  /* AniList 에만 있는 이름 */
+  Psychological: "심리",
+  Thriller: "스릴러",
+  Music: "음악",
+  Mecha: "메카",
+  /* 두 곳에 공통 */
   Action: "액션",
   Adventure: "어드벤처",
   "Avant Garde": "실험적",
@@ -96,68 +116,125 @@ function giveUp(msg, got) {
 const PAGES = 3;
 
 /*
- * 받아올 곳을 두 군데 둡니다.
+ * AniList 에서 받아옵니다.
  *
- * /seasons/now 를 먼저 썼는데 실제 실행에서 계속 HTTP 504 였습니다.
- * 4회 재시도에 50초를 기다려도 한 번도 열리지 않았습니다. 이 엔드포인트는
- * 요청마다 분기 전체를 다시 계산해 Jikan 쪽에서 자주 시간초과가 납니다.
- *
- *   2026-09-22 05:49  1/4 504 → 2/4 504 → 3/4 504 → 포기
- *
- * /top/anime?filter=airing 은 미리 계산해 캐시해 두는 목록이라 훨씬
- * 잘 열립니다. "지금 방영 중" 이라는 조건도 같습니다. 정렬 기준이
- * 평점이라는 점만 다른데, 어차피 아래에서 members 로 다시 줄 세우므로
- * 후보를 어디서 가져오든 결과는 같습니다.
- *
- * 앞의 것이 안 되면 뒤의 것으로 넘어갑니다. 둘 다 안 되면 그때 포기합니다.
+ * status: RELEASING  = 지금 방영 중
+ * sort: POPULARITY_DESC = 목록에 넣은 사람 수 순 (MAL 의 members 와 같은 뜻)
+ * isAdult: false     = 성인물 제외
  */
-const SOURCES = [
-  {
-    name: "지금 방영 인기작",
-    url: (page) => `${JIKAN}/top/anime?filter=airing&limit=25&sfw=true&page=${page}`,
-  },
-  {
-    name: "이번 분기 목록",
-    url: (page) => `${JIKAN}/seasons/now?limit=25&sfw=true&page=${page}`,
-  },
-];
+const ANILIST_QUERY = `
+query ($page: Int, $perPage: Int) {
+  Page(page: $page, perPage: $perPage) {
+    pageInfo { hasNextPage }
+    media(type: ANIME, status: RELEASING, sort: POPULARITY_DESC, isAdult: false) {
+      id
+      idMal
+      title { romaji english native }
+      coverImage { extraLarge large }
+      popularity
+      averageScore
+      episodes
+      genres
+      season
+      seasonYear
+      studios(isMain: true) { nodes { name } }
+    }
+  }
+}`;
 
-async function collect(source) {
+/*
+ * AniList 응답을 Jikan 모양으로 바꿉니다.
+ * 아래 코드가 어느 출처에서 왔는지 몰라도 되게 하려는 것입니다.
+ */
+function fromAniList(m) {
+  const url = m.coverImage?.extraLarge || m.coverImage?.large || "";
+  return {
+    mal_id: m.idMal || `al-${m.id}`,
+    title: m.title?.english || m.title?.romaji || "",
+    title_english: m.title?.english || "",
+    title_japanese: m.title?.native || "",
+    images: { jpg: { large_image_url: url, image_url: url } },
+    // AniList 의 popularity = 목록에 넣은 사람 수. MAL 의 members 와 같습니다.
+    members: m.popularity ?? null,
+    // AniList 평점은 100점 만점이라 10점 만점으로 맞춥니다.
+    score: m.averageScore != null ? Number((m.averageScore / 10).toFixed(2)) : null,
+    episodes: m.episodes ?? null,
+    genres: (m.genres || []).map((name) => ({ name })),
+    studios: (m.studios?.nodes || []).map((x) => ({ name: x.name })),
+    season: m.season ? m.season.toLowerCase() : "",
+    year: m.seasonYear ?? null,
+    rating: "",
+    // MAL 번호가 있을 때만 MAL 링크를 겁니다. 화면의 허용 호스트 목록이
+    // myanimelist.net 뿐이라, 번호가 없으면 링크 없이 둡니다.
+    url: m.idMal ? `https://myanimelist.net/anime/${m.idMal}` : "",
+    posterReferer: "https://anilist.co/",
+    provider: "AniList",
+  };
+}
+
+async function fromAniListAll() {
+  const out = [];
+  for (let page = 1; page <= PAGES; page += 1) {
+    const body = await postJson(
+      ANILIST,
+      { query: ANILIST_QUERY, variables: { page, perPage: 25 } },
+      `AniList ${page}쪽`,
+      { attempts: 3, timeout: 20000, backoffMs: 3000 },
+    );
+    const media = body?.data?.Page?.media;
+    if (!Array.isArray(media)) throw new Error(`${page}쪽의 media 가 배열이 아님`);
+    out.push(...media.map(fromAniList));
+    if (!body.data.Page.pageInfo?.hasNextPage) break;
+    await sleep(GAP_MS);
+  }
+  return out;
+}
+
+async function fromJikanAll() {
   const out = [];
   for (let page = 1; page <= PAGES; page += 1) {
     let body;
     try {
       body = await getJson(
-        source.url(page),
-        `Jikan ${source.name} ${page}쪽`,
-        // 504(게이트웨이 시간초과)를 돌려줄 때가 있습니다. 대체로
-        // 일시적이라 조금 참고 기다립니다.
+        `${JIKAN}/top/anime?filter=airing&limit=25&sfw=true&page=${page}`,
+        `Jikan ${page}쪽`,
         { attempts: 3, timeout: 20000, backoffMs: 4000 },
       );
     } catch (e) {
-      // 첫 쪽부터 안 열리면 이 출처는 버리고 다음 출처로 넘어갑니다.
       if (page === 1) throw e;
       console.warn(`  ${page}쪽을 받지 못해 여기까지로 마칩니다: ${e.message}`);
       break;
     }
-
     if (!Array.isArray(body?.data)) {
       throw new Error(`${page}쪽의 data 가 배열이 아님`);
     }
-    out.push(...body.data);
+    out.push(
+      ...body.data.map((a) => ({
+        ...a,
+        posterReferer: "https://myanimelist.net/",
+        provider: "MyAnimeList",
+      })),
+    );
     if (!body.pagination?.has_next_page) break;
     await sleep(GAP_MS);
   }
   return out;
 }
 
+const SOURCES = [
+  { name: "AniList", get: fromAniListAll },
+  { name: "MyAnimeList(Jikan)", get: fromJikanAll },
+];
+
 let raw = [];
+let usedSource = "";
 const failures = [];
 for (const source of SOURCES) {
   try {
-    raw = await collect(source);
+    raw = await source.get();
     if (raw.length) {
-      console.log(`Jikan ${source.name} 에서 ${raw.length}편을 받았습니다.`);
+      usedSource = source.name;
+      console.log(`${source.name} 에서 ${raw.length}편을 받았습니다.`);
       break;
     }
     failures.push(`${source.name}: 빈 목록`);
@@ -169,7 +246,7 @@ for (const source of SOURCES) {
 
 if (!raw.length) {
   giveUp(
-    "Jikan 의 어느 목록도 받지 못했습니다 (" +
+    "어느 출처에서도 목록을 받지 못했습니다 (" +
       failures.join(" / ") +
       "). 일시적인 장애일 수 있으니 잠시 뒤 다시 실행해 보세요.",
   );
@@ -261,7 +338,11 @@ for (const a of picked) {
   else {
     const url = a.images.jpg.large_image_url || a.images.jpg.image_url;
     try {
-      const size = await savePoster(url, file, "https://myanimelist.net/");
+      const size = await savePoster(
+        url,
+        file,
+        a.posterReferer || "https://myanimelist.net/",
+      );
       poster = file;
       got += 1;
       console.log(`  ${a.title} (${Math.round(size / 1024)}KB)`);
@@ -292,16 +373,24 @@ for (const a of picked) {
     studio: (a.studios || [])[0]?.name || "",
     season: a.season && a.year ? `${a.year} ${a.season}` : "",
     poster,
-    posterCredit: "MyAnimeList",
-    malUrl: a.url || `https://myanimelist.net/anime/${a.mal_id}`,
+    posterCredit: a.provider || "MyAnimeList",
+    // 출처가 둘이라 화면이 "MAL 평점" 이라고 못 박으면 안 됩니다.
+    scoreBy: a.provider || "MyAnimeList",
+    malUrl: a.url ?? `https://myanimelist.net/anime/${a.mal_id}`,
   });
 }
 
+const SOURCE_INFO = {
+  AniList: { label: "AniList", url: "https://anilist.co/" },
+  "MyAnimeList(Jikan)": { label: "MyAnimeList · Jikan API", url: "https://jikan.moe/" },
+};
+const info = SOURCE_INFO[usedSource] || SOURCE_INFO.AniList;
+
 const out = {
-  note: "MyAnimeList(Jikan) 이번 분기 화제작입니다. 콘텐츠ZONE 의 애니 탭에서 씁니다.",
-  source: "MyAnimeList · Jikan API",
-  sourceUrl: "https://jikan.moe/",
-  rankedBy: "MAL 목록 등록자 수(members) 순",
+  note: "지금 방영 중인 화제작입니다. 콘텐츠ZONE 의 애니 탭에서 씁니다.",
+  source: info.label,
+  sourceUrl: info.url,
+  rankedBy: "목록에 넣은 사람 수 순",
   // 받은 작품들이 공통으로 가리키는 분기입니다.
   season: picked[0]?.season && picked[0]?.year
     ? `${picked[0].year} ${picked[0].season}`

@@ -89,6 +89,47 @@ export async function getJson(
   throw new Error(`${label}: ${last?.cause?.code || last?.message}`);
 }
 
+/**
+ * GraphQL 용. getJson 과 같은 재시도·시간초과 규칙을 씁니다.
+ * 요청이 POST 이고 본문이 있다는 점만 다릅니다.
+ */
+export async function postJson(
+  url,
+  body,
+  label,
+  { attempts = 2, timeout = 10000, backoffMs = 2000 } = {},
+) {
+  let last;
+  for (let i = 1; i <= attempts; i += 1) {
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          accept: "application/json",
+        },
+        body: JSON.stringify(body),
+        signal: AbortSignal.timeout(timeout),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const json = await res.json();
+      // GraphQL 은 HTTP 200 으로 오류를 돌려주기도 합니다.
+      if (json?.errors?.length) {
+        throw new Error(json.errors[0]?.message || "GraphQL 오류");
+      }
+      return json;
+    } catch (e) {
+      last = e;
+      const why = e?.cause?.code || e?.message;
+      if (i < attempts) {
+        console.warn(`  ${label} 실패 (${i}/${attempts}): ${why} — 다시 시도`);
+        await new Promise((r) => setTimeout(r, i * backoffMs));
+      }
+    }
+  }
+  throw new Error(`${label}: ${last?.cause?.code || last?.message}`);
+}
+
 /** 제목 비교용. 공백·문장부호를 떼고 맞춥니다. */
 export const norm = (t) =>
   String(t || "")
