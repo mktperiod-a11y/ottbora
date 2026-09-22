@@ -37,12 +37,14 @@
       </nav>
     </header>
     <main class="wrap" id="main">
-      <span class="ey">CONTENT ZONE</span>
-      <h1>오늘 뭐 볼까?</h1>
-      <p class="sub">
-        분류를 고르고 포스터를 누르면 줄거리와 관전 포인트, 공식 시청 경로를
-        볼 수 있습니다.
-      </p>
+      <div class="page-head">
+        <span class="label">CONTENT ZONE</span>
+        <h1>오늘 뭐 볼까?</h1>
+        <p class="lead">
+          분류를 고르고 포스터를 누르면 줄거리와 관전 포인트, 공식 시청 경로를
+          볼 수 있습니다.
+        </p>
+      </div>
 
       <div class="filter-row">
         <div class="filters" role="tablist" aria-label="분류 선택"></div>
@@ -219,14 +221,44 @@
        */
       const TOP_N = 3;
 
-      /** 지금 차트 3위 안이면 그 순위를, 아니면 편집 근거를 씁니다. */
+      /**
+       * 지금 차트 3위 안이면 그 순위를, 아니면 편집 근거를 씁니다.
+       * 손으로 고른 작품이 지금 차트에도 있으면 옛 문구 대신 오늘 순위를 씁니다.
+       */
       function credit(title, fallback) {
         const r = FRESH ? RANKS.get(key(title)) : null;
-        return r && r <= TOP_N ? `박스오피스 ${r}위` : fallback || "";
+        return r && r <= TOP_N ? `국내 박스오피스 ${r}위` : fallback || "";
       }
 
-      function overlay(text) {
-        return text ? `<span class="rank-chip">${esc(text)}</span>` : "";
+      /** 카드 하나에 붙는 태그 수. 넘치면 뒤쪽은 버립니다. */
+      const MAX_TAGS = 3;
+
+      /**
+       * 태그는 "왜 실렸는가"를 말합니다. 장르가 아닙니다.
+       * 장르는 제목 바로 아래 부제 자리에 늘 따로 적습니다.
+       *
+       * 전에는 이 정보가 카드 종류마다 다른 자리에 있었습니다.
+       * 포스터 카드는 그림 위 칩, 글자 카드는 판 위에 장르와 나란히,
+       * 애니는 그림 위 평점. 같은 줄에 다른 종류가 와서 읽히지 않았습니다.
+       * 한 자리로 모읍니다.
+       */
+      function tagRow(tags) {
+        const shown = tags.filter(Boolean).slice(0, MAX_TAGS);
+        if (!shown.length) return "";
+        return (
+          `<div class="tags">` +
+          shown.map((t) => `<span class="tag">#${esc(t)}</span>`).join("") +
+          `</div>`
+        );
+      }
+
+      /** 제공처와 분류를 합쳐 한 태그로. "넷플릭스" + 드라마 → "넷플릭스 시리즈" */
+      const KIND = { 드라마: "시리즈", 예능: "예능", 영화: "영화", 애니: "애니" };
+      function providerTag(w) {
+        const name = (w.watch || [])[0]?.name;
+        if (!name) return "";
+        const kind = KIND[w.type];
+        return kind ? `${name} ${kind}` : name;
       }
 
       function badge(text) {
@@ -240,89 +272,19 @@
 
       /** 손으로 고른 작품 — 포스터가 있고 상세 페이지로 넘어갑니다. */
       function pickedCard(w) {
-        // 제공처(watch)는 "어디서 볼 수 있는가"라 카드 아래에 둡니다.
-        // 근거(pickedBy)는 "왜 실렸는가"라 포스터 위 칩으로 올립니다.
-        const where = w.watch.map((x) => badge(x.name)).join("");
         // 분류는 탭이 이미 말하므로, 전체 탭에서만 함께 적습니다.
         const line = active === "전체" ? `${w.type} · ${w.genre}` : w.genre;
+        const tags = [credit(w.title, w.pickedBy), providerTag(w)];
         return (
           `<a class="card" href="content-detail.html?id=${encodeURIComponent(w.id)}">` +
           `<span class="thumb">` +
           `<img src="${poster(w.id)}" alt="${esc(w.title)} 포스터" loading="lazy"` +
-          ` referrerpolicy="no-referrer"` +
-          ` onerror="ottImgFail(this)">` +
-          overlay(credit(w.title, w.pickedBy)) +
+          ` referrerpolicy="no-referrer" onerror="ottImgFail(this)">` +
           `</span>` +
           `<div class="cb"><b>${esc(w.title)}</b>` +
           `<span class="genre">${esc(line)}</span>` +
-          `<div class="card-foot">${where}</div></div></a>`
-        );
-      }
-
-      /**
-       * 박스오피스에서 온 작품 — 포스터가 없어 제목을 크게 두는 글자 카드입니다.
-       * 상세 페이지가 없으므로 카드 전체를 링크로 만들지 않습니다.
-       * 대신 지금 극장에 걸려 있는 작품에만 예매 칩을 답니다.
-       */
-      function boxCard(m) {
-        const facts = [opened(m.openedAt), audience(m.audienceAcc)]
-          .filter(Boolean)
-          .join(" · ");
-
-        // 예매 칩의 근거는 "마지막 집계일에도 차트에 있었다" 입니다.
-        // 그 사실이 없으면 예매 링크 대신 같은 자리에 상태만 적습니다.
-        // 어떤 카드에는 있고 어떤 카드에는 없으면 줄이 어긋나 보입니다.
-        const book =
-          m.showing && FRESH && CINEMAS.length
-            ? CINEMAS.map(
-                (c) =>
-                  `<a class="${CHIP} book-chip" href="${c.href}"` +
-                  ` target="_blank" rel="noopener noreferrer"` +
-                  ` title="${esc(c.name)} 예매 페이지로 이동합니다">` +
-                  `${esc(c.short)}</a>`,
-              ).join("")
-            : `<span class="ended">상영 정보 없음</span>`;
-
-        // 탭이 이미 말하는 것은 카드에 다시 적지 않습니다.
-        // 애니 탭에서는 모든 작품의 첫 장르가 "애니메이션" 이라 빼고 적습니다.
-        const rest =
-          active === "애니"
-            ? m.genres.filter((g) => g !== "애니메이션")
-            : m.genres;
-        const top = [active === "전체" ? m.type : "", rest.join(" · ")]
-          .filter(Boolean)
-          .join(" · ");
-        const chip = credit(m.title, "");
-        const foot = `<div class="cb"><div class="card-foot">${book}</div></div>`;
-
-        // 포스터를 받아 둔 작품은 손으로 고른 작품과 같은 모양으로 그립니다.
-        // 상세 페이지가 없으므로 카드 전체를 링크로 만들지는 않습니다.
-        if (m.poster) {
-          return (
-            `<article class="card">` +
-            `<span class="thumb">` +
-            `<img src="${esc(m.poster)}" alt="${esc(m.title)} 포스터" loading="lazy"` +
-            ` onerror="ottImgFail(this)">` +
-            overlay(chip) +
-            `</span>` +
-            `<div class="cb"><b>${esc(m.title)}</b>` +
-            (top ? `<span class="genre">${esc(top)}</span>` : "") +
-            (facts ? `<span class="genre">${esc(facts)}</span>` : "") +
-            `<div class="card-foot">${book}</div></div></article>`
-          );
-        }
-
-        // 포스터가 아직 없으면 제목을 판 한가운데 앉힌 글자 카드로 둡니다.
-        return (
-          `<article class="card card--text">` +
-          `<div class="panel panel--t${tint(m.movieCd)}">` +
-          `<span class="panel-top">${overlay(chip)}` +
-          (top ? `<span class="panel-genre">${esc(top)}</span>` : "") +
-          `</span>` +
-          `<b class="panel-title">${esc(m.title)}</b>` +
-          `<span class="panel-facts">${esc(facts)}</span>` +
-          `</div>` + foot +
-          `</article>`
+          tagRow(tags) +
+          `</div></a>`
         );
       }
 
@@ -331,26 +293,108 @@
        * 상세 페이지가 없으므로 카드 전체를 링크로 만들지 않고,
        * 다른 카드처럼 아래 액션 줄에 출처 링크를 둡니다.
        */
+      /**
+       * 박스오피스에서 온 작품.
+       * 상세 페이지가 없으므로 카드 전체를 링크로 만들지 않습니다.
+       */
+      function boxCard(m) {
+        // 장르는 늘 부제 자리에 둡니다. 태그와 섞지 않습니다.
+        const rest =
+          active === "애니"
+            ? m.genres.filter((g) => g !== "애니메이션")
+            : m.genres;
+        // 개봉일은 작품 정보라 부제 줄에 둡니다.
+        const line = [
+          active === "전체" ? m.type : "",
+          rest.join(" · "),
+          opened(m.openedAt),
+        ]
+          .filter(Boolean)
+          .join(" · ");
+
+        // 태그는 "왜 실렸는가" 만 담습니다.
+        const tags = [credit(m.title, ""), audience(m.audienceAcc)];
+
+        // 예매는 하위 항목입니다. 카드의 주된 내용이 아니라, 지금 극장에
+        // 걸려 있을 때만 딸려 붙는 행동입니다.
+        const book =
+          m.showing && FRESH && CINEMAS.length
+            ? `<div class="sub-action"><span class="sub-action-label">예매</span>` +
+              CINEMAS.map(
+                (c) =>
+                  `<a class="${CHIP} book-chip" href="${c.href}"` +
+                  ` target="_blank" rel="noopener noreferrer"` +
+                  ` title="${esc(c.name)} 예매 페이지로 이동합니다">` +
+                  `${esc(c.short)}</a>`,
+              ).join("") +
+              `</div>`
+            : "";
+
+        const body =
+          `<div class="cb"><b>${esc(m.title)}</b>` +
+          (line ? `<span class="genre">${esc(line)}</span>` : "") +
+          tagRow(tags) +
+          `</div>` + book;
+
+        if (m.poster) {
+          return (
+            `<article class="card">` +
+            `<span class="thumb">` +
+            `<img src="${esc(m.poster)}" alt="${esc(m.title)} 포스터" loading="lazy"` +
+            ` onerror="ottImgFail(this)">` +
+            `</span>` + body +
+            `</article>`
+          );
+        }
+
+        // 포스터가 아직 없으면 제목을 판 한가운데 앉힌 글자 카드로 둡니다.
+        return (
+          `<article class="card card--text">` +
+          `<div class="panel panel--t${tint(m.movieCd)}">` +
+          `<b class="panel-title">${esc(m.title)}</b>` +
+          `</div>` + body +
+          `</article>`
+        );
+      }
+
+      /**
+       * MyAnimeList 에서 온 애니.
+       * 상세 페이지가 없으므로 카드 전체를 링크로 만들지 않습니다.
+       */
       function animeCard(a) {
-        const genres = a.genres.join(" · ");
-        const top = active === "전체" ? ["애니", genres].filter(Boolean).join(" · ") : genres;
-        const facts = [
+        // 장르는 늘 부제 자리에 둡니다. 태그와 섞지 않습니다.
+        // 화수·제작사는 작품 정보라 부제 줄에 둡니다.
+        const line = [
+          active === "전체" ? "애니" : "",
+          a.genres.join(" · "),
           a.episodes ? `${a.episodes}화` : "",
           a.studio,
         ]
           .filter(Boolean)
           .join(" · ");
 
-        // 평점은 MAL 이 공개한 값입니다. 우리가 매긴 순서가 아니라
-        // 외부 사실이므로 그림 위 칩으로 올립니다.
-        const chip = a.score ? `MAL ${a.score}` : "";
+        // 태그는 "왜 실렸는가" 만 담습니다.
+        // 평점·분기 화제성은 MAL 이 공개한 사실이라 여기에 해당합니다.
+        const tags = [
+          "이번 분기 화제작",
+          a.score ? `MAL 평점 ${a.score}` : "",
+        ];
 
         const href = safe(a.malUrl, MAL_HOSTS);
-        const foot = href
-          ? `<a class="${CHIP} book-chip" href="${href}"` +
+        const link = href
+          ? `<div class="sub-action">` +
+            `<span class="sub-action-label">출처</span>` +
+            `<a class="${CHIP} book-chip" href="${href}"` +
             ` target="_blank" rel="noopener noreferrer"` +
-            ` title="MyAnimeList 작품 페이지로 이동합니다">MyAnimeList</a>`
+            ` title="MyAnimeList 작품 페이지로 이동합니다">MyAnimeList</a>` +
+            `</div>`
           : "";
+
+        const body =
+          `<div class="cb"><b>${esc(a.title)}</b>` +
+          (line ? `<span class="genre">${esc(line)}</span>` : "") +
+          tagRow(tags) +
+          `</div>` + link;
 
         if (a.poster) {
           return (
@@ -358,25 +402,16 @@
             `<span class="thumb">` +
             `<img src="${esc(a.poster)}" alt="${esc(a.title)} 포스터" loading="lazy"` +
             ` onerror="ottImgFail(this)">` +
-            overlay(chip) +
-            `</span>` +
-            `<div class="cb"><b>${esc(a.title)}</b>` +
-            (top ? `<span class="genre">${esc(top)}</span>` : "") +
-            (facts ? `<span class="genre">${esc(facts)}</span>` : "") +
-            `<div class="card-foot">${foot}</div></div></article>`
+            `</span>` + body +
+            `</article>`
           );
         }
 
         return (
           `<article class="card card--text">` +
           `<div class="panel panel--t${tint(String(a.malId))}">` +
-          `<span class="panel-top">${overlay(chip)}` +
-          (top ? `<span class="panel-genre">${esc(top)}</span>` : "") +
-          `</span>` +
           `<b class="panel-title">${esc(a.title)}</b>` +
-          `<span class="panel-facts">${esc(facts)}</span>` +
-          `</div>` +
-          `<div class="cb"><div class="card-foot">${foot}</div></div>` +
+          `</div>` + body +
           `</article>`
         );
       }

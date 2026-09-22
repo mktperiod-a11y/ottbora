@@ -157,6 +157,64 @@ button:focus-visible,
   box-shadow: inset 0 -3px var(--accent);
 }
 
+/* --- 페이지 머리 --- */
+
+/*
+ * 세 페이지가 같은 구조(작은 라벨 → 제목 → 설명)를 쓰는데 클래스가
+ * .eyebrow / .ey / .sub 로 갈려 있었습니다. criteria 는 라벨에 .sub 를 써서
+ * 설명문과 구분이 없었습니다. 그래서 페이지를 옮길 때마다 머리가 흔들립니다.
+ *
+ *   측정값        라벨            제목      설명
+ *   webhard      13px / 800      54px      y 233
+ *   content      11px / 900      32px      y 146
+ *   criteria     13px / 400      31px      y 169
+ *
+ * 여기서 한 벌로 맞춥니다. 제목 크기만 페이지가 정합니다.
+ */
+.page-head {
+  padding-top: 44px;
+}
+
+.page-head .label {
+  display: block;
+  color: var(--muted);
+  font-size: var(--seed-font-size-t3);
+  font-weight: var(--seed-font-weight-bold);
+  letter-spacing: 1.6px;
+  line-height: 1.4;
+}
+
+.page-head h1 {
+  margin: 10px 0 0;
+  font-size: 32px;
+  line-height: 1.25;
+  letter-spacing: -1.4px;
+}
+
+.page-head .lead {
+  margin: 14px 0 0;
+  max-width: 640px;
+  color: var(--muted);
+  font-size: var(--seed-font-size-t4);
+  line-height: 1.75;
+}
+
+.page-head .lead a {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+@media (max-width: 650px) {
+  .page-head {
+    padding-top: 30px;
+  }
+
+  .page-head h1 {
+    font-size: 27px;
+    letter-spacing: -1.1px;
+  }
+}
+
 /* --- 푸터 --- */
 
 footer {
