@@ -403,11 +403,15 @@
       function animeCard(a) {
         // 태그는 "왜 실렸는가" 만 담습니다.
         // 평점·분기 화제성은 MAL 이 공개한 사실이라 여기에 해당합니다.
+        // 출처가 AniList 일 수도, MyAnimeList 일 수도 있습니다.
+        // 어디서 온 평점인지 항목이 들고 오므로 그걸 그대로 씁니다.
         const tags = [
-          "이번 분기 화제작",
-          a.score ? `MAL 평점 ${a.score}` : "",
+          "지금 방영 중",
+          a.score ? `${a.scoreBy || "MAL"} 평점 ${a.score}` : "",
         ];
 
+        // MAL 번호가 있는 작품만 링크가 생깁니다. 화면이 허용하는
+        // 호스트가 myanimelist.net 뿐이라 그 밖은 링크 없이 둡니다.
         const href = safe(a.malUrl, MAL_HOSTS);
         const link = href
           ? `<div class="sub-action">` +
