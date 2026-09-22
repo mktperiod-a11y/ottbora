@@ -119,7 +119,11 @@ async function fromKmdb(title, year) {
     // 같은 해 다른 작품의 포스터가 붙을 수 있습니다.
     // 부제가 붙고 떨어지는 경우가 있어 포함 관계까지 인정합니다.
     if (got === want || got.includes(want) || want.includes(got)) {
-      return { url: poster, credit: "KMDb · 한국영상자료원" };
+        return {
+        url: poster,
+        credit: "KMDb · 한국영상자료원",
+        referer: "https://www.kmdb.or.kr/",
+      };
     }
   }
   return null;
@@ -148,17 +152,54 @@ async function fromTmdb(title, year) {
     (r) => r.poster_path && (match(r.title) || match(r.original_title)),
   );
   return hit
-    ? { url: TMDB_IMG + hit.poster_path, credit: "TMDB" }
+    ? {
+        url: TMDB_IMG + hit.poster_path,
+        credit: "TMDB",
+        referer: "https://www.themoviedb.org/",
+      }
     : null;
 }
 
-/** 이미지를 받아 2:3 webp 로 저장합니다. */
-async function save(url, file) {
-  const res = await fetch(url, { signal: AbortSignal.timeout(20000) });
+/** 한 장이 이보다 크면 받지 않습니다. 포스터가 이럴 일은 없습니다. */
+const MAX_BYTES = 12 * 1024 * 1024;
+
+/**
+ * 이미지를 받아 2:3 webp 로 저장합니다.
+ *
+ * 포스터는 API 와 다른 호스트에 있습니다(KMDb 는 file.koreafilm.or.kr).
+ * 그런 호스트는 브라우저가 아닌 요청을 거절하는 경우가 있어, 평범한
+ * 브라우저처럼 보이는 헤더를 붙입니다. 거절되면 그 작품만 건너뜁니다.
+ *
+ * 한 번 받아 저장소에 넣으므로 방문자 브라우저는 이 호스트에 붙지 않습니다.
+ * 상대가 나중에 핫링크를 막아도 이미 받아 둔 이미지는 그대로 뜹니다.
+ */
+async function save(url, file, referer) {
+  const res = await fetch(url, {
+    headers: {
+      // 서버 쪽 요청을 막는 호스트가 있어 붙입니다.
+      "user-agent":
+        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0 Safari/537.36",
+      accept: "image/avif,image/webp,image/apng,image/*,*/*;q=0.8",
+      ...(referer ? { referer } : {}),
+    },
+    signal: AbortSignal.timeout(20000),
+  });
   if (!res.ok) throw new Error(`이미지 HTTP ${res.status}`);
+
+  // 차단 페이지가 HTML 로 오는 경우가 있어 형태를 먼저 봅니다.
+  const type = res.headers.get("content-type") || "";
+  if (!type.startsWith("image/")) {
+    throw new Error(`이미지가 아님 (content-type: ${type || "없음"})`);
+  }
+  const len = Number(res.headers.get("content-length") || 0);
+  if (len > MAX_BYTES) throw new Error(`너무 큼 (${Math.round(len / 1024 / 1024)}MB)`);
+
   const buf = Buffer.from(await res.arrayBuffer());
+  if (buf.length > MAX_BYTES) throw new Error("너무 큼");
+
   // position:attention 은 사람 얼굴·대비가 큰 쪽을 남깁니다.
   // 원본이 가로 스틸컷이어도 인물이 잘려 나가지 않게 하려는 것입니다.
+  // sharp 는 이미지가 아닌 입력에 예외를 던지므로 여기서 한 번 더 걸립니다.
   const out = await sharp(buf)
     .resize(W, H, { fit: "cover", position: "attention" })
     .webp({ quality: 82 })
@@ -211,7 +252,7 @@ for (const m of need) {
   }
 
   try {
-    const size = await save(found.url, `${DIR}/${m.movieCd}.webp`);
+    const size = await save(found.url, `${DIR}/${m.movieCd}.webp`, found.referer);
     m.poster = `${DIR}/${m.movieCd}.webp`;
     m.posterCredit = found.credit;
     ok += 1;
