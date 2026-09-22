@@ -44,7 +44,10 @@
         볼 수 있습니다.
       </p>
 
-      <div class="filters" role="tablist" aria-label="분류 선택"></div>
+      <div class="filter-row">
+        <div class="filters" role="tablist" aria-label="분류 선택"></div>
+        <p class="count" id="count" aria-live="polite"></p>
+      </div>
 
 
       <div id="sections"></div>
@@ -193,6 +196,17 @@
         return h % TINTS;
       }
 
+      /**
+       * 이미지 위에 얹는 반투명 칩. "왜 실렸는가"를 카드 아래 글줄로 적는 대신
+       * 그림 위에 한 번만 보여 줍니다.
+       * 박스오피스는 마지막 집계일 순위가 3위 안일 때만 답니다.
+       * KOFIC 순위는 관객수 기준이라 "예매율"이 아니라 "박스오피스"로 적습니다.
+       */
+      const TOP_N = 3;
+      function overlay(text) {
+        return text ? `<span class="rank-chip">${esc(text)}</span>` : "";
+      }
+
       function badge(text) {
         return (
           `<span class="seed-badge__root seed-badge__root--size_medium` +
@@ -204,24 +218,22 @@
 
       /** 손으로 고른 작품 — 포스터가 있고 상세 페이지로 넘어갑니다. */
       function pickedCard(w) {
-        // 제공처와 근거는 역할이 다르므로 표기도 나눕니다.
-        //  · 제공처(watch) = 어디서 볼 수 있는가 → 중립 칩
-        //  · 근거(pickedBy) = 왜 실렸는가 → 작은 회색 글씨
-        // 근거 문구에는 제공처 이름을 넣지 않습니다. 칩이 이미 말합니다.
+        // 제공처(watch)는 "어디서 볼 수 있는가"라 카드 아래에 둡니다.
+        // 근거(pickedBy)는 "왜 실렸는가"라 포스터 위 칩으로 올립니다.
         const where = w.watch.map((x) => badge(x.name)).join("");
-        const why = w.pickedBy
-          ? `<span class="why">${esc(w.pickedBy)}</span>`
-          : "";
-        const meta = where || why ? `<div class="meta-row">${where}${why}</div>` : "";
         // 분류는 탭이 이미 말하므로, 전체 탭에서만 함께 적습니다.
         const line = active === "전체" ? `${w.type} · ${w.genre}` : w.genre;
         return (
           `<a class="card" href="content-detail.html?id=${encodeURIComponent(w.id)}">` +
+          `<span class="thumb">` +
           `<img src="${poster(w.id)}" alt="${esc(w.title)} 포스터" loading="lazy"` +
           ` referrerpolicy="no-referrer"` +
           ` onerror="this.onerror=null;this.src='${FALLBACK}'">` +
+          overlay(w.pickedBy) +
+          `</span>` +
           `<div class="cb"><b>${esc(w.title)}</b>` +
-          `<span class="genre">${esc(line)}</span>${meta}</div></a>`
+          `<span class="genre">${esc(line)}</span>` +
+          `<div class="card-foot">${where}</div></div></a>`
         );
       }
 
@@ -231,37 +243,45 @@
        * 대신 지금 극장에 걸려 있는 작품에만 예매 칩을 답니다.
        */
       function boxCard(m) {
-        const genre = m.genres.join(" · ");
         const facts = [opened(m.openedAt), audience(m.audienceAcc)]
           .filter(Boolean)
           .join(" · ");
 
         // 예매 칩의 근거는 "마지막 집계일에도 차트에 있었다" 입니다.
-        // 그 사실이 없으면 예매 링크를 걸지 않습니다.
+        // 그 사실이 없으면 예매 링크 대신 같은 자리에 상태만 적습니다.
+        // 어떤 카드에는 있고 어떤 카드에는 없으면 줄이 어긋나 보입니다.
         const book =
           m.showing && FRESH && CINEMAS.length
-            ? `<div class="book">` +
-              CINEMAS.map(
+            ? CINEMAS.map(
                 (c) =>
                   `<a class="${CHIP} book-chip" href="${c.href}"` +
                   ` target="_blank" rel="noopener noreferrer"` +
                   ` title="${esc(c.name)} 예매 페이지로 이동합니다">` +
                   `${esc(c.short)}</a>`,
-              ).join("") +
-              `</div>`
-            : "";
+              ).join("")
+            : `<span class="ended">상영 정보 없음</span>`;
 
-        const top = [active === "전체" ? m.type : "", genre]
+        // 탭이 이미 말하는 것은 카드에 다시 적지 않습니다.
+        // 애니 탭에서는 모든 작품의 첫 장르가 "애니메이션" 이라 빼고 적습니다.
+        const rest =
+          active === "애니"
+            ? m.genres.filter((g) => g !== "애니메이션")
+            : m.genres;
+        const top = [active === "전체" ? m.type : "", rest.join(" · ")]
           .filter(Boolean)
           .join(" · ");
+        const chip =
+          m.rank && m.rank <= TOP_N ? `박스오피스 ${m.rank}위` : "";
         return (
           `<article class="card card--text">` +
           `<div class="panel panel--t${tint(m.movieCd)}">` +
-          `<span class="panel-top">${esc(top)}</span>` +
+          `<span class="panel-top">${overlay(chip)}` +
+          (top ? `<span class="panel-genre">${esc(top)}</span>` : "") +
+          `</span>` +
           `<b class="panel-title">${esc(m.title)}</b>` +
           `<span class="panel-facts">${esc(facts)}</span>` +
           `</div>` +
-          (book ? `<div class="cb">${book}</div>` : "") +
+          `<div class="cb"><div class="card-foot">${book}</div></div>` +
           `</article>`
         );
       }
@@ -273,10 +293,14 @@
         );
         // 같은 작품이 양쪽에 있으면 포스터와 상세가 있는 쪽을 남깁니다.
         const seen = new Set(picked.map((w) => key(w.title)));
-        const box = (DATA.boxoffice || []).filter(
-          (m) =>
-            (active === "전체" || m.type === active) && !seen.has(key(m.title)),
-        );
+        // 지금 극장에 걸려 있는 작품을 앞에 둡니다. 예매할 수 있는 쪽이
+        // 먼저 보여야 목록이 쓸모가 있습니다.
+        const box = (DATA.boxoffice || [])
+          .filter(
+            (m) =>
+              (active === "전체" || m.type === active) && !seen.has(key(m.title)),
+          )
+          .sort((a, b) => Number(b.showing) - Number(a.showing));
         return [
           ...picked.map((w) => ({ kind: "picked", w })),
           ...box.map((m) => ({ kind: "box", m })),
@@ -307,14 +331,17 @@
         const host = document.querySelector("#sections");
 
         if (!shown.length) {
+          document.querySelector("#count").textContent = `${active} 0건`;
           host.innerHTML = `<p class="empty">${esc(active)} 분류는 아직 준비 중입니다.</p>`;
           return;
         }
 
-        const more =
+        // 건수는 탭 줄 오른쪽 한 곳에서만 말합니다.
+        // 잘린 경우에만 몇 건을 보여 주는지 덧붙입니다.
+        document.querySelector("#count").textContent =
           all.length > capped.length
-            ? `<p class="count-note">${all.length}건 중 ${capped.length}건을 보여 줍니다.</p>`
-            : "";
+            ? `${active} ${all.length}건 중 ${capped.length}건`
+            : `${active} ${all.length}건`;
 
         host.innerHTML =
           `<div class="grid">` +
@@ -322,19 +349,27 @@
             .map((x) => (x.kind === "picked" ? pickedCard(x.w) : boxCard(x.m)))
             .join("") +
           `</div>` +
-          pager(pages) +
-          more;
+          pager(pages);
 
         host.querySelectorAll(".page-btn").forEach((b) => {
           b.onclick = () => {
             page = Number(b.dataset.page);
             render();
-            // 페이지를 넘기면 목록 맨 위로 돌아갑니다.
-            document
-              .querySelector(".filters")
-              .scrollIntoView({ block: "start" });
+            toTop();
           };
         });
+      }
+
+      /**
+       * 목록 맨 위(탭 줄)로 돌아갑니다. 이미 위에 있으면 움직이지 않습니다.
+       * 사이트 전역은 scroll-behavior:smooth 지만 여기서는 즉시 옮깁니다.
+       * 탭을 누른 뒤 1000px 을 훑어 내려가는 동안 화면이 흔들려 보입니다.
+       */
+      function toTop() {
+        const f = document.querySelector(".filters");
+        if (f.getBoundingClientRect().top < 0) {
+          f.scrollIntoView({ block: "start", behavior: "instant" });
+        }
       }
 
       function tabs() {
@@ -352,6 +387,9 @@
               x.setAttribute("aria-selected", String(x === b)),
             );
             render();
+            // 탭마다 목록 길이가 달라, 스크롤한 채로 탭을 바꾸면 화면이
+            // 제각각인 위치에 떨어집니다. 늘 같은 자리에서 시작하게 합니다.
+            toTop();
           };
         });
       }

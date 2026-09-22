@@ -21,7 +21,8 @@
       "lastSeenAt": "20260920",
       "days": 28,
       "bestRank": 1,
-      "showing": true
+      "showing": true,
+      "rank": null
     },
     {
       "movieCd": "20256308",
@@ -36,7 +37,8 @@
       "lastSeenAt": "20260920",
       "days": 8,
       "bestRank": 1,
-      "showing": true
+      "showing": true,
+      "rank": null
     },
     {
       "movieCd": "20262770",
@@ -53,7 +55,8 @@
       "lastSeenAt": "20260920",
       "days": 28,
       "bestRank": 2,
-      "showing": true
+      "showing": true,
+      "rank": null
     },
     {
       "movieCd": "20265146",
@@ -68,7 +71,8 @@
       "lastSeenAt": "20260920",
       "days": 19,
       "bestRank": 2,
-      "showing": true
+      "showing": true,
+      "rank": null
     },
     {
       "movieCd": "20263870",
@@ -85,7 +89,8 @@
       "lastSeenAt": "20260920",
       "days": 4,
       "bestRank": 3,
-      "showing": true
+      "showing": true,
+      "rank": null
     },
     {
       "movieCd": "20265423",
@@ -101,7 +106,8 @@
       "lastSeenAt": "20260920",
       "days": 11,
       "bestRank": 4,
-      "showing": true
+      "showing": true,
+      "rank": null
     },
     {
       "movieCd": "20070216",
@@ -118,7 +124,8 @@
       "lastSeenAt": "20260920",
       "days": 5,
       "bestRank": 5,
-      "showing": true
+      "showing": true,
+      "rank": null
     },
     {
       "movieCd": "20256161",
@@ -134,7 +141,8 @@
       "lastSeenAt": "20260920",
       "days": 5,
       "bestRank": 5,
-      "showing": true
+      "showing": true,
+      "rank": null
     },
     {
       "movieCd": "20261807",
@@ -149,7 +157,8 @@
       "lastSeenAt": "20260920",
       "days": 2,
       "bestRank": 6,
-      "showing": true
+      "showing": true,
+      "rank": null
     },
     {
       "movieCd": "20265587",
@@ -164,7 +173,8 @@
       "lastSeenAt": "20260920",
       "days": 5,
       "bestRank": 6,
-      "showing": true
+      "showing": true,
+      "rank": null
     },
     {
       "movieCd": "20264801",
@@ -181,7 +191,8 @@
       "lastSeenAt": "20260919",
       "days": 2,
       "bestRank": 5,
-      "showing": false
+      "showing": false,
+      "rank": null
     },
     {
       "movieCd": "20255033",
@@ -197,7 +208,8 @@
       "lastSeenAt": "20260918",
       "days": 2,
       "bestRank": 5,
-      "showing": false
+      "showing": false,
+      "rank": null
     },
     {
       "movieCd": "20224573",
@@ -212,7 +224,8 @@
       "lastSeenAt": "20260918",
       "days": 1,
       "bestRank": 6,
-      "showing": false
+      "showing": false,
+      "rank": null
     },
     {
       "movieCd": "20241110",
@@ -227,7 +240,8 @@
       "lastSeenAt": "20260917",
       "days": 2,
       "bestRank": 8,
-      "showing": false
+      "showing": false,
+      "rank": null
     },
     {
       "movieCd": "20258102",
@@ -243,7 +257,8 @@
       "lastSeenAt": "20260916",
       "days": 1,
       "bestRank": 10,
-      "showing": false
+      "showing": false,
+      "rank": null
     },
     {
       "movieCd": "20247458",
@@ -258,7 +273,8 @@
       "lastSeenAt": "20260915",
       "days": 21,
       "bestRank": 3,
-      "showing": false
+      "showing": false,
+      "rank": null
     },
     {
       "movieCd": "20204641",
@@ -274,7 +290,8 @@
       "lastSeenAt": "20260915",
       "days": 12,
       "bestRank": 4,
-      "showing": false
+      "showing": false,
+      "rank": null
     },
     {
       "movieCd": "20264918",
@@ -289,7 +306,8 @@
       "lastSeenAt": "20260915",
       "days": 14,
       "bestRank": 4,
-      "showing": false
+      "showing": false,
+      "rank": null
     },
     {
       "movieCd": "20233219",
@@ -306,7 +324,8 @@
       "lastSeenAt": "20260915",
       "days": 13,
       "bestRank": 5,
-      "showing": false
+      "showing": false,
+      "rank": null
     },
     {
       "movieCd": "20264915",
@@ -322,7 +341,8 @@
       "lastSeenAt": "20260915",
       "days": 2,
       "bestRank": 9,
-      "showing": false
+      "showing": false,
+      "rank": null
     },
     {
       "movieCd": "20265344",
@@ -337,7 +357,8 @@
       "lastSeenAt": "20260914",
       "days": 4,
       "bestRank": 7,
-      "showing": false
+      "showing": false,
+      "rank": null
     },
     {
       "movieCd": "20262381",
@@ -352,7 +373,8 @@
       "lastSeenAt": "20260913",
       "days": 9,
       "bestRank": 5,
-      "showing": false
+      "showing": false,
+      "rank": null
     },
     {
       "movieCd": "20018158",
@@ -370,7 +392,8 @@
       "lastSeenAt": "20260913",
       "days": 5,
       "bestRank": 6,
-      "showing": false
+      "showing": false,
+      "rank": null
     },
     {
       "movieCd": "20224597",
@@ -385,7 +408,8 @@
       "lastSeenAt": "20260911",
       "days": 1,
       "bestRank": 10,
-      "showing": false
+      "showing": false,
+      "rank": null
     },
     {
       "movieCd": "20264557",
@@ -404,7 +428,8 @@
       "lastSeenAt": "20260908",
       "days": 14,
       "bestRank": 4,
-      "showing": false
+      "showing": false,
+      "rank": null
     },
     {
       "movieCd": "20242837",
@@ -420,7 +445,8 @@
       "lastSeenAt": "20260908",
       "days": 2,
       "bestRank": 7,
-      "showing": false
+      "showing": false,
+      "rank": null
     },
     {
       "movieCd": "20265573",
@@ -436,7 +462,8 @@
       "lastSeenAt": "20260908",
       "days": 5,
       "bestRank": 7,
-      "showing": false
+      "showing": false,
+      "rank": null
     },
     {
       "movieCd": "20255509",
@@ -451,7 +478,8 @@
       "lastSeenAt": "20260908",
       "days": 1,
       "bestRank": 10,
-      "showing": false
+      "showing": false,
+      "rank": null
     },
     {
       "movieCd": "20264635",
@@ -466,7 +494,8 @@
       "lastSeenAt": "20260907",
       "days": 15,
       "bestRank": 4,
-      "showing": false
+      "showing": false,
+      "rank": null
     },
     {
       "movieCd": "20127108",
@@ -484,7 +513,8 @@
       "lastSeenAt": "20260906",
       "days": 3,
       "bestRank": 8,
-      "showing": false
+      "showing": false,
+      "rank": null
     },
     {
       "movieCd": "20167922",
@@ -500,7 +530,8 @@
       "lastSeenAt": "20260902",
       "days": 1,
       "bestRank": 9,
-      "showing": false
+      "showing": false,
+      "rank": null
     },
     {
       "movieCd": "20264035",
@@ -517,7 +548,8 @@
       "lastSeenAt": "20260901",
       "days": 9,
       "bestRank": 3,
-      "showing": false
+      "showing": false,
+      "rank": null
     },
     {
       "movieCd": "20255484",
@@ -533,7 +565,8 @@
       "lastSeenAt": "20260901",
       "days": 8,
       "bestRank": 5,
-      "showing": false
+      "showing": false,
+      "rank": null
     },
     {
       "movieCd": "20263307",
@@ -549,7 +582,8 @@
       "lastSeenAt": "20260901",
       "days": 5,
       "bestRank": 7,
-      "showing": false
+      "showing": false,
+      "rank": null
     },
     {
       "movieCd": "20262945",
@@ -564,7 +598,8 @@
       "lastSeenAt": "20260830",
       "days": 2,
       "bestRank": 8,
-      "showing": false
+      "showing": false,
+      "rank": null
     },
     {
       "movieCd": "20265388",
@@ -579,7 +614,8 @@
       "lastSeenAt": "20260830",
       "days": 2,
       "bestRank": 10,
-      "showing": false
+      "showing": false,
+      "rank": null
     },
     {
       "movieCd": "20253289",
@@ -594,7 +630,8 @@
       "lastSeenAt": "20260829",
       "days": 2,
       "bestRank": 9,
-      "showing": false
+      "showing": false,
+      "rank": null
     },
     {
       "movieCd": "20264715",
@@ -611,7 +648,8 @@
       "lastSeenAt": "20260828",
       "days": 3,
       "bestRank": 8,
-      "showing": false
+      "showing": false,
+      "rank": null
     },
     {
       "movieCd": "20100810",
@@ -626,7 +664,8 @@
       "lastSeenAt": "20260825",
       "days": 2,
       "bestRank": 9,
-      "showing": false
+      "showing": false,
+      "rank": null
     },
     {
       "movieCd": "20264080",
@@ -643,7 +682,8 @@
       "lastSeenAt": "20260825",
       "days": 2,
       "bestRank": 10,
-      "showing": false
+      "showing": false,
+      "rank": null
     }
   ]
 }

@@ -8,7 +8,7 @@ main{
         padding: 46px 0 80px;
       }
 .ey{
-        color: var(--r);
+        color: var(--muted);
         font-size: 11px;
         font-weight: 900;
         letter-spacing: 1.5px;
@@ -36,6 +36,11 @@ h1{
         gap: 17px;
       }
 .card{
+        /* 한 줄 안에서 카드 높이는 그리드가 맞춰 줍니다. 짧은 카드는
+           아래에 빈 띠가 생기는데, 본문 칸이 남는 높이를 먹게 해서
+           그 여백이 카드 안쪽 패딩처럼 보이게 합니다. */
+        display: flex;
+        flex-direction: column;
         overflow: hidden;
         border: 1px solid var(--l);
         border-radius: 11px;
@@ -46,6 +51,10 @@ h1{
         transform: translateY(-5px);
         box-shadow: 0 14px 30px #20273518;
       }
+.thumb{
+        position: relative;
+        display: block;
+      }
 .card img{
         display: block;
         width: 100%;
@@ -53,15 +62,19 @@ h1{
         object-fit: cover;
       }
 .cb{
+        flex: 1;
         padding: 13px;
       }
 .cb b{
-        font-size: var(--seed-font-size-t4);
-        line-height: 1.4;
+        display: block;
+        font-size: 17px;
+        font-weight: 800;
+        letter-spacing: -0.4px;
+        line-height: 1.35;
       }
 .cb span{
         display: block;
-        margin-top: 6px;
+        margin-top: 5px;
         color: var(--muted);
         font-size: var(--seed-font-size-t3);
         line-height: 1.5;
@@ -272,33 +285,32 @@ a:focus-visible,
   margin-top: 16px;
 }
 
-.count-note {
-  margin: 18px 0 0;
-  font-size: var(--seed-font-size-t3);
-  line-height: 1.7;
+/* 탭 줄과 건수를 한 줄에 둡니다. 좁은 화면에서는 건수가 아래로 내려갑니다. */
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 30px 0 20px;
+}
+
+.filter-row .filters {
+  margin: 0;
+  flex: 1 1 auto;
+}
+
+.count {
+  margin: 0;
   color: var(--muted);
+  font-size: var(--seed-font-size-t3);
+  line-height: 1.5;
+  white-space: nowrap;
 }
 
 /* ===== 카드 표기 ===== */
 
 .cb .genre {
-  color: var(--muted);
-}
-
-/* 제공처 칩과 근거를 한 줄에 둡니다. 둘 다 없으면 이 줄 자체가 없습니다. */
-.meta-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px;
-  margin-top: 8px;
-}
-
-/* 근거는 편집 투명성용이라 제공처보다 약하게 둡니다. */
-.cb .why {
-  /* .cb span 이 명시도에서 이기므로 같은 수준으로 맞춥니다. */
-  font-size: var(--seed-font-size-t2);
-  line-height: 1.5;
   color: var(--muted);
 }
 
@@ -320,6 +332,9 @@ a:focus-visible,
 }
 
 .panel {
+  /* 같은 줄에 예매 칩이 있는 카드가 있으면 이 카드도 그만큼 늘어납니다.
+     판이 남는 높이를 먹게 해서 카드 아래에 흰 띠가 생기지 않게 합니다. */
+  flex: 1;
   display: grid;
   /* 가운데 줄만 늘어나게 두어 제목이 판 한가운데 앉습니다.
      위아래 줄(분류·개봉일)은 제 높이만 차지합니다. */
@@ -327,13 +342,6 @@ a:focus-visible,
   aspect-ratio: 2/3;
   padding: 18px 16px;
   border-bottom: 1px solid var(--line);
-}
-
-.panel-top {
-  color: #4a5666;
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 1.4;
 }
 
 /* 포스터가 없으니 제목 자체를 그림처럼 씁니다. 판 가운데에 크게 앉힙니다. */
@@ -424,5 +432,93 @@ a:focus-visible,
 
   .book-chip {
     padding: 6px 8px;
+  }
+}
+
+
+/* ===== 포스터 위 순위 칩 ===== */
+
+/*
+ * "왜 실렸는가"를 카드 아래 글줄로 적으면 제목·장르와 섞여 셋 다 흐려집니다.
+ * 그림 위에 한 번만 얹습니다. 포스터가 어두울 수도 밝을 수도 있어
+ * 어두운 반투명 바탕에 흰 글씨로 고정합니다(대비 12:1 이상).
+ */
+.rank-chip {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  padding: 5px 9px;
+  border-radius: var(--seed-radius-r2);
+  background: #17202de0;
+  backdrop-filter: blur(4px);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* 글자 카드에서는 판 자체가 그림이라, 칩이 판 안에서 흐름대로 놓입니다. */
+.panel .rank-chip {
+  position: static;
+  align-self: start;
+}
+
+.panel-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.panel-genre {
+  color: #4a5666;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+/* ===== 카드 아래 액션 줄 ===== */
+
+/*
+ * 모든 카드가 같은 자리에 같은 줄을 갖습니다.
+ * 어떤 카드에만 예매 칩이 있고 어떤 카드에는 없으면 줄이 어긋나 보입니다.
+ * 내용이 없으면 줄 자체가 높이를 차지하지 않습니다.
+ */
+.card-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.card-foot:not(:empty) {
+  margin-top: 9px;
+}
+
+.card--text .card-foot {
+  margin-top: 0;
+}
+
+/* 상영이 끝났거나 확인되지 않은 작품. 예매 칩과 같은 자리에 놓습니다. */
+.ended {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@media (max-width: 560px) {
+  .rank-chip {
+    top: 6px;
+    left: 6px;
+    padding: 4px 7px;
+    font-size: 11px;
+  }
+
+  .panel-genre {
+    font-size: 12px;
+  }
+
+  .ended {
+    font-size: 12px;
   }
 }
