@@ -159,6 +159,12 @@
         ["이런 엿같은 사랑", "로맨틱 코미디", "our-sticky-love", "넷플릭스 주간"],
         ["오싹한 연애", "로맨틱 코미디", "spooky-in-love", "넷플릭스 주간"],
       ];
+      /* 인라인 핸들러에서 전역 const 를 참조하면 브라우저에 따라 달라집니다.
+         이름 있는 함수로 두면 확실합니다. */
+      window.ottImgFail = (el) => {
+        el.onerror = null;
+        el.src = fallback;
+      };
       const fallback =
         "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2 3'%3E%3Crect width='2' height='3' fill='%23eef1f5'/%3E%3C/svg%3E";
       document.querySelector("#picks").innerHTML = picks
@@ -167,7 +173,7 @@
             `<a class="content-card" href="content-detail.html?id=${id}">` +
             `<span class="thumb"><img src="${posterSource(id)}" alt="${title} 포스터"` +
             ` loading="lazy" referrerpolicy="no-referrer"` +
-            ` onerror="this.onerror=null;this.src=fallback">` +
+            ` onerror="ottImgFail(this)">` +
             `<span class="rank-chip">${tag}</span></span>` +
             `<div class="content-body"><b>${title}</b><p>${genre}</p></div></a>`,
         )

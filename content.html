@@ -109,6 +109,19 @@
         " viewBox='0 0 2 3'%3E%3Crect width='2' height='3' fill='%23eef1f5'/%3E%3C/svg%3E";
 
       const poster = (id) => (window.OTT_POSTERS || {})[id] || FALLBACK;
+
+      /*
+       * 이미지가 실패하면 회색 자리표시로 바꿉니다.
+       *
+       * 전에는 onerror 안에 data URI 를 그대로 적었는데, 그 주소에
+       * 작은따옴표가 들어 있어(xmlns='...') 핸들러가 중간에 끊겼습니다.
+       * 이미지가 실패할 때만 실행되는 코드라 오래 드러나지 않았습니다.
+       * 이름 있는 함수로 두면 따옴표 문제가 생기지 않습니다.
+       */
+      window.ottImgFail = (el) => {
+        el.onerror = null;
+        el.src = FALLBACK;
+      };
       const esc = (s) =>
         String(s).replace(
           /[&<>"']/g,
@@ -129,6 +142,7 @@
         "www.megabox.co.kr",
         "www.lottecinema.co.kr",
       ]);
+      const MAL_HOSTS = new Set(["myanimelist.net", "www.myanimelist.net"]);
       const safe = (raw, allow) => {
         try {
           const u = new URL(raw);
@@ -236,7 +250,7 @@
           `<span class="thumb">` +
           `<img src="${poster(w.id)}" alt="${esc(w.title)} 포스터" loading="lazy"` +
           ` referrerpolicy="no-referrer"` +
-          ` onerror="this.onerror=null;this.src='${FALLBACK}'">` +
+          ` onerror="ottImgFail(this)">` +
           overlay(credit(w.title, w.pickedBy)) +
           `</span>` +
           `<div class="cb"><b>${esc(w.title)}</b>` +
@@ -288,7 +302,7 @@
             `<article class="card">` +
             `<span class="thumb">` +
             `<img src="${esc(m.poster)}" alt="${esc(m.title)} 포스터" loading="lazy"` +
-            ` onerror="this.onerror=null;this.src='${FALLBACK}'">` +
+            ` onerror="ottImgFail(this)">` +
             overlay(chip) +
             `</span>` +
             `<div class="cb"><b>${esc(m.title)}</b>` +
@@ -312,25 +326,96 @@
         );
       }
 
+      /**
+       * MyAnimeList 에서 온 애니.
+       * 상세 페이지가 없으므로 카드 전체를 링크로 만들지 않고,
+       * 다른 카드처럼 아래 액션 줄에 출처 링크를 둡니다.
+       */
+      function animeCard(a) {
+        const genres = a.genres.join(" · ");
+        const top = active === "전체" ? ["애니", genres].filter(Boolean).join(" · ") : genres;
+        const facts = [
+          a.episodes ? `${a.episodes}화` : "",
+          a.studio,
+        ]
+          .filter(Boolean)
+          .join(" · ");
+
+        // 평점은 MAL 이 공개한 값입니다. 우리가 매긴 순서가 아니라
+        // 외부 사실이므로 그림 위 칩으로 올립니다.
+        const chip = a.score ? `MAL ${a.score}` : "";
+
+        const href = safe(a.malUrl, MAL_HOSTS);
+        const foot = href
+          ? `<a class="${CHIP} book-chip" href="${href}"` +
+            ` target="_blank" rel="noopener noreferrer"` +
+            ` title="MyAnimeList 작품 페이지로 이동합니다">MyAnimeList</a>`
+          : "";
+
+        if (a.poster) {
+          return (
+            `<article class="card">` +
+            `<span class="thumb">` +
+            `<img src="${esc(a.poster)}" alt="${esc(a.title)} 포스터" loading="lazy"` +
+            ` onerror="ottImgFail(this)">` +
+            overlay(chip) +
+            `</span>` +
+            `<div class="cb"><b>${esc(a.title)}</b>` +
+            (top ? `<span class="genre">${esc(top)}</span>` : "") +
+            (facts ? `<span class="genre">${esc(facts)}</span>` : "") +
+            `<div class="card-foot">${foot}</div></div></article>`
+          );
+        }
+
+        return (
+          `<article class="card card--text">` +
+          `<div class="panel panel--t${tint(String(a.malId))}">` +
+          `<span class="panel-top">${overlay(chip)}` +
+          (top ? `<span class="panel-genre">${esc(top)}</span>` : "") +
+          `</span>` +
+          `<b class="panel-title">${esc(a.title)}</b>` +
+          `<span class="panel-facts">${esc(facts)}</span>` +
+          `</div>` +
+          `<div class="cb"><div class="card-foot">${foot}</div></div>` +
+          `</article>`
+        );
+      }
+
       /** 지금 탭에 보여 줄 작품 전체. 손으로 고른 작품이 앞에 옵니다. */
       function pool() {
-        const picked = DATA.works.filter(
-          (w) => active === "전체" || w.type === active,
-        );
+        const anime = (DATA.anime || []).map((a) => ({ kind: "anime", a }));
+
+        // 애니 탭은 MyAnimeList 에서만 채웁니다.
+        // "극장 개봉" 이 아니라 "지금 화제인 애니" 기준이라, KOFIC 의
+        // 극장 애니메이션은 영화 탭에 둡니다(장르 표기로 구분됩니다).
+        if (active === "애니") return anime;
+
+        const picked = DATA.works
+          .filter((w) => active === "전체" || w.type === active)
+          .map((w) => ({ kind: "picked", w }));
+
         // 같은 작품이 양쪽에 있으면 포스터와 상세가 있는 쪽을 남깁니다.
-        const seen = new Set(picked.map((w) => key(w.title)));
-        // 지금 극장에 걸려 있는 작품을 앞에 둡니다. 예매할 수 있는 쪽이
-        // 먼저 보여야 목록이 쓸모가 있습니다.
+        const seen = new Set(picked.map((x) => key(x.w.title)));
         const box = (DATA.boxoffice || [])
           .filter(
             (m) =>
               (active === "전체" || m.type === active) && !seen.has(key(m.title)),
           )
-          .sort((a, b) => Number(b.showing) - Number(a.showing));
-        return [
-          ...picked.map((w) => ({ kind: "picked", w })),
-          ...box.map((m) => ({ kind: "box", m })),
-        ];
+          // 지금 극장에 걸려 있는 작품을 앞에 둡니다. 예매할 수 있는 쪽이
+          // 먼저 보여야 목록이 쓸모가 있습니다.
+          .sort((a, b) => Number(b.showing) - Number(a.showing))
+          .map((m) => ({ kind: "box", m }));
+
+        if (active !== "전체") return [...picked, ...box];
+
+        // 전체 탭은 60건에서 잘립니다. 출처를 이어 붙이면 뒤쪽 출처가
+        // 한 건도 안 보이므로 번갈아 섞습니다.
+        const lanes = [picked, box, anime];
+        const mixed = [];
+        for (let i = 0; mixed.length < picked.length + box.length + anime.length; i += 1) {
+          for (const lane of lanes) if (lane[i]) mixed.push(lane[i]);
+        }
+        return mixed;
       }
 
       function pager(pages) {
@@ -372,7 +457,13 @@
         host.innerHTML =
           `<div class="grid">` +
           shown
-            .map((x) => (x.kind === "picked" ? pickedCard(x.w) : boxCard(x.m)))
+            .map((x) =>
+              x.kind === "picked"
+                ? pickedCard(x.w)
+                : x.kind === "box"
+                  ? boxCard(x.m)
+                  : animeCard(x.a),
+            )
             .join("") +
           `</div>` +
           pager(pages);
@@ -431,10 +522,12 @@
         fetch("assets/content-data.json").then((r) => r.json()),
         optional("assets/boxoffice.json"),
         optional("assets/cinema-links.json"),
+        optional("assets/anime.json"),
       ])
-        .then(([d, box, cinema]) => {
+        .then(([d, box, cinema, anime]) => {
           DATA = d;
           DATA.boxoffice = Array.isArray(box?.movies) ? box.movies : [];
+          DATA.anime = Array.isArray(anime?.works) ? anime.works : [];
           FRESH = isFresh(box?.latestDt);
           // 손으로 고른 작품이 지금 차트에도 있으면 그 순위를 씁니다.
           // 같은 작품에 옛 근거 문구와 오늘 순위가 따로 놀지 않도록.
@@ -453,11 +546,16 @@
           // 포스터 출처를 방침 안내에 함께 적습니다. 어디서 온 이미지인지
           // 밝히지 않으면 출처 표기 없이 남의 이미지를 싣는 셈이 됩니다.
           const sources = [
-            ...new Set(DATA.boxoffice.map((m) => m.posterCredit).filter(Boolean)),
+            ...new Set(
+              [...DATA.boxoffice, ...DATA.anime]
+                .map((x) => x.posterCredit)
+                .filter(Boolean),
+            ),
           ];
           document.querySelector("#policy-text").textContent =
             `${d.selectionPolicy} ${d.watchNote} 확인일 ${d.checkedAt}.` +
-            (sources.length ? ` 극장 개봉작 포스터 출처: ${sources.join(", ")}.` : "");
+            (anime?.rankedBy ? ` 애니는 ${anime.rankedBy}입니다.` : "") +
+            (sources.length ? ` 포스터 출처: ${sources.join(", ")}.` : "");
           document.querySelector("#partner-text").textContent =
             d.partnerDisclosure;
           tabs();
