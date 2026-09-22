@@ -55,10 +55,15 @@ main{
 /* 제목. 부제 줄 안의 <b>(대분류)는 여기 해당하지 않습니다. */
 .cb > b{
         display: block;
+        min-width: 0;
+        min-height: 1.35em;
         font-size: 17px;
         font-weight: 800;
         letter-spacing: -0.4px;
         line-height: 1.35;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 .cb span{
         display: block;
@@ -169,7 +174,9 @@ main{
           display: block;
           font-size: 16px;
           line-height: 1.35;
-          overflow-wrap: anywhere;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
         .cb span {
           font-size: 13px;
@@ -549,7 +556,9 @@ a:focus-visible,
     font-size: 15px;
     line-height: 1.35;
     letter-spacing: -0.3px;
-    overflow-wrap: anywhere;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .cb .genre {
