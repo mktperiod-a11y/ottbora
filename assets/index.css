@@ -24,7 +24,8 @@ nav{
         padding: 7px 11px;
         border-radius: 20px;
         background: #ffffff13;
-        color: #ff9eaa;
+        /* 어두운 히어로 위 보조 라벨. 강조는 아래 h1 em 한 곳이면 충분합니다. */
+        color: #c6ccd6;
         font-size: 12px;
         font-weight: 800;
       }
@@ -184,7 +185,9 @@ nav{
         background: #ffffff08;
       }
 .guide-grid b{
-        color: #ff7a89;
+        /* 카드 배경을 흰색으로 고친 뒤에도 어두운 배경용 분홍이 남아
+           흰 바탕에서 2.5:1 이었습니다. */
+        color: var(--muted);
         font-size: 12px;
       }
 .guide-grid h3{
@@ -335,7 +338,7 @@ a:focus-visible,
 .release-tag{
         display: block;
         font-size: 13px;
-        color: #d82e46;
+        color: var(--muted);
         font-weight: 700;
         margin-bottom: 8px;
       }
