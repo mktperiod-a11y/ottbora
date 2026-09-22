@@ -1,5 +1,4 @@
 /* 위 여백은 공용 .page-head 가 정합니다. 제목 크기만 이 페이지가 키웁니다. */
-.eyebrow{font-size: 13px;font-weight:800;letter-spacing:1.6px;color:var(--muted)}
 .intro-row{display:flex;justify-content:space-between;gap:30px;align-items:center;margin-top:12px}
 /* 이 페이지 제목만 크게 씁니다. 공용 .page-head h1 (명시도 0,1,1) 을
    넘어야 해서 같은 수준으로 셀렉터를 맞춥니다. */
@@ -11,9 +10,6 @@ h1 em{font-style:normal;color:var(--accent)}
 .edition>span{font-size: 12px;letter-spacing:1.8px;color:var(--muted)}
 .section-links{display:flex;flex-wrap:wrap;gap:9px;margin:25px 0 20px}
 .section{padding-top:50px;padding-bottom:52px}
-.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:25px;margin-bottom:23px}
-.section-head h2{margin:5px 0 0;font-size:28px;letter-spacing:-1.2px;line-height:1.35}
-.section-head>p{margin:0;font-size: 14px;color:var(--muted);max-width:350px}
 .featured-grid,.provider-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
 .provider{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;scroll-margin-top:110px;min-width:0}
 .provider.featured{border-color:#edb7c0;border-top:4px solid #edb7c0;box-shadow:0 10px 28px #20273507}
@@ -71,12 +67,13 @@ tbody a:hover{color:var(--accent)}
 .method-intro{display:grid;grid-template-columns:1fr 1fr;gap:28px;color:#c5cedb;font-size: 15px;line-height:1.85}
 .method-intro p{margin:0}
 .method-intro strong{color:#fff}
-.criteria-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:30px}
+/* 글만 있는 안내 카드. 네 칸으로 벌어지는 폭입니다. */
+.criteria-grid{--card-min:230px;--cards-gap:14px;margin-top:30px}
 .criteria-grid article{padding:22px 18px;background:#ffffff07;border:1px solid #ffffff16;border-radius:8px}
 .criteria-grid span{font-size: 13px;font-weight:800}
 .criteria-grid h3{font-size: 17px;letter-spacing:-.5px;margin:10px 0}
 .criteria-grid p{font-size: 14px;color:#b8c4d3;line-height:1.8;margin:0}
 .faq{background:#fff;margin-bottom:10px}
-@media(max-width:900px){.provider{padding:19px}.provider-top{gap:12px}.brand{width:150px}.rank{font-size:34px}.criteria-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.section-head>p{max-width:240px}.edition{min-width:190px;padding-left:25px}}
-@media(max-width:650px){.intro{padding-top:32px}.intro-row{display:block}h1{font-size:36px;letter-spacing:-1.8px}.lead{font-size: 16px}.edition{border:0;padding:0;margin-top:22px;display:flex;align-items:center;gap:13px;min-width:0}.edition strong{font-size:24px;letter-spacing:-1px}.edition>span{display:none}.section-links{gap:7px;margin-top:22px}.section{padding-top:35px;padding-bottom:36px}.section-head{display:block;margin-bottom:20px}.section-head h2{font-size:25px}.section-head>p{margin-top:8px;max-width:none;font-size: 13px}.featured-grid,.provider-grid{grid-template-columns:1fr;gap:16px}.provider{padding:20px;scroll-margin-top:140px}.brand{width:170px}.provider-top{gap:16px}.rank{font-size:38px}.provider h3{font-size:23px}.facts ul,.reason p{font-size: 15px}.comparison-section{padding:34px 0}th,td{padding:13px 16px}.method-section{padding:35px 0}.method-intro{grid-template-columns:1fr;gap:16px}.criteria-grid{gap:10px;margin-top:23px}.criteria-grid article{padding:16px 13px}.criteria-grid h3{font-size: 16px}.criteria-grid p{font-size: 13px}}
-@media(max-width:360px){h1{font-size:32px}.provider{padding:17px}.provider-top{gap:10px}.brand{width:142px}.rank{font-size:32px}.provider-bottom{gap:12px}.source{font-size: 12px}.criteria-grid{grid-template-columns:1fr}}
+@media(max-width:900px){.provider{padding:19px}.provider-top{gap:12px}.brand{width:150px}.rank{font-size:34px}.edition{min-width:190px;padding-left:25px}}
+@media(max-width:650px){.intro{padding-top:32px}.intro-row{display:block}h1{font-size:36px;letter-spacing:-1.8px}.lead{font-size: 16px}.edition{border:0;padding:0;margin-top:22px;display:flex;align-items:center;gap:13px;min-width:0}.edition strong{font-size:24px;letter-spacing:-1px}.edition>span{display:none}.section-links{gap:7px;margin-top:22px}.section{padding-top:35px;padding-bottom:36px}.featured-grid,.provider-grid{grid-template-columns:1fr;gap:16px}.provider{padding:20px;scroll-margin-top:140px}.brand{width:170px}.provider-top{gap:16px}.rank{font-size:38px}.provider h3{font-size:23px}.facts ul,.reason p{font-size: 15px}.comparison-section{padding:34px 0}th,td{padding:13px 16px}.method-section{padding:35px 0}.method-intro{grid-template-columns:1fr;gap:16px}.criteria-grid{--cards-gap:10px;margin-top:23px}.criteria-grid article{padding:16px 13px}.criteria-grid h3{font-size: 16px}.criteria-grid p{font-size: 13px}}
+@media(max-width:360px){h1{font-size:32px}.provider{padding:17px}.provider-top{gap:10px}.brand{width:142px}.rank{font-size:32px}.provider-bottom{gap:12px}.source{font-size: 12px}}

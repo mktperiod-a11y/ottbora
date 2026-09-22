@@ -79,8 +79,19 @@
       //   boxoffice.json    — KOFIC 일별 박스오피스를 누적한 목록. 포스터가 없습니다.
       // KOFIC 은 포스터를 주지 않으므로 박스오피스 쪽은 글자 카드로 그립니다.
 
+      /*
+       * 한 화면 20장, 최대 3페이지 = 한 탭 60건.
+       *
+       * 왜 60인가:
+       *  - 분류 탭은 이 안에 다 들어갑니다. 지금 영화 41 / 드라마 45 /
+       *    예능 60 / 애니 40 건이라 잘리는 탭이 없습니다.
+       *  - 포스터가 한 장에 40~70KB 이고 lazy 로 받으므로 한 페이지가
+       *    1MB 안쪽입니다.
+       *  - 전체 탭만 넘칩니다. 넷을 고르게 섞은 맛보기라 그렇게 둡니다.
+       * 분류 탭 하나가 60을 넘기 시작하면 MAX_PAGES 를 올려야 합니다.
+       */
       const PER_PAGE = 20;
-      const MAX_PAGES = 3; // 한 탭에 최대 60편
+      const MAX_PAGES = 3;
 
       const TYPES = ["전체", "영화", "드라마", "예능", "애니"];
 
@@ -120,13 +131,8 @@
             })[c],
         );
 
-      // 예매 링크는 데이터 파일에서 오므로, 상세 페이지와 같은 방식으로
-      // https 인지와 호스트가 목록에 있는지를 확인한 뒤에만 겁니다.
-      const CINEMA_HOSTS = new Set([
-        "cgv.co.kr",
-        "www.megabox.co.kr",
-        "www.lottecinema.co.kr",
-      ]);
+      // 바깥으로 나가는 링크는 https 인지와 호스트가 목록에 있는지를
+      // 확인한 뒤에만 겁니다.
       const MAL_HOSTS = new Set(["myanimelist.net", "www.myanimelist.net"]);
       const safe = (raw, allow) => {
         try {
@@ -139,19 +145,20 @@
 
       let DATA = null;
       let RANKS = new Map(); // 제목 → 지금 박스오피스 순위
-      let CINEMAS = []; // 예매 링크가 확인된 극장 체인
-      let FRESH = false; // 박스오피스 집계가 예매를 권할 만큼 최근인가
+      let FRESH = false; // 박스오피스 집계가 순위를 말할 만큼 최근인가
       let active = "전체";
       let page = 1;
 
       /**
-       * 집계일이 오래되면 예매 칩을 달지 않습니다.
-       * 갱신 워크플로가 멈춘 채로 두면 이미 내려간 영화에 예매 링크가
-       * 계속 붙게 되는데, 그건 사실이 아닌 안내가 됩니다.
+       * 집계일이 오래되면 순위 태그를 달지 않습니다.
+       * 갱신 워크플로가 멈춘 채로 두면 이미 내려간 영화에 "박스오피스
+       * 1위" 가 계속 붙게 되는데, 그건 사실이 아닌 안내가 됩니다.
        */
       const STALE_DAYS = 10;
-      function isFresh(latestDt) {
-        const m = String(latestDt || "").match(/^(\d{4})(\d{2})(\d{2})$/);
+
+      /** 날짜가 오늘로부터 days 일 안쪽인가. 미래 날짜는 항상 거짓입니다. */
+      function isRecentDate(raw, days) {
+        const m = String(raw || "").match(/^(\d{4})-?(\d{2})-?(\d{2})$/);
         if (!m) return false;
         const then = Date.UTC(+m[1], +m[2] - 1, +m[3]);
         const now = new Date();
@@ -160,13 +167,27 @@
           now.getUTCMonth(),
           now.getUTCDate(),
         );
-        return (today - then) / 86400000 <= STALE_DAYS;
+        const age = (today - then) / 86400000;
+        return age >= 0 && age <= days;
       }
 
-      /** "20260916" 또는 "2026-09-16" → "9월 16일 개봉" */
-      function opened(raw) {
-        const m = String(raw || "").match(/^(\d{4})-?(\d{2})-?(\d{2})$/);
-        return m ? `${+m[2]}월 ${+m[3]}일 개봉` : "";
+      function isFresh(latestDt) {
+        return isRecentDate(latestDt, STALE_DAYS);
+      }
+
+      /*
+       * 날짜 한 조각을 뽑아 "9월 16일 개봉" 으로 만듭니다.
+       *
+       * 들어오는 모양이 출처마다 다릅니다.
+       *   KOFIC        20260916
+       *   TMDB         2026-09-16
+       *   손으로 적은 것  "2026.07.29 국내 개봉" 또는 "2026"
+       * 연도만 있으면 날짜가 아니므로 비웁니다. 부제 줄에 "2026" 만
+       * 떠 있으면 아무것도 알려 주지 않습니다.
+       */
+      function opened(raw, suffix = "개봉") {
+        const m = String(raw || "").match(/(\d{4})[-.]?(\d{2})[-.]?(\d{2})/);
+        return m ? `${+m[2]}월 ${+m[3]}일 ${suffix}` : "";
       }
 
       /** 403897 → "누적 40만". 만 단위 아래는 반올림해 읽기 쉽게 둡니다. */
@@ -213,6 +234,71 @@
         return r && r <= TOP_N ? `국내 박스오피스 ${r}위` : fallback || "";
       }
 
+      /*
+       * 부제 한 줄의 규칙. 카드 종류와 상관없이 셋만 씁니다.
+       *
+       *   대분류(굵게) · 소분류 · 날짜
+       *   영화 · 액션 · 8월 26일 개봉
+       *
+       * 대분류는 이 카드가 어느 탭에서 추려진 것인지 말합니다. 전체 탭에서
+       * 무엇이 섞여 있는지 알 수 있어야 해서 늘 적고, 굵게 둬서 줄의
+       * 시작점을 잡습니다. 소분류는 장르 하나만 씁니다.
+       *
+       * 전에는 장르를 있는 대로 이어 붙여 "영화 · 액션 · 어드벤처 ·
+       * 미스터리 · SF · 스릴러 · 8월 26일 개봉" 처럼 두 줄이 됐고,
+       * 그래서 아무것도 읽히지 않았습니다.
+       */
+      function metaLine(type, genre, when) {
+        // "드라마 · 드라마" 처럼 같은 말이 두 번 나오지 않게 합니다.
+        const sub = genre && genre !== type ? genre : "";
+
+        /*
+         * 조각마다 태그를 나눠 둡니다. 가운뎃점은 CSS 의 ::after 로
+         * 앞 조각에 붙여서, 좁은 화면에서 줄이 바뀔 때 "· 액션" 처럼
+         * 점이 다음 줄 맨 앞에 떨어지지 않게 합니다.
+         */
+        return (
+          `<span class="genre"><b>${esc(type)}</b>` +
+          [sub, when]
+            .filter(Boolean)
+            .map((x) => `<span>${esc(x)}</span>`)
+            .join("") +
+          `</span>`
+        );
+      }
+
+      /*
+       * TMDB 는 TV 장르를 번호로 줍니다. 부제 줄에 "18" 을 적을 수는
+       * 없으니 여기서 한글 이름으로 바꿉니다.
+       * 목록에 없는 번호는 버립니다 — 모르는 번호를 그대로 찍는 것보다
+       * 비워 두는 편이 낫습니다.
+       */
+      const TMDB_TV_GENRE = {
+        10759: "액션",
+        16: "애니메이션",
+        35: "코미디",
+        80: "범죄",
+        99: "다큐",
+        18: "드라마",
+        10751: "가족",
+        10762: "어린이",
+        9648: "미스터리",
+        10763: "뉴스",
+        10764: "리얼리티",
+        10765: "SF·판타지",
+        10766: "일일드라마",
+        10767: "토크",
+        10768: "시사·교양",
+        37: "서부",
+      };
+
+      /** 장르 목록에서 대표 하나만. 분류와 겹치는 이름은 건너뜁니다. */
+      function mainGenre(list, type) {
+        const skip = new Set([type, "애니메이션", "드라마", "영화"]);
+        const picked = (list || []).find((g) => g && !skip.has(g));
+        return picked || (list || [])[0] || "";
+      }
+
       /** 카드 하나에 붙는 태그 수. 넘치면 뒤쪽은 버립니다. */
       const MAX_TAGS = 3;
 
@@ -255,8 +341,7 @@
 
       /** 손으로 고른 작품 — 포스터가 있고 상세 페이지로 넘어갑니다. */
       function pickedCard(w) {
-        // 분류는 탭이 이미 말하므로, 전체 탭에서만 함께 적습니다.
-        const line = active === "전체" ? `${w.type} · ${w.genre}` : w.genre;
+        const genre = String(w.genre || "").split(" · ")[0];
         const tags = [credit(w.title, w.pickedBy), providerTag(w)];
         return (
           `<a class="card" href="content-detail.html?id=${encodeURIComponent(w.id)}">` +
@@ -265,7 +350,7 @@
           ` referrerpolicy="no-referrer" onerror="ottImgFail(this)">` +
           `</span>` +
           `<div class="cb"><b>${esc(w.title)}</b>` +
-          `<span class="genre">${esc(line)}</span>` +
+          metaLine(w.type, genre, opened(w.releasedAt)) +
           tagRow(tags) +
           `</div></a>`
         );
@@ -281,43 +366,14 @@
        * 상세 페이지가 없으므로 카드 전체를 링크로 만들지 않습니다.
        */
       function boxCard(m) {
-        // 장르는 늘 부제 자리에 둡니다. 태그와 섞지 않습니다.
-        const rest =
-          active === "애니"
-            ? m.genres.filter((g) => g !== "애니메이션")
-            : m.genres;
-        // 개봉일은 작품 정보라 부제 줄에 둡니다.
-        const line = [
-          active === "전체" ? m.type : "",
-          rest.join(" · "),
-          opened(m.openedAt),
-        ]
-          .filter(Boolean)
-          .join(" · ");
-
         // 태그는 "왜 실렸는가" 만 담습니다.
         const tags = [credit(m.title, ""), audience(m.audienceAcc)];
 
-        // 예매는 하위 항목입니다. 카드의 주된 내용이 아니라, 지금 극장에
-        // 걸려 있을 때만 딸려 붙는 행동입니다.
-        const book =
-          m.showing && FRESH && CINEMAS.length
-            ? `<div class="sub-action"><span class="sub-action-label">예매</span>` +
-              CINEMAS.map(
-                (c) =>
-                  `<a class="${CHIP} book-chip" href="${c.href}"` +
-                  ` target="_blank" rel="noopener noreferrer"` +
-                  ` title="${esc(c.name)} 예매 페이지로 이동합니다">` +
-                  `${esc(c.short)}</a>`,
-              ).join("") +
-              `</div>`
-            : "";
-
         const body =
           `<div class="cb"><b>${esc(m.title)}</b>` +
-          (line ? `<span class="genre">${esc(line)}</span>` : "") +
+          metaLine(m.type, mainGenre(m.genres, m.type), opened(m.openedAt)) +
           tagRow(tags) +
-          `</div>` + book;
+          `</div>`;
 
         if (m.poster) {
           return (
@@ -345,17 +401,6 @@
        * 상세 페이지가 없으므로 카드 전체를 링크로 만들지 않습니다.
        */
       function animeCard(a) {
-        // 장르는 늘 부제 자리에 둡니다. 태그와 섞지 않습니다.
-        // 화수·제작사는 작품 정보라 부제 줄에 둡니다.
-        const line = [
-          active === "전체" ? "애니" : "",
-          a.genres.join(" · "),
-          a.episodes ? `${a.episodes}화` : "",
-          a.studio,
-        ]
-          .filter(Boolean)
-          .join(" · ");
-
         // 태그는 "왜 실렸는가" 만 담습니다.
         // 평점·분기 화제성은 MAL 이 공개한 사실이라 여기에 해당합니다.
         const tags = [
@@ -375,7 +420,11 @@
 
         const body =
           `<div class="cb"><b>${esc(a.title)}</b>` +
-          (line ? `<span class="genre">${esc(line)}</span>` : "") +
+          metaLine(
+            "애니",
+            mainGenre(a.genres, "애니"),
+            a.episodes ? `${a.episodes}화` : "",
+          ) +
           tagRow(tags) +
           `</div>` + link;
 
@@ -399,7 +448,67 @@
         );
       }
 
-      /** 지금 탭에 보여 줄 작품 전체. 손으로 고른 작품이 앞에 옵니다. */
+      /*
+       * TMDB 에서 자동으로 받은 드라마·예능.
+       * 상세 페이지가 없으므로 카드 전체를 링크로 만들지 않습니다.
+       */
+      function tmdbCard(w) {
+        const genre = TMDB_TV_GENRE[(w.genres || [])[0]] || "";
+
+        /*
+         * 날짜 자리는 "언제 볼 수 있나" 로 채웁니다.
+         *   다음 방송일이 있으면  9월 23일 방송
+         *   없고 최근에 시작했으면 9월 18일 첫 방송
+         * 라디오스타처럼 2007년에 시작한 장수 프로그램은 첫 방송일이
+         * 아무것도 알려 주지 않으므로 비웁니다.
+         */
+        const when = w.nextAirDate
+          ? opened(w.nextAirDate, "방송")
+          : isRecentDate(w.firstAirDate, 365)
+            ? opened(w.firstAirDate, "첫 방송")
+            : "";
+
+        const tags = [w.rank ? `TMDB 인기 ${w.rank}위` : "TMDB 인기"];
+
+        const body =
+          `<div class="cb"><b>${esc(w.title)}</b>` +
+          metaLine(w.type, genre, when) +
+          tagRow(tags) +
+          `</div>`;
+
+        if (w.poster) {
+          return (
+            `<article class="card">` +
+            `<span class="thumb">` +
+            `<img src="${esc(w.poster)}" alt="${esc(w.title)} 포스터" loading="lazy"` +
+            ` referrerpolicy="no-referrer" onerror="ottImgFail(this)">` +
+            `</span>` + body +
+            `</article>`
+          );
+        }
+
+        return (
+          `<article class="card card--text">` +
+          `<div class="panel panel--t${tint(String(w.tmdbId))}">` +
+          `<b class="panel-title">${esc(w.title)}</b>` +
+          `</div>` + body +
+          `</article>`
+        );
+      }
+
+      /*
+       * 지금 탭에 보여 줄 작품 전체.
+       *
+       * 출처는 넷입니다.
+       *   picked  손으로 고른 작품 (content-data.json) — 상세 페이지가 있습니다
+       *   box     KOFIC 박스오피스 (boxoffice.json)    — 영화
+       *   tv      TMDB 한국 TV     (tv-ranking.json)   — 드라마·예능
+       *   anime   MyAnimeList      (anime.json)        — 애니
+       *
+       * 분류 탭은 그 분류를 "다" 담습니다. 전체 탭은 넷을 고르게 섞은
+       * 맛보기입니다. 이어 붙이면 앞 출처만 60칸을 다 먹고 뒤 출처가
+       * 한 건도 안 보이기 때문입니다.
+       */
       function pool() {
         const anime = (DATA.anime || []).map((a) => ({ kind: "anime", a }));
 
@@ -411,29 +520,45 @@
         const picked = DATA.works
           .filter((w) => active === "전체" || w.type === active)
           .map((w) => ({ kind: "picked", w }));
+        const pickedSeen = new Set(picked.map((x) => key(x.w.title)));
 
-        // 같은 작품이 양쪽에 있으면 포스터와 상세가 있는 쪽을 남깁니다.
-        const seen = new Set(picked.map((x) => key(x.w.title)));
+        // 자동으로 받은 드라마·예능. 손으로 고른 것과 겹치면 상세 페이지가
+        // 있는 쪽을 남깁니다.
+        const tv = (DATA.tv || [])
+          .filter(
+            (w) =>
+              (active === "전체" || w.type === active) &&
+              !pickedSeen.has(key(w.title)),
+          )
+          .map((w) => ({ kind: "tmdb", w }));
+
         const box = (DATA.boxoffice || [])
           .filter(
             (m) =>
-              (active === "전체" || m.type === active) && !seen.has(key(m.title)),
+              (active === "전체" || m.type === active) &&
+              !pickedSeen.has(key(m.title)),
           )
-          // 지금 극장에 걸려 있는 작품을 앞에 둡니다. 예매할 수 있는 쪽이
+          // 지금 극장에 걸려 있는 작품을 앞에 둡니다. 볼 수 있는 쪽이
           // 먼저 보여야 목록이 쓸모가 있습니다.
           .sort((a, b) => Number(b.showing) - Number(a.showing))
           .map((m) => ({ kind: "box", m }));
 
+        // 드라마·예능 탭은 자동 데이터가 주인공입니다. 손으로 고른 작품은
+        // TMDB 에 없는 것들이라 뒤에 붙여 함께 남깁니다.
+        if (active === "드라마" || active === "예능") return [...tv, ...picked];
         if (active !== "전체") return [...picked, ...box];
 
-        // 전체 탭은 60건에서 잘립니다. 출처를 이어 붙이면 뒤쪽 출처가
-        // 한 건도 안 보이므로 번갈아 섞습니다.
-        const lanes = [picked, box, anime];
-        const mixed = [];
-        for (let i = 0; mixed.length < picked.length + box.length + anime.length; i += 1) {
-          for (const lane of lanes) if (lane[i]) mixed.push(lane[i]);
+        return roundRobin([picked, box, tv, anime]);
+      }
+
+      /** 여러 줄에서 한 건씩 번갈아 꺼내 하나로 잇습니다. */
+      function roundRobin(lanes) {
+        const total = lanes.reduce((n, lane) => n + lane.length, 0);
+        const out = [];
+        for (let i = 0; out.length < total; i += 1) {
+          for (const lane of lanes) if (lane[i]) out.push(lane[i]);
         }
-        return mixed;
+        return out;
       }
 
       function pager(pages) {
@@ -465,22 +590,31 @@
           return;
         }
 
-        // 건수는 탭 줄 오른쪽 한 곳에서만 말합니다.
-        // 잘린 경우에만 몇 건을 보여 주는지 덧붙입니다.
+        /*
+         * 건수는 탭 줄 오른쪽 한 곳에서만 말합니다.
+         *
+         * 전에는 "전체 64건 중 60건" 이었는데, 두 숫자가 각각 무엇인지
+         * 읽는 사람이 알 길이 없었습니다. 화면에 실제로 있는 수만
+         * 적고, 잘렸을 때만 어디로 가면 나머지를 볼 수 있는지 말합니다.
+         */
         document.querySelector("#count").textContent =
-          all.length > capped.length
-            ? `${active} ${all.length}건 중 ${capped.length}건`
-            : `${active} ${all.length}건`;
+          all.length <= capped.length
+            ? `${active} ${capped.length}건`
+            : active === "전체"
+              ? `${active} ${capped.length}건 · 나머지는 분류 탭에서`
+              : `${active} 상위 ${capped.length}건`;
 
         host.innerHTML =
-          `<div class="grid">` +
+          `<div class="cards grid">` +
           shown
             .map((x) =>
               x.kind === "picked"
                 ? pickedCard(x.w)
                 : x.kind === "box"
                   ? boxCard(x.m)
-                  : animeCard(x.a),
+                  : x.kind === "anime"
+                    ? animeCard(x.a)
+                    : tmdbCard(x.w),
             )
             .join("") +
           `</div>` +
@@ -539,33 +673,35 @@
       Promise.all([
         fetch("assets/content-data.json").then((r) => r.json()),
         optional("assets/boxoffice.json"),
-        optional("assets/cinema-links.json"),
         optional("assets/anime.json"),
+        optional("assets/tv-ranking.json"),
       ])
-        .then(([d, box, cinema, anime]) => {
+        .then(([d, box, anime, tv]) => {
           DATA = d;
           DATA.boxoffice = Array.isArray(box?.movies) ? box.movies : [];
           DATA.anime = Array.isArray(anime?.works) ? anime.works : [];
+          /*
+           * 자동 TV 데이터가 2주 넘게 멈춰 있으면 쓰지 않습니다.
+           * 그 경우 드라마·예능 탭은 손으로 고른 작품만 남습니다 —
+           * 줄어들긴 해도 지금 방영 중이라고 거짓말하지는 않습니다.
+           */
+          DATA.tv = isRecentDate(tv?.updatedAt, 14)
+            ? [
+                ...(Array.isArray(tv?.drama) ? tv.drama : []),
+                ...(Array.isArray(tv?.variety) ? tv.variety : []),
+              ]
+            : [];
           FRESH = isFresh(box?.latestDt);
           // 손으로 고른 작품이 지금 차트에도 있으면 그 순위를 씁니다.
           // 같은 작품에 옛 근거 문구와 오늘 순위가 따로 놀지 않도록.
           for (const m of DATA.boxoffice) {
             if (m.rank) RANKS.set(key(m.title), m.rank);
           }
-          CINEMAS = (cinema?.chains || [])
-            .map((c) => ({
-              name: c.name,
-              // short 가 없으면 전체 이름을 씁니다. 줄이 넘칠 뿐 링크는 삽니다.
-              short: c.short || c.name,
-              href: safe(c.bookingUrl, CINEMA_HOSTS),
-            }))
-            .filter((c) => c.href);
-
           // 포스터 출처를 방침 안내에 함께 적습니다. 어디서 온 이미지인지
           // 밝히지 않으면 출처 표기 없이 남의 이미지를 싣는 셈이 됩니다.
           const sources = [
             ...new Set(
-              [...DATA.boxoffice, ...DATA.anime]
+              [...DATA.boxoffice, ...DATA.anime, ...DATA.tv]
                 .map((x) => x.posterCredit)
                 .filter(Boolean),
             ),

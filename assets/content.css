@@ -15,11 +15,11 @@ main{
       }
 
 
+/* 포스터 카드. 2/3 비율이라 180px 면 세로가 270px 쯤 됩니다. */
 .grid{
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 17px;
-      }
+  --card-min: 180px;
+  --cards-gap: 17px;
+}
 .card{
         /* 한 줄 안에서 카드 높이는 그리드가 맞춰 줍니다. 짧은 카드는
            아래에 빈 띠가 생기는데, 본문 칸이 남는 높이를 먹게 해서
@@ -50,7 +50,8 @@ main{
         flex: 1;
         padding: 13px;
       }
-.cb b{
+/* 제목. 부제 줄 안의 <b>(대분류)는 여기 해당하지 않습니다. */
+.cb > b{
         display: block;
         font-size: 17px;
         font-weight: 800;
@@ -125,14 +126,11 @@ main{
         font-size: 11px;
         text-align: center;
       }
-@media (max-width: 800px){.grid{
-          grid-template-columns: repeat(3, 1fr);
-        }.detail{
+@media (max-width: 800px){.detail{
           grid-template-columns: 220px 1fr;
         }}
 @media (max-width: 560px){.grid{
-          grid-template-columns: repeat(2, 1fr);
-          gap: 11px;
+          --cards-gap: 11px;
         }.detail{
           grid-template-columns: 1fr;
         }.detail-poster{
@@ -156,8 +154,8 @@ main{
         }
         
         .grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 10px;
+          --card-min: 140px;
+          --cards-gap: 10px;
         }
         .card {
           min-width: 0;
@@ -286,6 +284,34 @@ a:focus-visible,
   color: var(--muted);
 }
 
+/*
+ * 부제 줄 맨 앞의 대분류(영화/드라마/예능/애니).
+ * 이 카드가 어느 탭에서 추려진 것인지 말합니다. 줄의 시작점이라
+ * 굵게 두고, 나머지 회색 글자보다 한 단계 진하게 씁니다.
+ */
+.cb .genre b {
+  color: var(--ink);
+  font-weight: var(--seed-font-weight-bold);
+}
+
+/* .cb span 이 block 이라 부제 안의 조각까지 줄바꿈됩니다. 되돌립니다. */
+.cb .genre span {
+  display: inline;
+  margin: 0;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/*
+ * 가운뎃점은 앞 조각에 붙입니다. 따로 두면 줄이 바뀔 때
+ * "· 액션" 처럼 점이 다음 줄 맨 앞에 떨어집니다.
+ */
+.cb .genre > *:not(:last-child)::after {
+  content: " · ";
+  font-weight: var(--seed-font-weight-regular);
+  color: var(--muted);
+}
+
 /* ===== 포스터 없는 글자 카드 (박스오피스) ===== */
 
 /*
@@ -386,25 +412,6 @@ a:focus-visible,
   }
 }
 
-
-/* ===== 포스터 위 순위 칩 ===== */
-
-/*
- * "왜 실렸는가"를 카드 아래 글줄로 적으면 제목·장르와 섞여 셋 다 흐려집니다.
- * 그림 위에 한 번만 얹습니다. 포스터가 어두울 수도 밝을 수도 있어
- * 어두운 반투명 바탕에 흰 글씨로 고정합니다(대비 12:1 이상).
- */
-/* 글자 카드에서는 판 자체가 그림이라, 칩이 판 안에서 흐름대로 놓입니다. */
-/* ===== 카드 아래 액션 줄 ===== */
-
-/*
- * 모든 카드가 같은 자리에 같은 줄을 갖습니다.
- * 어떤 카드에만 예매 칩이 있고 어떤 카드에는 없으면 줄이 어긋나 보입니다.
- * 내용이 없으면 줄 자체가 높이를 차지하지 않습니다.
- */
-/* 상영이 끝났거나 확인되지 않은 작품. 예매 칩과 같은 자리에 놓습니다. */
-@media (max-width: 560px) {
-}
 
 
 /* ===== 카드 표기 — 한 자리에 한 종류 ===== */
