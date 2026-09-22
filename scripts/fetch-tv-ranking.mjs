@@ -221,6 +221,7 @@ for (const x of detailTargets) {
     const qs = new URLSearchParams({
       api_key: TMDB,
       language: "ko-KR",
+      append_to_response: "watch/providers",
     });
     const detail = await getJson(
       `${TV_DETAIL}/${x.id}?${qs}`,
