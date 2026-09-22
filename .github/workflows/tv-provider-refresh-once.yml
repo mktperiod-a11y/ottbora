@@ -1,0 +1,37 @@
+name: Refresh TV providers once
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/tv-provider-refresh-once.yml
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install dependencies
+        run: npm ci
+      - name: Refresh TV ranking with providers
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+        run: node scripts/fetch-tv-ranking.mjs
+      - name: Commit TV ranking
+        run: |
+          if [ -z "$(git status --porcelain assets/tv-ranking.json)" ]; then
+            echo "tv-ranking.json 변경 없음"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/tv-ranking.json
+          git commit -m "Refresh TV providers"
+          git push
