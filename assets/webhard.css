@@ -9,11 +9,7 @@ h1 em{font-style:normal;color:var(--accent)}
 .edition{border-left:1px solid #cdd3de;padding:0 0 0 38px;min-width:245px}
 .edition strong{display:block;font-size:44px;letter-spacing:-2px;line-height:1.2}
 .edition>span{font-size: 12px;letter-spacing:1.8px;color:var(--muted)}
-.edition p{font-size: 14px;color:var(--muted);margin-bottom:0}
 .section-links{display:flex;flex-wrap:wrap;gap:9px;margin:25px 0 20px}
-.disclosure{display:flex;gap:24px;padding:17px 21px;border-left:3px solid var(--ink);background:#fff;border-radius:0 8px 8px 0}
-.disclosure strong{font-size: 14px;white-space:nowrap;color:var(--ink);padding-top:2px}
-.disclosure p{margin:0;font-size: 14px;color:var(--muted);line-height:1.75}
 .section{padding-top:50px;padding-bottom:52px}
 .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:25px;margin-bottom:23px}
 .section-head h2{margin:5px 0 0;font-size:28px;letter-spacing:-1.2px;line-height:1.35}
@@ -59,10 +55,9 @@ tbody .priority{background:#fff7f8}
 tbody th small{display:block;font-size: 12px;color:var(--muted);font-weight:400}
 tbody a span{color:#9ca7b6;margin-left:4px}
 tbody a:hover{color:var(--accent)}
-.table-note{color:var(--muted);font-size: 13px;margin:13px 0 0}
 /* 비교 섹션은 배경이 #edf0f5 로 살짝 어둡습니다. --muted(#657080)가
    여기서 4.40:1 로 AA(4.5:1)에 못 미쳐, 이 섹션에서만 한 단계 진하게 씁니다. */
-.comparison-section .eyebrow,.comparison-section .table-note,
+.comparison-section .eyebrow,
 .comparison-section .section-head>p{color:#616c7a}
 
 /* 지금 보고 있는 구간을 바로가기 칩에 표시합니다. 탭 선택과 같은 방식입니다. */
@@ -81,13 +76,7 @@ tbody a:hover{color:var(--accent)}
 .criteria-grid span{font-size: 13px;font-weight:800}
 .criteria-grid h3{font-size: 17px;letter-spacing:-.5px;margin:10px 0}
 .criteria-grid p{font-size: 14px;color:#b8c4d3;line-height:1.8;margin:0}
-.method-note{display:flex;gap:20px;border-top:1px solid #ffffff22;padding-top:22px;margin-top:28px;font-size: 14px;color:#aebbcf}
-.method-note strong{color:#fff;flex-shrink:0}
 .faq{background:#fff;margin-bottom:10px}
-.guide-link{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:25px 0 0;margin-top:25px;border-top:1px solid var(--line)}
-.guide-link strong{font-size:var(--seed-font-size-t3);line-height:1.5}
-.guide-link p{font-size:var(--seed-font-size-t2);line-height:1.7;color:var(--muted);margin:6px 0 0}
-.guide-link a{font-size:var(--seed-font-size-t2);font-weight:var(--seed-font-weight-bold);color:var(--ink);white-space:nowrap}
 @media(max-width:900px){.provider{padding:19px}.provider-top{gap:12px}.brand{width:150px}.rank{font-size:34px}.criteria-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.section-head>p{max-width:240px}.edition{min-width:190px;padding-left:25px}}
-@media(max-width:650px){.intro{padding-top:32px}.intro-row{display:block}h1{font-size:36px;letter-spacing:-1.8px}.lead{font-size: 16px}.edition{border:0;padding:0;margin-top:22px;display:flex;align-items:center;gap:13px;min-width:0}.edition strong{font-size:24px;letter-spacing:-1px}.edition>span{display:none}.edition p{margin:0;font-size: 12px;line-height:1.5}.section-links{gap:7px;margin-top:22px}.disclosure{display:block;padding:14px 16px}.disclosure p{margin-top:5px;font-size: 13px}.section{padding-top:35px;padding-bottom:36px}.section-head{display:block;margin-bottom:20px}.section-head h2{font-size:25px}.section-head>p{margin-top:8px;max-width:none;font-size: 13px}.featured-grid,.provider-grid{grid-template-columns:1fr;gap:16px}.provider{padding:20px;scroll-margin-top:140px}.brand{width:170px}.provider-top{gap:16px}.rank{font-size:38px}.provider h3{font-size:23px}.facts ul,.reason p{font-size: 15px}.comparison-section{padding:34px 0}th,td{padding:13px 16px}.method-section{padding:35px 0}.method-intro{grid-template-columns:1fr;gap:16px}.criteria-grid{gap:10px;margin-top:23px}.criteria-grid article{padding:16px 13px}.criteria-grid h3{font-size: 16px}.criteria-grid p{font-size: 13px}.method-note{display:block;font-size: 13px}.method-note span{display:block;margin-top:8px}.guide-link{display:block}.guide-link a{display:inline-block;margin-top:14px}}
+@media(max-width:650px){.intro{padding-top:32px}.intro-row{display:block}h1{font-size:36px;letter-spacing:-1.8px}.lead{font-size: 16px}.edition{border:0;padding:0;margin-top:22px;display:flex;align-items:center;gap:13px;min-width:0}.edition strong{font-size:24px;letter-spacing:-1px}.edition>span{display:none}.section-links{gap:7px;margin-top:22px}.section{padding-top:35px;padding-bottom:36px}.section-head{display:block;margin-bottom:20px}.section-head h2{font-size:25px}.section-head>p{margin-top:8px;max-width:none;font-size: 13px}.featured-grid,.provider-grid{grid-template-columns:1fr;gap:16px}.provider{padding:20px;scroll-margin-top:140px}.brand{width:170px}.provider-top{gap:16px}.rank{font-size:38px}.provider h3{font-size:23px}.facts ul,.reason p{font-size: 15px}.comparison-section{padding:34px 0}th,td{padding:13px 16px}.method-section{padding:35px 0}.method-intro{grid-template-columns:1fr;gap:16px}.criteria-grid{gap:10px;margin-top:23px}.criteria-grid article{padding:16px 13px}.criteria-grid h3{font-size: 16px}.criteria-grid p{font-size: 13px}}
 @media(max-width:360px){h1{font-size:32px}.provider{padding:17px}.provider-top{gap:10px}.brand{width:142px}.rank{font-size:32px}.provider-bottom{gap:12px}.source{font-size: 12px}.criteria-grid{grid-template-columns:1fr}}

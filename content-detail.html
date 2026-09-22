@@ -9,6 +9,7 @@
       content="작품 줄거리, 출연진과 관전 포인트를 확인하세요."
     />
     <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="stylesheet" href="assets/fonts/gmarketsans/gmarketsans.css" />
     <link
       rel="stylesheet"
       href="assets/fonts/pretendard/pretendardvariable-dynamic-subset.css"
@@ -54,7 +55,7 @@
     </main>
     <footer>
       <div class="wrap footer-row">
-        <p>© 2026 OTT BORA. 작품 정보는 이해를 돕기 위한 요약입니다.</p>
+        <p>© 2026 OTT BORA</p>
       </div>
     </footer>
     <script src="assets/posters-featured-20260828.js"></script>
@@ -99,7 +100,7 @@
 
       const id = new URLSearchParams(location.search).get("id") || "";
 
-      function renderWatch(w, note) {
+      function renderWatch(w) {
         const host = document.querySelector("#watch-block");
         const links = (w.watch || [])
           .map((x) => ({ ...x, href: safe(x.url, WATCH_HOSTS) }))
@@ -123,7 +124,6 @@
             )
             .join("") +
           "</div>" +
-          `<p class="pending">${note} 확인일 ${links[0].verifiedAt || "-"}.</p>` +
           // 제휴 웹하드는 해당 작품의 제공이 확인된 경우에만 나타납니다.
           ((w.partner || []).length
             ? '<div class="watch-links partner-inline">' +
@@ -173,7 +173,7 @@
             ul.appendChild(li);
           });
 
-          renderWatch(w, d.watchNote);
+          renderWatch(w);
 
           const off = w.official && safe(w.official.url, OFFICIAL_HOSTS);
           if (off) {

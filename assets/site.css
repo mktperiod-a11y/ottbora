@@ -230,6 +230,11 @@ footer {
   gap: 22px;
 }
 
+/* 포스터 출처 표기. TMDB 이용 약관이 요구하는 한 줄이라 지우지 않습니다. */
+#poster-credit:not(:empty)::before {
+  content: " · ";
+}
+
 .footer-row p {
   color: var(--muted);
   font-size: var(--seed-font-size-t1);

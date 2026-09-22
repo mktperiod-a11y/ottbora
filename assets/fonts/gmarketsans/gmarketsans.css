@@ -1,0 +1,32 @@
+/*
+ * GMarketSans. 제목과 본문에 함께 씁니다.
+ *
+ * 300 / 500 / 700 세 굵기만 있습니다. 이보다 굵게 지정한 곳
+ * (800, 900) 은 브라우저가 가장 가까운 700 으로 맞춥니다.
+ *
+ * 파일은 jsDelivr 에서 받아옵니다. 글꼴이 늦게 와도 글이 보이지
+ * 않는 구간이 없도록 font-display: swap 을 둡니다.
+ */
+@font-face {
+  font-family: "GMarketSans";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff")
+    format("woff");
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GMarketSans";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GMarketSans";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff")
+    format("woff");
+  font-weight: 700;
+  font-display: swap;
+}

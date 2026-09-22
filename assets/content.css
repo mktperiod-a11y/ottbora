@@ -205,10 +205,6 @@ a:focus-visible,
 
 /* ===== 콘텐츠ZONE 재설계에서 추가된 규칙 ===== */
 
-.policy {
-  margin: 22px 0 6px;
-}
-
 .filters {
   display: flex;
   flex-wrap: wrap;
@@ -288,11 +284,6 @@ a:focus-visible,
 
 .cb .genre {
   color: var(--muted);
-}
-
-/* 방침 안내는 목록 아래로 내려갔으므로 위쪽 여백을 줍니다. */
-.policy {
-  margin: 40px 0 0;
 }
 
 /* ===== 포스터 없는 글자 카드 (박스오피스) ===== */
