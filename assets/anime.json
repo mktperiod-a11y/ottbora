@@ -1,0 +1,273 @@
+{
+  "note": "Jikan 최초 성공 전에도 애니 탭이 비지 않도록 KOFIC 애니메이션 영화로 만든 초기 fallback입니다. Jikan 성공 시 자동 교체됩니다.",
+  "source": "KOFIC fallback",
+  "sourceUrl": "https://www.kobis.or.kr/",
+  "rankedBy": "Jikan 데이터 준비 전 임시 목록",
+  "updatedAt": "2026-09-22",
+  "fallback": true,
+  "works": [
+    {
+      "malId": "kofic-20070216",
+      "title": "시간을 달리는 소녀",
+      "titleOriginal": "시간을 달리는 소녀",
+      "genres": [
+        "판타지",
+        "멜로/로맨스"
+      ],
+      "episodes": null,
+      "score": null,
+      "members": null,
+      "studio": "",
+      "season": "",
+      "poster": "assets/posters/20070216.webp",
+      "posterCredit": "TMDB",
+      "malUrl": "",
+      "fallback": true,
+      "rankingSource": {
+        "provider": "KOFIC",
+        "metric": "박스오피스 8위",
+        "observedAt": "20260921"
+      },
+      "metadataSource": "KOFIC"
+    },
+    {
+      "malId": "kofic-20261807",
+      "title": "극장판 치이카와: 인어 섬의 비밀",
+      "titleOriginal": "극장판 치이카와: 인어 섬의 비밀",
+      "genres": [],
+      "episodes": null,
+      "score": null,
+      "members": null,
+      "studio": "",
+      "season": "",
+      "poster": "assets/posters/20261807.webp",
+      "posterCredit": "TMDB",
+      "malUrl": "",
+      "fallback": true,
+      "rankingSource": {
+        "provider": "KOFIC",
+        "metric": "최근 박스오피스 등장",
+        "observedAt": "20260920"
+      },
+      "metadataSource": "KOFIC"
+    },
+    {
+      "malId": "kofic-20265587",
+      "title": "디지몬 어드벤처 : 운명적 만남 & 우리들의 워 게임!",
+      "titleOriginal": "디지몬 어드벤처 : 운명적 만남 & 우리들의 워 게임!",
+      "genres": [],
+      "episodes": null,
+      "score": null,
+      "members": null,
+      "studio": "",
+      "season": "",
+      "poster": "assets/posters/20265587.webp",
+      "posterCredit": "TMDB",
+      "malUrl": "",
+      "fallback": true,
+      "rankingSource": {
+        "provider": "KOFIC",
+        "metric": "최근 박스오피스 등장",
+        "observedAt": "20260920"
+      },
+      "metadataSource": "KOFIC"
+    },
+    {
+      "malId": "kofic-20262381",
+      "title": "사랑의 하츄핑: 고래보석의 전설",
+      "titleOriginal": "사랑의 하츄핑: 고래보석의 전설",
+      "genres": [],
+      "episodes": null,
+      "score": null,
+      "members": null,
+      "studio": "",
+      "season": "",
+      "poster": "assets/posters/20262381.webp",
+      "posterCredit": "TMDB",
+      "malUrl": "",
+      "fallback": true,
+      "rankingSource": {
+        "provider": "KOFIC",
+        "metric": "최근 박스오피스 등장",
+        "observedAt": "20260913"
+      },
+      "metadataSource": "KOFIC"
+    },
+    {
+      "malId": "kofic-20018158",
+      "title": "이누야샤 극장판: 시대를 초월한 마음",
+      "titleOriginal": "이누야샤 극장판: 시대를 초월한 마음",
+      "genres": [
+        "액션",
+        "어드벤처",
+        "판타지"
+      ],
+      "episodes": null,
+      "score": null,
+      "members": null,
+      "studio": "",
+      "season": "",
+      "poster": null,
+      "posterCredit": "TMDB",
+      "malUrl": "",
+      "fallback": true,
+      "rankingSource": {
+        "provider": "KOFIC",
+        "metric": "최근 박스오피스 등장",
+        "observedAt": "20260913"
+      },
+      "metadataSource": "KOFIC"
+    },
+    {
+      "malId": "kofic-20224597",
+      "title": "아가미",
+      "titleOriginal": "아가미",
+      "genres": [],
+      "episodes": null,
+      "score": null,
+      "members": null,
+      "studio": "",
+      "season": "",
+      "poster": "assets/posters/20224597.webp",
+      "posterCredit": "TMDB",
+      "malUrl": "",
+      "fallback": true,
+      "rankingSource": {
+        "provider": "KOFIC",
+        "metric": "최근 박스오피스 등장",
+        "observedAt": "20260911"
+      },
+      "metadataSource": "KOFIC"
+    },
+    {
+      "malId": "kofic-20264635",
+      "title": "명탐정 코난: 하이웨이의 타천사",
+      "titleOriginal": "명탐정 코난: 하이웨이의 타천사",
+      "genres": [],
+      "episodes": null,
+      "score": null,
+      "members": null,
+      "studio": "",
+      "season": "",
+      "poster": "assets/posters/20264635.webp",
+      "posterCredit": "TMDB",
+      "malUrl": "",
+      "fallback": true,
+      "rankingSource": {
+        "provider": "KOFIC",
+        "metric": "최근 박스오피스 등장",
+        "observedAt": "20260907"
+      },
+      "metadataSource": "KOFIC"
+    },
+    {
+      "malId": "kofic-20127108",
+      "title": "모모와 다락방의 수상한 요괴들",
+      "titleOriginal": "모모와 다락방의 수상한 요괴들",
+      "genres": [
+        "드라마",
+        "가족",
+        "판타지"
+      ],
+      "episodes": null,
+      "score": null,
+      "members": null,
+      "studio": "",
+      "season": "",
+      "poster": "assets/posters/20127108.webp",
+      "posterCredit": "TMDB",
+      "malUrl": "",
+      "fallback": true,
+      "rankingSource": {
+        "provider": "KOFIC",
+        "metric": "최근 박스오피스 등장",
+        "observedAt": "20260906"
+      },
+      "metadataSource": "KOFIC"
+    },
+    {
+      "malId": "kofic-20262945",
+      "title": "퍼피 구조대: 더 다이노 무비",
+      "titleOriginal": "퍼피 구조대: 더 다이노 무비",
+      "genres": [],
+      "episodes": null,
+      "score": null,
+      "members": null,
+      "studio": "",
+      "season": "",
+      "poster": "assets/posters/20262945.webp",
+      "posterCredit": "TMDB",
+      "malUrl": "",
+      "fallback": true,
+      "rankingSource": {
+        "provider": "KOFIC",
+        "metric": "최근 박스오피스 등장",
+        "observedAt": "20260830"
+      },
+      "metadataSource": "KOFIC"
+    },
+    {
+      "malId": "kofic-20265388",
+      "title": "고스트밴드",
+      "titleOriginal": "고스트밴드",
+      "genres": [],
+      "episodes": null,
+      "score": null,
+      "members": null,
+      "studio": "",
+      "season": "",
+      "poster": "assets/posters/20265388.webp",
+      "posterCredit": "TMDB",
+      "malUrl": "",
+      "fallback": true,
+      "rankingSource": {
+        "provider": "KOFIC",
+        "metric": "최근 박스오피스 등장",
+        "observedAt": "20260830"
+      },
+      "metadataSource": "KOFIC"
+    },
+    {
+      "malId": "kofic-20253289",
+      "title": "극장판 귀멸의 칼날: 무한성편",
+      "titleOriginal": "극장판 귀멸의 칼날: 무한성편",
+      "genres": [],
+      "episodes": null,
+      "score": null,
+      "members": null,
+      "studio": "",
+      "season": "",
+      "poster": "assets/posters/20253289.webp",
+      "posterCredit": "TMDB",
+      "malUrl": "",
+      "fallback": true,
+      "rankingSource": {
+        "provider": "KOFIC",
+        "metric": "최근 박스오피스 등장",
+        "observedAt": "20260829"
+      },
+      "metadataSource": "KOFIC"
+    },
+    {
+      "malId": "kofic-20100810",
+      "title": "마루 밑 아리에티",
+      "titleOriginal": "마루 밑 아리에티",
+      "genres": [],
+      "episodes": null,
+      "score": null,
+      "members": null,
+      "studio": "",
+      "season": "",
+      "poster": "assets/posters/20100810.webp",
+      "posterCredit": "TMDB",
+      "malUrl": "",
+      "fallback": true,
+      "rankingSource": {
+        "provider": "KOFIC",
+        "metric": "최근 박스오피스 등장",
+        "observedAt": "20260825"
+      },
+      "metadataSource": "KOFIC"
+    }
+  ]
+}
