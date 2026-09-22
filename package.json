@@ -1,0 +1,13 @@
+{
+  "name": "ottbora",
+  "private": true,
+  "type": "module",
+  "description": "정적 사이트입니다. 빌드 과정은 없고, 이 의존성은 수집 워크플로에서만 씁니다.",
+  "scripts": {
+    "boxoffice": "node scripts/fetch-boxoffice.mjs",
+    "posters": "node scripts/fetch-posters.mjs"
+  },
+  "dependencies": {
+    "sharp": "^0.35.4"
+  }
+}
