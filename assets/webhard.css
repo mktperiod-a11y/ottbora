@@ -1,7 +1,9 @@
-.intro{padding-top:50px}
+/* 위 여백은 공용 .page-head 가 정합니다. 제목 크기만 이 페이지가 키웁니다. */
 .eyebrow{font-size: 13px;font-weight:800;letter-spacing:1.6px;color:var(--muted)}
 .intro-row{display:flex;justify-content:space-between;gap:30px;align-items:center;margin-top:12px}
-h1{font-size:clamp(34px,4.5vw,54px);line-height:1.2;letter-spacing:-2.5px;margin:0}
+/* 이 페이지 제목만 크게 씁니다. 공용 .page-head h1 (명시도 0,1,1) 을
+   넘어야 해서 같은 수준으로 셀렉터를 맞춥니다. */
+.page-head h1{font-size:clamp(34px,4.5vw,54px);line-height:1.2;letter-spacing:-2.5px}
 h1 em{font-style:normal;color:var(--accent)}
 .lead{font-size: 17px;line-height:1.8;color:var(--muted);margin:20px 0 0}
 .edition{border-left:1px solid #cdd3de;padding:0 0 0 38px;min-width:245px}
