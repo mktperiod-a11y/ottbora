@@ -19,8 +19,8 @@ main{
 .grid{
   --card-min: 180px;
   --cards-gap: 17px;
-  /* 카드별 하위 액션 개수가 달라도 짧은 카드를 억지로 늘리지 않습니다. */
-  align-items: start;
+  /* 같은 행의 카드는 콘텐츠 양과 관계없이 같은 높이로 맞춥니다. */
+  align-items: stretch;
 }
 .card{
         /* 한 줄 안에서 카드 높이는 그리드가 맞춰 줍니다. 짧은 카드는
@@ -28,6 +28,7 @@ main{
            그 여백이 카드 안쪽 패딩처럼 보이게 합니다. */
         display: flex;
         flex-direction: column;
+        height: 100%;
         overflow: hidden;
         border: 1px solid var(--l);
         border-radius: 11px;
@@ -50,6 +51,8 @@ main{
       }
 .cb{
         flex: 1;
+        display: flex;
+        flex-direction: column;
         padding: 13px;
       }
 /* 제목. 부제 줄 안의 <b>(대분류)는 여기 해당하지 않습니다. */
@@ -289,6 +292,7 @@ a:focus-visible,
 /* ===== 카드 표기 ===== */
 
 .cb .genre {
+  min-height: 1.5em;
   color: var(--muted);
 }
 
@@ -436,7 +440,8 @@ a:focus-visible,
 .tags {
   display: flex;
   gap: 5px;
-  margin-top: 7px;
+  margin-top: auto;
+  padding-top: 7px;
   /* 한 줄만 씁니다. 넘치면 잘립니다. */
   overflow: hidden;
   white-space: nowrap;
@@ -535,20 +540,18 @@ a:focus-visible,
   .grid {
     --card-min: 145px;
     --cards-gap: 10px;
-    align-items: start;
+    align-items: stretch;
   }
 
   .card {
-    align-self: start;
+    align-self: stretch;
     min-width: 0;
-    height: auto;
+    height: 100%;
   }
 
-  /* 데스크톱에서는 한 줄 카드 높이를 맞추지만 모바일에서는
-     예매/출처 유무 때문에 생기던 큰 빈 공간을 없앱니다. */
   .card .cb,
   .card--text .cb {
-    flex: 0 0 auto;
+    flex: 1;
     padding: 10px;
   }
 
