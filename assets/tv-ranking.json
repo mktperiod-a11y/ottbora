@@ -34,6 +34,10 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "providers": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/8ra17h8Z3NX14qdWaOKn0scURJR.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -61,6 +65,10 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-10-03",
+      "providers": [
+        "wavve",
+        "Coupang Play"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/mryeyCsFApnwYDpDcy3I6fYx2Dd.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -87,6 +95,11 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-26",
+      "providers": [
+        "Netflix",
+        "Netflix Standard with Ads",
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/sdvxrJMzACBUG87YS1YYKmRzTN8.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -114,6 +127,9 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-23",
+      "providers": [
+        "Disney Plus"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/lhZCpYVMKZanGTMabOYHTZLD1WY.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -130,7 +146,7 @@
       "originalTitle": "재벌X형사",
       "type": "드라마",
       "rank": 5,
-      "popularity": 25.0891,
+      "popularity": 29.1331,
       "genres": [
         18,
         80,
@@ -143,6 +159,9 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "providers": [
+        "Disney Plus"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/aLrGyfe2nbfM9PvtSYoKy5jEOJu.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -172,6 +191,10 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "providers": [
+        "wavve",
+        "Coupang Play"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/snVma1wanEn9p4hWgQxZ211vQdG.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -200,6 +223,10 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "providers": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/z1xv9CKt7HmXgS6azNB563mU2FB.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -228,6 +255,11 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "providers": [
+        "Netflix",
+        "Netflix Standard with Ads",
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/zyK5BHhUl9NtAUFaKOpgCQWW9My.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -254,6 +286,9 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-24",
+      "providers": [
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/rSINgsYkGSg4r0mb8Xfew2zpVbH.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -281,6 +316,9 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "providers": [
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/6Xo53LDGp8QYc8gqEFyoAvnwciX.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -308,6 +346,10 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "providers": [
+        "wavve",
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/b5jBoSQ7CW1zDJURuctD30mATuO.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -334,6 +376,9 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-24",
+      "providers": [
+        "wavve"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/5b1cq90S2ZuwQvXUS5bBynspojq.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -362,6 +407,7 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/dyusVtoZ2h3RV6jbgTeqzRBMV7a.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -389,6 +435,10 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-10-03",
+      "providers": [
+        "wavve",
+        "Coupang Play"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/eCOFjneZNF6QPQ7IYdTdr8fAyKX.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -416,6 +466,10 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-22",
+      "providers": [
+        "wavve",
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/qVK5lrPrRswoe542XEnufx8BH2j.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -443,6 +497,9 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/rhaVq50hxzvyIMBhR4g9ElMpLfG.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -471,6 +528,7 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-22",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/obkdoB9TGBQpNlJKMXOZHwe9Irn.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -499,6 +557,9 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "providers": [
+        "wavve"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/sGn3ZvxXGtDB5ZP6Kxs6bBxsoCf.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -526,6 +587,12 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-26",
+      "providers": [
+        "Netflix",
+        "wavve",
+        "Netflix Standard with Ads",
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/dJZzKvTje5z5Ov8NmZeMSy69cOc.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -552,6 +619,11 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [
+        "wavve",
+        "Watcha",
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/w0zmCzvedHPlL7p3xQK1iStA12J.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -578,6 +650,7 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/ock26TgVrRMxxns3B4lQdTKlM3.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -606,6 +679,10 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-23",
+      "providers": [
+        "wavve",
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/7EHuF6wEAeiljsN2HFYu6cHm8Fe.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -633,6 +710,7 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/nWxPoZbubyjdN2URApinVxjKgLg.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -659,6 +737,7 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/wNAUFFelCQOpkOp58LTYaX89KyB.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -685,6 +764,7 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/tV2DVv4M9KiWjpdI3ZEU6NL3xwA.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -711,6 +791,7 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/bPwB9Iqj7DQMvpyRob4fuoCamch.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -727,7 +808,7 @@
       "originalTitle": "반칙부터 시작할까요?",
       "type": "드라마",
       "rank": 27,
-      "popularity": 2.3395,
+      "popularity": 2.4782,
       "genres": [
         18
       ],
@@ -737,6 +818,7 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-22",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/3ZQnEdblrloboBjc5xxpam0ZHi4.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -763,6 +845,7 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/2AzkImYnkLbDbvQ4InlSn3t7tyu.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -789,6 +872,7 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-22",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/h7jkkAZFXJj6ArV0PJ6JHGwLaq4.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -815,6 +899,7 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/ylwNi8zbTxqVPPBaZuislDwK40s.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -841,6 +926,7 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/r0HU6l4yCaikNQQSMDaVi8ZzRf0.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -867,6 +953,7 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/axUovhhgO3qKmuMKEyaGXADsWgu.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -894,6 +981,7 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-24",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/vjtAW53N12PqaxVqTTtirMvwfsM.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -921,6 +1009,7 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/58BX9MquZd7koYRzqkeHeNzYE63.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -948,6 +1037,7 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/72ugCf4bRgGJXMMAsdV7NF4JrR8.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -974,6 +1064,7 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/afYF8kGJFb938vnud4K9Pw5QXbG.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1000,6 +1091,7 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/tPIcyxOvnLt5og1jGtfbvypGR6D.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1026,6 +1118,7 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/5jDKYursgTShqNc6Ujfn5b853wH.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1053,6 +1146,7 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/lGDet8NBI9aHwad7npDB80xkCTK.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1079,6 +1173,7 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/dNEDTS0feUfgLnJPJfibk85uLls.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1107,6 +1202,11 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-23",
+      "providers": [
+        "wavve",
+        "Watcha",
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/ofo50w2DTFcPkOm3iguWGU3Y8cw.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1134,6 +1234,11 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-26",
+      "providers": [
+        "wavve",
+        "Watcha",
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/zak7mqMxJGnnWplSdbjDtV7bg2Y.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1161,6 +1266,11 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-10-04",
+      "providers": [
+        "Netflix",
+        "Watcha",
+        "Netflix Standard with Ads"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/15SMnscZqd7HZ0bzruatOcKUlOV.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1187,6 +1297,11 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-25",
+      "providers": [
+        "wavve",
+        "Watcha",
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/bq3Emv3pJLUyHvwGqiAXRwJvAmL.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1214,6 +1329,10 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [
+        "wavve",
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/pnibkuL74C33GoKLTXAmF4nl3a6.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1241,6 +1360,10 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [
+        "Watcha",
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/44CeavkZLqW9Z7SkOffxLNJtAv9.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1268,6 +1391,11 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-27",
+      "providers": [
+        "Netflix",
+        "Watcha",
+        "Netflix Standard with Ads"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/eFxC1aItvr2xGfG2Z7lXQt6CfnB.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1284,7 +1412,7 @@
       "originalTitle": "놀면 뭐하니?",
       "type": "예능",
       "rank": 8,
-      "popularity": 101.2865,
+      "popularity": 97.4661,
       "genres": [
         10764,
         35
@@ -1295,6 +1423,11 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-10-10",
+      "providers": [
+        "wavve",
+        "Watcha",
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/10dL6iCqPIaAoDq1CTBOrOmbsmo.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1321,6 +1454,11 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-26",
+      "providers": [
+        "wavve",
+        "Watcha",
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/oRoGuuYiyQmxc1fU5oV5dPKlnAz.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1348,6 +1486,10 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [
+        "wavve",
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/tdGJ2swRbtHT2O3fUXauKVSXNp9.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1374,6 +1516,11 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-27",
+      "providers": [
+        "wavve",
+        "Watcha",
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/q0ZjzXScH2bZgqIWlT2xAQOPAH8.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1400,6 +1547,7 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/2n8dBK8wyGYN3Wf124ojxHHCkHF.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1426,6 +1574,7 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/ofABMllzstkOtrEy8LOX51kYkY3.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1442,7 +1591,7 @@
       "originalTitle": "어서와~ 한국은 처음이지?",
       "type": "예능",
       "rank": 14,
-      "popularity": 41.5194,
+      "popularity": 36.8474,
       "genres": [
         10764
       ],
@@ -1452,6 +1601,11 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [
+        "wavve",
+        "Watcha",
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/nVyY29AB1jDc8ndI6D6JTfkiIiM.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1480,6 +1634,11 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [
+        "Netflix",
+        "Watcha",
+        "Netflix Standard with Ads"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/ty9wVEbzvJre9ClM7ETgBFreJZG.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1506,6 +1665,12 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [
+        "Netflix",
+        "wavve",
+        "Watcha",
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/ee5oS2TMiImM4m1rYTn1GpnCLTZ.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1532,6 +1697,10 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [
+        "wavve",
+        "Watcha"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/5WUFnTXfJkadGV5Ho5JzhdZ3sH0.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1548,7 +1717,7 @@
       "originalTitle": "나는 SOLO, 그 후 사랑은 계속된다",
       "type": "예능",
       "rank": 18,
-      "popularity": 28.9114,
+      "popularity": 28.4287,
       "genres": [
         10764
       ],
@@ -1558,6 +1727,13 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [
+        "Netflix",
+        "wavve",
+        "Watcha",
+        "Netflix Standard with Ads",
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/9Qn4sQBubVbRnLI9zk8YyUHimcm.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1584,6 +1760,9 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/os1S8ncPTiM4TS9ZEg6TTHU8VdJ.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1600,7 +1779,7 @@
       "originalTitle": "GOING SEVENTEEN",
       "type": "예능",
       "rank": 20,
-      "popularity": 22.1409,
+      "popularity": 21.296,
       "genres": [
         10764,
         35,
@@ -1612,6 +1791,7 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-23",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/qQZvkevnkCWlfOg7fn6rHcqu5yC.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1638,6 +1818,10 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [
+        "Watcha",
+        "Netflix Standard with Ads"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/mFy1XNWBPClL3EveMb8FsI4OGqX.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1665,6 +1849,7 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/i2qij6ZaV3esGOiEPCTBIJwn456.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1691,6 +1876,11 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [
+        "wavve",
+        "Watcha",
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/ttkrChNTghHiEFihhDZlGvrMwbp.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1715,6 +1905,10 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [
+        "wavve",
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/wA4kYbQiD9n0zkTXq16KQfq70IY.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1741,6 +1935,11 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-29",
+      "providers": [
+        "Netflix",
+        "Watcha",
+        "Netflix Standard with Ads"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/sHmyHLY9bRWqXEvBAivaFlAGwbT.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1768,6 +1967,7 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/wtO2vcE8ffzVfnalGTsd1uAbzAN.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1784,7 +1984,7 @@
       "originalTitle": "용감한 형사들",
       "type": "예능",
       "rank": 27,
-      "popularity": 14.5195,
+      "popularity": 13.4789,
       "genres": [
         80,
         10764
@@ -1795,6 +1995,13 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [
+        "Netflix",
+        "wavve",
+        "Watcha",
+        "Netflix Standard with Ads",
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/jlcHFGubTHf9IZ4dBuJZEA6ZkbS.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1821,6 +2028,7 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-28",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/9Uqxdkb5evD1O8wBzGm0NWX03Es.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1847,6 +2055,13 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [
+        "Netflix",
+        "wavve",
+        "Watcha",
+        "Netflix Standard with Ads",
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/msKgNBpXJLuM8pa6HSVyXUWJXJm.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1863,7 +2078,7 @@
       "originalTitle": "대환장 기안장",
       "type": "예능",
       "rank": 30,
-      "popularity": 8.5485,
+      "popularity": 10.4238,
       "genres": [
         10764
       ],
@@ -1873,6 +2088,10 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-22",
+      "providers": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/qZjXUzpzdKjc0qzQwdwpXGOrR2F.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1899,6 +2118,7 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/aoBze9wmxYcjaTxk46nhTqvO4ou.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1927,6 +2147,7 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/dVqybratnlNN250afmJxgFXwdh6.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1953,6 +2174,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [
+        "Netflix",
+        "Disney Plus",
+        "wavve",
+        "Watcha",
+        "Netflix Standard with Ads",
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/iF30vXC3Ry7pfPYY3iL6MpCVGd0.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1980,6 +2209,10 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/99JldizwZEvXelt6p5igcKTm0pK.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -1996,7 +2229,7 @@
       "originalTitle": "도라이버",
       "type": "예능",
       "rank": 35,
-      "popularity": 8.141,
+      "popularity": 7.738,
       "genres": [
         10764,
         35
@@ -2007,6 +2240,10 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/fDR7bSOSCz6N6ouytg9LHtkEQTM.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -2033,6 +2270,9 @@
       "status": "In Production",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [
+        "wavve"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/bjChv4zJmTFA0DMumOwIGZSr1oV.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -2059,6 +2299,13 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-24",
+      "providers": [
+        "Netflix",
+        "wavve",
+        "Watcha",
+        "Netflix Standard with Ads",
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/wuSVbPZcWSymdZTPu8I46R9blov.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -2086,6 +2333,9 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-24",
+      "providers": [
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/kWQCQdx0ADS9FjnUo8STcR4pBH0.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -2114,6 +2364,10 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-10-02",
+      "providers": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/7H2hHWyYTR0nnlsvqxLYfrhw21m.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -2130,7 +2384,7 @@
       "originalTitle": "더 커뮤니티",
       "type": "예능",
       "rank": 40,
-      "popularity": 6.2033,
+      "popularity": 6.449,
       "genres": [
         10764,
         10767
@@ -2141,6 +2395,10 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-25",
+      "providers": [
+        "wavve",
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/w8U95EDFNlgmIn1yHJO248gb6R5.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -2169,6 +2427,7 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/ytABly0xgjR46X0qOzv3pvXHsr3.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -2195,6 +2454,10 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-28",
+      "providers": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/3gR9bvfKFTXf8A01ldoyFVuAuHZ.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -2221,6 +2484,7 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/eU6KRdsky81FiHNhdDliPJemwWh.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -2247,6 +2511,7 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/u3twtrPE8iDjDoiBcI6s5iMi3Br.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -2263,7 +2528,7 @@
       "originalTitle": "EPIKASE",
       "type": "예능",
       "rank": 45,
-      "popularity": 6.4233,
+      "popularity": 5.4026,
       "genres": [
         35,
         10764
@@ -2274,6 +2539,7 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/aVRuEZzNTak594Th2U8r54ySikr.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -2300,6 +2566,7 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-10-05",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/hQKAIYf4M5ME9ei5RS2oBnpF4Pc.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -2326,6 +2593,7 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/xdDma8AA2IqijRt3KfmVkCspimV.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -2352,6 +2620,10 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [
+        "wavve",
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/3eLm5S0tvsHL4zu5Ep9YsicEff7.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -2376,6 +2648,7 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/Sl24dwSvoXJVXu3aPCy4Y4XlTw.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -2402,6 +2675,7 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-24",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/iFe9WAPAVKR8om6pfxFQ0Sd9dDK.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -2428,6 +2702,7 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/iHR8nG2PJaFsdxLW2FsVhEwCCQf.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -2454,6 +2729,7 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/g9bJg9DzXALSsPW3XGKXzwLucT5.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -2481,6 +2757,7 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-27",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/mGCQQlLobyKPianz2gU0vtVcnvT.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -2508,6 +2785,10 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "providers": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/6hZSVmI97kfa29C1CYTjPzE8pqO.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -2534,6 +2815,7 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/2rfdldWqk1PpdrBfik5Ar0Wp8rH.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -2560,6 +2842,10 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/2Oh5cQFjM8CSW2JE8XVW0ezBtu6.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -2586,6 +2872,9 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-23",
+      "providers": [
+        "wavve"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/ikSZ6cS39rFHoRtuHFRJKHHzOZa.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -2612,6 +2901,7 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/o74EGheRFBX9iKIzn1AgnwG7Vti.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -2639,6 +2929,7 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/ejjYOSGsfhmiEbUhe6SpkPxLc2c.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -2665,6 +2956,13 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "providers": [
+        "Netflix",
+        "wavve",
+        "Watcha",
+        "Netflix Standard with Ads",
+        "TVING"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/xsG3v9Tc3qtiJLamawu7D8NCybH.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
