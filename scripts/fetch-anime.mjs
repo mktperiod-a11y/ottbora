@@ -64,13 +64,27 @@ const GENRE_KO = {
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-function fail(msg, got) {
-  console.error("Jikan 응답이 예상과 다릅니다:", msg);
+/**
+ * 애니를 받지 못하고 끝냅니다.
+ *
+ * 0 으로 끝냅니다. 이 단계가 잡을 죽이면 같은 실행에서 이미 성공한
+ * 박스오피스·포스터 작업까지 커밋되지 않고 버려집니다. 실제로 그런 일이
+ * 있었습니다 — Jikan 이 504 를 주는 사이 포스터 40장이 함께 날아갔습니다.
+ *
+ * 애니는 다른 데이터에 얹히는 부가 작업이고, Jikan 은 무료 커뮤니티 API 라
+ * 간헐적으로 응답하지 않습니다. 못 받으면 기존 파일을 두고 다음 실행에
+ * 맡기는 편이 맞습니다.
+ */
+function giveUp(msg, got) {
+  console.warn("");
+  console.warn("─".repeat(60));
+  console.warn("애니 갱신을 건너뜁니다:", msg);
   if (got !== undefined) {
-    console.error("받은 구조:", JSON.stringify(got, null, 2).slice(0, 1200));
+    console.warn("받은 구조:", JSON.stringify(got, null, 2).slice(0, 1200));
   }
-  console.error(`\n기존 ${OUT} 은 그대로 두었습니다.`);
-  process.exit(1);
+  console.warn(`기존 ${OUT} 은 그대로 두고, 다음 실행에서 다시 시도합니다.`);
+  console.warn("─".repeat(60));
+  process.exit(0);
 }
 
 // ---- 1. 이번 분기 목록 받기 -----------------------------------------------
@@ -88,11 +102,13 @@ for (let page = 1; page <= PAGES; page += 1) {
     body = await getJson(
       `${JIKAN}/seasons/now?limit=25&sfw=true&page=${page}`,
       `Jikan 분기 목록 ${page}쪽`,
-      { attempts: 3, timeout: 15000 },
+      // 504(게이트웨이 시간초과)를 자주 돌려줍니다. 대체로 일시적이라
+      // 조금 더 참고 기다립니다. 그래도 안 되면 다음 실행에 맡깁니다.
+      { attempts: 4, timeout: 20000, backoffMs: 5000 },
     );
   } catch (e) {
     if (page === 1) {
-      fail(
+      giveUp(
         `Jikan 에 연결하지 못했습니다 (${e.message}). ` +
           "일시적인 장애일 수 있으니 잠시 뒤 다시 실행해 보세요.",
       );
@@ -102,18 +118,18 @@ for (let page = 1; page <= PAGES; page += 1) {
   }
 
   if (!Array.isArray(body?.data)) {
-    fail(`${page}쪽의 data 가 배열이 아님`, body);
+    giveUp(`${page}쪽의 data 가 배열이 아님`, body);
   }
   raw.push(...body.data);
   if (!body.pagination?.has_next_page) break;
   await sleep(GAP_MS);
 }
 
-if (!raw.length) fail("이번 분기 목록이 비어 있습니다.");
+if (!raw.length) giveUp("이번 분기 목록이 비어 있습니다.");
 
 const REQUIRED = ["mal_id", "title", "images"];
 const missing = REQUIRED.filter((f) => !(f in raw[0]));
-if (missing.length) fail("항목에 " + missing.join(", ") + " 가 없음", raw[0]);
+if (missing.length) giveUp("항목에 " + missing.join(", ") + " 가 없음", raw[0]);
 
 console.log(`이번 분기 ${raw.length}편을 받았습니다.`);
 
