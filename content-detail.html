@@ -215,7 +215,7 @@
       function animeWork(a) {
         if (!a) return null;
         const points = [
-          a.score ? `평점 ${a.score}` : "",
+          a.score ? `${a.scoreBy || "AniList"} 평점 ${a.score}` : "",
           a.episodes ? `${a.episodes}화` : "",
           a.studio ? `제작 · ${a.studio}` : "",
           a.season ? `시즌 · ${a.season}` : "",
@@ -225,7 +225,7 @@
           sourceKind: "anime",
           title: a.title,
           type: "애니",
-          tagline: "현재 방영 중인 애니 목록에서 소개하는 작품이에요.",
+          tagline: "",
           poster: a.poster || FALLBACK,
           meta: [
             (a.genres || []).join(" · "),
