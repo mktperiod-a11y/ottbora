@@ -19,6 +19,8 @@ main{
 .grid{
   --card-min: 180px;
   --cards-gap: 17px;
+  /* 카드별 하위 액션 개수가 달라도 짧은 카드를 억지로 늘리지 않습니다. */
+  align-items: start;
 }
 .card{
         /* 한 줄 안에서 카드 높이는 그리드가 맞춰 줍니다. 짧은 카드는
@@ -255,23 +257,22 @@ a:focus-visible,
   margin-top: 16px;
 }
 
-/* 탭 줄과 건수를 한 줄에 둡니다. 좁은 화면에서는 건수가 아래로 내려갑니다. */
+/* 건수는 탭 종류와 화면 폭에 관계없이 항상 탭 아래에 둡니다. */
 .filter-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
   margin: 30px 0 20px;
 }
 
 .filter-row .filters {
+  width: 100%;
   margin: 0;
-  flex: 1 1 auto;
 }
 
 .count {
   margin: 0;
+  justify-self: start;
   color: var(--muted);
   font-size: var(--seed-font-size-t3);
   line-height: 1.5;
@@ -500,5 +501,100 @@ a:focus-visible,
   .panel-title {
     font-size: 19px;
     letter-spacing: -0.8px;
+  }
+}
+
+
+/* ===== 모바일 콘텐츠 카드 안정화 ===== */
+@media (max-width: 600px) {
+  /* 다섯 탭은 한 줄로 유지하고 필요할 때만 가로 스크롤합니다.
+     건수는 .filter-row의 두 번째 행에 고정됩니다. */
+  .filter-row {
+    gap: 9px;
+    margin-top: 24px;
+  }
+
+  .filter-row .filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+
+  .filter-row .filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .grid {
+    --card-min: 145px;
+    --cards-gap: 10px;
+    align-items: start;
+  }
+
+  .card {
+    align-self: start;
+    min-width: 0;
+    height: auto;
+  }
+
+  /* 데스크톱에서는 한 줄 카드 높이를 맞추지만 모바일에서는
+     예매/출처 유무 때문에 생기던 큰 빈 공간을 없앱니다. */
+  .card .cb,
+  .card--text .cb {
+    flex: 0 0 auto;
+    padding: 10px;
+  }
+
+  .cb > b {
+    font-size: 15px;
+    line-height: 1.35;
+    letter-spacing: -0.3px;
+    overflow-wrap: anywhere;
+  }
+
+  .cb .genre {
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .tags {
+    gap: 4px;
+    margin-top: 6px;
+  }
+
+  .tag {
+    padding: 3px 6px;
+    font-size: 10.5px;
+  }
+
+  .sub-action {
+    gap: 4px;
+    margin: 0 10px 10px;
+    padding-top: 8px;
+  }
+
+  .sub-action-label {
+    font-size: 11px;
+  }
+
+  .book-chip {
+    padding: 4px 7px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 360px) {
+  .grid {
+    --card-min: 132px;
+    --cards-gap: 8px;
+  }
+
+  .card .cb,
+  .card--text .cb {
+    padding: 9px;
+  }
+
+  .cb > b {
+    font-size: 14px;
   }
 }
