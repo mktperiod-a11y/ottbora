@@ -88,6 +88,7 @@
     },
   };
 
+  const DISPLAY_LIMIT = 10;
   const SLOT_HOURS = 3;
   const SLOT_MS = SLOT_HOURS * 60 * 60 * 1000;
   const KST_MS = 9 * 60 * 60 * 1000;
@@ -203,13 +204,16 @@
     const prev = positionMap(previous);
     const nextRealMs = (slot + 1) * SLOT_MS - KST_MS;
 
+    const visible = order.slice(0, DISPLAY_LIMIT);
+
     return {
       slot,
       startLabel: slotHour(slot),
       nextLabel: slotHour(slot + 1),
       remainingMs: nextRealMs - now,
       remainingLabel: formatClock(nextRealMs - now),
-      order: order.map((id, index) => {
+      fullOrder: [...order],
+      order: visible.map((id, index) => {
         const position = index + 1;
         return {
           ...PROVIDERS[id],
@@ -251,6 +255,7 @@
   window.OTT_WEBHARD_RANKING = {
     providers: PROVIDERS,
     allIds: [...ALL],
+    displayLimit: DISPLAY_LIMIT,
     buildOrder,
     snapshot,
     watch,
