@@ -139,6 +139,7 @@
       };
 
       let DATA = null;
+      let RANKS = new Map(); // 제목 → 지금 박스오피스 순위
       let CINEMAS = []; // 예매 링크가 확인된 극장 체인
       let FRESH = false; // 박스오피스 집계가 예매를 권할 만큼 최근인가
       let active = "전체";
@@ -203,6 +204,13 @@
        * KOFIC 순위는 관객수 기준이라 "예매율"이 아니라 "박스오피스"로 적습니다.
        */
       const TOP_N = 3;
+
+      /** 지금 차트 3위 안이면 그 순위를, 아니면 편집 근거를 씁니다. */
+      function credit(title, fallback) {
+        const r = FRESH ? RANKS.get(key(title)) : null;
+        return r && r <= TOP_N ? `박스오피스 ${r}위` : fallback || "";
+      }
+
       function overlay(text) {
         return text ? `<span class="rank-chip">${esc(text)}</span>` : "";
       }
@@ -229,7 +237,7 @@
           `<img src="${poster(w.id)}" alt="${esc(w.title)} 포스터" loading="lazy"` +
           ` referrerpolicy="no-referrer"` +
           ` onerror="this.onerror=null;this.src='${FALLBACK}'">` +
-          overlay(w.pickedBy) +
+          overlay(credit(w.title, w.pickedBy)) +
           `</span>` +
           `<div class="cb"><b>${esc(w.title)}</b>` +
           `<span class="genre">${esc(line)}</span>` +
@@ -270,8 +278,7 @@
         const top = [active === "전체" ? m.type : "", rest.join(" · ")]
           .filter(Boolean)
           .join(" · ");
-        const chip =
-          m.rank && m.rank <= TOP_N ? `박스오피스 ${m.rank}위` : "";
+        const chip = credit(m.title, "");
         return (
           `<article class="card card--text">` +
           `<div class="panel panel--t${tint(m.movieCd)}">` +
@@ -410,6 +417,11 @@
           DATA = d;
           DATA.boxoffice = Array.isArray(box?.movies) ? box.movies : [];
           FRESH = isFresh(box?.latestDt);
+          // 손으로 고른 작품이 지금 차트에도 있으면 그 순위를 씁니다.
+          // 같은 작품에 옛 근거 문구와 오늘 순위가 따로 놀지 않도록.
+          for (const m of DATA.boxoffice) {
+            if (m.rank) RANKS.set(key(m.title), m.rank);
+          }
           CINEMAS = (cinema?.chains || [])
             .map((c) => ({
               name: c.name,
