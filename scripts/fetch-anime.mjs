@@ -32,6 +32,7 @@ import { existsSync } from "node:fs";
 import { savePoster, getJson, postJson, norm } from "./lib/poster.mjs";
 
 const OUT = "assets/anime.json";
+const TITLE_ALIASES = "assets/anime-title-aliases.json";
 const DIR = "assets/posters";
 const JIKAN = "https://api.jikan.moe/v4";
 const ANILIST = "https://graphql.anilist.co";
@@ -83,6 +84,11 @@ const GENRE_KO = {
 };
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+let titleAliases = {};
+try {
+  titleAliases = JSON.parse(await readFile(TITLE_ALIASES, "utf8")).titles || {};
+} catch {}
 
 /**
  * 애니를 받지 못하고 끝냅니다.
@@ -285,7 +291,9 @@ console.log(
  */
 async function koreanTitle(a) {
   if (!TMDB) return null;
-  for (const q of [a.title_japanese, a.title_english, a.title].filter(Boolean)) {
+
+  const exactQueries = [a.title_japanese, a.title_english, a.title].filter(Boolean);
+  for (const q of exactQueries) {
     try {
       const body = await getJson(
         `${TMDB_SEARCH}?${new URLSearchParams({
@@ -297,21 +305,49 @@ async function koreanTitle(a) {
       );
       const hits = body?.results;
       if (!Array.isArray(hits)) continue;
-      // 원어 제목이 맞는 것만 씁니다. 엉뚱한 작품 제목이 붙으면 안 됩니다.
-      const want = [a.title_japanese, a.title_english, a.title]
-        .filter(Boolean)
-        .map(norm);
+      const want = exactQueries.map(norm);
       const hit = hits.find(
         (r) =>
           want.includes(norm(r.original_name)) || want.includes(norm(r.name)),
       );
-      // 한국어가 아니면(한글이 없으면) 쓰지 않습니다.
       if (hit?.name && /[가-힣]/.test(hit.name)) return hit.name;
-    } catch {
-      // 보조 정보라 실패해도 넘어갑니다.
-    }
+    } catch {}
     await sleep(GAP_MS);
   }
+
+  // "Season 4", "Season 2", 말미의 로마 숫자 때문에 국내 제목 매칭이
+  // 실패하는 경우가 많습니다. 기본 시리즈명으로 한 번 더 찾고 국내명에
+  // "N기"를 붙입니다.
+  const english = a.title_english || a.title || "";
+  const m =
+    english.match(/^(.*?)(?:\s+Season\s+(\d+))$/i) ||
+    english.match(/^(.*?)(?:\s+([IVX]+))$/);
+  if (!m) return null;
+
+  const base = m[1].trim();
+  let season = m[2];
+  const roman = { I: 1, II: 2, III: 3, IV: 4, V: 5, VI: 6, VII: 7, VIII: 8, IX: 9, X: 10 };
+  if (!/^\d+$/.test(season)) season = roman[season.toUpperCase()] || "";
+  if (!base || !season) return null;
+
+  try {
+    const body = await getJson(
+      `${TMDB_SEARCH}?${new URLSearchParams({
+        api_key: TMDB,
+        query: base,
+        language: "ko-KR",
+      })}`,
+      `TMDB base ${base}`,
+    );
+    const hits = body?.results;
+    if (!Array.isArray(hits)) return null;
+    const hit = hits.find(
+      (r) => norm(r.original_name) === norm(base) || norm(r.name) === norm(base),
+    );
+    if (hit?.name && /[가-힣]/.test(hit.name)) {
+      return /\d+기$/.test(hit.name) ? hit.name : `${hit.name} ${season}기`;
+    }
+  } catch {}
   return null;
 }
 
@@ -357,8 +393,10 @@ for (const a of picked) {
     .map((g) => GENRE_KO[g.name] || g.name)
     .filter(Boolean);
 
-  // 이미 찾아 둔 한국어 제목은 다시 찾지 않습니다.
-  const ko = old?.titleKo || (await koreanTitle(a));
+  // 국내 통용명 수동 보정 > 기존 한국어명 > TMDB 자동 매칭 순입니다.
+  // 수동 보정은 영문 제목이 남거나 번역투가 강한 작품만 최소한으로 둡니다.
+  const alias = titleAliases[String(a.mal_id)] || "";
+  const ko = alias || old?.titleKo || (await koreanTitle(a));
 
   works.push({
     malId: a.mal_id,
