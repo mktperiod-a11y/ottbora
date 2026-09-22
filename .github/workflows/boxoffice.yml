@@ -35,14 +35,26 @@ jobs:
           KOFIC_API_KEY: ${{ secrets.KOFIC_API_KEY }}
         run: node scripts/fetch-boxoffice.mjs --days=${{ inputs.days || '1' }}
 
+      # 포스터 변환에만 쓰는 의존성입니다. 사이트 자체는 빌드가 없습니다.
+      - name: 의존성 설치
+        run: npm ci
+
+      # KOFIC 은 포스터를 주지 않으므로 이미지는 따로 받습니다.
+      # 두 키 중 등록된 쪽을 쓰고, 둘 다 없으면 건너뜁니다(실패 아님).
+      - name: 포스터 내려받기
+        env:
+          KMDB_API_KEY: ${{ secrets.KMDB_API_KEY }}
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+        run: node scripts/fetch-posters.mjs
+
       - name: 변경분 커밋
         run: |
-          if [ -z "$(git status --porcelain assets/boxoffice.json)" ]; then
+          if [ -z "$(git status --porcelain assets/boxoffice.json assets/posters)" ]; then
             echo "변경 없음 — 커밋하지 않습니다."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/boxoffice.json
+          git add assets/boxoffice.json assets/posters
           git commit -m "Update box office from KOFIC"
           git push

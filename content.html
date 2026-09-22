@@ -279,6 +279,26 @@
           .filter(Boolean)
           .join(" · ");
         const chip = credit(m.title, "");
+        const foot = `<div class="cb"><div class="card-foot">${book}</div></div>`;
+
+        // 포스터를 받아 둔 작품은 손으로 고른 작품과 같은 모양으로 그립니다.
+        // 상세 페이지가 없으므로 카드 전체를 링크로 만들지는 않습니다.
+        if (m.poster) {
+          return (
+            `<article class="card">` +
+            `<span class="thumb">` +
+            `<img src="${esc(m.poster)}" alt="${esc(m.title)} 포스터" loading="lazy"` +
+            ` onerror="this.onerror=null;this.src='${FALLBACK}'">` +
+            overlay(chip) +
+            `</span>` +
+            `<div class="cb"><b>${esc(m.title)}</b>` +
+            (top ? `<span class="genre">${esc(top)}</span>` : "") +
+            (facts ? `<span class="genre">${esc(facts)}</span>` : "") +
+            `<div class="card-foot">${book}</div></div></article>`
+          );
+        }
+
+        // 포스터가 아직 없으면 제목을 판 한가운데 앉힌 글자 카드로 둡니다.
         return (
           `<article class="card card--text">` +
           `<div class="panel panel--t${tint(m.movieCd)}">` +
@@ -287,8 +307,7 @@
           `</span>` +
           `<b class="panel-title">${esc(m.title)}</b>` +
           `<span class="panel-facts">${esc(facts)}</span>` +
-          `</div>` +
-          `<div class="cb"><div class="card-foot">${book}</div></div>` +
+          `</div>` + foot +
           `</article>`
         );
       }
@@ -431,8 +450,14 @@
             }))
             .filter((c) => c.href);
 
+          // 포스터 출처를 방침 안내에 함께 적습니다. 어디서 온 이미지인지
+          // 밝히지 않으면 출처 표기 없이 남의 이미지를 싣는 셈이 됩니다.
+          const sources = [
+            ...new Set(DATA.boxoffice.map((m) => m.posterCredit).filter(Boolean)),
+          ];
           document.querySelector("#policy-text").textContent =
-            `${d.selectionPolicy} ${d.watchNote} 확인일 ${d.checkedAt}.`;
+            `${d.selectionPolicy} ${d.watchNote} 확인일 ${d.checkedAt}.` +
+            (sources.length ? ` 극장 개봉작 포스터 출처: ${sources.join(", ")}.` : "");
           document.querySelector("#partner-text").textContent =
             d.partnerDisclosure;
           tabs();
