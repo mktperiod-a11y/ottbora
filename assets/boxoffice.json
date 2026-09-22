@@ -119,7 +119,7 @@
         "판타지",
         "멜로/로맨스"
       ],
-      "type": "애니",
+      "type": "영화",
       "firstSeenAt": "20260916",
       "lastSeenAt": "20260921",
       "days": 6,
@@ -201,7 +201,7 @@
       "genres": [
         "애니메이션"
       ],
-      "type": "애니",
+      "type": "영화",
       "firstSeenAt": "20260919",
       "lastSeenAt": "20260920",
       "days": 2,
@@ -217,7 +217,7 @@
       "genres": [
         "애니메이션"
       ],
-      "type": "애니",
+      "type": "영화",
       "firstSeenAt": "20260916",
       "lastSeenAt": "20260920",
       "days": 5,
@@ -384,7 +384,7 @@
       "genres": [
         "애니메이션"
       ],
-      "type": "애니",
+      "type": "영화",
       "firstSeenAt": "20260824",
       "lastSeenAt": "20260913",
       "days": 9,
@@ -403,7 +403,7 @@
         "어드벤처",
         "판타지"
       ],
-      "type": "애니",
+      "type": "영화",
       "firstSeenAt": "20260909",
       "lastSeenAt": "20260913",
       "days": 5,
@@ -419,7 +419,7 @@
       "genres": [
         "애니메이션"
       ],
-      "type": "애니",
+      "type": "영화",
       "firstSeenAt": "20260911",
       "lastSeenAt": "20260911",
       "days": 1,
@@ -505,7 +505,7 @@
       "genres": [
         "애니메이션"
       ],
-      "type": "애니",
+      "type": "영화",
       "firstSeenAt": "20260824",
       "lastSeenAt": "20260907",
       "days": 15,
@@ -524,7 +524,7 @@
         "가족",
         "판타지"
       ],
-      "type": "애니",
+      "type": "영화",
       "firstSeenAt": "20260902",
       "lastSeenAt": "20260906",
       "days": 3,
@@ -609,7 +609,7 @@
       "genres": [
         "애니메이션"
       ],
-      "type": "애니",
+      "type": "영화",
       "firstSeenAt": "20260829",
       "lastSeenAt": "20260830",
       "days": 2,
@@ -625,7 +625,7 @@
       "genres": [
         "애니메이션"
       ],
-      "type": "애니",
+      "type": "영화",
       "firstSeenAt": "20260829",
       "lastSeenAt": "20260830",
       "days": 2,
@@ -641,7 +641,7 @@
       "genres": [
         "애니메이션"
       ],
-      "type": "애니",
+      "type": "영화",
       "firstSeenAt": "20260826",
       "lastSeenAt": "20260829",
       "days": 2,
@@ -675,7 +675,7 @@
       "genres": [
         "애니메이션"
       ],
-      "type": "애니",
+      "type": "영화",
       "firstSeenAt": "20260824",
       "lastSeenAt": "20260825",
       "days": 2,
