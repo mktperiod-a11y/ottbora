@@ -164,6 +164,7 @@ async function loadPrev() {
       lastSeenAt: seen,
       days: Number(m.days) || 1,
       bestRank: Number(m.bestRank) || Number(m.rank) || 99,
+      rank: null,
     });
   }
   return out;
@@ -225,6 +226,8 @@ const sample = fetched[0].list[0];
 const missing = REQUIRED.filter((f) => !(f in sample));
 if (missing.length) fail("항목에 " + missing.join(", ") + " 필드가 없음", sample);
 
+const latestDt = fetched[0].targetDt;
+
 // 날짜별 행을 작품 단위로 먼저 모읍니다. 하루씩 바로 합치면, 이미 알고 있는
 // 기간 안쪽으로 거슬러 올라갈 때 오른 날 수를 잘못 세게 됩니다.
 const seen = new Map(); // movieCd -> { dates, top, row, rowDt }
@@ -235,6 +238,9 @@ for (const { targetDt, list } of fetched) {
     if (!e) seen.set(movieCd, (e = { dates: new Set(), top: 99, row: null, rowDt: "" }));
     e.dates.add(targetDt);
     e.top = Math.min(e.top, Number(m.rank));
+    // bestRank 는 기간 중 최고 순위입니다. 화면에 "지금 몇 위"로 쓰려면
+    // 마지막 집계일의 순위가 따로 필요합니다.
+    if (targetDt === latestDt) e.rankNow = Number(m.rank);
     // 가장 최근 날의 행을 남깁니다. 누적 관객(audiAcc)이 최신값이 되도록.
     if (targetDt > e.rowDt) {
       e.row = m;
@@ -262,6 +268,8 @@ for (const [movieCd, e] of seen) {
       lastSeenAt: last,
       days: dates.length,
       bestRank: e.top,
+      // 마지막 집계일에 차트에 없었으면 "지금 순위"는 없습니다.
+      rank: e.rankNow ?? null,
     });
     continue;
   }
@@ -273,6 +281,7 @@ for (const [movieCd, e] of seen) {
   if (first < prev.firstSeenAt) prev.firstSeenAt = first;
   if (last > prev.lastSeenAt) prev.lastSeenAt = last;
   prev.bestRank = Math.min(prev.bestRank, e.top);
+  prev.rank = e.rankNow ?? null;
   prev.title = String(m.movieNm);
   prev.openedAt = m.openDt || prev.openedAt;
   prev.audienceAcc = m.audiAcc ? Number(m.audiAcc) : prev.audienceAcc;
@@ -280,7 +289,6 @@ for (const [movieCd, e] of seen) {
 
 // ---- 2. 오래된 작품 내리기 -----------------------------------------------
 
-const latestDt = fetched[0].targetDt;
 let dropped = 0;
 for (const [movieCd, m] of movies) {
   if (daysBetween(latestDt, m.lastSeenAt) > KEEP_DAYS) {
