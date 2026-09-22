@@ -142,9 +142,12 @@ async function fromTmdb(title, year) {
   const q = new URLSearchParams({
     api_key: TMDB,
     query: title,
+    // 한국어 제목과 한국어 포스터를 우선 돌려줍니다.
     language: "ko-KR",
   });
-  if (year) q.set("year", year);
+  // KMDb 와 같은 이유로 개봉연도로 질의를 좁히지 않습니다.
+  // 외화는 본국 개봉연도와 국내 개봉연도가 다를 수 있어(12월 개봉 → 1월 국내)
+  // 연도로 거르면 결과가 통째로 빕니다. 연도는 아래에서 고를 때만 씁니다.
   const body = await getJson(`${TMDB_URL}?${q}`, `TMDB ${title}`);
 
   const list = body?.results;
@@ -152,20 +155,24 @@ async function fromTmdb(title, year) {
 
   const want = norm(title);
   // KMDb 와 같은 기준입니다. 제목이 맞는 것만 씁니다.
+  // title 은 한국어 제목, original_title 은 원어 제목(일본 애니 등)입니다.
   const match = (t) => {
     const g = norm(t);
     return g && (g === want || g.includes(want) || want.includes(g));
   };
-  const hit = list.find(
+  const hits = list.filter(
     (r) => r.poster_path && (match(r.title) || match(r.original_title)),
   );
-  return hit
-    ? {
-        url: TMDB_IMG + hit.poster_path,
-        credit: "TMDB",
-        referer: "https://www.themoviedb.org/",
-      }
-    : null;
+  if (!hits.length) return null;
+
+  // 동명 작품이 여러 개면 개봉 연도가 맞는 쪽을 고릅니다.
+  const pick =
+    (year && hits.find((r) => yearOf(r.release_date) === year)) || hits[0];
+  return {
+    url: TMDB_IMG + pick.poster_path,
+    credit: "TMDB",
+    referer: "https://www.themoviedb.org/",
+  };
 }
 
 /** 한 장이 이보다 크면 받지 않습니다. 포스터가 이럴 일은 없습니다. */
