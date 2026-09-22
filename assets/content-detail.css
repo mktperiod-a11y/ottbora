@@ -296,3 +296,26 @@ button:focus-visible {
     margin-top: 26px;
   }
 }
+
+
+/* 시청 경로와 예매는 서로 다른 행동이므로 충분히 분리합니다. */
+#booking-block:not(:empty) {
+  margin-top: 38px;
+  padding-top: 30px;
+  border-top: 1px solid var(--line);
+}
+
+#booking-block h2 {
+  margin-bottom: 14px;
+}
+
+@media (max-width: 650px) {
+  #booking-block:not(:empty) {
+    margin-top: 32px;
+    padding-top: 26px;
+  }
+
+  #booking-block h2 {
+    margin-bottom: 12px;
+  }
+}
