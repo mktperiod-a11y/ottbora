@@ -24,8 +24,12 @@ const ENDPOINT =
 const DETAIL_ENDPOINT =
   "https://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json";
 
-/** 장르에 이 값이 있으면 애니 탭으로 분류합니다. */
-const ANIMATION_GENRE = "애니메이션";
+/*
+ * 애니 탭은 MyAnimeList 쪽(scripts/fetch-anime.mjs)에서 채웁니다.
+ * 그 탭은 "극장 개봉"이 아니라 "지금 화제인 애니" 기준이라, 여기서 오는
+ * 극장 애니메이션은 애니로 따로 묶지 않고 영화로 둡니다.
+ * 장르 목록에 "애니메이션" 이 남아 있어 정보는 잃지 않습니다.
+ */
 
 /**
  * 마지막으로 차트에 오른 지 이 일수가 지나면 목록에서 내립니다.
@@ -316,14 +320,13 @@ for (const m of needGenre) {
     continue;
   }
   try {
-    const genres = await fetchGenres(m.movieCd);
-    m.genres = genres;
-    m.type = genres.includes(ANIMATION_GENRE) ? "애니" : "영화";
+    m.genres = await fetchGenres(m.movieCd);
+    m.type = "영화";
   } catch (e) {
     failed += 1;
     console.warn(`  장르 조회 실패 — ${m.title}: ${e.message}`);
     m.genres = [];
-    m.type = "영화"; // 확인 전까지는 애니로 분류하지 않습니다.
+    m.type = "영화";
   }
   await new Promise((r) => setTimeout(r, 200)); // 연속 호출 간격
 }
@@ -384,8 +387,4 @@ if (prevMovies === JSON.stringify(out.movies)) {
     .forEach((m) =>
       console.log(`  ${m.title} [${m.type}] ${m.genres.join("·")} — ${m.days}일`),
     );
-  const anime = sorted.filter((m) => m.type === "애니");
-  if (anime.length) {
-    console.log(`  애니로 분류: ${anime.length}편`);
-  }
 }

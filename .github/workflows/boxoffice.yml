@@ -1,4 +1,4 @@
-name: 박스오피스 갱신
+name: 콘텐츠 갱신
 
 # KOFIC 은 전날 집계를 오전에 공개하므로 한국 시간 오전 10시에 실행합니다.
 on:
@@ -47,14 +47,21 @@ jobs:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
         run: node scripts/fetch-posters.mjs
 
+      # 애니 탭은 MyAnimeList(Jikan)에서 채웁니다. 키가 필요 없습니다.
+      # TMDB 키가 있으면 한국어 제목까지 채웁니다.
+      - name: 애니 내려받기
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+        run: node scripts/fetch-anime.mjs
+
       - name: 변경분 커밋
         run: |
-          if [ -z "$(git status --porcelain assets/boxoffice.json assets/posters)" ]; then
+          if [ -z "$(git status --porcelain assets/boxoffice.json assets/anime.json assets/posters)" ]; then
             echo "변경 없음 — 커밋하지 않습니다."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/boxoffice.json assets/posters
-          git commit -m "Update box office from KOFIC"
+          git add assets/boxoffice.json assets/anime.json assets/posters
+          git commit -m "Update box office and anime"
           git push
