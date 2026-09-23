@@ -332,9 +332,11 @@
           .map((item) => {
             const move = rankingEngine.deltaText(item.delta, item.isNew);
             const moveClass = rankingEngine.deltaClass(item.delta, item.isNew);
-            const logo = item.logo
-              ? `<img src="assets/${item.logo}" alt="${esc(item.name)} 로고" loading="lazy" decoding="async">`
-              : `<span class="brand-name">${esc(item.name)}</span>`;
+            const logo = item.logoUrl
+              ? `<img src="${item.logoUrl}" alt="${esc(item.name)} 로고" loading="lazy" decoding="async" referrerpolicy="no-referrer">`
+              : item.logo
+                ? `<img src="assets/${item.logo}" alt="${esc(item.name)} 로고" loading="lazy" decoding="async">`
+                : `<span class="brand-name">${esc(item.name)}</span>`;
 
             return (
               `<article class="rank-card">` +
@@ -342,7 +344,7 @@
                 `<span class="home-rank-number">${item.position}</span>` +
                 `<span class="home-rank-move ${moveClass}">${move}</span>` +
               `</div>` +
-              `<div class="brand">${logo}</div>` +
+              `<a class="brand" href="${item.url}" target="_blank" rel="noopener noreferrer" aria-label="${esc(item.name)} 공식 홈페이지">${logo}</a>` +
               `<div class="rank-info"><b>${esc(item.name)}</b><span>${esc(item.description)}</span></div>` +
               `<a class="go" href="${item.url}" target="_blank" rel="noopener noreferrer">공식 홈페이지</a>` +
               `</article>`
