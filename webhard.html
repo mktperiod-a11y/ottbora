@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css" />
-    <link rel="stylesheet" href="assets/webhard.css?v=20260923-1" />
+    <link rel="stylesheet" href="assets/webhard.css?v=20260923-3" />
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -1053,7 +1053,7 @@
         <a href="#main">맨 위로 ↑</a>
       </div>
     </footer>
-    <script src="assets/webhard-ranking.js"></script>
+    <script src="assets/webhard-ranking.js?v=20260923-3"></script>
     <script>
 
       /*
@@ -1086,7 +1086,7 @@
 
         ranking.watch((data, changed) => {
           if (changed) {
-            // 후보는 11곳이지만 매 구간 상위 10곳만 노출합니다.
+            // 후보 풀은 더 넓게 유지하되 매 구간 상위 10곳만 노출합니다.
             for (const row of rows.values()) row.hidden = true;
             for (const card of cards.values()) card.hidden = true;
 
