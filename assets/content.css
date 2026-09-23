@@ -725,3 +725,31 @@ a:focus-visible,
     scroll-snap-align:start;
   }
 }
+
+
+/* ===== 2026-09 콘텐츠ZONE 모바일 컴팩트 패스 ===== */
+@media (max-width:600px){
+  main{padding-bottom:40px}
+  .filter-row{gap:5px;margin-top:15px;margin-bottom:12px}
+  .filter-row .filters{--mobile-tab-gap:4px;gap:4px;padding-bottom:2px}
+  .filter-row .filters > *{
+    flex-basis:calc((100% - 12px) / 4);
+    min-height:34px;padding-inline:5px;font-size:11px
+  }
+  .count{font-size:11px;line-height:1.4}
+  .grid{gap:6px}
+  .card{border-radius:9px}
+  .card .cb,.card--text .cb{padding:7px}
+  .cb > b{
+    min-height:2.55em;font-size:13px;line-height:1.28;letter-spacing:-.2px
+  }
+  .cb .genre{
+    min-height:2.65em;font-size:10.5px;line-height:1.35
+  }
+  .tags{gap:3px;padding-top:4px}
+  .tag{padding:2px 5px;font-size:9px}
+  .panel{padding:10px 8px}
+  .panel-title{font-size:16px}
+  .pager{gap:4px;margin-top:18px}
+  .pager > *{min-width:36px;min-height:36px}
+}
