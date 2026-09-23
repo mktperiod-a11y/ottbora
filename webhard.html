@@ -1090,6 +1090,19 @@
           ]),
         );
 
+        // 모바일에서는 "이런 분께 추천" 칼럼을 주요 특징 아래로 합쳐
+        // 한 화면 안에서 읽게 합니다. 원본 칼럼은 접근성용으로 남겨 둡니다.
+        for (const row of rows.values()) {
+          const feature = row.children[2];
+          const recommendation = row.children[3];
+          if (!feature || !recommendation || feature.querySelector(".mobile-row-recommend")) continue;
+          const line = document.createElement("span");
+          line.className = "mobile-row-recommend";
+          line.setAttribute("aria-hidden", "true");
+          line.textContent = "추천 · " + recommendation.textContent.trim();
+          feature.appendChild(line);
+        }
+
         ranking.watch((data, changed) => {
           if (changed) {
             // 후보 풀은 더 넓게 유지하되 매 구간 상위 10곳만 노출합니다.
