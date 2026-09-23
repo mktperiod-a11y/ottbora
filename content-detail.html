@@ -94,6 +94,37 @@
         " seed-action-button--size_medium seed-action-button--layout_withText" +
         " seed-action-button--size_medium-layout_withText";
 
+      /*
+       * 목록으로 돌아갈 자리.
+       *
+       * 콘텐츠ZONE 은 보고 있던 탭·페이지를 주소에 적어 둡니다
+       * (?tab=애니&page=2). 여기서 돌아가는 링크를 그 주소로 바꿔,
+       * 카드를 눌러 들어왔다가 나가면 보던 자리로 돌아가게 합니다.
+       *
+       * 앞 화면이 콘텐츠ZONE 이 아니면(검색 결과로 바로 들어온 경우 등)
+       * 그냥 목록 첫 화면으로 보냅니다.
+       */
+      (() => {
+        const LIST = "content.html";
+        let back = LIST;
+        try {
+          const ref = new URL(document.referrer || "", location.href);
+          if (
+            ref.origin === location.origin &&
+            ref.pathname.endsWith("/" + LIST)
+          ) {
+            back = LIST + ref.search;
+          }
+        } catch {
+          // 앞 화면을 알 수 없으면 기본값을 씁니다.
+        }
+        for (const a of document.querySelectorAll(
+          `.detail-back, .site-header .menu a[href="${LIST}"]`,
+        )) {
+          a.setAttribute("href", back);
+        }
+      })();
+
       const id = new URLSearchParams(location.search).get("id") || "";
 
       const TMDB_TV_GENRE = {
@@ -213,6 +244,35 @@
         };
       }
 
+      /*
+       * 제휴 웹하드에서 볼 수 있는 애니인지 봅니다.
+       *
+       * 제목을 공백·문장부호 뗀 형태로 맞춥니다. 작품 제목이 제휴
+       * 목록의 이름을 품고 있으면 같은 작품으로 봅니다. 시즌이
+       * 올라가도("… 4기") 계속 걸리게 하려는 것입니다.
+       *
+       * 목록은 assets/anime-partners.json 에 있습니다. 제휴가 끝나면
+       * 그 줄만 지우면 버튼이 사라집니다.
+       */
+      let ANIME_PARTNERS = null;
+
+      function partnerWatch(title) {
+        if (!ANIME_PARTNERS) return [];
+        const want = key(title);
+        if (!want) return [];
+        const hit = (ANIME_PARTNERS.works || []).find((w) =>
+          want.includes(key(w.match)),
+        );
+        if (!hit) return [];
+        const byId = new Map(
+          (ANIME_PARTNERS.providers || []).map((x) => [x.id, x]),
+        );
+        return (hit.providers || [])
+          .map((id) => byId.get(id))
+          .filter(Boolean)
+          .map((x) => ({ name: x.name, url: x.url }));
+      }
+
       function animeWork(a) {
         if (!a) return null;
         const points = [
@@ -235,7 +295,7 @@
           synopsisText: "현재 줄거리 정보를 확인할 수 없어요.",
           detailPoints: points.length ? points : ["현재 시즌 자동 수집 작품"],
           watch: [],
-          partner: [],
+          partner: partnerWatch(a.title),
           imageCredit: a.posterCredit || "AniList",
         };
       }
@@ -263,13 +323,46 @@
         return null;
       }
 
+      /*
+       * 시청 경로.
+       *
+       * 두 종류가 한 자리에 옵니다.
+       *   바깥 OTT  넷플릭스·디즈니+ 등. 회색 버튼.
+       *   제휴 웹하드 온디스크·케이디스크. 강조색 버튼.
+       *
+       * 라벨은 "<제공처>에서 보기" 한 가지로 맞춥니다. 어디로 가는
+       * 버튼인지가 같은 말로 읽혀야 합니다. 구분은 색이 합니다.
+       *
+       * 제휴 링크는 우리 go/ 경로라 같은 출처입니다. 바깥 주소처럼
+       * 호스트를 대조할 것이 아니라, 우리 경로가 맞는지만 봅니다.
+       */
+      const ownPath = (raw) =>
+        /^go\/[a-z0-9-]+\/$/.test(String(raw || "")) ? raw : "";
+
+      function watchButton(name, href, { accent = false, external = false } = {}) {
+        const variant = accent
+          ? "seed-action-button--variant_brandSolid"
+          : "seed-action-button--variant_neutralSolid";
+        const cls = BTN.replace(
+          "seed-action-button--variant_neutralSolid",
+          variant,
+        );
+        const rel = external
+          ? ' target="_blank" rel="noopener noreferrer"'
+          : "";
+        return `<a class="${cls}" href="${href}"${rel}>${name}에서 보기</a>`;
+      }
+
       function renderWatch(w) {
         const host = document.querySelector("#watch-block");
         const links = (w.watch || [])
           .map((x) => ({ ...x, href: safe(x.url, WATCH_HOSTS) }))
           .filter((x) => x.href);
+        const partners = (w.partner || [])
+          .map((x) => ({ ...x, href: ownPath(x.url) }))
+          .filter((x) => x.href);
 
-        if (!links.length) {
+        if (!links.length && !partners.length) {
           host.innerHTML =
             '<h2>시청 경로</h2><p class="pending">현재 시청 가능한 공식 제공처를 확인할 수 없어요.</p>';
           return;
@@ -277,18 +370,17 @@
 
         host.innerHTML =
           "<h2>시청 경로</h2>" +
-          '<div class="watch-links">' +
-          links
-            .map(
-              (x) =>
-                `<a class="${BTN}" href="${x.href}" target="_blank" rel="noopener noreferrer">${x.name}에서 보기</a>`,
-            )
-            .join("") +
-          "</div>" +
-          ((w.partner || []).length
-            ? '<div class="watch-links partner-inline">' +
-              w.partner
-                .map((pn) => `<a class="${BTN}" href="${pn.url}">${pn.name}</a>`)
+          (links.length
+            ? '<div class="watch-links">' +
+              links
+                .map((x) => watchButton(x.name, x.href, { external: true }))
+                .join("") +
+              "</div>"
+            : "") +
+          (partners.length
+            ? `<div class="watch-links${links.length ? " partner-inline" : ""}">` +
+              partners
+                .map((x) => watchButton(x.name, x.href, { accent: true }))
                 .join("") +
               "</div>"
             : "");
@@ -377,8 +469,11 @@
         optional("assets/cinema-links.json"),
         optional("assets/tv-ranking.json"),
         optional("assets/anime.json"),
+        optional("assets/anime-partners.json"),
       ])
-        .then(([d, box, cinema, tv, anime]) => {
+        .then(([d, box, cinema, tv, anime, partners]) => {
+          // resolveWork 안에서 쓰므로 작품을 찾기 전에 먼저 담아 둡니다.
+          ANIME_PARTNERS = partners;
           const w = resolveWork(d, box, tv, anime);
           if (!w) {
             document.querySelector("#title").textContent = "작품 정보를 찾지 못했습니다.";
