@@ -85,6 +85,13 @@
         "www.odysseymovie.com",
       ]);
 
+      const WEBHARD_HOSTS = new Set([
+        "ondisk.co.kr",
+        "www.ondisk.co.kr",
+        "kdisk.co.kr",
+        "www.kdisk.co.kr",
+      ]);
+
       const FALLBACK =
         "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'" +
         " viewBox='0 0 2 3'%3E%3Crect width='2' height='3' fill='%23eef1f5'/%3E%3C/svg%3E";
@@ -371,7 +378,7 @@
           .map((x) => ({ ...x, href: safe(x.url, WATCH_HOSTS) }))
           .filter((x) => x.href);
         const partners = (w.partner || [])
-          .map((x) => ({ ...x, href: ownPath(x.url) }))
+          .map((x) => ({ ...x, href: officialWebhard(x.url) }))
           .filter((x) => x.href);
 
         if (!links.length && !partners.length) {
@@ -392,7 +399,9 @@
           (partners.length
             ? `<div class="watch-links${links.length ? " partner-inline" : ""}">` +
               partners
-                .map((x) => watchButton(x.name, x.href, { tone: x.id }))
+                .map((x) =>
+                  watchButton(x.name, x.href, { tone: x.id, external: true }),
+                )
                 .join("") +
               "</div>"
             : "");
