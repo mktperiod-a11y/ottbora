@@ -542,3 +542,30 @@ tbody td:first-child .rank-move {
   .rank-number,
   .provider.featured .rank-number{font-size:28px}
 }
+
+
+/* 공식 로고 자산을 확인하지 못한 서비스는 임의 로고 대신 브랜드명만 표시합니다. */
+.brand--official-text {
+  text-decoration: none;
+}
+
+.brand--official-text .brand-name {
+  width: 100%;
+  text-align: center;
+  color: var(--ink);
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: -0.8px;
+  white-space: nowrap;
+}
+
+.brand[href]:hover .brand-name {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width:650px){
+  .brand--official-text .brand-name {
+    font-size: 17px;
+  }
+}
