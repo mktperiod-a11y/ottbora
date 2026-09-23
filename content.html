@@ -571,24 +571,26 @@
         const host = document.querySelector("#sections");
 
         if (!shown.length) {
-          document.querySelector("#count").textContent =
-            active === "전체" ? "전체 0건" : `${active} 상위 0건`;
+          document.querySelector("#count").textContent = `${active} 0건`;
           host.innerHTML = `<p class="empty">${esc(active)} 분류는 아직 준비 중입니다.</p>`;
           return;
         }
 
         /*
-         * 건수는 탭 줄 오른쪽 한 곳에서만 말합니다.
+         * 건수는 탭 줄 아래 한 곳에서만 말합니다.
          *
-         * 전에는 "전체 64건 중 60건" 이었는데, 두 숫자가 각각 무엇인지
-         * 읽는 사람이 알 길이 없었습니다. 화면에 실제로 있는 수만
-         * 적고, 잘렸을 때만 어디로 가면 나머지를 볼 수 있는지 말합니다.
+         * "전체 64건 중 60건" 은 두 숫자가 각각 무엇인지 읽는 사람이
+         * 알 길이 없었습니다. 화면에 실제로 있는 수만 적습니다.
+         *
+         * "상위" 는 진짜 잘렸을 때만 붙입니다. 20편뿐인 애니 탭에
+         * "애니 상위 20건" 이라고 적으면 더 있는데 감춘 것처럼
+         * 읽힙니다. 지금 잘리는 것은 전체 탭과 예능 탭뿐입니다.
          */
-        document.querySelector("#count").textContent =
-          active === "전체"
-            ? all.length <= capped.length
-              ? `전체 ${capped.length}건`
-              : `전체 ${capped.length}건 · 나머지는 분류 탭에서`
+        const cut = all.length > capped.length;
+        document.querySelector("#count").textContent = !cut
+          ? `${active} ${capped.length}건`
+          : active === "전체"
+            ? `전체 ${capped.length}건 · 나머지는 분류 탭에서`
             : `${active} 상위 ${capped.length}건`;
 
         host.innerHTML =
