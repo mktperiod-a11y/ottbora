@@ -725,3 +725,59 @@ a:focus-visible,
     scroll-snap-align:start;
   }
 }
+
+
+/* ===== 카드 텍스트 줄 수 최종 규칙 ===== */
+/* 제목: 최대 2줄 */
+.cb > b {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  min-width: 0;
+  max-height: 2.7em;
+  overflow: hidden;
+}
+
+/* 메타: 무조건 1줄 + ellipsis */
+.cb .genre {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 1.5em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cb .genre b,
+.cb .genre span {
+  white-space: nowrap;
+}
+
+/* 해시태그/칩: 한 줄 유지, 넘치면 각 칩이 ellipsis */
+.tags {
+  display: flex;
+  min-width: 0;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.tags .tag {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width:600px){
+  .cb .genre {
+    min-height: 1.45em;
+  }
+
+  .tags .tag:nth-child(n + 3) {
+    display: inline-flex;
+  }
+}

@@ -756,3 +756,44 @@ section:has(.guide-grid) .head h2 {
   .hero h1{font-size:29px}
   .rank-card{grid-template-columns:29px 72px minmax(0,1fr)}
 }
+
+
+/* ===== 홈 콘텐츠 카드 줄 수 최종 규칙 ===== */
+.content-body {
+  min-width: 0;
+}
+
+.content-body b {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  min-width: 0;
+  max-height: 2.7em;
+  white-space: normal;
+  overflow: hidden;
+}
+
+.content-body p {
+  min-width: 0;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.content-body .tags {
+  display: flex;
+  min-width: 0;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.content-body .tag {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
