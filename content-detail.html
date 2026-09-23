@@ -270,7 +270,7 @@
         return (hit.providers || [])
           .map((id) => byId.get(id))
           .filter(Boolean)
-          .map((x) => ({ name: x.name, url: x.url }));
+          .map((x) => ({ id: x.id, name: x.name, url: x.url }));
       }
 
       function animeWork(a) {
@@ -339,14 +339,16 @@
       const ownPath = (raw) =>
         /^go\/[a-z0-9-]+\/$/.test(String(raw || "")) ? raw : "";
 
-      function watchButton(name, href, { accent = false, external = false } = {}) {
-        const variant = accent
-          ? "seed-action-button--variant_brandSolid"
-          : "seed-action-button--variant_neutralSolid";
-        const cls = BTN.replace(
-          "seed-action-button--variant_neutralSolid",
-          variant,
-        );
+      function watchButton(name, href, { tone = "", external = false } = {}) {
+        // 제휴 버튼은 제공처마다 색이 다릅니다(content-detail.css 의
+        // .watch-btn--온디스크/케이디스크). SEED 의 brandSolid 를 바탕으로
+        // 깔고, 색만 덮어 씁니다.
+        const cls = tone
+          ? BTN.replace(
+              "seed-action-button--variant_neutralSolid",
+              "seed-action-button--variant_brandSolid",
+            ) + ` watch-btn watch-btn--${tone}`
+          : BTN;
         const rel = external
           ? ' target="_blank" rel="noopener noreferrer"'
           : "";
@@ -380,7 +382,7 @@
           (partners.length
             ? `<div class="watch-links${links.length ? " partner-inline" : ""}">` +
               partners
-                .map((x) => watchButton(x.name, x.href, { accent: true }))
+                .map((x) => watchButton(x.name, x.href, { tone: x.id }))
                 .join("") +
               "</div>"
             : "");
