@@ -56,17 +56,25 @@ main{
         padding: 13px;
       }
 /* 제목. 부제 줄 안의 <b>(대분류)는 여기 해당하지 않습니다. */
+/*
+ * 제목은 두 줄까지 씁니다.
+ *
+ * 한 줄로 자르니 애니 20편 중 11편이 "추방당한 전생 중기사는…" 처럼
+ * 뭉텅 잘렸습니다. 두 줄이면 대부분 다 들어갑니다.
+ * min-height 로 두 줄 자리를 늘 비워 둬, 제목이 짧은 카드와 긴 카드의
+ * 부제·태그 줄이 같은 높이에서 시작합니다.
+ */
 .cb > b{
-        display: block;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
         min-width: 0;
-        min-height: 1.35em;
+        min-height: 2.7em;
         font-size: 17px;
         font-weight: 800;
         letter-spacing: -0.4px;
         line-height: 1.35;
-        white-space: nowrap;
         overflow: hidden;
-        text-overflow: ellipsis;
       }
 .cb span{
         display: block;
@@ -173,13 +181,11 @@ main{
         .cb {
           padding: 11px;
         }
-        .cb b {
-          display: block;
+        /* 제목만 노립니다. 맨 .cb b 로 두면 부제 줄 안의
+           <b>(대분류)까지 16px 이 돼, 부제가 두 줄로 터집니다. */
+        .cb > b {
           font-size: 16px;
           line-height: 1.35;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
         }
         .cb span {
           font-size: 13px;
@@ -195,7 +201,7 @@ main{
       }
 @media (max-width: 350px){.cb{
           padding: 9px;
-        }.cb b{
+        }.cb > b{
           font-size: 15px;
         }.cb span{
           font-size: 13px;
@@ -411,14 +417,20 @@ a:focus-visible,
  *   그림 → 제목 → 장르 → 태그 → (예매 같은 하위 행동)
  */
 
+/*
+ * 태그 줄.
+ *
+ * 한 줄로 묶고 넘치면 잘랐는데, 뒤 태그가 "#..." 만 남아 아무것도
+ * 알려 주지 않는 칩이 됐습니다. 아래로 흘려 보내는 편이 낫습니다.
+ * 카드는 줄 높이에 맞춰 늘어나므로 한 줄이 더 생겨도 어긋나지
+ * 않습니다. margin-top:auto 가 태그를 늘 카드 아래에 붙여 둡니다.
+ */
 .tags {
   display: flex;
+  flex-wrap: wrap;
   gap: 5px;
   margin-top: auto;
   padding-top: 7px;
-  /* 한 줄만 씁니다. 넘치면 잘립니다. */
-  overflow: hidden;
-  white-space: nowrap;
 }
 
 .tag {
@@ -439,7 +451,6 @@ a:focus-visible,
    전에는 모두 똑같이 줄어서 "#국내 박스..." "#누적..." 처럼
    둘 다 못 읽는 상태가 됐습니다. */
 .tag:first-child {
-  flex-shrink: 0;
   max-width: 100%;
 }
 
@@ -533,9 +544,6 @@ a:focus-visible,
     font-size: 15px;
     line-height: 1.35;
     letter-spacing: -0.3px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 
   .cb .genre {
@@ -543,10 +551,24 @@ a:focus-visible,
     line-height: 1.45;
   }
 
+  /*
+   * 좁은 칸에서는 태그를 아래로 흘립니다.
+   *
+   * 한 줄로 묶어 두면 뒤 태그가 "#..." 만 남아 아무것도 알려 주지
+   * 않았습니다. 카드는 어차피 줄 높이에 맞춰 늘어나므로 한 줄이
+   * 더 생겨도 줄이 어긋나지 않습니다.
+   */
   .tags {
     gap: 4px;
     margin-top: 6px;
   }
+
+  /* 좁은 칸에 셋은 너무 많습니다. 앞 둘만 씁니다. */
+  .tags .tag:nth-child(n + 3) {
+    display: none;
+  }
+
+
 
   .tag {
     padding: 3px 6px;

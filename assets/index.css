@@ -108,13 +108,13 @@ nav{
 /* 콘텐츠ZONE 카드와 같은 태그 줄입니다. 두 화면이 같은 규칙으로 읽히게 합니다.
    전에는 이 정보가 포스터 위 칩으로 얹혀 있었는데, 같은 자리에 카드마다
    다른 종류가 와서 무엇을 보고 고르는지 읽히지 않았습니다. */
+/* 콘텐츠ZONE 과 같은 규칙입니다. 넘치면 아래로 흘립니다 —
+   한 줄로 묶어 자르면 "#..." 만 남아 아무것도 알려 주지 않습니다. */
 .tags {
   display: flex;
+  flex-wrap: wrap;
   gap: 5px;
   margin-top: 7px;
-  /* 한 줄만 씁니다. 넘치면 잘립니다. */
-  overflow: hidden;
-  white-space: nowrap;
 }
 .tag {
   flex: 0 1 auto;
@@ -134,7 +134,6 @@ nav{
    전에는 모두 똑같이 줄어서 "#국내 박스..." "#누적..." 처럼
    둘 다 못 읽는 상태가 됐습니다. */
 .tag:first-child {
-  flex-shrink: 0;
   max-width: 100%;
 }
 .ranking{
