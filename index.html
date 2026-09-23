@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css" />
-    <link rel="stylesheet" href="assets/index.css" />
+    <link rel="stylesheet" href="assets/index.css?v=20260923-3" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -100,6 +100,7 @@
                 <span class="home-ranking-dot" aria-hidden="true"></span>
                 <span id="home-ranking-status">추천 순서 자동 갱신</span>
               </p>
+              <div class="home-ranking-summary" id="home-ranking-summary" aria-live="polite"></div>
             </div>
             <a class="head-action seed-action-button seed-action-button--variant_neutralSolid seed-action-button--size_medium seed-action-button--layout_withText seed-action-button--size_medium-layout_withText" href="webhard.html">10곳 비교하기</a>
           </div>
@@ -144,7 +145,7 @@
       </div>
     </footer>
     <script src="assets/posters-featured-20260828.js"></script>
-    <script src="assets/webhard-ranking.js"></script>
+    <script src="assets/webhard-ranking.js?v=20260923-3"></script>
     <script>
       const posterSource = (id) => (window.OTT_POSTERS || {})[id] || "";
       // [제목, 장르, id, 태그들]
@@ -322,14 +323,15 @@
       const rankingEngine = window.OTT_WEBHARD_RANKING;
       const rankingHost = document.querySelector("#ranking");
       const rankingStatus = document.querySelector("#home-ranking-status");
+      const rankingSummary = document.querySelector("#home-ranking-summary");
 
       function drawRanking(data) {
         if (!rankingEngine || !rankingHost) return;
 
         rankingHost.innerHTML = data.order
           .map((item) => {
-            const move = rankingEngine.deltaText(item.delta);
-            const moveClass = rankingEngine.deltaClass(item.delta);
+            const move = rankingEngine.deltaText(item.delta, item.isNew);
+            const moveClass = rankingEngine.deltaClass(item.delta, item.isNew);
             const logo = item.logo
               ? `<img src="assets/${item.logo}" alt="${esc(item.name)} 로고" loading="lazy" decoding="async">`
               : `<span class="brand-name">${esc(item.name)}</span>`;
@@ -355,6 +357,14 @@
           if (rankingStatus) {
             rankingStatus.textContent =
               `${data.startLabel} 기준 · 다음 갱신 ${data.remainingLabel}`;
+          }
+          if (rankingSummary) {
+            const s = data.summary;
+            rankingSummary.innerHTML =
+              `<span class="is-up">▲ ${s.up}</span>` +
+              `<span class="is-down">▼ ${s.down}</span>` +
+              `<span class="is-new">NEW ${s.new}</span>` +
+              `<span class="is-same">– ${s.same}</span>`;
           }
         });
       }
