@@ -502,7 +502,7 @@
             : "";
 
         const tags = [
-          w.rank ? `인기 ${w.rank}위` : "인기",
+          w.rank && w.rank <= 20 ? `인기 ${w.rank}위` : "",
           netflixSeriesTag(w),
         ];
 
