@@ -63,7 +63,7 @@
       id: "filenori",
       name: "파일노리",
       description: "모바일 탐색과 전용 플레이어",
-      logo: "",
+      logo: "filenori.svg",
       url: "https://www.filenori.com/",
     },
     me2disk: {
@@ -112,7 +112,7 @@
       id: "filecookie",
       name: "파일쿠키",
       description: "PC·모바일 자료 이용",
-      logo: "",
+      logo: "filecookie.svg",
       url: "https://www.filecookie.co.kr/",
     },
   };
