@@ -332,30 +332,11 @@
        * 계산이 한 번 더 일어납니다.
        */
       function fitTags(host) {
-        for (const row of host.querySelectorAll(".tags")) {
-          // offsetLeft 는 카드 기준이라 줄 안쪽 위치를 알 수 없습니다.
-          // 화면 좌표로 재서 줄의 오른쪽 끝과 바로 비교합니다.
-          if (!row.clientWidth) continue;
-          const tags = [...row.children];
-          // 창 크기가 바뀌면 다시 재야 하므로, 지우지 않고 되돌릴 수
-          // 있게 숨겼다 폈다 합니다.
-          for (const t of tags) {
-            // hidden 속성은 .cb span{display:block} 에 밀립니다.
-            // 인라인 display 로 확실히 빼 둡니다.
-            t.style.display = "";
-            t.style.maxWidth = "";
-          }
-          const edge = row.getBoundingClientRect().right;
-          for (let i = tags.length - 1; i > 0; i -= 1) {
-            if (tags[i].getBoundingClientRect().right > edge + 1) {
-              tags[i].style.display = "none";
-            }
-          }
-          // 혼자 남았는데도 넘치면 그때만 말줄임을 허용합니다.
-          const first = tags[0];
-          if (first && first.getBoundingClientRect().right > edge + 1) {
-            first.style.maxWidth = "100%";
-          }
+        // CSS가 한 줄 + ellipsis를 처리합니다.
+        // 기존처럼 뒤 칩을 통째로 숨기지 않습니다.
+        for (const tag of host.querySelectorAll(".tag")) {
+          tag.style.display = "";
+          tag.style.maxWidth = "";
         }
       }
 
