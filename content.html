@@ -317,6 +317,48 @@
         );
       }
 
+      /*
+       * 그려 놓은 태그 중 한 줄에 다 안 들어가는 것을 지웁니다.
+       *
+       * CSS 만으로는 "몇 개가 들어가는지" 를 알 수 없습니다. 그냥
+       * overflow:hidden 으로 자르면 뒤 태그가 "#..." 만 남아 아무것도
+       * 알려 주지 않는 칩이 됩니다. 그릴 자리가 없으면 통째로 빼는
+       * 편이 읽기에 낫습니다.
+       *
+       * 첫 태그는 남깁니다 — 그것마저 없으면 이 카드가 왜 실렸는지
+       * 말할 길이 없습니다. 혼자서도 넘치면 CSS 가 말줄임 합니다.
+       *
+       * 카드를 다 그린 뒤 한 번만 재므로, 한 페이지에 레이아웃
+       * 계산이 한 번 더 일어납니다.
+       */
+      function fitTags(host) {
+        for (const row of host.querySelectorAll(".tags")) {
+          // offsetLeft 는 카드 기준이라 줄 안쪽 위치를 알 수 없습니다.
+          // 화면 좌표로 재서 줄의 오른쪽 끝과 바로 비교합니다.
+          if (!row.clientWidth) continue;
+          const tags = [...row.children];
+          // 창 크기가 바뀌면 다시 재야 하므로, 지우지 않고 되돌릴 수
+          // 있게 숨겼다 폈다 합니다.
+          for (const t of tags) {
+            // hidden 속성은 .cb span{display:block} 에 밀립니다.
+            // 인라인 display 로 확실히 빼 둡니다.
+            t.style.display = "";
+            t.style.maxWidth = "";
+          }
+          const edge = row.getBoundingClientRect().right;
+          for (let i = tags.length - 1; i > 0; i -= 1) {
+            if (tags[i].getBoundingClientRect().right > edge + 1) {
+              tags[i].style.display = "none";
+            }
+          }
+          // 혼자 남았는데도 넘치면 그때만 말줄임을 허용합니다.
+          const first = tags[0];
+          if (first && first.getBoundingClientRect().right > edge + 1) {
+            first.style.maxWidth = "100%";
+          }
+        }
+      }
+
       function badge(text) {
         return (
           `<span class="seed-badge__root seed-badge__root--size_medium` +
@@ -340,12 +382,20 @@
       /** 손으로 고른 작품 — 포스터가 있고 상세 페이지로 넘어갑니다. */
       function pickedCard(w) {
         const genre = String(w.genre || "").split(" · ")[0];
-        // 제공처는 선정 이유가 아니므로 태그에서 빼고, 수동 큐레이션은
-        // 모든 카드가 최소 한 가지 선정 근거를 갖도록 합니다.
-        const tags = [
-          credit(w.title, w.pickedBy || "에디터 선정"),
-          netflixSeriesTag(w),
-        ];
+
+        /*
+         * 태그는 확인할 수 있는 사실만 답니다.
+         *
+         * 전에는 근거가 적혀 있지 않은 작품에 "에디터 선정" 을
+         * 달았습니다. 카드마다 태그를 하나씩 갖게 하려던 것인데,
+         * 그건 이 작품에 대한 사실이 아니라 "적어 둔 근거가 없다" 는
+         * 뜻이었습니다. 읽는 사람은 옆 카드의 "인기 1위" 와 견주며
+         * 무엇이 이 둘을 갈랐는지 알 수 없습니다.
+         *
+         * 근거가 없으면 달지 않습니다. content-data.json 의 pickedBy
+         * 에 근거를 적으면 그 문구가 그대로 태그가 됩니다.
+         */
+        const tags = [credit(w.title, w.pickedBy), netflixSeriesTag(w)];
         return (
           `<a class="card" href="content-detail.html?id=${encodeURIComponent(w.id)}">` +
           `<span class="thumb">` +
@@ -607,7 +657,7 @@
         document.querySelector("#count").textContent = !cut
           ? `${active} ${capped.length}건`
           : active === "전체"
-            ? `전체 ${capped.length}건 · 나머지는 분류 탭에서`
+            ? `전체 ${capped.length}건 · 나머지는 분류 탭에서 확인`
             : `${active} 상위 ${capped.length}건`;
 
         host.innerHTML =
@@ -625,6 +675,8 @@
             .join("") +
           `</div>` +
           pager(pages);
+
+        fitTags(host);
 
         host.querySelectorAll(".page-btn").forEach((b) => {
           b.onclick = () => {
@@ -647,6 +699,19 @@
           f.scrollIntoView({ block: "start", behavior: "instant" });
         }
       }
+
+      /*
+       * 창 폭이 바뀌면 태그가 들어갈 자리도 달라집니다. 다시 잽니다.
+       * 이어서 들어오는 resize 를 한 번으로 묶습니다.
+       */
+      let fitTimer = 0;
+      addEventListener("resize", () => {
+        clearTimeout(fitTimer);
+        fitTimer = setTimeout(() => {
+          const host = document.querySelector("#sections");
+          if (host) fitTags(host);
+        }, 150);
+      });
 
       function tabs() {
         const host = document.querySelector(".filters");
