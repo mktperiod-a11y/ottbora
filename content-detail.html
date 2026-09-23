@@ -176,13 +176,21 @@
         return Number.isFinite(num) ? `누적 관객 ${num.toLocaleString("ko-KR")}명` : "";
       }
 
+      function timeMeta(type, raw) {
+        if (!raw) return "";
+        const value = prettyDate(raw);
+        if (type === "영화") return `개봉 ${value}`;
+        if (type === "드라마" || type === "예능") return `첫 방송 ${value}`;
+        return value;
+      }
+
       function manualWork(w) {
         if (!w) return null;
         return {
           ...w,
           sourceKind: "manual",
           poster: (window.OTT_POSTERS || {})[w.id] || FALLBACK,
-          meta: [w.releasedAt, w.genre, w.cast].filter(Boolean),
+          meta: [timeMeta(w.type, w.releasedAt), w.genre].filter(Boolean),
           detailPoints: w.points || [],
           synopsisText: w.synopsis || "줄거리 정보가 준비 중입니다.",
         };
@@ -203,7 +211,7 @@
           tagline: "국내 극장 흥행 데이터를 바탕으로 소개하는 작품이에요.",
           poster: m.poster || FALLBACK,
           meta: [
-            prettyDate(m.openedAt),
+            m.openedAt ? `개봉 ${prettyDate(m.openedAt)}` : "",
             (m.genres || []).join(" · "),
           ].filter(Boolean),
           synopsisText: "현재 줄거리 정보를 확인할 수 없어요.",
@@ -290,7 +298,7 @@
           fall: "가을",
           winter: "겨울",
         };
-        return `${m[1]} ${seasonKo[m[2].toLowerCase()] || ""}`.trim();
+        return `${m[1]}년 ${seasonKo[m[2].toLowerCase()] || ""} 방영`.trim();
       }
 
       function animeWork(a) {
