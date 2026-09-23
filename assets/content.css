@@ -621,3 +621,78 @@ a:focus-visible,
     font-size: 14px;
   }
 }
+
+
+/* ===== 2026-09 콘텐츠ZONE 모바일 최적화 ===== */
+@media (max-width:600px){
+  main{
+    padding-bottom:48px;
+  }
+  .filter-row{
+    gap:7px;
+    margin-top:20px;
+    margin-bottom:16px;
+  }
+  .filter-row .filters{
+    gap:6px;
+    padding-bottom:4px;
+  }
+  .filters > *{
+    flex:0 0 auto;
+    min-height:38px;
+  }
+  .count{
+    font-size:12px;
+  }
+  .grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px;
+  }
+  .card{
+    min-width:0;
+    border-radius:10px;
+  }
+  .card .cb,
+  .card--text .cb{
+    padding:9px;
+  }
+  .cb > b{
+    font-size:14px;
+    line-height:1.35;
+  }
+  .cb .genre{
+    min-height:2.9em;
+    font-size:11.5px;
+    line-height:1.4;
+  }
+  .tags{
+    gap:3px;
+    margin-top:auto;
+    padding-top:6px;
+  }
+  .tag{
+    padding:2px 5px;
+    font-size:10px;
+  }
+  .panel{
+    padding:12px 10px;
+  }
+  .panel-title{
+    font-size:17px;
+    line-height:1.22;
+  }
+  .pager{
+    gap:6px;
+    margin-top:22px;
+  }
+  .pager > *{
+    min-width:40px;
+    min-height:40px;
+  }
+}
+@media (max-width:360px){
+  .grid{gap:7px}
+  .card .cb,
+  .card--text .cb{padding:8px}
+  .cb > b{font-size:13.5px}
+}
