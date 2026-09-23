@@ -149,7 +149,7 @@
    */
   const DISPLAY_LIMIT = Math.min(10, ALL.length);
   const TOP4_ELIGIBLE = ALL.filter((id) => id !== "pdpop");
-  const SLOT_HOURS = 3;
+  const SLOT_HOURS = 24;
   const SLOT_MS = SLOT_HOURS * 60 * 60 * 1000;
   const KST_MS = 9 * 60 * 60 * 1000;
 
