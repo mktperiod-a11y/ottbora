@@ -245,20 +245,12 @@
        * 그래서 아무것도 읽히지 않았습니다.
        */
       function metaLine(type, genre, when) {
-        // "드라마 · 드라마" 처럼 같은 말이 두 번 나오지 않게 합니다.
         const sub = genre && genre !== type ? genre : "";
-
-        /*
-         * 조각마다 태그를 나눠 둡니다. 가운뎃점은 CSS 의 ::after 로
-         * 앞 조각에 붙여서, 좁은 화면에서 줄이 바뀔 때 "· 액션" 처럼
-         * 점이 다음 줄 맨 앞에 떨어지지 않게 합니다.
-         */
+        const rest = [sub, when].filter(Boolean).join(" · ");
         return (
-          `<span class="genre"><b>${esc(type)}</b>` +
-          [sub, when]
-            .filter(Boolean)
-            .map((x) => `<span>${esc(x)}</span>`)
-            .join("") +
+          `<span class="genre" title="${esc([type, sub, when].filter(Boolean).join(" · "))}">` +
+          `<b>${esc(type)}</b>` +
+          (rest ? ` · ${esc(rest)}` : "") +
           `</span>`
         );
       }
