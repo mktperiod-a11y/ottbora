@@ -77,7 +77,7 @@ h1 {
   margin: 22px 0 0;
 }
 
-.meta span {
+.meta > span {
   padding: 8px 12px;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -449,4 +449,75 @@ button:focus-visible {
   .detail-poster{width:min(68vw,220px)}
   .watch-links{grid-template-columns:1fr}
   h1{font-size:26px}
+}
+
+
+/* ===== 애니 상세 메타 정보 ===== */
+.meta.meta--anime {
+  display: grid;
+  gap: 7px;
+  margin-top: 18px;
+}
+
+.anime-meta-line {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+  color: #657080;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.anime-meta-genres {
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.anime-meta-label {
+  flex: 0 0 auto;
+  color: #8a94a3;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.anime-meta-value {
+  min-width: 0;
+}
+
+.anime-meta-more {
+  flex: 0 0 auto;
+  color: #4f5c6d;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.anime-meta-original .anime-meta-value {
+  color: #7a8492;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width:650px){
+  .meta.meta--anime {
+    gap: 5px;
+    margin-top: 11px;
+  }
+
+  .anime-meta-line {
+    gap: 6px;
+    font-size: 11.5px;
+    line-height: 1.45;
+  }
+
+  .anime-meta-label,
+  .anime-meta-more {
+    font-size: 10px;
+  }
+
+  .anime-meta-original .anime-meta-value {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
 }
