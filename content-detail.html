@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css?v=20260923-6" />
-    <link rel="stylesheet" href="assets/content-detail.css?v=20260923-10" />
+    <link rel="stylesheet" href="assets/content-detail.css?v=20260923-11" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -465,10 +465,15 @@
             const row = document.createElement("div");
             row.className = "anime-meta-line anime-meta-genres";
 
+            const label = document.createElement("span");
+            label.className = "anime-meta-label";
+            label.textContent = "장르";
+
             const value = document.createElement("span");
             value.className = "anime-meta-value";
             value.textContent = genres.slice(0, 4).join(" · ");
-            row.appendChild(value);
+
+            row.append(label, value);
 
             if (genres.length > 4) {
               const more = document.createElement("span");

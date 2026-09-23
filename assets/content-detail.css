@@ -461,7 +461,7 @@ button:focus-visible {
 
 .anime-meta-line {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 8px;
   min-width: 0;
   color: #657080;
@@ -476,9 +476,17 @@ button:focus-visible {
 
 .anime-meta-label {
   flex: 0 0 auto;
-  color: #8a94a3;
-  font-size: 11px;
-  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 3px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: #657080;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
 }
 
 .anime-meta-value {
@@ -509,7 +517,12 @@ button:focus-visible {
     line-height: 1.45;
   }
 
-  .anime-meta-label,
+  .anime-meta-label {
+    min-height: 22px;
+    padding: 3px 7px;
+    font-size: 9px;
+  }
+
   .anime-meta-more {
     font-size: 10px;
   }
