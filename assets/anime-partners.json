@@ -1,0 +1,20 @@
+{
+  "note": "제휴 웹하드에서 볼 수 있다고 확인된 애니입니다. 콘텐츠ZONE 애니 상세 페이지의 시청 경로에 버튼으로 나옵니다.",
+  "howToMatch": "match 를 공백·문장부호 뗀 형태로 바꾼 뒤, 작품 제목이 그것을 품고 있으면 같은 작품으로 봅니다. 시즌이 올라가도(2기·4기) 계속 걸립니다.",
+  "howToEdit": "제휴가 끝나면 그 줄만 지우면 됩니다. 새로 생기면 match 에 제목을, providers 에 아래 목록의 id 를 적습니다.",
+  "providers": [
+    { "id": "ondisk", "name": "온디스크", "url": "go/ondisk/" },
+    { "id": "kdisk", "name": "케이디스크", "url": "go/kdisk/" }
+  ],
+  "works": [
+    { "match": "추방당한 전생 중기사는 게임 지식으로 무쌍한다", "providers": ["ondisk", "kdisk"] },
+    { "match": "Re: 제로부터 시작하는 이세계 생활", "providers": ["ondisk", "kdisk"] },
+    { "match": "전생했더니 슬라임이었던 건에 대하여", "providers": ["ondisk", "kdisk"] },
+    { "match": "정반대의 너와 나", "providers": ["ondisk", "kdisk"] },
+    { "match": "여성향 게임 세계는 모브에게 가혹한 세계입니다", "providers": ["ondisk", "kdisk"] },
+    { "match": "클레바테스", "providers": ["ondisk", "kdisk"] },
+    { "match": "파고들기 좋아하는 게이머는 폐급 설정 이세계에서 무쌍한다", "providers": ["ondisk", "kdisk"] },
+    { "match": "책벌레의 하극상 ~사서가 되기 위해서라면 뭐든지 할 수 있어", "providers": ["ondisk", "kdisk"] },
+    { "match": "도굴왕", "providers": ["ondisk", "kdisk"] }
+  ]
+}
