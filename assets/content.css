@@ -696,3 +696,32 @@ a:focus-visible,
   .card--text .cb{padding:8px}
   .cb > b{font-size:13.5px}
 }
+
+
+/* 모바일 분류 탭 — 한 화면에 정확히 4개, 5번째는 가로 스와이프 */
+@media (max-width:600px){
+  .filter-row .filters{
+    --mobile-tab-gap:6px;
+    display:flex;
+    flex-wrap:nowrap;
+    gap:var(--mobile-tab-gap);
+    width:100%;
+    overflow-x:auto;
+    overscroll-behavior-x:contain;
+    scroll-snap-type:x proximity;
+    scrollbar-width:none;
+  }
+
+  .filter-row .filters::-webkit-scrollbar{
+    display:none;
+  }
+
+  .filter-row .filters > *{
+    flex:0 0 calc((100% - (var(--mobile-tab-gap) * 3)) / 4);
+    min-width:0;
+    min-height:40px;
+    justify-content:center;
+    text-align:center;
+    scroll-snap-align:start;
+  }
+}
