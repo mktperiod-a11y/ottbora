@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css" />
-    <link rel="stylesheet" href="assets/webhard.css?v=20260923-1" />
+    <link rel="stylesheet" href="assets/webhard.css?v=20260923-3" />
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -30,12 +30,12 @@
   "url": "https://mktperiod-a11y.github.io/ottbora/webhard.html",
   "inLanguage": "ko-KR",
   "dateModified": "2026-09-22",
-  "description": "11개 비교 후보 중 갱신 시점 기준 추천 10곳의 기능과 혜택, 이용 전 확인할 조건 비교.",
+  "description": "14개 비교 후보 중 갱신 시점 기준 추천 10곳의 기능과 혜택, 이용 전 확인할 조건 비교.",
   "mainEntity": {
     "@type": "ItemList",
     "name": "오티티보라 웹하드 비교 후보",
     "itemListOrder": "https://schema.org/ItemListUnordered",
-    "numberOfItems": 11,
+    "numberOfItems": 14,
     "itemListElement": [
       {
         "@type": "Thing",
@@ -91,6 +91,21 @@
         "@type": "Thing",
         "name": "파일쿠키",
         "url": "https://mktperiod-a11y.github.io/ottbora/webhard.html#filecookie"
+      },
+      {
+        "@type": "Thing",
+        "name": "빅파일",
+        "url": "https://mktperiod-a11y.github.io/ottbora/webhard.html#bigfile"
+      },
+      {
+        "@type": "Thing",
+        "name": "메가파일",
+        "url": "https://mktperiod-a11y.github.io/ottbora/webhard.html#megafile"
+      },
+      {
+        "@type": "Thing",
+        "name": "피디팝",
+        "url": "https://mktperiod-a11y.github.io/ottbora/webhard.html#pdpop"
       }
     ]
   }
@@ -161,9 +176,14 @@
               <p class="ranking-status" aria-live="polite">
                 <span class="ranking-status-dot" aria-hidden="true"></span>
                 <span>추천 순서 · 3시간마다 자동 갱신</span>
-                <span class="ranking-status-time" id="ranking-status-time"></span>
               </p>
+              <div class="ranking-summary" id="ranking-summary" aria-live="polite"></div>
             </div>
+            <aside class="ranking-live-card" aria-label="추천 순위 갱신 현황">
+              <span>다음 추천 갱신까지</span>
+              <strong id="ranking-countdown">--:--:--</strong>
+              <small id="ranking-status-time">최근 갱신 --:--</small>
+            </aside>
           </div>
           <div
             class="table-wrap"
@@ -292,6 +312,25 @@
                   <td>PC·모바일 · 자료 탐색과 다운로드</td>
                   <td>이용 조건을 직접 확인한 뒤 고르고 싶은 분</td>
                 </tr>
+                <tr hidden>
+                  <td>–</td>
+                  <th scope="row"><a href="#bigfile">빅파일 <span aria-hidden="true">↗</span></a></th>
+                  <td>실시간 TOP100 · 다양한 콘텐츠</td>
+                  <td>인기 목록부터 빠르게 둘러보고 싶은 분</td>
+                </tr>
+                <tr hidden>
+                  <td>–</td>
+                  <th scope="row"><a href="#megafile">메가파일 <span aria-hidden="true">↗</span></a></th>
+                  <td>PC·모바일 · 자료 이용</td>
+                  <td>PC와 모바일을 오가며 이용하는 분</td>
+                </tr>
+                <tr hidden>
+                  <td>–</td>
+                  <th scope="row"><a href="#pdpop">피디팝 <span aria-hidden="true">↗</span></a></th>
+                  <td>인기콘텐츠 · 전용 프로그램</td>
+                  <td>인기·할인 콘텐츠와 전용 프로그램을 함께 보는 분</td>
+                </tr>
+
               </tbody>
             </table>
           </div>
@@ -855,6 +894,54 @@
               >
             </div>
           </article>
+          <article class="provider" id="bigfile" aria-labelledby="bigfile-name" hidden>
+            <div class="provider-top">
+              <span class="rank" aria-label="추천 순서"><span class="rank-number">–</span><span class="rank-move is-same">–</span></span>
+              <div class="brand"><img src="assets/bigfile.svg" alt="빅파일 로고" width="180" height="62" loading="lazy" /></div>
+            </div>
+            <div class="provider-title"><h3 id="bigfile-name">빅파일</h3><span>실시간 TOP100과 다양한 카테고리</span></div>
+            <div class="facts">
+              <h4>주요 특징</h4>
+              <ul>
+                <li>실시간·주간·월간·연도별 TOP100 메뉴로 인기 자료를 탐색할 수 있습니다.</li>
+                <li>영화·드라마·동영상·애니·만화·교육 등 다양한 카테고리를 제공합니다.</li>
+              </ul>
+            </div>
+            <div class="reason"><h4>이런 분께 추천해요</h4><p>무엇을 볼지 고민될 때 인기 목록부터 빠르게 살펴보고 싶은 분께 어울립니다.</p></div>
+            <div class="provider-bottom"><a class="visit seed-action-button seed-action-button--variant_neutralSolid seed-action-button--size_medium seed-action-button--layout_withText seed-action-button--size_medium-layout_withText" href="https://bigfile.co.kr/" target="_blank" rel="noopener noreferrer" aria-label="빅파일 공식 홈페이지 새 창으로 열기">공식 홈페이지 <span aria-hidden="true">↗</span></a></div>
+          </article>
+          <article class="provider" id="megafile" aria-labelledby="megafile-name" hidden>
+            <div class="provider-top">
+              <span class="rank" aria-label="추천 순서"><span class="rank-number">–</span><span class="rank-move is-same">–</span></span>
+              <div class="brand"><img src="assets/megafile.svg" alt="메가파일 로고" width="180" height="62" loading="lazy" /></div>
+            </div>
+            <div class="provider-title"><h3 id="megafile-name">메가파일</h3><span>PC·모바일 자료 이용</span></div>
+            <div class="facts">
+              <h4>주요 특징</h4>
+              <ul>
+                <li>PC와 모바일에서 자료를 찾고 이용할 수 있습니다.</li>
+                <li>모바일에서 본 자료를 PC에서 다운로드할 수 있다고 안내합니다.</li>
+              </ul>
+            </div>
+            <div class="reason"><h4>이런 분께 추천해요</h4><p>모바일에서 먼저 둘러보고 PC에서 이어서 이용하는 흐름을 선호하는 분께 맞습니다.</p></div>
+            <div class="provider-bottom"><a class="visit seed-action-button seed-action-button--variant_neutralSolid seed-action-button--size_medium seed-action-button--layout_withText seed-action-button--size_medium-layout_withText" href="https://www.megafile.co.kr/" target="_blank" rel="noopener noreferrer" aria-label="메가파일 공식 홈페이지 새 창으로 열기">공식 홈페이지 <span aria-hidden="true">↗</span></a></div>
+          </article>
+          <article class="provider" id="pdpop" aria-labelledby="pdpop-name" hidden>
+            <div class="provider-top">
+              <span class="rank" aria-label="추천 순서"><span class="rank-number">–</span><span class="rank-move is-same">–</span></span>
+              <div class="brand"><img src="assets/pdpop.svg" alt="피디팝 로고" width="180" height="62" loading="lazy" /></div>
+            </div>
+            <div class="provider-title"><h3 id="pdpop-name">피디팝</h3><span>인기콘텐츠와 전용 프로그램</span></div>
+            <div class="facts">
+              <h4>주요 특징</h4>
+              <ul>
+                <li>영화·방송·애니 등 카테고리와 인기·할인 콘텐츠 메뉴를 제공합니다.</li>
+                <li>전용 프로그램과 모바일 다운로드 기능을 안내하고 있습니다.</li>
+              </ul>
+            </div>
+            <div class="reason"><h4>이런 분께 추천해요</h4><p>인기 콘텐츠와 할인 메뉴를 함께 보고 전용 프로그램 이용도 고려하는 분께 적합합니다.</p></div>
+            <div class="provider-bottom"><a class="visit seed-action-button seed-action-button--variant_neutralSolid seed-action-button--size_medium seed-action-button--layout_withText seed-action-button--size_medium-layout_withText" href="https://pdpop.co.kr/" target="_blank" rel="noopener noreferrer" aria-label="피디팝 공식 홈페이지 새 창으로 열기">공식 홈페이지 <span aria-hidden="true">↗</span></a></div>
+          </article>
         </div>
       </section>
       <section
@@ -966,7 +1053,7 @@
         <a href="#main">맨 위로 ↑</a>
       </div>
     </footer>
-    <script src="assets/webhard-ranking.js"></script>
+    <script src="assets/webhard-ranking.js?v=20260923-3"></script>
     <script>
 
       /*
@@ -980,6 +1067,8 @@
         const tableBody = document.querySelector("#comparison tbody");
         const providerGrid = document.querySelector("#more .provider-grid");
         const status = document.querySelector("#ranking-status-time");
+        const countdown = document.querySelector("#ranking-countdown");
+        const summary = document.querySelector("#ranking-summary");
         if (!tableBody || !providerGrid) return;
 
         const rows = new Map(
@@ -997,14 +1086,14 @@
 
         ranking.watch((data, changed) => {
           if (changed) {
-            // 후보는 11곳이지만 매 구간 상위 10곳만 노출합니다.
+            // 후보 풀은 더 넓게 유지하되 매 구간 상위 10곳만 노출합니다.
             for (const row of rows.values()) row.hidden = true;
             for (const card of cards.values()) card.hidden = true;
 
             data.order.forEach((item) => {
               const rank = String(item.position).padStart(2, "0");
-              const move = ranking.deltaText(item.delta);
-              const moveClass = ranking.deltaClass(item.delta);
+              const move = ranking.deltaText(item.delta, item.isNew);
+              const moveClass = ranking.deltaClass(item.delta, item.isNew);
               const row = rows.get(item.id);
               const card = cards.get(item.id);
 
@@ -1049,9 +1138,15 @@
             });
           }
 
-          if (status) {
-            status.textContent =
-              `${data.startLabel} 기준 · 다음 갱신 ${data.remainingLabel}`;
+          if (countdown) countdown.textContent = data.remainingLabel;
+          if (status) status.textContent = `최근 갱신 ${data.startLabel}`;
+          if (summary) {
+            const s = data.summary;
+            summary.innerHTML =
+              `<span class="summary-up">▲ 상승 ${s.up}</span>` +
+              `<span class="summary-down">▼ 하락 ${s.down}</span>` +
+              `<span class="summary-new">NEW ${s.new}</span>` +
+              `<span class="summary-same">– 유지 ${s.same}</span>`;
           }
         });
       })();

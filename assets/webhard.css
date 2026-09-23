@@ -277,3 +277,102 @@ tbody td:first-child .rank-move {
     padding-top:14px;
   }
 }
+
+
+/* ===== 랭킹 라이브 대시보드 ===== */
+.ranking-live-card {
+  flex: 0 0 230px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: #171b22;
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(23, 27, 34, 0.12);
+}
+
+.ranking-live-card > span {
+  display: block;
+  color: #c7ced8;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.ranking-live-card strong {
+  display: block;
+  margin-top: 7px;
+  font-size: 27px;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.8px;
+}
+
+.ranking-live-card small {
+  display: block;
+  margin-top: 8px;
+  color: #9ea8b5;
+  font-size: 11px;
+}
+
+.ranking-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 10px;
+}
+
+.ranking-summary span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid #dce2ea;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.summary-up,
+.rank-move.is-up {
+  color: #e0445e;
+}
+
+.summary-down,
+.rank-move.is-down {
+  color: #3d67c8;
+}
+
+.summary-new,
+.rank-move.is-new {
+  color: #c87a12;
+}
+
+.summary-same,
+.rank-move.is-same {
+  color: #8b95a3;
+}
+
+@media (max-width: 900px) {
+  .comparison-section .section-head {
+    align-items: stretch;
+  }
+
+  .ranking-live-card {
+    flex-basis: 200px;
+  }
+}
+
+@media (max-width: 650px) {
+  .ranking-live-card {
+    margin-top: 16px;
+    width: min(100%, 320px);
+  }
+
+  .ranking-live-card strong {
+    font-size: 24px;
+  }
+
+  .ranking-summary {
+    margin-top: 9px;
+  }
+}
