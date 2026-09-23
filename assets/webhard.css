@@ -542,3 +542,80 @@ tbody td:first-child .rank-move {
   .rank-number,
   .provider.featured .rank-number{font-size:28px}
 }
+
+
+/* ===== 2026-09 웹하드 모바일 컴팩트 패스 ===== */
+.mobile-row-recommend{display:none}
+@media (max-width:650px){
+  .page-head h1{font-size:28px;letter-spacing:-1.25px}
+  .lead{margin-top:10px;font-size:13px;line-height:1.55}
+  .section-links{
+    gap:5px;margin:13px 0 6px;padding-bottom:0
+  }
+  .section-links > a{
+    min-height:34px;padding-inline:9px;font-size:11px
+  }
+  .section{padding-top:27px;padding-bottom:28px}
+  .comparison-section{padding:24px 0}
+  .ranking-status{margin-top:6px;font-size:10.5px}
+  .ranking-summary{gap:4px;margin-top:6px}
+  .ranking-summary span{
+    min-height:21px;padding:2px 6px;font-size:9px
+  }
+  .ranking-live-card{
+    margin-top:10px;padding:11px 13px;border-radius:10px
+  }
+  .ranking-live-card>span{font-size:10px}
+  .ranking-live-card strong{
+    margin-top:4px;font-size:21px
+  }
+  .ranking-live-card small{
+    margin-top:5px;font-size:10px
+  }
+
+  /* 모바일은 추천 문구를 주요 특징 칸에 합쳐 가로 스크롤을 없앱니다. */
+  .table-wrap{overflow:visible;margin:0}
+  table{
+    min-width:0;width:100%;table-layout:fixed;font-size:12px
+  }
+  thead th:nth-child(4){display:none}
+  tbody td:nth-child(4){
+    position:absolute!important;
+    width:1px!important;height:1px!important;
+    padding:0!important;margin:-1px!important;
+    overflow:hidden!important;clip:rect(0,0,0,0)!important;
+    white-space:nowrap!important;border:0!important
+  }
+  thead th:nth-child(1){width:48px}
+  thead th:nth-child(2){width:94px}
+  th,td{padding:9px 8px}
+  thead th{font-size:10px}
+  tbody th{width:auto;font-size:12px}
+  tbody td{font-size:11px;line-height:1.45}
+  tbody td:nth-child(3){word-break:keep-all}
+  .mobile-row-recommend{
+    display:block;margin-top:4px;color:#7a8594;
+    font-size:10px;line-height:1.4;font-weight:400
+  }
+
+  .provider-grid{gap:10px}
+  .provider{padding:13px;border-radius:12px}
+  .provider-top{min-height:46px;gap:8px}
+  .rank-number,.provider.featured .rank-number{font-size:27px}
+  .rank-move{font-size:9px}
+  .brand{width:112px;height:44px}
+  .provider-title{margin:7px 0 10px;padding-bottom:9px}
+  .provider h3{font-size:18px}
+  .provider-title>span{font-size:12px}
+  h4{font-size:12px;margin-bottom:6px}
+  .facts ul{padding-left:16px;font-size:13px;line-height:1.55}
+  .reason{margin:10px 0 11px;padding:10px 11px}
+  .reason p{font-size:13px;line-height:1.55}
+  .provider-bottom{padding-top:10px}
+  .provider-bottom .visit{min-height:40px;font-size:12px}
+  .method-section{padding:27px 0}
+  .method-intro{font-size:13px;line-height:1.6}
+  .criteria-grid{margin-top:16px}
+  .criteria-grid article{padding:13px 12px}
+  .faq-section{padding-top:28px;padding-bottom:28px}
+}
