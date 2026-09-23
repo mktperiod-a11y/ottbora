@@ -147,6 +147,42 @@ h1 {
   margin: 12px 0 0;
 }
 
+/*
+ * 제휴 버튼 색.
+ *
+ * 온디스크는 파랑, 케이디스크는 초록입니다. 둘 다 키 컬러
+ * (#e52f49, HSL 351/78/54)와 한 식구로 보이게 채도를 맞췄습니다.
+ *
+ *   온디스크    #1f5fbf  HSL 216/72/44  흰 글자 대비 6.09:1
+ *   케이디스크  #0f7a55  HSL 159/78/27  흰 글자 대비 5.34:1
+ *
+ * 파랑의 색상(216)은 사이트 잉크색(#17202d, 215)과 같은 계열이라
+ * 따로 노는 색으로 보이지 않습니다. 초록은 채도를 키 컬러와 똑같이
+ * 78% 로 두되, 초록이 밝게 보이는 색이라 명도를 낮춰 흰 글자
+ * 대비를 확보했습니다.
+ */
+.watch-btn--ondisk {
+  background: #1f5fbf;
+  border-color: #1f5fbf;
+}
+
+.watch-btn--ondisk:hover,
+.watch-btn--ondisk:active {
+  background: #184a96;
+  border-color: #184a96;
+}
+
+.watch-btn--kdisk {
+  background: #0f7a55;
+  border-color: #0f7a55;
+}
+
+.watch-btn--kdisk:hover,
+.watch-btn--kdisk:active {
+  background: #0b5f42;
+  border-color: #0b5f42;
+}
+
 .partner-inline {
   padding-top: 12px;
   border-top: 1px solid var(--line);
