@@ -376,3 +376,169 @@ tbody td:first-child .rank-move {
     margin-top: 9px;
   }
 }
+
+
+/* ===== 2026-09 웹하드 모바일 최적화 ===== */
+@media (max-width:650px){
+  .page-head h1{
+    font-size:32px;
+    line-height:1.2;
+    letter-spacing:-1.5px;
+  }
+  .lead{
+    margin-top:14px;
+    font-size:14px;
+    line-height:1.65;
+  }
+  .section-links{
+    flex-wrap:nowrap;
+    gap:7px;
+    margin:18px 0 8px;
+    overflow-x:auto;
+    overscroll-behavior-x:contain;
+    scrollbar-width:none;
+    padding-bottom:2px;
+  }
+  .section-links::-webkit-scrollbar{display:none}
+  .section-links > a{
+    flex:0 0 auto;
+    min-height:38px;
+  }
+  .section{
+    padding-top:32px;
+    padding-bottom:34px;
+  }
+  .comparison-section{
+    padding:30px 0;
+  }
+  .comparison-section .section-head{
+    display:block;
+  }
+  .ranking-live-card{
+    width:100%;
+    margin-top:14px;
+    padding:14px 16px;
+    border-radius:12px;
+  }
+  .ranking-live-card strong{
+    margin-top:5px;
+    font-size:24px;
+  }
+  .ranking-live-card small{
+    margin-top:6px;
+  }
+  .ranking-summary{
+    gap:5px;
+    margin-top:8px;
+  }
+  .ranking-summary span{
+    min-height:24px;
+    padding:3px 7px;
+    font-size:10px;
+  }
+  .table-wrap{
+    margin:0 -2px;
+    border-radius:9px;
+  }
+  table{
+    min-width:620px;
+    font-size:13px;
+  }
+  th,td{
+    padding:11px 13px;
+  }
+  thead th{
+    font-size:12px;
+  }
+  tbody th{
+    width:135px;
+    font-size:14px;
+  }
+  .provider-grid{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+  .provider{
+    padding:16px;
+    border-radius:14px;
+  }
+  .provider-top{
+    min-height:52px;
+    gap:10px;
+  }
+  .rank{
+    gap:5px;
+  }
+  .rank-number,
+  .provider.featured .rank-number{
+    font-size:30px;
+  }
+  .brand{
+    width:128px;
+    height:50px;
+  }
+  .provider-title{
+    margin:9px 0 12px;
+    padding-bottom:11px;
+  }
+  .provider h3{
+    font-size:20px;
+    letter-spacing:-0.6px;
+  }
+  .provider-title>span{
+    font-size:13px;
+  }
+  h4{
+    font-size:13px;
+    margin-bottom:7px;
+  }
+  .facts ul{
+    padding-left:17px;
+    font-size:14px;
+    line-height:1.6;
+  }
+  .reason{
+    margin:12px 0 14px;
+    padding:12px 13px;
+  }
+  .reason p{
+    font-size:14px;
+    line-height:1.6;
+  }
+  .provider-bottom{
+    min-height:0;
+    padding-top:13px;
+  }
+  .provider-bottom .visit{
+    width:100%;
+    min-height:44px;
+    justify-content:center;
+  }
+  .method-section{
+    padding:32px 0;
+  }
+  .method-intro{
+    grid-template-columns:1fr;
+    gap:12px;
+    font-size:14px;
+    line-height:1.7;
+  }
+  .criteria-grid{
+    --card-min:100%;
+    margin-top:20px;
+  }
+  .criteria-grid article{
+    padding:16px 14px;
+  }
+  .faq-section{
+    padding-top:34px;
+    padding-bottom:34px;
+  }
+}
+@media (max-width:380px){
+  .page-head h1{font-size:29px}
+  .provider{padding:14px}
+  .brand{width:116px}
+  .rank-number,
+  .provider.featured .rank-number{font-size:28px}
+}
