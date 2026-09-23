@@ -450,3 +450,33 @@ button:focus-visible {
   .watch-links{grid-template-columns:1fr}
   h1{font-size:26px}
 }
+
+
+/* ===== 2026-09 콘텐츠 상세 모바일 컴팩트 패스 ===== */
+@media (max-width:650px){
+  .site-header + main.wrap#main{padding-top:14px;padding-bottom:40px}
+  .detail-back{margin-bottom:9px;font-size:11px}
+  .detail{gap:14px}
+  .detail-poster{
+    width:min(70vw,240px);border-radius:12px;
+    box-shadow:0 10px 24px rgba(27,34,48,.10)
+  }
+  .ey{margin-bottom:6px;font-size:10px}
+  h1{font-size:25px;line-height:1.17;letter-spacing:-1px}
+  .sub{margin-top:8px;font-size:13px;line-height:1.5}
+  .meta{gap:4px;margin-top:10px}
+  .meta span{padding:5px 8px;font-size:10px}
+  .copy{margin-top:15px;padding:15px 14px;border-radius:12px}
+  .copy h2{margin-top:18px;margin-bottom:6px;font-size:16px}
+  .copy p,.copy li{font-size:13px;line-height:1.62}
+  .copy ul{margin-top:6px}
+  #watch-block:not(:empty),
+  #booking-block:not(:empty),
+  #official-action:not(:empty){
+    margin-top:18px;padding-top:15px
+  }
+  #booking-block:not(:empty){margin-top:21px;padding-top:16px}
+  .watch-links{gap:6px}
+  .watch-links > a{min-height:40px;font-size:11px}
+  .copy .credit{margin-top:18px;padding-top:11px;font-size:10px}
+}
