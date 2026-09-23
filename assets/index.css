@@ -593,3 +593,47 @@ section:has(.guide-grid) .head h2 {
     font-size: 9px;
   }
 }
+
+
+.home-ranking-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 7px;
+}
+
+.home-ranking-summary span {
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.home-ranking-summary .is-up,
+.home-rank-move.is-up {
+  color: #ff697f;
+}
+
+.home-ranking-summary .is-down,
+.home-rank-move.is-down {
+  color: #79a0ff;
+}
+
+.home-ranking-summary .is-new,
+.home-rank-move.is-new {
+  color: #f1b253;
+}
+
+.home-ranking-summary .is-same,
+.home-rank-move.is-same {
+  color: #9da8b7;
+}
+
+@media (max-width: 600px) {
+  .home-ranking-summary {
+    gap: 7px;
+  }
+
+  .home-ranking-summary span {
+    font-size: 10px;
+  }
+}
