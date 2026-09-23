@@ -452,85 +452,19 @@ button:focus-visible {
 }
 
 
-/* ===== 애니 상세 메타 정보 ===== */
-.meta.meta--anime {
-  display: grid;
-  gap: 7px;
-  margin-top: 18px;
-}
-
-.anime-meta-line {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  min-width: 0;
-  color: #657080;
-  font-size: 13px;
-  line-height: 1.55;
-}
-
-.anime-meta-genres {
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.anime-meta-label {
-  flex: 0 0 auto;
-  display: inline-flex;
-  align-items: center;
-  min-height: 24px;
-  padding: 3px 8px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: #fff;
-  color: #657080;
-  font-size: 10px;
-  font-weight: 800;
-  line-height: 1;
-}
-
-.anime-meta-value {
-  min-width: 0;
-}
-
-.anime-meta-more {
-  flex: 0 0 auto;
-  color: #4f5c6d;
-  font-size: 11px;
-  font-weight: 800;
-}
-
-.anime-meta-original .anime-meta-value {
-  color: #7a8492;
+/* 상세 메타 칩은 모든 콘텐츠 타입에서 같은 컴포넌트를 사용합니다. */
+.meta > span {
+  max-width: 100%;
   overflow-wrap: anywhere;
 }
 
 @media (max-width:650px){
-  .meta.meta--anime {
-    gap: 5px;
-    margin-top: 11px;
+  .meta {
+    align-items: flex-start;
   }
 
-  .anime-meta-line {
-    gap: 6px;
-    font-size: 11.5px;
-    line-height: 1.45;
-  }
-
-  .anime-meta-label {
-    min-height: 22px;
-    padding: 3px 7px;
-    font-size: 9px;
-  }
-
-  .anime-meta-more {
-    font-size: 10px;
-  }
-
-  .anime-meta-original .anime-meta-value {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
+  .meta > span {
+    max-width: 100%;
+    white-space: normal;
   }
 }

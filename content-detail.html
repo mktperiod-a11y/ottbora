@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css?v=20260923-6" />
-    <link rel="stylesheet" href="assets/content-detail.css?v=20260923-11" />
+    <link rel="stylesheet" href="assets/content-detail.css?v=20260923-12" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -296,12 +296,18 @@
           type: "애니",
           tagline: "",
           poster: a.poster || FALLBACK,
-          meta: [],
-          animeGenres: Array.isArray(a.genres) ? a.genres.filter(Boolean) : [],
-          originalTitle:
-            a.titleOriginal && a.titleOriginal !== a.title
-              ? a.titleOriginal
-              : "",
+          meta: (() => {
+            const genres = Array.isArray(a.genres) ? a.genres.filter(Boolean) : [];
+            const shownGenres = genres.slice(0, 4).join(" · ");
+            const genreText = shownGenres
+              ? `장르 · ${shownGenres}${genres.length > 4 ? ` +${genres.length - 4}` : ""}`
+              : "";
+            const original =
+              a.titleOriginal && a.titleOriginal !== a.title
+                ? `원제 · ${a.titleOriginal}`
+                : "";
+            return [genreText, original].filter(Boolean);
+          })(),
           synopsisText: "현재 줄거리 정보를 확인할 수 없어요.",
           detailPoints: points.length ? points : ["현재 시즌 자동 수집 작품"],
           watch: [],
@@ -457,51 +463,6 @@
       function renderMeta(w) {
         const host = document.querySelector("#meta");
         host.innerHTML = "";
-        host.classList.toggle("meta--anime", w?.sourceKind === "anime");
-
-        if (w?.sourceKind === "anime") {
-          const genres = Array.isArray(w.animeGenres) ? w.animeGenres : [];
-          if (genres.length) {
-            const row = document.createElement("div");
-            row.className = "anime-meta-line anime-meta-genres";
-
-            const label = document.createElement("span");
-            label.className = "anime-meta-label";
-            label.textContent = "장르";
-
-            const value = document.createElement("span");
-            value.className = "anime-meta-value";
-            value.textContent = genres.slice(0, 4).join(" · ");
-
-            row.append(label, value);
-
-            if (genres.length > 4) {
-              const more = document.createElement("span");
-              more.className = "anime-meta-more";
-              more.textContent = `+${genres.length - 4}`;
-              row.appendChild(more);
-            }
-            host.appendChild(row);
-          }
-
-          if (w.originalTitle) {
-            const row = document.createElement("div");
-            row.className = "anime-meta-line anime-meta-original";
-
-            const label = document.createElement("span");
-            label.className = "anime-meta-label";
-            label.textContent = "원제";
-
-            const value = document.createElement("span");
-            value.className = "anime-meta-value";
-            value.textContent = w.originalTitle;
-
-            row.append(label, value);
-            host.appendChild(row);
-          }
-          return;
-        }
-
         for (const text of w?.meta || []) {
           if (!text) continue;
           const span = document.createElement("span");
