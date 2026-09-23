@@ -756,3 +756,29 @@ section:has(.guide-grid) .head h2 {
   .hero h1{font-size:29px}
   .rank-card{grid-template-columns:29px 72px minmax(0,1fr)}
 }
+
+
+/* ===== 2026-09 홈 모바일 컴팩트 패스 ===== */
+@media (max-width:650px){
+  .hero{padding:26px 0 28px}
+  .hero-grid{gap:20px}
+  .hero h1{margin:13px 0 9px;font-size:29px}
+  .hero p{font-size:13px;line-height:1.55}
+  .hero-btn{min-height:42px;font-size:12px}
+  .poster-stack{width:min(100%,300px);gap:5px}
+  .section{padding:32px 0}
+  .content-grid{gap:6px}
+  .content-body{padding:7px}
+  .content-body b{font-size:13px}
+  .content-body p{font-size:11px}
+  .tag{font-size:9px}
+  .ranking{gap:7px}
+  .rank-card{
+    grid-template-columns:29px 72px minmax(0,1fr);
+    gap:7px;padding:9px;border-radius:10px
+  }
+  .brand{height:40px}
+  .rank-info b{font-size:14px}
+  .rank-info span{font-size:11px}
+  .go{min-height:36px;font-size:11px}
+}
