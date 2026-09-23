@@ -9,6 +9,11 @@ h1 em{font-style:normal;color:var(--accent)}
 .section{padding-top:50px;padding-bottom:52px}
 .provider-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
 .provider{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;scroll-margin-top:110px;min-width:0}
+/* 이번 회차에 안 뽑힌 곳은 감춥니다.
+   .provider 가 display 를 직접 정해 브라우저 기본 [hidden] 규칙을
+   이겨 버립니다. 그래서 순위에서 빠진 카드가 옛 번호를 단 채
+   목록 맨 앞에 남아 있었습니다(10번이 1번보다 먼저 나오던 원인). */
+.provider[hidden],tbody tr[hidden]{display:none}
 .provider.featured{border-color:#edb7c0;border-top:4px solid #edb7c0;box-shadow:0 10px 28px #20273507}
 .provider-top{display:flex;align-items:center;gap:16px;min-height:56px}
 .rank{display:flex;align-items:baseline;gap:8px;font-weight:900;line-height:1;color:#c1c9d6;font-variant-numeric:tabular-nums}
