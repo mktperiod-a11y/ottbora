@@ -355,3 +355,98 @@ button:focus-visible {
     margin-bottom: 12px;
   }
 }
+
+
+/* ===== 2026-09 콘텐츠 상세 모바일 최적화 ===== */
+@media (max-width:650px){
+  .site-header + main.wrap#main{
+    padding-top:20px;
+    padding-bottom:48px;
+  }
+  .detail-back{
+    margin-bottom:14px;
+    font-size:12px;
+  }
+  .detail{
+    gap:20px;
+  }
+  .detail-poster{
+    width:min(64vw,230px);
+    border-radius:13px;
+  }
+  .ey{
+    margin-bottom:8px;
+    font-size:11px;
+    letter-spacing:1.25px;
+  }
+  h1{
+    font-size:28px;
+    line-height:1.2;
+    letter-spacing:-1.2px;
+  }
+  .sub{
+    margin-top:11px;
+    font-size:14px;
+    line-height:1.6;
+  }
+  .meta{
+    gap:5px;
+    margin-top:14px;
+  }
+  .meta span{
+    padding:6px 9px;
+    font-size:11px;
+  }
+  .copy{
+    margin-top:20px;
+    padding:18px 16px;
+    border-radius:13px;
+    box-shadow:none;
+  }
+  .copy h2{
+    margin-top:22px;
+    margin-bottom:8px;
+    font-size:18px;
+  }
+  .copy p,
+  .copy li{
+    font-size:14px;
+    line-height:1.7;
+  }
+  .copy ul{
+    margin-top:8px;
+    padding-left:18px;
+  }
+  #watch-block:not(:empty),
+  #booking-block:not(:empty),
+  #official-action:not(:empty){
+    margin-top:22px;
+    padding-top:18px;
+  }
+  #booking-block:not(:empty){
+    margin-top:26px;
+    padding-top:20px;
+  }
+  .watch-links{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:7px;
+  }
+  .watch-links > a{
+    width:100%;
+    min-width:0;
+    min-height:44px;
+    justify-content:center;
+    text-align:center;
+  }
+  .copy .credit{
+    margin-top:22px;
+    padding-top:13px;
+    font-size:11px;
+  }
+}
+@media (max-width:380px){
+  .detail-poster{width:min(68vw,220px)}
+  .watch-links{grid-template-columns:1fr}
+  h1{font-size:26px}
+}
