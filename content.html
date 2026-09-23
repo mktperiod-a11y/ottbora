@@ -125,8 +125,25 @@
       let DATA = null;
       let RANKS = new Map(); // 제목 → 지금 박스오피스 순위
       let FRESH = false; // 박스오피스 집계가 순위를 말할 만큼 최근인가
-      let active = "전체";
-      let page = 1;
+      /*
+       * 지금 보고 있는 탭·페이지.
+       *
+       * 주소에 함께 적습니다(?tab=애니&page=2). 그래야
+       *  - 카드를 눌러 상세로 갔다가 돌아올 때 보던 자리로 오고
+       *  - 링크를 복사해 주면 상대도 같은 자리를 봅니다.
+       */
+      const params = new URLSearchParams(location.search);
+      let active = TYPES.includes(params.get("tab")) ? params.get("tab") : "전체";
+      let page = Math.max(1, Math.min(MAX_PAGES, Number(params.get("page")) || 1));
+
+      /** 지금 상태를 주소에 반영합니다. 방문 기록은 늘리지 않습니다. */
+      function syncUrl() {
+        const q = new URLSearchParams();
+        if (active !== "전체") q.set("tab", active);
+        if (page > 1) q.set("page", String(page));
+        const next = q.toString() ? `?${q}` : location.pathname;
+        history.replaceState(null, "", next);
+      }
 
       /**
        * 집계일이 오래되면 순위 태그를 달지 않습니다.
@@ -612,6 +629,7 @@
         host.querySelectorAll(".page-btn").forEach((b) => {
           b.onclick = () => {
             page = Number(b.dataset.page);
+            syncUrl();
             render();
             toTop();
           };
@@ -641,6 +659,7 @@
           b.onclick = () => {
             active = b.dataset.type;
             page = 1;
+            syncUrl();
             host.querySelectorAll("button").forEach((x) =>
               x.setAttribute("aria-selected", String(x === b)),
             );
@@ -701,6 +720,7 @@
               `포스터 출처: ${sources.join(", ")}`;
           tabs();
           render();
+          syncUrl();
         })
         .catch(() => {
           document.querySelector("#sections").innerHTML =
