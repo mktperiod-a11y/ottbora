@@ -545,15 +545,9 @@
           <article class="provider" id="filenori" aria-labelledby="filenori-name">
             <div class="provider-top">
               <span class="rank" aria-label="추천 순서 5"><span class="rank-number">05</span><span class="rank-move is-same">–</span></span>
-              <div class="brand">
-                <img
-                  src="assets/filenori.svg"
-                  alt="파일노리 로고"
-                  width="180"
-                  height="62"
-                  loading="lazy"
-                />
-              </div>
+              <a class="brand brand--official-text" href="https://www.filenori.com/" target="_blank" rel="noopener noreferrer" aria-label="파일노리 공식 홈페이지">
+                <span class="brand-name">파일노리</span>
+              </a>
             </div>
             <div class="provider-title">
               <h3 id="filenori-name">파일노리</h3>
@@ -802,15 +796,16 @@
           <article class="provider" id="fileis" aria-labelledby="fileis-name" hidden>
             <div class="provider-top">
               <span class="rank" aria-label="추천 순서"><span class="rank-number">–</span><span class="rank-move is-same">–</span></span>
-              <div class="brand">
+              <a class="brand" href="https://www.fileis.com/" target="_blank" rel="noopener noreferrer" aria-label="파일이즈 공식 홈페이지">
                 <img
-                  src="assets/fileis.svg"
+                  src="https://www.fileis.com/images/renew_icon/LOGO-gray.svg"
                   alt="파일이즈 로고"
                   width="180"
                   height="62"
                   loading="lazy"
+                  referrerpolicy="no-referrer"
                 />
-              </div>
+              </a>
             </div>
             <div class="provider-title">
               <h3 id="fileis-name">파일이즈</h3>
@@ -857,15 +852,9 @@
           <article class="provider" id="filecookie" aria-labelledby="filecookie-name" hidden>
             <div class="provider-top">
               <span class="rank" aria-label="추천 순서"><span class="rank-number">–</span><span class="rank-move is-same">–</span></span>
-              <div class="brand">
-                <img
-                  src="assets/filecookie.svg"
-                  alt="파일쿠키 로고"
-                  width="180"
-                  height="62"
-                  loading="lazy"
-                />
-              </div>
+              <a class="brand brand--official-text" href="https://www.filekuki.com/" target="_blank" rel="noopener noreferrer" aria-label="파일쿠키 공식 홈페이지">
+                <span class="brand-name">파일쿠키</span>
+              </a>
             </div>
             <div class="provider-title">
               <h3 id="filecookie-name">파일쿠키</h3>
@@ -903,7 +892,7 @@
           <article class="provider" id="bigfile" aria-labelledby="bigfile-name" hidden>
             <div class="provider-top">
               <span class="rank" aria-label="추천 순서"><span class="rank-number">–</span><span class="rank-move is-same">–</span></span>
-              <div class="brand"><img src="assets/bigfile.svg" alt="빅파일 로고" width="180" height="62" loading="lazy" /></div>
+              <a class="brand brand--official-text" href="https://bigfile.co.kr/" target="_blank" rel="noopener noreferrer" aria-label="빅파일 공식 홈페이지"><span class="brand-name">빅파일</span></a>
             </div>
             <div class="provider-title"><h3 id="bigfile-name">빅파일</h3><span>실시간 TOP100과 다양한 카테고리</span></div>
             <div class="facts">
@@ -919,7 +908,7 @@
           <article class="provider" id="megafile" aria-labelledby="megafile-name" hidden>
             <div class="provider-top">
               <span class="rank" aria-label="추천 순서"><span class="rank-number">–</span><span class="rank-move is-same">–</span></span>
-              <div class="brand"><img src="assets/megafile.svg" alt="메가파일 로고" width="180" height="62" loading="lazy" /></div>
+              <a class="brand brand--official-text" href="https://www.megafile.co.kr/" target="_blank" rel="noopener noreferrer" aria-label="메가파일 공식 홈페이지"><span class="brand-name">메가파일</span></a>
             </div>
             <div class="provider-title"><h3 id="megafile-name">메가파일</h3><span>PC·모바일 자료 이용</span></div>
             <div class="facts">
@@ -935,7 +924,7 @@
           <article class="provider" id="pdpop" aria-labelledby="pdpop-name" hidden>
             <div class="provider-top">
               <span class="rank" aria-label="추천 순서"><span class="rank-number">–</span><span class="rank-move is-same">–</span></span>
-              <div class="brand"><img src="assets/pdpop.svg" alt="피디팝 로고" width="180" height="62" loading="lazy" /></div>
+              <a class="brand brand--official-text" href="https://pdpop.co.kr/" target="_blank" rel="noopener noreferrer" aria-label="피디팝 공식 홈페이지"><span class="brand-name">피디팝</span></a>
             </div>
             <div class="provider-title"><h3 id="pdpop-name">피디팝</h3><span>인기콘텐츠와 전용 프로그램</span></div>
             <div class="facts">
@@ -1089,6 +1078,46 @@
             card,
           ]),
         );
+
+        for (const [id, card] of cards) {
+          const provider = ranking.providers[id];
+          const brand = card.querySelector(".brand");
+          if (!provider || !brand) continue;
+
+          const link = document.createElement("a");
+          link.className = brand.className;
+          link.href = provider.url;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.setAttribute("aria-label", `${provider.name} 공식 홈페이지`);
+
+          if (provider.logoUrl) {
+            const img = document.createElement("img");
+            img.src = provider.logoUrl;
+            img.alt = `${provider.name} 로고`;
+            img.width = 180;
+            img.height = 62;
+            img.loading = "lazy";
+            img.referrerPolicy = "no-referrer";
+            link.appendChild(img);
+          } else if (provider.logo) {
+            const img = document.createElement("img");
+            img.src = `assets/${provider.logo}`;
+            img.alt = `${provider.name} 로고`;
+            img.width = 180;
+            img.height = 62;
+            img.loading = "lazy";
+            link.appendChild(img);
+          } else {
+            link.classList.add("brand--official-text");
+            const text = document.createElement("span");
+            text.className = "brand-name";
+            text.textContent = provider.name;
+            link.appendChild(text);
+          }
+
+          brand.replaceWith(link);
+        }
 
         ranking.watch((data, changed) => {
           if (changed) {
