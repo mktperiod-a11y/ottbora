@@ -281,14 +281,40 @@
           .map((x) => ({ id: x.id, name: x.name, url: x.url }));
       }
 
+      function animeSeasonLabel(raw) {
+        const m = String(raw || "").trim().match(/^(\d{4})\s+(spring|summer|fall|winter)$/i);
+        if (!m) return "";
+        const seasonKo = {
+          spring: "봄",
+          summer: "여름",
+          fall: "가을",
+          winter: "겨울",
+        };
+        return `${m[1]} ${seasonKo[m[2].toLowerCase()] || ""}`.trim();
+      }
+
       function animeWork(a) {
         if (!a) return null;
+
+        const seasonLabel = animeSeasonLabel(a.season);
+        const genres = Array.isArray(a.genres) ? a.genres.filter(Boolean) : [];
+        const shownGenres = genres.slice(0, 3).join(" · ");
+        const genreMeta = shownGenres
+          ? `${shownGenres}${genres.length > 3 ? ` +${genres.length - 3}` : ""}`
+          : "";
+
+        const originalTitle =
+          a.titleOriginal && a.titleOriginal !== a.title
+            ? `원제 · ${a.titleOriginal}`
+            : "";
+
         const points = [
           a.score ? `${a.scoreBy || "AniList"} 평점 ${a.score}` : "",
           a.episodes ? `${a.episodes}화` : "",
           a.studio ? `제작 · ${a.studio}` : "",
-          a.season ? `시즌 · ${a.season}` : "",
+          originalTitle,
         ].filter(Boolean);
+
         return {
           id: `anime-${a.malId}`,
           sourceKind: "anime",
@@ -296,20 +322,9 @@
           type: "애니",
           tagline: "",
           poster: a.poster || FALLBACK,
-          meta: (() => {
-            const genres = Array.isArray(a.genres) ? a.genres.filter(Boolean) : [];
-            const shownGenres = genres.slice(0, 4).join(" · ");
-            const genreText = shownGenres
-              ? `장르 · ${shownGenres}${genres.length > 4 ? ` +${genres.length - 4}` : ""}`
-              : "";
-            const original =
-              a.titleOriginal && a.titleOriginal !== a.title
-                ? `원제 · ${a.titleOriginal}`
-                : "";
-            return [genreText, original].filter(Boolean);
-          })(),
+          meta: [seasonLabel, genreMeta].filter(Boolean),
           synopsisText: "현재 줄거리 정보를 확인할 수 없어요.",
-          detailPoints: points.length ? points : ["현재 시즌 자동 수집 작품"],
+          detailPoints: points.length ? points : ["작품 정보를 확인할 수 없어요."],
           watch: [],
           partner: partnerWatch(a.title),
           imageCredit: a.posterCredit || "AniList",
