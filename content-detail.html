@@ -463,8 +463,6 @@
       function renderMeta(w) {
         const host = document.querySelector("#meta");
         host.innerHTML = "";
-        host.classList.remove("meta--anime");
-
         for (const text of w?.meta || []) {
           if (!text) continue;
           const span = document.createElement("span");
