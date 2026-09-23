@@ -3,8 +3,8 @@
   "howToMatch": "match 를 공백·문장부호 뗀 형태로 바꾼 뒤, 작품 제목이 그것을 품고 있으면 같은 작품으로 봅니다. 시즌이 올라가도(2기·4기) 계속 걸립니다.",
   "howToEdit": "제휴가 끝나면 그 줄만 지우면 됩니다. 새로 생기면 match 에 제목을, providers 에 아래 목록의 id 를 적습니다.",
   "providers": [
-    { "id": "ondisk", "name": "온디스크", "url": "go/ondisk/" },
-    { "id": "kdisk", "name": "케이디스크", "url": "go/kdisk/" }
+    { "id": "ondisk", "name": "온디스크", "url": "https://ondisk.co.kr/" },
+    { "id": "kdisk", "name": "케이디스크", "url": "https://www.kdisk.co.kr/" }
   ],
   "works": [
     { "match": "추방당한 전생 중기사는 게임 지식으로 무쌍한다", "providers": ["ondisk", "kdisk"] },
