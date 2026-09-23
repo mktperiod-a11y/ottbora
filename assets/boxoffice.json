@@ -2,15 +2,15 @@
   "note": "일별 박스오피스를 작품 단위로 누적한 목록입니다. 콘텐츠ZONE 의 영화·애니 탭에서 씁니다.",
   "source": "영화진흥위원회 오픈API 일별 박스오피스",
   "sourceUrl": "https://www.kobis.or.kr/kobisopenapi/",
-  "updatedAt": "2026-09-22",
-  "latestDt": "20260921",
+  "updatedAt": "2026-09-23",
+  "latestDt": "20260922",
   "keepDays": 45,
   "movies": [
     {
       "movieCd": "20250654",
       "title": "오디세이",
       "openedAt": "2026-08-05",
-      "audienceAcc": 11250551,
+      "audienceAcc": 11286770,
       "genres": [
         "액션",
         "드라마",
@@ -18,10 +18,10 @@
       ],
       "type": "영화",
       "firstSeenAt": "20260824",
-      "lastSeenAt": "20260921",
-      "days": 29,
+      "lastSeenAt": "20260922",
+      "days": 30,
       "bestRank": 1,
-      "rank": 2,
+      "rank": 1,
       "showing": true,
       "poster": "assets/posters/20250654.webp",
       "posterCredit": "TMDB"
@@ -30,16 +30,16 @@
       "movieCd": "20256308",
       "title": "인턴",
       "openedAt": "2026-09-16",
-      "audienceAcc": 437744,
+      "audienceAcc": 471218,
       "genres": [
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260904",
-      "lastSeenAt": "20260921",
-      "days": 9,
+      "lastSeenAt": "20260922",
+      "days": 10,
       "bestRank": 1,
-      "rank": 1,
+      "rank": 2,
       "showing": true,
       "poster": "assets/posters/20256308.webp",
       "posterCredit": "TMDB"
@@ -48,7 +48,7 @@
       "movieCd": "20262770",
       "title": "스파이더맨: 브랜드 뉴 데이",
       "openedAt": "2026-07-29",
-      "audienceAcc": 8994212,
+      "audienceAcc": 8998514,
       "genres": [
         "액션",
         "어드벤처",
@@ -56,10 +56,10 @@
       ],
       "type": "영화",
       "firstSeenAt": "20260824",
-      "lastSeenAt": "20260921",
-      "days": 29,
+      "lastSeenAt": "20260922",
+      "days": 30,
       "bestRank": 2,
-      "rank": 6,
+      "rank": 5,
       "showing": true,
       "poster": "assets/posters/20262770.webp",
       "posterCredit": "TMDB"
@@ -68,14 +68,14 @@
       "movieCd": "20265146",
       "title": "옵세션",
       "openedAt": "2026-09-02",
-      "audienceAcc": 721277,
+      "audienceAcc": 741466,
       "genres": [
         "공포(호러)"
       ],
       "type": "영화",
       "firstSeenAt": "20260902",
-      "lastSeenAt": "20260921",
-      "days": 20,
+      "lastSeenAt": "20260922",
+      "days": 21,
       "bestRank": 2,
       "rank": 3,
       "showing": true,
@@ -86,7 +86,7 @@
       "movieCd": "20263870",
       "title": "레지던트 이블: 0번째 밤",
       "openedAt": "2026-09-17",
-      "audienceAcc": 114689,
+      "audienceAcc": 125802,
       "genres": [
         "공포(호러)",
         "액션",
@@ -94,8 +94,8 @@
       ],
       "type": "영화",
       "firstSeenAt": "20260917",
-      "lastSeenAt": "20260921",
-      "days": 5,
+      "lastSeenAt": "20260922",
+      "days": 6,
       "bestRank": 3,
       "rank": 4,
       "showing": true,
@@ -106,17 +106,17 @@
       "movieCd": "20265423",
       "title": "더 드라마",
       "openedAt": "2026-09-09",
-      "audienceAcc": 81527,
+      "audienceAcc": 83097,
       "genres": [
         "드라마",
         "멜로/로맨스"
       ],
       "type": "영화",
       "firstSeenAt": "20260909",
-      "lastSeenAt": "20260921",
-      "days": 12,
+      "lastSeenAt": "20260922",
+      "days": 13,
       "bestRank": 4,
-      "rank": 9,
+      "rank": 7,
       "showing": true,
       "poster": "assets/posters/20265423.webp",
       "posterCredit": "TMDB"
@@ -125,7 +125,7 @@
       "movieCd": "20070216",
       "title": "시간을 달리는 소녀",
       "openedAt": "2007-06-14",
-      "audienceAcc": 134297,
+      "audienceAcc": 136226,
       "genres": [
         "애니메이션",
         "판타지",
@@ -133,12 +133,68 @@
       ],
       "type": "영화",
       "firstSeenAt": "20260916",
-      "lastSeenAt": "20260921",
-      "days": 6,
+      "lastSeenAt": "20260922",
+      "days": 7,
+      "bestRank": 5,
+      "rank": 6,
+      "showing": true,
+      "poster": "assets/posters/20070216.webp",
+      "posterCredit": "TMDB"
+    },
+    {
+      "movieCd": "20233219",
+      "title": "호프",
+      "openedAt": "2026-07-15",
+      "audienceAcc": 4584115,
+      "genres": [
+        "SF",
+        "스릴러",
+        "액션"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260824",
+      "lastSeenAt": "20260922",
+      "days": 14,
       "bestRank": 5,
       "rank": 8,
       "showing": true,
-      "poster": "assets/posters/20070216.webp",
+      "poster": "assets/posters/20233219.webp",
+      "posterCredit": "TMDB"
+    },
+    {
+      "movieCd": "20241110",
+      "title": "아이유 콘서트 : 더 위닝",
+      "openedAt": "2025-01-24",
+      "audienceAcc": 87389,
+      "genres": [
+        "공연"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260916",
+      "lastSeenAt": "20260922",
+      "days": 4,
+      "bestRank": 8,
+      "rank": 9,
+      "showing": true,
+      "poster": "assets/posters/20241110.webp",
+      "posterCredit": "TMDB"
+    },
+    {
+      "movieCd": "20266148",
+      "title": "아버지의 집밥",
+      "openedAt": "2026-09-09",
+      "audienceAcc": 12304,
+      "genres": [
+        "드라마"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260922",
+      "lastSeenAt": "20260922",
+      "days": 1,
+      "bestRank": 10,
+      "rank": 10,
+      "showing": true,
+      "poster": "assets/posters/20266148.webp",
       "posterCredit": "TMDB"
     },
     {
@@ -155,8 +211,8 @@
       "lastSeenAt": "20260921",
       "days": 3,
       "bestRank": 5,
-      "rank": 5,
-      "showing": true,
+      "rank": null,
+      "showing": false,
       "poster": "assets/posters/20255033.webp",
       "posterCredit": "TMDB"
     },
@@ -173,27 +229,9 @@
       "lastSeenAt": "20260921",
       "days": 1,
       "bestRank": 7,
-      "rank": 7,
-      "showing": true,
+      "rank": null,
+      "showing": false,
       "poster": "assets/posters/20254904.webp",
-      "posterCredit": "TMDB"
-    },
-    {
-      "movieCd": "20241110",
-      "title": "아이유 콘서트 : 더 위닝",
-      "openedAt": "2025-01-24",
-      "audienceAcc": 86404,
-      "genres": [
-        "공연"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20260916",
-      "lastSeenAt": "20260921",
-      "days": 3,
-      "bestRank": 8,
-      "rank": 10,
-      "showing": true,
-      "poster": "assets/posters/20241110.webp",
       "posterCredit": "TMDB"
     },
     {
@@ -361,26 +399,6 @@
       "rank": null,
       "showing": false,
       "poster": "assets/posters/20264918.webp",
-      "posterCredit": "TMDB"
-    },
-    {
-      "movieCd": "20233219",
-      "title": "호프",
-      "openedAt": "2026-07-15",
-      "audienceAcc": 4573931,
-      "genres": [
-        "SF",
-        "스릴러",
-        "액션"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20260824",
-      "lastSeenAt": "20260915",
-      "days": 13,
-      "bestRank": 5,
-      "rank": null,
-      "showing": false,
-      "poster": "assets/posters/20233219.webp",
       "posterCredit": "TMDB"
     },
     {
