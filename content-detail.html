@@ -230,7 +230,7 @@
         const points = [
           w.rank ? `인기 ${w.rank}위` : "",
           w.nextAirDate ? `다음 방송 ${prettyDate(w.nextAirDate)}` : "",
-          w.status ? `상태 · ${TMDB_STATUS_KO[w.status] || w.status}` : "",
+          TMDB_STATUS_KO[w.status] ? `상태 · ${TMDB_STATUS_KO[w.status]}` : "",
         ].filter(Boolean);
         return {
           id: `tmdb-${w.tmdbId}`,
