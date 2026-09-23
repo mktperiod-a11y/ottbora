@@ -3,9 +3,31 @@
 
   const PRIMARY = ["ondisk", "kdisk"];
   const CHALLENGERS = ["filejo", "wedisk", "filenori"];
-  const ALL = [
+
+  /* 늘 순위 추첨에 들어가는 곳. */
+  const ACTIVE = [
     "ondisk", "kdisk", "wedisk", "filejo", "filenori",
-    "me2disk", "filecast", "ggulfile", "smartfile", "ssadafile", "filesun",
+    "me2disk", "filecast", "smartfile", "filesun",
+  ];
+
+  /*
+   * 예비 후보.
+   *
+   * true 로 두면 그 회차부터 추첨에 들어가고, false 로 바꾸면 빠집니다.
+   * 아래 PROVIDERS 의 소개 문구와 webhard.html 의 카드·비교표 행은
+   * 꺼 둔 동안에도 그대로 남으므로, 스위치만 도로 켜면 됩니다.
+   *
+   * 지금은 상시 후보가 9곳이라 둘 다 켜야 10위까지 채워집니다.
+   * 하나라도 끄면 노출 수가 그만큼 줄어듭니다(아래 DISPLAY_LIMIT 참고).
+   */
+  const RESERVE = {
+    fileis: true,
+    filecookie: true,
+  };
+
+  const ALL = [
+    ...ACTIVE,
+    ...Object.keys(RESERVE).filter((id) => RESERVE[id]),
   ];
 
   const PROVIDERS = {
@@ -58,26 +80,12 @@
       logo: "filecast.png",
       url: "https://filecast.co.kr/",
     },
-    ggulfile: {
-      id: "ggulfile",
-      name: "꿀파일",
-      description: "영상과 웹툰을 한곳에서",
-      logo: "ggul.svg",
-      url: "https://ggulfile.com/",
-    },
     smartfile: {
       id: "smartfile",
       name: "스마트파일",
       description: "화질을 골라 바로보기",
       logo: "smartfile.png",
       url: "https://smartfile.co.kr/",
-    },
-    ssadafile: {
-      id: "ssadafile",
-      name: "싸다파일",
-      description: "영상부터 E북까지 모바일 탐색",
-      logo: "ssada.svg",
-      url: "https://ssadafile.com/",
     },
     filesun: {
       id: "filesun",
@@ -86,9 +94,36 @@
       logo: "filesun.png",
       url: "https://www.filesun.com/",
     },
+
+    /*
+     * ── 예비 후보 ────────────────────────────────────────────────
+     * 아래 두 곳은 RESERVE 스위치로 넣었다 뺐다 합니다.
+     * description 은 공식 안내에서 확인한 내용으로 바꿔 주세요.
+     * 지금 값은 서비스 종류만 말하는 최소 문구입니다.
+     */
+    fileis: {
+      id: "fileis",
+      name: "파일이즈",
+      description: "PC·모바일 자료 이용",
+      logo: "",
+      url: "https://www.fileis.com/",
+    },
+    filecookie: {
+      id: "filecookie",
+      name: "파일쿠키",
+      description: "PC·모바일 자료 이용",
+      logo: "",
+      url: "https://www.filecookie.co.kr/",
+    },
   };
 
-  const DISPLAY_LIMIT = 10;
+  /*
+   * 한 회차에 보여 줄 곳의 수.
+   *
+   * 후보가 10곳보다 적으면(예비를 둘 다 꺼 둔 경우) 있는 만큼만
+   * 보여 줍니다. 10 으로 못 박아 두면 빈 자리가 생깁니다.
+   */
+  const DISPLAY_LIMIT = Math.min(10, ALL.length);
   const SLOT_HOURS = 3;
   const SLOT_MS = SLOT_HOURS * 60 * 60 * 1000;
   const KST_MS = 9 * 60 * 60 * 1000;
