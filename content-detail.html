@@ -214,6 +214,14 @@
         };
       }
 
+      const TMDB_STATUS_KO = {
+        "Ended": "종영",
+        "Returning Series": "방영 중",
+        "In Production": "제작 중",
+        "Planned": "공개 예정",
+        "Canceled": "제작 취소",
+      };
+
       function tvWork(w) {
         if (!w) return null;
         const genres = (w.genres || [])
@@ -222,7 +230,7 @@
         const points = [
           w.rank ? `인기 ${w.rank}위` : "",
           w.nextAirDate ? `다음 방송 ${prettyDate(w.nextAirDate)}` : "",
-          w.status ? `상태 · ${w.status}` : "",
+          w.status ? `상태 · ${TMDB_STATUS_KO[w.status] || w.status}` : "",
         ].filter(Boolean);
         return {
           id: `tmdb-${w.tmdbId}`,
