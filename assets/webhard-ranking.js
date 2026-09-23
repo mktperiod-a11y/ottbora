@@ -113,7 +113,7 @@
       name: "파일쿠키",
       description: "PC·모바일 자료 이용",
       logo: "filecookie.svg",
-      url: "https://www.filecookie.co.kr/",
+      url: "https://www.filekuki.com/",
     },
   };
 
