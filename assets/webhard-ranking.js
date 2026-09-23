@@ -23,6 +23,9 @@
   const RESERVE = {
     fileis: true,
     filecookie: true,
+    bigfile: true,
+    megafile: true,
+    pdpop: true,
   };
 
   const ALL = [
@@ -105,7 +108,7 @@
       id: "fileis",
       name: "파일이즈",
       description: "PC·모바일 자료 이용",
-      logo: "",
+      logo: "fileis.svg",
       url: "https://www.fileis.com/",
     },
     filecookie: {
@@ -114,6 +117,27 @@
       description: "PC·모바일 자료 이용",
       logo: "filecookie.svg",
       url: "https://www.filekuki.com/",
+    },
+    bigfile: {
+      id: "bigfile",
+      name: "빅파일",
+      description: "실시간 TOP100 · 다양한 콘텐츠",
+      logo: "bigfile.svg",
+      url: "https://bigfile.co.kr/",
+    },
+    megafile: {
+      id: "megafile",
+      name: "메가파일",
+      description: "PC·모바일 자료 이용",
+      logo: "megafile.svg",
+      url: "https://www.megafile.co.kr/",
+    },
+    pdpop: {
+      id: "pdpop",
+      name: "피디팝",
+      description: "인기콘텐츠 · 전용 프로그램",
+      logo: "pdpop.svg",
+      url: "https://pdpop.co.kr/",
     },
   };
 
@@ -124,6 +148,7 @@
    * 보여 줍니다. 10 으로 못 박아 두면 빈 자리가 생깁니다.
    */
   const DISPLAY_LIMIT = Math.min(10, ALL.length);
+  const TOP4_ELIGIBLE = ALL.filter((id) => id !== "pdpop");
   const SLOT_HOURS = 3;
   const SLOT_MS = SLOT_HOURS * 60 * 60 * 1000;
   const KST_MS = 9 * 60 * 60 * 1000;
@@ -192,7 +217,9 @@
       const missingPrimary = PRIMARY.filter((id) => !order.includes(id));
       order.push(pick(missingPrimary, rng));
     } else {
-      order.push(pick(ALL.filter((id) => !order.includes(id)), rng));
+      order.push(
+        pick(TOP4_ELIGIBLE.filter((id) => !order.includes(id)), rng),
+      );
     }
 
     // 온디스크·케이디스크는 둘 다 4위 안에 있도록 보장합니다.
@@ -200,7 +227,9 @@
     if (missingPrimary.length) {
       order.push(pick(missingPrimary, rng));
     } else {
-      order.push(pick(ALL.filter((id) => !order.includes(id)), rng));
+      order.push(
+        pick(TOP4_ELIGIBLE.filter((id) => !order.includes(id)), rng),
+      );
     }
 
     const rest = shuffle(
@@ -237,9 +266,33 @@
     const order = buildOrder(slot);
     const previous = buildOrder(slot - 1);
     const prev = positionMap(previous);
+    const previousVisible = new Set(previous.slice(0, DISPLAY_LIMIT));
     const nextRealMs = (slot + 1) * SLOT_MS - KST_MS;
 
     const visible = order.slice(0, DISPLAY_LIMIT);
+    const items = visible.map((id, index) => {
+      const position = index + 1;
+      const previousPosition = prev.get(id) || position;
+      const isNew = !previousVisible.has(id);
+      return {
+        ...PROVIDERS[id],
+        position,
+        previousPosition,
+        delta: previousPosition - position,
+        isNew,
+      };
+    });
+
+    const summary = items.reduce(
+      (acc, item) => {
+        if (item.isNew) acc.new += 1;
+        else if (item.delta > 0) acc.up += 1;
+        else if (item.delta < 0) acc.down += 1;
+        else acc.same += 1;
+        return acc;
+      },
+      { up: 0, down: 0, same: 0, new: 0 },
+    );
 
     return {
       slot,
@@ -248,25 +301,20 @@
       remainingMs: nextRealMs - now,
       remainingLabel: formatClock(nextRealMs - now),
       fullOrder: [...order],
-      order: visible.map((id, index) => {
-        const position = index + 1;
-        return {
-          ...PROVIDERS[id],
-          position,
-          previousPosition: prev.get(id) || position,
-          delta: (prev.get(id) || position) - position,
-        };
-      }),
+      summary,
+      order: items,
     };
   }
 
-  function deltaText(delta) {
+  function deltaText(delta, isNew = false) {
+    if (isNew) return "NEW";
     if (delta > 0) return `▲${delta}`;
     if (delta < 0) return `▼${Math.abs(delta)}`;
     return "–";
   }
 
-  function deltaClass(delta) {
+  function deltaClass(delta, isNew = false) {
+    if (isNew) return "is-new";
     if (delta > 0) return "is-up";
     if (delta < 0) return "is-down";
     return "is-same";
