@@ -42,11 +42,24 @@ h4{font-size: 14px;margin:0 0 9px}
 .opinion{color:#8c4c5a;font-size: 12px}
 .facts ul{margin:0;padding-left:18px;font-size: 15px;color:#536070;line-height:1.65}
 .facts li+li{margin-top:5px}
-.reason{background:#f5f7fa;padding:13px 15px;border-radius:8px;margin-top:13px}
+.reason{
+  background:#f5f7fa;
+  padding:14px 16px;
+  border-radius:8px;
+  margin:14px 0 18px;
+}
 /* 추천 상자는 일반 카드와 같은 회색을 씁니다. 분홍을 뺐습니다. */
 .featured .reason{background:#eef1f6}
 .reason p{margin:0;font-size: 15px;line-height:1.65}
-.provider-bottom{margin-top:auto;display:flex;align-items:flex-start;gap:16px;padding-top:13px;border-top:1px solid var(--line)}
+.provider-bottom{
+  margin-top:auto;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  min-height:58px;
+  padding-top:16px;
+  border-top:1px solid var(--line);
+}
 .comparison-section{background:#edf0f5;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:45px 0}
 .table-wrap{border:1px solid #d8dfe8;background:#fff;border-radius:10px;overflow:auto}
 table{border-collapse:collapse;width:100%;font-size: 15px;min-width:680px;text-align:left}
@@ -249,5 +262,18 @@ tbody td:first-child .rank-move {
 @media (max-width: 360px) {
   .provider.featured .rank-number {
     font-size: 32px;
+  }
+}
+
+
+/* 추천 박스와 하단 CTA 사이 간격을 카드마다 일정하게 유지합니다. */
+@media (max-width:650px){
+  .reason{
+    margin:13px 0 16px;
+    padding:13px 14px;
+  }
+  .provider-bottom{
+    min-height:54px;
+    padding-top:14px;
   }
 }
