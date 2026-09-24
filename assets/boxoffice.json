@@ -2,15 +2,34 @@
   "note": "일별 박스오피스를 작품 단위로 누적한 목록입니다. 콘텐츠ZONE 의 영화·애니 탭에서 씁니다.",
   "source": "영화진흥위원회 오픈API 일별 박스오피스",
   "sourceUrl": "https://www.kobis.or.kr/kobisopenapi/",
-  "updatedAt": "2026-09-23",
-  "latestDt": "20260922",
+  "updatedAt": "2026-09-24",
+  "latestDt": "20260923",
   "keepDays": 45,
   "movies": [
+    {
+      "movieCd": "20255033",
+      "title": "암살자(들)",
+      "openedAt": "2026-09-23",
+      "audienceAcc": 158592,
+      "genres": [
+        "범죄",
+        "드라마"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260917",
+      "lastSeenAt": "20260923",
+      "days": 4,
+      "bestRank": 1,
+      "rank": 1,
+      "showing": true,
+      "poster": "assets/posters/20255033.webp",
+      "posterCredit": "TMDB"
+    },
     {
       "movieCd": "20250654",
       "title": "오디세이",
       "openedAt": "2026-08-05",
-      "audienceAcc": 11286770,
+      "audienceAcc": 11327978,
       "genres": [
         "액션",
         "드라마",
@@ -18,10 +37,10 @@
       ],
       "type": "영화",
       "firstSeenAt": "20260824",
-      "lastSeenAt": "20260922",
-      "days": 30,
+      "lastSeenAt": "20260923",
+      "days": 31,
       "bestRank": 1,
-      "rank": 1,
+      "rank": 3,
       "showing": true,
       "poster": "assets/posters/20250654.webp",
       "posterCredit": "TMDB"
@@ -30,16 +49,16 @@
       "movieCd": "20256308",
       "title": "인턴",
       "openedAt": "2026-09-16",
-      "audienceAcc": 471218,
+      "audienceAcc": 494589,
       "genres": [
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260904",
-      "lastSeenAt": "20260922",
-      "days": 10,
+      "lastSeenAt": "20260923",
+      "days": 11,
       "bestRank": 1,
-      "rank": 2,
+      "rank": 4,
       "showing": true,
       "poster": "assets/posters/20256308.webp",
       "posterCredit": "TMDB"
@@ -48,7 +67,7 @@
       "movieCd": "20262770",
       "title": "스파이더맨: 브랜드 뉴 데이",
       "openedAt": "2026-07-29",
-      "audienceAcc": 8998514,
+      "audienceAcc": 9002750,
       "genres": [
         "액션",
         "어드벤처",
@@ -56,10 +75,10 @@
       ],
       "type": "영화",
       "firstSeenAt": "20260824",
-      "lastSeenAt": "20260922",
-      "days": 30,
+      "lastSeenAt": "20260923",
+      "days": 31,
       "bestRank": 2,
-      "rank": 5,
+      "rank": 9,
       "showing": true,
       "poster": "assets/posters/20262770.webp",
       "posterCredit": "TMDB"
@@ -68,25 +87,44 @@
       "movieCd": "20265146",
       "title": "옵세션",
       "openedAt": "2026-09-02",
-      "audienceAcc": 741466,
+      "audienceAcc": 759831,
       "genres": [
         "공포(호러)"
       ],
       "type": "영화",
       "firstSeenAt": "20260902",
-      "lastSeenAt": "20260922",
-      "days": 21,
+      "lastSeenAt": "20260923",
+      "days": 22,
       "bestRank": 2,
-      "rank": 3,
+      "rank": 7,
       "showing": true,
       "poster": "assets/posters/20265146.webp",
+      "posterCredit": "TMDB"
+    },
+    {
+      "movieCd": "20256161",
+      "title": "타짜: 벨제붑의 노래",
+      "openedAt": "2026-09-23",
+      "audienceAcc": 122549,
+      "genres": [
+        "범죄",
+        "드라마"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260914",
+      "lastSeenAt": "20260923",
+      "days": 6,
+      "bestRank": 2,
+      "rank": 2,
+      "showing": true,
+      "poster": "assets/posters/20256161.webp",
       "posterCredit": "TMDB"
     },
     {
       "movieCd": "20263870",
       "title": "레지던트 이블: 0번째 밤",
       "openedAt": "2026-09-17",
-      "audienceAcc": 125802,
+      "audienceAcc": 136626,
       "genres": [
         "공포(호러)",
         "액션",
@@ -94,12 +132,67 @@
       ],
       "type": "영화",
       "firstSeenAt": "20260917",
-      "lastSeenAt": "20260922",
-      "days": 6,
+      "lastSeenAt": "20260923",
+      "days": 7,
       "bestRank": 3,
-      "rank": 4,
+      "rank": 8,
       "showing": true,
       "poster": "assets/posters/20263870.webp",
+      "posterCredit": "TMDB"
+    },
+    {
+      "movieCd": "20266766",
+      "title": "어벤져스: 엔드게임 앙코르",
+      "openedAt": "2026-09-23",
+      "audienceAcc": 21502,
+      "genres": [
+        "액션",
+        "SF"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260923",
+      "lastSeenAt": "20260923",
+      "days": 1,
+      "bestRank": 5,
+      "rank": 5,
+      "showing": true
+    },
+    {
+      "movieCd": "20264801",
+      "title": "포가튼 아일랜드",
+      "openedAt": "2026-09-23",
+      "audienceAcc": 18047,
+      "genres": [
+        "판타지",
+        "코미디",
+        "어드벤처"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260912",
+      "lastSeenAt": "20260923",
+      "days": 3,
+      "bestRank": 5,
+      "rank": 10,
+      "showing": true,
+      "poster": "assets/posters/20264801.webp",
+      "posterCredit": "TMDB"
+    },
+    {
+      "movieCd": "20254904",
+      "title": "가능한 사랑",
+      "openedAt": "2026-09-23",
+      "audienceAcc": 22160,
+      "genres": [
+        "드라마"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260921",
+      "lastSeenAt": "20260923",
+      "days": 2,
+      "bestRank": 6,
+      "rank": 6,
+      "showing": true,
+      "poster": "assets/posters/20254904.webp",
       "posterCredit": "TMDB"
     },
     {
@@ -116,8 +209,8 @@
       "lastSeenAt": "20260922",
       "days": 13,
       "bestRank": 4,
-      "rank": 7,
-      "showing": true,
+      "rank": null,
+      "showing": false,
       "poster": "assets/posters/20265423.webp",
       "posterCredit": "TMDB"
     },
@@ -136,8 +229,8 @@
       "lastSeenAt": "20260922",
       "days": 7,
       "bestRank": 5,
-      "rank": 6,
-      "showing": true,
+      "rank": null,
+      "showing": false,
       "poster": "assets/posters/20070216.webp",
       "posterCredit": "TMDB"
     },
@@ -156,8 +249,8 @@
       "lastSeenAt": "20260922",
       "days": 14,
       "bestRank": 5,
-      "rank": 8,
-      "showing": true,
+      "rank": null,
+      "showing": false,
       "poster": "assets/posters/20233219.webp",
       "posterCredit": "TMDB"
     },
@@ -174,8 +267,8 @@
       "lastSeenAt": "20260922",
       "days": 4,
       "bestRank": 8,
-      "rank": 9,
-      "showing": true,
+      "rank": null,
+      "showing": false,
       "poster": "assets/posters/20241110.webp",
       "posterCredit": "TMDB"
     },
@@ -192,65 +285,9 @@
       "lastSeenAt": "20260922",
       "days": 1,
       "bestRank": 10,
-      "rank": 10,
-      "showing": true,
+      "rank": null,
+      "showing": false,
       "poster": "assets/posters/20266148.webp",
-      "posterCredit": "TMDB"
-    },
-    {
-      "movieCd": "20255033",
-      "title": "암살자(들)",
-      "openedAt": "2026-09-23",
-      "audienceAcc": 23879,
-      "genres": [
-        "범죄",
-        "드라마"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20260917",
-      "lastSeenAt": "20260921",
-      "days": 3,
-      "bestRank": 5,
-      "rank": null,
-      "showing": false,
-      "poster": "assets/posters/20255033.webp",
-      "posterCredit": "TMDB"
-    },
-    {
-      "movieCd": "20254904",
-      "title": "가능한 사랑",
-      "openedAt": "2026-09-23",
-      "audienceAcc": 2649,
-      "genres": [
-        "드라마"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20260921",
-      "lastSeenAt": "20260921",
-      "days": 1,
-      "bestRank": 7,
-      "rank": null,
-      "showing": false,
-      "poster": "assets/posters/20254904.webp",
-      "posterCredit": "TMDB"
-    },
-    {
-      "movieCd": "20256161",
-      "title": "타짜: 벨제붑의 노래",
-      "openedAt": "2026-09-23",
-      "audienceAcc": 19183,
-      "genres": [
-        "범죄",
-        "드라마"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20260914",
-      "lastSeenAt": "20260920",
-      "days": 5,
-      "bestRank": 5,
-      "rank": null,
-      "showing": false,
-      "poster": "assets/posters/20256161.webp",
       "posterCredit": "TMDB"
     },
     {
@@ -287,26 +324,6 @@
       "rank": null,
       "showing": false,
       "poster": "assets/posters/20265587.webp",
-      "posterCredit": "TMDB"
-    },
-    {
-      "movieCd": "20264801",
-      "title": "포가튼 아일랜드",
-      "openedAt": "2026-09-23",
-      "audienceAcc": 15777,
-      "genres": [
-        "판타지",
-        "코미디",
-        "어드벤처"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20260912",
-      "lastSeenAt": "20260919",
-      "days": 2,
-      "bestRank": 5,
-      "rank": null,
-      "showing": false,
-      "poster": "assets/posters/20264801.webp",
       "posterCredit": "TMDB"
     },
     {
