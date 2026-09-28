@@ -63,6 +63,40 @@ const why = (e) =>
     .filter((v, i, a) => a.indexOf(v) === i)
     .join(" / ");
 
+/*
+ * 쿠키 보관함. 첫 방문에 쿠키를 심고 같은 주소로 되돌려 보내는
+ * 사이트(빅파일)가 있어, 받은 쿠키를 다음 요청에 돌려줍니다.
+ */
+const jar = new Map();
+function remember(res) {
+  const list = res.headers.getSetCookie?.() || [];
+  for (const line of list) {
+    const [pair] = line.split(";");
+    const i = pair.indexOf("=");
+    if (i > 0) jar.set(pair.slice(0, i).trim(), pair.slice(i + 1).trim());
+  }
+}
+const cookieHeader = () =>
+  jar.size ? { cookie: [...jar].map(([k, v]) => `${k}=${v}`).join("; ") } : {};
+
+/*
+ * 국내 웹하드는 EUC-KR(CP949) 로 쓴 페이지가 많습니다. res.text() 는
+ * 늘 UTF-8 로 풀어 alt="로고" 같은 한글이 깨지고, 그래서 로고를 못
+ * 알아봤습니다(피디팝). 머리글이나 <meta charset> 을 보고 풉니다.
+ */
+function decode(buf, type) {
+  const head = buf.subarray(0, 4096).toString("latin1");
+  const cs =
+    (type.match(/charset=([\w-]+)/i) || [])[1] ||
+    (head.match(/<meta[^>]+charset=["']?([\w-]+)/i) || [])[1] ||
+    "utf-8";
+  try {
+    return new TextDecoder(cs.toLowerCase()).decode(buf);
+  } catch {
+    return new TextDecoder("utf-8").decode(buf);
+  }
+}
+
 async function get(url, { referer, asText = false } = {}) {
   const res = await fetch(url, {
     headers: {
@@ -70,12 +104,17 @@ async function get(url, { referer, asText = false } = {}) {
       accept: asText ? "text/html,text/css,*/*" : "image/*,*/*",
       "accept-language": "ko-KR,ko;q=0.9",
       ...(referer ? { referer } : {}),
+      ...cookieHeader(),
     },
     redirect: "follow",
     signal: AbortSignal.timeout(20000),
   });
+  remember(res);
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  if (asText) return { url: res.url, text: await res.text() };
+  if (asText) {
+    const buf = Buffer.from(await res.arrayBuffer());
+    return { url: res.url, text: decode(buf, res.headers.get("content-type") || "") };
+  }
   const type = res.headers.get("content-type") || "";
   const buf = Buffer.from(await res.arrayBuffer());
   if (buf.length > MAX_BYTES) throw new Error(`너무 큼 ${buf.length}B`);
@@ -87,7 +126,7 @@ const attr = (tag, name) => {
   return m ? (m[2] ?? m[3] ?? m[4] ?? "") : "";
 };
 
-function findCandidates(html, base) {
+function findCandidates(html, base, siteName = "") {
   const out = [];
   const add = (raw, kind, note = "") => {
     if (!raw || raw.startsWith("data:") || raw.startsWith("javascript:")) return;
@@ -98,8 +137,17 @@ function findCandidates(html, base) {
 
   for (const tag of html.match(/<img\b[^>]*>/gi) || []) {
     const src = attr(tag, "src") || attr(tag, "data-src");
-    const hay = [src, attr(tag, "alt"), attr(tag, "class"), attr(tag, "id")].join(" ");
-    if (/logo|로고|\bci\b|brand/i.test(hay)) add(src, "img", attr(tag, "alt"));
+    const alt = attr(tag, "alt");
+    const hay = [src, alt, attr(tag, "class"), attr(tag, "id")].join(" ");
+    // alt 가 사이트 이름 그대로인 이미지는 대개 로고입니다("피디팝", "빅파일").
+    const named = siteName && alt.replace(/\s/g, "") === siteName.replace(/\s/g, "");
+    if (/logo|로고|\bci\b|brand/i.test(hay) || named) add(src, "img", alt);
+  }
+  // 머리 <h1> 안의 이미지는 거의 늘 로고입니다.
+  for (const h1 of html.match(/<h1\b[\s\S]{0,600}?<\/h1>/gi) || []) {
+    for (const tag of h1.match(/<img\b[^>]*>/gi) || []) {
+      add(attr(tag, "src") || attr(tag, "data-src"), "h1", attr(tag, "alt"));
+    }
   }
   for (const tag of html.match(/<link\b[^>]*>/gi) || []) {
     const rel = attr(tag, "rel").toLowerCase();
@@ -116,25 +164,31 @@ function findCandidates(html, base) {
 async function cssCandidates(html, base) {
   const out = [];
   const sheets = [];
+  // img.megafile.co.kr 처럼 같은 도메인의 이미지 서버는 같은 사이트로 봅니다.
+  const site = new URL(base).hostname.split(".").slice(-3).join(".").replace(/^(www|m)\./, "");
+  const sameSite = (h) => h === site || h.endsWith("." + site);
   for (const tag of html.match(/<link\b[^>]*>/gi) || []) {
     if (!/stylesheet/i.test(attr(tag, "rel"))) continue;
     try {
       const u = new URL(attr(tag, "href"), base);
-      if (u.hostname.replace(/^www\./, "") === new URL(base).hostname.replace(/^www\./, "")) {
-        sheets.push(u.href);
-      }
+      if (sameSite(u.hostname)) sheets.push(u.href);
     } catch {}
   }
-  for (const href of sheets.slice(0, 6)) {
+  const scan = (text, from) => {
+    // 선택자에 logo·ci·h1 이 들어간 규칙의 배경 이미지
+    for (const rule of text.match(/[^{}]*(logo|\bci\b|\bh1\b)[^{}]*\{[^}]*\}/gi) || []) {
+      for (const m of rule.matchAll(/url\(\s*['"]?([^'")]+)['"]?\s*\)/gi)) {
+        try {
+          out.push({ url: new URL(m[1], from).href, kind: "css", note: rule.split("{")[0].trim().slice(0, 60) });
+        } catch {}
+      }
+    }
+  };
+  for (const block of html.match(/<style\b[\s\S]*?<\/style>/gi) || []) scan(block, base);
+  for (const href of sheets.slice(0, 8)) {
     try {
       const { text } = await get(href, { referer: base, asText: true });
-      for (const rule of text.match(/[^{}]*logo[^{}]*\{[^}]*\}/gi) || []) {
-        for (const m of rule.matchAll(/url\(\s*['"]?([^'")]+)['"]?\s*\)/gi)) {
-          try {
-            out.push({ url: new URL(m[1], href).href, kind: "css", note: rule.split("{")[0].trim().slice(0, 60) });
-          } catch {}
-        }
-      }
+      scan(text, href);
     } catch {}
   }
   return out;
@@ -211,16 +265,59 @@ for (const p of targets) {
     report.push(entry);
     continue;
   }
-  await writeFile(`${dir}/home.html`, page.text);
+  /*
+   * 껍데기 페이지를 따라 들어갑니다.
+   *
+   *   meta refresh  <meta http-equiv="refresh" content="1;url=...">
+   *                 빅파일은 첫 방문에 쿠키를 심고 같은 주소로 되돌려
+   *                 보냅니다. 쿠키를 들고 다시 열면 본문이 옵니다.
+   *   frameset      파일노리는 <frameset> 안에 진짜 페이지
+   *                 (/noriNew/home.do)를 담아 둡니다.
+   */
+  const docs = [page];
+  for (let hop = 0; hop < 3; hop += 1) {
+    const cur = docs[docs.length - 1];
+    const refresh = (cur.text.match(/<meta[^>]+http-equiv=["']?refresh["']?[^>]*>/i) || [])[0];
+    const target = refresh && (attr(refresh, "content").match(/url\s*=\s*['"]?([^'";]+)/i) || [])[1];
+    if (!target) break;
+    try {
+      const next = await get(new URL(target, cur.url).href, { referer: cur.url, asText: true });
+      console.log(`  ${p.name}: 새로고침 안내를 따라 ${next.url} 를 다시 열었습니다`);
+      docs.push(next);
+    } catch (e) {
+      console.warn(`  ${p.name}: 새로고침 대상 ${target} 실패 — ${why(e)}`);
+      break;
+    }
+  }
+  for (const tag of docs[docs.length - 1].text.match(/<i?frame\b[^>]*>/gi) || []) {
+    const src = attr(tag, "src");
+    if (!src || /^(about:|javascript:)/i.test(src)) continue;
+    try {
+      const u = new URL(src, docs[docs.length - 1].url);
+      if (u.hostname.replace(/^(www|m)\./, "") !== new URL(page.url).hostname.replace(/^(www|m)\./, "")) continue;
+      const inner = await get(u.href, { referer: page.url, asText: true });
+      console.log(`  ${p.name}: 프레임 안 페이지 ${inner.url} 도 봅니다`);
+      docs.push(inner);
+    } catch (e) {
+      console.warn(`  ${p.name}: 프레임 ${src} 실패 — ${why(e)}`);
+    }
+  }
+
+  await writeFile(`${dir}/home.html`, docs.map((d) => `<!-- ${d.url} -->\n${d.text}`).join("\n\n"));
 
   const seen = new Set();
-  const found = [
-    ...findCandidates(page.text, page.url),
-    ...(await cssCandidates(page.text, page.url)),
-  ].filter((c) => !seen.has(c.url) && seen.add(c.url));
+  const found = [];
+  for (const d of docs) {
+    found.push(...findCandidates(d.text, d.url, p.name));
+    found.push(...(await cssCandidates(d.text, d.url)));
+  }
+  const unique = found.filter((c) => !seen.has(c.url) && seen.add(c.url));
+  // 로고일 가능성이 높은 순서로 둡니다. 개수 상한에 걸려도 좋은 후보가 남게.
+  const ORDER = { img: 0, h1: 1, css: 2, og: 3, icon: 4 };
+  unique.sort((a, b) => (ORDER[a.kind] ?? 9) - (ORDER[b.kind] ?? 9));
 
   let n = 0;
-  for (const c of found.slice(0, MAX_PER_SITE)) {
+  for (const c of unique.slice(0, MAX_PER_SITE)) {
     try {
       const img = await get(c.url, { referer: page.url });
       const ext = extOf(img.type, img.url);
