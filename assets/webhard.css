@@ -765,7 +765,7 @@ tbody td:first-child .rank-move {
     font-size: 16px;
   }
 
-  /* 주요 특징 · 이런 분께 추천: 라벨을 위, 값을 아래에 둡니다. */
+  /* 주요 특징: 라벨을 위, 값을 아래에 둡니다. */
   #comparison tbody td[data-label] {
     flex: 1 1 100%;
     display: flex;
@@ -773,13 +773,9 @@ tbody td:first-child .rank-move {
     gap: 2px;
     margin-top: 10px;
     padding-top: 10px;
-    border-top: 1px dashed var(--line);
+    border-top: 1px solid var(--line);
     font-size: 13px;
     color: #657080;
-  }
-
-  #comparison tbody td[data-label]:first-of-type {
-    border-top: 1px solid var(--line);
   }
 
   #comparison tbody td[data-label]::before {
@@ -787,5 +783,18 @@ tbody td:first-child .rank-move {
     font-size: 11px;
     font-weight: 700;
     color: #8b95a3;
+  }
+
+  /*
+   * "이런 분께 추천"은 아래 #more 카드의 "이런 분께 추천해요"와 문장까지
+   * 거의 같습니다(예: "인기 목록부터 빠르게 둘러보고 싶은 분" / "인기
+   * 목록에서 볼거리를 먼저 고르는 분."). 표가 카드형이 되며 두 구간이
+   * 모바일에서 같은 모양·같은 내용으로 겹쳐 보였습니다. 이 칸은 모바일
+   * 카드에서 빼고, 서비스명을 누르면 이어지는 #more 카드에서 보여 줍니다.
+   * 위 규칙과 이 규칙은 우선순위가 같아 순서상 나중인 이 규칙이 이깁니다.
+   * 표(데스크톱)와 스크린리더에는 그대로 남습니다.
+   */
+  #comparison tbody td[data-label="이런 분께 추천"] {
+    display: none;
   }
 }
