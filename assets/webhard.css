@@ -619,3 +619,38 @@ tbody td:first-child .rank-move {
   .ranking-live-card strong { margin: 0; color: #35445a; font-size: 18px; font-weight: 700; }
   .ranking-live-card small { display: none; }
 }
+
+/* 추천 대상이 먼저 보이도록 본문을 순서대로 읽히는 평면 레이아웃으로 정리합니다. */
+#more .provider .reason,
+#more .provider.featured .reason {
+  min-height: 63px;
+  margin: 0 0 11px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+#more .reason h4 {
+  margin: 0 0 4px;
+  color: #667386;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+#more .reason p {
+  color: #344255;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+#more .facts {
+  padding-top: 11px;
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 650px) {
+  #more .provider .reason,
+  #more .provider.featured .reason { min-height: 0; margin-bottom: 12px; }
+}
