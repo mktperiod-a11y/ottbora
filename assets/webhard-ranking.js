@@ -33,6 +33,16 @@
     ...Object.keys(RESERVE).filter((id) => RESERVE[id]),
   ];
 
+  /*
+   * logo 는 반드시 그 사이트의 공식 파일입니다. 글자로 흉내 낸 로고를
+   * 만들어 넣지 않습니다(한 번 그렇게 들어간 가짜 로고 여섯 개를 모두
+   * 걷어 냈습니다).
+   *
+   * 작업 환경에서 사이트가 막혀 로고를 못 받으면 Actions 의 "공식 로고
+   * 후보 모으기"를 돌립니다(scripts/fetch-logos.mjs). 그래도 없으면
+   * logo 를 비워 두고(홈 순위 카드는 이름을 글자로 보여 줍니다) 사용자
+   * 에게 파일을 받습니다.
+   */
   const PROVIDERS = {
     ondisk: {
       id: "ondisk",
@@ -66,7 +76,7 @@
       id: "filenori",
       name: "파일노리",
       description: "모바일 탐색과 전용 플레이어",
-      logo: "filenori.svg",
+      logo: "filenori.gif",
       url: "https://www.filenori.com/",
     },
     me2disk: {
@@ -115,28 +125,28 @@
       id: "filecookie",
       name: "파일쿠키",
       description: "PC·모바일 자료 이용",
-      logo: "filecookie.svg",
+      logo: "filecookie.png",
       url: "https://www.filekuki.com/",
     },
     bigfile: {
       id: "bigfile",
       name: "빅파일",
       description: "실시간 TOP100 · 다양한 콘텐츠",
-      logo: "bigfile.svg",
+      logo: "bigfile.png",
       url: "https://bigfile.co.kr/",
     },
     megafile: {
       id: "megafile",
       name: "메가파일",
       description: "PC·모바일 자료 이용",
-      logo: "megafile.svg",
+      logo: "megafile.png",
       url: "https://www.megafile.co.kr/",
     },
     pdpop: {
       id: "pdpop",
       name: "피디팝",
       description: "인기콘텐츠 · 전용 프로그램",
-      logo: "pdpop.svg",
+      logo: "pdpop.png",
       url: "https://pdpop.co.kr/",
     },
   };
