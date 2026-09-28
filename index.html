@@ -3,17 +3,77 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>오티티보라 | 웹하드 순위와 영화·드라마·예능 가이드</title>
+    <title>P2P 사이트·웹하드 순위와 오늘 볼 영화·드라마 | 오티티보라</title>
     <meta
       name="description"
-      content="웹하드 순위와 혜택을 비교하고 영화, 드라마, 예능 콘텐츠 정보를 포스터와 상세 가이드로 살펴보는 오티티보라입니다."
+      content="P2P 사이트·웹하드 추천 순위 TOP 10과 가입 전 확인사항, 극장 박스오피스와 화제의 드라마·예능까지. 오늘 볼 콘텐츠를 한곳에서 찾는 오티티보라입니다."
     />
-    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta
+      name="keywords"
+      content="P2P 사이트 순위, 웹하드 순위, 웹하드 추천, P2P 사이트 추천, 파일공유 사이트, 영화 추천, 드라마 추천, 예능 추천, 박스오피스 순위, 오티티보라"
+    />
+    <meta
+      name="robots"
+      content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
+    />
     <meta
       name="google-site-verification"
       content="JHCqGQSDLEkUNuxMIyLsiJ1MD7YUSj3L8IQckVgTCvo"
     />
     <link rel="canonical" href="https://mktperiod-a11y.github.io/ottbora/" />
+    <meta name="theme-color" content="#e52f49" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="assets/favicon-48.png" sizes="48x48" type="image/png" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="오티티보라" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:title" content="P2P 사이트·웹하드 순위와 오늘 볼 영화·드라마 | 오티티보라" />
+    <meta property="og:description" content="웹하드 추천 순위 TOP 10과 가입 전 확인사항, 박스오피스와 화제의 드라마·예능을 한곳에서 살펴보세요." />
+    <meta property="og:url" content="https://mktperiod-a11y.github.io/ottbora/" />
+    <meta property="og:image" content="https://mktperiod-a11y.github.io/ottbora/assets/og-webhard.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="P2P 사이트·웹하드 순위 TOP 10 한눈에 비교 — 오티티보라" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://mktperiod-a11y.github.io/ottbora/#website",
+      "url": "https://mktperiod-a11y.github.io/ottbora/",
+      "name": "오티티보라",
+      "alternateName": ["OTT BORA", "오티티 보라"],
+      "inLanguage": "ko-KR",
+      "publisher": { "@id": "https://mktperiod-a11y.github.io/ottbora/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://mktperiod-a11y.github.io/ottbora/#organization",
+      "name": "오티티보라",
+      "url": "https://mktperiod-a11y.github.io/ottbora/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://mktperiod-a11y.github.io/ottbora/assets/apple-touch-icon.png",
+        "width": 180,
+        "height": 180
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mktperiod-a11y.github.io/ottbora/#webpage",
+      "url": "https://mktperiod-a11y.github.io/ottbora/",
+      "name": "P2P 사이트·웹하드 순위와 오늘 볼 영화·드라마",
+      "description": "P2P 사이트·웹하드 추천 순위 TOP 10과 가입 전 확인사항, 극장 박스오피스와 화제의 드라마·예능을 한곳에서 살펴보는 오티티보라 홈입니다.",
+      "inLanguage": "ko-KR",
+      "isPartOf": { "@id": "https://mktperiod-a11y.github.io/ottbora/#website" },
+      "primaryImageOfPage": "https://mktperiod-a11y.github.io/ottbora/assets/og-webhard.png"
+    }
+  ]
+}
+    </script>
     <link rel="stylesheet" href="assets/fonts/gmarketsans/gmarketsans.css" />
     <link
       rel="stylesheet"
@@ -95,7 +155,7 @@
           <div class="section-head">
             <div>
               <span class="eyebrow">WEBHARD PICK</span>
-              <h2>웹하드 추천 순위</h2>
+              <h2>P2P·웹하드 추천 순위</h2>
               <p class="home-ranking-status" aria-live="polite">
                 <span class="home-ranking-dot" aria-hidden="true"></span>
                 <span id="home-ranking-status">추천 순서 자동 갱신</span>
@@ -104,7 +164,10 @@
             </div>
             <a class="head-action seed-action-button seed-action-button--variant_neutralSolid seed-action-button--size_medium seed-action-button--layout_withText seed-action-button--size_medium-layout_withText" href="webhard.html">10곳 비교하기</a>
           </div>
-          <div class="ranking" id="ranking"></div>
+          <!-- 스크립트를 실행하지 않는 검색 수집기도 목록을 읽도록 기본 순서를 미리
+               그려 둡니다(scripts/update-seo.mjs). 페이지가 뜨면 아래 스크립트가
+               현재 회차 순서로 다시 그립니다. -->
+          <div class="ranking" id="ranking"><!-- seo:ranking --><article class="rank-card"><div class="rank"><span class="home-rank-number">1</span><span class="home-rank-move is-same">–</span></div><div class="brand"><img src="assets/ondisk.svg" alt="온디스크 로고" loading="lazy" decoding="async"></div><div class="rank-info"><b>온디스크</b><span>다양한 장르·폭넓은 콘텐츠</span></div><a class="go" href="go/ondisk/" target="_blank" rel="noopener noreferrer">공식 홈페이지</a></article><article class="rank-card"><div class="rank"><span class="home-rank-number">2</span><span class="home-rank-move is-same">–</span></div><div class="brand"><img src="assets/kdisk.svg" alt="케이디스크 로고" loading="lazy" decoding="async"></div><div class="rank-info"><b>케이디스크</b><span>PC·모바일 감상과 다운로드</span></div><a class="go" href="go/kdisk/" target="_blank" rel="noopener noreferrer">공식 홈페이지</a></article><article class="rank-card"><div class="rank"><span class="home-rank-number">3</span><span class="home-rank-move is-same">–</span></div><div class="brand"><img src="assets/wedisk.png" alt="위디스크 로고" loading="lazy" decoding="async"></div><div class="rank-info"><b>위디스크</b><span>찜·다시보기와 화면 전송</span></div><a class="go" href="https://www.wedisk.co.kr/" target="_blank" rel="noopener noreferrer">공식 홈페이지</a></article><article class="rank-card"><div class="rank"><span class="home-rank-number">4</span><span class="home-rank-move is-same">–</span></div><div class="brand"><img src="assets/filejo.gif" alt="파일조 로고" loading="lazy" decoding="async"></div><div class="rank-info"><b>파일조</b><span>인기 TOP100으로 콘텐츠 탐색</span></div><a class="go" href="https://www.filejo.com/main/" target="_blank" rel="noopener noreferrer">공식 홈페이지</a></article><article class="rank-card"><div class="rank"><span class="home-rank-number">5</span><span class="home-rank-move is-same">–</span></div><div class="brand"><img src="assets/filenori.gif" alt="파일노리 로고" loading="lazy" decoding="async"></div><div class="rank-info"><b>파일노리</b><span>모바일 탐색과 전용 플레이어</span></div><a class="go" href="https://www.filenori.com/" target="_blank" rel="noopener noreferrer">공식 홈페이지</a></article><article class="rank-card"><div class="rank"><span class="home-rank-number">6</span><span class="home-rank-move is-same">–</span></div><div class="brand"><img src="assets/me2disk.jpg" alt="미투디스크 로고" loading="lazy" decoding="async"></div><div class="rank-info"><b>미투디스크</b><span>다양한 자료와 고객지원</span></div><a class="go" href="https://me2disk.com/" target="_blank" rel="noopener noreferrer">공식 홈페이지</a></article><article class="rank-card"><div class="rank"><span class="home-rank-number">7</span><span class="home-rank-move is-same">–</span></div><div class="brand"><img src="assets/filecast.png" alt="파일캐스트 로고" loading="lazy" decoding="async"></div><div class="rank-info"><b>파일캐스트</b><span>모바일 감상·정액관 이용</span></div><a class="go" href="https://filecast.co.kr/" target="_blank" rel="noopener noreferrer">공식 홈페이지</a></article><article class="rank-card"><div class="rank"><span class="home-rank-number">8</span><span class="home-rank-move is-same">–</span></div><div class="brand"><img src="assets/smartfile.png" alt="스마트파일 로고" loading="lazy" decoding="async"></div><div class="rank-info"><b>스마트파일</b><span>화질을 골라 바로보기</span></div><a class="go" href="https://smartfile.co.kr/" target="_blank" rel="noopener noreferrer">공식 홈페이지</a></article><article class="rank-card"><div class="rank"><span class="home-rank-number">9</span><span class="home-rank-move is-same">–</span></div><div class="brand"><img src="assets/filesun.png" alt="파일썬 로고" loading="lazy" decoding="async"></div><div class="rank-info"><b>파일썬</b><span>다양한 장르·출석 이벤트</span></div><a class="go" href="https://www.filesun.com/" target="_blank" rel="noopener noreferrer">공식 홈페이지</a></article><article class="rank-card"><div class="rank"><span class="home-rank-number">10</span><span class="home-rank-move is-same">–</span></div><div class="brand"><img src="assets/fileis.svg" alt="파일이즈 로고" loading="lazy" decoding="async"></div><div class="rank-info"><b>파일이즈</b><span>PC·모바일 자료 이용</span></div><a class="go" href="https://www.fileis.com/" target="_blank" rel="noopener noreferrer">공식 홈페이지</a></article><!-- /seo:ranking --></div>
         </div>
       </section>
       <section class="section wrap">
