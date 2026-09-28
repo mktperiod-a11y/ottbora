@@ -174,6 +174,14 @@ async function loadPrev() {
       cast: Array.isArray(m.cast) ? m.cast : [],
       rating: String(m.rating || ""),
       koficDetailFetched: Boolean(m.koficDetailFetched),
+      poster: m.poster || "",
+      posterCredit: m.posterCredit || "",
+      synopsis: m.synopsis || "",
+      synopsisCredit: m.synopsisCredit || "",
+      tmdbId: m.tmdbId ?? null,
+      score: m.score ?? null,
+      scoreBy: m.scoreBy || "",
+      voteCount: m.voteCount ?? null,
     });
   }
   return out;
