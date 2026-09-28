@@ -212,18 +212,6 @@
         );
       };
 
-      /*
-       * 태그 줄은 늘 한 줄입니다. 한 줄에 안 들어가는 태그는 자르지
-       * 않고 통째로 뺍니다 — 잘린 "#..." 는 아무것도 알려 주지
-       * 않기 때문입니다. 콘텐츠ZONE 과 같은 규칙입니다.
-       */
-      const fitTags = (host) => {
-        for (const tag of host.querySelectorAll(".tag")) {
-          tag.style.display = "";
-          tag.style.maxWidth = "";
-        }
-      };
-
       const drawPicks = () => {
         const host = document.querySelector("#picks");
         host.innerHTML = picks
@@ -239,16 +227,8 @@
               `</div></a>`,
           )
           .join("");
-        fitTags(host);
       };
       drawPicks();
-
-      /* 창 폭이 바뀌면 태그가 들어갈 자리도 달라집니다. 다시 잽니다. */
-      let fitTimer = 0;
-      addEventListener("resize", () => {
-        clearTimeout(fitTimer);
-        fitTimer = setTimeout(() => fitTags(document.querySelector("#picks")), 150);
-      });
 
       /*
        * 박스오피스 3위 안에 들어 있으면 편집 문구 대신 오늘 순위를 씁니다.

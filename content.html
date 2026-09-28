@@ -309,29 +309,6 @@
         );
       }
 
-      /*
-       * 그려 놓은 태그 중 한 줄에 다 안 들어가는 것을 지웁니다.
-       *
-       * CSS 만으로는 "몇 개가 들어가는지" 를 알 수 없습니다. 그냥
-       * overflow:hidden 으로 자르면 뒤 태그가 "#..." 만 남아 아무것도
-       * 알려 주지 않는 칩이 됩니다. 그릴 자리가 없으면 통째로 빼는
-       * 편이 읽기에 낫습니다.
-       *
-       * 첫 태그는 남깁니다 — 그것마저 없으면 이 카드가 왜 실렸는지
-       * 말할 길이 없습니다. 혼자서도 넘치면 CSS 가 말줄임 합니다.
-       *
-       * 카드를 다 그린 뒤 한 번만 재므로, 한 페이지에 레이아웃
-       * 계산이 한 번 더 일어납니다.
-       */
-      function fitTags(host) {
-        // CSS가 한 줄 + ellipsis를 처리합니다.
-        // 기존처럼 뒤 칩을 통째로 숨기지 않습니다.
-        for (const tag of host.querySelectorAll(".tag")) {
-          tag.style.display = "";
-          tag.style.maxWidth = "";
-        }
-      }
-
       function badge(text) {
         return (
           `<span class="seed-badge__root seed-badge__root--size_medium` +
@@ -649,8 +626,6 @@
           `</div>` +
           pager(pages);
 
-        fitTags(host);
-
         host.querySelectorAll(".page-btn").forEach((b) => {
           b.onclick = () => {
             page = Number(b.dataset.page);
@@ -672,19 +647,6 @@
           f.scrollIntoView({ block: "start", behavior: "instant" });
         }
       }
-
-      /*
-       * 창 폭이 바뀌면 태그가 들어갈 자리도 달라집니다. 다시 잽니다.
-       * 이어서 들어오는 resize 를 한 번으로 묶습니다.
-       */
-      let fitTimer = 0;
-      addEventListener("resize", () => {
-        clearTimeout(fitTimer);
-        fitTimer = setTimeout(() => {
-          const host = document.querySelector("#sections");
-          if (host) fitTags(host);
-        }, 150);
-      });
 
       function tabs() {
         const host = document.querySelector(".filters");

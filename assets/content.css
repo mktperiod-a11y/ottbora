@@ -1,223 +1,85 @@
-nav{
-        height: 68px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-/* 위 여백은 공용 .page-head 가 줍니다. 여기서 또 주면 겹칩니다. */
-main{
-        padding: 0 0 80px;
-      }
-.filters{
-        display: flex;
-        gap: 7px;
-        margin: 25px 0;
-      }
-
-
-/* 포스터 카드. 2/3 비율이라 180px 면 세로가 270px 쯤 됩니다. */
-.grid{
-  --card-min: 180px;
-  --cards-gap: 17px;
-  /* 같은 행의 카드는 콘텐츠 양과 관계없이 같은 높이로 맞춥니다. */
-  align-items: stretch;
+nav {
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.card{
-        /* 한 줄 안에서 카드 높이는 그리드가 맞춰 줍니다. 짧은 카드는
-           아래에 빈 띠가 생기는데, 본문 칸이 남는 높이를 먹게 해서
-           그 여백이 카드 안쪽 패딩처럼 보이게 합니다. */
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        overflow: hidden;
-        border: 1px solid var(--l);
-        border-radius: 11px;
-        background: #fff;
-        transition: 0.2s;
-      }
-.card:hover{
-        transform: translateY(-5px);
-        box-shadow: 0 14px 30px #20273518;
-      }
-.thumb{
-        position: relative;
-        display: block;
-      }
-.card img{
-        display: block;
-        width: 100%;
-        aspect-ratio: 2/3;
-        object-fit: cover;
-      }
-.cb{
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        padding: 13px;
-      }
-/* 제목. 부제 줄 안의 <b>(대분류)는 여기 해당하지 않습니다. */
-/*
- * 제목은 두 줄까지 씁니다.
- *
- * 한 줄로 자르니 애니 20편 중 11편이 "추방당한 전생 중기사는…" 처럼
- * 뭉텅 잘렸습니다. 두 줄이면 대부분 다 들어갑니다.
- * min-height 로 두 줄 자리를 늘 비워 둬, 제목이 짧은 카드와 긴 카드의
- * 부제·태그 줄이 같은 높이에서 시작합니다.
- */
-.cb > b{
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
-        min-width: 0;
-        min-height: 2.7em;
-        font-size: 17px;
-        font-weight: 800;
-        letter-spacing: -0.4px;
-        line-height: 1.35;
-        overflow: hidden;
-      }
-.cb span{
-        display: block;
-        margin-top: 5px;
-        color: var(--muted);
-        font-size: var(--seed-font-size-t3);
-        line-height: 1.5;
-      }
-.detail{
-        display: grid;
-        grid-template-columns: 280px 1fr;
-        gap: 38px;
-        align-items: start;
-      }
-.detail-poster{
-        width: 100%;
-        border-radius: 14px;
-        box-shadow: 0 18px 35px #1b223025;
-      }
-.meta{
-        display: flex;
-        flex-wrap: wrap;
-        gap: 7px;
-        margin: 16px 0 24px;
-      }
-.meta span{
-        padding: 7px 11px;
-        border-radius: 18px;
-        background: #fff;
-        border: 1px solid var(--l);
-        font-size: var(--seed-font-size-t2);
-      }
-.copy{
-        padding: 25px;
-        border: 1px solid var(--l);
-        border-radius: 12px;
-        background: #fff;
-      }
-.copy h2{
-        font-size: 19px;
-        margin: 0 0 12px;
-      }
+/* 위 여백은 공용 .page-head 가 줍니다. 여기서 또 주면 겹칩니다. */
+main {
+  padding: 0 0 80px;
+}
+.thumb {
+  position: relative;
+  display: block;
+}
+.card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+}
+.cb span {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: var(--seed-font-size-t3);
+  line-height: 1.5;
+}
+.detail {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 38px;
+  align-items: start;
+}
+.detail-poster {
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 18px 35px #1b223025;
+}
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 16px 0 24px;
+}
+.meta span {
+  padding: 7px 11px;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid var(--l);
+  font-size: var(--seed-font-size-t2);
+}
+.copy {
+  padding: 25px;
+  border: 1px solid var(--l);
+  border-radius: 12px;
+  background: #fff;
+}
+.copy h2 {
+  font-size: 19px;
+  margin: 0 0 12px;
+}
 .copy p,
-      .copy li{
-        color: #606c7b;
-        font-size: 13px;
-        line-height: 1.8;
-      }
-.copy ul{
-        padding-left: 19px;
-      }
-.download{
-        display: block;
-        margin-top: 17px;
-        padding: 15px;
-        border-radius: 8px;
-        background: var(--r);
-        color: #fff;
-        text-align: center;
-        font-size: 14px;
-        font-weight: 900;
-      }
-.note{
-        display: block;
-        margin-top: 8px;
-        color: #929ba6;
-        font-size: 11px;
-        text-align: center;
-      }
-@media (max-width: 800px){.detail{
-          grid-template-columns: 220px 1fr;
-        }}
-@media (max-width: 560px){.grid{
-          --cards-gap: 11px;
-        }.detail{
-          grid-template-columns: 1fr;
-        }.detail-poster{
-          max-width: 260px;
-          margin: auto;
-        }h1{
-          font-size: 26px;
-        }}
-/* Mobile responsive audit: 320px–430px */
-      @media (max-width: 600px){
-        main {
-          padding: 0 0 58px;
-        }
-        .filters {
-          overflow-x: auto;
-          padding-bottom: 2px;
-          scrollbar-width: none;
-        }
-        .filters::-webkit-scrollbar {
-          display: none;
-        }
-        
-        .grid {
-          --card-min: 140px;
-          --cards-gap: 10px;
-        }
-        .card {
-          min-width: 0;
-        }
-        .cb {
-          padding: 11px;
-        }
-        /* 제목만 노립니다. 맨 .cb b 로 두면 부제 줄 안의
-           <b>(대분류)까지 16px 이 돼, 부제가 두 줄로 터집니다. */
-        .cb > b {
-          font-size: 16px;
-          line-height: 1.35;
-        }
-        .cb span {
-          font-size: 13px;
-          line-height: 1.45;
-        }
-        .card:hover {
-          transform: none;
-        }
-        footer {
-          font-size: 13px;
-          line-height: 1.5;
-        }
-      }
-@media (max-width: 350px){.cb{
-          padding: 9px;
-        }.cb > b{
-          font-size: 15px;
-        }.cb span{
-          font-size: 13px;
-        }}
-@media (max-width: 600px){nav{
-          height: auto;
-          min-height: 68px;
-          flex-wrap: wrap;
-          padding-top: 10px;
-        }}
+.copy li {
+  color: #606c7b;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.copy ul {
+  padding-left: 19px;
+}
+.note {
+  display: block;
+  margin-top: 8px;
+  color: #929ba6;
+  font-size: 11px;
+  text-align: center;
+}
 a:focus-visible,
-      button:focus-visible{
-        outline: 3px solid #ff8290;
-        outline-offset: 3px;
-      }
-
+button:focus-visible {
+  outline: 3px solid #ff8290;
+  outline-offset: 3px;
+}
 
 /* ===== 콘텐츠ZONE 재설계에서 추가된 규칙 ===== */
 
@@ -247,50 +109,9 @@ a:focus-visible,
   border-radius: var(--seed-radius-r3);
 }
 
-/* 건수는 탭 종류와 화면 폭에 관계없이 항상 탭 아래에 둡니다. */
-.filter-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 8px;
-  margin: 30px 0 20px;
-}
-
 .filter-row .filters {
   width: 100%;
   margin: 0;
-}
-
-/*
- * 탭 줄 아래 건수.
- *
- * nowrap 이면 좁은 화면에서 문장이 화면 밖으로 밀려 잘립니다.
- * 줄을 바꾸게 둡니다 — 한 줄이 두 줄이 되는 편이 말이 끊기는
- * 것보다 낫습니다.
- */
-.count {
-  margin: 0;
-  justify-self: start;
-  max-width: 100%;
-  color: var(--muted);
-  font-size: var(--seed-font-size-t3);
-  line-height: 1.5;
-}
-
-/* ===== 카드 표기 ===== */
-
-.cb .genre {
-  min-height: 1.5em;
-  color: var(--muted);
-}
-
-/*
- * 부제 줄 맨 앞의 대분류(영화/드라마/예능/애니).
- * 이 카드가 어느 탭에서 추려진 것인지 말합니다. 줄의 시작점이라
- * 굵게 두고, 나머지 회색 글자보다 한 단계 진하게 씁니다.
- */
-.cb .genre b {
-  color: var(--ink);
-  font-weight: var(--seed-font-weight-bold);
 }
 
 /* .cb span 이 block 이라 부제 안의 조각까지 줄바꿈됩니다. 되돌립니다. */
@@ -328,7 +149,7 @@ a:focus-visible,
  * 분류·태그·개봉일은 모두 아래 본문으로 내려, 포스터 카드와 순서를 맞췄습니다.
  */
 .panel {
-  /* 같은 줄에 하위 행동이 붙은 카드가 있으면 이 카드도 그만큼 늘어납니다.
+  /* 같은 줄의 다른 카드가 더 길면 이 카드도 그만큼 늘어납니다.
      판이 남는 높이를 먹게 해서 카드 아래에 흰 띠가 생기지 않게 합니다. */
   flex: 1;
   display: flex;
@@ -351,67 +172,125 @@ a:focus-visible,
  * 바탕색 여섯 가지. 모두 옅어서 본문색(#17202d)이 7:1 이상으로 읽힙니다.
  * 목록이 한 가지 색으로 깔리지 않게 하려는 것이라 채도는 낮게 둡니다.
  */
-.panel--t0 { background: linear-gradient(165deg, #eef2f8, #dbe4f0); }
-.panel--t1 { background: linear-gradient(165deg, #f8eff1, #f0dfe3); }
-.panel--t2 { background: linear-gradient(165deg, #edf4ef, #dcebe1); }
-.panel--t3 { background: linear-gradient(165deg, #f7f2e8, #ece2d2); }
-.panel--t4 { background: linear-gradient(165deg, #f2eff7, #e2ddef); }
-.panel--t5 { background: linear-gradient(165deg, #eef3f4, #dde7e9); }
+.panel--t0 {
+  background: linear-gradient(165deg, #eef2f8, #dbe4f0);
+}
+.panel--t1 {
+  background: linear-gradient(165deg, #f8eff1, #f0dfe3);
+}
+.panel--t2 {
+  background: linear-gradient(165deg, #edf4ef, #dcebe1);
+}
+.panel--t3 {
+  background: linear-gradient(165deg, #f7f2e8, #ece2d2);
+}
+.panel--t4 {
+  background: linear-gradient(165deg, #f2eff7, #e2ddef);
+}
+.panel--t5 {
+  background: linear-gradient(165deg, #eef3f4, #dde7e9);
+}
 
-/* 예매 칩은 카드 맨 아래에 붙습니다. 칩이 없으면 이 칸 자체가 없습니다. */
 .card--text .cb {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
 }
 
-/* 카드 안에 들어가는 칩이라 탭 칩보다 작게 둡니다.
-   세 개가 한 줄에 들어가야 카드 높이가 들쭉날쭉해지지 않습니다. */
-.book-chip {
-  height: auto;
-  padding: 6px 9px;
-  font-size: 12px;
-  white-space: nowrap;
-}
-
-/* 글자 카드는 링크가 아니므로 들어올릴 이유가 없습니다.
-   안에 있는 예매 칩만 눌립니다. */
 .card--text:hover {
   transform: none;
   box-shadow: none;
-}
-
-/* ===== 페이지 넘기기 ===== */
-
-.pager {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin: 30px 0 0;
 }
 
 .pager [aria-current="page"] {
   background: var(--seed-color-bg-brand-solid);
   color: var(--seed-color-palette-static-white);
 }
-
-@media (max-width: 560px) {
-  .panel {
-    padding: 14px 12px;
-  }
-
-  .panel-title {
-    font-size: 20px;
-    letter-spacing: -0.8px;
-  }
-
-
-  .book-chip {
-    padding: 6px 8px;
-  }
+.cb .genre b,
+.cb .genre span {
+  white-space: nowrap;
 }
 
+/*
+ * 부제 줄 맨 앞의 대분류(영화/드라마/예능/애니).
+ * 이 카드가 어느 탭에서 추려진 것인지 말합니다. 줄의 시작점이라
+ * 굵게 두고, 나머지 회색 글자보다 한 단계 진하게 씁니다.
+ */
 
+.cb .genre b {
+  color: var(--ink);
+  font-weight: var(--seed-font-weight-bold);
+  display: inline !important;
+  white-space: nowrap !important;
+}
+
+/* 포스터 카드. 2/3 비율이라 180px 면 세로가 270px 쯤 됩니다. */
+
+/* ===== 콘텐츠ZONE 목록 밀도 개선 ===== */
+.grid {
+  /* 같은 행의 카드는 콘텐츠 양과 관계없이 같은 높이로 맞춥니다. */
+  align-items: stretch;
+  --card-min: 160px;
+  --cards-gap: 12px;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px #20273514;
+}
+
+.cb {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px 11px;
+}
+/* 제목. 부제 줄 안의 <b>(대분류)는 여기 해당하지 않습니다. */
+/*
+ * 제목은 두 줄까지 씁니다.
+ *
+ * 한 줄로 자르니 애니 20편 중 11편이 "추방당한 전생 중기사는…" 처럼
+ * 뭉텅 잘렸습니다. 두 줄이면 대부분 다 들어갑니다.
+ * min-height 로 두 줄 자리를 늘 비워 둬, 제목이 짧은 카드와 긴 카드의
+ * 부제·태그 줄이 같은 높이에서 시작합니다.
+ */
+
+/* ===== 카드 텍스트 줄 수 최종 규칙 ===== */
+/* 제목: 최대 2줄 */
+
+.cb > b {
+  font-weight: 800;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  min-width: 0;
+  max-height: 2.7em;
+  overflow: hidden;
+  min-height: 2.6em;
+  font-size: 15.5px;
+  line-height: 1.3;
+  letter-spacing: -0.3px;
+}
+
+/* ===== 카드 표기 ===== */
+
+/* 메타 라인 강제 1줄: 구조도 단일 inline 흐름으로 맞췄습니다. */
+
+.cb .genre {
+  color: var(--muted);
+  display: block !important;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  height: 1.5em;
+  min-height: 1.5em;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  margin-top: 4px;
+  font-size: 11.5px;
+  line-height: 1.4;
+}
 
 /* ===== 카드 표기 — 한 자리에 한 종류 ===== */
 
@@ -421,598 +300,306 @@ a:focus-visible,
  * 애니는 그림 위 평점. 같은 줄에 다른 종류가 와서 읽히지 않았습니다.
  *
  * 이제 모든 카드가 같은 순서를 갖습니다.
- *   그림 → 제목 → 장르 → 태그 → (예매 같은 하위 행동)
+ *   그림 → 제목 → 장르 → 태그
  */
 
 /*
  * 태그 줄. 늘 한 줄입니다.
  *
  * 두 줄로 흘려 봤더니 카드마다 태그 줄 높이가 달라져 목록이
- * 들쭉날쭉해 보였습니다. 한 줄로 되돌리되, 잘라서 "#..." 만 남는
- * 칩이 생기지 않게 합니다 — 들어갈 자리가 없는 태그는 아예
- * 그리지 않습니다(content.html 의 fitTags).
+ * 들쭉날쭉해 보였습니다. 자리가 모자라면 태그마다 줄어들며 말줄임 합니다.
  *
  * margin-top:auto 가 태그를 늘 카드 아래에 붙여 둡니다.
  */
 .tags {
-  display: flex;
-  gap: 5px;
   margin-top: auto;
-  padding-top: 7px;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.tag {
-  /* 줄어들지 않게 둡니다. 줄어들면 flex 가 알아서 말줄임 해 버려
-     fitTags 가 "넘쳤다" 는 것을 볼 수 없습니다. 자리가 모자라면
-     줄어들 게 아니라 통째로 빠져야 합니다. */
-  flex: 0 0 auto;
-  min-width: 0;
-  padding: 3px 8px;
-  border-radius: 20px;
-  background: #eef1f6;
-  color: #4a5666;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1.5;
-  /* 태그 하나가 길면 그 안에서 말줄임 합니다. */
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-/* 앞 태그가 더 중요한 근거입니다. 자리가 모자라면 뒤쪽부터 줄입니다.
-   전에는 모두 똑같이 줄어서 "#국내 박스..." "#누적..." 처럼
-   둘 다 못 읽는 상태가 됐습니다. */
-/*
- * 맨 앞 태그도 줄어들지 않습니다.
- * 혼자 남았는데도 넘치는 경우에만 fitTags 가 max-width 를 걸어 주고,
- * 그때 위의 text-overflow 가 말줄임 합니다.
- */
-
-/* ===== 하위 행동 (예매·출처) ===== */
-
-/*
- * 카드의 주된 내용이 아니라 딸려 붙는 행동입니다.
- * 구분선과 라벨로 한 단 내려 둡니다.
- */
-.sub-action {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 5px;
-  margin: 0 13px 13px;
-  padding-top: 10px;
-  border-top: 1px solid var(--line);
-}
-
-.sub-action-label {
-  margin-right: 2px;
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 700;
-}
-
-/* 카드 안에 들어가는 칩이라 탭 칩보다 작게 둡니다. */
-.book-chip {
-  height: auto;
-  padding: 5px 9px;
-  font-size: 12px;
-  white-space: nowrap;
-}
-
-@media (max-width: 560px) {
-  .tag {
-    font-size: 11px;
-    padding: 3px 7px;
-  }
-
-  .sub-action {
-    margin: 0 11px 11px;
-  }
-
-  .panel-title {
-    font-size: 19px;
-    letter-spacing: -0.8px;
-  }
-}
-
-
-/* ===== 모바일 콘텐츠 카드 안정화 ===== */
-@media (max-width: 600px) {
-  /* 다섯 탭은 한 줄로 유지하고 필요할 때만 가로 스크롤합니다.
-     건수는 .filter-row의 두 번째 행에 고정됩니다. */
-  .filter-row {
-    gap: 9px;
-    margin-top: 24px;
-  }
-
-  .filter-row .filters {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding-bottom: 2px;
-    scrollbar-width: none;
-  }
-
-  .filter-row .filters::-webkit-scrollbar {
-    display: none;
-  }
-
-  .grid {
-    --card-min: 145px;
-    --cards-gap: 10px;
-    align-items: stretch;
-  }
-
-  .card {
-    align-self: stretch;
-    min-width: 0;
-    height: 100%;
-  }
-
-  .card .cb,
-  .card--text .cb {
-    flex: 1;
-    padding: 10px;
-  }
-
-  .cb > b {
-    font-size: 15px;
-    line-height: 1.35;
-    letter-spacing: -0.3px;
-  }
-
-  .cb .genre {
-    font-size: 12px;
-    line-height: 1.45;
-  }
-
-  /*
-   * 좁은 칸에서는 태그를 아래로 흘립니다.
-   *
-   * 한 줄로 묶어 두면 뒤 태그가 "#..." 만 남아 아무것도 알려 주지
-   * 않았습니다. 카드는 어차피 줄 높이에 맞춰 늘어나므로 한 줄이
-   * 더 생겨도 줄이 어긋나지 않습니다.
-   */
-  .tags {
-    gap: 4px;
-    margin-top: 6px;
-  }
-
-  /* 좁은 칸에 셋은 너무 많습니다. 앞 둘만 씁니다. */
-  .tags .tag:nth-child(n + 3) {
-    display: none;
-  }
-
-
-
-  .tag {
-    padding: 3px 6px;
-    font-size: 10.5px;
-  }
-
-  .sub-action {
-    gap: 4px;
-    margin: 0 10px 10px;
-    padding-top: 8px;
-  }
-
-  .sub-action-label {
-    font-size: 11px;
-  }
-
-  .book-chip {
-    padding: 4px 7px;
-    font-size: 11px;
-  }
-}
-
-
-@media (max-width: 360px) {
-  .grid {
-    --card-min: 132px;
-    --cards-gap: 8px;
-  }
-
-  .card .cb,
-  .card--text .cb {
-    padding: 9px;
-  }
-
-  .cb > b {
-    font-size: 14px;
-  }
-}
-
-
-/* ===== 2026-09 콘텐츠ZONE 모바일 최적화 ===== */
-@media (max-width:600px){
-  main{
-    padding-bottom:48px;
-  }
-  .filter-row{
-    gap:7px;
-    margin-top:20px;
-    margin-bottom:16px;
-  }
-  .filter-row .filters{
-    gap:6px;
-    padding-bottom:4px;
-  }
-  .filters > *{
-    flex:0 0 auto;
-    min-height:38px;
-  }
-  .count{
-    font-size:12px;
-  }
-  .grid{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:8px;
-  }
-  .card{
-    min-width:0;
-    border-radius:10px;
-  }
-  .card .cb,
-  .card--text .cb{
-    padding:9px;
-  }
-  .cb > b{
-    font-size:14px;
-    line-height:1.35;
-  }
-  .cb .genre{
-    min-height:2.9em;
-    font-size:11.5px;
-    line-height:1.4;
-  }
-  .tags{
-    gap:3px;
-    margin-top:auto;
-    padding-top:6px;
-  }
-  .tag{
-    padding:2px 5px;
-    font-size:10px;
-  }
-  .panel{
-    padding:12px 10px;
-  }
-  .panel-title{
-    font-size:17px;
-    line-height:1.22;
-  }
-  .pager{
-    gap:6px;
-    margin-top:22px;
-  }
-  .pager > *{
-    min-width:40px;
-    min-height:40px;
-  }
-}
-@media (max-width:360px){
-  .grid{gap:7px}
-  .card .cb,
-  .card--text .cb{padding:8px}
-  .cb > b{font-size:13.5px}
-}
-
-
-/*
- * 모바일 분류 탭.
- *
- * 예전엔 칩을 정확히 1/4 폭으로 나눠 한 화면에 4개만 딱 맞게 채웠습니다.
- * 그래서 5번째(애니)가 화면 오른쪽 끝에 한 조각도 안 보이고 통째로
- * 숨어, 옆으로 더 있다는 걸 알 방법이 없었습니다.
- *
- * 대신 칩을 글자 수만큼만 차지하게(natural width) 두고, 웹하드 순위
- * 페이지의 같은 성격의 탭(.section-links, 페이지 내 바로가기 칩)과
- * 크기·모양을 그대로 맞춥니다 — 새로 만들지 않고 그 값을 그대로
- * 가져옵니다(굵은 채움 빨강 대신 옅은 테두리 칩, 선택 상태도 옅은
- * 로즈 톤). 다섯 개를 다 더해도 가장 좁은 화면(320px)보다 좁아 보통은
- * 스크롤 없이 다 보이고, 글자 크기를 키우는 등 화면이 더 좁아지는
- * 경우에만 오른쪽 끝 칩이 자연스럽게 일부만 보이며 잘려 "더 있다"는
- * 것을 그대로 알려 줍니다 — 억지로 자르는 값을 넣지 않아도 좁을 때만
- * 저절로 그렇게 됩니다.
- */
-@media (max-width:600px){
-  .filter-row .filters{
-    --mobile-tab-gap:6px;
-    display:flex;
-    flex-wrap:nowrap;
-    gap:var(--mobile-tab-gap);
-    width:100%;
-    overflow-x:auto;
-    overscroll-behavior-x:contain;
-    scroll-snap-type:x proximity;
-    scrollbar-width:none;
-  }
-
-  .filter-row .filters::-webkit-scrollbar{
-    display:none;
-  }
-
-  /* .section-links > a 와 값을 그대로 맞춘 부분(높이·여백·글자·테두리·색). */
-  .filter-row .filters > *{
-    flex:0 0 auto;
-    min-width:0;
-    min-height:36px;
-    padding:7px 10px;
-    border:1px solid #e1e6ed;
-    background:#fff;
-    color:#596577;
-    font-size:11.5px;
-    font-weight:600;
-    justify-content:center;
-    text-align:center;
-    white-space:nowrap;
-    scroll-snap-align:start;
-  }
-
-  /*
-   * 선택 상태도 .section-links [aria-current="true"] 와 같은 옅은 로즈
-   * 톤으로 맞춥니다(진한 채움 빨강 대신). 기본(.filters [aria-selected])
-   * 규칙보다 자세히 적어(부모 아이디 하나 더) 화면 폭과 관계없이 이겨야
-   * 하므로, 여기 값이 항상 적용되게 해 줍니다.
-   */
-  .filter-row .filters > *[aria-selected="true"] {
-    border-color:#f3ccd2;
-    background:#fff1f3;
-    color:#c42740;
-  }
-}
-
-
-/* ===== 카드 텍스트 줄 수 최종 규칙 ===== */
-/* 제목: 최대 2줄 */
-.cb > b {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  min-width: 0;
-  max-height: 2.7em;
-  overflow: hidden;
-}
-
-/* 메타: 무조건 1줄 + ellipsis */
-.cb .genre {
-  display: block;
-  min-width: 0;
-  max-width: 100%;
-  min-height: 1.5em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.cb .genre b,
-.cb .genre span {
-  white-space: nowrap;
-}
-
-/* 해시태그/칩: 한 줄 유지, 넘치면 각 칩이 ellipsis */
-.tags {
   display: flex;
   min-width: 0;
   flex-wrap: nowrap;
   overflow: hidden;
   white-space: nowrap;
-}
-
-.tags .tag {
-  flex: 0 1 auto;
-  min-width: 0;
-  max-width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-@media (max-width:600px){
-  .cb .genre {
-    min-height: 1.45em;
-  }
-
-  .tags .tag:nth-child(n + 3) {
-    display: inline-flex;
-  }
-}
-
-
-/* 메타 라인 강제 1줄: 구조도 단일 inline 흐름으로 맞췄습니다. */
-.cb .genre {
-  display: block !important;
-  width: 100%;
-  min-width: 0;
-  max-width: 100%;
-  height: 1.5em;
-  min-height: 1.5em;
-  line-height: 1.5;
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-}
-
-.cb .genre b {
-  display: inline !important;
-  white-space: nowrap !important;
-}
-
-@media (max-width:600px){
-  .cb .genre {
-    height: 1.4em;
-    min-height: 1.4em;
-    line-height: 1.4;
-  }
-}
-
-
-/* ===== 2026-09-28 콘텐츠ZONE 목록 밀도 개선 ===== */
-.grid {
-  --card-min: 160px;
-  --cards-gap: 12px;
-}
-
-.card {
-  border-radius: 9px;
-}
-
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 22px #20273514;
-}
-
-.cb {
-  padding: 10px 10px 11px;
-}
-
-.cb > b {
-  min-height: 2.6em;
-  font-size: 15.5px;
-  line-height: 1.3;
-  letter-spacing: -0.3px;
-}
-
-.cb .genre {
-  margin-top: 4px;
-  font-size: 11.5px;
-  line-height: 1.4;
-}
-
-.tags {
   gap: 4px;
   padding-top: 5px;
 }
 
 .tag {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  border-radius: 20px;
+  background: #eef1f6;
+  color: #4a5666;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   padding: 2px 6px;
   font-size: 10.5px;
   line-height: 1.45;
 }
 
+/* 건수는 탭 종류와 화면 폭에 관계없이 항상 탭 아래에 둡니다. */
+
 .filter-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  margin: 30px 0 20px;
   gap: 6px;
   margin-top: 22px;
   margin-bottom: 15px;
 }
 
+/*
+ * 탭 줄 아래 건수.
+ *
+ * nowrap 이면 좁은 화면에서 문장이 화면 밖으로 밀려 잘립니다.
+ * 줄을 바꾸게 둡니다 — 한 줄이 두 줄이 되는 편이 말이 끊기는
+ * 것보다 낫습니다.
+ */
+
 .count {
+  margin: 0;
+  justify-self: start;
+  max-width: 100%;
+  color: var(--muted);
+  line-height: 1.5;
   font-size: 11.5px;
 }
 
+/* ===== 페이지 넘기기 ===== */
+
 .pager {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 30px 0 0;
   margin-top: 22px;
-}
-
-@media (max-width: 600px) {
-  .grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 7px;
-  }
-
-  .card .cb,
-  .card--text .cb {
-    padding: 7px 8px 8px;
-  }
-
-  .cb > b {
-    min-height: 2.55em;
-    font-size: 13px;
-    line-height: 1.28;
-  }
-
-  .cb .genre {
-    height: 1.35em;
-    min-height: 1.35em;
-    margin-top: 3px;
-    font-size: 10px;
-    line-height: 1.35;
-  }
-
-  .tags {
-    gap: 3px;
-    padding-top: 4px;
-  }
-
-  .tag {
-    padding: 2px 5px;
-    font-size: 9px;
-    line-height: 1.4;
-  }
-
-  .filter-row {
-    margin-top: 16px;
-    margin-bottom: 12px;
-  }
-
-  .filter-row .filters > * {
-    min-height: 36px;
-  }
-
-  .count {
-    font-size: 10.5px;
-  }
-
-  .panel {
-    padding: 10px 8px;
-  }
-
-  .panel-title {
-    font-size: 15px;
-  }
-
-  .pager {
-    margin-top: 18px;
-  }
-
-  .pager > * {
-    min-width: 36px;
-    min-height: 36px;
-  }
 }
 
 /* 목록의 간격과 텍스트 대비를 모바일에서도 읽기 편하게 맞춥니다. */
 .card {
+  /* 한 줄 안에서 카드 높이는 그리드가 맞춰 줍니다. 짧은 카드는
+           아래에 빈 띠가 생기는데, 본문 칸이 남는 높이를 먹게 해서
+           그 여백이 카드 안쪽 패딩처럼 보이게 합니다. */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--l);
+  background: #fff;
+  transition: 0.2s;
+  border-radius: 9px;
   border-color: #e3e7ed;
-  box-shadow: 0 4px 14px rgba(23, 32, 45, .035);
+  box-shadow: 0 4px 14px rgba(23, 32, 45, 0.035);
 }
 
 .card:focus-within {
   border-color: #ed9aa6;
-  box-shadow: 0 0 0 3px rgba(229, 47, 73, .12);
+  box-shadow: 0 0 0 3px rgba(229, 47, 73, 0.12);
 }
 
 .filter-row .filters > * {
-  transition: background-color .18s ease, color .18s ease, transform .18s ease;
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
 }
 
 .filter-row .filters > *:hover {
   transform: translateY(-1px);
 }
 
-@media (max-width: 600px) {
-  .grid { gap: 10px; }
-  .card { border-radius: 11px; }
-  .card .cb, .card--text .cb { padding: 10px 10px 11px; }
-  .cb > b { font-size: 14px; line-height: 1.32; }
-  .cb .genre { font-size: 11px; }
-  .tag { font-size: 10px; padding: 3px 6px; }
-  .panel { padding: 14px 12px; }
-  .panel-title { font-size: clamp(17px, 4.6vw, 21px); }
-  .filter-row { margin-top: 20px; margin-bottom: 16px; }
-  .filter-row .filters { gap: 6px; }
-  /* 탭 칩 높이는 위 "모바일 분류 탭" 규칙(.section-links 와 맞춘 36px)과 같게 둡니다. */
-  .filter-row .filters > * { min-height: 36px; }
-  .count { font-size: 12px; }
-  .pager > * { min-width: 44px; min-height: 44px; }
+@media (max-width: 800px) {
+  .detail {
+    grid-template-columns: 220px 1fr;
+  }
 }
 
-/* 모바일 카드에서 작품명이 먼저 읽히고 근거 칩은 보조로 남습니다. */
 @media (max-width: 600px) {
-  .card .cb, .card--text .cb { padding: 10px 10px 12px; }
-  .cb > b { min-height: 2.55em; font-size: 16px; font-weight: 750; line-height: 1.28; }
-  .cb .genre { margin-top: 4px; font-size: 10.5px; font-weight: 500; }
-  .tags { padding-top: 7px; }
-  .tag { padding: 2px 6px; background: #f3f5f8; color: #657080; font-size: 9.5px; font-weight: 600; line-height: 1.4; }
+  .filters {
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+  .filters::-webkit-scrollbar {
+    display: none;
+  }
+  .cb span {
+    font-size: 13px;
+    line-height: 1.45;
+  }
+  footer {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  nav {
+    height: auto;
+    min-height: 68px;
+    flex-wrap: wrap;
+    padding-top: 10px;
+  }
+  main {
+    padding: 0 0 48px;
+  }
+  .filters > * {
+    flex: 0 0 auto;
+    min-height: 38px;
+  }
+
+  .filter-row .filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tags .tag:nth-child(n + 3) {
+    display: inline-flex;
+  }
+
+  .pager {
+    gap: 6px;
+    margin-top: 18px;
+  }
+  .grid {
+    align-items: stretch;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .card {
+    align-self: stretch;
+    height: 100%;
+    min-width: 0;
+    border-radius: 11px;
+  }
+  .panel {
+    padding: 14px 12px;
+  }
+  .panel-title {
+    line-height: 1.22;
+    font-size: clamp(17px, 4.6vw, 21px);
+  }
+  .filter-row {
+    margin-top: 20px;
+    margin-bottom: 16px;
+  }
+
+  /*
+   * 모바일 분류 탭.
+   *
+   * 예전엔 칩을 정확히 1/4 폭으로 나눠 한 화면에 4개만 딱 맞게 채웠습니다.
+   * 그래서 5번째(애니)가 화면 오른쪽 끝에 한 조각도 안 보이고 통째로
+   * 숨어, 옆으로 더 있다는 걸 알 방법이 없었습니다.
+   *
+   * 대신 칩을 글자 수만큼만 차지하게(natural width) 두고, 웹하드 순위
+   * 페이지의 같은 성격의 탭(.section-links, 페이지 내 바로가기 칩)과
+   * 크기·모양을 그대로 맞춥니다 — 새로 만들지 않고 그 값을 그대로
+   * 가져옵니다(굵은 채움 빨강 대신 옅은 테두리 칩, 선택 상태도 옅은
+   * 로즈 톤). 다섯 개를 다 더해도 가장 좁은 화면(320px)보다 좁아 보통은
+   * 스크롤 없이 다 보이고, 글자 크기를 키우는 등 화면이 더 좁아지는
+   * 경우에만 오른쪽 끝 칩이 자연스럽게 일부만 보이며 잘려 "더 있다"는
+   * 것을 그대로 알려 줍니다 — 억지로 자르는 값을 넣지 않아도 좁을 때만
+   * 저절로 그렇게 됩니다.
+   */
+  .filter-row .filters {
+    padding-bottom: 4px;
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    gap: 6px;
+  }
+
+  /* .section-links > a 와 같은 값(높이 36px·여백·글자·테두리·색). 새로 만들지 않고 그대로 가져옵니다. */
+  .filter-row .filters > * {
+    flex: 0 0 auto;
+    min-width: 0;
+    padding: 7px 10px;
+    border: 1px solid #e1e6ed;
+    background: #fff;
+    color: #596577;
+    font-size: 11.5px;
+    font-weight: 600;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    scroll-snap-align: start;
+    min-height: 36px;
+  }
+
+  /*
+   * 선택 상태도 .section-links [aria-current="true"] 와 같은 옅은 로즈
+   * 톤으로 맞춥니다(진한 채움 빨강 대신). 기본(.filters [aria-selected])
+   * 규칙보다 자세히 적어(부모 클래스 .filter-row 하나 더) 화면 폭과 관계없이 이겨야
+   * 하므로, 여기 값이 항상 적용되게 해 줍니다.
+   */
+  .filter-row .filters > *[aria-selected="true"] {
+    border-color: #f3ccd2;
+    background: #fff1f3;
+    color: #c42740;
+  }
+  .count {
+    font-size: 12px;
+  }
+  .pager > * {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* 모바일 카드에서 작품명이 먼저 읽히고 근거 칩은 보조로 남습니다. */
+  .card .cb,
+  .card--text .cb {
+    flex: 1;
+    padding: 10px 10px 12px;
+  }
+  .cb > b {
+    min-height: 2.55em;
+    font-size: 16px;
+    font-weight: 750;
+    line-height: 1.28;
+  }
+  .cb .genre {
+    height: 1.35em;
+    min-height: 1.35em;
+    line-height: 1.35;
+    margin-top: 4px;
+    font-size: 10.5px;
+    font-weight: 500;
+  }
+  .tags {
+    margin-top: auto;
+    gap: 3px;
+    padding-top: 7px;
+  }
+  .tag {
+    padding: 2px 6px;
+    background: #f3f5f8;
+    color: #657080;
+    font-size: 9.5px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 560px) {
+  .detail {
+    grid-template-columns: 1fr;
+  }
+  .detail-poster {
+    max-width: 260px;
+    margin: auto;
+  }
+  h1 {
+    font-size: 26px;
+  }
+
+  .panel-title {
+    letter-spacing: -0.8px;
+  }
+}
+
+@media (max-width: 350px) {
+  .cb span {
+    font-size: 13px;
+  }
 }
