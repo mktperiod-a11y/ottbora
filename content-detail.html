@@ -221,6 +221,19 @@
         return rows.slice(0, max).join(" · ") + (rows.length > max ? ` +${rows.length - max}` : "");
       }
 
+      // KOBIS의 법인명은 원본 데이터에 두고, 상세 화면에서만 짧게 표기합니다.
+      function displayCompany(name) {
+        if (String(name || "").replace(/\s/g, "") ===
+            "소니픽쳐스엔터테인먼트코리아주식회사극장배급지점") {
+          return "소니픽쳐스";
+        }
+        return name;
+      }
+
+      function shortCompanies(list) {
+        return shortPeople((list || []).map(displayCompany), 2);
+      }
+
       function filmFacts(m, latestDt) {
         if (!m) return [];
         const audienceText = audience(m.audienceAcc).replace(/^누적 관객\s*/, "");
@@ -233,8 +246,8 @@
           fact("누적 관객", audienceText),
           fact("감독", shortPeople(m.directors, 2)),
           fact("출연", shortPeople(m.cast, 4)),
-          fact("제작", shortPeople(m.producers, 2)),
-          fact("배급", shortPeople(m.distributors, 2)),
+          fact("제작", shortCompanies(m.producers)),
+          fact("배급", shortCompanies(m.distributors)),
         ].filter(Boolean);
       }
 
