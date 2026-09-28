@@ -970,3 +970,12 @@ a:focus-visible,
   .count { font-size: 12px; }
   .pager > * { min-width: 44px; min-height: 44px; }
 }
+
+/* 모바일 카드에서 작품명이 먼저 읽히고 근거 칩은 보조로 남습니다. */
+@media (max-width: 600px) {
+  .card .cb, .card--text .cb { padding: 10px 10px 12px; }
+  .cb > b { min-height: 2.55em; font-size: 16px; font-weight: 750; line-height: 1.28; }
+  .cb .genre { margin-top: 4px; font-size: 10.5px; font-weight: 500; }
+  .tags { padding-top: 7px; }
+  .tag { padding: 2px 6px; background: #f3f5f8; color: #657080; font-size: 9.5px; font-weight: 600; line-height: 1.4; }
+}

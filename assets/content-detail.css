@@ -807,3 +807,17 @@ h1 {
   .detail-poster { width: 88px; }
   .copy ul.fact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+
+/* 모바일 작품 정보는 한 행에 한 항목씩 놓아 너비와 높이를 일정하게 맞춥니다. */
+@media (max-width: 650px) {
+  .copy ul.fact-grid { grid-template-columns: minmax(0, 1fr); grid-auto-rows: 1fr; gap: 7px; }
+  .fact-item {
+    display: grid;
+    grid-template-columns: 76px minmax(0, 1fr);
+    align-items: center;
+    min-height: 48px;
+    padding: 9px 12px;
+  }
+  .fact-label { margin: 0; font-size: 11px; }
+  .fact-value { font-size: 12.5px; }
+}
