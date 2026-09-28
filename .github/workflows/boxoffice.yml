@@ -12,6 +12,7 @@ on:
       - "scripts/fetch-tv-ranking.mjs"
       - "scripts/fetch-anime.mjs"
       - "scripts/lib/translate-synopsis.mjs"
+      - "scripts/update-seo.mjs"
       - ".github/workflows/boxoffice.yml"
   workflow_dispatch: # 수동 실행
     inputs:
@@ -82,19 +83,26 @@ jobs:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
         run: node scripts/fetch-tv-ranking.mjs
 
+      # 제목의 기준 월, 구조화 데이터, 홈 순위 기본 마크업, sitemap.xml,
+      # llms.txt 를 사이트 내용에 맞춥니다. 네트워크를 쓰지 않습니다.
+      - name: 검색 태그·사이트맵 맞추기
+        if: ${{ !cancelled() }}
+        run: node scripts/update-seo.mjs
+
       - name: 변경분 커밋
         if: ${{ !cancelled() }}
         run: |
           # 경로를 하나하나 적으면 아직 없는 파일에서 git add 가 exit 128 로
           # 죽습니다(assets/anime.json). 그러면 같은 실행에서 이미 성공한
           # 포스터 작업까지 커밋되지 않습니다. 실제로 그렇게 40장을 잃었습니다.
-          # 이 워크플로가 손대는 것은 assets 아래뿐이라 디렉터리로 묶습니다.
-          if [ -z "$(git status --porcelain assets)" ]; then
+          # 그래서 assets 는 디렉터리로 묶고, 그 밖에는 늘 있는 파일만 적습니다.
+          SEO_FILES="index.html webhard.html content.html criteria.html content-detail.html sitemap.xml llms.txt"
+          if [ -z "$(git status --porcelain assets $SEO_FILES)" ]; then
             echo "변경 없음 — 커밋하지 않습니다."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A assets
+          git add -A assets $SEO_FILES
           git commit -m "Update content rankings"
           git push
