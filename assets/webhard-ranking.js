@@ -147,7 +147,7 @@
       name: "피디팝",
       description: "인기콘텐츠 · 전용 프로그램",
       logo: "pdpop.png",
-      url: "https://pdpop.co.kr/",
+      url: "https://new.pdpop.com/",
     },
   };
 
