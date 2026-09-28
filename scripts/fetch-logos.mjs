@@ -97,28 +97,47 @@ function decode(buf, type) {
   }
 }
 
+/*
+ * 리다이렉트는 직접 따라갑니다.
+ *
+ * fetch 가 알아서 따라가게 두면 중간 단계에서 심은 쿠키를 다음 단계에
+ * 돌려주지 않습니다. 빅파일은 리다이렉트 도중에 쿠키를 심고 그 쿠키가
+ * 있어야 본문을 주는데, 그게 빠져 301 에서 멈췄습니다.
+ */
 async function get(url, { referer, asText = false } = {}) {
-  const res = await fetch(url, {
-    headers: {
-      "user-agent": UA,
-      accept: asText ? "text/html,text/css,*/*" : "image/*,*/*",
-      "accept-language": "ko-KR,ko;q=0.9",
-      ...(referer ? { referer } : {}),
-      ...cookieHeader(),
-    },
-    redirect: "follow",
-    signal: AbortSignal.timeout(20000),
-  });
-  remember(res);
+  let cur = url;
+  let res;
+  for (let hop = 0; hop < 10; hop += 1) {
+    res = await fetch(cur, {
+      headers: {
+        "user-agent": UA,
+        accept: asText ? "text/html,text/css,*/*" : "image/*,*/*",
+        "accept-language": "ko-KR,ko;q=0.9",
+        ...(referer ? { referer } : {}),
+        ...cookieHeader(),
+      },
+      redirect: "manual",
+      signal: AbortSignal.timeout(20000),
+    });
+    remember(res);
+    if (res.status < 300 || res.status >= 400) break;
+    const loc = res.headers.get("location");
+    if (!loc) throw new Error(`HTTP ${res.status} (이동할 주소 없음)`);
+    referer = cur;
+    cur = new URL(loc, cur).href;
+    if (hop === 9) throw new Error("리다이렉트가 너무 많음");
+  }
+  // res.url 은 manual 모드에서 비어 있을 수 있어 직접 따라간 주소를 씁니다.
+  Object.defineProperty(res, "finalUrl", { value: cur });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   if (asText) {
     const buf = Buffer.from(await res.arrayBuffer());
-    return { url: res.url, text: decode(buf, res.headers.get("content-type") || "") };
+    return { url: res.finalUrl, text: decode(buf, res.headers.get("content-type") || "") };
   }
   const type = res.headers.get("content-type") || "";
   const buf = Buffer.from(await res.arrayBuffer());
   if (buf.length > MAX_BYTES) throw new Error(`너무 큼 ${buf.length}B`);
-  return { url: res.url, type, buf };
+  return { url: res.finalUrl, type, buf };
 }
 
 const attr = (tag, name) => {
