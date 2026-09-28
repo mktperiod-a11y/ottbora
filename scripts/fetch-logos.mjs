@@ -103,10 +103,16 @@ function decode(buf, type) {
  * fetch 가 알아서 따라가게 두면 중간 단계에서 심은 쿠키를 다음 단계에
  * 돌려주지 않습니다. 빅파일은 리다이렉트 도중에 쿠키를 심고 그 쿠키가
  * 있어야 본문을 주는데, 그게 빠져 301 에서 멈췄습니다.
+ *
+ * 이동할 곳은 Location 에 있습니다. 값이 비어 있으면 "같은 주소로 다시"
+ * 라는 뜻입니다(쿠키 확인 페이지가 이렇게 합니다). Location 이 아예
+ * 없으면 Refresh 헤더를 보고, 그것도 없으면 본문을 그대로 돌려줘 본문
+ * 속 안내(meta refresh, 스크립트)를 따라가게 합니다.
  */
 async function get(url, { referer, asText = false } = {}) {
   let cur = url;
   let res;
+  const tried = new Set();
   for (let hop = 0; hop < 10; hop += 1) {
     res = await fetch(cur, {
       headers: {
@@ -121,15 +127,24 @@ async function get(url, { referer, asText = false } = {}) {
     });
     remember(res);
     if (res.status < 300 || res.status >= 400) break;
-    const loc = res.headers.get("location");
-    if (!loc) throw new Error(`HTTP ${res.status} (이동할 주소 없음)`);
+    const loc = res.headers.get("location")
+      ?? (res.headers.get("refresh") || "").match(/url\s*=\s*['"]?([^'";]+)/i)?.[1]
+      ?? null;
+    if (loc === null) break;
+    const next = new URL(loc, cur).href;
+    // 같은 주소를 같은 쿠키로 또 여는 것은 되풀이일 뿐이라 멈춥니다
+    const key = `${next}\n${JSON.stringify(cookieHeader())}`;
+    if (tried.has(key)) break;
+    tried.add(key);
     referer = cur;
-    cur = new URL(loc, cur).href;
+    cur = next;
     if (hop === 9) throw new Error("리다이렉트가 너무 많음");
   }
   // res.url 은 manual 모드에서 비어 있을 수 있어 직접 따라간 주소를 씁니다.
   Object.defineProperty(res, "finalUrl", { value: cur });
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const redirectBody = asText && res.status >= 300 && res.status < 400;
+  if (!res.ok && !redirectBody) throw new Error(`HTTP ${res.status}`);
+  if (redirectBody) console.warn(`    ${cur}: HTTP ${res.status} 인데 이동할 곳이 없어 본문을 읽습니다`);
   if (asText) {
     const buf = Buffer.from(await res.arrayBuffer());
     return { url: res.finalUrl, text: decode(buf, res.headers.get("content-type") || "") };
@@ -315,7 +330,13 @@ for (const p of targets) {
   for (let hop = 0; hop < 3; hop += 1) {
     const cur = docs[docs.length - 1];
     const refresh = (cur.text.match(/<meta[^>]+http-equiv=["']?refresh["']?[^>]*>/i) || [])[0];
-    const target = refresh && (attr(refresh, "content").match(/url\s*=\s*['"]?([^'";]+)/i) || [])[1];
+    let target = refresh && (attr(refresh, "content").match(/url\s*=\s*['"]?([^'";]+)/i) || [])[1];
+    // 스크립트로 옮기는 껍데기. 짧은 페이지에서만 봅니다(일반 페이지의
+    // 버튼 onclick 같은 것을 이동 안내로 잘못 읽지 않도록).
+    if (!target && cur.text.length < 4000) {
+      const js = cur.text.match(/location(?:\.href)?\s*=\s*['"]([^'"]+)['"]|location\.replace\(\s*['"]([^'"]+)['"]/i);
+      target = js && (js[1] || js[2]);
+    }
     if (!target) break;
     try {
       const next = await get(new URL(target, cur.url).href, { referer: cur.url, asText: true });
