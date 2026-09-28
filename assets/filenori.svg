@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" role="img" aria-labelledby="title desc">
-  <title id="title">파일노리 로고</title>
-  <desc id="desc">파란 F 심볼과 File nori 워드마크</desc>
-  <rect width="320" height="80" fill="white"/>
-  <rect x="8" y="10" width="58" height="58" rx="10" fill="#2E68B7"/>
-  <text x="37" y="53" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700" fill="white">F</text>
-  <text x="76" y="52" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" fill="#2E68B7">ile</text>
-  <text x="125" y="35" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#2E68B7">nori</text>
-</svg>
