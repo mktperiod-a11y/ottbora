@@ -118,6 +118,11 @@ h1 {
   margin: 0;
 }
 
+/* 애니 줄거리 원문은 문단이 나뉘어 옵니다. 그 줄바꿈을 살립니다. */
+#synopsis {
+  white-space: pre-line;
+}
+
 .copy ul {
   margin: 10px 0 0;
   padding-left: 20px;

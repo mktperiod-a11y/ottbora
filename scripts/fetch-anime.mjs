@@ -25,6 +25,15 @@
  *
  * 한국어 제목은 Jikan 이 주지 않습니다. TMDB 키가 있으면 거기서 찾아
  * 채우고, 없으면 영어 제목을 씁니다. 키가 들어오면 다음 실행에서 메워집니다.
+ *
+ * 줄거리는 세 곳 중 앞의 것을 씁니다.
+ *
+ *   1. assets/anime-synopsis-ko.json  AniList 원문을 한국어로 옮긴 보정표
+ *   2. TMDB 한국어 줄거리              사람이 쓴 한국어라 있으면 가장 낫습니다
+ *   3. AniList(또는 MAL) 원문          대개 영어입니다
+ *
+ * 보정표를 맨 앞에 두는 것은 제목 보정표(anime-title-aliases.json)와
+ * 같은 이치입니다. TMDB 한국어가 어색한 작품을 사람이 고칠 수 있게.
  */
 
 import { writeFile, readFile, mkdir } from "node:fs/promises";
@@ -33,6 +42,7 @@ import { savePoster, getJson, postJson, norm } from "./lib/poster.mjs";
 
 const OUT = "assets/anime.json";
 const TITLE_ALIASES = "assets/anime-title-aliases.json";
+const SYNOPSIS_KO = "assets/anime-synopsis-ko.json";
 const DIR = "assets/posters";
 const JIKAN = "https://api.jikan.moe/v4";
 const ANILIST = "https://graphql.anilist.co";
@@ -90,6 +100,49 @@ try {
   titleAliases = JSON.parse(await readFile(TITLE_ALIASES, "utf8")).titles || {};
 } catch {}
 
+/** { source: 원문 출처, synopses: { 작품 번호: 한국어 줄거리 } } */
+let synopsisKo = {};
+try {
+  synopsisKo = JSON.parse(await readFile(SYNOPSIS_KO, "utf8"));
+} catch {}
+
+const ENTITIES = {
+  amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " ",
+  mdash: "—", ndash: "–", hellip: "…", lsquo: "‘", rsquo: "’", ldquo: "“", rdquo: "”",
+};
+
+/**
+ * 줄거리를 화면에 쓸 글로 다듬습니다.
+ *
+ * AniList 원문은 <br>·<i> 같은 태그와 마크다운 스포일러(~!…!~)가 섞여
+ * 옵니다. 줄바꿈은 문단으로 살리고, 태그와 스포일러는 걷어 냅니다.
+ * 끝에 붙는 출처 표기("(Source: Crunchyroll)", "[Written by MAL
+ * Rewrite]")와 편성 안내("Note: …")는 줄거리가 아니라 뺍니다.
+ */
+function cleanSynopsis(raw) {
+  if (!raw) return "";
+  return String(raw)
+    .replace(/\r\n?/g, "\n")
+    .replace(/~![\s\S]*?!~/g, "")
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<\/p>\s*<p[^>]*>/gi, "\n\n")
+    .replace(/<[^>]+>/g, "")
+    .replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (m, e) => {
+      if (e[0] !== "#") return ENTITIES[e.toLowerCase()] ?? m;
+      const n = e[1].toLowerCase() === "x" ? parseInt(e.slice(2), 16) : parseInt(e.slice(1), 10);
+      return Number.isFinite(n) ? String.fromCodePoint(n) : m;
+    })
+    .replace(/(\*\*|__)(.+?)\1/g, "$2")
+    .replace(/\((?:Source|출처)\s*:[^)]*\)/gi, "")
+    .replace(/\[Written by MAL Rewrite\]/gi, "")
+    .split("\n")
+    .map((line) => line.replace(/[ \t]+/g, " ").trim())
+    .filter((line) => !/^(?:Notes?|Source)\s*:/i.test(line))
+    .join("\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
 /**
  * 애니를 받지 못하고 끝냅니다.
  *
@@ -136,6 +189,7 @@ query ($page: Int, $perPage: Int) {
       id
       idMal
       title { romaji english native }
+      description(asHtml: false)
       coverImage { extraLarge large }
       popularity
       averageScore
@@ -159,6 +213,8 @@ function fromAniList(m) {
     title: m.title?.english || m.title?.romaji || "",
     title_english: m.title?.english || "",
     title_japanese: m.title?.native || "",
+    // Jikan 의 synopsis 와 같은 자리에 둡니다.
+    synopsis: m.description || "",
     images: { jpg: { large_image_url: url, image_url: url } },
     // AniList 의 popularity = 목록에 넣은 사람 수. MAL 의 members 와 같습니다.
     members: m.popularity ?? null,
@@ -283,41 +339,37 @@ console.log(
     `(목록 등록 ${MIN_MEMBERS}명 이상, 성인 등급 제외).`,
 );
 
-// ---- 3. 한국어 제목 (TMDB 키가 있을 때만) ----------------------------------
+// ---- 3. 한국어 제목·줄거리 (TMDB 키가 있을 때만) ---------------------------
 
 /**
- * Jikan 은 한국어 제목을 주지 않습니다. TMDB 의 TV 검색으로 찾습니다.
- * 원제(일본어)로 찾으면 가장 잘 맞고, 안 되면 영어 제목으로 다시 봅니다.
+ * TMDB TV 검색. 같은 검색어는 한 번만 묻습니다. 제목과 줄거리를 따로
+ * 찾아도 요청이 두 배로 늘지 않게 하려는 것입니다.
  */
-async function koreanTitle(a) {
-  if (!TMDB) return null;
+const tmdbSearches = new Map();
+async function searchTmdb(query, label) {
+  if (tmdbSearches.has(query)) return tmdbSearches.get(query);
+  let hits = null;
+  try {
+    const body = await getJson(
+      `${TMDB_SEARCH}?${new URLSearchParams({
+        api_key: TMDB,
+        query,
+        language: "ko-KR",
+      })}`,
+      label,
+    );
+    if (Array.isArray(body?.results)) hits = body.results;
+  } catch {}
+  tmdbSearches.set(query, hits);
+  await sleep(GAP_MS);
+  return hits;
+}
 
-  const exactQueries = [a.title_japanese, a.title_english, a.title].filter(Boolean);
-  for (const q of exactQueries) {
-    try {
-      const body = await getJson(
-        `${TMDB_SEARCH}?${new URLSearchParams({
-          api_key: TMDB,
-          query: q,
-          language: "ko-KR",
-        })}`,
-        `TMDB ${q}`,
-      );
-      const hits = body?.results;
-      if (!Array.isArray(hits)) continue;
-      const want = exactQueries.map(norm);
-      const hit = hits.find(
-        (r) =>
-          want.includes(norm(r.original_name)) || want.includes(norm(r.name)),
-      );
-      if (hit?.name && /[가-힣]/.test(hit.name)) return hit.name;
-    } catch {}
-    await sleep(GAP_MS);
-  }
-
-  // "Season 4", "Season 2", 말미의 로마 숫자 때문에 국내 제목 매칭이
-  // 실패하는 경우가 많습니다. 기본 시리즈명으로 한 번 더 찾고 국내명에
-  // "N기"를 붙입니다.
+/**
+ * "Season 4", 말미의 로마 숫자 때문에 국내 제목 매칭이 실패하는 경우가
+ * 많습니다. 기본 시리즈명과 시즌 번호로 나눠 둡니다.
+ */
+function seasonBase(a) {
   const english = a.title_english || a.title || "";
   const m =
     english.match(/^(.*?)(?:\s+Season\s+(\d+))$/i) ||
@@ -329,26 +381,52 @@ async function koreanTitle(a) {
   const roman = { I: 1, II: 2, III: 3, IV: 4, V: 5, VI: 6, VII: 7, VIII: 8, IX: 9, X: 10 };
   if (!/^\d+$/.test(season)) season = roman[season.toUpperCase()] || "";
   if (!base || !season) return null;
+  return { base, season };
+}
 
-  try {
-    const body = await getJson(
-      `${TMDB_SEARCH}?${new URLSearchParams({
-        api_key: TMDB,
-        query: base,
-        language: "ko-KR",
-      })}`,
-      `TMDB base ${base}`,
+/**
+ * 이 작품에 맞는 TMDB 항목을 차례로 내놓습니다. 원제(일본어)로 찾으면
+ * 가장 잘 맞고, 안 되면 영어 제목, 그다음 기본 시리즈명으로 봅니다.
+ * 기본 시리즈명으로 찾은 항목에는 시즌 번호를 붙여 둡니다.
+ */
+async function* tmdbMatches(a) {
+  if (!TMDB) return;
+
+  const exactQueries = [a.title_japanese, a.title_english, a.title].filter(Boolean);
+  const want = exactQueries.map(norm);
+  for (const q of exactQueries) {
+    const hits = await searchTmdb(q, `TMDB ${q}`);
+    const hit = hits?.find(
+      (r) => want.includes(norm(r.original_name)) || want.includes(norm(r.name)),
     );
-    const hits = body?.results;
-    if (!Array.isArray(hits)) return null;
-    const hit = hits.find(
-      (r) => norm(r.original_name) === norm(base) || norm(r.name) === norm(base),
-    );
-    if (hit?.name && /[가-힣]/.test(hit.name)) {
-      return /\d+기$/.test(hit.name) ? hit.name : `${hit.name} ${season}기`;
-    }
-  } catch {}
+    if (hit) yield { hit, season: "" };
+  }
+
+  const sb = seasonBase(a);
+  if (!sb) return;
+  const hits = await searchTmdb(sb.base, `TMDB base ${sb.base}`);
+  const hit = hits?.find(
+    (r) => norm(r.original_name) === norm(sb.base) || norm(r.name) === norm(sb.base),
+  );
+  if (hit) yield { hit, season: sb.season };
+}
+
+/** 기본 시리즈명으로 찾았으면 국내명에 "N기"를 붙입니다. */
+async function koreanTitle(a) {
+  for await (const { hit, season } of tmdbMatches(a)) {
+    if (!hit.name || !/[가-힣]/.test(hit.name)) continue;
+    if (!season) return hit.name;
+    return /\d+기$/.test(hit.name) ? hit.name : `${hit.name} ${season}기`;
+  }
   return null;
+}
+
+/** 시리즈 전체의 줄거리입니다. 시즌만 따로 적힌 것은 TMDB 검색이 주지 않습니다. */
+async function koreanOverview(a) {
+  for await (const { hit } of tmdbMatches(a)) {
+    if (/[가-힣]/.test(hit.overview || "")) return hit.overview;
+  }
+  return "";
 }
 
 // ---- 4. 포스터 받고 저장 ---------------------------------------------------
@@ -398,12 +476,39 @@ for (const a of picked) {
   const alias = titleAliases[String(a.mal_id)] || "";
   const ko = alias || old?.titleKo || (await koreanTitle(a));
 
+  // 줄거리: 번역 보정표 > TMDB 한국어 > 원문 순입니다(맨 위 설명 참고).
+  // TMDB 에서 한 번 찾은 한국어 줄거리는 다시 묻지 않습니다.
+  const translated = cleanSynopsis(synopsisKo.synopses?.[String(a.mal_id)]);
+  const fromTmdb = translated
+    ? ""
+    : old?.synopsisBy === "TMDB" && old.synopsis
+      ? old.synopsis
+      : cleanSynopsis(await koreanOverview(a));
+  const original = cleanSynopsis(a.synopsis);
+  const synopsis = translated
+    ? {
+        synopsis: translated,
+        synopsisBy: synopsisKo.source || "AniList",
+        synopsisLang: "ko",
+        synopsisTranslated: true,
+      }
+    : fromTmdb
+      ? { synopsis: fromTmdb, synopsisBy: "TMDB", synopsisLang: "ko" }
+      : original
+        ? {
+            synopsis: original,
+            synopsisBy: a.provider || "AniList",
+            synopsisLang: /[가-힣]/.test(original) ? "ko" : "en",
+          }
+        : {};
+
   works.push({
     malId: a.mal_id,
     // 한국어 제목이 있으면 그것을, 없으면 영어 제목을 씁니다.
     title: ko || a.title_english || a.title,
     ...(ko ? { titleKo: ko } : {}),
     titleOriginal: a.title,
+    ...synopsis,
     genres,
     episodes: a.episodes ?? null,
     score: a.score ?? null,
@@ -454,6 +559,20 @@ if (same) {
     `\n${OUT} 갱신: ${works.length}편 ` +
       `(포스터 새로 ${got}편 · 유지 ${kept}편 · 실패 ${failed}편, 한국어 제목 ${koCount}편)`,
   );
+  const count = (f) => works.filter(f).length;
+  console.log(
+    `줄거리: TMDB 한국어 ${count((w) => w.synopsisBy === "TMDB")}편 · ` +
+      `번역 ${count((w) => w.synopsisTranslated)}편 · ` +
+      `원문 ${count((w) => w.synopsisLang === "en")}편 · ` +
+      `없음 ${count((w) => !w.synopsis)}편`,
+  );
+  const untranslated = works.filter((w) => w.synopsisLang === "en");
+  if (untranslated.length) {
+    console.log(
+      `  원문(영어)만 있는 작품 — ${SYNOPSIS_KO} 에 번역을 넣으면 한국어로 바뀝니다: ` +
+        untranslated.map((w) => `${w.malId} ${w.title}`).join(" / "),
+    );
+  }
   if (!TMDB) {
     console.log("TMDB_API_KEY 를 등록하면 다음 실행에서 한국어 제목을 채웁니다.");
   }
