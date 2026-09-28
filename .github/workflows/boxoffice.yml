@@ -56,10 +56,13 @@ jobs:
 
       # 애니 탭은 AniList(안 되면 MyAnimeList)에서 채웁니다. 키가 필요 없습니다.
       # TMDB 키가 있으면 한국어 제목·줄거리까지 채웁니다.
+      # ANTHROPIC_API_KEY 가 있으면 한국어 줄거리가 없는 작품의 원문(영어)을
+      # 한국어로 번역합니다(한 작품에 한 번, assets/anime-synopsis-auto.json).
       - name: 애니 내려받기
         if: ${{ !cancelled() }}
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/fetch-anime.mjs
 
       # 드라마·예능은 TMDB 한국 TV 후보를 받아 한국형 규칙으로 나눕니다.

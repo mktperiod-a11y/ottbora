@@ -26,23 +26,42 @@
  * 한국어 제목은 Jikan 이 주지 않습니다. TMDB 키가 있으면 거기서 찾아
  * 채우고, 없으면 영어 제목을 씁니다. 키가 들어오면 다음 실행에서 메워집니다.
  *
- * 줄거리는 세 곳 중 앞의 것을 씁니다.
+ * 줄거리는 네 곳 중 앞의 것을 씁니다.
  *
- *   1. assets/anime-synopsis-ko.json  AniList 원문을 한국어로 옮긴 보정표
- *   2. TMDB 한국어 줄거리              사람이 쓴 한국어라 있으면 가장 낫습니다
- *   3. AniList(또는 MAL) 원문          대개 영어입니다
+ *   1. assets/anime-synopsis-ko.json    사람이 옮기거나 고친 보정표
+ *   2. TMDB 한국어 줄거리                사람이 쓴 한국어라 있으면 가장 낫습니다
+ *   3. assets/anime-synopsis-auto.json  원문 자동 번역(Claude API)
+ *   4. AniList(또는 MAL) 원문            대개 영어입니다
  *
  * 보정표를 맨 앞에 두는 것은 제목 보정표(anime-title-aliases.json)와
- * 같은 이치입니다. TMDB 한국어가 어색한 작품을 사람이 고칠 수 있게.
+ * 같은 이치입니다. 자동 번역이나 TMDB 한국어가 어색한 작품을 사람이
+ * 고칠 수 있게. 자동 번역을 고치려면 그 문장을 보정표로 옮겨 고칩니다.
+ *
+ * 자동 번역은 ANTHROPIC_API_KEY 시크릿이 있을 때만 돕니다. 한국어가 없는
+ * 새 작품이 들어오면 그때 한 번 번역해 anime-synopsis-auto.json 에 두고,
+ * 원문이 바뀌지 않는 한 다시 번역하지 않습니다. 키가 없거나 번역이
+ * 실패하면 원문(영어)으로 둡니다. 번역 실패가 갱신을 멈추지는 않습니다.
  */
 
 import { writeFile, readFile, mkdir } from "node:fs/promises";
 import { existsSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { savePoster, getJson, postJson, norm } from "./lib/poster.mjs";
+import {
+  MODEL as TRANSLATE_MODEL,
+  translateSynopsis,
+  translatorReady,
+  stopsTranslation,
+  looksKorean,
+} from "./lib/translate-synopsis.mjs";
 
 const OUT = "assets/anime.json";
 const TITLE_ALIASES = "assets/anime-title-aliases.json";
 const SYNOPSIS_KO = "assets/anime-synopsis-ko.json";
+const SYNOPSIS_AUTO = "assets/anime-synopsis-auto.json";
+
+/** 한 번 실행에서 새로 번역하는 편수의 상한. 남은 것은 다음 실행에서. */
+const MAX_TRANSLATIONS = 12;
 const DIR = "assets/posters";
 const JIKAN = "https://api.jikan.moe/v4";
 const ANILIST = "https://graphql.anilist.co";
@@ -106,6 +125,52 @@ try {
   synopsisKo = JSON.parse(await readFile(SYNOPSIS_KO, "utf8"));
 } catch {}
 
+/** { translations: { 작품 번호: { source: 원문 지문, ko: 번역 } } } */
+let autoCache = { translations: {} };
+try {
+  autoCache = JSON.parse(await readFile(SYNOPSIS_AUTO, "utf8"));
+  autoCache.translations ||= {};
+} catch {}
+let autoChanged = false;
+let autoLeft = MAX_TRANSLATIONS;
+let translatorOn = translatorReady();
+
+/**
+ * 원문 줄거리의 자동 번역을 돌려줍니다. 원문이 그대로면 저장해 둔 번역을
+ * 쓰고, 처음 보거나 원문이 바뀌었으면 새로 번역합니다. 번역할 수 없으면
+ * 빈 문자열입니다(원문을 씁니다).
+ */
+async function autoTranslate(id, en, title, originalTitle) {
+  const key = String(id);
+  const source = createHash("sha1").update(en).digest("hex").slice(0, 12);
+  const saved = autoCache.translations[key];
+  if (saved?.source === source && saved.ko) return saved.ko;
+  if (!translatorOn || autoLeft <= 0) return "";
+
+  autoLeft -= 1;
+  try {
+    const ko = cleanSynopsis(
+      await translateSynopsis({ text: en, title, original: originalTitle }),
+    );
+    if (!looksKorean(ko, en)) {
+      console.warn(`  줄거리 번역 결과가 이상해 원문을 둡니다 — ${title}`);
+      return "";
+    }
+    autoCache.translations[key] = { source, ko };
+    autoChanged = true;
+    console.log(`  줄거리 번역 — ${title} (원문 ${en.length}자 → ${ko.length}자)`);
+    return ko;
+  } catch (e) {
+    // SDK 오류는 메시지에 상태 코드가 이미 들어 있습니다("401 {...}").
+    console.warn(`  줄거리 번역 실패 — ${title}: ${e.message}`);
+    if (stopsTranslation(e)) {
+      translatorOn = false;
+      console.warn("  이번 실행에서는 더 번역하지 않습니다(키 또는 요청 한도 문제).");
+    }
+    return "";
+  }
+}
+
 const ENTITIES = {
   amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " ",
   mdash: "—", ndash: "–", hellip: "…", lsquo: "‘", rsquo: "’", ldquo: "“", rdquo: "”",
@@ -126,9 +191,13 @@ function cleanSynopsis(raw) {
     .replace(/~![\s\S]*?!~/g, "")
     .replace(/<br\s*\/?>/gi, "\n")
     .replace(/<\/p>\s*<p[^>]*>/gi, "\n\n")
-    // HTML 태그만 걷어 냅니다. TMDB 한국어 줄거리는 <중기사> 처럼 꺾쇠를
-    // 따옴표로 쓰는데, 그것까지 지우면 낱말이 사라집니다(실제로 그랬음).
-    .replace(/<\/?[a-z][a-z0-9-]*(?:\s[^>]*)?\/?>/gi, "")
+    // 줄거리에 실제로 나오는 HTML 태그 이름만 걷어 냅니다. TMDB 한국어
+    // 줄거리는 <중기사>, <Cheng Xiaoshi>(토키) 처럼 꺾쇠를 따옴표로 쓰는데,
+    // 그것까지 지우면 낱말이 사라집니다(실제로 두 번 그랬음).
+    .replace(
+      /<\/?(?:br|p|i|b|em|strong|u|s|small|span|a|div|font|sup|sub|hr|ul|ol|li|h[1-6]|blockquote)(?:\s+[a-z-]+=(?:"[^"]*"|'[^']*'|[^\s>]+))*\s*\/?>/gi,
+      "",
+    )
     .replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (m, e) => {
       if (e[0] !== "#") return ENTITIES[e.toLowerCase()] ?? m;
       const n = e[1].toLowerCase() === "x" ? parseInt(e.slice(2), 16) : parseInt(e.slice(1), 10);
@@ -544,7 +613,7 @@ for (const a of picked) {
   const alias = titleAliases[String(a.mal_id)] || "";
   const ko = alias || old?.titleKo || (await koreanTitle(a));
 
-  // 줄거리: 번역 보정표 > TMDB 한국어 > 원문 순입니다(맨 위 설명 참고).
+  // 줄거리: 보정표 > TMDB 한국어 > 자동 번역 > 원문 순입니다(맨 위 설명 참고).
   // TMDB 는 매번 새로 묻고, 묻지 못한 날에만 지난번 TMDB 줄거리를 씁니다.
   // (한 번 받은 것을 계속 쓰면 잘못 받은 줄거리가 고쳐지지 않습니다.)
   const translated = cleanSynopsis(synopsisKo.synopses?.[String(a.mal_id)]);
@@ -556,6 +625,10 @@ for (const a of picked) {
   if (!translated && !fromTmdb && a.anilistId && isThinSynopsis(original)) {
     original = cleanSynopsis(await prequelSynopsis(a.anilistId)) || original;
   }
+  const machine =
+    !translated && !fromTmdb && original && !/[가-힣]/.test(original)
+      ? await autoTranslate(a.mal_id, original, ko || a.title_english || a.title, a.title)
+      : "";
   const synopsis = translated
     ? {
         synopsis: translated,
@@ -565,13 +638,20 @@ for (const a of picked) {
       }
     : fromTmdb
       ? { synopsis: fromTmdb, synopsisBy: "TMDB", synopsisLang: "ko" }
-      : original
+      : machine
         ? {
-            synopsis: original,
+            synopsis: machine,
             synopsisBy: a.provider || "AniList",
-            synopsisLang: /[가-힣]/.test(original) ? "ko" : "en",
+            synopsisLang: "ko",
+            synopsisTranslated: true,
           }
-        : {};
+        : original
+          ? {
+              synopsis: original,
+              synopsisBy: a.provider || "AniList",
+              synopsisLang: /[가-힣]/.test(original) ? "ko" : "en",
+            }
+          : {};
 
   works.push({
     malId: a.mal_id,
@@ -592,6 +672,28 @@ for (const a of picked) {
     scoreBy: a.provider || "MyAnimeList",
     malUrl: a.url ?? `https://myanimelist.net/anime/${a.mal_id}`,
   });
+}
+
+// 자동 번역은 anime.json 과 따로 둡니다. 순위에서 빠졌다 돌아온 작품도
+// 다시 번역하지 않게 하려는 것입니다.
+if (autoChanged) {
+  const sorted = Object.fromEntries(
+    Object.entries(autoCache.translations).sort(([x], [y]) => x.localeCompare(y, "en", { numeric: true })),
+  );
+  await writeFile(
+    SYNOPSIS_AUTO,
+    JSON.stringify(
+      {
+        note:
+          "애니 줄거리 원문(영어)의 자동 번역 캐시입니다. scripts/fetch-anime.mjs 가 채웁니다. " +
+          "고칠 문장은 이 파일이 아니라 anime-synopsis-ko.json 에 옮겨 적습니다(그쪽이 우선).",
+        model: TRANSLATE_MODEL,
+        translations: sorted,
+      },
+      null,
+      2,
+    ) + "\n",
+  );
 }
 
 const SOURCE_INFO = {
@@ -640,7 +742,10 @@ if (same) {
   const untranslated = works.filter((w) => w.synopsisLang === "en");
   if (untranslated.length) {
     console.log(
-      `  원문(영어)만 있는 작품 — ${SYNOPSIS_KO} 에 번역을 넣으면 한국어로 바뀝니다: ` +
+      `  원문(영어)만 있는 작품 — ` +
+        (translatorReady()
+          ? "번역이 실패했거나 이번 실행의 번역 상한을 넘었습니다. 다음 실행에서 다시 봅니다: "
+          : `ANTHROPIC_API_KEY 시크릿을 등록하면 자동 번역합니다(또는 ${SYNOPSIS_KO} 에 직접): `) +
         untranslated.map((w) => `${w.malId} ${w.title}`).join(" / "),
     );
   }
