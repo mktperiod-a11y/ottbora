@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css?v=20260923-6" />
-    <link rel="stylesheet" href="assets/content-detail.css?v=20260923-12" />
+    <link rel="stylesheet" href="assets/content-detail.css?v=20260928-1" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -196,26 +196,43 @@
         };
       }
 
+      function fact(label, value) {
+        return value ? { label, value: String(value) } : null;
+      }
+
+      function shortPeople(list, max = 4) {
+        const rows = Array.isArray(list) ? list.filter(Boolean) : [];
+        if (!rows.length) return "";
+        return rows.slice(0, max).join(" · ") + (rows.length > max ? ` +${rows.length - max}` : "");
+      }
+
       function boxWork(m) {
         if (!m) return null;
-        const points = [
-          m.rank ? `현재 국내 박스오피스 ${m.rank}위` : "",
-          m.bestRank ? `기간 중 최고 ${m.bestRank}위` : "",
-          audience(m.audienceAcc),
+        const audienceText = audience(m.audienceAcc).replace(/^누적 관객\s*/, "");
+        const facts = [
+          fact("현재 순위", m.rank ? `국내 박스오피스 ${m.rank}위` : ""),
+          fact("누적 관객", audienceText),
+          fact("상영시간", m.runtime ? `${m.runtime}분` : ""),
+          fact("관람등급", m.rating),
+          fact("감독", shortPeople(m.directors, 2)),
+          fact("출연", shortPeople(m.cast, 4)),
+          fact("TMDB 평점", m.score != null ? `${m.score} / 10` : ""),
         ].filter(Boolean);
+
         return {
           id: `kofic-${m.movieCd}`,
           sourceKind: "kofic",
           title: m.title,
           type: "영화",
-          tagline: "국내 극장 흥행 데이터를 바탕으로 소개하는 작품이에요.",
+          tagline: "",
           poster: m.poster || FALLBACK,
           meta: [
             m.openedAt ? `개봉 ${prettyDate(m.openedAt)}` : "",
             (m.genres || []).join(" · "),
           ].filter(Boolean),
-          synopsisText: "현재 줄거리 정보를 확인할 수 없어요.",
-          detailPoints: points.length ? points : ["박스오피스 자동 수집 작품"],
+          synopsisText: m.synopsis || "현재 줄거리 정보를 확인할 수 없어요.",
+          synopsisCredit: m.synopsis ? m.synopsisCredit || "" : "",
+          detailPoints: facts.length ? facts : ["박스오피스 자동 수집 작품"],
           watch: [],
           partner: [],
           imageCredit: m.posterCredit || "",
@@ -235,17 +252,23 @@
         const genres = (w.genres || [])
           .map((g) => TMDB_TV_GENRE[g])
           .filter(Boolean);
-        const points = [
-          w.rank ? `인기 ${w.rank}위` : "",
-          w.nextAirDate ? `다음 방송 ${prettyDate(w.nextAirDate)}` : "",
-          TMDB_STATUS_KO[w.status] ? `상태 · ${TMDB_STATUS_KO[w.status]}` : "",
+        const facts = [
+          fact("인기 순위", w.rank && w.rank <= 20 ? `${w.rank}위` : ""),
+          fact("TMDB 평점", w.score != null ? `${w.score} / 10` : ""),
+          fact("회차", w.episodes ? `${w.episodes}화` : ""),
+          fact("회당", w.runtime ? `약 ${w.runtime}분` : ""),
+          fact("방송사", shortPeople(w.networks, 3)),
+          fact("제작", shortPeople(w.creators, 3)),
+          fact("다음 방송", w.nextAirDate ? prettyDate(w.nextAirDate) : ""),
+          fact("상태", TMDB_STATUS_KO[w.status] || ""),
         ].filter(Boolean);
+
         return {
           id: `tmdb-${w.tmdbId}`,
           sourceKind: "tmdb",
           title: w.title,
           type: w.type || "TV",
-          tagline: "현재 인기 목록에서 소개하는 작품이에요.",
+          tagline: "",
           poster: w.poster || FALLBACK,
           meta: [
             w.firstAirDate ? `첫 방송 ${prettyDate(w.firstAirDate)}` : "",
@@ -253,7 +276,8 @@
           ].filter(Boolean),
           synopsisText:
             w.overview || "현재 줄거리 정보를 확인할 수 없어요.",
-          detailPoints: points.length ? points : ["자동 인기 목록 수록 작품"],
+          synopsisCredit: w.overview ? "TMDB" : "",
+          detailPoints: facts.length ? facts : ["자동 인기 목록 수록 작품"],
           watch: [],
           partner: [],
           imageCredit: w.posterCredit || "TMDB",
@@ -329,10 +353,10 @@
             : "";
 
         const points = [
-          a.score ? `${a.scoreBy || "AniList"} 평점 ${a.score}` : "",
-          a.episodes ? `${a.episodes}화` : "",
-          a.studio ? `제작 · ${a.studio}` : "",
-          originalTitle,
+          fact("평점", a.score ? `${a.score} / 10 · ${a.scoreBy || "AniList"}` : ""),
+          fact("회차", a.episodes ? `${a.episodes}화` : ""),
+          fact("제작", a.studio),
+          fact("원제", originalTitle.replace(/^원제 · /, "")),
         ].filter(Boolean);
 
         return {
@@ -511,9 +535,26 @@
       function renderPoints(points) {
         const ul = document.querySelector("#points");
         ul.innerHTML = "";
-        for (const text of points || []) {
+        const rows = points || [];
+        ul.classList.toggle(
+          "fact-grid",
+          rows.some((item) => item && typeof item === "object"),
+        );
+
+        for (const item of rows) {
           const li = document.createElement("li");
-          li.textContent = text;
+          if (item && typeof item === "object") {
+            li.className = "fact-item";
+            const label = document.createElement("span");
+            label.className = "fact-label";
+            label.textContent = item.label || "";
+            const value = document.createElement("strong");
+            value.className = "fact-value";
+            value.textContent = item.value || "";
+            li.append(label, value);
+          } else {
+            li.textContent = item;
+          }
           ul.appendChild(li);
         }
       }
