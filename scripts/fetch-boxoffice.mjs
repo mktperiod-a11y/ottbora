@@ -19,6 +19,7 @@ import { writeFile, readFile } from "node:fs/promises";
 
 const KEY = process.env.KOFIC_API_KEY;
 const OUT = "assets/boxoffice.json";
+const ARCHIVE = "assets/movie-archive.json";
 const ENDPOINT =
   "https://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json";
 const DETAIL_ENDPOINT =
@@ -33,7 +34,7 @@ const DETAIL_ENDPOINT =
 
 /**
  * 마지막으로 차트에 오른 지 이 일수가 지나면 목록에서 내립니다.
- * 내려간 작품은 예매할 수 없으니 남겨 둘 이유가 없습니다.
+ * 상세 정보는 별도 아카이브에 보존합니다.
  */
 const KEEP_DAYS = 45;
 
@@ -135,10 +136,10 @@ async function fetchDay(targetDt) {
  * 누적 이전의 옛 형식(하루치만 담긴 파일)도 그대로 받아들입니다.
  * 파일이 없거나 깨져 있으면 빈 상태에서 시작합니다 — 다시 모으면 되기 때문입니다.
  */
-async function loadPrev() {
+async function loadPrev(path = OUT) {
   let raw;
   try {
-    raw = await readFile(OUT, "utf8");
+    raw = await readFile(path, "utf8");
   } catch {
     return new Map();
   }
@@ -147,7 +148,7 @@ async function loadPrev() {
   try {
     prev = JSON.parse(raw);
   } catch {
-    console.warn(`${OUT} 을 읽지 못해 새로 모읍니다.`);
+    console.warn(`${path} 을 읽지 못해 새로 모읍니다.`);
     return new Map();
   }
 
@@ -240,6 +241,7 @@ async function fetchMovieDetails(movieCd) {
 // ---- 1. 날짜별로 받아서 작품 단위로 합치기 -------------------------------
 
 const movies = await loadPrev();
+const archive = await loadPrev(ARCHIVE);
 const before = movies.size;
 const fetched = [];
 
@@ -297,7 +299,11 @@ for (const [movieCd, e] of seen) {
   const first = dates[0];
   const last = dates[dates.length - 1];
   const m = e.row;
-  const prev = movies.get(movieCd);
+  const prev = movies.get(movieCd) || archive.get(movieCd);
+  if (prev && archive.has(movieCd)) {
+    archive.delete(movieCd);
+    movies.set(movieCd, prev);
+  }
 
   if (!prev) {
     movies.set(movieCd, {
@@ -346,6 +352,9 @@ let dropped = 0;
 for (const [movieCd, m] of movies) {
   if (daysBetween(latestDt, m.lastSeenAt) > KEEP_DAYS) {
     movies.delete(movieCd);
+    m.rank = null;
+    m.showing = false;
+    archive.set(movieCd, m);
     dropped += 1;
   }
 }
@@ -450,4 +459,20 @@ if (prevMovies === JSON.stringify(out.movies)) {
     .forEach((m) =>
       console.log(`  ${m.title} [${m.type}] ${m.genres.join("·")} — ${m.days}일`),
     );
+}
+
+const archived = [...archive.values()].sort(
+  (a, b) => b.lastSeenAt.localeCompare(a.lastSeenAt) || a.title.localeCompare(b.title, "ko"),
+);
+let prevArchived = null;
+try {
+  prevArchived = JSON.stringify(JSON.parse(await readFile(ARCHIVE, "utf8")).movies);
+} catch {}
+if (prevArchived !== JSON.stringify(archived)) {
+  await writeFile(ARCHIVE, JSON.stringify({
+    note: "박스오피스 목록에서 내려간 영화의 상세 정보를 보존합니다.",
+    source: "영화진흥위원회 오픈API 일별 박스오피스",
+    movies: archived,
+  }, null, 2) + "\n");
+  console.log(`${ARCHIVE} 갱신: ${archived.length}편`);
 }
