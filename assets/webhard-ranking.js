@@ -115,7 +115,7 @@
       id: "filecookie",
       name: "파일쿠키",
       description: "PC·모바일 자료 이용",
-      logo: "filecookie.svg",
+      logo: "filecookie.png",
       url: "https://www.filekuki.com/",
     },
     bigfile: {
@@ -129,7 +129,7 @@
       id: "megafile",
       name: "메가파일",
       description: "PC·모바일 자료 이용",
-      logo: "megafile.svg",
+      logo: "megafile.png",
       url: "https://www.megafile.co.kr/",
     },
     pdpop: {
