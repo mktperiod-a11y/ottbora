@@ -56,6 +56,13 @@ function isHandmade(p) {
   return /<text[\s>]/.test(svg);
 }
 
+/** fetch 는 "fetch failed" 만 말하고 진짜 이유(DNS·TLS·연결 거부)는 cause 에 둡니다. */
+const why = (e) =>
+  [e?.message, e?.cause?.code, e?.cause?.reason, e?.cause?.message]
+    .filter(Boolean)
+    .filter((v, i, a) => a.indexOf(v) === i)
+    .join(" / ");
+
 async function get(url, { referer, asText = false } = {}) {
   const res = await fetch(url, {
     headers: {
@@ -172,12 +179,35 @@ for (const p of targets) {
     continue;
   }
 
+  /*
+   * 한 주소로 안 열리면 몇 가지를 더 해 봅니다. www 유무에 따라 인증서가
+   * 다르거나, 해외 접속을 모바일 주소로만 받는 곳이 있습니다.
+   */
+  const tries = (() => {
+    const u = new URL(home);
+    const bare = u.hostname.replace(/^(www|m)\./, "");
+    const hosts = [u.hostname, `www.${bare}`, bare, `m.${bare}`];
+    const list = [];
+    for (const h of hosts) for (const proto of ["https:", "http:"]) list.push(`${proto}//${h}/`);
+    return [...new Set([home, ...list])];
+  })();
+
   let page;
-  try {
-    page = await get(home, { asText: true });
-  } catch (e) {
-    entry.error = `홈페이지를 열지 못함: ${e.message}`;
-    console.warn(`  ${p.name}: ${entry.error}`);
+  const failures = [];
+  for (const url of tries) {
+    try {
+      page = await get(url, { asText: true });
+      if (url !== home) console.log(`  ${p.name}: ${home} 대신 ${url} 로 열었습니다`);
+      break;
+    } catch (e) {
+      failures.push(`${url} → ${why(e)}`);
+    }
+  }
+  if (!page) {
+    entry.error = "홈페이지를 열지 못함";
+    entry.tried = failures;
+    console.warn(`  ${p.name}: 홈페이지를 열지 못했습니다`);
+    for (const f of failures) console.warn(`      ${f}`);
     report.push(entry);
     continue;
   }
@@ -222,7 +252,7 @@ for (const p of targets) {
       });
       console.log(`  ${p.name}  ${base}.${ext}  ${meta.width || "?"}×${meta.height || "?"}  ${c.kind}  ${img.url}`);
     } catch (e) {
-      console.warn(`  ${p.name}  건너뜀 ${c.url}: ${e.message}`);
+      console.warn(`  ${p.name}  건너뜀 ${c.url}: ${why(e)}`);
     }
   }
   if (!entry.candidates.length) entry.error = "로고로 보이는 이미지를 찾지 못함";
