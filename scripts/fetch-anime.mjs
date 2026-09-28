@@ -126,7 +126,9 @@ function cleanSynopsis(raw) {
     .replace(/~![\s\S]*?!~/g, "")
     .replace(/<br\s*\/?>/gi, "\n")
     .replace(/<\/p>\s*<p[^>]*>/gi, "\n\n")
-    .replace(/<[^>]+>/g, "")
+    // HTML 태그만 걷어 냅니다. TMDB 한국어 줄거리는 <중기사> 처럼 꺾쇠를
+    // 따옴표로 쓰는데, 그것까지 지우면 낱말이 사라집니다(실제로 그랬음).
+    .replace(/<\/?[a-z][a-z0-9-]*(?:\s[^>]*)?\/?>/gi, "")
     .replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (m, e) => {
       if (e[0] !== "#") return ENTITIES[e.toLowerCase()] ?? m;
       const n = e[1].toLowerCase() === "x" ? parseInt(e.slice(2), 16) : parseInt(e.slice(1), 10);
@@ -432,18 +434,32 @@ function seasonBase(a) {
 }
 
 /**
- * 이 작품에 맞는 TMDB 항목을 차례로 내놓습니다. 원제(일본어)로 찾으면
- * 가장 잘 맞고, 안 되면 영어 제목, 그다음 기본 시리즈명으로 봅니다.
- * 기본 시리즈명으로 찾은 항목에는 시즌 번호를 붙여 둡니다.
+ * TMDB 장르 16 = 애니메이션.
+ *
+ * 같은 제목의 실사판이 먼저 걸리는 일이 있습니다. "ONE PIECE" 로 찾으면
+ * 넷플릭스 실사 시리즈가 원제까지 똑같이 "ONE PIECE" 라 애니 대신
+ * 걸렸고, 줄거리에 "인기 만화를 각색한 실사 시리즈"가 들어갔습니다.
  */
-async function* tmdbMatches(a) {
+const TMDB_ANIMATION = 16;
+const animated = (hits) =>
+  (hits || []).filter((r) => (r.genre_ids || []).includes(TMDB_ANIMATION));
+
+/**
+ * 이 작품에 맞는 TMDB 애니 항목을 차례로 내놓습니다. 원제(일본어)로
+ * 찾으면 가장 잘 맞고, 안 되면 영어 제목, 그다음 기본 시리즈명으로
+ * 봅니다. 기본 시리즈명으로 찾은 항목에는 시즌 번호를 붙여 둡니다.
+ *
+ * state.failed 는 검색이 한 번이라도 실패했는지(결과 없음과 다름)입니다.
+ */
+async function* tmdbMatches(a, state = {}) {
   if (!TMDB) return;
 
   const exactQueries = [a.title_japanese, a.title_english, a.title].filter(Boolean);
   const want = exactQueries.map(norm);
   for (const q of exactQueries) {
     const hits = await searchTmdb(q, `TMDB ${q}`);
-    const hit = hits?.find(
+    if (hits === null) state.failed = true;
+    const hit = animated(hits).find(
       (r) => want.includes(norm(r.original_name)) || want.includes(norm(r.name)),
     );
     if (hit) yield { hit, season: "" };
@@ -452,7 +468,8 @@ async function* tmdbMatches(a) {
   const sb = seasonBase(a);
   if (!sb) return;
   const hits = await searchTmdb(sb.base, `TMDB base ${sb.base}`);
-  const hit = hits?.find(
+  if (hits === null) state.failed = true;
+  const hit = animated(hits).find(
     (r) => norm(r.original_name) === norm(sb.base) || norm(r.name) === norm(sb.base),
   );
   if (hit) yield { hit, season: sb.season };
@@ -468,12 +485,16 @@ async function koreanTitle(a) {
   return null;
 }
 
-/** 시리즈 전체의 줄거리입니다. 시즌만 따로 적힌 것은 TMDB 검색이 주지 않습니다. */
+/**
+ * 시리즈 전체의 줄거리입니다. 시즌만 따로 적힌 것은 TMDB 검색이 주지 않습니다.
+ * failed 가 참이면 "없음"이 아니라 "묻지 못함"입니다.
+ */
 async function koreanOverview(a) {
-  for await (const { hit } of tmdbMatches(a)) {
-    if (/[가-힣]/.test(hit.overview || "")) return hit.overview;
+  const state = {};
+  for await (const { hit } of tmdbMatches(a, state)) {
+    if (/[가-힣]/.test(hit.overview || "")) return { text: hit.overview, failed: false };
   }
-  return "";
+  return { text: "", failed: Boolean(state.failed) };
 }
 
 // ---- 4. 포스터 받고 저장 ---------------------------------------------------
@@ -524,13 +545,13 @@ for (const a of picked) {
   const ko = alias || old?.titleKo || (await koreanTitle(a));
 
   // 줄거리: 번역 보정표 > TMDB 한국어 > 원문 순입니다(맨 위 설명 참고).
-  // TMDB 에서 한 번 찾은 한국어 줄거리는 다시 묻지 않습니다.
+  // TMDB 는 매번 새로 묻고, 묻지 못한 날에만 지난번 TMDB 줄거리를 씁니다.
+  // (한 번 받은 것을 계속 쓰면 잘못 받은 줄거리가 고쳐지지 않습니다.)
   const translated = cleanSynopsis(synopsisKo.synopses?.[String(a.mal_id)]);
-  const fromTmdb = translated
-    ? ""
-    : old?.synopsisBy === "TMDB" && old.synopsis
-      ? old.synopsis
-      : cleanSynopsis(await koreanOverview(a));
+  const tmdb = translated ? { text: "", failed: false } : await koreanOverview(a);
+  const fromTmdb =
+    cleanSynopsis(tmdb.text) ||
+    (tmdb.failed && old?.synopsisBy === "TMDB" ? old.synopsis || "" : "");
   let original = cleanSynopsis(a.synopsis);
   if (!translated && !fromTmdb && a.anilistId && isThinSynopsis(original)) {
     original = cleanSynopsis(await prequelSynopsis(a.anilistId)) || original;
