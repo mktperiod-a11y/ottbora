@@ -635,7 +635,8 @@
     </script>
     <script>
       /*
-       * 제휴 배너. 들어올 때마다 온디스크·케이디스크 중 하나를 무작위로 띄웁니다.
+       * 제휴 배너. 들어올 때마다 weight 비율로 하나를 고릅니다.
+       * 온디스크 50% · 케이디스크 30% · 나머지 20% 는 배너를 띄우지 않습니다.
        * 사이트 본문과 구분되도록 각 서비스 색을 쓰고 "광고" 표시를 붙입니다.
        */
       (() => {
@@ -644,6 +645,7 @@
         const ADS = [
           {
             id: "ondisk",
+            weight: 50,
             name: "온디스크",
             logo: "assets/promo-ondisk.png",
             url: "go/ondisk/",
@@ -652,6 +654,7 @@
           },
           {
             id: "kdisk",
+            weight: 30,
             name: "케이디스크",
             logo: "assets/promo-kdisk.png",
             url: "go/kdisk/",
@@ -659,7 +662,10 @@
             text: "감상과 다운로드를 한 곳에서",
           },
         ];
-        const ad = ADS[Math.floor(Math.random() * ADS.length)];
+        // 0~100 사이에서 뽑아 누적 weight 구간에 들면 그 배너, 어디에도 안 들면(80~100) 미노출.
+        let roll = Math.random() * 100;
+        const ad = ADS.find((a) => (roll -= a.weight) < 0);
+        if (!ad) return;
         host.className = `promo promo--${ad.id}`;
         host.innerHTML =
           `<a class="promo-link" href="${ad.url}" target="_blank" rel="sponsored noopener noreferrer" aria-label="${ad.name} 광고, 새 창에서 열기">` +
