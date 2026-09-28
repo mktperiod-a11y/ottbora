@@ -19,6 +19,7 @@
  * 때문입니다.
  *
  * 찾는 곳
+ *   ld       schema.org(JSON-LD)의 "logo" — 사이트가 스스로 밝힌 공식 로고
  *   img      src·alt·class·id 에 logo 가 들어간 <img>
  *   css      같은 사이트 CSS 에서 선택자에 logo 가 들어간 규칙의 url()
  *   icon     <link rel="apple-touch-icon" / "icon">
@@ -169,6 +170,13 @@ function findCandidates(html, base, siteName = "") {
     } catch {}
   };
 
+  // JSON 이 깨져 있어도 읽히도록 "logo" 값만 짚어 냅니다(문자열 또는
+  // { "url": ... } 꼴).
+  for (const block of html.match(/<script[^>]+application\/ld\+json[^>]*>[\s\S]*?<\/script>/gi) || []) {
+    for (const m of block.matchAll(/"logo"\s*:\s*(?:"([^"]+)"|\{[^}]*?"(?:url|contentUrl)"\s*:\s*"([^"]+)")/g)) {
+      add((m[1] || m[2]).replace(/\\\//g, "/"), "ld", "schema.org logo");
+    }
+  }
   for (const tag of html.match(/<img\b[^>]*>/gi) || []) {
     const src = attr(tag, "src") || attr(tag, "data-src");
     const alt = attr(tag, "alt");
@@ -371,7 +379,7 @@ for (const p of targets) {
   }
   const unique = found.filter((c) => !seen.has(c.url) && seen.add(c.url));
   // 로고일 가능성이 높은 순서로 둡니다. 개수 상한에 걸려도 좋은 후보가 남게.
-  const ORDER = { img: 0, h1: 1, css: 2, og: 3, icon: 4 };
+  const ORDER = { ld: 0, img: 1, h1: 2, css: 3, og: 4, icon: 5 };
   unique.sort((a, b) => (ORDER[a.kind] ?? 9) - (ORDER[b.kind] ?? 9));
 
   let n = 0;
