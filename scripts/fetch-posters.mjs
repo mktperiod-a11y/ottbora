@@ -93,47 +93,48 @@ const norm = (t) =>
  */
 async function fromKmdb(title, year) {
   const q = new URLSearchParams({
-    // 스펙상 고정값입니다. kmdb_new2 로 보내면 컬렉션을 찾지 못합니다.
     collection: "kmdb_new",
     ServiceKey: KMDB,
-    // 통합검색(query)이 아니라 영화명(title)으로 좁혀 찾습니다.
     title,
-    // 최소 3 이상이어야 합니다. 동명 작품이 있어 여유를 둡니다.
     listCount: "10",
-    // 포스터는 상세정보에 들어 있습니다. N 이면 이미지가 오지 않습니다.
     detail: "Y",
   });
-  // 개봉일로 질의를 좁히지는 않습니다. KOFIC 의 개봉일과 KMDb 의 개봉일이
-  // 하루라도 다르면(재개봉·연말 개봉) 결과가 통째로 비어 버립니다.
-  // 대신 아래에서 제목으로 검증하고, 연도는 동명 작품을 가릴 때만 씁니다.
   const body = await getJson(`${KMDB_URL}?${q}`, `KMDb ${title}`);
-
   const list = body?.Data?.[0]?.Result;
   if (!Array.isArray(list)) return null;
 
   const want = norm(title);
-
-  // 제목이 맞는 것만 후보로 둡니다. 연도만으로는 통과시키지 않습니다 —
-  // 같은 해 다른 작품의 포스터가 붙습니다.
-  // 부제가 붙고 떨어지는 경우가 있어 포함 관계까지 인정합니다.
   const hits = [];
   for (const r of list) {
-    // KMDb 제목에는 강조 태그(!HS, !HE)가 섞여 옵니다.
     const got = norm(String(r.title || "").replace(/!H[SE]/g, ""));
-    const poster = String(r.posters || "").split("|").filter(Boolean)[0];
-    if (!poster || !got) continue;
-    if (got === want || got.includes(want) || want.includes(got)) {
-      hits.push({ poster, year: yearOf(r.repRlsDate) || yearOf(r.prodYear) });
-    }
+    if (!got) continue;
+    if (!(got === want || got.includes(want) || want.includes(got))) continue;
+
+    const poster = String(r.posters || "").split("|").filter(Boolean)[0] || "";
+    const plots = Array.isArray(r.plots?.plot)
+      ? r.plots.plot
+      : Array.isArray(r.plots)
+        ? r.plots
+        : [];
+    const synopsis =
+      plots.map((p) => String(p?.plotText || p?.plot || "").trim()).find(Boolean) ||
+      String(r.plot || r.plotText || "").trim();
+
+    hits.push({
+      poster,
+      synopsis,
+      year: yearOf(r.repRlsDate) || yearOf(r.prodYear),
+    });
   }
   if (!hits.length) return null;
 
-  // 동명 작품이 여러 개면 개봉 연도가 맞는 쪽을 고릅니다.
   const pick = (year && hits.find((h) => h.year === year)) || hits[0];
   return {
-    url: pick.poster,
+    url: pick.poster || "",
     credit: "KMDb · 한국영상자료원",
     referer: "https://www.kmdb.or.kr/",
+    synopsis: pick.synopsis || "",
+    synopsisCredit: pick.synopsis ? "KMDb · 한국영상자료원" : "",
   };
 }
 
@@ -142,36 +143,33 @@ async function fromTmdb(title, year) {
   const q = new URLSearchParams({
     api_key: TMDB,
     query: title,
-    // 한국어 제목과 한국어 포스터를 우선 돌려줍니다.
     language: "ko-KR",
   });
-  // KMDb 와 같은 이유로 개봉연도로 질의를 좁히지 않습니다.
-  // 외화는 본국 개봉연도와 국내 개봉연도가 다를 수 있어(12월 개봉 → 1월 국내)
-  // 연도로 거르면 결과가 통째로 빕니다. 연도는 아래에서 고를 때만 씁니다.
   const body = await getJson(`${TMDB_URL}?${q}`, `TMDB ${title}`);
-
   const list = body?.results;
   if (!Array.isArray(list)) return null;
 
   const want = norm(title);
-  // KMDb 와 같은 기준입니다. 제목이 맞는 것만 씁니다.
-  // title 은 한국어 제목, original_title 은 원어 제목(일본 애니 등)입니다.
   const match = (t) => {
     const g = norm(t);
     return g && (g === want || g.includes(want) || want.includes(g));
   };
-  const hits = list.filter(
-    (r) => r.poster_path && (match(r.title) || match(r.original_title)),
-  );
+  const hits = list.filter((r) => match(r.title) || match(r.original_title));
   if (!hits.length) return null;
 
-  // 동명 작품이 여러 개면 개봉 연도가 맞는 쪽을 고릅니다.
   const pick =
     (year && hits.find((r) => yearOf(r.release_date) === year)) || hits[0];
   return {
-    url: TMDB_IMG + pick.poster_path,
+    url: pick.poster_path ? TMDB_IMG + pick.poster_path : "",
     credit: "TMDB",
     referer: "https://www.themoviedb.org/",
+    synopsis: String(pick.overview || "").trim(),
+    synopsisCredit: pick.overview ? "TMDB" : "",
+    tmdbId: pick.id ?? null,
+    score: Number.isFinite(Number(pick.vote_average))
+      ? Number(Number(pick.vote_average).toFixed(1))
+      : null,
+    voteCount: Number(pick.vote_count) || null,
   };
 }
 
@@ -236,59 +234,110 @@ await mkdir(DIR, { recursive: true });
 
 const need = data.movies.filter((m) => {
   if (!m.movieCd) return false;
-  // 이미 파일이 있으면 다시 받지 않습니다.
-  if (m.poster && existsSync(`${DIR}/${m.movieCd}.webp`)) return false;
-  return true;
+  const hasPoster = Boolean(m.poster && existsSync(`${DIR}/${m.movieCd}.webp`));
+  // 포스터가 있어도 줄거리/평점이 비어 있으면 메타데이터를 다시 찾습니다.
+  return !hasPoster || !m.synopsis || m.score == null;
 });
 
-console.log(`${data.movies.length}편 중 포스터가 필요한 작품 ${need.length}편`);
+console.log(`${data.movies.length}편 중 포스터/상세 보강이 필요한 작품 ${need.length}편`);
 
 const started = Date.now();
-let ok = 0, fail = 0, skipped = 0, bytes = 0;
+let ok = 0, fail = 0, skipped = 0, bytes = 0, metaUpdated = 0;
 
 for (const m of need) {
   if (Date.now() - started > BUDGET_MS) {
     skipped += 1;
     continue;
   }
+
   const year = yearOf(m.openedAt);
-  let found = null;
-  try {
-    if (KMDB) found = await fromKmdb(m.title, year);
-    if (!found && TMDB) found = await fromTmdb(m.title, year);
-  } catch (e) {
-    console.warn(`  조회 실패 — ${m.title}: ${e.message}`);
+  const hasPoster = Boolean(m.poster && existsSync(`${DIR}/${m.movieCd}.webp`));
+  let kmdb = null;
+  let tmdb = null;
+
+  // 한국어 줄거리와 평점은 TMDB 를 우선 확인합니다.
+  if (TMDB) {
+    try {
+      tmdb = await fromTmdb(m.title, year);
+    } catch (e) {
+      console.warn(`  TMDB 조회 실패 — ${m.title}: ${e.message}`);
+    }
   }
 
-  if (!found) {
-    fail += 1;
-    console.warn(`  못 찾음 — ${m.title} (${year})`);
-    continue;
+  // 포스터가 없거나 TMDB 줄거리가 없을 때 KMDb 를 보조 출처로 봅니다.
+  if (KMDB && (!hasPoster || !tmdb?.synopsis)) {
+    try {
+      kmdb = await fromKmdb(m.title, year);
+    } catch (e) {
+      console.warn(`  KMDb 조회 실패 — ${m.title}: ${e.message}`);
+    }
   }
 
-  try {
-    const size = await save(found.url, `${DIR}/${m.movieCd}.webp`, found.referer);
-    m.poster = `${DIR}/${m.movieCd}.webp`;
-    m.posterCredit = found.credit;
-    ok += 1;
-    bytes += size;
-    console.log(`  ${m.title} — ${found.credit} (${Math.round(size / 1024)}KB)`);
-  } catch (e) {
-    fail += 1;
-    console.warn(`  내려받기 실패 — ${m.title}: ${e.message}`);
+  let changed = false;
+  if (tmdb?.synopsis || kmdb?.synopsis) {
+    const synopsis = tmdb?.synopsis || kmdb?.synopsis || "";
+    const credit = tmdb?.synopsis ? tmdb.synopsisCredit : kmdb?.synopsisCredit;
+    if (synopsis && synopsis !== m.synopsis) {
+      m.synopsis = synopsis;
+      m.synopsisCredit = credit || "";
+      changed = true;
+    }
   }
-  await new Promise((r) => setTimeout(r, 250)); // 연속 호출 간격
+  if (tmdb?.tmdbId && tmdb.tmdbId !== m.tmdbId) {
+    m.tmdbId = tmdb.tmdbId;
+    changed = true;
+  }
+  if (tmdb?.score != null && tmdb.score !== m.score) {
+    m.score = tmdb.score;
+    m.scoreBy = "TMDB";
+    m.voteCount = tmdb.voteCount;
+    changed = true;
+  }
+  if (changed) metaUpdated += 1;
+
+  if (!hasPoster) {
+    // 포스터 우선순위는 기존과 동일하게 KMDb → TMDB 입니다.
+    let found = kmdb?.url ? kmdb : null;
+    if (!found && KMDB) {
+      try {
+        found = await fromKmdb(m.title, year);
+        kmdb ||= found;
+      } catch (e) {
+        console.warn(`  KMDb 포스터 조회 실패 — ${m.title}: ${e.message}`);
+      }
+    }
+    if (!found?.url && tmdb?.url) found = tmdb;
+
+    if (!found?.url) {
+      fail += 1;
+      console.warn(`  포스터 못 찾음 — ${m.title} (${year})`);
+    } else {
+      try {
+        const size = await save(found.url, `${DIR}/${m.movieCd}.webp`, found.referer);
+        m.poster = `${DIR}/${m.movieCd}.webp`;
+        m.posterCredit = found.credit;
+        ok += 1;
+        bytes += size;
+        console.log(`  ${m.title} — ${found.credit} (${Math.round(size / 1024)}KB)`);
+      } catch (e) {
+        fail += 1;
+        console.warn(`  내려받기 실패 — ${m.title}: ${e.message}`);
+      }
+    }
+  }
+
+  await new Promise((r) => setTimeout(r, 250));
 }
 
 console.log(
-  `\n받음 ${ok}편 (${Math.round(bytes / 1024)}KB) / 못 찾음 ${fail}편` +
+  `\n포스터 새로 ${ok}편 (${Math.round(bytes / 1024)}KB) / 못 찾음 ${fail}편 / 상세 보강 ${metaUpdated}편` +
     (skipped ? ` / 시간이 차서 미룸 ${skipped}편` : ""),
 );
 if (skipped) console.log("미룬 작품은 다음 실행에서 다시 시도합니다.");
 
-if (ok) {
+if (ok || metaUpdated) {
   await writeFile(DATA, JSON.stringify(data, null, 2) + "\n");
   console.log(`${DATA} 갱신`);
 } else {
-  console.log("새로 받은 포스터가 없어 파일을 그대로 둡니다.");
+  console.log("새로 받은 포스터나 상세 정보가 없어 파일을 그대로 둡니다.");
 }
