@@ -21,6 +21,11 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
+    # 출처(KOFIC·TMDB·AniList)는 서로 기대지 않습니다. 한 곳이 멈춰도
+    # 나머지는 받아서 커밋하도록 뒤 단계마다 if: !cancelled() 를 둡니다.
+    # 실제로 KOFIC 연결 시간 초과 하나로 애니·드라마·예능 갱신까지 통째로
+    # 건너뛴 날이 있었습니다(2026-09-27). 실패한 단계가 있으면 잡은 여전히
+    # 실패로 끝나므로 알림은 그대로 옵니다.
     steps:
       - uses: actions/checkout@v4
 
@@ -37,19 +42,22 @@ jobs:
 
       # 포스터 변환에만 쓰는 의존성입니다. 사이트 자체는 빌드가 없습니다.
       - name: 의존성 설치
+        if: ${{ !cancelled() }}
         run: npm ci
 
       # KOFIC 은 포스터를 주지 않으므로 이미지는 따로 받습니다.
       # 두 키 중 등록된 쪽을 쓰고, 둘 다 없으면 건너뜁니다(실패 아님).
       - name: 포스터 내려받기
+        if: ${{ !cancelled() }}
         env:
           KMDB_API_KEY: ${{ secrets.KMDB_API_KEY }}
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
         run: node scripts/fetch-posters.mjs
 
-      # 애니 탭은 MyAnimeList(Jikan)에서 채웁니다. 키가 필요 없습니다.
-      # TMDB 키가 있으면 한국어 제목까지 채웁니다.
+      # 애니 탭은 AniList(안 되면 MyAnimeList)에서 채웁니다. 키가 필요 없습니다.
+      # TMDB 키가 있으면 한국어 제목·줄거리까지 채웁니다.
       - name: 애니 내려받기
+        if: ${{ !cancelled() }}
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
         run: node scripts/fetch-anime.mjs
@@ -57,11 +65,13 @@ jobs:
       # 드라마·예능은 TMDB 한국 TV 후보를 받아 한국형 규칙으로 나눕니다.
       # 실패해도 기존 파일 또는 수동 content-data.json 이 자리를 지킵니다.
       - name: 드라마·예능 내려받기
+        if: ${{ !cancelled() }}
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
         run: node scripts/fetch-tv-ranking.mjs
 
       - name: 변경분 커밋
+        if: ${{ !cancelled() }}
         run: |
           # 경로를 하나하나 적으면 아직 없는 파일에서 git add 가 exit 128 로
           # 죽습니다(assets/anime.json). 그러면 같은 실행에서 이미 성공한
