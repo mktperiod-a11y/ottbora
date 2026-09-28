@@ -205,7 +205,7 @@
           sourceKind: "manual",
           poster: (window.OTT_POSTERS || {})[w.id] || FALLBACK,
           meta: [timeMeta(w.type, w.releasedAt), w.genre].filter(Boolean),
-          detailPoints: w.type === "영화" ? movieFacts : w.points || [],
+          detailPoints: w.type === "영화" ? movieFacts : manualFacts(w),
           synopsisText: movie?.synopsis || w.synopsis || "현재 줄거리 정보를 확인할 수 없어요.",
           synopsisCredit: movie?.synopsis ? movie.synopsisCredit || "" : "",
         };
@@ -213,6 +213,23 @@
 
       function fact(label, value) {
         return value ? { label, value: String(value) } : null;
+      }
+
+      function manualFacts(w) {
+        const weekly = w.pickedBy === "주간 톱10"
+          ? String(w.tagline || "").match(/^(.+?) 글로벌 비영어 시리즈 (\d+)위$/)
+          : null;
+        const views = w.pickedBy === "주간 톱10"
+          ? (w.points || []).find((x) => /^해당 주간 조회수\s/.test(x))
+          : "";
+        return [
+          fact("글로벌 비영어 시리즈 순위", weekly ? `${weekly[2]}위` : ""),
+          fact("집계 기간", weekly?.[1]),
+          fact("주간 조회수", views ? views.replace(/^해당 주간 조회수\s*/, "") : ""),
+          fact("출연", w.cast),
+          fact(w.type === "영화" ? "개봉" : "첫 방송", w.releasedAt ? prettyDate(w.releasedAt) : ""),
+          fact("장르", w.genre),
+        ].filter(Boolean);
       }
 
       function shortPeople(list, max = 4) {
@@ -313,7 +330,7 @@
           synopsisText:
             w.overview || "현재 줄거리 정보를 확인할 수 없어요.",
           synopsisCredit: w.overview ? "TMDB" : "",
-          detailPoints: facts.length ? facts : ["자동 인기 목록 수록 작품"],
+          detailPoints: facts,
           watch: [],
           partner: [],
           imageCredit: w.posterCredit || "TMDB",
@@ -406,7 +423,7 @@
           synopsisText: a.synopsis || "현재 줄거리 정보를 확인할 수 없어요.",
           synopsisLang: a.synopsis ? a.synopsisLang || "" : "",
           synopsisCredit: a.synopsis ? animeSynopsisCredit(a) : "",
-          detailPoints: points.length ? points : ["작품 정보를 확인할 수 없어요."],
+          detailPoints: points,
           watch: [],
           partner: partnerWatch(a.title),
           imageCredit: a.posterCredit || "AniList",
@@ -632,8 +649,7 @@
           const synopsisEl = document.querySelector("#synopsis");
           synopsisEl.textContent = w.synopsisText || "";
           if (w.synopsisLang) synopsisEl.lang = w.synopsisLang;
-          document.querySelector("#points-title").textContent =
-            w.type === "영화" || w.sourceKind !== "manual" ? "작품 정보" : "관전 포인트";
+          document.querySelector("#points-title").textContent = "작품 정보";
           renderPoints(w.detailPoints || []);
           document.querySelector("#points-title").hidden = !(w.detailPoints || []).length;
 
