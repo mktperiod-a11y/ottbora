@@ -4,6 +4,14 @@ name: 콘텐츠 갱신
 on:
   schedule:
     - cron: "0 1 * * *" # 01:00 UTC = 10:00 KST
+  push:
+    branches: [main]
+    paths:
+      - "scripts/fetch-boxoffice.mjs"
+      - "scripts/fetch-posters.mjs"
+      - "scripts/fetch-tv-ranking.mjs"
+      - "scripts/fetch-anime.mjs"
+      - ".github/workflows/boxoffice.yml"
   workflow_dispatch: # 수동 실행
     inputs:
       days:
