@@ -1,88 +1,9 @@
 [
   {
-    "id": "filenori",
-    "name": "파일노리",
-    "home": "https://www.filenori.com/",
-    "candidates": [
-      {
-        "file": "01-img.gif",
-        "kind": "img",
-        "note": "파일노리 로고",
-        "url": "http://www.filenori.com/common/images/common/logo/logo.gif",
-        "bytes": 3895,
-        "width": 187,
-        "height": 63
-      }
-    ],
-    "error": ""
-  },
-  {
     "id": "bigfile",
     "name": "빅파일",
     "home": "https://bigfile.co.kr/",
     "candidates": [],
     "error": "로고로 보이는 이미지를 찾지 못함"
-  },
-  {
-    "id": "pdpop",
-    "name": "피디팝",
-    "home": "https://pdpop.co.kr/",
-    "candidates": [
-      {
-        "file": "01-og.png",
-        "kind": "og",
-        "note": "og:image",
-        "url": "https://www.pdpop.com/images/images_re/favicon/pdpop_ico_144x144.png",
-        "bytes": 9760,
-        "width": 144,
-        "height": 143
-      },
-      {
-        "file": "02-icon.ico",
-        "kind": "icon",
-        "note": "shortcut icon",
-        "url": "http://www.pdpop.com/images/images_re/favicon/favicon.ico",
-        "bytes": 4286,
-        "width": null,
-        "height": null
-      },
-      {
-        "file": "03-icon.png",
-        "kind": "icon",
-        "note": "icon",
-        "url": "http://www.pdpop.com/images/images_re/favicon/pdpop_ico_32x32.png",
-        "bytes": 2850,
-        "width": 32,
-        "height": 32
-      },
-      {
-        "file": "04-icon.png",
-        "kind": "icon",
-        "note": "icon",
-        "url": "http://www.pdpop.com/images/images_re/favicon/pdpop_ico_48x48.png",
-        "bytes": 4016,
-        "width": 48,
-        "height": 48
-      },
-      {
-        "file": "05-icon.png",
-        "kind": "icon",
-        "note": "icon",
-        "url": "http://www.pdpop.com/images/images_re/favicon/pdpop_ico_96x96.png",
-        "bytes": 6862,
-        "width": 96,
-        "height": 96
-      },
-      {
-        "file": "06-icon.png",
-        "kind": "icon",
-        "note": "icon",
-        "url": "http://www.pdpop.com/images/images_re/favicon/pdpop_ico_144x144.png",
-        "bytes": 9760,
-        "width": 144,
-        "height": 143
-      }
-    ],
-    "error": ""
   }
 ]
