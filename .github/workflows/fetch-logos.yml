@@ -1,0 +1,73 @@
+name: 공식 로고 후보 모으기
+
+# 웹하드를 새로 넣을 때 쓰는 도구입니다.
+#
+# 작업 환경(샌드박스)에서는 웹하드 사이트가 막혀 있어 로고를 받을 수
+# 없고, 그래서 로고를 글자로 "그려서" 채우는 일이 반복됐습니다.
+# GitHub 러너는 이 사이트들에 닿으므로 여기서 받습니다.
+#
+# 홈페이지의 로고 후보를 모두 받아 logo-candidates/ 에 올립니다.
+# 어느 것이 공식 워드마크인지는 눈으로 보고 골라 assets/ 로 옮깁니다.
+#
+# main 에서는 결과를 커밋하지 않고 아티팩트로만 남깁니다.
+# 작업 브랜치에서 돌리면 그 브랜치에 커밋합니다.
+on:
+  workflow_dispatch:
+    inputs:
+      ids:
+        description: "웹하드 id (띄어 쓰기로 여러 개, 비우면 로고가 빠진 곳 전부)"
+        required: false
+        default: ""
+  push:
+    branches-ignore: [main]
+    paths:
+      - scripts/fetch-logos.mjs
+      - .github/workflows/fetch-logos.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-logos-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: 의존성 설치
+        run: npm ci
+
+      - name: 로고 후보 모으기
+        run: node scripts/fetch-logos.mjs ${{ github.event.inputs.ids }}
+
+      - name: 아티팩트로 남기기
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: logo-candidates
+          path: logo-candidates
+          if-no-files-found: ignore
+
+      - name: 작업 브랜치에 커밋
+        if: github.ref_name != 'main'
+        run: |
+          if [ ! -d logo-candidates ]; then
+            echo "후보가 없습니다 — 커밋하지 않습니다."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A logo-candidates
+          if git diff --cached --quiet; then
+            echo "변경 없음 — 커밋하지 않습니다."
+            exit 0
+          fi
+          git commit -m "Collect official logo candidates"
+          git push
