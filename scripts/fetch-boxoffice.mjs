@@ -174,6 +174,8 @@ async function loadPrev() {
       runtime: Number(m.runtime) || null,
       directors: Array.isArray(m.directors) ? m.directors : [],
       cast: Array.isArray(m.cast) ? m.cast : [],
+      producers: Array.isArray(m.producers) ? m.producers : [],
+      distributors: Array.isArray(m.distributors) ? m.distributors : [],
       rating: String(m.rating || ""),
       koficDetailFetched: Boolean(m.koficDetailFetched),
       koficDetailVersion: Number(m.koficDetailVersion) || 1,
@@ -216,6 +218,11 @@ async function fetchMovieDetails(movieCd) {
   const rating = Array.isArray(info.audits)
     ? info.audits.map((x) => String(x.watchGradeNm || "")).find(Boolean) || ""
     : "";
+  const companies = Array.isArray(info.companys) ? info.companys : [];
+  const companyNames = (role) => [...new Set(companies
+    .filter((x) => String(x.companyPartNm || "").includes(role))
+    .map((x) => String(x.companyNm || "").trim())
+    .filter(Boolean))].slice(0, 3);
 
   return {
     genres,
@@ -223,6 +230,8 @@ async function fetchMovieDetails(movieCd) {
     directors,
     cast,
     rating,
+    producers: companyNames("제작"),
+    distributors: companyNames("배급"),
     titleEn: String(info.movieNmEn || ""),
     titleOriginal: String(info.movieNmOg || ""),
   };
@@ -309,6 +318,8 @@ for (const [movieCd, e] of seen) {
       runtime: null,
       directors: [],
       cast: [],
+      producers: [],
+      distributors: [],
       rating: "",
       koficDetailFetched: false,
       koficDetailVersion: 0,
@@ -341,7 +352,7 @@ for (const [movieCd, m] of movies) {
 
 // ---- 3. 작품 상세 채우기 -----------------------------------------------
 
-const KOFIC_DETAIL_VERSION = 2;
+const KOFIC_DETAIL_VERSION = 3;
 const needDetails = [...movies.values()].filter(
   (m) =>
     !m.koficDetailFetched ||
@@ -368,6 +379,8 @@ for (const m of needDetails) {
     m.runtime = detail.runtime;
     m.directors = detail.directors;
     m.cast = detail.cast;
+    m.producers = detail.producers;
+    m.distributors = detail.distributors;
     m.rating = detail.rating;
     m.titleEn = detail.titleEn || m.titleEn || "";
     m.titleOriginal = detail.titleOriginal || m.titleOriginal || "";

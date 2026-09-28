@@ -6,7 +6,7 @@
     <title>콘텐츠 상세 | 오티티보라</title>
     <meta
       name="description"
-      content="작품 줄거리, 출연진과 관전 포인트를 확인하세요."
+      content="작품 줄거리와 작품 정보, 시청 경로를 확인하세요."
     />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <link rel="stylesheet" href="assets/fonts/gmarketsans/gmarketsans.css" />
@@ -45,7 +45,7 @@
           <div class="copy">
             <h2>줄거리</h2>
             <p id="synopsis"></p>
-            <h2 id="points-title">관전 포인트</h2>
+            <h2 id="points-title">작품 정보</h2>
             <ul id="points"></ul>
             <div id="watch-block"></div>
             <div id="booking-block"></div>
@@ -184,15 +184,30 @@
         return value;
       }
 
-      function manualWork(w) {
+      function matchingBoxMovie(w, box) {
+        if (w?.type !== "영화") return null;
+        const release = String(w.releasedAt || "").match(/\d{4}[-.]\d{2}[-.]\d{2}/)?.[0];
+        return (box?.movies || []).find((m) =>
+          key(m.title) === key(w.title) &&
+          (!release || prettyDate(m.openedAt) === prettyDate(release)),
+        ) || null;
+      }
+
+      function manualWork(w, box) {
         if (!w) return null;
+        const movie = matchingBoxMovie(w, box);
+        const movieFacts = w.type === "영화" ? filmFacts(movie, box?.latestDt) : [];
+        if (w.type === "영화" && !movieFacts.length && w.cast) {
+          movieFacts.push(fact(w.cast.startsWith("감독 ") ? "감독" : "출연", w.cast.replace(/^감독\s+/, "")));
+        }
         return {
           ...w,
           sourceKind: "manual",
           poster: (window.OTT_POSTERS || {})[w.id] || FALLBACK,
           meta: [timeMeta(w.type, w.releasedAt), w.genre].filter(Boolean),
-          detailPoints: w.points || [],
-          synopsisText: w.synopsis || "줄거리 정보가 준비 중입니다.",
+          detailPoints: w.type === "영화" ? movieFacts : w.points || [],
+          synopsisText: movie?.synopsis || w.synopsis || "현재 줄거리 정보를 확인할 수 없어요.",
+          synopsisCredit: movie?.synopsis ? movie.synopsisCredit || "" : "",
         };
       }
 
@@ -206,18 +221,26 @@
         return rows.slice(0, max).join(" · ") + (rows.length > max ? ` +${rows.length - max}` : "");
       }
 
-      function boxWork(m) {
-        if (!m) return null;
+      function filmFacts(m, latestDt) {
+        if (!m) return [];
         const audienceText = audience(m.audienceAcc).replace(/^누적 관객\s*/, "");
-        const facts = [
-          fact("현재 순위", m.rank ? `국내 박스오피스 ${m.rank}위` : ""),
-          fact("누적 관객", audienceText),
+        const rankDate = latestDt ? ` · ${prettyDate(latestDt)} 기준` : "";
+        return [
+          fact(`박스오피스 순위${rankDate}`, m.rank ? `${m.rank}위` : ""),
+          fact("TMDB 평점", Number(m.score) > 0 ? `${m.score} / 10` : ""),
           fact("상영시간", m.runtime ? `${m.runtime}분` : ""),
           fact("관람등급", m.rating),
+          fact("누적 관객", audienceText),
           fact("감독", shortPeople(m.directors, 2)),
           fact("출연", shortPeople(m.cast, 4)),
-          fact("TMDB 평점", Number(m.score) > 0 ? `${m.score} / 10` : ""),
+          fact("제작", shortPeople(m.producers, 2)),
+          fact("배급", shortPeople(m.distributors, 2)),
         ].filter(Boolean);
+      }
+
+      function boxWork(m, latestDt) {
+        if (!m) return null;
+        const facts = filmFacts(m, latestDt);
 
         return {
           id: `kofic-${m.movieCd}`,
@@ -232,7 +255,7 @@
           ].filter(Boolean),
           synopsisText: m.synopsis || "현재 줄거리 정보를 확인할 수 없어요.",
           synopsisCredit: m.synopsis ? m.synopsisCredit || "" : "",
-          detailPoints: facts.length ? facts : ["박스오피스 자동 수집 작품"],
+          detailPoints: facts,
           watch: [],
           partner: [],
           imageCredit: m.posterCredit || "",
@@ -379,11 +402,11 @@
 
       function resolveWork(d, box, tv, anime) {
         const manual = (d?.works || []).find((x) => x.id === id);
-        if (manual) return manualWork(manual);
+        if (manual) return manualWork(manual, box);
 
         if (id.startsWith("kofic-")) {
           const code = id.slice("kofic-".length);
-          return boxWork((box?.movies || []).find((x) => String(x.movieCd) === code));
+          return boxWork((box?.movies || []).find((x) => String(x.movieCd) === code), box?.latestDt);
         }
         if (id.startsWith("tmdb-")) {
           const code = id.slice("tmdb-".length);
@@ -597,8 +620,9 @@
           synopsisEl.textContent = w.synopsisText || "";
           if (w.synopsisLang) synopsisEl.lang = w.synopsisLang;
           document.querySelector("#points-title").textContent =
-            w.sourceKind === "manual" ? "관전 포인트" : "작품 정보";
+            w.type === "영화" || w.sourceKind !== "manual" ? "작품 정보" : "관전 포인트";
           renderPoints(w.detailPoints || []);
+          document.querySelector("#points-title").hidden = !(w.detailPoints || []).length;
 
           renderWatch(w);
           renderBooking(w, box, cinema);
