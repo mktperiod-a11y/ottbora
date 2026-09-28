@@ -192,9 +192,10 @@ function mapWork(x, type, rank) {
     nextAirDate: x.next_episode_to_air?.air_date || "",
     runtime: (x.episode_run_time || []).find((n) => Number(n) > 0) || null,
     episodes: Number(x.number_of_episodes) || null,
-    score: Number.isFinite(Number(x.vote_average))
-      ? Number(Number(x.vote_average).toFixed(1))
-      : null,
+    score:
+      Number(x.vote_count) > 0 && Number(x.vote_average) > 0
+        ? Number(Number(x.vote_average).toFixed(1))
+        : null,
     scoreBy: "TMDB",
     networks: (x.networks || []).map((n) => n.name).filter(Boolean).slice(0, 3),
     creators: (x.created_by || []).map((p) => p.name).filter(Boolean).slice(0, 3),
