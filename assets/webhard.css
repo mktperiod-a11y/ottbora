@@ -375,9 +375,9 @@ tbody td:first-child .rank-move {
 
 /* ===== 랭킹 라이브 대시보드 ===== */
 .ranking-live-card {
-  flex: 0 0 230px;
-  padding: 16px 18px;
-  border-radius: 14px;
+  flex: 0 0 196px;
+  padding: 13px 16px;
+  border-radius: 12px;
   background: #171b22;
   color: #fff;
   box-shadow: 0 10px 24px rgba(23, 27, 34, 0.12);
@@ -386,22 +386,22 @@ tbody td:first-child .rank-move {
 .ranking-live-card > span {
   display: block;
   color: #c7ced8;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
 }
 
 .ranking-live-card strong {
   display: block;
-  margin-top: 7px;
-  font-size: 27px;
-  line-height: 1.1;
+  margin-top: 6px;
+  font-size: 18px;
+  line-height: 1.2;
   font-variant-numeric: tabular-nums;
-  letter-spacing: -0.8px;
+  letter-spacing: -0.4px;
 }
 
 .ranking-live-card small {
   display: block;
-  margin-top: 8px;
+  margin-top: 6px;
   color: #9ea8b5;
   font-size: 11px;
 }
@@ -606,7 +606,7 @@ tbody td:first-child .rank-move {
   }
 
   .ranking-live-card {
-    flex-basis: 200px;
+    flex-basis: 184px;
   }
 }
 
@@ -875,7 +875,7 @@ tbody td:first-child .rank-move {
   .ranking-live-card strong {
     margin: 0;
     color: #35445a;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 700;
   }
   .ranking-live-card small {
