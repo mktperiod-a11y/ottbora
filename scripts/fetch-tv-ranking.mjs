@@ -190,6 +190,14 @@ function mapWork(x, type, rank) {
     status: x.status || "",
     inProduction: Boolean(x.in_production),
     nextAirDate: x.next_episode_to_air?.air_date || "",
+    runtime: (x.episode_run_time || []).find((n) => Number(n) > 0) || null,
+    episodes: Number(x.number_of_episodes) || null,
+    score: Number.isFinite(Number(x.vote_average))
+      ? Number(Number(x.vote_average).toFixed(1))
+      : null,
+    scoreBy: "TMDB",
+    networks: (x.networks || []).map((n) => n.name).filter(Boolean).slice(0, 3),
+    creators: (x.created_by || []).map((p) => p.name).filter(Boolean).slice(0, 3),
     providers,
     poster: x.poster_path
       ? `https://image.tmdb.org/t/p/w500${x.poster_path}`

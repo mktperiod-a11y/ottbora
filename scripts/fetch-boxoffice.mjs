@@ -169,6 +169,19 @@ async function loadPrev() {
       days: Number(m.days) || 1,
       bestRank: Number(m.bestRank) || Number(m.rank) || 99,
       rank: null,
+      runtime: Number(m.runtime) || null,
+      directors: Array.isArray(m.directors) ? m.directors : [],
+      cast: Array.isArray(m.cast) ? m.cast : [],
+      rating: String(m.rating || ""),
+      koficDetailFetched: Boolean(m.koficDetailFetched),
+      poster: m.poster || "",
+      posterCredit: m.posterCredit || "",
+      synopsis: m.synopsis || "",
+      synopsisCredit: m.synopsisCredit || "",
+      tmdbId: m.tmdbId ?? null,
+      score: m.score ?? null,
+      scoreBy: m.scoreBy || "",
+      voteCount: m.voteCount ?? null,
     });
   }
   return out;
@@ -179,23 +192,35 @@ async function loadPrev() {
  * 이 호출은 보조 정보라, 실패해도 그 작품만 장르 없이 두고 넘어갑니다.
  * 목록 자체가 날아가는 편보다 장르 한 칸이 비는 편이 낫기 때문입니다.
  */
-async function fetchGenres(movieCd) {
+async function fetchMovieDetails(movieCd) {
   const url = `${DETAIL_ENDPOINT}?key=${encodeURIComponent(KEY)}&movieCd=${encodeURIComponent(movieCd)}`;
-  // 장르는 없어도 목록이 서는 보조 정보입니다. 한 편에 오래 매달리지 않도록
-  // 목록 조회보다 짧게 끊고, 실패하면 다음 실행에서 다시 시도합니다.
   const res = await getJson(url, `상세 ${movieCd}`, { attempts: 2, timeout: 8000 });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const body = await res.json();
   if (body?.faultInfo) throw new Error(body.faultInfo.message || "faultInfo");
   const info = body?.movieInfoResult?.movieInfo;
-  // 확인된 movieInfo 필드 (2026-09-21 실행 기준):
-  //   movieCd, movieNm, movieNmEn, movieNmOg, showTm, prdtYear, openDt,
-  //   prdtStatNm, typeNm, nations, genres, directors, actors, showTypes,
-  //   companys, audits, staffs
-  // 포스터·이미지 필드는 없습니다. 이미지는 다른 곳에서 구해야 합니다.
-  const genres = info?.genres;
-  if (!Array.isArray(genres)) throw new Error("movieInfoResult.movieInfo.genres 없음");
-  return genres.map((g) => String(g.genreNm || "")).filter(Boolean);
+  if (!info) throw new Error("movieInfoResult.movieInfo 없음");
+
+  const genres = Array.isArray(info.genres)
+    ? info.genres.map((g) => String(g.genreNm || "")).filter(Boolean)
+    : [];
+  const directors = Array.isArray(info.directors)
+    ? info.directors.map((x) => String(x.peopleNm || "")).filter(Boolean).slice(0, 3)
+    : [];
+  const cast = Array.isArray(info.actors)
+    ? info.actors.map((x) => String(x.peopleNm || "")).filter(Boolean).slice(0, 6)
+    : [];
+  const rating = Array.isArray(info.audits)
+    ? info.audits.map((x) => String(x.watchGradeNm || "")).find(Boolean) || ""
+    : "";
+
+  return {
+    genres,
+    runtime: Number(info.showTm) || null,
+    directors,
+    cast,
+    rating,
+  };
 }
 
 // ---- 1. 날짜별로 받아서 작품 단위로 합치기 -------------------------------
@@ -274,6 +299,11 @@ for (const [movieCd, e] of seen) {
       bestRank: e.top,
       // 마지막 집계일에 차트에 없었으면 "지금 순위"는 없습니다.
       rank: e.rankNow ?? null,
+      runtime: null,
+      directors: [],
+      cast: [],
+      rating: "",
+      koficDetailFetched: false,
     });
     continue;
   }
@@ -301,42 +331,47 @@ for (const [movieCd, m] of movies) {
   }
 }
 
-// ---- 3. 장르 채우기 (아직 모르는 작품만) ---------------------------------
+// ---- 3. 작품 상세 채우기 -----------------------------------------------
 
-const needGenre = [...movies.values()].filter((m) => !m.genres.length);
+const needDetails = [...movies.values()].filter(
+  (m) => !m.koficDetailFetched || !m.genres.length,
+);
 /*
- * 장르 조회는 작품 수만큼 늘어납니다. 며칠치를 한 번에 훑으면 수십 편이
- * 한꺼번에 걸리는데, KOFIC 이 느린 날에는 이 단계만 몇십 분이 됩니다.
- * 시간이 차면 남은 작품은 장르 없이 두고 넘어갑니다. 장르가 빈 작품은
- * 다음 실행에서 다시 조회 대상이 되므로 스스로 메워집니다.
+ * KOFIC 작품 상세에는 장르뿐 아니라 상영시간·감독·배우·관람등급이 있습니다.
+ * 한 번 성공한 작품은 koficDetailFetched=true 로 기록해 같은 정보를 매일
+ * 다시 묻지 않습니다. 실패한 작품은 다음 실행에서 다시 시도합니다.
  */
-const GENRE_BUDGET_MS = 6 * 60 * 1000;
-const genreStart = Date.now();
+const DETAIL_BUDGET_MS = 6 * 60 * 1000;
+const detailStart = Date.now();
 let failed = 0;
 let skipped = 0;
-for (const m of needGenre) {
-  if (Date.now() - genreStart > GENRE_BUDGET_MS) {
+for (const m of needDetails) {
+  if (Date.now() - detailStart > DETAIL_BUDGET_MS) {
     skipped += 1;
     continue;
   }
   try {
-    m.genres = await fetchGenres(m.movieCd);
+    const detail = await fetchMovieDetails(m.movieCd);
+    if (detail.genres.length) m.genres = detail.genres;
+    m.runtime = detail.runtime;
+    m.directors = detail.directors;
+    m.cast = detail.cast;
+    m.rating = detail.rating;
+    m.koficDetailFetched = true;
     m.type = "영화";
   } catch (e) {
     failed += 1;
-    console.warn(`  장르 조회 실패 — ${m.title}: ${e.message}`);
-    m.genres = [];
-    m.type = "영화";
+    console.warn(`  상세 조회 실패 — ${m.title}: ${e.message}`);
   }
-  await new Promise((r) => setTimeout(r, 200)); // 연속 호출 간격
+  await new Promise((r) => setTimeout(r, 200));
 }
 if (failed) {
-  console.warn(`장르 조회 ${failed}/${needGenre.length}건 실패 — 해당 작품은 영화로 둡니다.`);
+  console.warn(`상세 조회 ${failed}/${needDetails.length}건 실패 — 다음 실행에서 다시 시도합니다.`);
 }
 if (skipped) {
   console.warn(
-    `시간이 차서 ${skipped}/${needGenre.length}건은 장르를 비워 뒀습니다. ` +
-      "다음 실행에서 다시 조회합니다.",
+    `시간이 차서 ${skipped}/${needDetails.length}건은 상세 조회를 미뤘습니다. ` +
+      "다음 실행에서 이어서 채웁니다.",
   );
 }
 
