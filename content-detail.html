@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css?v=20260928-2" />
-    <link rel="stylesheet" href="assets/content-detail.css?v=20260928-7" />
+    <link rel="stylesheet" href="assets/content-detail.css?v=20260928-8" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -645,17 +645,17 @@
           {
             id: "ondisk",
             name: "온디스크",
-            logo: "assets/ondisk.svg",
+            logo: "assets/promo-ondisk.png",
             url: "go/ondisk/",
-            title: "보고 싶던 작품, <br />지금 바로",
+            title: "보고 싶던 작품, <br /><em>지금 바로</em>",
             text: "영화·드라마·애니까지 다양한 장르",
           },
           {
             id: "kdisk",
             name: "케이디스크",
-            logo: "assets/kdisk.svg",
+            logo: "assets/promo-kdisk.png",
             url: "go/kdisk/",
-            title: "PC에서도 <br />모바일에서도",
+            title: "PC에서도 <br /><em>모바일에서도</em>",
             text: "감상과 다운로드를 한 곳에서",
           },
         ];
@@ -664,7 +664,7 @@
         host.innerHTML =
           `<a class="promo-link" href="${ad.url}" target="_blank" rel="sponsored noopener noreferrer" aria-label="${ad.name} 광고, 새 창에서 열기">` +
           `<span class="promo-badge">광고</span>` +
-          `<span class="promo-logo"><img src="${ad.logo}" alt="${ad.name}" width="200" height="75" /></span>` +
+          `<span class="promo-logo"><img src="${ad.logo}" alt="${ad.name}" /></span>` +
           `<span class="promo-body"><strong class="promo-title">${ad.title}</strong>` +
           `<span class="promo-text">${ad.text}</span></span>` +
           `<span class="promo-cta">${ad.name} 바로가기 <span aria-hidden="true">→</span></span>` +
