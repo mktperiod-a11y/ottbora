@@ -176,13 +176,14 @@ async function loadPrev() {
       cast: Array.isArray(m.cast) ? m.cast : [],
       rating: String(m.rating || ""),
       koficDetailFetched: Boolean(m.koficDetailFetched),
+      koficDetailVersion: Number(m.koficDetailVersion) || 1,
       poster: m.poster || "",
       posterCredit: m.posterCredit || "",
       synopsis: m.synopsis || "",
       synopsisCredit: m.synopsisCredit || "",
       tmdbId: m.tmdbId ?? null,
-      score: m.score ?? null,
-      scoreBy: m.scoreBy || "",
+      score: Number(m.score) > 0 ? Number(m.score) : null,
+      scoreBy: Number(m.score) > 0 ? m.scoreBy || "" : "",
       voteCount: m.voteCount ?? null,
     });
   }
@@ -310,6 +311,7 @@ for (const [movieCd, e] of seen) {
       cast: [],
       rating: "",
       koficDetailFetched: false,
+      koficDetailVersion: 0,
     });
     continue;
   }
@@ -339,8 +341,12 @@ for (const [movieCd, m] of movies) {
 
 // ---- 3. 작품 상세 채우기 -----------------------------------------------
 
+const KOFIC_DETAIL_VERSION = 2;
 const needDetails = [...movies.values()].filter(
-  (m) => !m.koficDetailFetched || !m.genres.length,
+  (m) =>
+    !m.koficDetailFetched ||
+    !m.genres.length ||
+    Number(m.koficDetailVersion || 0) < KOFIC_DETAIL_VERSION,
 );
 /*
  * KOFIC 작품 상세에는 장르뿐 아니라 상영시간·감독·배우·관람등급이 있습니다.
@@ -366,6 +372,7 @@ for (const m of needDetails) {
     m.titleEn = detail.titleEn || m.titleEn || "";
     m.titleOriginal = detail.titleOriginal || m.titleOriginal || "";
     m.koficDetailFetched = true;
+    m.koficDetailVersion = KOFIC_DETAIL_VERSION;
     m.type = "영화";
   } catch (e) {
     failed += 1;
