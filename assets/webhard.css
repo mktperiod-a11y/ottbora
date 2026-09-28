@@ -161,7 +161,7 @@ tbody a:hover{color:var(--accent)}
   padding: 0;
   border-radius: 0;
   background: transparent;
-  color: var(--accent);
+  color: #465469;
   font-size: 40px;
   letter-spacing: -1.5px;
 }
@@ -550,11 +550,20 @@ tbody td:first-child .rank-move {
 #more .rank-number,
 #more .provider.featured .rank-number{font-size:28px;letter-spacing:-1px}
 #more .rank-move{font-size:10px}
-#more .brand{width:132px;height:44px}
-/* 로고 파일 안쪽 여백이 달라 실제 글자 크기가 벌어지는 두 서비스를 보정합니다. */
-#more #kdisk .brand{overflow:hidden}
-#more #kdisk .brand img{transform:scale(1.5)}
-#more #fileis .brand img{transform:scale(.9)}
+#more .brand{width:132px;height:44px;overflow:hidden}
+/* 원본 이미지의 안쪽 여백과 가로세로 비율을 고려해 보이는 로고 높이를 맞춥니다. */
+#more .brand img{transform:scale(var(--logo-scale,1))}
+#more #ondisk{--logo-scale:1.16}
+#more #kdisk{--logo-scale:1.46}
+#more #wedisk{--logo-scale:.78}
+#more #filenori{--logo-scale:1.05}
+#more #filecast{--logo-scale:.88}
+#more #filesun{--logo-scale:.78}
+#more #fileis{--logo-scale:.89}
+#more #filecookie{--logo-scale:.9}
+#more #bigfile{--logo-scale:.78}
+#more #megafile{--logo-scale:.84}
+#more #pdpop{--logo-scale:.9}
 #more .provider-title{margin:9px 0 10px;padding-bottom:9px}
 #more .provider h3{font-size:19px;letter-spacing:-.6px}
 #more .provider-title>span{font-size:13px}
@@ -637,10 +646,12 @@ tbody td:first-child .rank-move {
 
 #more .reason h4 {
   margin: 0 0 4px;
-  color: var(--accent);
+  color: #344255;
   font-size: 12px;
   font-weight: 700;
 }
+
+#more .rank-move.is-up { color: #667386; }
 
 #more .reason p {
   color: #344255;
