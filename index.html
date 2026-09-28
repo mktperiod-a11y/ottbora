@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css?v=20260928-2" />
-    <link rel="stylesheet" href="assets/index.css?v=20260923-13" />
+    <link rel="stylesheet" href="assets/index.css?v=20260928-2" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -296,9 +296,16 @@
         })
         .catch(() => {});
 
-      document
-        .querySelectorAll("[data-poster]")
-        .forEach((img) => (img.src = posterSource(img.dataset.poster)));
+      // 모바일에서는 히어로 포스터를 그리지 않습니다. 폭이 넓어지면 채웁니다.
+      const heroPosters = document.querySelectorAll(".poster-stack [data-poster]");
+      const revealHeroPosters = () => {
+        if (matchMedia("(max-width: 650px)").matches) return;
+        heroPosters.forEach((img) => {
+          if (!img.hasAttribute("src")) img.src = posterSource(img.dataset.poster);
+        });
+      };
+      revealHeroPosters();
+      addEventListener("resize", revealHeroPosters, { passive: true });
       const rankingEngine = window.OTT_WEBHARD_RANKING;
       const rankingHost = document.querySelector("#ranking");
       const rankingStatus = document.querySelector("#home-ranking-status");

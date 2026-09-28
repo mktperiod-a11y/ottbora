@@ -797,3 +797,18 @@ section:has(.guide-grid) .head h2 {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+/* 모바일 홈: 콘텐츠로 바로 진입할 수 있도록 히어로를 한 화면 안에 둡니다. */
+@media (max-width: 650px) {
+  .hero { padding: 25px 0 28px; }
+  .hero-grid { display: block; }
+  .hero .pill { padding: 5px 9px; font-size: 10.5px; font-weight: 600; }
+  .hero h1 { margin: 12px 0 9px; font-size: 29px; line-height: 1.16; }
+  .hero p { margin: 0; font-size: 13px; line-height: 1.55; }
+  .hero-btn { margin-top: 18px; min-height: 44px; }
+  .poster-stack { display: none; }
+}
+
+@media (max-width: 380px) {
+  .hero h1 { font-size: 27px; }
+}
