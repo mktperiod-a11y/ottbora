@@ -269,6 +269,15 @@ h1 {
   + #official-action:not(:empty) {
   border-top: 0;
 }
+
+/* 출처 줄도 정보 행 바로 뒤에 오면 마지막 밑줄 하나만 남깁니다. */
+#points.fact-grid:not(:empty)
+  + #booking-block:empty
+  + #official-action:empty
+  + .credit {
+  border-top: 0;
+  margin-top: 0;
+}
 @media (max-width: 650px) {
   #booking-block h2 {
     margin-bottom: 12px;

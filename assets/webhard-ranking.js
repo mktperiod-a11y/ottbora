@@ -159,8 +159,13 @@
    */
   const DISPLAY_LIMIT = Math.min(10, ALL.length);
   const TOP4_ELIGIBLE = ALL.filter((id) => id !== "pdpop");
-  const SLOT_HOURS = 3;
-  const SLOT_MS = SLOT_HOURS * 60 * 60 * 1000;
+  /*
+   * 순위는 일주일에 한 번, 매주 월요일 00:00(KST)에 바뀝니다.
+   * 1970-01-01 이 목요일이라 월요일로 맞추려고 4일을 당겨 셉니다.
+   */
+  const DAY_MS = 24 * 60 * 60 * 1000;
+  const SLOT_MS = 7 * DAY_MS;
+  const WEEK_OFFSET_MS = 4 * DAY_MS;
   const KST_MS = 9 * 60 * 60 * 1000;
 
   function hash32(text) {
@@ -251,24 +256,21 @@
   }
 
   function getSlot(now = Date.now()) {
-    return Math.floor((now + KST_MS) / SLOT_MS);
+    return Math.floor((now + KST_MS - WEEK_OFFSET_MS) / SLOT_MS);
   }
 
   function positionMap(order) {
     return new Map(order.map((id, index) => [id, index + 1]));
   }
 
-  function formatClock(ms) {
-    const total = Math.max(0, Math.floor(ms / 1000));
-    const h = String(Math.floor(total / 3600)).padStart(2, "0");
-    const m = String(Math.floor((total % 3600) / 60)).padStart(2, "0");
-    const s = String(total % 60).padStart(2, "0");
-    return `${h}:${m}:${s}`;
-  }
-
-  function slotHour(slot) {
-    const pseudoKst = new Date(slot * SLOT_MS);
-    return `${String(pseudoKst.getUTCHours()).padStart(2, "0")}:00`;
+  /* 회차가 시작된 시각(KST)을 "2026.09.28 00:00" 꼴로 돌려줍니다. */
+  function slotStartLabel(slot) {
+    const kst = new Date(slot * SLOT_MS + WEEK_OFFSET_MS);
+    const pad = (n) => String(n).padStart(2, "0");
+    return (
+      `${kst.getUTCFullYear()}.${pad(kst.getUTCMonth() + 1)}.${pad(kst.getUTCDate())} ` +
+      `${pad(kst.getUTCHours())}:${pad(kst.getUTCMinutes())}`
+    );
   }
 
   function snapshot(now = Date.now()) {
@@ -277,7 +279,6 @@
     const previous = buildOrder(slot - 1);
     const prev = positionMap(previous);
     const previousVisible = new Set(previous.slice(0, DISPLAY_LIMIT));
-    const nextRealMs = (slot + 1) * SLOT_MS - KST_MS;
 
     const visible = order.slice(0, DISPLAY_LIMIT);
     const items = visible.map((id, index) => {
@@ -306,10 +307,7 @@
 
     return {
       slot,
-      startLabel: slotHour(slot),
-      nextLabel: slotHour(slot + 1),
-      remainingMs: nextRealMs - now,
-      remainingLabel: formatClock(nextRealMs - now),
+      updatedLabel: slotStartLabel(slot),
       fullOrder: [...order],
       summary,
       order: items,
@@ -341,7 +339,8 @@
     };
 
     tick();
-    const timer = setInterval(tick, 1000);
+    // 회차가 바뀌는 순간을 놓치지 않을 만큼만 확인합니다.
+    const timer = setInterval(tick, 30 * 1000);
     return () => clearInterval(timer);
   }
 
