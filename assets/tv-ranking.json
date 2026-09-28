@@ -34,6 +34,16 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 8,
+      "score": 7.3,
+      "scoreBy": "TMDB",
+      "networks": [
+        "Netflix"
+      ],
+      "creators": [
+        "정지우"
+      ],
       "providers": [
         "Netflix",
         "Netflix Standard with Ads"
@@ -54,7 +64,7 @@
       "originalTitle": "메이드 인 코리아",
       "type": "드라마",
       "rank": 2,
-      "popularity": 39.1629,
+      "popularity": 39.4639,
       "genres": [
         80,
         18
@@ -65,6 +75,16 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 12,
+      "score": 8.1,
+      "scoreBy": "TMDB",
+      "networks": [
+        "Disney+"
+      ],
+      "creators": [
+        "우민호"
+      ],
       "providers": [
         "Disney Plus"
       ],
@@ -95,6 +115,16 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-10-03",
+      "runtime": null,
+      "episodes": 14,
+      "score": 9,
+      "scoreBy": "TMDB",
+      "networks": [
+        "KBS2"
+      ],
+      "creators": [
+        "유수지"
+      ],
       "providers": [
         "wavve",
         "Coupang Play"
@@ -125,6 +155,16 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-27",
+      "runtime": null,
+      "episodes": 12,
+      "score": 9.2,
+      "scoreBy": "TMDB",
+      "networks": [
+        "tvN"
+      ],
+      "creators": [
+        "Shin Yi-won"
+      ],
       "providers": [
         "Netflix",
         "Netflix Standard with Ads",
@@ -159,6 +199,16 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 30,
+      "score": 7.7,
+      "scoreBy": "TMDB",
+      "networks": [
+        "SBS"
+      ],
+      "creators": [
+        "이옥규"
+      ],
       "providers": [
         "Disney Plus"
       ],
@@ -188,6 +238,16 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-10-01",
+      "runtime": null,
+      "episodes": 10,
+      "score": 10,
+      "scoreBy": "TMDB",
+      "networks": [
+        "TVING"
+      ],
+      "creators": [
+        "Yoon Young-bin"
+      ],
       "providers": [
         "TVING"
       ],
@@ -220,6 +280,17 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 14,
+      "score": 8.3,
+      "scoreBy": "TMDB",
+      "networks": [
+        "MBC"
+      ],
+      "creators": [
+        "김은희",
+        "YOON"
+      ],
       "providers": [
         "wavve",
         "Coupang Play"
@@ -252,6 +323,17 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 10,
+      "score": 8.1,
+      "scoreBy": "TMDB",
+      "networks": [
+        "Netflix"
+      ],
+      "creators": [
+        "김홍선",
+        "이재곤"
+      ],
       "providers": [
         "Netflix",
         "Netflix Standard with Ads"
@@ -283,6 +365,16 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 12,
+      "score": 7.8,
+      "scoreBy": "TMDB",
+      "networks": [
+        "tvN"
+      ],
+      "creators": [
+        "성은"
+      ],
       "providers": [
         "wavve",
         "TVING"
@@ -313,6 +405,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 4,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [
+        "Vigloo"
+      ],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/tjaWXpJeLMVaHzJcc9Mf5McyPwf.jpg",
       "posterCredit": "TMDB",
@@ -340,6 +440,16 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "runtime": 30,
+      "episodes": 10,
+      "score": 7.6,
+      "scoreBy": "TMDB",
+      "networks": [
+        "wavve"
+      ],
+      "creators": [
+        "이로밀"
+      ],
       "providers": [
         "wavve"
       ],
@@ -370,6 +480,16 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-10-03",
+      "runtime": null,
+      "episodes": 50,
+      "score": 6,
+      "scoreBy": "TMDB",
+      "networks": [
+        "KBS2"
+      ],
+      "creators": [
+        "Lee Kyoung-hee"
+      ],
       "providers": [
         "wavve",
         "Coupang Play"
@@ -401,6 +521,16 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-10-05",
+      "runtime": null,
+      "episodes": 120,
+      "score": 10,
+      "scoreBy": "TMDB",
+      "networks": [
+        "MBC"
+      ],
+      "creators": [
+        "Park Ji-hyeon"
+      ],
       "providers": [
         "wavve",
         "TVING"
@@ -433,6 +563,16 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 8,
+      "score": 8.9,
+      "scoreBy": "TMDB",
+      "networks": [
+        "Coupang Play"
+      ],
+      "creators": [
+        "정은경"
+      ],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/dyusVtoZ2h3RV6jbgTeqzRBMV7a.jpg",
       "posterCredit": "TMDB",
@@ -461,6 +601,16 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 58,
+      "score": 8.5,
+      "scoreBy": "TMDB",
+      "networks": [
+        "Seezn",
+        "TVING",
+        "Genie TV"
+      ],
+      "creators": [],
       "providers": [
         "TVING"
       ],
@@ -480,7 +630,7 @@
       "originalTitle": "욕망의 덫",
       "type": "드라마",
       "rank": 16,
-      "popularity": 8.9393,
+      "popularity": 8.6928,
       "genres": [
         9648,
         80,
@@ -488,10 +638,18 @@
       ],
       "overview": "누명을 쓰고 살인범이 되어 모든 것을 빼앗긴 한 여자. 그녀는 자신의 결백을 밝히고 빼앗긴 인생을 되찾기 위해 잔혹한 복수극을 시작한다. 그녀의 파멸 위에 거짓으로 성을 쌓아 올린 가식적인 숙적이 앞길을 가로막는 가운데, 과거의 연인이 다시 나타나며 묻혀 있던 비밀들이 드러나기 시작한다. 음모와 배신이 얼룩진 재벌가의 덫 속에서, 그녀는 진실을 밝히고 자신의 운명을 되찾기 위해 목숨을 건 싸움을 시작한다.",
       "firstAirDate": "2026-08-10",
-      "lastAirDate": "2026-09-15",
+      "lastAirDate": "2026-09-18",
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-10-05",
+      "runtime": null,
+      "episodes": 100,
+      "score": 10,
+      "scoreBy": "TMDB",
+      "networks": [
+        "KBS2"
+      ],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/obkdoB9TGBQpNlJKMXOZHwe9Irn.jpg",
       "posterCredit": "TMDB",
@@ -521,6 +679,16 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 122,
+      "score": 8,
+      "scoreBy": "TMDB",
+      "networks": [
+        "KBS1"
+      ],
+      "creators": [
+        "Nam Sun-hye"
+      ],
       "providers": [
         "wavve"
       ],
@@ -550,6 +718,16 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 51,
+      "score": 5.5,
+      "scoreBy": "TMDB",
+      "networks": [
+        "iQIYI International",
+        "Shortime",
+        "Lezhin Snack"
+      ],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/ock26TgVrRMxxns3B4lQdTKlM3.jpg",
       "posterCredit": "TMDB",
@@ -577,6 +755,15 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 50,
+      "score": 6,
+      "scoreBy": "TMDB",
+      "networks": [
+        "iQIYI International",
+        "Shortime"
+      ],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/bPwB9Iqj7DQMvpyRob4fuoCamch.jpg",
       "posterCredit": "TMDB",
@@ -605,6 +792,16 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-27",
+      "runtime": null,
+      "episodes": 16,
+      "score": 8,
+      "scoreBy": "TMDB",
+      "networks": [
+        "JTBC"
+      ],
+      "creators": [
+        "박연선"
+      ],
       "providers": [
         "wavve",
         "Netflix Standard with Ads",
@@ -637,6 +834,16 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-28",
+      "runtime": null,
+      "episodes": 120,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [
+        "KBS1"
+      ],
+      "creators": [
+        "Na Seung-hyun"
+      ],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/DzvZmReaTNhIRDWKMblHJbgUuh.jpg",
       "posterCredit": "TMDB",
@@ -666,6 +873,16 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 12,
+      "score": 7,
+      "scoreBy": "TMDB",
+      "networks": [
+        "KBS Drama"
+      ],
+      "creators": [
+        "김현경"
+      ],
       "providers": [
         "wavve",
         "TVING"
@@ -686,7 +903,7 @@
       "originalTitle": "의붓오빠와 선 넘는 중",
       "type": "드라마",
       "rank": 23,
-      "popularity": 4.6745,
+      "popularity": 5.6297,
       "genres": [
         18
       ],
@@ -696,6 +913,14 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 2,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [
+        "ReelShort"
+      ],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/dNEDTS0feUfgLnJPJfibk85uLls.jpg",
       "posterCredit": "TMDB",
@@ -723,6 +948,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 28,
+      "score": 6.7,
+      "scoreBy": "TMDB",
+      "networks": [
+        "Shortime"
+      ],
+      "creators": [],
       "providers": [
         "wavve",
         "Watcha",
@@ -755,6 +988,18 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 53,
+      "score": 7,
+      "scoreBy": "TMDB",
+      "networks": [
+        "iQIYI International",
+        "Shortime"
+      ],
+      "creators": [
+        "노가정",
+        "차신환"
+      ],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/nWxPoZbubyjdN2URApinVxjKgLg.jpg",
       "posterCredit": "TMDB",
@@ -783,6 +1028,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 1,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [
+        "ReelShort"
+      ],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/vYfKHIkVw8aa5GL29VeabqMUn7d.jpg",
       "posterCredit": "TMDB",
@@ -810,6 +1063,14 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 2,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [
+        "Vigloo"
+      ],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/2AzkImYnkLbDbvQ4InlSn3t7tyu.jpg",
       "posterCredit": "TMDB",
@@ -837,6 +1098,14 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 6,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [
+        "LIKEY"
+      ],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/afYF8kGJFb938vnud4K9Pw5QXbG.jpg",
       "posterCredit": "TMDB",
@@ -864,6 +1133,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 16,
+      "score": 6,
+      "scoreBy": "TMDB",
+      "networks": [],
+      "creators": [
+        "이석용"
+      ],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/ylwNi8zbTxqVPPBaZuislDwK40s.jpg",
       "posterCredit": "TMDB",
@@ -891,6 +1168,12 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-29",
+      "runtime": null,
+      "episodes": 10,
+      "score": 7,
+      "scoreBy": "TMDB",
+      "networks": [],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/3ZQnEdblrloboBjc5xxpam0ZHi4.jpg",
       "posterCredit": "TMDB",
@@ -908,7 +1191,7 @@
       "originalTitle": "저스트 프렌드",
       "type": "드라마",
       "rank": 31,
-      "popularity": 1.7752,
+      "popularity": 2.3366,
       "genres": [
         18
       ],
@@ -918,6 +1201,12 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-29",
+      "runtime": null,
+      "episodes": 6,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/h7jkkAZFXJj6ArV0PJ6JHGwLaq4.jpg",
       "posterCredit": "TMDB",
@@ -935,7 +1224,7 @@
       "originalTitle": "종합광고대행사 찌찌: 광고의 온도편",
       "type": "드라마",
       "rank": 32,
-      "popularity": 1.84,
+      "popularity": 2.2052,
       "genres": [
         18,
         35
@@ -946,6 +1235,15 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 6,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [
+        "wavve",
+        "TVING"
+      ],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/lGDet8NBI9aHwad7npDB80xkCTK.jpg",
       "posterCredit": "TMDB",
@@ -973,6 +1271,12 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-28",
+      "runtime": null,
+      "episodes": 20,
+      "score": 9,
+      "scoreBy": "TMDB",
+      "networks": [],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/xicmXjcKFYkAl62d4XKBKcQmK9U.jpg",
       "posterCredit": "TMDB",
@@ -1000,6 +1304,14 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 2,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [
+        "TVING"
+      ],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/r0HU6l4yCaikNQQSMDaVi8ZzRf0.jpg",
       "posterCredit": "TMDB",
@@ -1027,6 +1339,14 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "runtime": 10,
+      "episodes": 4,
+      "score": 6.5,
+      "scoreBy": "TMDB",
+      "networks": [
+        "YouTube"
+      ],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/axUovhhgO3qKmuMKEyaGXADsWgu.jpg",
       "posterCredit": "TMDB",
@@ -1054,6 +1374,12 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 1,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/tPIcyxOvnLt5og1jGtfbvypGR6D.jpg",
       "posterCredit": "TMDB",
@@ -1082,6 +1408,12 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 2,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/vjtAW53N12PqaxVqTTtirMvwfsM.jpg",
       "posterCredit": "TMDB",
@@ -1109,6 +1441,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 1,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [],
+      "creators": [
+        "이샛별"
+      ],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/bgzCv9P4nOLbUQIlJEmxdKizQmj.jpg",
       "posterCredit": "TMDB",
@@ -1136,6 +1476,12 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-10-03",
+      "runtime": null,
+      "episodes": 6,
+      "score": 5,
+      "scoreBy": "TMDB",
+      "networks": [],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/9acsHx2zTMQ9XaylhJkYyTg0mkS.jpg",
       "posterCredit": "TMDB",
@@ -1163,6 +1509,12 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 1,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/y9a8DrUFu5WOolWno1jvH6tyft9.jpg",
       "posterCredit": "TMDB",
@@ -1175,23 +1527,34 @@
       "metadataSource": "TMDB"
     },
     {
-      "tmdbId": 326833,
-      "title": "첫사랑니",
-      "originalTitle": "첫사랑니",
+      "tmdbId": 316597,
+      "title": "모두의 경찰",
+      "originalTitle": "모두의 경찰",
       "type": "드라마",
       "rank": 41,
-      "popularity": 1.1645,
+      "popularity": 1.236,
       "genres": [
-        18
+        18,
+        35
       ],
       "overview": "",
-      "firstAirDate": "2026-07-10",
-      "lastAirDate": "2026-08-28",
-      "status": "Ended",
-      "inProduction": false,
+      "firstAirDate": "2026-09-24",
+      "lastAirDate": "2026-09-24",
+      "status": "Returning Series",
+      "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 1,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [
+        "Lezhin Snack"
+      ],
+      "creators": [
+        "붉은코끼리"
+      ],
       "providers": [],
-      "poster": "https://image.tmdb.org/t/p/w500/5jDKYursgTShqNc6Ujfn5b853wH.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/g183hH3u5vFmo58Qr84Ph7SqeFn.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
         "provider": "TMDB",
@@ -1202,23 +1565,31 @@
       "metadataSource": "TMDB"
     },
     {
-      "tmdbId": 334414,
-      "title": "여왕님의 싸대기를 때렸습니다",
-      "originalTitle": "여왕님의 싸대기를 때렸습니다",
+      "tmdbId": 326833,
+      "title": "첫사랑니",
+      "originalTitle": "첫사랑니",
       "type": "드라마",
       "rank": 42,
-      "popularity": 1.0685,
+      "popularity": 1.1645,
       "genres": [
         18
       ],
       "overview": "",
-      "firstAirDate": "2026-09-08",
-      "lastAirDate": "2026-09-08",
+      "firstAirDate": "2026-07-10",
+      "lastAirDate": "2026-08-28",
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 8,
+      "score": 5.5,
+      "scoreBy": "TMDB",
+      "networks": [
+        "YouTube"
+      ],
+      "creators": [],
       "providers": [],
-      "poster": "https://image.tmdb.org/t/p/w500/tW2vt1a6iP7Fy3oe6SFKjx815Ns.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/5jDKYursgTShqNc6Ujfn5b853wH.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
         "provider": "TMDB",
@@ -1229,11 +1600,46 @@
       "metadataSource": "TMDB"
     },
     {
+      "tmdbId": 334414,
+      "title": "여왕님의 싸대기를 때렸습니다",
+      "originalTitle": "여왕님의 싸대기를 때렸습니다",
+      "type": "드라마",
+      "rank": 43,
+      "popularity": 1.0685,
+      "genres": [
+        18
+      ],
+      "overview": "",
+      "firstAirDate": "2026-09-08",
+      "lastAirDate": "2026-09-08",
+      "status": "Ended",
+      "inProduction": false,
+      "nextAirDate": "",
+      "runtime": null,
+      "episodes": 1,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [
+        "Shortime"
+      ],
+      "creators": [],
+      "providers": [],
+      "poster": "https://image.tmdb.org/t/p/w500/tW2vt1a6iP7Fy3oe6SFKjx815Ns.jpg",
+      "posterCredit": "TMDB",
+      "rankingSource": {
+        "provider": "TMDB",
+        "metric": "popularity",
+        "rank": 43,
+        "observedAt": "2026-09-28"
+      },
+      "metadataSource": "TMDB"
+    },
+    {
       "tmdbId": 336539,
       "title": "브로맨스?",
       "originalTitle": "브로맨스?",
       "type": "드라마",
-      "rank": 43,
+      "rank": 44,
       "popularity": 0.55,
       "genres": [
         18
@@ -1244,13 +1650,19 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 5,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/jdf0pC2hDSkzrtnKohDKMRV2llK.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
         "provider": "TMDB",
         "metric": "popularity",
-        "rank": 43,
+        "rank": 44,
         "observedAt": "2026-09-28"
       },
       "metadataSource": "TMDB"
@@ -1274,6 +1686,18 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-10-04",
+      "runtime": 85,
+      "episodes": 824,
+      "score": 8.2,
+      "scoreBy": "TMDB",
+      "networks": [
+        "SBS"
+      ],
+      "creators": [
+        "조효진",
+        "김주형",
+        "임형택"
+      ],
       "providers": [
         "Netflix",
         "Watcha",
@@ -1306,6 +1730,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-10-03",
+      "runtime": 90,
+      "episodes": 546,
+      "score": 7.4,
+      "scoreBy": "TMDB",
+      "networks": [
+        "JTBC"
+      ],
+      "creators": [],
       "providers": [
         "wavve",
         "Watcha",
@@ -1337,6 +1769,16 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-10-02",
+      "runtime": 90,
+      "episodes": 669,
+      "score": 7.5,
+      "scoreBy": "TMDB",
+      "networks": [
+        "MBC"
+      ],
+      "creators": [
+        "Lee Ji-sun"
+      ],
       "providers": [
         "wavve",
         "Watcha",
@@ -1358,16 +1800,26 @@
       "originalTitle": "라디오스타",
       "type": "예능",
       "rank": 4,
-      "popularity": 247.4369,
+      "popularity": 176.4938,
       "genres": [
         10767
       ],
       "overview": "2007년 5월 30일부터 MBC TV에서 방송되고 있는 예능 프로그램으로, 라디오 프로그램들의 '보이는 라디오'를 이용하여 들리는 TV로 콘셉트를 잡아 현재까지 방송되고 있는 코너이다. 진행자들은 각각 DJ로 불리며, 매주 다양한 게스트들을 초대해서 근황에 대해 여러가지 질문을 하고 답하는 리얼 토크쇼 프로그램이다. 개인별 초대손님의 경우 한 번에 최대 4명을, 그룹의 경우 최대 5명의 초대손님으로 최대 3회까지 녹화한다.",
       "firstAirDate": "2007-05-30",
-      "lastAirDate": "2026-09-09",
+      "lastAirDate": "2026-09-23",
       "status": "Returning Series",
       "inProduction": true,
-      "nextAirDate": "",
+      "nextAirDate": "2026-09-30",
+      "runtime": 80,
+      "episodes": 984,
+      "score": 5.5,
+      "scoreBy": "TMDB",
+      "networks": [
+        "MBC"
+      ],
+      "creators": [
+        "한영롱"
+      ],
       "providers": [
         "wavve",
         "Watcha",
@@ -1400,6 +1852,16 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": 75,
+      "episodes": 434,
+      "score": 7.6,
+      "scoreBy": "TMDB",
+      "networks": [
+        "tvN"
+      ],
+      "creators": [
+        "Lee Tae-kyeong"
+      ],
       "providers": [
         "wavve",
         "TVING"
@@ -1431,6 +1893,16 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": 90,
+      "episodes": 921,
+      "score": 6.7,
+      "scoreBy": "TMDB",
+      "networks": [
+        "KBS2"
+      ],
+      "creators": [
+        "나영석"
+      ],
       "providers": [
         "Watcha",
         "TVING"
@@ -1462,6 +1934,16 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-10-04",
+      "runtime": 100,
+      "episodes": 515,
+      "score": 7,
+      "scoreBy": "TMDB",
+      "networks": [
+        "SBS"
+      ],
+      "creators": [
+        "Kwak Seung-young"
+      ],
       "providers": [
         "Netflix",
         "Watcha",
@@ -1494,6 +1976,16 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-10-10",
+      "runtime": 80,
+      "episodes": 350,
+      "score": 7.2,
+      "scoreBy": "TMDB",
+      "networks": [
+        "MBC"
+      ],
+      "creators": [
+        "김태호"
+      ],
       "providers": [
         "wavve",
         "Watcha",
@@ -1526,6 +2018,18 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 348,
+      "score": 8.3,
+      "scoreBy": "TMDB",
+      "networks": [
+        "tvN"
+      ],
+      "creators": [
+        "Kim Min-seok",
+        "이언주",
+        "Park Hee-yeon"
+      ],
       "providers": [
         "wavve",
         "TVING"
@@ -1556,6 +2060,16 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-10-03",
+      "runtime": 100,
+      "episodes": 418,
+      "score": 5.5,
+      "scoreBy": "TMDB",
+      "networks": [
+        "MBC"
+      ],
+      "creators": [
+        "김윤집"
+      ],
       "providers": [
         "wavve",
         "Watcha",
@@ -1577,16 +2091,24 @@
       "originalTitle": "냉장고를 부탁해",
       "type": "예능",
       "rank": 11,
-      "popularity": 44.7159,
+      "popularity": 38.8009,
       "genres": [
         10764
       ],
       "overview": "2014년 12월 JTBC에서 방영을 시작한 요리 프로그램. 처치 곤란 천덕꾸러기 냉장고 속 재료들의 신분상승 프로젝트. 대한민국 최고의 셰프들이 당신의 냉장고를 탈탈 털어드립니다. 격조 높은 요리 토크쇼, 냉장고를 부탁해.",
       "firstAirDate": "2014-11-17",
-      "lastAirDate": "2026-06-28",
+      "lastAirDate": "2026-09-20",
       "status": "Returning Series",
       "inProduction": true,
-      "nextAirDate": "2026-09-27",
+      "nextAirDate": "2026-10-04",
+      "runtime": 90,
+      "episodes": 344,
+      "score": 8.7,
+      "scoreBy": "TMDB",
+      "networks": [
+        "JTBC"
+      ],
+      "creators": [],
       "providers": [
         "wavve",
         "Watcha",
@@ -1618,6 +2140,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 234,
+      "score": 8.5,
+      "scoreBy": "TMDB",
+      "networks": [
+        "KBS2"
+      ],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/ofABMllzstkOtrEy8LOX51kYkY3.jpg",
       "posterCredit": "TMDB",
@@ -1645,6 +2175,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": 45,
+      "episodes": 184,
+      "score": 7.3,
+      "scoreBy": "TMDB",
+      "networks": [
+        "SBS Plus"
+      ],
+      "creators": [],
       "providers": [
         "Netflix",
         "wavve",
@@ -1678,6 +2216,18 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": 65,
+      "episodes": 575,
+      "score": 8.7,
+      "scoreBy": "TMDB",
+      "networks": [
+        "MBC every1"
+      ],
+      "creators": [
+        "조범",
+        "이정은",
+        "박성하"
+      ],
       "providers": [
         "wavve",
         "Watcha",
@@ -1709,6 +2259,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 160,
+      "score": 7.5,
+      "scoreBy": "TMDB",
+      "networks": [
+        "KBS2"
+      ],
+      "creators": [],
       "providers": [
         "wavve",
         "Watcha"
@@ -1741,6 +2299,14 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 275,
+      "score": 8,
+      "scoreBy": "TMDB",
+      "networks": [
+        "SBS"
+      ],
+      "creators": [],
       "providers": [
         "Netflix",
         "Watcha",
@@ -1774,6 +2340,16 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-30",
+      "runtime": 35,
+      "episodes": 309,
+      "score": 9.8,
+      "scoreBy": "TMDB",
+      "networks": [
+        "YouTube",
+        "V LIVE",
+        "Weverse"
+      ],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/qQZvkevnkCWlfOg7fn6rHcqu5yC.jpg",
       "posterCredit": "TMDB",
@@ -1801,6 +2377,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": 100,
+      "episodes": 274,
+      "score": 6.5,
+      "scoreBy": "TMDB",
+      "networks": [
+        "SBS"
+      ],
+      "creators": [],
       "providers": [
         "Watcha",
         "Netflix Standard with Ads"
@@ -1831,6 +2415,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 272,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [
+        "tvN"
+      ],
+      "creators": [],
       "providers": [
         "TVING"
       ],
@@ -1860,6 +2452,15 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 272,
+      "score": 6,
+      "scoreBy": "TMDB",
+      "networks": [
+        "SBS Plus",
+        "ENA"
+      ],
+      "creators": [],
       "providers": [
         "Netflix",
         "wavve",
@@ -1894,6 +2495,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-27",
+      "runtime": null,
+      "episodes": 12,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [
+        "Channel A"
+      ],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/hLBNb9tUcYnJ879XKxJD68Ort2y.jpg",
       "posterCredit": "TMDB",
@@ -1922,6 +2531,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 143,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [
+        "YouTube"
+      ],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/i2qij6ZaV3esGOiEPCTBIJwn456.jpg",
       "posterCredit": "TMDB",
@@ -1939,7 +2556,7 @@
       "originalTitle": "대환장 기안장",
       "type": "예능",
       "rank": 23,
-      "popularity": 16.2689,
+      "popularity": 15.871,
       "genres": [
         10764
       ],
@@ -1949,6 +2566,18 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-29",
+      "runtime": null,
+      "episodes": 19,
+      "score": 8,
+      "scoreBy": "TMDB",
+      "networks": [
+        "Netflix"
+      ],
+      "creators": [
+        "Jung Hyo-min",
+        "Hwang Yoon-seo",
+        "Lee So-min"
+      ],
       "providers": [
         "Netflix",
         "Netflix Standard with Ads"
@@ -1979,6 +2608,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 2,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [
+        "Mnet Plus"
+      ],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/gBwNMjkCo8Cdbrnt0uWA9IY9z8n.jpg",
       "posterCredit": "TMDB",
@@ -2006,6 +2643,16 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 60,
+      "score": 10,
+      "scoreBy": "TMDB",
+      "networks": [
+        "YouTube"
+      ],
+      "creators": [
+        "나영석"
+      ],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/iwehjBTwCBrF0fnQr5QKvN1xvm1.jpg",
       "posterCredit": "TMDB",
@@ -2023,16 +2670,24 @@
       "originalTitle": "심야괴담회",
       "type": "예능",
       "rank": 26,
-      "popularity": 16.1689,
+      "popularity": 13.9392,
       "genres": [
         10767
       ],
       "overview": "44인의 어둑시니를 만족시킬 최고의 괴담꾼을 찾아라! 결선 진출 상금 444,444원! 시청자 투고 괴담을 읽어주는 신개념 스토리텔링 챌린지 프로그램",
       "firstAirDate": "2021-03-11",
-      "lastAirDate": "2026-06-29",
+      "lastAirDate": "2026-09-21",
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 159,
+      "score": 8.7,
+      "scoreBy": "TMDB",
+      "networks": [
+        "MBC"
+      ],
+      "creators": [],
       "providers": [
         "wavve",
         "Watcha",
@@ -2062,6 +2717,12 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 273,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [],
+      "creators": [],
       "providers": [
         "wavve",
         "TVING"
@@ -2092,6 +2753,16 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-29",
+      "runtime": null,
+      "episodes": 62,
+      "score": 8.3,
+      "scoreBy": "TMDB",
+      "networks": [
+        "SBS"
+      ],
+      "creators": [
+        "최보필"
+      ],
       "providers": [
         "Netflix",
         "Watcha",
@@ -2124,6 +2795,14 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "runtime": 30,
+      "episodes": 63,
+      "score": 9,
+      "scoreBy": "TMDB",
+      "networks": [
+        "YouTube"
+      ],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/wtO2vcE8ffzVfnalGTsd1uAbzAN.jpg",
       "posterCredit": "TMDB",
@@ -2151,6 +2830,16 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-28",
+      "runtime": 30,
+      "episodes": 175,
+      "score": 9.9,
+      "scoreBy": "TMDB",
+      "networks": [
+        "YouTube",
+        "V LIVE",
+        "Weverse"
+      ],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/9Uqxdkb5evD1O8wBzGm0NWX03Es.jpg",
       "posterCredit": "TMDB",
@@ -2180,6 +2869,16 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 62,
+      "score": 10,
+      "scoreBy": "TMDB",
+      "networks": [
+        "YouTube"
+      ],
+      "creators": [
+        "PLEDIS Entertainment"
+      ],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/dVqybratnlNN250afmJxgFXwdh6.jpg",
       "posterCredit": "TMDB",
@@ -2207,6 +2906,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": 20,
+      "episodes": 196,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [
+        "YouTube"
+      ],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/aoBze9wmxYcjaTxk46nhTqvO4ou.jpg",
       "posterCredit": "TMDB",
@@ -2235,6 +2942,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": 75,
+      "episodes": 186,
+      "score": 6,
+      "scoreBy": "TMDB",
+      "networks": [
+        "E Channel"
+      ],
+      "creators": [],
       "providers": [
         "Netflix",
         "wavve",
@@ -2269,6 +2984,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-10-01",
+      "runtime": null,
+      "episodes": 52,
+      "score": 7.3,
+      "scoreBy": "TMDB",
+      "networks": [
+        "tvN"
+      ],
+      "creators": [],
       "providers": [
         "TVING"
       ],
@@ -2298,6 +3021,16 @@
       "status": "In Production",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": 15,
+      "episodes": 159,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [
+        "KBS Joy",
+        "oksusu",
+        "Mnet"
+      ],
+      "creators": [],
       "providers": [
         "wavve"
       ],
@@ -2328,6 +3061,15 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-10-02",
+      "runtime": null,
+      "episodes": 21,
+      "score": 8,
+      "scoreBy": "TMDB",
+      "networks": [
+        "wavve",
+        "KOCOWA"
+      ],
+      "creators": [],
       "providers": [
         "wavve",
         "TVING"
@@ -2348,16 +3090,24 @@
       "originalTitle": "니돈내산 독박투어",
       "type": "예능",
       "rank": 37,
-      "popularity": 11.0566,
+      "popularity": 8.3241,
       "genres": [
         10764
       ],
       "overview": "여행의 모든 과정을 '복불복 게임'을 통해 진행해, 출연자 사비로 결제하는 초유의 리얼리티 여행 예능 프로그램",
       "firstAirDate": "2023-06-03",
-      "lastAirDate": "2026-07-04",
+      "lastAirDate": "2026-09-26",
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 155,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [
+        "Channel S"
+      ],
+      "creators": [],
       "providers": [
         "Netflix",
         "wavve",
@@ -2392,6 +3142,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 81,
+      "score": 8.8,
+      "scoreBy": "TMDB",
+      "networks": [
+        "Netflix"
+      ],
+      "creators": [],
       "providers": [
         "Netflix",
         "Netflix Standard with Ads"
@@ -2423,6 +3181,16 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 82,
+      "score": 7.7,
+      "scoreBy": "TMDB",
+      "networks": [
+        "Netflix"
+      ],
+      "creators": [
+        "박인석"
+      ],
       "providers": [
         "Netflix",
         "Netflix Standard with Ads"
@@ -2455,6 +3223,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-09-27",
+      "runtime": 98,
+      "episodes": 21,
+      "score": 8,
+      "scoreBy": "TMDB",
+      "networks": [
+        "tvN"
+      ],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/ytABly0xgjR46X0qOzv3pvXHsr3.jpg",
       "posterCredit": "TMDB",
@@ -2472,16 +3248,24 @@
       "originalTitle": "전현무계획",
       "type": "예능",
       "rank": 41,
-      "popularity": 7.8913,
+      "popularity": 6.2211,
       "genres": [
         10767
       ],
       "overview": "검색 No! 핫플 No! 전현무, 곽튜브의 지인, 그 지역 출신 연예인, 현지주민 혹은 이장님 등 철저히 남의 등에 업혀 무계획으로 가는 먹방 여행! 현지 주민, 식당 주인의 이야기를 담아내고, 동네의 맛을 오롯이 느끼는 길바닥 먹큐멘터리.",
       "firstAirDate": "2024-02-16",
-      "lastAirDate": "2026-06-19",
+      "lastAirDate": "2026-09-25",
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 115,
+      "score": 10,
+      "scoreBy": "TMDB",
+      "networks": [
+        "MBN"
+      ],
+      "creators": [],
       "providers": [
         "Netflix",
         "Disney Plus",
@@ -2517,6 +3301,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": 15,
+      "episodes": 108,
+      "score": 9.5,
+      "scoreBy": "TMDB",
+      "networks": [
+        "YouTube"
+      ],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/ji9KKycDoG9EjPRJjxe04pKjvJ5.jpg",
       "posterCredit": "TMDB",
@@ -2534,17 +3326,27 @@
       "originalTitle": "전과자",
       "type": "예능",
       "rank": 43,
-      "popularity": 6.2332,
+      "popularity": 6.1184,
       "genres": [
         10767,
         10764
       ],
       "overview": "비투비 이창섭, 전국 모든 대학의 학교를 리뷰한다!",
       "firstAirDate": "2022-11-11",
-      "lastAirDate": "2026-06-25",
+      "lastAirDate": "2026-09-24",
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 198,
+      "score": 10,
+      "scoreBy": "TMDB",
+      "networks": [
+        "YouTube"
+      ],
+      "creators": [
+        "Go Dong-wan"
+      ],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/rlSklR8UT8UVwQwOGdjl7gDvIY4.jpg",
       "posterCredit": "TMDB",
@@ -2574,6 +3376,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-10-02",
+      "runtime": null,
+      "episodes": 24,
+      "score": 8.5,
+      "scoreBy": "TMDB",
+      "networks": [
+        "SBS"
+      ],
+      "creators": [],
       "providers": [
         "Netflix",
         "Netflix Standard with Ads"
@@ -2604,6 +3414,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 23,
+      "score": 10,
+      "scoreBy": "TMDB",
+      "networks": [
+        "YouTube"
+      ],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/7bnzSHRvgOaOHNuhl0qlPKBTsJ4.jpg",
       "posterCredit": "TMDB",
@@ -2631,6 +3449,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 16,
+      "score": 9,
+      "scoreBy": "TMDB",
+      "networks": [
+        "YouTube"
+      ],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/eU6KRdsky81FiHNhdDliPJemwWh.jpg",
       "posterCredit": "TMDB",
@@ -2658,6 +3484,12 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-10-05",
+      "runtime": null,
+      "episodes": 67,
+      "score": 7,
+      "scoreBy": "TMDB",
+      "networks": [],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/hQKAIYf4M5ME9ei5RS2oBnpF4Pc.jpg",
       "posterCredit": "TMDB",
@@ -2686,6 +3518,18 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 96,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [
+        "YouTube"
+      ],
+      "creators": [
+        "타블로",
+        "투컷",
+        "미쓰라"
+      ],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/aVRuEZzNTak594Th2U8r54ySikr.jpg",
       "posterCredit": "TMDB",
@@ -2713,6 +3557,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": 90,
+      "episodes": 101,
+      "score": 10,
+      "scoreBy": "TMDB",
+      "networks": [],
+      "creators": [
+        "김민종"
+      ],
       "providers": [
         "Netflix",
         "wavve",
@@ -2746,6 +3598,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 29,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [
+        "YouTube"
+      ],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/iHR8nG2PJaFsdxLW2FsVhEwCCQf.jpg",
       "posterCredit": "TMDB",
@@ -2773,6 +3633,16 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 8,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [
+        "SBS"
+      ],
+      "creators": [
+        "송현민"
+      ],
       "providers": [
         "Netflix",
         "Netflix Standard with Ads"
@@ -2803,6 +3673,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": 35,
+      "episodes": 66,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [],
+      "creators": [
+        "이언주"
+      ],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/u3twtrPE8iDjDoiBcI6s5iMi3Br.jpg",
       "posterCredit": "TMDB",
@@ -2830,6 +3708,15 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 74,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [
+        "YouTube",
+        "Weverse"
+      ],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/g9bJg9DzXALSsPW3XGKXzwLucT5.jpg",
       "posterCredit": "TMDB",
@@ -2857,6 +3744,14 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 2,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [
+        "KBS2"
+      ],
+      "creators": [],
       "providers": [
         "wavve"
       ],
@@ -2886,6 +3781,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 45,
+      "score": 10,
+      "scoreBy": "TMDB",
+      "networks": [
+        "tvN"
+      ],
+      "creators": [],
       "providers": [
         "wavve",
         "TVING"
@@ -2906,7 +3809,7 @@
       "originalTitle": "식스센스: B사이드",
       "type": "예능",
       "rank": 56,
-      "popularity": 4.2632,
+      "popularity": 4.396,
       "genres": [
         35,
         10764
@@ -2917,6 +3820,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-10-04",
+      "runtime": 90,
+      "episodes": 10,
+      "score": 8,
+      "scoreBy": "TMDB",
+      "networks": [
+        "tvN"
+      ],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/mGCQQlLobyKPianz2gU0vtVcnvT.jpg",
       "posterCredit": "TMDB",
@@ -2944,6 +3855,14 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": 30,
+      "episodes": 54,
+      "score": 8,
+      "scoreBy": "TMDB",
+      "networks": [
+        "YouTube"
+      ],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/iFe9WAPAVKR8om6pfxFQ0Sd9dDK.jpg",
       "posterCredit": "TMDB",
@@ -2972,6 +3891,18 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 10,
+      "score": 8.6,
+      "scoreBy": "TMDB",
+      "networks": [
+        "Netflix"
+      ],
+      "creators": [
+        "Jung Hyo-min",
+        "Lee So-min",
+        "Hwang Yoon-seo"
+      ],
       "providers": [
         "Netflix",
         "Netflix Standard with Ads"
@@ -2992,7 +3923,7 @@
       "originalTitle": "투모로우바이투게더의 도망갈까?",
       "type": "예능",
       "rank": 59,
-      "popularity": 3.9212,
+      "popularity": 3.6424,
       "genres": [],
       "overview": "데뷔 이래 쉼 없이 달려온 투모로우바이투게더가 8년 만에 첫 단체 해외여행을 떠난다.",
       "firstAirDate": "2026-08-13",
@@ -3000,6 +3931,14 @@
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 3,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "networks": [
+        "Mnet Plus"
+      ],
+      "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/Sl24dwSvoXJVXu3aPCy4Y4XlTw.jpg",
       "posterCredit": "TMDB",
@@ -3027,6 +3966,17 @@
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
+      "runtime": null,
+      "episodes": 10,
+      "score": 10,
+      "scoreBy": "TMDB",
+      "networks": [
+        "Netflix"
+      ],
+      "creators": [
+        "나영석",
+        "박현용"
+      ],
       "providers": [
         "Netflix",
         "Netflix Standard with Ads"
