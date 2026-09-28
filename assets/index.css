@@ -1,109 +1,78 @@
-nav{
-        height: 68px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-.hero{
-        padding: 72px 0;
-        background: linear-gradient(135deg, #171b26, #292334);
-        color: #fff;
-      }
+nav {
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.hero {
+  padding: 72px 0;
+  background: linear-gradient(135deg, #171b26, #292334);
+  color: #fff;
+}
 
 .hero-btn {
   margin-top: 20px;
 }
-.hero-grid{
-        display: grid;
-        grid-template-columns: 1.15fr 0.85fr;
-        gap: 60px;
-        align-items: center;
-      }
-.pill{
-        display: inline-block;
-        padding: 7px 11px;
-        border-radius: 20px;
-        background: #ffffff13;
-        /* 어두운 히어로 위 보조 라벨. 강조는 아래 h1 em 한 곳이면 충분합니다. */
-        color: #c6ccd6;
-        font-size: 12px;
-        font-weight: 800;
-      }
-.hero h1{
-        margin: 20px 0 16px;
-        font-size: 48px;
-        line-height: 1.16;
-        letter-spacing: -3px;
-      }
-.hero h1 em{
-        color: #ff5b6e;
-        font-style: normal;
-      }
-.hero p{
-        color: #b8bec8;
-        font-size: 16px;
-        line-height: 1.8;
-      }
-.poster-stack{
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-        transform: rotate(2deg);
-      }
-.poster-stack img{
-        width: 100%;
-        aspect-ratio: 2/3;
-        object-fit: cover;
-        border-radius: 9px;
-        box-shadow: 0 15px 30px #0007;
-      }
-.poster-stack img:nth-child(2){
-        transform: translateY(-18px);
-      }
-.section{
-        padding: 68px 0;
-      }
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 60px;
+  align-items: center;
+}
+.pill {
+  display: inline-block;
+  padding: 7px 11px;
+  border-radius: 20px;
+  background: #ffffff13;
+  /* 어두운 히어로 위 보조 라벨. 강조는 아래 h1 em 한 곳이면 충분합니다. */
+  color: #c6ccd6;
+  font-size: 12px;
+  font-weight: 800;
+}
+.hero h1 {
+  margin: 20px 0 16px;
+  font-size: 48px;
+  line-height: 1.16;
+  letter-spacing: -3px;
+}
+.hero h1 em {
+  color: #ff5b6e;
+  font-style: normal;
+}
+.poster-stack {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  transform: rotate(2deg);
+}
+.poster-stack img:nth-child(2) {
+  transform: translateY(-18px);
+}
+.section {
+  padding: 68px 0;
+}
 /* 콘텐츠ZONE 목록과 같은 포스터 카드입니다. */
-.content-grid{
+.content-grid {
   --card-min: 180px;
   --cards-gap: 15px;
 }
-.content-card{
-        overflow: hidden;
-        border-radius: 11px;
-        background: #fff;
-        border: 1px solid var(--line);
-      }
-.content-card img{
-        display: block;
-        width: 100%;
-        aspect-ratio: 2/3;
-        object-fit: cover;
-      }
-.content-card{
-        display: flex;
-        flex-direction: column;
-      }
-.thumb{
-        display: block;
-      }
-.content-body{
-        flex: 1;
-        padding: 12px;
-      }
-.content-body b{
-        display: block;
-        font-size: 15px;
-        font-weight: 800;
-        letter-spacing: -0.3px;
-        line-height: 1.35;
-      }
-.content-body p{
-        margin: 5px 0 0;
-        color: var(--muted);
-        font-size: 13px;
-        line-height: 1.5;
-      }
+.content-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+}
+.content-card {
+  overflow: hidden;
+  border-radius: 11px;
+  background: #fff;
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+}
+.thumb {
+  display: block;
+}
 
 /* 콘텐츠ZONE 카드와 같은 태그 줄입니다. 두 화면이 같은 규칙으로 읽히게 합니다.
    전에는 이 정보가 포스터 위 칩으로 얹혀 있었는데, 같은 자리에 카드마다
@@ -142,78 +111,35 @@ nav{
  * 혼자 남았는데도 넘치는 경우에만 fitTags 가 max-width 를 걸어 주고,
  * 그때 위의 text-overflow 가 말줄임 합니다.
  */
-.ranking{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-      }
-.rank-card{
-        display: grid;
-        grid-template-columns: 35px 100px 1fr auto;
-        gap: 12px;
-        align-items: center;
-        padding: 13px;
-        border: 1px solid var(--line);
-        border-radius: 11px;
-        background: #fff;
-      }
-.rank{
-        font-size: 20px;
-        font-weight: 900;
-        color: var(--red);
-        text-align: center;
-      }
-.brand{
-        height: 50px;
-        padding: 4px 8px;
-        border-radius: 7px;
-        background: #fafbfc;
-        display: flex;
-        align-items: center;
-      }
-.brand img{
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-      }
-.rank-info b{
-        font-size: 15px;
-      }
-.rank-info span{
-        display: block;
-        margin-top: 5px;
-        /* 9px + #7c8591 은 흰 카드에서 대비 3.74:1 로 읽기 어려웠습니다. */
-        color: var(--muted);
-        font-size: var(--seed-font-size-t2);
-        line-height: 1.5;
-      }
-/*
- * 이 버튼은 카드마다 하나씩, 한 화면에 열 개가 반복됩니다.
- * 솔리드로 두면 정작 이 섹션이 이끌고 싶은 "10곳 비교"보다 세게 읽힙니다.
- * 외곽선으로 내려 반복이 소음이 되지 않게 합니다.
- */
-.go{
-        padding: 8px 11px;
-        border-radius: 6px;
-        border: 1px solid var(--line);
-        background: #fff;
-        color: var(--ink);
-        font-size: 12px;
-        font-weight: 700;
-      }
-.go:hover{
-        border-color: #b9c0cc;
-        background: #f7f8fb;
-      }
-.dark{
-        background: #191d27;
-        color: #fff;
-      }
+.ranking {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.rank-info b {
+  font-size: 15px;
+}
+.rank-info span {
+  display: block;
+  margin-top: 5px;
+  /* 9px + #7c8591 은 흰 카드에서 대비 3.74:1 로 읽기 어려웠습니다. */
+  color: var(--muted);
+  font-size: var(--seed-font-size-t2);
+  line-height: 1.5;
+}
+.go:hover {
+  border-color: #b9c0cc;
+  background: #f7f8fb;
+}
+.dark {
+  background: #191d27;
+  color: #fff;
+}
 /*
  * 어두운 구역 머리. 공용 .section-head 는 밝은 배경 기준이라
  * 여기서만 색을 덮어 씁니다. #d2d7de 는 #191d27 위에서 12.2:1 입니다.
  */
-.dark .section-head .eyebrow{
+.dark .section-head .eyebrow {
   color: #d2d7de;
 }
 
@@ -224,237 +150,101 @@ nav{
  * 흰 판을 씁니다. 어두운 바탕에서 가장 또렷하고, 빨강을 하나 더
  * 늘리지 않습니다.
  */
-.dark .section-head .head-action{
+.dark .section-head .head-action {
   background: #fff;
   border-color: #fff;
   color: var(--ink);
 }
 
-.dark .section-head .head-action:hover{
+.dark .section-head .head-action:hover {
   background: #e8ebf0;
   border-color: #e8ebf0;
 }
 /* 글만 있는 안내 카드. 세 줄쯤 들어가는 폭입니다. */
-.guide-grid{
+.guide-grid {
   --card-min: 260px;
   --cards-gap: 13px;
 }
-.guide-grid article{
-        padding: 21px;
-        border: 1px solid #ffffff13;
-        border-radius: 10px;
-        background: #ffffff08;
-      }
-.guide-grid b{
-        /* 카드 배경을 흰색으로 고친 뒤에도 어두운 배경용 분홍이 남아
-           흰 바탕에서 2.5:1 이었습니다. */
-        color: var(--muted);
-        font-size: 12px;
-      }
-.guide-grid h3{
-        font-size: 16px;
-      }
-.guide-grid p{
-        color: #aeb4be;
-        font-size: 12px;
-        line-height: 1.7;
-      }
-@media (max-width: 760px){.hero-grid{
-          grid-template-columns: 1fr;
-        }.hero{
-          padding: 50px 0;
-        }.hero h1{
-          font-size: 38px;
-        }.poster-stack{
-          max-width: 420px;
-        }.ranking{
-          grid-template-columns: 1fr;
-        }}
-@media (max-width: 480px){.hero h1{
-          font-size: 32px;
-        }.head h2{
-          font-size: 24px;
-        }.rank-card{
-          grid-template-columns: 30px 78px 1fr;
-        }.go{
-          grid-column: 3;
-        }}
-/* Mobile responsive audit: 320px–430px */
-      @media (max-width: 600px){
-        .hero {
-          padding: 38px 0;
-        }
-        .hero-grid {
-          gap: 40px;
-        }
-        .hero h1 {
-          font-size: 34px;
-          letter-spacing: -2px;
-        }
-        .hero p {
-          font-size: 16px;
-        }
-        .poster-stack {
-          width: 100%;
-          max-width: none;
-          gap: 7px;
-          transform: none;
-        }
-        .poster-stack img:nth-child(2) {
-          transform: translateY(-8px);
-        }
-        .section {
-          padding: 48px 0;
-        }
-        .head {
-          gap: 14px;
-        }
-        .head a {
-          font-size: 13px;
-          text-align: right;
-        }
-        .content-body {
-          padding: 12px;
-        }
-        .content-body b {
-          font-size: 16px;
-        }
-        .content-body p {
-          font-size: 13px;
-          line-height: 1.45;
-        }
-        .rank-card {
-          grid-template-columns: 30px 76px minmax(0, 1fr);
-          gap: 9px;
-          padding: 12px;
-        }
-        .rank-info {
-          min-width: 0;
-        }
-        .rank-info b {
-          font-size: 16px;
-        }
-        .rank-info span {
-          font-size: 13px;
-          line-height: 1.45;
-          overflow-wrap: anywhere;
-        }
-        .go {
-          grid-column: 3;
-          display: grid;
-          place-items: center;
-          min-height: 44px;
-          padding: 9px 12px;
-          font-size: 14px;
-        }
-        .guide-grid article {
-          padding: 19px;
-        }
-        .guide-grid b {
-          font-size: 14px;
-        }
-        .guide-grid h3 {
-          font-size: 19px;
-        }
-        .guide-grid p {
-          font-size: 15px;
-          line-height: 1.65;
-        }
-      }
-@media (max-width: 360px){.hero h1{
-          font-size: 31px;
-        }.head{
-          align-items: flex-start;
-        }.head h2{
-          font-size: 23px;
-        }.content-grid{
-          gap: 10px;
-        }.rank-card{
-          grid-template-columns: 28px 68px minmax(0, 1fr);
-        }.brand{
-          padding: 3px;
-        }}
-@media (max-width: 600px){nav{
-          height: auto;
-          min-height: 68px;
-          flex-wrap: wrap;
-          padding-top: 10px;
-        }}
 a:focus-visible,
-      button:focus-visible{
-        outline: 3px solid #ff8290;
-        outline-offset: 3px;
-      }
+button:focus-visible {
+  outline: 3px solid #ff8290;
+  outline-offset: 3px;
+}
 
-.poster-stack a{
-        min-width: 0;
-      }
-.poster-stack a:nth-child(2){
-        transform: translateY(-12px);
-      }
-.content-body b{
-        display: block;
-        font-size: 17px;
-        line-height: 1.45;
-      }
-.content-body p{
-        font-size: 14px;
-        line-height: 1.5;
-      }
-.poster-stack img{
-        height: auto;
-      }
-.hero p{
-        max-width: 38em;
-      }
-#popular{
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-@media (max-width: 600px){#popular{
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }.head{
-          align-items: start;
-        }.content-body b{
-          font-size: 16px;
-        }.poster-stack a:nth-child(2){
-          transform: none;
-        }}
-.rank-card{
-        color: var(--ink);
-      }
-.brand-name{
-        width: 100%;
-        text-align: center;
-        color: #263b62;
-        font-weight: 900;
-        font-size: 17px;
-        letter-spacing: -0.7px;
-        white-space: nowrap;
-      }
-.go{
-        white-space: nowrap;
-      }
-@media (max-width: 600px){.brand-name{
-          font-size: 15px;
-        }}
-.brand{
-        background: #fff;
-        padding: 4px;
-        justify-content: center;
-      }
-.brand img{
-        display: block;
-        object-position: center;
-      }
-.rank-card{
-        grid-template-columns: 30px 112px minmax(0, 1fr) auto;
-      }
-@media (max-width: 600px){.rank-card{
-          grid-template-columns: 28px 96px minmax(0, 1fr);
-        }}
-@media (max-width: 360px){.rank-card{
-          grid-template-columns: 24px 86px minmax(0, 1fr);
-        }}
+.poster-stack a {
+  min-width: 0;
+}
+.poster-stack a:nth-child(2) {
+  transform: translateY(-12px);
+}
+.poster-stack img {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  border-radius: 9px;
+  box-shadow: 0 15px 30px #0007;
+  height: auto;
+}
+.hero p {
+  color: #b8bec8;
+  font-size: 16px;
+  line-height: 1.8;
+  max-width: 38em;
+}
+#popular {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.brand-name {
+  width: 100%;
+  text-align: center;
+  color: #263b62;
+  font-weight: 900;
+  font-size: 17px;
+  letter-spacing: -0.7px;
+  white-space: nowrap;
+}
+/*
+ * 이 버튼은 카드마다 하나씩, 한 화면에 열 개가 반복됩니다.
+ * 솔리드로 두면 정작 이 섹션이 이끌고 싶은 "10곳 비교"보다 세게 읽힙니다.
+ * 외곽선으로 내려 반복이 소음이 되지 않게 합니다.
+ */
+.go {
+  padding: 8px 11px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.brand {
+  height: 50px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 4px;
+  justify-content: center;
+}
+.brand img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  object-position: center;
+}
+.rank-card {
+  display: grid;
+  gap: 12px;
+  align-items: center;
+  padding: 13px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: #fff;
+  color: var(--ink);
+  grid-template-columns: 30px 112px minmax(0, 1fr) auto;
+}
 
 /* ===== 홈 화면 정리 ===== */
 
@@ -477,6 +267,9 @@ a:focus-visible,
 }
 
 .guide-grid b {
+  /* 카드 배경을 흰색으로 고친 뒤에도 어두운 배경용 분홍이 남아
+           흰 바탕에서 2.5:1 이었습니다. */
+  color: var(--muted);
   font-size: var(--seed-font-size-t1);
   line-height: 1.4;
 }
@@ -501,33 +294,6 @@ section:has(.guide-grid) .head h2 {
   letter-spacing: -1px;
 }
 
-
-/* 홈의 미리보기 카드는 좁은 화면에서 두 장씩. */
-@media (max-width: 560px) {
-  .content-grid {
-    --card-min: 140px;
-    --cards-gap: 10px;
-  }
-
-  .content-body {
-    padding: 10px;
-  }
-
-  .content-body b {
-    font-size: 14px;
-  }
-
-  .content-body p {
-    font-size: 12px;
-  }
-
-  .tag {
-    padding: 2px 7px;
-    font-size: 11px;
-  }
-}
-
-
 /* ===== 홈 웹하드 순위 자동 갱신 ===== */
 .home-ranking-status {
   display: flex;
@@ -549,6 +315,10 @@ section:has(.guide-grid) .head h2 {
 }
 
 .rank {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--red);
+  text-align: center;
   display: grid;
   justify-items: center;
   gap: 4px;
@@ -567,33 +337,6 @@ section:has(.guide-grid) .head h2 {
   line-height: 1;
   white-space: nowrap;
 }
-
-.home-rank-move.is-up {
-  color: #e0445e;
-}
-
-.home-rank-move.is-down {
-  color: #4f7bd8;
-}
-
-.home-rank-move.is-same {
-  color: #929baa;
-}
-
-@media (max-width: 600px) {
-  .home-ranking-status {
-    font-size: 12px;
-  }
-
-  .home-rank-number {
-    font-size: 18px;
-  }
-
-  .home-rank-move {
-    font-size: 9px;
-  }
-}
-
 
 .home-ranking-summary {
   display: flex;
@@ -628,142 +371,18 @@ section:has(.guide-grid) .head h2 {
   color: #9da8b7;
 }
 
-@media (max-width: 600px) {
-  .home-ranking-summary {
-    gap: 7px;
-  }
-
-  .home-ranking-summary span {
-    font-size: 10px;
-  }
-}
-
-
-/* ===== 2026-09 홈 모바일 최적화 ===== */
-@media (max-width:650px){
-  .hero{
-    padding:32px 0 34px;
-  }
-  .hero-grid{
-    gap:26px;
-  }
-  .hero h1{
-    margin:16px 0 12px;
-    font-size:32px;
-    line-height:1.18;
-    letter-spacing:-1.8px;
-  }
-  .hero p{
-    font-size:14px;
-    line-height:1.65;
-  }
-  .hero-btn{
-    width:100%;
-    min-height:46px;
-    justify-content:center;
-  }
-  .poster-stack{
-    width:min(100%,330px);
-    margin:0 auto;
-    gap:7px;
-    transform:none;
-  }
-  .poster-stack a:nth-child(2),
-  .poster-stack img:nth-child(2){
-    transform:none;
-  }
-  .section{
-    padding:38px 0;
-  }
-  .content-grid{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:9px;
-  }
-  .content-card{
-    min-width:0;
-    border-radius:10px;
-  }
-  .content-body{
-    padding:9px;
-  }
-  .content-body b{
-    font-size:14px;
-    line-height:1.35;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-  }
-  .content-body p{
-    margin-top:4px;
-    font-size:12px;
-    line-height:1.4;
-  }
-  .tag{
-    padding:2px 6px;
-    font-size:10px;
-  }
-  .ranking{
-    grid-template-columns:1fr;
-    gap:9px;
-  }
-  .rank-card{
-    grid-template-columns:32px 80px minmax(0,1fr);
-    gap:9px;
-    padding:11px;
-    border-radius:12px;
-  }
-  .brand{
-    height:44px;
-    padding:3px 5px;
-  }
-  .rank-info{
-    min-width:0;
-  }
-  .rank-info b{
-    font-size:15px;
-  }
-  .rank-info span{
-    margin-top:3px;
-    font-size:12px;
-    line-height:1.4;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-  }
-  .go{
-    grid-column:2 / -1;
-    width:100%;
-    min-height:40px;
-    display:grid;
-    place-items:center;
-    padding:7px 10px;
-    font-size:12px;
-  }
-  .home-ranking-status{
-    margin-top:6px;
-    font-size:11px;
-  }
-  .home-ranking-summary{
-    gap:6px;
-    margin-top:6px;
-  }
-  .guide-grid{
-    --card-min:100%;
-    gap:10px;
-  }
-}
-@media (max-width:380px){
-  .hero h1{font-size:29px}
-  .rank-card{grid-template-columns:29px 72px minmax(0,1fr)}
-}
-
-
 /* ===== 홈 콘텐츠 카드 줄 수 최종 규칙 ===== */
 .content-body {
+  flex: 1;
+  padding: 12px;
   min-width: 0;
 }
 
 .content-body b {
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  font-size: 17px;
+  line-height: 1.45;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -774,6 +393,10 @@ section:has(.guide-grid) .head h2 {
 }
 
 .content-body p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
   min-width: 0;
   max-width: 100%;
   white-space: nowrap;
@@ -798,17 +421,212 @@ section:has(.guide-grid) .head h2 {
   text-overflow: ellipsis;
 }
 
-/* 모바일 홈: 콘텐츠로 바로 진입할 수 있도록 히어로를 한 화면 안에 둡니다. */
+@media (max-width: 760px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero {
+    padding: 50px 0;
+  }
+  .hero h1 {
+    font-size: 38px;
+  }
+  .poster-stack {
+    max-width: 420px;
+  }
+  .ranking {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 650px) {
-  .hero { padding: 25px 0 28px; }
-  .hero-grid { display: block; }
-  .hero .pill { padding: 5px 9px; font-size: 10.5px; font-weight: 600; }
-  .hero h1 { margin: 12px 0 9px; font-size: 29px; line-height: 1.16; }
-  .hero p { margin: 0; font-size: 13px; line-height: 1.55; }
-  .hero-btn { margin-top: 18px; min-height: 44px; }
-  .poster-stack { display: none; }
+  .poster-stack a:nth-child(2),
+  .poster-stack img:nth-child(2) {
+    transform: none;
+  }
+  .section {
+    padding: 38px 0;
+  }
+  .content-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+  .content-card {
+    min-width: 0;
+    border-radius: 10px;
+  }
+  .content-body {
+    padding: 9px;
+  }
+  .content-body b {
+    font-size: 14px;
+    line-height: 1.35;
+    text-overflow: ellipsis;
+  }
+  .content-body p {
+    margin-top: 4px;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .tag {
+    padding: 2px 6px;
+    font-size: 10px;
+  }
+  .ranking {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+  .rank-card {
+    grid-template-columns: 32px 80px minmax(0, 1fr);
+    gap: 9px;
+    padding: 11px;
+    border-radius: 12px;
+  }
+  .brand {
+    height: 44px;
+    padding: 3px 5px;
+  }
+  .rank-info {
+    min-width: 0;
+  }
+  .rank-info b {
+    font-size: 15px;
+  }
+  .rank-info span {
+    margin-top: 3px;
+    font-size: 12px;
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .go {
+    grid-column: 2 / -1;
+    width: 100%;
+    min-height: 40px;
+    display: grid;
+    place-items: center;
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+  .home-ranking-status {
+    margin-top: 6px;
+    font-size: 11px;
+  }
+  .home-ranking-summary {
+    gap: 6px;
+    margin-top: 6px;
+  }
+  .guide-grid {
+    --card-min: 100%;
+    gap: 10px;
+  }
+
+  /* 모바일 홈: 콘텐츠로 바로 진입할 수 있도록 히어로를 한 화면 안에 둡니다. */
+  .hero {
+    padding: 25px 0 28px;
+  }
+  .hero-grid {
+    gap: 26px;
+    display: block;
+  }
+  .hero .pill {
+    padding: 5px 9px;
+    font-size: 10.5px;
+    font-weight: 600;
+  }
+  .hero h1 {
+    letter-spacing: -1.8px;
+    margin: 12px 0 9px;
+    font-size: 29px;
+    line-height: 1.16;
+  }
+  .hero p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .hero-btn {
+    width: 100%;
+    justify-content: center;
+    margin-top: 18px;
+    min-height: 44px;
+  }
+  .poster-stack {
+    width: min(100%, 330px);
+    margin: 0 auto;
+    gap: 7px;
+    transform: none;
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .poster-stack {
+    max-width: none;
+  }
+  .head a {
+    font-size: 13px;
+    text-align: right;
+  }
+  .rank-info span {
+    overflow-wrap: anywhere;
+  }
+  nav {
+    height: auto;
+    min-height: 68px;
+    flex-wrap: wrap;
+    padding-top: 10px;
+  }
+  #popular {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .head {
+    gap: 14px;
+    align-items: start;
+  }
+  .brand-name {
+    font-size: 15px;
+  }
+
+  .home-rank-number {
+    font-size: 18px;
+  }
+
+  .home-rank-move {
+    font-size: 9px;
+  }
+
+  .home-ranking-summary span {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 560px) {
+  /* 홈의 미리보기 카드는 좁은 화면에서 두 장씩. */
+  .content-grid {
+    --card-min: 140px;
+    --cards-gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .head h2 {
+    font-size: 24px;
+  }
 }
 
 @media (max-width: 380px) {
-  .hero h1 { font-size: 27px; }
+  .rank-card {
+    grid-template-columns: 29px 72px minmax(0, 1fr);
+  }
+  .hero h1 {
+    font-size: 27px;
+  }
+}
+
+@media (max-width: 360px) {
+  .head h2 {
+    font-size: 23px;
+  }
 }
