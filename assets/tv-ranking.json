@@ -430,7 +430,7 @@
       "originalTitle": "하절기",
       "type": "드라마",
       "rank": 11,
-      "popularity": 11.5681,
+      "popularity": 11.4964,
       "genres": [
         18
       ],
@@ -1466,7 +1466,7 @@
       "originalTitle": "14 Days",
       "type": "드라마",
       "rank": 39,
-      "popularity": 0.8321,
+      "popularity": 1.3185,
       "genres": [
         18
       ],
@@ -1635,11 +1635,44 @@
       "metadataSource": "TMDB"
     },
     {
+      "tmdbId": 334724,
+      "title": "내 남편의 아들",
+      "originalTitle": "내 남편의 아들",
+      "type": "드라마",
+      "rank": 44,
+      "popularity": 0.4582,
+      "genres": [
+        18
+      ],
+      "overview": "",
+      "firstAirDate": "2026-09-11",
+      "lastAirDate": "2026-09-11",
+      "status": "Returning Series",
+      "inProduction": true,
+      "nextAirDate": "",
+      "runtime": null,
+      "episodes": 1,
+      "score": null,
+      "scoreBy": "TMDB",
+      "networks": [],
+      "creators": [],
+      "providers": [],
+      "poster": "https://image.tmdb.org/t/p/w500/oaiiWLKL5VYaNK9xHRS7xqySitf.jpg",
+      "posterCredit": "TMDB",
+      "rankingSource": {
+        "provider": "TMDB",
+        "metric": "popularity",
+        "rank": 44,
+        "observedAt": "2026-09-28"
+      },
+      "metadataSource": "TMDB"
+    },
+    {
       "tmdbId": 336539,
       "title": "브로맨스?",
       "originalTitle": "브로맨스?",
       "type": "드라마",
-      "rank": 44,
+      "rank": 45,
       "popularity": 0.55,
       "genres": [
         18
@@ -1662,7 +1695,7 @@
       "rankingSource": {
         "provider": "TMDB",
         "metric": "popularity",
-        "rank": 44,
+        "rank": 45,
         "observedAt": "2026-09-28"
       },
       "metadataSource": "TMDB"
@@ -3439,7 +3472,7 @@
       "originalTitle": "Strong Girl:배지전쟁",
       "type": "예능",
       "rank": 46,
-      "popularity": 6.7202,
+      "popularity": 5.8913,
       "genres": [
         10764
       ],
