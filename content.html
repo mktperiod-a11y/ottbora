@@ -717,7 +717,7 @@
           .catch(() => null);
 
       Promise.all([
-        fetch("assets/content-data.json").then((r) => r.json()),
+        fetch("assets/content-data.json?v=20260928-2").then((r) => r.json()),
         optional("assets/boxoffice.json"),
         optional("assets/anime.json"),
         optional("assets/tv-ranking.json"),
