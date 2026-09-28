@@ -3,12 +3,28 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>콘텐츠 상세 | 오티티보라</title>
+    <title>작품 줄거리·정보 | 콘텐츠ZONE - 오티티보라</title>
     <meta
       name="description"
-      content="작품 줄거리와 작품 정보, 시청 경로를 확인하세요."
+      content="영화·드라마·예능·애니 작품의 줄거리와 작품 정보, 공식 시청 경로를 확인하세요."
     />
-    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta
+      name="robots"
+      content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
+    />
+    <meta name="theme-color" content="#e52f49" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="assets/favicon-48.png" sizes="48x48" type="image/png" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="오티티보라" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:title" content="작품 줄거리·정보 | 콘텐츠ZONE - 오티티보라" />
+    <meta property="og:description" content="영화·드라마·예능·애니 작품의 줄거리와 작품 정보, 공식 시청 경로를 확인하세요." />
+    <meta property="og:image" content="https://mktperiod-a11y.github.io/ottbora/assets/og-content.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="stylesheet" href="assets/fonts/gmarketsans/gmarketsans.css" />
     <link
       rel="stylesheet"
@@ -623,6 +639,43 @@
         }
       }
 
+      /*
+       * 검색엔진은 스크립트를 실행한 뒤의 설명·대표 주소를 읽습니다.
+       * 작품마다 바꿔 주지 않으면 상세 페이지가 모두 같은 문서로 보입니다.
+       * 정적 HTML 에는 canonical 을 두지 않습니다(여기서만 정합니다).
+       */
+      function applySeo(w) {
+        const url =
+          "https://mktperiod-a11y.github.io/ottbora/content-detail.html?id=" +
+          encodeURIComponent(id);
+        const about = String(w.synopsisText || w.tagline || "")
+          .replace(/\s+/g, " ")
+          .trim();
+        const text = about
+          ? `${w.title} 줄거리 — ${about}`
+          : `${w.title}의 줄거리와 작품 정보, 공식 시청 경로를 확인하세요.`;
+        const description = text.length > 150 ? text.slice(0, 149) + "…" : text;
+
+        const meta = (key, value, attr = "name") => {
+          let el = document.head.querySelector(`meta[${attr}="${key}"]`);
+          if (!el) {
+            el = document.head.appendChild(document.createElement("meta"));
+            el.setAttribute(attr, key);
+          }
+          el.content = value;
+        };
+        meta("description", description);
+        meta("og:title", document.title, "property");
+        meta("og:description", description, "property");
+        meta("og:url", url, "property");
+
+        const link =
+          document.head.querySelector('link[rel="canonical"]') ||
+          document.head.appendChild(document.createElement("link"));
+        link.rel = "canonical";
+        link.href = url;
+      }
+
       Promise.all([
         fetch("assets/content-data.json?v=20260928-2").then((r) => r.json()),
         optional("assets/boxoffice.json"),
@@ -637,6 +690,8 @@
           ANIME_PARTNERS = partners;
           const w = resolveWork(d, box, tv, anime, archive);
           if (!w) {
+            // 없는 작품 주소가 검색 결과에 남지 않게 합니다.
+            document.querySelector('meta[name="robots"]').content = "noindex,follow";
             document.querySelector("#title").textContent = "작품 정보를 찾지 못했습니다.";
             document.querySelector("#tagline").textContent =
               "목록으로 돌아가 다른 작품을 선택해 주세요.";
@@ -646,6 +701,7 @@
           }
 
           document.title = w.title + " | 콘텐츠ZONE - 오티티보라";
+          applySeo(w);
           const img = document.querySelector("#poster");
           img.src = w.poster || FALLBACK;
           img.alt = w.title + " 포스터";
