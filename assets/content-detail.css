@@ -821,3 +821,35 @@ h1 {
   .fact-label { margin: 0; font-size: 11px; }
   .fact-value { font-size: 12.5px; }
 }
+
+/* 작품 정보는 안쪽 카드 대신 같은 높이의 정보 행으로 표현합니다. */
+.copy ul.fact-grid {
+  grid-auto-rows: 1fr;
+  column-gap: 22px;
+  row-gap: 0;
+  border-top: 1px solid #e6eaf0;
+}
+
+.copy .fact-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 58px;
+  padding: 11px 2px;
+  border: 0;
+  border-bottom: 1px solid #e6eaf0;
+  border-radius: 0;
+  background: transparent;
+}
+
+@media (max-width: 650px) {
+  .copy ul.fact-grid { grid-template-columns: minmax(0, 1fr); }
+  .copy .fact-item {
+    display: grid;
+    grid-template-columns: 76px minmax(0, 1fr);
+    align-items: center;
+    min-height: 50px;
+    padding: 9px 2px;
+  }
+  .copy .fact-label { margin: 0; }
+}
