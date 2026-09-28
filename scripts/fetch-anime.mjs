@@ -231,7 +231,54 @@ function fromAniList(m) {
     url: m.idMal ? `https://myanimelist.net/anime/${m.idMal}` : "",
     posterReferer: "https://anilist.co/",
     provider: "AniList",
+    anilistId: m.id,
   };
+}
+
+/*
+ * 속편은 줄거리가 "The third season of …." 한 줄뿐인 경우가 흔합니다.
+ * 줄거리라 할 수 없으니 이전 시즌(PREQUEL)을 거슬러 올라가 제대로 된
+ * 줄거리를 찾습니다. 2기도 한 줄뿐이면 1기까지 올라갑니다.
+ */
+const THIN_SYNOPSIS =
+  /^(?:the\s+)?(?:(?:first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|final|\d+(?:st|nd|rd|th))\s+(?:season|part|cour|half)\b|sequel\b)/i;
+
+function isThinSynopsis(text) {
+  const t = cleanSynopsis(text);
+  return !t || (t.length < 160 && THIN_SYNOPSIS.test(t));
+}
+
+const PREQUEL_QUERY = `
+query ($id: Int) {
+  Media(id: $id, type: ANIME) {
+    relations { edges { relationType node { id type description(asHtml: false) } } }
+  }
+}`;
+
+async function prequelSynopsis(anilistId) {
+  let id = anilistId;
+  for (let hop = 0; hop < 4 && id; hop += 1) {
+    let body;
+    try {
+      body = await postJson(
+        ANILIST,
+        { query: PREQUEL_QUERY, variables: { id } },
+        `AniList 이전 시즌 ${id}`,
+        { attempts: 2, timeout: 15000, backoffMs: 2000 },
+      );
+    } catch {
+      return "";
+    }
+    await sleep(GAP_MS);
+    const edges = body?.data?.Media?.relations?.edges || [];
+    const prev =
+      edges.find((e) => e.relationType === "PREQUEL" && e.node?.type === "ANIME")?.node ||
+      edges.find((e) => e.relationType === "PARENT" && e.node?.type === "ANIME")?.node;
+    if (!prev) return "";
+    if (!isThinSynopsis(prev.description)) return prev.description;
+    id = prev.id;
+  }
+  return "";
 }
 
 async function fromAniListAll() {
@@ -484,7 +531,10 @@ for (const a of picked) {
     : old?.synopsisBy === "TMDB" && old.synopsis
       ? old.synopsis
       : cleanSynopsis(await koreanOverview(a));
-  const original = cleanSynopsis(a.synopsis);
+  let original = cleanSynopsis(a.synopsis);
+  if (!translated && !fromTmdb && a.anilistId && isThinSynopsis(original)) {
+    original = cleanSynopsis(await prequelSynopsis(a.anilistId)) || original;
+  }
   const synopsis = translated
     ? {
         synopsis: translated,
