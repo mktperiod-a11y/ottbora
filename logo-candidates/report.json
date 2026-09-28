@@ -3,8 +3,18 @@
     "id": "filenori",
     "name": "파일노리",
     "home": "https://www.filenori.com/",
-    "candidates": [],
-    "error": "로고로 보이는 이미지를 찾지 못함"
+    "candidates": [
+      {
+        "file": "01-img.gif",
+        "kind": "img",
+        "note": "파일노리 로고",
+        "url": "http://www.filenori.com/common/images/common/logo/logo.gif",
+        "bytes": 3895,
+        "width": 187,
+        "height": 63
+      }
+    ],
+    "error": ""
   },
   {
     "id": "fileis",
@@ -30,16 +40,7 @@
         "height": 47
       },
       {
-        "file": "03-icon.ico",
-        "kind": "icon",
-        "note": "shortcut icon",
-        "url": "https://fileis.com/favicon.ico",
-        "bytes": 4662,
-        "width": null,
-        "height": null
-      },
-      {
-        "file": "04-css.png",
+        "file": "03-css.png",
         "kind": "css",
         "note": "#leftarea .afterlogin .btn_moum .logout",
         "url": "https://www.fileis.com/images/moon/main/renew/btn_loginmoum.png",
@@ -48,13 +49,22 @@
         "height": 22
       },
       {
-        "file": "05-css.png",
+        "file": "04-css.png",
         "kind": "css",
         "note": ".popup_vpay .vpay_logo",
         "url": "https://www.fileis.com/images/contents/view_top_tit.png",
         "bytes": 3415,
         "width": 110,
         "height": 36
+      },
+      {
+        "file": "05-icon.ico",
+        "kind": "icon",
+        "note": "shortcut icon",
+        "url": "https://fileis.com/favicon.ico",
+        "bytes": 4662,
+        "width": null,
+        "height": null
       }
     ],
     "error": ""
@@ -69,7 +79,7 @@
         "kind": "img",
         "note": "파일쿠키",
         "url": "https://www.filekuki.com/kuki/img/kkr_logo_01_k.png",
-        "bytes": 5961,
+        "bytes": 2618,
         "width": 250,
         "height": 80
       },
@@ -87,7 +97,7 @@
         "kind": "img",
         "note": "파일쿠키 로고",
         "url": "https://www.filekuki.com/kuki/img/kkr_logo_k.png",
-        "bytes": 1210,
+        "bytes": 3526,
         "width": 130,
         "height": 130
       },
@@ -101,7 +111,16 @@
         "height": 130
       },
       {
-        "file": "05-icon.ico",
+        "file": "05-og.png",
+        "kind": "og",
+        "note": "og:image",
+        "url": "https://www.filekuki.com/kuki/img/og_shortcut.png",
+        "bytes": 202238,
+        "width": 800,
+        "height": 400
+      },
+      {
+        "file": "06-icon.ico",
         "kind": "icon",
         "note": "shortcut icon",
         "url": "https://www.filekuki.com/favicon2.ico",
@@ -110,22 +129,13 @@
         "height": null
       },
       {
-        "file": "06-icon.png",
+        "file": "07-icon.png",
         "kind": "icon",
         "note": "apple-touch-icon-precomposed",
         "url": "https://www.filekuki.com/kuki/img/mobile_shortcut2.png",
         "bytes": 3898,
         "width": 96,
         "height": 96
-      },
-      {
-        "file": "07-og.png",
-        "kind": "og",
-        "note": "og:image",
-        "url": "https://www.filekuki.com/kuki/img/og_shortcut.png",
-        "bytes": 202238,
-        "width": 800,
-        "height": 400
       }
     ],
     "error": ""
@@ -143,16 +153,34 @@
     "home": "https://www.megafile.co.kr/",
     "candidates": [
       {
-        "file": "01-icon.ico",
-        "kind": "icon",
-        "note": "shortcut icon",
-        "url": "https://img.megafile.co.kr/images/favicon.ico",
-        "bytes": 4286,
-        "width": null,
-        "height": null
+        "file": "01-img.png",
+        "kind": "img",
+        "note": "성인인증 아이콘",
+        "url": "https://img.megafile.co.kr/newnew_img/2021/popup/login_check/adult_image.png",
+        "bytes": 21733,
+        "width": 106,
+        "height": 106
       },
       {
-        "file": "02-og.jpg",
+        "file": "02-img.jpg",
+        "kind": "img",
+        "note": "",
+        "url": "https://img.megafile.co.kr/newnew_img/2021/event/logo/ci.jpg",
+        "bytes": 27679,
+        "width": 147,
+        "height": 47
+      },
+      {
+        "file": "03-img.gif",
+        "kind": "img",
+        "note": "",
+        "url": "https://img.megafile.co.kr/images/ver2/ci/ci_footer.gif",
+        "bytes": 2836,
+        "width": 118,
+        "height": 35
+      },
+      {
+        "file": "04-og.jpg",
         "kind": "og",
         "note": "og:image",
         "url": "https://img.megafile.co.kr/images/ver2/ci/ci.jpg",
@@ -161,13 +189,22 @@
         "height": 47
       },
       {
-        "file": "03-og.png",
+        "file": "05-og.png",
         "kind": "og",
         "note": "og:image",
         "url": "https://img.megafile.co.kr/newnew_img/2026/ci/megafile_og_final.png",
         "bytes": 37676,
         "width": 1200,
         "height": 630
+      },
+      {
+        "file": "06-icon.ico",
+        "kind": "icon",
+        "note": "shortcut icon",
+        "url": "https://img.megafile.co.kr/images/favicon.ico",
+        "bytes": 4286,
+        "width": null,
+        "height": null
       }
     ],
     "error": ""
@@ -178,7 +215,16 @@
     "home": "https://pdpop.co.kr/",
     "candidates": [
       {
-        "file": "01-icon.ico",
+        "file": "01-og.png",
+        "kind": "og",
+        "note": "og:image",
+        "url": "https://www.pdpop.com/images/images_re/favicon/pdpop_ico_144x144.png",
+        "bytes": 9760,
+        "width": 144,
+        "height": 143
+      },
+      {
+        "file": "02-icon.ico",
         "kind": "icon",
         "note": "shortcut icon",
         "url": "http://www.pdpop.com/images/images_re/favicon/favicon.ico",
@@ -187,7 +233,7 @@
         "height": null
       },
       {
-        "file": "02-icon.png",
+        "file": "03-icon.png",
         "kind": "icon",
         "note": "icon",
         "url": "http://www.pdpop.com/images/images_re/favicon/pdpop_ico_32x32.png",
@@ -196,7 +242,7 @@
         "height": 32
       },
       {
-        "file": "03-icon.png",
+        "file": "04-icon.png",
         "kind": "icon",
         "note": "icon",
         "url": "http://www.pdpop.com/images/images_re/favicon/pdpop_ico_48x48.png",
@@ -205,7 +251,7 @@
         "height": 48
       },
       {
-        "file": "04-icon.png",
+        "file": "05-icon.png",
         "kind": "icon",
         "note": "icon",
         "url": "http://www.pdpop.com/images/images_re/favicon/pdpop_ico_96x96.png",
@@ -214,7 +260,7 @@
         "height": 96
       },
       {
-        "file": "05-icon.png",
+        "file": "06-icon.png",
         "kind": "icon",
         "note": "icon",
         "url": "http://www.pdpop.com/images/images_re/favicon/pdpop_ico_144x144.png",

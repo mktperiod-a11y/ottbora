@@ -1,19 +1,20 @@
+<!-- http://www.pdpop.com/ -->
 <!DOCTYPE html>
 <html lang="ko" class="yscroll">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>�ǵ���(pdpop) - ������ ��� �ڷ�</title>
+<title>피디팝(pdpop) - 세상의 모든 자료</title>
 
 <!--<meta name="robots" content="ALL">-->
 
-<meta name="description" content="�ֽſ�ȭ, �α⿹��, ���, �ִ� �� �ʰ�ȭ�� ��Ʈ���� �� �ٿ�ε� ����!">
-<meta name="author" content="�ǵ���(pdpop)">
+<meta name="description" content="최신영화, 인기예능, 드라마, 애니 등 초고화질 스트리밍 및 다운로드 제공!">
+<meta name="author" content="피디팝(pdpop)">
 <meta name="robots" content="index,follow">
 <meta name="format-detection" content="telephone=no" />
 <meta name="content-language" content="ko">
-<!--<meta name='keywords' content='�ǵ���, pdpop, ��ȭ, ���, ����, �ִ�, ����, ���Ҽ�, BJ���, �ٿ�ε�, ��Ʈ����, �ٽú���, ���ϵ�'>-->
-<!--<meta name="Subject" content="�ǵ���, �ǽð� ��õ ��ȭ ��� �ִ� �ٽú��� �ٿ�ε� ��Ʈ���� �� �ٿ�ε�">-->
+<!--<meta name='keywords' content='피디팝, pdpop, 영화, 드라마, 예능, 애니, 웹툰, 웹소설, BJ방송, 다운로드, 스트리밍, 다시보기, 웹하드'>-->
+<!--<meta name="Subject" content="피디팝, 실시간 추천 영화 드라마 애니 다시보기 다운로드 스트리밍 및 다운로드">-->
 <meta name="naver-site-verification" content="4ca641dd455918faaa33633ac49f70e75a215c1a"/>
 <meta name="google-site-verification" content="rwjpGgN0vS6HmQECvER7U6zRDuIrOfF2LdoCjjKXZNM" />
 
@@ -23,11 +24,11 @@
 <meta http-equiv="Pragma" content="No-Cache">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="�ǵ���(pdpop) - ������ ��� �ڷ�">
-<meta property="og:description" content="�ֽſ�ȭ, �α⿹��, ���, �ִ� �� �ʰ�ȭ�� ��Ʈ���� �� �ٿ�ε� ����!">
+<meta property="og:title" content="피디팝(pdpop) - 세상의 모든 자료">
+<meta property="og:description" content="최신영화, 인기예능, 드라마, 애니 등 초고화질 스트리밍 및 다운로드 제공!">
 <meta property="og:url" content="https://www.pdpop.com/">
 <meta property="og:image" content="https://www.pdpop.com/images/images_re/favicon/pdpop_ico_144x144.png">
-<meta property="og:site_name" content="�ǵ���">
+<meta property="og:site_name" content="피디팝">
 
 <link rel='shortcut icon' href='//www.pdpop.com/images/images_re/favicon/favicon.ico'  type='image/x-icon'>
 <link rel='icon' href='//www.pdpop.com/images/images_re/favicon/pdpop_ico_32x32.png'  sizes='32x32'>
@@ -46,7 +47,7 @@
 
 </head>
 <body>
-<!-- ����ȭ ������ : Organization + WebSite (www) -->
+<!-- 구조화 데이터 : Organization + WebSite (www) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -54,7 +55,7 @@
     {
       "@type": "Organization",
       "@id": "https://www.pdpop.com/#organization",
-      "name": "�ǵ���",
+      "name": "피디팝",
       "alternateName": "pdpop",
       "url": "https://www.pdpop.com",
       "logo": {
@@ -66,7 +67,7 @@
       "@type": "WebSite",
       "@id": "https://www.pdpop.com/#website",
       "url": "https://www.pdpop.com",
-      "name": "�ǵ���",
+      "name": "피디팝",
       "alternateName": "pdpop",
       "publisher": {
         "@id": "https://www.pdpop.com/#organization"
@@ -75,7 +76,7 @@
   ]
 }
 </script>
-<!-- lypopup_����Ʈ����1+1 -->
+<!-- lypopup_포인트결제1+1 -->
 
 <script type='text/javascript' src="/images/script/popup.js?v=202605111558"></script>
 <script type='text/javascript' src="/images/script/common.js?v=202605111558"></script>
@@ -109,7 +110,7 @@ var listcnt=20;
 var nowpage=1;
 $J(function() {
 	$J('#layout').fadeIn(100);
-	//������� �����̵�
+	//날개배너 슬라이드
 	$J('#lfwing').lslides({
 		preload: false,
 		preloadImage: '/images/images_re/banner/loading.gif',
@@ -118,7 +119,7 @@ $J(function() {
 		hoverPause: false
 	});
 	
-	//���ι�� �����̵�
+	//메인배너 슬라이드
 	$J('#slides').slides({
 		preload: true,
 		preloadImage: '/images/images_re/banner/loading.gif',
@@ -160,11 +161,11 @@ function goEventURL(url) {
 		ab = window.open(url, 'wndEvent', 'width='+screen.width+',height='+screen.height+',resizable=yes,scrollbars=yes');
 		ab.focus();
 	} else {
-		alert('�α��� �Ŀ� �����ϼ���');
+		alert('로그인 후에 참여하세요');
 	}
 }
 
-//�ǵ��� ȸ�� ���� ��å
+//피디팝 회원 레벨 정책
 function pop() {
 	window.open('//member.pdpop.com/mypage/member/pop_member_level_re.html','level','scrollbars=yes,width=747,height=600');
 }
@@ -250,7 +251,7 @@ function billEventBanner() {
         type: 'GET',
         dataType: 'json',
         xhrFields: {
-            withCredentials: true // �� ��Ű ����
+            withCredentials: true // ★ 쿠키 포함
         },
 
         success: function (data) {
@@ -264,10 +265,10 @@ function billEventBanner() {
 
             var html = '';
             html += "<div class='contents'>";
-            html += "<a href='"+data.location+"'><img src='"+data.bannerInfo.pc_main_banner+"' alt='�̺�Ʈ���'/></a>";
+            html += "<a href='"+data.location+"'><img src='"+data.bannerInfo.pc_main_banner+"' alt='이벤트배너'/></a>";
             html += "</div>";
-            html += "<button type='button' class='chk_today' onclick=\"topBannerClose('mainLayerPop', 'mainLayerPopClose', 7)\"><span class='blind'>�����ϵ��� ���� �ʱ�</span></button>";
-            html += "<button type='button' class='btn_close' onclick=\"topBannerClose('mainLayerPop', 'mainLayerPopClose' , 1)\"><span class='blind'>�ݱ�</span></button>";
+            html += "<button type='button' class='chk_today' onclick=\"topBannerClose('mainLayerPop', 'mainLayerPopClose', 7)\"><span class='blind'>일주일동안 열지 않기</span></button>";
+            html += "<button type='button' class='btn_close' onclick=\"topBannerClose('mainLayerPop', 'mainLayerPopClose' , 1)\"><span class='blind'>닫기</span></button>";
 
             var mainLayerPop = document.getElementById('mainLayerPop');
             mainLayerPop.innerHTML = html;
@@ -285,10 +286,10 @@ function billEventBanner() {
 </style>
 <div class="layer_pop_main" id='mainLayerPop' style='display:none;'>
 </div>
-<!-- //lypopup_����Ʈ����1+1 -->
+<!-- //lypopup_포인트결제1+1 -->
 
 <div id="skipnavi">
-	<a href="javascript:document.getElementById('firstmenu').focus();" ><span>�޴� �ٷΰ���</span></a>
+	<a href="javascript:document.getElementById('firstmenu').focus();" ><span>메뉴 바로가기</span></a>
 </div>
 
 <div class="event_aside" style="display:none;">
@@ -308,8 +309,8 @@ function billEventBanner() {
     <div id="wrap" style="display:block;">
         <ul>
             <li class="evt_side01">
-                <span style="color: #FF0;">&nbsp;�ǵ��� GRAND OPEN!&nbsp;</span>���ϴ� �������� <span style="color: #FF0;">&nbsp;���ο��� �ǵ���</span>���� ���Ӱ� ��⼼��!
-                <button class="btn event_sidebtn" onclick="notice_setCookie('oldPdpopUse', '', 30);location.href='https://new.pdpop.com'">NEW �ǵ��� �����ϱ�</button>
+                <span style="color: #FF0;">&nbsp;피디팝 GRAND OPEN!&nbsp;</span>원하는 콘텐츠를 <span style="color: #FF0;">&nbsp;새로워진 피디팝</span>에서 새롭게 즐기세요!
+                <button class="btn event_sidebtn" onclick="notice_setCookie('oldPdpopUse', '', 30);location.href='https://new.pdpop.com'">NEW 피디팝 시작하기</button>
             </li>
         </ul>
         <button class="close" onclick="blindClose()"></button>
@@ -328,68 +329,68 @@ function billEventBanner() {
 
 <script type="text/javascript" src="/images/include/top_re.html?v=202605111558&gubun=mypage"></script>
 <script type="text/javascript" src="/images/include/mobile.php"></script>
-<!-- //���� ���� ��� 
+<!-- //왼쪽 날개 배너 
 <div id="lfwing" >
-	<h2 class="blind">���� ���</h2>
+	<h2 class="blind">날개 배너</h2>
 	<div id="layout" class="lslides_container" style="width:94px; height:242px;display:none;">
 			</div>
 	<div align="center" style="margin-top:247px;">
-		<a href="javascript://;" class="prev" style="vertical-align:middle;"><img src="/images/images_re/banner/left.gif" alt="������� ��ũ�ѿ��ʹ��� ��ư"></a>
-		<a href="javascript://;" class="next" style="vertical-align:middle;"><img src="/images/images_re/banner/right.gif" alt="������� ��ũ�ѿ����ʹ��� ��ư"></a>
+		<a href="javascript://;" class="prev" style="vertical-align:middle;"><img src="/images/images_re/banner/left.gif" alt="날개배너 스크롤왼쪽방향 버튼"></a>
+		<a href="javascript://;" class="next" style="vertical-align:middle;"><img src="/images/images_re/banner/right.gif" alt="날개배너 스크롤오른쪽방향 버튼"></a>
 	</div>
 </div>
 
-//���� ���� ��� -->
+//왼쪽 날개 배너 -->
 <div id="container">
-	<!-- // ���� ���� lfarea-->
+	<!-- // 왼쪽 영역 lfarea-->
 	<div class="lfarea">
-		<!--�α���-->
+		<!--로그인-->
 		<script type='text/javascript' src='//member.pdpop.com/login/left_login_main_re.html?url=http%3A%2F%2Fwww.pdpop.com'></script>
 		<div id="bondisk_notice" class="main_lf_tonghab_lypop" style="display:none">
-			<a href="https://bbs.pdpop.com/board_re.php?mode=view&code=C_01_01&no=400671" class="tonghab_lypop_img"><img id="bondisk_img" src="//www.pdpop.com/images/images_re/notice/bindisk_tonghab_lypop.jpg" alt="2020�� 01�� 02�Ϻη� ����ũ�� �ǵ����� �ϳ��� �Ǿ����ϴ�." /></a>
-			<a href="javascript:notice_closeLayer('bondisk_notice','bondisk_notice','bondisk_img',365);" class="tonghab_lypop_btnClose" title="�ݱ�"><img src="//www.pdpop.com/images/images_re/notice/bindisk_tonghab_lypop_btn_cls.png" alt="�ݱ�"/></a>
+			<a href="https://bbs.pdpop.com/board_re.php?mode=view&code=C_01_01&no=400671" class="tonghab_lypop_img"><img id="bondisk_img" src="//www.pdpop.com/images/images_re/notice/bindisk_tonghab_lypop.jpg" alt="2020년 01월 02일부로 본디스크와 피디팝이 하나가 되었습니다." /></a>
+			<a href="javascript:notice_closeLayer('bondisk_notice','bondisk_notice','bondisk_img',365);" class="tonghab_lypop_btnClose" title="닫기"><img src="//www.pdpop.com/images/images_re/notice/bindisk_tonghab_lypop_btn_cls.png" alt="닫기"/></a>
 		</div>
-		<!--���� ��� -->
+		<!--메인 배너 -->
 		<div class="main_lf_bn">
-			<h2 class="blind">�ǵ��� �̺�Ʈ</h2>
+			<h2 class="blind">피디팝 이벤트</h2>
 			<ul>
-				<li><a href="https://bbs.pdpop.com/board_re.php?code=F_15"><img src="/images/images_re/banner/mainToptoonBanner.jpg"  alt="�ֽ�,�α��� ��θ�� �ǵ��� ����"/></a></li>
-<!--				<li><a href="https://www.pdpop.com/event/recommendfriend/eventPage.php"><img src='//www.pdpop.com/images/images_re/event/recommendFriend/banner_MainLeft.jpg' alt='ģ������ �ʴ� 1+1�̺�Ʈ' /></a></li>-->
-                <li><a href="https://www.pdpop.com/smartmobile/index_re.php?mode=downloader"><img src='//www.pdpop.com/images/images_re/event/multidown/multi_bn_alldown.gif' alt='�ǵ��� Mac,Windows OS�� ��� �������� �����մϴ�.' /></a></li>
+				<li><a href="https://bbs.pdpop.com/board_re.php?code=F_15"><img src="/images/images_re/banner/mainToptoonBanner.jpg"  alt="최신,인기작 모두모아 피디팝 웹툰"/></a></li>
+<!--				<li><a href="https://www.pdpop.com/event/recommendfriend/eventPage.php"><img src='//www.pdpop.com/images/images_re/event/recommendFriend/banner_MainLeft.jpg' alt='친구에게 초대 1+1이벤트' /></a></li>-->
+                <li><a href="https://www.pdpop.com/smartmobile/index_re.php?mode=downloader"><img src='//www.pdpop.com/images/images_re/event/multidown/multi_bn_alldown.gif' alt='피디팝 Mac,Windows OS와 모든 브라우저를 지원합니다.' /></a></li>
 			</ul>
 		</div>
-		<!-- �������� -->
+		<!-- 공지사항 -->
 		<div class="notibox2">
-			<h2 class="blind">��������</h2>
-			<span class="st"><a href="javascript:replace_url('board_re.php?code=C_01_01','bbs')" class="more">������</a></span>
+			<h2 class="blind">공지사항</h2>
+			<span class="st"><a href="javascript:replace_url('board_re.php?code=C_01_01','bbs')" class="more">더보기</a></span>
 			<div class="notilst2">
 				<ul>
-										<li><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_01&no=527075','bbs')">[�ȳ�] ���Ҽ��� �α����� ����..</a></li>
-										<li><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_01&no=524011','bbs')">2026�� 6�� 24��(��) ������������..</a></li>
-										<li><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_01&no=523855','bbs')">[�ȳ�] BJ��� �������� ���� ����..</a></li>
-										<li><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_01&no=522958','bbs')">[�ȳ�] K-AV ���� �Ͻ� ���� �� ..</a></li>
+										<li><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_01&no=527075','bbs')">[안내] 웹소설과 인기웹툰 서비스..</a></li>
+										<li><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_01&no=524011','bbs')">2026년 6월 24일(수) 정기점검으로..</a></li>
+										<li><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_01&no=523855','bbs')">[안내] BJ방송 점검으로 인한 서비..</a></li>
+										<li><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_01&no=522958','bbs')">[안내] K-AV 서비스 일시 중지 및 ..</a></li>
 								</ul>
 			</div>
 		</div>
-		<!-- //�������� -->
-		<!-- �������� -->
+		<!-- //공지사항 -->
+		<!-- 고객센터 -->
 		<div class="help">
-			<h2 class="blind">��������</h2>
-			<span class="st"><a href="javascript:replace_url('board_re.php?code=C_01_02','bbs')" class="more" title="�������ͳ��뺸��">������</a></span>
-			<span class="tel"><img src="/images/images_re/common/main_helpnum.gif" alt="�������� 1600-8744"/></span>
-			<span class="btn"><a href="javascript:replace_url('board/one/one_re.php?code=C_01_03','bbs')"><img src="/images/images_re/common/help_1_1.gif" alt="1:1�������"/></a><a href="javascript:;" onclick='window.open("https://helpu.kr/pdpop","agentLoginA","width=850,height=425");'><img src="/images/images_re/common/help_suport.gif" alt="��������" style="margin-left:3px;"/></a></span>
+			<h2 class="blind">고객센터</h2>
+			<span class="st"><a href="javascript:replace_url('board_re.php?code=C_01_02','bbs')" class="more" title="고객센터내용보기">더보기</a></span>
+			<span class="tel"><img src="/images/images_re/common/main_helpnum.gif" alt="고객센터 1600-8744"/></span>
+			<span class="btn"><a href="javascript:replace_url('board/one/one_re.php?code=C_01_03','bbs')"><img src="/images/images_re/common/help_1_1.gif" alt="1:1고객상담"/></a><a href="javascript:;" onclick='window.open("https://helpu.kr/pdpop","agentLoginA","width=850,height=425");'><img src="/images/images_re/common/help_suport.gif" alt="원격지원" style="margin-left:3px;"/></a></span>
 			<ul>
-				<li><a href="javascript:replace_url('smartmobile/downclient.php','www')"><img src="/images/images_re/common/help_download.gif" alt="�ٿ�ε� ���α׷� ���� ��ġ"/></a></li>
-				<li><a href="javascript:replace_url('board_re.php?code=C_01_02','bbs')"><img src="/images/images_re/common/help_faq.gif" alt="�����ϴ� ����"/></a></li>
+				<li><a href="javascript:replace_url('smartmobile/downclient.php','www')"><img src="/images/images_re/common/help_download.gif" alt="다운로드 프로그램 수동 설치"/></a></li>
+				<li><a href="javascript:replace_url('board_re.php?code=C_01_02','bbs')"><img src="/images/images_re/common/help_faq.gif" alt="자주하는 질문"/></a></li>
 			</ul>
 		</div>
-		<!-- //�������� -->
+		<!-- //고객센터 -->
 	</div><!--lfarea//-->
-	<!-- �߾� ������ -->
+	<!-- 중앙 콘텐츠 -->
 	<div class="mn_center">
 		<!-- mbanner -->
 		<div class="mbanner" >
-			<h4 class="blind">�̺�Ʈ ȫ��</h4>
+			<h4 class="blind">이벤트 홍보</h4>
 			<div id="slides">
 				<div class="slides_container" id="maincenter_banner">
 					<script type='text/javascript' src='//www.pdpop.com/images/include/maincenter_banner_re.html'></script>
@@ -404,7 +405,7 @@ function billEventBanner() {
 		
 		<div class="section_slide movie">
 			<div class="sectionTitle">
-				<a href="https://bbs.pdpop.com/board_re.php?code=F_02"><h3><span class="blind">��ȭ</span></h3></a>
+				<a href="https://bbs.pdpop.com/board_re.php?code=F_02"><h3><span class="blind">영화</span></h3></a>
 			</div>
 			<div class="swiper-container">
 				<div class="swiper-wrapper">
@@ -413,42 +414,42 @@ function billEventBanner() {
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=Sl9IQ19NVl8wMDA5MTk%3D">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202609250114099552925.jpg" alt="�����̸���2"/>
+										<img src="https://ftp.pdpop.com/images/banner/202609250114099552925.jpg" alt="오케이마담2"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=aU1CQ18wNDI4ODUyNzAwMQ%3D%3D">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202609230934459959631.jpg" alt="��"/>
+										<img src="https://ftp.pdpop.com/images/banner/202609230934459959631.jpg" alt="비광"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=aU1CQ18wODYwMTQ4MDAwMQ%3D%3D">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202607230912533444043.jpg" alt="��ü"/>
+										<img src="https://ftp.pdpop.com/images/banner/202607230912533444043.jpg" alt="군체"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=Sl9CWV9NVl8xXzAwMDA2">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/20260806053720211242.jpg" alt="������"/>
+										<img src="https://ftp.pdpop.com/images/banner/20260806053720211242.jpg" alt="눈동자"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=U0cwMDAwMjEyNTU0">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202608060535117710662.jpg" alt="�̻��� ���ڰ��� ��õ��"/>
+										<img src="https://ftp.pdpop.com/images/banner/202608060535117710662.jpg" alt="이상한 과자가게 전천당"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=aU1CQ18wNDI4ODQ3ODAwMQ%3D%3D">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202606180239068952757.jpg" alt="���"/>
+										<img src="https://ftp.pdpop.com/images/banner/202606180239068952757.jpg" alt="노멀"/>
 									</div>
 								</a>
 							</li>
@@ -459,42 +460,42 @@ function billEventBanner() {
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=aU1CQ18wODYwMTQ5MDAwMQ%3D%3D">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202605270930425574495.jpg" alt="�����"/>
+										<img src="https://ftp.pdpop.com/images/banner/202605270930425574495.jpg" alt="살목지"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=aU1CQ18wODYwMTQ3MDAwMQ%3D%3D">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/20260512055353720140.jpg" alt="�հ� ��� ����"/>
+										<img src="https://ftp.pdpop.com/images/banner/20260512055353720140.jpg" alt="왕과 사는 남자"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=TEFSSTI2MDUyMTAwMQ%3D%3D">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202605260110138124536.jpg" alt="¯��"/>
+										<img src="https://ftp.pdpop.com/images/banner/202605260110138124536.jpg" alt="짱구"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=U0cwMDAwMTk0NjYy">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202604220919554662281.jpg" alt="�޼ҵ忬��"/>
+										<img src="https://ftp.pdpop.com/images/banner/202604220919554662281.jpg" alt="메소드연기"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=Sl9CWV9NVl8xXzAwMDAx">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202603191028294529745.jpg" alt="�ѹ���"/>
+										<img src="https://ftp.pdpop.com/images/banner/202603191028294529745.jpg" alt="넘버원"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=aU1CQ18wODYwMTQ1MDAwMQ%3D%3D">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202602251033592634570.jpg" alt="���࿡ �츮"/>
+										<img src="https://ftp.pdpop.com/images/banner/202602251033592634570.jpg" alt="만약에 우리"/>
 									</div>
 								</a>
 							</li>
@@ -504,11 +505,11 @@ function billEventBanner() {
 			</div>
 			<div class="swiper-pagination"></div>
 		</div>
-		<!-- //��ȭ -->
-		<!-- ��� -->
+		<!-- //영화 -->
+		<!-- 드라마 -->
 		<div class="section_slide drama">
 			<div class="sectionTitle">
-				<a href="https://bbs.pdpop.com/board_re.php?code=F_03_01"><h3><span class="blind">���</span></h3></a>
+				<a href="https://bbs.pdpop.com/board_re.php?code=F_03_01"><h3><span class="blind">드라마</span></h3></a>
 			</div>
 			<div class="swiper-container">
 				<div class="swiper-wrapper">
@@ -517,42 +518,42 @@ function billEventBanner() {
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=QjEyMDI2NjExN18%3D">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202608311036338194028.jpg" alt="������"/>
+										<img src="https://ftp.pdpop.com/images/banner/202608311036338194028.jpg" alt="포핸즈"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=U0JTLTAxLUpCWDItRA%3D%3D">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202608120147248003186.jpg" alt="���X����"/>
+										<img src="https://ftp.pdpop.com/images/banner/202608120147248003186.jpg" alt="재벌X형사"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=Sl9WSUNfRE1fMDA0Xw%3D%3D">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202608200920445564292.jpg" alt="�׷� ��ȥ����"/>
+										<img src="https://ftp.pdpop.com/images/banner/202608200920445564292.jpg" alt="그래 이혼하자"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=QjEyMDI2NTg2MF8%3D">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202608040910108415219.jpg" alt="�־��� ���"/>
+										<img src="https://ftp.pdpop.com/images/banner/202608040910108415219.jpg" alt="최애의 사원"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=aU1CQ18wMDEyMjUw">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202608030931137571602.jpg" alt="���γ� ų��"/>
+										<img src="https://ftp.pdpop.com/images/banner/202608030931137571602.jpg" alt="유부녀 킬러"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=QjEyMDI2NTgzMl8%3D">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202607200440463568325.jpg" alt="������ ����"/>
+										<img src="https://ftp.pdpop.com/images/banner/202607200440463568325.jpg" alt="오싹한 연애"/>
 									</div>
 								</a>
 							</li>
@@ -563,42 +564,42 @@ function billEventBanner() {
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=amRyNzAwMjYwMDA1MF8%3D">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202607131012385397350.jpg" alt="����Ʈ"/>
+										<img src="https://ftp.pdpop.com/images/banner/202607131012385397350.jpg" alt="아파트"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=VDIwMjYtMDAzOQ%3D%3D">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202607271054371523753.jpg" alt="����� �´�"/>
+										<img src="https://ftp.pdpop.com/images/banner/202607271054371523753.jpg" alt="사랑이 온다"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=VDIwMjYtMDIwOQ%3D%3D">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202608110304214169392.jfif" alt="����ǵ�"/>
+										<img src="https://ftp.pdpop.com/images/banner/202608110304214169392.jfif" alt="욕망의덫"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=amRyNzAwMjYwMDA0MF8%3D">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202606011021073673934.jpg" alt="���Ի�� ��ȸ��"/>
+										<img src="https://ftp.pdpop.com/images/banner/202606011021073673934.jpg" alt="신입사원 강회장"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=aU1CQ18wMDEyMjQ3">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202607080442143622685.jpg" alt="��������������"/>
+										<img src="https://ftp.pdpop.com/images/banner/202607080442143622685.jpg" alt="가족관계증명서"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=VDIwMjYtMDAyNw%3D%3D">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202603310913255085505.jpg" alt="��ۿ츮������"/>
+										<img src="https://ftp.pdpop.com/images/banner/202603310913255085505.jpg" alt="기쁜우리좋은날"/>
 									</div>
 								</a>
 							</li>
@@ -608,11 +609,11 @@ function billEventBanner() {
 			</div>
 			<div class="swiper-pagination"></div>
 		</div>
-		<!-- //��� -->
-		<!-- ��/���� -->
+		<!-- //드라마 -->
+		<!-- 쇼/예능 -->
 		<div class="section_slide enter">
 			<div class="sectionTitle">
-				<a href="https://bbs.pdpop.com/board_re.php?code=F_03_02"><h3><span class="blind">�� / ����</span></h3></a>
+				<a href="https://bbs.pdpop.com/board_re.php?code=F_03_02"><h3><span class="blind">쇼 / 예능</span></h3></a>
 			</div>
 			<div class="swiper-container">
 				<div class="swiper-wrapper">
@@ -621,42 +622,42 @@ function billEventBanner() {
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=QjEyMDI2Njc4N18%3D">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202609221128252866847.jpg" alt="������"/>
+										<img src="https://ftp.pdpop.com/images/banner/202609221128252866847.jpg" alt="원더픽"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=QjEyMDI1NTY5N18%3D">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202609150330128160781.jpg" alt="�Ľ�����: B���̵�"/>
+										<img src="https://ftp.pdpop.com/images/banner/202609150330128160781.jpg" alt="식스센스: B사이드"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=QjEyMDI2NTcxNV8%3D">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/2026081909134334498.jpg" alt="��Ʈ�� ���� ������"/>
+										<img src="https://ftp.pdpop.com/images/banner/2026081909134334498.jpg" alt="스트릿 월드 파이터"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=QjEyMDIzOTE1MF8%3D">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202608110904347571904.jpg" alt="���ֶ���"/>
+										<img src="https://ftp.pdpop.com/images/banner/202608110904347571904.jpg" alt="우주떡집"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=U0JTLTAyLVBSSU0tRA%3D%3D">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/20260810092549264029.jfif" alt="�츮���� �����ô�"/>
+										<img src="https://ftp.pdpop.com/images/banner/20260810092549264029.jfif" alt="우리동네 전성시대"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=U0JTLTAyLUFHVE0tRA%3D%3D">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202608040910464811226.jfif" alt="�� ���� ����"/>
+										<img src="https://ftp.pdpop.com/images/banner/202608040910464811226.jfif" alt="내 남은 연애"/>
 									</div>
 								</a>
 							</li>
@@ -667,42 +668,42 @@ function billEventBanner() {
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=QjEyMDI1NDgyMF8%3D">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202608030929564391671.jpg" alt="��ϳ� ��������3"/>
+										<img src="https://ftp.pdpop.com/images/banner/202608030929564391671.jpg" alt="언니네 산지직송3"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=VDIwMjYtMDE5MQ%3D%3D">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202607131014085317381.jpg" alt="�������Դ�"/>
+										<img src="https://ftp.pdpop.com/images/banner/202607131014085317381.jpg" alt="해피투게더"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=U0JTLTAyLUJBQzItRA%3D%3D">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202606250421223457383.jpg" alt="����Ѱ� ����"/>
+										<img src="https://ftp.pdpop.com/images/banner/202606250421223457383.jpg" alt="산골총각 영웅"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=anRsNzAwMjYwMDA3MF8%3D">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/20260625042153457989.jfif" alt="��������"/>
+										<img src="https://ftp.pdpop.com/images/banner/20260625042153457989.jfif" alt="연애전쟁"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=aU1CQ18wMDEyMjQ1">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202606230910498962690.jpg" alt="�ɾ߱���ȸ ����6"/>
+										<img src="https://ftp.pdpop.com/images/banner/202606230910498962690.jpg" alt="심야괴담회 시즌6"/>
 									</div>
 								</a>
 							</li>
 														<li>
 								<a href="https://bbs.pdpop.com/search_re.php?mode=list&szSearch=content_id&szSearchWord=Sl9UVkNTX09SXzFfMjMxXw%3D%3D">
 									<div class="thumb">
-										<img src="https://ftp.pdpop.com/images/banner/202605150409302875107.jpg" alt="�̽�Ʈ�� ����"/>
+										<img src="https://ftp.pdpop.com/images/banner/202605150409302875107.jpg" alt="미스트롯 포유"/>
 									</div>
 								</a>
 							</li>
@@ -712,114 +713,114 @@ function billEventBanner() {
 			</div>
 			<div class="swiper-pagination"></div>
 		</div>
-		<!-- //��/���� -->
+		<!-- //쇼/예능 -->
 				<div class="mc_banner">
 			<ul>
-							<li><a href="https://www.pdpop.com/smartmobile/index_re.php"><img src="https://ftp.pdpop.com/images/banner/202311090228567292262.jpg" alt="pc�ۼ�ġ"/></a></li>
-							<li><a href="https://www.pdpop.com/event/multidownClientGuide.php"><img src="https://ftp.pdpop.com/images/banner/202311090229453879630.jpg" alt="Ŭ���̾�Ʈ������"/></a></li>
+							<li><a href="https://www.pdpop.com/smartmobile/index_re.php"><img src="https://ftp.pdpop.com/images/banner/202311090228567292262.jpg" alt="pc앱설치"/></a></li>
+							<li><a href="https://www.pdpop.com/event/multidownClientGuide.php"><img src="https://ftp.pdpop.com/images/banner/202311090229453879630.jpg" alt="클라이언트리뉴얼"/></a></li>
 						</ul>
 		</div>
 
-	</div> <!--�߾�������nm_center//-->
+	</div> <!--중앙콘텐츠nm_center//-->
 	
-	<!-- ������ ����mn_right-->
+	<!-- 오른쪽 영역mn_right-->
 	<div class="mn_right">
-		<div class="main_rt_bn"><a href="javascript:chkLogin('https://bill.pdpop.com/mypage/coupon/coupon_re.php?mode=pdpop');"><img src="/images/images_re/banner/main_gift_bn.jpg" alt="���� �ٿ�ε� ��ǰ�ǵ��"/></a></div>
+		<div class="main_rt_bn"><a href="javascript:chkLogin('https://bill.pdpop.com/mypage/coupon/coupon_re.php?mode=pdpop');"><img src="/images/images_re/banner/main_gift_bn.jpg" alt="무료 다운로드 상품권등록"/></a></div>
 		<!--//20170727main_event-->
 		<div class="main_evnt" style="height:398px">
-						<h2 class="blind">���� �̺�Ʈ ����Ʈ</h2>	
+						<h2 class="blind">메인 이벤트 리스트</h2>	
 			<ul style="padding-top:1px;">				
-									<li style='height:40px;'><a href='https://www.pdpop.com/event/attendance.php'><img src='https://ftp.pdpop.com/images/banner/202311090354324050787.gif' alt='�⼮üũ'/></a></li>
-									<li style='height:40px;'><a href='https://www.pdpop.com/event/appReviewEvent.php'><img src='https://ftp.pdpop.com/images/banner/202609011037478737464.png' alt='�۸���'/></a></li>
-									<li style='height:40px;'><a href='https://www.pdpop.com/event/event_contents.php?event_name=mbc300'><img src='https://ftp.pdpop.com/images/banner/202311090353077670558.gif' alt='mbc 300��'/></a></li>
-									<li style='height:40px;'><a href='https://www.pdpop.com/event/event_contents.php?event_name=chuseok1'><img src='https://ftp.pdpop.com/images/banner/202609221043499219461.gif' alt='�߼� ��õ ��ȭ'/></a></li>
-									<li style='height:40px;'><a href='https://bbs.pdpop.com/fulltv/fulltv.php'><img src='https://ftp.pdpop.com/images/banner/202602101230128781140.gif' alt='BJ����'/></a></li>
-									<li style='height:40px;'><a href='https://bbs.pdpop.com/board_re.php?code=F_12_26'><img src='https://ftp.pdpop.com/images/banner/20260202100423727548.png' alt='AIä��'/></a></li>
-									<li style='height:40px;'><a href='https://www.pdpop.com/event/naverKinEvent.php'><img src='https://ftp.pdpop.com/images/banner/202408121056202412784.gif' alt='�ҹ�����'/></a></li>
-									<li style='height:40px;'><a href='https://www.pdpop.com/smartmobile/index_re.php?mode=uploader'><img src='https://ftp.pdpop.com/images/banner/202602110256131851846.gif' alt='����Ʈ���δ�'/></a></li>
+									<li style='height:40px;'><a href='https://www.pdpop.com/event/attendance.php'><img src='https://ftp.pdpop.com/images/banner/202311090354324050787.gif' alt='출석체크'/></a></li>
+									<li style='height:40px;'><a href='https://www.pdpop.com/event/appReviewEvent.php'><img src='https://ftp.pdpop.com/images/banner/202609011037478737464.png' alt='앱리뷰'/></a></li>
+									<li style='height:40px;'><a href='https://www.pdpop.com/event/event_contents.php?event_name=mbc300'><img src='https://ftp.pdpop.com/images/banner/202311090353077670558.gif' alt='mbc 300원'/></a></li>
+									<li style='height:40px;'><a href='https://www.pdpop.com/event/event_contents.php?event_name=chuseok1'><img src='https://ftp.pdpop.com/images/banner/202609221043499219461.gif' alt='추석 추천 영화'/></a></li>
+									<li style='height:40px;'><a href='https://bbs.pdpop.com/fulltv/fulltv.php'><img src='https://ftp.pdpop.com/images/banner/202602101230128781140.gif' alt='BJ성인'/></a></li>
+									<li style='height:40px;'><a href='https://bbs.pdpop.com/board_re.php?code=F_12_26'><img src='https://ftp.pdpop.com/images/banner/20260202100423727548.png' alt='AI채팅'/></a></li>
+									<li style='height:40px;'><a href='https://www.pdpop.com/event/naverKinEvent.php'><img src='https://ftp.pdpop.com/images/banner/202408121056202412784.gif' alt='소문내기'/></a></li>
+									<li style='height:40px;'><a href='https://www.pdpop.com/smartmobile/index_re.php?mode=uploader'><img src='https://ftp.pdpop.com/images/banner/202602110256131851846.gif' alt='스마트업로더'/></a></li>
 							</ul>
 		</div>
 		<!--20170727main_event//-->   
 		
-			<!-- �����ڷ�� -->
-		<div class="freedt2" style='display:none;'>	<!--20170727����-->
-			<h2 class="blind">�����ڷ��</h2>
-			<span class="st"><a href="javascript:replace_url('board_re.php?code=C_01_05','bbs')" class="more">������</a></span>
+			<!-- 무료자료실 -->
+		<div class="freedt2" style='display:none;'>	<!--20170727가림-->
+			<h2 class="blind">무료자료실</h2>
+			<span class="st"><a href="javascript:replace_url('board_re.php?code=C_01_05','bbs')" class="more">더보기</a></span>
 			<ul>
-			<li><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_05&no=160000','bbs')"><img src="/images/images_re/main/free_date_01.gif" alt="������"/></a></li>
-			<li><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_05&no=162227','bbs')"><img src="/images/images_re/main/free_date_02.gif" alt="�ݵ���"/></a></li>
-			<li class="pdnone"><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_05&no=123057','bbs')"><img src="/images/images_re/main/free_date_03.gif" alt="������"/></a></li>
+			<li><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_05&no=160000','bbs')"><img src="/images/images_re/main/free_date_01.gif" alt="데몬툴"/></a></li>
+			<li><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_05&no=162227','bbs')"><img src="/images/images_re/main/free_date_02.gif" alt="반디집"/></a></li>
+			<li class="pdnone"><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_05&no=123057','bbs')"><img src="/images/images_re/main/free_date_03.gif" alt="다음팟"/></a></li>
 			</ul>
 			
 			<ul class="freelst">
-								<li><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_05&no=440750','bbs')"> ����PDF ������ 3.0 (PDF ������ ..</a></li>
-								<li><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_05&no=440747','bbs')"> 3DP Chip (������ ��ġ ��, �ֽ�..</a></li>
-								<li><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_05&no=440746','bbs')"> ��Ŭ�� (������ ����ȭ ���α׷�)</a></li>
+								<li><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_05&no=440750','bbs')"> 이지PDF 에디터 3.0 (PDF 파일을 ..</a></li>
+								<li><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_05&no=440747','bbs')"> 3DP Chip (윈도우 설치 후, 최신..</a></li>
+								<li><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_05&no=440746','bbs')"> 고클린 (윈도우 최적화 프로그램)</a></li>
 						</ul>                            
 		</div>
 
-		<!-- Ŭ����ŷTOT5 -->
+		<!-- 클럽랭킹TOT5 -->
 		<div class="main_club5">
-			<h2 class="blind">Ŭ�� ��ŷ TOT 5</h2>
+			<h2 class="blind">클럽 랭킹 TOT 5</h2>
 			<span class="st"></span>
 			<ul>
 								<li>
-						<span class="rank  rank_top1s">1��</span>
-						<a href="https://club.pdpop.com/pdpop">�ڡ� õ��Ŭ�� �ڡ�</a>
+						<span class="rank  rank_top1s">1위</span>
+						<a href="https://club.pdpop.com/pdpop">★★ 천사클럽 ★★</a>
 					</li>
 								<li>
-						<span class="rank  rank_top2s">2��</span>
-						<a href="https://club.pdpop.com/jjangshare">���ע� ¯����~��</a>
+						<span class="rank  rank_top2s">2위</span>
+						<a href="https://club.pdpop.com/jjangshare">▶情◀ 짱공유~＠</a>
 					</li>
 								<li>
-						<span class="rank  rank_top3s">3��</span>
-						<a href="https://club.pdpop.com/clubkor">����� CLUB KOREA ��..</a>
+						<span class="rank  rank_top3s">3위</span>
+						<a href="https://club.pdpop.com/clubkor">■■■■ CLUB KOREA ■..</a>
 					</li>
 								<li>
-						<span class="rank  rank4s">4��</span>
-						<a href="https://club.pdpop.com/wawaone">�� ���Ѱ������� ����2 ��</a>
+						<span class="rank  rank4s">4위</span>
+						<a href="https://club.pdpop.com/wawaone">◆ 무한공유엔젤 씨즌2 ◆</a>
 					</li>
 								<li>
-						<span class="rank  rank5s">5��</span>
-						<a href="https://club.pdpop.com/wawajjang">�Ƣ� �� �̸���Ŭ�� �� ..</a>
+						<span class="rank  rank5s">5위</span>
+						<a href="https://club.pdpop.com/wawajjang">▒▒ ☆ 미리내클럽 ☆ ..</a>
 					</li>
 						</ul>
 		</div>
-		<!-- //Ŭ����ŷTOT7 -->
-		<!-- ���۱� -->
-		<div class="copylst2" style='display:none;'> <!--20170727����-->
-			<h2 class="blind">���۱Ǻ�ȣ���</h2>
-			<span class="st"><a href="javascript:replace_url('board_re.php?code=C_01_04','bbs')" class="more">������</a></span>
+		<!-- //클럽랭킹TOT7 -->
+		<!-- 저작권 -->
+		<div class="copylst2" style='display:none;'> <!--20170727가림-->
+			<h2 class="blind">저작권보호목록</h2>
+			<span class="st"><a href="javascript:replace_url('board_re.php?code=C_01_04','bbs')" class="more">더보기</a></span>
 			<div class="notilst2">
 				<ul>
-										<li><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_04&no=527239','bbs')">[�̵���̾߱�] [ �������� ] �� 3..</a></li>
-										<li><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_04&no=527070','bbs')">[������۴��÷���] [ �Ѹ��� ] ��..</a></li>
-										<li><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_04&no=527065','bbs')">[������۴��÷���] [ ���� ] ����..</a></li>
-										<li><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_04&no=527035','bbs')">[����ġ�����ͳ��ų��ڸ���] [ ��..</a></li>
-										<li><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_04&no=526902','bbs')">[������۴��÷���] [ ����� ����..</a></li>
+										<li><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_04&no=527239','bbs')">[미디어이야기] [ 술래게임 ] 외 3..</a></li>
+										<li><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_04&no=527070','bbs')">[라온컴퍼니플러스] [ 총명진 ] 외..</a></li>
+										<li><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_04&no=527065','bbs')">[라온컴퍼니플러스] [ 다윗 ] 저작..</a></li>
+										<li><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_04&no=527035','bbs')">[아이치이인터내셔널코리아] [ 비..</a></li>
+										<li><a href="javascript:replace_url('board_re.php?mode=view&code=C_01_04&no=526902','bbs')">[라온컴퍼니플러스] [ 사랑의 하츄..</a></li>
 								</ul>
 			</div>
 		</div>
-		<!-- //���۱� -->
+		<!-- //저작권 -->
 		
-		<!--������ ��ʸ���Ʈ-->
+		<!--오른쪽 배너리스트-->
 		<div class="main_rt_copybn">
-			<h2 class="blind">�ǵ��� ���۱�, Ŭ�� ķ����</h2>
+			<h2 class="blind">피디팝 저작권, 클린 캠페인</h2>
 			<ul>
-				<li style='display:none;'><a href="https://copyright.pdpop.com/new" target="_blank"><img src="/images/images_re/banner/main_copy_bn.jpg" alt="���۱Ǻ�ȣ���� �����ϰ� ������ ���ͳ� ��ȭ"/></a></li>	<!--20170727����-->
-				<li><img src="/images/images_re/banner/main_19notice.gif" alt="�Ƶ� û�ҳ� �̿��������� ���� ���� ������ �ڴ� �Ƶ� û�ҳ��� ����ȣ�� ���� ���� ��11���� ���� ����ó���� ���� �� �ֽ��ϴ�."/></li><!--20200612 ��û��-->
+				<li style='display:none;'><a href="https://copyright.pdpop.com/new" target="_blank"><img src="/images/images_re/banner/main_copy_bn.jpg" alt="저작권보호센터 깨끗하고 건전한 인터넷 문화"/></a></li>	<!--20170727가림-->
+				<li><img src="/images/images_re/banner/main_19notice.gif" alt="아동 청소년 이용음란물을 제작 배포 소지한 자는 아동 청소년의 성보호에 관한 법률 제11조에 따라 형사처벌을 받을 수 있습니다."/></li><!--20200612 아청법-->
 			</ul>
 		</div>
-	</div><!--�����ʿ���mn_right//-->		
-	<!-- ������ ���� rightarea -->
+	</div><!--오늘쪽영역mn_right//-->		
+	<!-- 오른쪽 영역 rightarea -->
 	<div class="rightarea">
 	</div><!--rightarea//-->
 </div><!-- container//-->
 <script type='text/javascript' src='/images/include/bottom_re.html'></script>
 <script type='text/javascript' src='/images/include/maincenter_popup.html?t=1790555404'></script>
-<!-- ��ü wrap//-->
+<!-- 전체 wrap//-->
 <script>
-	//��ȭ
+	//영화
 	var swiperMovie = new Swiper(".movie .swiper-container", {
 		spaceBetween: 4,
 		loop: true,
@@ -836,7 +837,7 @@ function billEventBanner() {
 		},
 	});
 	
-	//���
+	//드라마
 	var swiperDrama = new Swiper(".drama .swiper-container", {
 		spaceBetween: 4,
 		loop: true,
@@ -853,7 +854,7 @@ function billEventBanner() {
 		},
 	});
 	
-	//��/����
+	//쇼/예능
 	var swiperEnter = new Swiper(".enter .swiper-container", {
 		spaceBetween: 4,
 		loop: true,
