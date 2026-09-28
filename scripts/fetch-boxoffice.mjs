@@ -160,6 +160,8 @@ async function loadPrev() {
     out.set(String(m.movieCd), {
       movieCd: String(m.movieCd),
       title: String(m.title || ""),
+      titleEn: String(m.titleEn || ""),
+      titleOriginal: String(m.titleOriginal || ""),
       openedAt: m.openedAt || "",
       audienceAcc: m.audienceAcc ?? null,
       genres: Array.isArray(m.genres) ? m.genres : [],
@@ -220,6 +222,8 @@ async function fetchMovieDetails(movieCd) {
     directors,
     cast,
     rating,
+    titleEn: String(info.movieNmEn || ""),
+    titleOriginal: String(info.movieNmOg || ""),
   };
 }
 
@@ -289,6 +293,8 @@ for (const [movieCd, e] of seen) {
     movies.set(movieCd, {
       movieCd,
       title: String(m.movieNm),
+      titleEn: "",
+      titleOriginal: "",
       openedAt: m.openDt || "",
       audienceAcc: m.audiAcc ? Number(m.audiAcc) : null,
       genres: [],
@@ -357,6 +363,8 @@ for (const m of needDetails) {
     m.directors = detail.directors;
     m.cast = detail.cast;
     m.rating = detail.rating;
+    m.titleEn = detail.titleEn || m.titleEn || "";
+    m.titleOriginal = detail.titleOriginal || m.titleOriginal || "";
     m.koficDetailFetched = true;
     m.type = "영화";
   } catch (e) {

@@ -166,9 +166,10 @@ async function fromTmdb(title, year) {
     synopsis: String(pick.overview || "").trim(),
     synopsisCredit: pick.overview ? "TMDB" : "",
     tmdbId: pick.id ?? null,
-    score: Number.isFinite(Number(pick.vote_average))
-      ? Number(Number(pick.vote_average).toFixed(1))
-      : null,
+    score:
+      Number(pick.vote_count) > 0 && Number(pick.vote_average) > 0
+        ? Number(Number(pick.vote_average).toFixed(1))
+        : null,
     voteCount: Number(pick.vote_count) || null,
   };
 }
@@ -255,12 +256,18 @@ for (const m of need) {
   let kmdb = null;
   let tmdb = null;
 
-  // 한국어 줄거리와 평점은 TMDB 를 우선 확인합니다.
+  // 한국어 제목으로 못 찾는 재개봉·극장판은 KOFIC 영문명/원제로 한 번 더 찾습니다.
   if (TMDB) {
-    try {
-      tmdb = await fromTmdb(m.title, year);
-    } catch (e) {
-      console.warn(`  TMDB 조회 실패 — ${m.title}: ${e.message}`);
+    const queries = [m.title, m.titleEn, m.titleOriginal]
+      .map((x) => String(x || "").trim())
+      .filter((x, i, arr) => x && arr.indexOf(x) === i);
+    for (const query of queries) {
+      try {
+        tmdb = await fromTmdb(query, year);
+      } catch (e) {
+        console.warn(`  TMDB 조회 실패 — ${m.title} / ${query}: ${e.message}`);
+      }
+      if (tmdb?.synopsis || tmdb?.url || tmdb?.tmdbId) break;
     }
   }
 
