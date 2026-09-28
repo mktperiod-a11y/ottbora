@@ -206,10 +206,28 @@ function extOf(type, url) {
 
 // ── 실행 ────────────────────────────────────────────────────────────────
 const providers = loadProviders();
-const wanted = process.argv.slice(2);
+const args = process.argv.slice(2);
+const hostsOnly = args.includes("--hosts");
+const wanted = args.filter((a) => !a.startsWith("--"));
 const targets = Object.values(providers).filter((p) =>
   wanted.length ? wanted.includes(p.id) : isHandmade(p),
 );
+
+/*
+ * --hosts: 대상 사이트의 호스트 이름만 한 줄씩 찍고 끝냅니다.
+ * 워크플로가 인증서 사슬을 보완할 호스트를 고를 때 씁니다.
+ */
+if (hostsOnly) {
+  const hosts = new Set();
+  for (const p of targets) {
+    if (!/^https?:/.test(p.url)) continue;
+    const h = new URL(p.url).hostname;
+    const bare = h.replace(/^(www|m)\./, "");
+    hosts.add(h).add(bare).add(`www.${bare}`);
+  }
+  console.log([...hosts].join("\n"));
+  process.exit(0);
+}
 
 if (!targets.length) {
   console.log("공식 로고가 빠진 곳이 없습니다.");
