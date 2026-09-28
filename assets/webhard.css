@@ -123,14 +123,6 @@ h4 {
   font-size: 14px;
   margin: 0 0 9px;
 }
-.evidence {
-  color: #2c6655;
-  font-size: 12px;
-}
-.opinion {
-  color: #8c4c5a;
-  font-size: 12px;
-}
 .facts ul {
   margin: 0;
   padding-left: 18px;
@@ -332,25 +324,6 @@ tbody a:hover {
 
 .ranking-status-time {
   color: #7b8696;
-}
-
-/*
- * 로고 이미지가 없는 곳(파일노리·파일이즈·파일쿠키)은 이름을
- * 글자로 써 뒀습니다. 그런데 바로 아래 h3 에도 같은 이름이 있어
- * 카드가 "파일노리 / 파일노리" 로 두 번 부릅니다.
- *
- * 화면에서는 감추고, 읽어 주는 기기에는 남깁니다. 로고 자리의
- * 높이는 .provider-top 의 min-height 가 지키므로 옆 카드와
- * 줄이 어긋나지 않습니다.
- */
-.brand--text {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
 }
 
 /*

@@ -68,17 +68,6 @@ main {
 .copy ul {
   padding-left: 19px;
 }
-.download {
-  display: block;
-  margin-top: 17px;
-  padding: 15px;
-  border-radius: 8px;
-  background: var(--r);
-  color: #fff;
-  text-align: center;
-  font-size: 14px;
-  font-weight: 900;
-}
 .note {
   display: block;
   margin-top: 8px;
@@ -160,7 +149,7 @@ button:focus-visible {
  * 분류·태그·개봉일은 모두 아래 본문으로 내려, 포스터 카드와 순서를 맞췄습니다.
  */
 .panel {
-  /* 같은 줄에 하위 행동이 붙은 카드가 있으면 이 카드도 그만큼 늘어납니다.
+  /* 같은 줄의 다른 카드가 더 길면 이 카드도 그만큼 늘어납니다.
      판이 남는 높이를 먹게 해서 카드 아래에 흰 띠가 생기지 않게 합니다. */
   flex: 1;
   display: flex;
@@ -202,15 +191,12 @@ button:focus-visible {
   background: linear-gradient(165deg, #eef3f4, #dde7e9);
 }
 
-/* 예매 칩은 카드 맨 아래에 붙습니다. 칩이 없으면 이 칸 자체가 없습니다. */
 .card--text .cb {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
 }
 
-/* 글자 카드는 링크가 아니므로 들어올릴 이유가 없습니다.
-   안에 있는 예매 칩만 눌립니다. */
 .card--text:hover {
   transform: none;
   box-shadow: none;
@@ -220,58 +206,9 @@ button:focus-visible {
   background: var(--seed-color-bg-brand-solid);
   color: var(--seed-color-palette-static-white);
 }
-/* 앞 태그가 더 중요한 근거입니다. 자리가 모자라면 뒤쪽부터 줄입니다.
-   전에는 모두 똑같이 줄어서 "#국내 박스..." "#누적..." 처럼
-   둘 다 못 읽는 상태가 됐습니다. */
-/*
- * 맨 앞 태그도 줄어들지 않습니다.
- * 혼자 남았는데도 넘치는 경우에만 fitTags 가 max-width 를 걸어 주고,
- * 그때 위의 text-overflow 가 말줄임 합니다.
- */
-
-/* ===== 하위 행동 (예매·출처) ===== */
-
-/*
- * 카드의 주된 내용이 아니라 딸려 붙는 행동입니다.
- * 구분선과 라벨로 한 단 내려 둡니다.
- */
-.sub-action {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 5px;
-  margin: 0 13px 13px;
-  padding-top: 10px;
-  border-top: 1px solid var(--line);
-}
-
-.sub-action-label {
-  margin-right: 2px;
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 700;
-}
-
-/* 카드 안에 들어가는 칩이라 탭 칩보다 작게 둡니다. */
-.book-chip {
-  height: auto;
-  padding: 5px 9px;
-  font-size: 12px;
-  white-space: nowrap;
-}
-
 .cb .genre b,
 .cb .genre span {
   white-space: nowrap;
-}
-
-.tags .tag {
-  flex: 0 1 auto;
-  min-width: 0;
-  max-width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 /*
@@ -363,22 +300,17 @@ button:focus-visible {
  * 애니는 그림 위 평점. 같은 줄에 다른 종류가 와서 읽히지 않았습니다.
  *
  * 이제 모든 카드가 같은 순서를 갖습니다.
- *   그림 → 제목 → 장르 → 태그 → (예매 같은 하위 행동)
+ *   그림 → 제목 → 장르 → 태그
  */
 
 /*
  * 태그 줄. 늘 한 줄입니다.
  *
  * 두 줄로 흘려 봤더니 카드마다 태그 줄 높이가 달라져 목록이
- * 들쭉날쭉해 보였습니다. 한 줄로 되돌리되, 잘라서 "#..." 만 남는
- * 칩이 생기지 않게 합니다 — 들어갈 자리가 없는 태그는 아예
- * 그리지 않습니다(content.html 의 fitTags).
+ * 들쭉날쭉해 보였습니다. 자리가 모자라면 태그마다 줄어들며 말줄임 합니다.
  *
  * margin-top:auto 가 태그를 늘 카드 아래에 붙여 둡니다.
  */
-
-/* 해시태그/칩: 한 줄 유지, 넘치면 각 칩이 ellipsis */
-
 .tags {
   margin-top: auto;
   display: flex;
@@ -391,16 +323,14 @@ button:focus-visible {
 }
 
 .tag {
-  /* 줄어들지 않게 둡니다. 줄어들면 flex 가 알아서 말줄임 해 버려
-     fitTags 가 "넘쳤다" 는 것을 볼 수 없습니다. 자리가 모자라면
-     줄어들 게 아니라 통째로 빠져야 합니다. */
-  flex: 0 0 auto;
+  flex: 0 1 auto;
   min-width: 0;
+  max-width: 100%;
   border-radius: 20px;
   background: #eef1f6;
   color: #4a5666;
   font-weight: 700;
-  /* 태그 하나가 길면 그 안에서 말줄임 합니다. */
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 2px 6px;
@@ -508,24 +438,8 @@ button:focus-visible {
     flex-wrap: wrap;
     padding-top: 10px;
   }
-
-  .sub-action {
-    gap: 4px;
-    margin: 0 10px 10px;
-    padding-top: 8px;
-  }
-
-  .sub-action-label {
-    font-size: 11px;
-  }
-
-  .book-chip {
-    padding: 4px 7px;
-    font-size: 11px;
-  }
   main {
-    padding: 0 0 58px;
-    padding-bottom: 48px;
+    padding: 0 0 48px;
   }
   .filters > * {
     flex: 0 0 auto;
