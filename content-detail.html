@@ -624,13 +624,13 @@
       }
 
       Promise.all([
-        fetch("assets/content-data.json").then((r) => r.json()),
+        fetch("assets/content-data.json?v=20260928-2").then((r) => r.json()),
         optional("assets/boxoffice.json"),
         optional("assets/cinema-links.json"),
         optional("assets/tv-ranking.json"),
         optional("assets/anime.json"),
         optional("assets/anime-partners.json"),
-        optional("assets/movie-archive.json"),
+        optional("assets/movie-archive.json?v=20260928-2"),
       ])
         .then(([d, box, cinema, tv, anime, partners, archive]) => {
           // resolveWork 안에서 쓰므로 작품을 찾기 전에 먼저 담아 둡니다.
