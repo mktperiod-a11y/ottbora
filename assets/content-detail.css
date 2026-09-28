@@ -28,56 +28,8 @@
   margin-top: 6px;
 }
 
-#watch-block h2,
 #booking-block h2 {
   margin-top: 0;
-}
-
-/*
- * 제휴 버튼 색.
- *
- * 온디스크는 파랑, 케이디스크는 초록입니다. 둘 다 키 컬러
- * (#e52f49, HSL 351/78/54)와 한 식구로 보이게 채도를 맞췄습니다.
- *
- *   온디스크    #387CC9
- *   케이디스크  #299E76
- *
- * 파랑의 색상(216)은 사이트 잉크색(#17202d, 215)과 같은 계열이라
- * 따로 노는 색으로 보이지 않습니다. 초록은 채도를 키 컬러와 똑같이
- * 78% 로 두되, 초록이 밝게 보이는 색이라 명도를 낮춰 흰 글자
- * 대비를 확보했습니다.
- */
-.watch-btn--ondisk {
-  background: #387cc9;
-  border-color: #387cc9;
-}
-
-.watch-btn--ondisk:hover,
-.watch-btn--ondisk:active {
-  background: #2f69ab;
-  border-color: #2f69ab;
-}
-
-.watch-btn--kdisk {
-  background: #299e76;
-  border-color: #299e76;
-}
-
-.watch-btn--kdisk:hover,
-.watch-btn--kdisk:active {
-  background: #238765;
-  border-color: #238765;
-}
-
-.partner-inline {
-  padding-top: 12px;
-  border-top: 1px solid var(--line);
-}
-
-.pending {
-  margin: 12px 0 0;
-  color: var(--muted);
-  font-size: var(--seed-font-size-t3);
 }
 
 .official-link {
@@ -219,15 +171,12 @@ h1 {
   overflow-wrap: anywhere;
 }
 
-#watch-block:not(:empty),
 #booking-block:not(:empty),
 #official-action:not(:empty) {
   border-top: 1px solid var(--line);
   margin-top: 22px;
   padding-top: 18px;
 }
-
-/* 시청 경로와 예매는 서로 다른 행동이므로 충분히 분리합니다. */
 
 #booking-block:not(:empty) {
   border-top: 1px solid var(--line);
@@ -314,10 +263,8 @@ h1 {
 }
 
 /* 정보 행의 마지막 밑줄이 다음 섹션 구분선과 겹쳐 보이지 않게 합니다. */
-#points.fact-grid:not(:empty) + #watch-block:not(:empty),
-#points.fact-grid:not(:empty) + #watch-block:empty + #booking-block:not(:empty),
+#points.fact-grid:not(:empty) + #booking-block:not(:empty),
 #points.fact-grid:not(:empty)
-  + #watch-block:empty
   + #booking-block:empty
   + #official-action:not(:empty) {
   border-top: 0;
@@ -363,10 +310,8 @@ h1 {
     margin-top: 7px;
   }
 
-  #watch-block:not(:empty),
   #booking-block:not(:empty),
-  #official-action:not(:empty),
-  #booking-block:not(:empty) {
+  #official-action:not(:empty) {
     margin-top: 17px;
     padding-top: 14px;
   }
