@@ -551,10 +551,14 @@ tbody td:first-child .rank-move {
 #more .provider.featured .rank-number{font-size:28px;letter-spacing:-1px}
 #more .rank-move{font-size:10px}
 #more .brand{width:132px;height:44px}
+/* 로고 파일 안쪽 여백이 달라 실제 글자 크기가 벌어지는 두 서비스를 보정합니다. */
+#more #kdisk .brand{overflow:hidden}
+#more #kdisk .brand img{transform:scale(1.5)}
+#more #fileis .brand img{transform:scale(.9)}
 #more .provider-title{margin:9px 0 10px;padding-bottom:9px}
 #more .provider h3{font-size:19px;letter-spacing:-.6px}
 #more .provider-title>span{font-size:13px}
-#more .facts{flex:1}
+#more .facts{flex:1;padding-bottom:16px}
 #more .facts ul{font-size:14px;line-height:1.5}
 #more .facts li+li{margin-top:4px}
 #more h4{font-size:13px;margin-bottom:5px}
@@ -565,7 +569,7 @@ tbody td:first-child .rank-move {
   padding:10px 12px;
 }
 #more .reason p{font-size:14px;line-height:1.5}
-#more .provider-bottom{margin-top:0;min-height:0;padding-top:12px}
+#more .provider-bottom{margin-top:0;min-height:0;padding-top:17px}
 #more .visit{min-height:40px}
 
 @media (max-width:650px){
@@ -623,8 +627,8 @@ tbody td:first-child .rank-move {
 /* 추천 대상이 먼저 보이도록 본문을 순서대로 읽히는 평면 레이아웃으로 정리합니다. */
 #more .provider .reason,
 #more .provider.featured .reason {
-  min-height: 63px;
-  margin: 0 0 11px;
+  min-height: 55px;
+  margin: 0 0 9px;
   padding: 0;
   border: 0;
   border-radius: 0;
@@ -633,7 +637,7 @@ tbody td:first-child .rank-move {
 
 #more .reason h4 {
   margin: 0 0 4px;
-  color: #667386;
+  color: var(--accent);
   font-size: 12px;
   font-weight: 700;
 }
@@ -646,11 +650,11 @@ tbody td:first-child .rank-move {
 }
 
 #more .facts {
-  padding-top: 11px;
-  border-top: 1px solid var(--line);
+  padding-top: 0;
+  border-top: 0;
 }
 
 @media (max-width: 650px) {
   #more .provider .reason,
-  #more .provider.featured .reason { min-height: 0; margin-bottom: 12px; }
+  #more .provider.featured .reason { min-height: 0; margin-bottom: 10px; }
 }

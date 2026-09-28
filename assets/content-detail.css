@@ -842,6 +842,13 @@ h1 {
   background: transparent;
 }
 
+/* 정보 행의 마지막 밑줄이 다음 섹션 구분선과 겹쳐 보이지 않게 합니다. */
+#points.fact-grid:not(:empty) + #watch-block:not(:empty),
+#points.fact-grid:not(:empty) + #watch-block:empty + #booking-block:not(:empty),
+#points.fact-grid:not(:empty) + #watch-block:empty + #booking-block:empty + #official-action:not(:empty) {
+  border-top: 0;
+}
+
 @media (max-width: 650px) {
   .copy ul.fact-grid { grid-template-columns: minmax(0, 1fr); }
   .copy .fact-item {
