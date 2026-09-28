@@ -542,3 +542,40 @@ tbody td:first-child .rank-move {
   .rank-number,
   .provider.featured .rank-number{font-size:28px}
 }
+
+/* 비교 카드는 본문 글자를 유지하면서 장식과 여백을 줄입니다. */
+#more .provider-grid{gap:14px}
+#more .provider{padding:16px}
+#more .provider-top{min-height:44px;gap:10px}
+#more .rank-number,
+#more .provider.featured .rank-number{font-size:28px;letter-spacing:-1px}
+#more .rank-move{font-size:10px}
+#more .brand{width:132px;height:44px}
+#more .provider-title{margin:9px 0 10px;padding-bottom:9px}
+#more .provider h3{font-size:19px;letter-spacing:-.6px}
+#more .provider-title>span{font-size:13px}
+#more .facts{flex:1}
+#more .facts ul{font-size:14px;line-height:1.5}
+#more .facts li+li{margin-top:4px}
+#more h4{font-size:13px;margin-bottom:5px}
+#more .reason{
+  box-sizing:border-box;
+  min-height:82px;
+  margin:10px 0 12px;
+  padding:10px 12px;
+}
+#more .reason p{font-size:14px;line-height:1.5}
+#more .provider-bottom{margin-top:0;min-height:0;padding-top:12px}
+#more .visit{min-height:40px}
+
+@media (max-width:650px){
+  #more .provider-grid{gap:10px}
+  #more .provider{padding:14px}
+  #more .provider-top{min-height:38px;gap:8px}
+  #more .rank-number,
+  #more .provider.featured .rank-number{font-size:25px}
+  #more .brand{width:112px;height:38px}
+  #more .provider h3{font-size:18px}
+  #more .reason{min-height:0}
+  #more .visit{min-height:42px}
+}
