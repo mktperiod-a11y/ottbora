@@ -23,8 +23,8 @@
  * 분기 초에는 평점 표본이 적어 상위가 흔들리는데, members 는 그보다
  * 안정적이고 "얼마나 화제인가"에 더 가깝습니다. 평점은 함께 적어만 둡니다.
  *
- * 한국어 제목은 Jikan 이 주지 않습니다. TMDB 키가 있으면 거기서 찾아
- * 채우고, 없으면 영어 제목을 씁니다. 키가 들어오면 다음 실행에서 메워집니다.
+ * 한국어 제목은 보정표와 이전 한국어명, TMDB 순으로 찾습니다. 찾지 못하면
+ * Claude API 로 번역해 저장하고 다음 갱신에도 같은 제목을 씁니다.
  *
  * 줄거리는 네 곳 중 앞의 것을 씁니다.
  *
@@ -50,6 +50,7 @@ import { savePoster, getJson, postJson, norm } from "./lib/poster.mjs";
 import {
   MODEL as TRANSLATE_MODEL,
   translateSynopsis,
+  translateTitle,
   translatorReady,
   stopsTranslation,
   looksKorean,
@@ -57,6 +58,7 @@ import {
 
 const OUT = "assets/anime.json";
 const TITLE_ALIASES = "assets/anime-title-aliases.json";
+const TITLE_AUTO = "assets/anime-title-auto.json";
 const SYNOPSIS_KO = "assets/anime-synopsis-ko.json";
 const SYNOPSIS_AUTO = "assets/anime-synopsis-auto.json";
 
@@ -119,6 +121,15 @@ try {
   titleAliases = JSON.parse(await readFile(TITLE_ALIASES, "utf8")).titles || {};
 } catch {}
 
+/** { translations: { 작품 번호: { source: 원제 해시, ko: 번역 제목 } } } */
+let titleCache = { translations: {} };
+try {
+  titleCache = JSON.parse(await readFile(TITLE_AUTO, "utf8"));
+  titleCache.translations ||= {};
+} catch {}
+let titleChanged = false;
+let titleLeft = MAX_TRANSLATIONS;
+
 /** { source: 원문 출처, synopses: { 작품 번호: 한국어 줄거리 } } */
 let synopsisKo = {};
 try {
@@ -134,6 +145,43 @@ try {
 let autoChanged = false;
 let autoLeft = MAX_TRANSLATIONS;
 let translatorOn = translatorReady();
+
+/** 공식 제목을 찾지 못한 경우에만 번역합니다. 재등장한 작품에도 같은 이름을 씁니다. */
+async function autoTitle(a) {
+  const key = String(a.mal_id);
+  const title = a.title_english || a.title;
+  const original = a.title_japanese || a.title;
+  const source = createHash("sha1").update(`${title}\n${original}`).digest("hex").slice(0, 12);
+  const saved = titleCache.translations[key];
+  if (saved?.source === source && validTitle(saved.ko)) return saved.ko;
+  if (!translatorOn || titleLeft <= 0) return "";
+
+  titleLeft -= 1;
+  try {
+    const ko = (await translateTitle({ title, original })).trim();
+    if (!validTitle(ko)) {
+      console.warn(`  제목 번역 결과가 이상해 원문을 둡니다 — ${title}`);
+      return "";
+    }
+    titleCache.translations[key] = { source, ko };
+    titleChanged = true;
+    console.log(`  제목 번역 — ${title} → ${ko}`);
+    return ko;
+  } catch (e) {
+    console.warn(`  제목 번역 실패 — ${title}: ${e.message}`);
+    if (stopsTranslation(e)) {
+      translatorOn = false;
+      console.warn("  이번 실행에서는 더 번역하지 않습니다(키 또는 요청 한도 문제).");
+    }
+    return "";
+  }
+}
+
+function validTitle(title) {
+  return typeof title === "string" && /[가-힣]/.test(title) &&
+    title.length <= 110 && !/[\r\n<>]/.test(title) &&
+    !/^["'“‘`]|["'”’`]$/.test(title);
+}
 
 /**
  * 원문 줄거리의 자동 번역을 돌려줍니다. 원문이 그대로면 저장해 둔 번역을
@@ -608,10 +656,10 @@ for (const a of picked) {
     .map((g) => GENRE_KO[g.name] || g.name)
     .filter(Boolean);
 
-  // 국내 통용명 수동 보정 > 기존 한국어명 > TMDB 자동 매칭 순입니다.
+  // 국내 통용명 수동 보정 > 기존 한국어명 > TMDB > 자동 번역 순입니다.
   // 수동 보정은 영문 제목이 남거나 번역투가 강한 작품만 최소한으로 둡니다.
   const alias = titleAliases[String(a.mal_id)] || "";
-  const ko = alias || old?.titleKo || (await koreanTitle(a));
+  const ko = alias || old?.titleKo || (await koreanTitle(a)) || (await autoTitle(a));
 
   // 줄거리: 보정표 > TMDB 한국어 > 자동 번역 > 원문 순입니다(맨 위 설명 참고).
   // TMDB 는 매번 새로 묻고, 묻지 못한 날에만 지난번 TMDB 줄거리를 씁니다.
@@ -676,6 +724,19 @@ for (const a of picked) {
 
 // 자동 번역은 anime.json 과 따로 둡니다. 순위에서 빠졌다 돌아온 작품도
 // 다시 번역하지 않게 하려는 것입니다.
+if (titleChanged) {
+  const sorted = Object.fromEntries(
+    Object.entries(titleCache.translations).sort(([x], [y]) => x.localeCompare(y, "en", { numeric: true })),
+  );
+  await writeFile(
+    TITLE_AUTO,
+    JSON.stringify({
+      note: "애니 제목 자동 번역 캐시입니다. 수정할 제목은 anime-title-aliases.json 에 적습니다(그쪽이 우선).",
+      model: TRANSLATE_MODEL,
+      translations: sorted,
+    }, null, 2) + "\n",
+  );
+}
 if (autoChanged) {
   const sorted = Object.fromEntries(
     Object.entries(autoCache.translations).sort(([x], [y]) => x.localeCompare(y, "en", { numeric: true })),
@@ -712,7 +773,7 @@ const out = {
     ? `${picked[0].year} ${picked[0].season}`
     : "",
   updatedAt: new Date().toISOString().slice(0, 10),
-  koreanTitles: TMDB ? "TMDB 에서 조회" : "TMDB 키가 없어 영어 제목을 씁니다",
+  koreanTitles: "수동 보정 · TMDB · 자동 번역",
   works,
 };
 
@@ -749,7 +810,8 @@ if (same) {
         untranslated.map((w) => `${w.malId} ${w.title}`).join(" / "),
     );
   }
-  if (!TMDB) {
-    console.log("TMDB_API_KEY 를 등록하면 다음 실행에서 한국어 제목을 채웁니다.");
+  const untranslatedTitles = works.filter((w) => !w.titleKo);
+  if (untranslatedTitles.length) {
+    console.log(`  영어 제목만 있는 작품 — ${untranslatedTitles.map((w) => `${w.malId} ${w.title}`).join(" / ")}`);
   }
 }

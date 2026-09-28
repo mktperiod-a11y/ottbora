@@ -1,5 +1,5 @@
 /**
- * 영어 애니 줄거리를 한국어로 옮깁니다(Claude API).
+ * 영어 애니 줄거리와 제목을 한국어로 옮깁니다(Claude API).
  *
  * ANTHROPIC_API_KEY 가 있을 때만 씁니다. 키는 GitHub 저장소의
  * Settings → Secrets and variables → Actions 에 같은 이름으로 넣습니다.
@@ -21,9 +21,38 @@ const SYSTEM = `너는 한국어 애니메이션 정보 사이트의 번역가�
 - 문체는 줄거리 소개에 흔한 담백한 서술체(…한다, …이다)로 쓴다.
 - 번역문만 출력한다. 제목, 머리말, 따옴표, 태그, 부연 설명을 붙이지 않는다.`;
 
+const TITLE_SYSTEM = `너는 한국어 애니메이션 정보 사이트의 작품명 번역가다. 영어 제목과 일본어 원제를 보고 한국어 제목 한 줄만 출력한다.
+
+- 널리 알려진 국내 공식 제목이 확실하면 그 표기를 따른다. 확실하지 않으면 원문의 뜻을 자연스럽게 옮기거나 고유명사를 발음대로 적는다. 공식 제목이라고 추측해 꾸며 내지 않는다.
+- 원문에 있는 시즌·기수·파트·숫자를 빠뜨리지 않는다. 제목에 없는 정보를 덧붙이지 않는다.
+- 한국어 제목 한 줄만 출력한다. 머리말, 설명, 따옴표, 괄호 속 원제, 마크다운을 붙이지 않는다.`;
+
 export const translatorReady = () => Boolean(process.env.ANTHROPIC_API_KEY);
 
 let client = null;
+
+/** 국내 제목이 없는 작품의 표시 제목을 옮깁니다. 실패하면 던집니다. */
+export async function translateTitle({ title, original }) {
+  client ??= new Anthropic({ maxRetries: 4, timeout: 120_000 });
+  const response = await client.beta.messages.create({
+    model: MODEL,
+    max_tokens: 256,
+    betas: ["server-side-fallback-2026-07-01"],
+    fallbacks: "default",
+    output_config: { effort: "medium" },
+    system: TITLE_SYSTEM,
+    messages: [
+      { role: "user", content: `영어 제목: ${title}\n일본어 원제: ${original || "없음"}` },
+    ],
+  });
+  if (response.stop_reason === "refusal") throw new Error("제목 번역을 거절함(refusal)");
+  if (response.stop_reason === "max_tokens") throw new Error("제목 번역이 잘림(max_tokens)");
+  return response.content
+    .filter((b) => b.type === "text")
+    .map((b) => b.text)
+    .join("")
+    .trim();
+}
 
 /**
  * 한 편을 옮깁니다. 실패하면 던집니다(부르는 쪽이 원문으로 둡니다).
