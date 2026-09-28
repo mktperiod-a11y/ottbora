@@ -699,7 +699,21 @@ a:focus-visible,
 }
 
 
-/* 모바일 분류 탭 — 한 화면에 정확히 4개, 5번째는 가로 스와이프 */
+/*
+ * 모바일 분류 탭.
+ *
+ * 예전엔 칩을 정확히 1/4 폭으로 나눠 한 화면에 4개만 딱 맞게 채웠습니다.
+ * 그래서 5번째(애니)가 화면 오른쪽 끝에 한 조각도 안 보이고 통째로
+ * 숨어, 옆으로 더 있다는 걸 알 방법이 없었습니다.
+ *
+ * 대신 칩을 글자 수만큼만 차지하게(natural width) 두고, 웹하드 순위
+ * 페이지의 같은 성격의 탭(.section-links, 페이지 내 바로가기 칩)과
+ * 크기를 맞춥니다. 다섯 개를 다 더해도 가장 좁은 화면(320px)보다
+ * 좁아 보통은 스크롤 없이 다 보이고, 글자 크기를 키우는 등 화면이
+ * 더 좁아지는 경우에만 오른쪽 끝 칩이 자연스럽게 일부만 보이며 잘려
+ * "더 있다"는 것을 그대로 알려 줍니다 — 억지로 자르는 값을 넣지
+ * 않아도 좁을 때만 저절로 그렇게 됩니다.
+ */
 @media (max-width:600px){
   .filter-row .filters{
     --mobile-tab-gap:6px;
@@ -718,11 +732,14 @@ a:focus-visible,
   }
 
   .filter-row .filters > *{
-    flex:0 0 calc((100% - (var(--mobile-tab-gap) * 3)) / 4);
+    flex:0 0 auto;
     min-width:0;
     min-height:40px;
+    padding:7px 12px;
+    font-size:12px;
     justify-content:center;
     text-align:center;
+    white-space:nowrap;
     scroll-snap-align:start;
   }
 }
@@ -966,7 +983,8 @@ a:focus-visible,
   .panel-title { font-size: clamp(17px, 4.6vw, 21px); }
   .filter-row { margin-top: 20px; margin-bottom: 16px; }
   .filter-row .filters { gap: 6px; }
-  .filter-row .filters > * { min-height: 44px; }
+  /* 탭 칩 높이는 위 "모바일 분류 탭" 규칙과 40px로 맞춥니다. */
+  .filter-row .filters > * { min-height: 40px; }
   .count { font-size: 12px; }
   .pager > * { min-width: 44px; min-height: 44px; }
 }
