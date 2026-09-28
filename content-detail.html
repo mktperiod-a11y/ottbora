@@ -216,7 +216,7 @@
           fact("관람등급", m.rating),
           fact("감독", shortPeople(m.directors, 2)),
           fact("출연", shortPeople(m.cast, 4)),
-          fact("TMDB 평점", m.score != null ? `${m.score} / 10` : ""),
+          fact("TMDB 평점", Number(m.score) > 0 ? `${m.score} / 10` : ""),
         ].filter(Boolean);
 
         return {
@@ -254,7 +254,7 @@
           .filter(Boolean);
         const facts = [
           fact("인기 순위", w.rank && w.rank <= 20 ? `${w.rank}위` : ""),
-          fact("TMDB 평점", w.score != null ? `${w.score} / 10` : ""),
+          fact("TMDB 평점", Number(w.score) > 0 ? `${w.score} / 10` : ""),
           fact("회차", w.episodes ? `${w.episodes}화` : ""),
           fact("회당", w.runtime ? `약 ${w.runtime}분` : ""),
           fact("방송사", shortPeople(w.networks, 3)),
