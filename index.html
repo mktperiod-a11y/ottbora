@@ -208,7 +208,7 @@
       </div>
     </footer>
     <script src="assets/posters-featured-20260828.js"></script>
-    <script src="assets/webhard-ranking.js?v=20260923-3"></script>
+    <script src="assets/webhard-ranking.js?v=20260928-1"></script>
     <script>
       const posterSource = (id) => (window.OTT_POSTERS || {})[id] || "";
       // [제목, 장르, id, 태그들]
@@ -385,7 +385,7 @@
           if (changed) drawRanking(data);
           if (rankingStatus) {
             rankingStatus.textContent =
-              `${data.startLabel} 기준 · 다음 갱신 ${data.remainingLabel}`;
+              `최근 업데이트 ${data.updatedLabel}`;
           }
           if (rankingSummary) {
             const s = data.summary;
