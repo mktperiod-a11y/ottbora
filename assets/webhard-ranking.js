@@ -66,7 +66,7 @@
       id: "filenori",
       name: "파일노리",
       description: "모바일 탐색과 전용 플레이어",
-      logo: "filenori.svg",
+      logo: "filenori.gif",
       url: "https://www.filenori.com/",
     },
     me2disk: {
@@ -136,7 +136,7 @@
       id: "pdpop",
       name: "피디팝",
       description: "인기콘텐츠 · 전용 프로그램",
-      logo: "pdpop.svg",
+      logo: "pdpop.png",
       url: "https://pdpop.co.kr/",
     },
   };
