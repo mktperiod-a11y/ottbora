@@ -769,3 +769,41 @@ h1 {
     grid-template-columns: 1fr;
   }
 }
+
+/* 상세 화면: 포스터의 존재감과 본문 가독성을 함께 유지합니다. */
+.detail-poster {
+  border: 1px solid rgba(23, 32, 45, .08);
+}
+
+.copy {
+  border-color: #e3e7ee;
+  box-shadow: 0 12px 34px rgba(23, 32, 45, .045);
+}
+
+.fact-item {
+  background: #fafbfc;
+}
+
+@media (max-width: 650px) {
+  .detail { grid-template-columns: 104px minmax(0, 1fr); column-gap: 16px; }
+  .detail-poster { width: 104px; }
+  .ey { font-size: 10.5px; }
+  h1 { font-size: clamp(22px, 6.1vw, 27px); }
+  .sub { font-size: 13px; }
+  .meta > span { font-size: 11px; padding: 5px 8px; }
+  .copy { margin-top: 19px; padding: 19px 17px; border-radius: 13px; }
+  .copy h2 { font-size: 16px; margin-top: 21px; }
+  .copy p, .copy li { font-size: 14px; line-height: 1.65; }
+  .copy ul.fact-grid { gap: 8px; }
+  .fact-item { padding: 10px 11px; }
+  .fact-label { font-size: 11px; }
+  .fact-value { font-size: 12.5px; }
+  .watch-links > a, .official-link { min-height: 44px; font-size: 13px; }
+  .copy .credit { font-size: 11px; }
+}
+
+@media (max-width: 360px) {
+  .detail { grid-template-columns: 88px minmax(0, 1fr); column-gap: 12px; }
+  .detail-poster { width: 88px; }
+  .copy ul.fact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

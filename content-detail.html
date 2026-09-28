@@ -16,8 +16,8 @@
     />
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
-    <link rel="stylesheet" href="assets/site.css?v=20260923-6" />
-    <link rel="stylesheet" href="assets/content-detail.css?v=20260928-1" />
+    <link rel="stylesheet" href="assets/site.css?v=20260928-2" />
+    <link rel="stylesheet" href="assets/content-detail.css?v=20260928-2" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -184,21 +184,31 @@
         return value;
       }
 
-      function matchingBoxMovie(w, box) {
+      function matchingBoxMovie(w, box, archive) {
         if (w?.type !== "영화") return null;
         const release = String(w.releasedAt || "").match(/\d{4}[-.]\d{2}[-.]\d{2}/)?.[0];
-        return (box?.movies || []).find((m) =>
+        return [...(box?.movies || []), ...(archive?.movies || [])].find((m) =>
           key(m.title) === key(w.title) &&
           (!release || prettyDate(m.openedAt) === prettyDate(release)),
         ) || null;
       }
 
-      function manualWork(w, box) {
+      function manualWork(w, box, archive) {
         if (!w) return null;
-        const movie = matchingBoxMovie(w, box);
+        const movie = matchingBoxMovie(w, box, archive);
         const movieFacts = w.type === "영화" ? filmFacts(movie, box?.latestDt) : [];
-        if (w.type === "영화" && !movieFacts.length && w.cast) {
-          movieFacts.push(fact(w.cast.startsWith("감독 ") ? "감독" : "출연", w.cast.replace(/^감독\s+/, "")));
+        if (w.type === "영화") {
+          const fallback = [
+            fact("상영시간", w.runtime ? `${w.runtime}분` : ""),
+            fact("관람등급", w.rating),
+            fact("감독", w.director || (w.cast?.startsWith("감독 ") ? w.cast.replace(/^감독\s+/, "") : "")),
+            fact("출연", w.cast?.startsWith("감독 ") ? "" : w.cast),
+            fact("제작", w.production),
+            fact("배급", w.distribution),
+          ].filter(Boolean);
+          for (const item of fallback) {
+            if (!movieFacts.some((x) => x.label === item.label)) movieFacts.push(item);
+          }
         }
         return {
           ...w,
@@ -206,8 +216,8 @@
           poster: (window.OTT_POSTERS || {})[w.id] || FALLBACK,
           meta: [timeMeta(w.type, w.releasedAt), w.genre].filter(Boolean),
           detailPoints: w.type === "영화" ? movieFacts : manualFacts(w),
-          synopsisText: movie?.synopsis || w.synopsis || "현재 줄거리 정보를 확인할 수 없어요.",
-          synopsisCredit: movie?.synopsis ? movie.synopsisCredit || "" : "",
+          synopsisText: (w.synopsisCredit ? w.synopsis : movie?.synopsis || w.synopsis) || "현재 줄거리 정보를 확인할 수 없어요.",
+          synopsisCredit: w.synopsisCredit || (movie?.synopsis ? movie.synopsisCredit || "" : ""),
         };
       }
 
@@ -430,13 +440,14 @@
         };
       }
 
-      function resolveWork(d, box, tv, anime) {
+      function resolveWork(d, box, tv, anime, archive) {
         const manual = (d?.works || []).find((x) => x.id === id);
-        if (manual) return manualWork(manual, box);
+        if (manual) return manualWork(manual, box, archive);
 
         if (id.startsWith("kofic-")) {
           const code = id.slice("kofic-".length);
-          return boxWork((box?.movies || []).find((x) => String(x.movieCd) === code), box?.latestDt);
+          return boxWork([...(box?.movies || []), ...(archive?.movies || [])]
+            .find((x) => String(x.movieCd) === code), box?.latestDt);
         }
         if (id.startsWith("tmdb-")) {
           const code = id.slice("tmdb-".length);
@@ -619,11 +630,12 @@
         optional("assets/tv-ranking.json"),
         optional("assets/anime.json"),
         optional("assets/anime-partners.json"),
+        optional("assets/movie-archive.json"),
       ])
-        .then(([d, box, cinema, tv, anime, partners]) => {
+        .then(([d, box, cinema, tv, anime, partners, archive]) => {
           // resolveWork 안에서 쓰므로 작품을 찾기 전에 먼저 담아 둡니다.
           ANIME_PARTNERS = partners;
-          const w = resolveWork(d, box, tv, anime);
+          const w = resolveWork(d, box, tv, anime, archive);
           if (!w) {
             document.querySelector("#title").textContent = "작품 정보를 찾지 못했습니다.";
             document.querySelector("#tagline").textContent =
