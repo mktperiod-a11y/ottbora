@@ -62,40 +62,38 @@ main {
   line-height: 1.8;
 }
 
-/* 작은 화면에서는 공용 헤더를 그대로 두고 카드만 1열로 접습니다. */
 @media (max-width: 700px) {
+  /* 작은 화면에서는 공용 헤더를 그대로 두고 카드만 1열로 접습니다. */
   main {
     padding: 0 0 60px;
+    padding-bottom: 48px;
   }
-
   .grid {
     --card-min: 100%;
     --cards-gap: 14px;
-    margin-top: 24px;
+    gap: 11px;
+    margin-top: 20px;
   }
-
   .card {
     min-height: auto;
-    padding: 23px 21px 22px;
-    border-radius: 16px;
+    padding: 19px 17px 18px;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(23, 32, 45, 0.03);
   }
-
   .card > b {
-    width: 38px;
-    height: 38px;
-    margin-bottom: 15px;
-    font-size: 12px;
+    width: 36px;
+    height: 36px;
+    margin-bottom: 13px;
+    font-size: 11px;
   }
-
   .card h2 {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     font-size: 17px;
   }
-
   .card p {
     max-width: none;
-    font-size: 14px;
-    line-height: 1.72;
+    font-size: 13.5px;
+    line-height: 1.68;
   }
 }
 
@@ -106,36 +104,5 @@ main {
 
   .card:hover {
     transform: none;
-  }
-}
-
-
-/* ===== 2026-09 이용가이드 모바일 최적화 ===== */
-@media (max-width:700px){
-  main{
-    padding-bottom:48px;
-  }
-  .grid{
-    gap:11px;
-    margin-top:20px;
-  }
-  .card{
-    padding:19px 17px 18px;
-    border-radius:14px;
-    box-shadow:0 4px 14px rgba(23,32,45,.03);
-  }
-  .card > b{
-    width:36px;
-    height:36px;
-    margin-bottom:13px;
-    font-size:11px;
-  }
-  .card h2{
-    margin-bottom:8px;
-    font-size:17px;
-  }
-  .card p{
-    font-size:13.5px;
-    line-height:1.68;
   }
 }
