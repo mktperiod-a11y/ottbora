@@ -267,7 +267,7 @@
       "originalTitle": "유부녀 킬러",
       "type": "드라마",
       "rank": 7,
-      "popularity": 16.5746,
+      "popularity": 18.2071,
       "genres": [
         18,
         10759,
@@ -311,7 +311,7 @@
       "originalTitle": "들쥐",
       "type": "드라마",
       "rank": 8,
-      "popularity": 17.4591,
+      "popularity": 18.145,
       "genres": [
         80,
         18,
@@ -407,7 +407,7 @@
       "nextAirDate": "",
       "runtime": null,
       "episodes": 4,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [
         "Vigloo"
@@ -430,7 +430,7 @@
       "originalTitle": "하절기",
       "type": "드라마",
       "rank": 11,
-      "popularity": 11.5681,
+      "popularity": 11.4964,
       "genres": [
         18
       ],
@@ -836,7 +836,7 @@
       "nextAirDate": "2026-09-28",
       "runtime": null,
       "episodes": 120,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [
         "KBS1"
@@ -861,7 +861,7 @@
       "originalTitle": "그래, 이혼하자",
       "type": "드라마",
       "rank": 22,
-      "popularity": 6.1617,
+      "popularity": 5.724,
       "genres": [
         18,
         35,
@@ -869,7 +869,7 @@
       ],
       "overview": "지칠 대로 지친 결혼 생활에 종지부를 찍기 위한 웨딩드레스샵 대표 부부의 리얼 이혼 체험기",
       "firstAirDate": "2026-08-19",
-      "lastAirDate": "2026-09-23",
+      "lastAirDate": "2026-09-24",
       "status": "Ended",
       "inProduction": false,
       "nextAirDate": "",
@@ -915,7 +915,7 @@
       "nextAirDate": "",
       "runtime": null,
       "episodes": 2,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [
         "ReelShort"
@@ -1030,7 +1030,7 @@
       "nextAirDate": "",
       "runtime": null,
       "episodes": 1,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [
         "ReelShort"
@@ -1053,7 +1053,7 @@
       "originalTitle": "위험한 보스의 사라진 신부",
       "type": "드라마",
       "rank": 27,
-      "popularity": 3.9133,
+      "popularity": 4.6048,
       "genres": [
         18
       ],
@@ -1065,7 +1065,7 @@
       "nextAirDate": "",
       "runtime": null,
       "episodes": 2,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [
         "Vigloo"
@@ -1100,7 +1100,7 @@
       "nextAirDate": "",
       "runtime": null,
       "episodes": 6,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [
         "LIKEY"
@@ -1203,7 +1203,7 @@
       "nextAirDate": "2026-09-29",
       "runtime": null,
       "episodes": 6,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [],
       "creators": [],
@@ -1237,7 +1237,7 @@
       "nextAirDate": "",
       "runtime": null,
       "episodes": 6,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [
         "wavve",
@@ -1306,7 +1306,7 @@
       "nextAirDate": "",
       "runtime": null,
       "episodes": 2,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [
         "TVING"
@@ -1376,7 +1376,7 @@
       "nextAirDate": "",
       "runtime": null,
       "episodes": 1,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [],
       "creators": [],
@@ -1410,7 +1410,7 @@
       "nextAirDate": "",
       "runtime": null,
       "episodes": 2,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [],
       "creators": [],
@@ -1443,7 +1443,7 @@
       "nextAirDate": "",
       "runtime": null,
       "episodes": 1,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [],
       "creators": [
@@ -1511,7 +1511,7 @@
       "nextAirDate": "",
       "runtime": null,
       "episodes": 1,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [],
       "creators": [],
@@ -1545,7 +1545,7 @@
       "nextAirDate": "",
       "runtime": null,
       "episodes": 1,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [
         "Lezhin Snack"
@@ -1617,7 +1617,7 @@
       "nextAirDate": "",
       "runtime": null,
       "episodes": 1,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [
         "Shortime"
@@ -1652,7 +1652,7 @@
       "nextAirDate": "",
       "runtime": null,
       "episodes": 5,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [],
       "creators": [],
@@ -2417,7 +2417,7 @@
       "nextAirDate": "",
       "runtime": null,
       "episodes": 272,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [
         "tvN"
@@ -2497,7 +2497,7 @@
       "nextAirDate": "2026-09-27",
       "runtime": null,
       "episodes": 12,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [
         "Channel A"
@@ -2533,7 +2533,7 @@
       "nextAirDate": "",
       "runtime": null,
       "episodes": 143,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [
         "YouTube"
@@ -2610,7 +2610,7 @@
       "nextAirDate": "",
       "runtime": null,
       "episodes": 2,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [
         "Mnet Plus"
@@ -2719,7 +2719,7 @@
       "nextAirDate": "",
       "runtime": null,
       "episodes": 273,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [],
       "creators": [],
@@ -2908,7 +2908,7 @@
       "nextAirDate": "",
       "runtime": 20,
       "episodes": 196,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [
         "YouTube"
@@ -2931,19 +2931,19 @@
       "originalTitle": "용감한 형사들",
       "type": "예능",
       "rank": 33,
-      "popularity": 11.8016,
+      "popularity": 10.0215,
       "genres": [
         80,
         10764
       ],
       "overview": "국민의 안전한 일상을 지키기 위해 범죄와 싸우는 현직 형사들이 생생한 범죄 실화들을 공개한다. 실제 사건을 담당했던 형사들의 수사 일지를 기반으로 한 진짜 범죄 분석 예능이 시작된다.",
       "firstAirDate": "2022-04-01",
-      "lastAirDate": "2026-06-05",
+      "lastAirDate": "2026-09-11",
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
       "runtime": 75,
-      "episodes": 186,
+      "episodes": 195,
       "score": 6,
       "scoreBy": "TMDB",
       "networks": [
@@ -3023,7 +3023,7 @@
       "nextAirDate": "",
       "runtime": 15,
       "episodes": 159,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [
         "KBS Joy",
@@ -3102,7 +3102,7 @@
       "nextAirDate": "",
       "runtime": null,
       "episodes": 155,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [
         "Channel S"
@@ -3520,7 +3520,7 @@
       "nextAirDate": "",
       "runtime": null,
       "episodes": 96,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [
         "YouTube"
@@ -3600,7 +3600,7 @@
       "nextAirDate": "",
       "runtime": null,
       "episodes": 29,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [
         "YouTube"
@@ -3635,7 +3635,7 @@
       "nextAirDate": "",
       "runtime": null,
       "episodes": 8,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [
         "SBS"
@@ -3675,7 +3675,7 @@
       "nextAirDate": "",
       "runtime": 35,
       "episodes": 66,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [],
       "creators": [
@@ -3710,7 +3710,7 @@
       "nextAirDate": "",
       "runtime": null,
       "episodes": 74,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [
         "YouTube",
@@ -3746,7 +3746,7 @@
       "nextAirDate": "",
       "runtime": null,
       "episodes": 2,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [
         "KBS2"
@@ -3933,7 +3933,7 @@
       "nextAirDate": "",
       "runtime": null,
       "episodes": 3,
-      "score": 0,
+      "score": null,
       "scoreBy": "TMDB",
       "networks": [
         "Mnet Plus"
