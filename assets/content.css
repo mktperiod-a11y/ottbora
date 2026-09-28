@@ -606,6 +606,7 @@ a:focus-visible,
   }
 }
 
+
 @media (max-width: 360px) {
   .grid {
     --card-min: 132px;
@@ -933,4 +934,39 @@ a:focus-visible,
     min-width: 36px;
     min-height: 36px;
   }
+}
+
+/* 목록의 간격과 텍스트 대비를 모바일에서도 읽기 편하게 맞춥니다. */
+.card {
+  border-color: #e3e7ed;
+  box-shadow: 0 4px 14px rgba(23, 32, 45, .035);
+}
+
+.card:focus-within {
+  border-color: #ed9aa6;
+  box-shadow: 0 0 0 3px rgba(229, 47, 73, .12);
+}
+
+.filter-row .filters > * {
+  transition: background-color .18s ease, color .18s ease, transform .18s ease;
+}
+
+.filter-row .filters > *:hover {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 600px) {
+  .grid { gap: 10px; }
+  .card { border-radius: 11px; }
+  .card .cb, .card--text .cb { padding: 10px 10px 11px; }
+  .cb > b { font-size: 14px; line-height: 1.32; }
+  .cb .genre { font-size: 11px; }
+  .tag { font-size: 10px; padding: 3px 6px; }
+  .panel { padding: 14px 12px; }
+  .panel-title { font-size: clamp(17px, 4.6vw, 21px); }
+  .filter-row { margin-top: 20px; margin-bottom: 16px; }
+  .filter-row .filters { gap: 6px; }
+  .filter-row .filters > * { min-height: 44px; }
+  .count { font-size: 12px; }
+  .pager > * { min-width: 44px; min-height: 44px; }
 }
