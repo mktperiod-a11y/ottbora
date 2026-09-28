@@ -563,3 +563,37 @@ footer {
     font-size: 11px;
   }
 }
+
+/* 2026-09-28: 공통 탐색 요소의 마감과 모바일 터치 영역 */
+.site-header .menu a {
+  transition: color .18s ease, background-color .18s ease, box-shadow .18s ease;
+}
+
+.site-header .menu a:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 650px) {
+  .site-header .nav {
+    padding-top: 12px;
+  }
+
+  .site-header .menu {
+    gap: 7px;
+    padding: 11px 0 12px;
+  }
+
+  .site-header .menu a {
+    min-height: 44px;
+    border: 1px solid #e6e9ef;
+    border-radius: 10px;
+    background: #f8f9fb;
+    font-size: 12.5px;
+    font-weight: 700;
+  }
+
+  .site-header .menu .on {
+    border-color: #f3c9cf;
+    background: #fff0f2;
+  }
+}

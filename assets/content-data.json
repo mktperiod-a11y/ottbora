@@ -269,10 +269,13 @@
       "title": "와일드 씽",
       "type": "영화",
       "genre": "코미디",
-      "tagline": "예측 불가 세 사람이 벌이는 소동",
+      "tagline": "20년 만에 다시 무대에 서는 세 사람",
       "releasedAt": "2026.06.03",
-      "cast": "강동원 · 엄태구 · 박지현",
-      "synopsis": "전혀 어울리지 않는 인물들이 뜻밖의 사건으로 얽히며 벌어지는 유쾌한 코미디 영화입니다.",
+      "director": "손재곤",
+      "rating": "12세 이상 관람가",
+      "cast": "강동원 · 엄태구 · 박지현 · 오정세",
+      "synopsis": "2000년대 초반을 휩쓸었던 3인조 댄스 그룹이 스캔들 이후 20년 만에 한 번의 공연을 위해 다시 뭉칩니다. 재회한 멤버들 앞에 뜻밖의 소동이 이어집니다.",
+      "synopsisCredit": "넷플릭스",
       "points": [
         "강동원 · 엄태구 · 박지현의 인물 조합",
         "코미디 장르의 분위기와 전개",
@@ -283,7 +286,7 @@
       "pickedBy": "",
       "pickedSource": "",
       "official": null,
-      "watch": [],
+      "watch": [{ "name": "넷플릭스", "url": "https://www.netflix.com/kr/title/82821393" }],
       "partner": []
     },
     {
@@ -555,10 +558,16 @@
       "title": "휴민트",
       "type": "영화",
       "genre": "액션",
-      "tagline": "정보와 신뢰가 교차하는 첩보 작전",
+      "tagline": "블라디보스토크에서 마주친 남북 요원",
       "releasedAt": "2026.02.11",
-      "cast": "조인성 · 박정민 · 박해준",
-      "synopsis": "각자의 목적을 품은 요원들이 위험한 정보전을 벌이며 임무와 생존을 두고 맞서는 액션 영화입니다.",
+      "runtime": 119,
+      "rating": "15세 이상 관람가",
+      "director": "류승완",
+      "cast": "조인성 · 박정민 · 박해준 · 신세경",
+      "production": "외유내강",
+      "distribution": "NEW",
+      "synopsis": "러시아 블라디보스토크에서 마약 조직을 쫓던 남한 요원이 북한 요원과 맞닥뜨립니다. 서로 다른 목적을 가진 두 사람은 위험한 음모에 휘말립니다.",
+      "synopsisCredit": "넷플릭스",
       "points": [
         "조인성 · 박정민 · 박해준의 인물 조합",
         "액션 장르의 분위기와 전개",
@@ -569,7 +578,7 @@
       "pickedBy": "",
       "pickedSource": "",
       "official": null,
-      "watch": [],
+      "watch": [{ "name": "넷플릭스", "url": "https://www.netflix.com/kr/title/82682318" }],
       "partner": []
     }
   ]
