@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css?v=20260928-2" />
-    <link rel="stylesheet" href="assets/content-detail.css?v=20260928-6" />
+    <link rel="stylesheet" href="assets/content-detail.css?v=20260928-7" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -53,6 +53,7 @@
       <a class="detail-back" href="content.html" aria-label="콘텐츠ZONE 목록으로 돌아가기">← 콘텐츠ZONE</a>
       <div class="detail">
         <img class="detail-poster" id="poster" alt="" />
+        <aside class="promo" id="promo" aria-label="광고" hidden></aside>
         <section>
           <span class="ey" id="category"></span>
           <h1 id="title"></h1>
@@ -631,6 +632,45 @@
           document.querySelector("#title").textContent =
             "작품 정보를 불러오지 못했습니다.";
         });
+    </script>
+    <script>
+      /*
+       * 제휴 배너. 들어올 때마다 온디스크·케이디스크 중 하나를 무작위로 띄웁니다.
+       * 사이트 본문과 구분되도록 각 서비스 색을 쓰고 "광고" 표시를 붙입니다.
+       */
+      (() => {
+        const host = document.querySelector("#promo");
+        if (!host) return;
+        const ADS = [
+          {
+            id: "ondisk",
+            name: "온디스크",
+            logo: "assets/ondisk.svg",
+            url: "go/ondisk/",
+            title: "보고 싶던 작품, <br />지금 바로",
+            text: "영화·드라마·애니까지 다양한 장르",
+          },
+          {
+            id: "kdisk",
+            name: "케이디스크",
+            logo: "assets/kdisk.svg",
+            url: "go/kdisk/",
+            title: "PC에서도 <br />모바일에서도",
+            text: "감상과 다운로드를 한 곳에서",
+          },
+        ];
+        const ad = ADS[Math.floor(Math.random() * ADS.length)];
+        host.className = `promo promo--${ad.id}`;
+        host.innerHTML =
+          `<a class="promo-link" href="${ad.url}" target="_blank" rel="sponsored noopener noreferrer" aria-label="${ad.name} 광고, 새 창에서 열기">` +
+          `<span class="promo-badge">광고</span>` +
+          `<span class="promo-logo"><img src="${ad.logo}" alt="${ad.name}" width="200" height="75" /></span>` +
+          `<span class="promo-body"><strong class="promo-title">${ad.title}</strong>` +
+          `<span class="promo-text">${ad.text}</span></span>` +
+          `<span class="promo-cta">${ad.name} 바로가기 <span aria-hidden="true">→</span></span>` +
+          `</a>`;
+        host.hidden = false;
+      })();
     </script>
   </body>
 </html>

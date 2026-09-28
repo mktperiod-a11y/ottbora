@@ -449,3 +449,214 @@ h1 {
     width: 88px;
   }
 }
+
+/*
+ * 제휴 배너(온디스크·케이디스크 무작위).
+ * 사이트 카드와 섞여 보이지 않도록 각 서비스 색과 굵은 글꼴을 쓰고
+ * "광고" 표시를 붙입니다. PC 는 포스터 아래에 붙어 따라오고,
+ * 모바일은 본문 카드 아래에 가로형으로 놓입니다.
+ */
+.detail {
+  grid-template-rows: auto 1fr;
+  row-gap: 0;
+}
+
+.detail-poster {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.detail > section {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.promo {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: start;
+  position: sticky;
+  top: 94px;
+  margin-top: 18px;
+  --promo-a: #1a9af7;
+  --promo-b: #0b5fd0;
+  --promo-ink: #0b5fd0;
+}
+
+.promo[hidden] {
+  display: none;
+}
+
+.promo--kdisk {
+  --promo-a: #f07a22;
+  --promo-b: #d24d0a;
+  --promo-ink: #c9490a;
+}
+
+.promo-link {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow: hidden;
+  padding: 16px 16px 18px;
+  border-radius: 12px;
+  background: linear-gradient(150deg, var(--promo-a) 0%, var(--promo-b) 100%);
+  color: #fff;
+  font-family: "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.promo-link::before,
+.promo-link::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  pointer-events: none;
+}
+
+.promo-link::before {
+  width: 150px;
+  height: 150px;
+  right: -52px;
+  bottom: -46px;
+}
+
+.promo-link::after {
+  width: 70px;
+  height: 70px;
+  right: 46px;
+  bottom: 58px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.promo-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+}
+
+.promo-link:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.promo-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  padding: 2px 6px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.promo-logo {
+  position: relative;
+  display: block;
+  width: 118px;
+  padding: 3px 6px;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.promo-logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.promo-body {
+  position: relative;
+  display: grid;
+  gap: 6px;
+}
+
+.promo-title {
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+}
+
+.promo-text {
+  font-size: 12px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.promo-cta {
+  position: relative;
+  align-self: flex-start;
+  padding: 8px 13px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--promo-ink);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+@media (max-width: 650px) {
+  .detail {
+    grid-template-rows: none;
+  }
+  .detail > section {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .detail-poster {
+    grid-row: 1 / 5;
+  }
+  .promo {
+    grid-column: 1 / -1;
+    grid-row: 6;
+    position: static;
+    margin-top: 14px;
+  }
+  .promo-link {
+    display: grid;
+    grid-template-columns: 84px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 14px;
+  }
+  .promo-link::after {
+    display: none;
+  }
+  .promo-logo {
+    width: 84px;
+    padding: 2px 4px;
+  }
+  .promo-badge {
+    top: 6px;
+    right: 8px;
+    padding: 1px 5px;
+    font-size: 9px;
+  }
+  .promo-title {
+    font-size: 14.5px;
+  }
+  .promo-title br {
+    display: none;
+  }
+  .promo-text {
+    font-size: 11px;
+  }
+  .promo-cta {
+    align-self: center;
+    margin-top: 10px;
+    padding: 7px 10px;
+    font-size: 0;
+  }
+  .promo-cta span {
+    font-size: 14px;
+  }
+}
