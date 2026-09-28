@@ -6,7 +6,7 @@
     <title>작품 줄거리·정보 | 콘텐츠ZONE - 오티티보라</title>
     <meta
       name="description"
-      content="영화·드라마·예능·애니 작품의 줄거리와 작품 정보, 공식 시청 경로를 확인하세요."
+      content="영화·드라마·예능·애니 작품의 줄거리와 작품 정보를 확인하세요."
     />
     <meta
       name="robots"
@@ -20,7 +20,7 @@
     <meta property="og:site_name" content="오티티보라" />
     <meta property="og:locale" content="ko_KR" />
     <meta property="og:title" content="작품 줄거리·정보 | 콘텐츠ZONE - 오티티보라" />
-    <meta property="og:description" content="영화·드라마·예능·애니 작품의 줄거리와 작품 정보, 공식 시청 경로를 확인하세요." />
+    <meta property="og:description" content="영화·드라마·예능·애니 작품의 줄거리와 작품 정보를 확인하세요." />
     <meta property="og:image" content="https://mktperiod-a11y.github.io/ottbora/assets/og-content.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css?v=20260928-2" />
-    <link rel="stylesheet" href="assets/content-detail.css?v=20260928-5" />
+    <link rel="stylesheet" href="assets/content-detail.css?v=20260928-6" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -63,7 +63,6 @@
             <p id="synopsis"></p>
             <h2 id="points-title">작품 정보</h2>
             <ul id="points"></ul>
-            <div id="watch-block"></div>
             <div id="booking-block"></div>
             <div id="official-action"></div>
             <p class="credit" id="credit"></p>
@@ -79,17 +78,6 @@
     <script src="assets/posters-featured-20260828.js"></script>
     <script src="assets/posters-archive-20260828.js"></script>
     <script>
-      const WATCH_HOSTS = new Set([
-        "www.netflix.com",
-        "www.disneyplus.com",
-        "www.tving.com",
-        "www.wavve.com",
-        "www.coupangplay.com",
-        "cgv.co.kr",
-        "www.cgv.co.kr",
-        "www.megabox.co.kr",
-        "www.lottecinema.co.kr",
-      ]);
       const CINEMA_HOSTS = new Set([
         "cgv.co.kr",
         "www.megabox.co.kr",
@@ -312,8 +300,6 @@
           synopsisText: m.synopsis || "현재 줄거리 정보를 확인할 수 없어요.",
           synopsisCredit: m.synopsis ? m.synopsisCredit || "" : "",
           detailPoints: facts,
-          watch: [],
-          partner: [],
           imageCredit: m.posterCredit || "",
         };
       }
@@ -357,39 +343,8 @@
             w.overview || "현재 줄거리 정보를 확인할 수 없어요.",
           synopsisCredit: w.overview ? "TMDB" : "",
           detailPoints: facts,
-          watch: [],
-          partner: [],
           imageCredit: w.posterCredit || "TMDB",
         };
-      }
-
-      /*
-       * 제휴 웹하드에서 볼 수 있는 애니인지 봅니다.
-       *
-       * 제목을 공백·문장부호 뗀 형태로 맞춥니다. 작품 제목이 제휴
-       * 목록의 이름을 품고 있으면 같은 작품으로 봅니다. 시즌이
-       * 올라가도("… 4기") 계속 걸리게 하려는 것입니다.
-       *
-       * 목록은 assets/anime-partners.json 에 있습니다. 제휴가 끝나면
-       * 그 줄만 지우면 버튼이 사라집니다.
-       */
-      let ANIME_PARTNERS = null;
-
-      function partnerWatch(title) {
-        if (!ANIME_PARTNERS) return [];
-        const want = key(title);
-        if (!want) return [];
-        const hit = (ANIME_PARTNERS.works || []).find((w) =>
-          want.includes(key(w.match)),
-        );
-        if (!hit) return [];
-        const byId = new Map(
-          (ANIME_PARTNERS.providers || []).map((x) => [x.id, x]),
-        );
-        return (hit.providers || [])
-          .map((id) => byId.get(id))
-          .filter(Boolean)
-          .map((x) => ({ id: x.id, name: x.name, url: x.url }));
       }
 
       function animeSeasonLabel(raw) {
@@ -450,8 +405,6 @@
           synopsisLang: a.synopsis ? a.synopsisLang || "" : "",
           synopsisCredit: a.synopsis ? animeSynopsisCredit(a) : "",
           detailPoints: points,
-          watch: [],
-          partner: partnerWatch(a.title),
           imageCredit: a.posterCredit || "AniList",
         };
       }
@@ -478,71 +431,6 @@
           return animeWork((anime?.works || []).find((x) => String(x.malId) === code));
         }
         return null;
-      }
-
-      /*
-       * 시청 경로.
-       *
-       * 두 종류가 한 자리에 옵니다.
-       *   바깥 OTT  넷플릭스·디즈니+ 등. 회색 버튼.
-       *   제휴 웹하드 온디스크·케이디스크. 강조색 버튼.
-       *
-       * 라벨은 "<제공처>에서 보기" 한 가지로 맞춥니다. 어디로 가는
-       * 버튼인지가 같은 말로 읽혀야 합니다. 구분은 색이 합니다.
-       *
-       * 제휴 링크는 우리 go/ 경로라 같은 출처입니다. 바깥 주소처럼
-       * 호스트를 대조할 것이 아니라, 우리 경로가 맞는지만 봅니다.
-       */
-      const ownPath = (raw) =>
-        /^go\/[a-z0-9-]+\/$/.test(String(raw || "")) ? raw : "";
-
-      function watchButton(name, href, { tone = "", external = false } = {}) {
-        // 제휴 버튼은 제공처마다 색이 다릅니다(content-detail.css 의
-        // .watch-btn--온디스크/케이디스크). SEED 의 brandSolid 를 바탕으로
-        // 깔고, 색만 덮어 씁니다.
-        const cls = tone
-          ? BTN.replace(
-              "seed-action-button--variant_neutralSolid",
-              "seed-action-button--variant_brandSolid",
-            ) + ` watch-btn watch-btn--${tone}`
-          : BTN;
-        const rel = external
-          ? ' target="_blank" rel="noopener noreferrer"'
-          : "";
-        return `<a class="${cls}" href="${href}"${rel}>${name}에서 보기</a>`;
-      }
-
-      function renderWatch(w) {
-        const host = document.querySelector("#watch-block");
-        const links = (w.watch || [])
-          .map((x) => ({ ...x, href: safe(x.url, WATCH_HOSTS) }))
-          .filter((x) => x.href);
-        const partners = (w.partner || [])
-          .map((x) => ({ ...x, href: ownPath(x.url) }))
-          .filter((x) => x.href);
-
-        if (!links.length && !partners.length) {
-          host.innerHTML =
-            '<h2>시청 경로</h2><p class="pending">현재 시청 가능한 공식 제공처를 확인할 수 없어요.</p>';
-          return;
-        }
-
-        host.innerHTML =
-          "<h2>시청 경로</h2>" +
-          (links.length
-            ? '<div class="watch-links">' +
-              links
-                .map((x) => watchButton(x.name, x.href, { external: true }))
-                .join("") +
-              "</div>"
-            : "") +
-          (partners.length
-            ? `<div class="watch-links${links.length ? " partner-inline" : ""}">` +
-              partners
-                .map((x) => watchButton(x.name, x.href, { tone: x.id }))
-                .join("") +
-              "</div>"
-            : "");
       }
 
       const STALE_DAYS = 10;
@@ -653,7 +541,7 @@
           .trim();
         const text = about
           ? `${w.title} 줄거리 — ${about}`
-          : `${w.title}의 줄거리와 작품 정보, 공식 시청 경로를 확인하세요.`;
+          : `${w.title}의 줄거리와 작품 정보를 확인하세요.`;
         const description = text.length > 150 ? text.slice(0, 149) + "…" : text;
 
         const meta = (key, value, attr = "name") => {
@@ -682,12 +570,9 @@
         optional("assets/cinema-links.json"),
         optional("assets/tv-ranking.json"),
         optional("assets/anime.json"),
-        optional("assets/anime-partners.json"),
         optional("assets/movie-archive.json?v=20260928-2"),
       ])
-        .then(([d, box, cinema, tv, anime, partners, archive]) => {
-          // resolveWork 안에서 쓰므로 작품을 찾기 전에 먼저 담아 둡니다.
-          ANIME_PARTNERS = partners;
+        .then(([d, box, cinema, tv, anime, archive]) => {
           const w = resolveWork(d, box, tv, anime, archive);
           if (!w) {
             // 없는 작품 주소가 검색 결과에 남지 않게 합니다.
@@ -721,7 +606,6 @@
           renderPoints(w.detailPoints || []);
           document.querySelector("#points-title").hidden = !(w.detailPoints || []).length;
 
-          renderWatch(w);
           renderBooking(w, box, cinema);
 
           const off = w.official && safe(w.official.url, OFFICIAL_HOSTS);
