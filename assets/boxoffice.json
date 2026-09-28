@@ -10,7 +10,7 @@
       "movieCd": "20255033",
       "title": "암살자(들)",
       "openedAt": "2026-09-23",
-      "audienceAcc": 1566222,
+      "audienceAcc": 1566220,
       "genres": [
         "범죄",
         "드라마"
@@ -21,15 +21,33 @@
       "days": 7,
       "bestRank": 1,
       "rank": 1,
-      "showing": true,
+      "runtime": 130,
+      "directors": [
+        "허진호"
+      ],
+      "cast": [
+        "유해진",
+        "박해일",
+        "이민호",
+        "소타 신고"
+      ],
+      "rating": "12세이상관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20255033.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "1974년 8월 15일, 제29회 광복절 경축식. 전 국민이 지켜보는 생중계 현장에서 영부인이 저격당하는 초유의 사태가 발생한다. 순식간에 아수라장이 된 식장에서 용의자가 체포되고, 사건은 국가적 비극으로 기록되며 서둘러 종결된다. 하지만, 현장 경호를 담당했던 형사 철구, 사건의 이면을 응시하던 신문사 사회부 부장 재환, 그날의 혼란을 직접 목격한 신입 기자 영일은 발표된 수사 결과와 실제 정황 사이, 지워지지 않는 의문을 품기 시작하는데…",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1418428,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "voteCount": null,
+      "showing": true
     },
     {
       "movieCd": "20250654",
       "title": "오디세이",
       "openedAt": "2026-08-05",
-      "audienceAcc": 11783297,
+      "audienceAcc": 11783295,
       "genres": [
         "액션",
         "드라마",
@@ -41,9 +59,29 @@
       "days": 34,
       "bestRank": 1,
       "rank": 3,
-      "showing": true,
+      "runtime": 172,
+      "directors": [
+        "크리스토퍼 놀란"
+      ],
+      "cast": [
+        "맷 데이먼",
+        "톰 홀랜드",
+        "앤 해서웨이",
+        "로버트 패틴슨",
+        "젠데이아 콜먼",
+        "샤를리즈 테론"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20250654.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "10년간 이어진 트로이 전쟁을 승리로 이끈 영웅 '오디세우스'는 왕의 부재를 틈타 침탈과 권력 다툼이 벌어진 왕국에서 그를 기다리고 있는 아내 '페넬로페'와 아들 '텔레마코스'에게 돌아가기 위한 여정에 나선다. 그러나 신들의 분노를 산 그의 귀환 앞에는 거대한 폭풍과 괴물들, 그리고 거스를 수 없는 운명의 시련이 기다리고 있는데…",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1368337,
+      "score": 8,
+      "scoreBy": "TMDB",
+      "voteCount": 3939,
+      "showing": true
     },
     {
       "movieCd": "20256308",
@@ -59,9 +97,29 @@
       "days": 14,
       "bestRank": 1,
       "rank": 4,
-      "showing": true,
+      "runtime": 132,
+      "directors": [
+        "김도영"
+      ],
+      "cast": [
+        "최민식",
+        "한소희",
+        "김준한",
+        "류혜영",
+        "김금순",
+        "박예니"
+      ],
+      "rating": "12세이상관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20256308.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "창업 3년 만에 100억대 매출을 달성하며 브랜드 WOO22를 패션 업계의 다크호스로 성장시킨 젊은 CEO 선우. 성공을 향해 쉼 없이 달려온 열정 과부하 상태의 그녀 앞에 막내로 입사한 실버 인턴 기호가 나타난다. 경력 37년 사회생활 만렙의 베테랑이지만, 낯선 디지털 업무 환경과 자유분방한 문화에 좀처럼 적응하지 못하던 기호. 그러나 특유의 성실함과 인간미 넘치는 소통이 선우의 마음을 움직이고 모든 점에서 전혀 다른 두 사람은 서로에게 없는 시선과 경험을 나누며 쉼 없이 달리던 일상에 뜻밖의 온기를 더하는데…",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 607833,
+      "score": 7,
+      "scoreBy": "TMDB",
+      "voteCount": 3,
+      "showing": true
     },
     {
       "movieCd": "20262770",
@@ -79,9 +137,29 @@
       "days": 34,
       "bestRank": 2,
       "rank": 9,
-      "showing": true,
+      "runtime": 144,
+      "directors": [
+        "데스틴 다니엘 크리튼"
+      ],
+      "cast": [
+        "톰 홀랜드",
+        "젠데이아 콜먼",
+        "세이디 싱크",
+        "제이콥 배덜런",
+        "존 번탈",
+        "트라멜 틸먼"
+      ],
+      "rating": "12세이상관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20262770.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "4년 전 소중한 사람들을 지키기 위해 모두의 기억에서 사라진 피터 파커. 친절한 이웃 스파이더맨으로서 뉴욕을 지키며 고독한 삶을 살아가던 피터는 어느 날, 예상치 못한 DNA 변이로 인해 통제 불가능한 힘에 사로잡히고 그의 진짜 정체를 알고 있는 적까지 마주하게 된다. 타인의 의식을 조종하는 정체불명의 존재로 인해 모두가 피터를 노리는 적이 될 수 있는 혼란 속에서 피터는 다시 위협에 빠진 MJ와 모두를 지키기 위해 스파이더맨으로 그들 앞에 서게 되는데...",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 969681,
+      "score": 7.9,
+      "scoreBy": "TMDB",
+      "voteCount": 2906,
+      "showing": true
     },
     {
       "movieCd": "20265146",
@@ -97,15 +175,33 @@
       "days": 25,
       "bestRank": 2,
       "rank": 6,
-      "showing": true,
+      "runtime": 108,
+      "directors": [
+        "커리 바커"
+      ],
+      "cast": [
+        "마이클 존스턴",
+        "인디 네버레티",
+        "쿠퍼 톰린슨",
+        "메간 롤리스"
+      ],
+      "rating": "청소년관람불가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20265146.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "‘니키’를 짝사랑하던 ‘베어’는 골동품 상점에서 구입한 ‘원 위시 윌로우’에 ‘니키’가 자신을 가장 사랑하게 해달라고 소원을 빈다. 그날 밤, 두 사람은 연인이 되지만 벗어날 수 없는 끔찍한 일과 마주하게 되는데...",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1339713,
+      "score": 8.2,
+      "scoreBy": "TMDB",
+      "voteCount": 5771,
+      "showing": true
     },
     {
       "movieCd": "20256161",
       "title": "타짜: 벨제붑의 노래",
       "openedAt": "2026-09-23",
-      "audienceAcc": 833032,
+      "audienceAcc": 833025,
       "genres": [
         "범죄",
         "드라마"
@@ -116,9 +212,29 @@
       "days": 9,
       "bestRank": 2,
       "rank": 2,
-      "showing": true,
+      "runtime": 129,
+      "directors": [
+        "최국희"
+      ],
+      "cast": [
+        "변요한",
+        "노재원",
+        "미요시 아야카",
+        "김민호",
+        "임세미",
+        "스테파니 리"
+      ],
+      "rating": "청소년관람불가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20256161.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "타고난 끗발로 사람의 마음을 사로잡는 장태영과 천부적인 머리와 노력으로 스스로를 증명하는 박태영. 학창 시절부터 절친한 친구인 두 사람은 온라인 카지노 사업에 뛰어들며 승승장구하고, 사업의 성공이 커질수록 럭키한 장태만 주목받자, 박태의 질투는 조용히 자라난다. 성공의 꼭대기에서 질투는 배신으로 변한다. 장태영은 베트남 출장 중 박태영의 예상치 못한 배신으로 나락에 떨어지고, 기적적으로 살아남아 전설의 타짜 곽동욱에게 포커를 사사 받는다. 한편, 야쿠자 조직이 배후에 있는 가네코는 한국의 온라인 카지노 사업에 관심을 갖고 일본과 베트남의 거물들이 참여한 거액의 글로벌 도박판을 셋팅 한다. 벼랑 끝 도박판, 같은 이름, 다른 운명의 친구 장태영과 박태영은 마침내 그 곳에서 마주하는데…",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1394740,
+      "score": 4,
+      "scoreBy": "TMDB",
+      "voteCount": 1,
+      "showing": true
     },
     {
       "movieCd": "20263870",
@@ -136,9 +252,24 @@
       "days": 10,
       "bestRank": 3,
       "rank": 8,
-      "showing": true,
+      "runtime": 93,
+      "directors": [
+        "잭 크레거"
+      ],
+      "cast": [
+        "오스틴 에이브람스"
+      ],
+      "rating": "청소년관람불가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20263870.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "의료 택배 기사 브라이언은 긴급 배달을 맡아 심야에 라쿤 시티 종합 병원으로 향한다. 눈발을 헤치며 가던 중 갑자기 차로 뛰어든 누군가를 치게 되고, 죽은 줄 알았던 이가 다시 그를 덮쳐온다. 하나인 줄 알았던 정체불명의 존재들은 끊임없이 늘어나고, 통신마저 끊긴다. 브라이언은 자신이 무엇을 배달하고 있는지도 모른 채 눈앞에 닥친 존재들을 피해 필사의 사투를 벌이는데…",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1423191,
+      "score": 7.3,
+      "scoreBy": "TMDB",
+      "voteCount": 540,
+      "showing": true
     },
     {
       "movieCd": "20254904",
@@ -154,9 +285,29 @@
       "days": 5,
       "bestRank": 5,
       "rank": 5,
-      "showing": true,
+      "runtime": 164,
+      "directors": [
+        "이창동"
+      ],
+      "cast": [
+        "전도연",
+        "설경구",
+        "조인성",
+        "조여정",
+        "조유리",
+        "송근창"
+      ],
+      "rating": "청소년관람불가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20254904.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "해고 노동자와 그의 아내 그리고 다큐멘터리 감독과 그녀의 남편. 두 부부가 다큐멘터리 제작을 계기로 만나, 서로의 다른 삶과 숨은 욕망을 마주한다.",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1483525,
+      "score": 9,
+      "scoreBy": "TMDB",
+      "voteCount": 1,
+      "showing": true
     },
     {
       "movieCd": "20266766",
@@ -173,6 +324,29 @@
       "days": 4,
       "bestRank": 5,
       "rank": 7,
+      "runtime": 183,
+      "directors": [
+        "안소니 루소",
+        "조 루소"
+      ],
+      "cast": [
+        "로버트 다우니 주니어",
+        "크리스 에반스",
+        "스칼렛 요한슨",
+        "마크 러팔로",
+        "크리스 헴스워스",
+        "제레미 레너"
+      ],
+      "rating": "12세이상관람가",
+      "koficDetailFetched": true,
+      "poster": "",
+      "posterCredit": "",
+      "synopsis": "",
+      "synopsisCredit": "",
+      "tmdbId": null,
+      "score": null,
+      "scoreBy": "",
+      "voteCount": null,
       "showing": true
     },
     {
@@ -189,9 +363,29 @@
       "days": 3,
       "bestRank": 6,
       "rank": 10,
-      "showing": true,
+      "runtime": 98,
+      "directors": [
+        "오이카와 케이"
+      ],
+      "cast": [
+        "아오키 하루카",
+        "타나카 마코토",
+        "오자와 아리",
+        "이주은",
+        "손정민",
+        "권다예"
+      ],
+      "rating": "전체관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20261807.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "어느 날, 광장에서 쉬고 있던 치이카와와 가르마 앞에 얼굴에 전단지를 붙인 토끼가 나타난다. 그곳엔 “특별한 섬으로의 초대”라는 글귀가 적혀 있는데... “섬에서 간단한 토벌만 해도 보수 100배!” “한정 섬라멘과 한정 디저트까지, 달콤한 것도 매콤한 것도 사실상 무료.” 솔깃한 문구에 이끌린 치이카와와 친구들은 섬에서 열리는 행사에 참가하기로 한다. 초대장의 내용이 어딘가 수상하다고 느끼는 해달과, 부푼 마음으로 배에 오르는 치이카와와 친구들. 모두가 기대를 안은 채 특별한 섬에 도착하는데! 과연 그 섬에는 어떤 비밀이 숨겨져 있을까...?!",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1586876,
+      "score": 7.3,
+      "scoreBy": "TMDB",
+      "voteCount": 8,
+      "showing": true
     },
     {
       "movieCd": "20266051",
@@ -209,6 +403,26 @@
       "days": 2,
       "bestRank": 10,
       "rank": null,
+      "runtime": 56,
+      "directors": [],
+      "cast": [
+        "하성용",
+        "정재헌",
+        "엄상현",
+        "윤승희",
+        "김율",
+        "유동균"
+      ],
+      "rating": "전체관람가",
+      "koficDetailFetched": true,
+      "poster": "",
+      "posterCredit": "",
+      "synopsis": "",
+      "synopsisCredit": "",
+      "tmdbId": null,
+      "score": null,
+      "scoreBy": "",
+      "voteCount": null,
       "showing": false
     },
     {
@@ -227,9 +441,30 @@
       "days": 3,
       "bestRank": 5,
       "rank": null,
-      "showing": false,
+      "runtime": 108,
+      "directors": [
+        "조엘 크로포드",
+        "제뉴얼 메르카도"
+      ],
+      "cast": [
+        "H.E.R",
+        "라이자 소베라노",
+        "데이브 프랭코",
+        "제니 슬레이트",
+        "매니 자신토",
+        "돌리 데 레온"
+      ],
+      "rating": "12세이상관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20264801.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "성격은 달라도 마음만큼은 누구보다 잘 통했던 ‘조’와 ‘라이사’는 최고의 베프로 모든 순간을 함께하며 둘만의 기억을 쌓아간다. 그러나 졸업과 함께 서로 다른 환경을 살아가던 두 사람의 우정은 조금씩 흔들리기 시작한다. 그러던 어느 날, 전설처럼 전해지던 신비한 포털을 발견한 두 사람은 기억이 사라지는 세계, ‘포가튼 아일랜드’로 빨려 들어가게 되고, 시공간의 경계를 넘나드는 이 섬을 떠나기 위해선 가장 소중한 추억을 포기해야 하는 규칙이 주어진다. 기억을 훔치는 섬의 지배자 ‘마낭’이 두 사람을 위협하는 가운데 ‘조’와 ‘라이사’는 섬에서 만난 새로운 친구들과 비밀을 쫓기 시작하지만 진실에 가까워질수록 두 사람의 기억은 사라질 위기에 처하는데…",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1465063,
+      "score": 8.1,
+      "scoreBy": "TMDB",
+      "voteCount": 28,
+      "showing": false
     },
     {
       "movieCd": "20265423",
@@ -246,9 +481,25 @@
       "days": 13,
       "bestRank": 4,
       "rank": null,
-      "showing": false,
+      "runtime": 106,
+      "directors": [
+        "크리스토퍼 보글리"
+      ],
+      "cast": [
+        "젠데이아 콜먼",
+        "로버트 패틴슨"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20265423.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "결혼식을 일주일 앞둔 행복한 커플 엠마와 찰리. 우연히 알게 된 상대방의 비밀로 인해 단단했던 믿음이 흔들린다. 첫만남부터 서로를 완벽히 안다고 생각했던 두 사람, 작은 균열은 걷잡을 수 없이 커진 채 모두의 모습을 비추고…",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1325734,
+      "score": 6.9,
+      "scoreBy": "TMDB",
+      "voteCount": 1865,
+      "showing": false
     },
     {
       "movieCd": "20070216",
@@ -266,9 +517,25 @@
       "days": 7,
       "bestRank": 5,
       "rank": null,
-      "showing": false,
+      "runtime": 98,
+      "directors": [
+        "호소다 마모루"
+      ],
+      "cast": [
+        "이시다 타쿠야",
+        "나카 리이사"
+      ],
+      "rating": "전체관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20070216.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "평범한 고등학생인 콘노 마코토는 어떤 사고를 계기로 시간을 이동하는 능력을 얻게 된다. 이모 요시야마 카즈코에게 상담을 해 본 결과, 그것은 타임 리프라 불리는 능력으로 또래의 여자아이들에게 자주 있는 일이라고 아무렇지도 않게 말하는 것. 원하는 시간으로 돌아가 원하는 것은 모두 할 수 있게 된 마코토는 세상이 자기 것이 된 듯한 기분에 빠진다. 그러나 머지 않아 친구인 마미야 치아키와 츠다 코스케와의 관계에 미묘한 변화가 생긴다. 치아키로부터 생각지도 못한 고백을 받게 된 마코토는 당황한 나머지 타임 리프 능력을 이용해 그 고백을 없었던 것으로 만들어 버리는데...",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 14069,
+      "score": 7.8,
+      "scoreBy": "TMDB",
+      "voteCount": 2314,
+      "showing": false
     },
     {
       "movieCd": "20233219",
@@ -286,9 +553,29 @@
       "days": 14,
       "bestRank": 5,
       "rank": null,
-      "showing": false,
+      "runtime": 156,
+      "directors": [
+        "나홍진"
+      ],
+      "cast": [
+        "황정민",
+        "조인성",
+        "정호연",
+        "마이클 패스벤더",
+        "알리시아 비칸데르",
+        "테일러 러셀"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20233219.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "지원해 줄 인력들은 산불을 끄러 갔고, 이젠 통신도 두절됐다. 호포 출장소의 범석과 성애는 노인들뿐인 마을을 지키기 위해 사투를 벌이고, 놈을 쫓아서  산으로 향했던 청년들과 성기는 되려 놈들의 사냥감이 되어 버린다. 무지가 빚어낸 불행의 씨앗은 입장의 차이를 거쳐 온 우주의 비극이 되고야  만다.",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1058424,
+      "score": 7.3,
+      "scoreBy": "TMDB",
+      "voteCount": 92,
+      "showing": false
     },
     {
       "movieCd": "20241110",
@@ -304,9 +591,25 @@
       "days": 4,
       "bestRank": 8,
       "rank": null,
-      "showing": false,
+      "runtime": 123,
+      "directors": [
+        "오윤동",
+        "이예지"
+      ],
+      "cast": [
+        "이지은"
+      ],
+      "rating": "전체관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20241110.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "최초의 아이콘 아이유, 100번째 콘서트로 완성된 찬란한 기록. 'Love wins all', '홀씨', 'Shopper', 'Celebrity', 'Last Fantasy' 등 수많은 명곡으로 서울월드컵경기장을 가득 채운 아이유와 유애나의 뜨거운 에너지와 함성. 상암 하늘을 수놓은 환상적인 드론쇼까지! 승리를 위해 달려온 여정의 마지막 챕터가 지금 스크린에서 펼쳐진다!",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1408553,
+      "score": 8.2,
+      "scoreBy": "TMDB",
+      "voteCount": 4,
+      "showing": false
     },
     {
       "movieCd": "20266148",
@@ -322,9 +625,29 @@
       "days": 1,
       "bestRank": 10,
       "rank": null,
-      "showing": false,
+      "runtime": 146,
+      "directors": [
+        "이준익"
+      ],
+      "cast": [
+        "정진영",
+        "이정은",
+        "변요한",
+        "박지연",
+        "강형석",
+        "박세준"
+      ],
+      "rating": "12세이상관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20266148.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "평생 부엌 근처엔 가본 적도 없는 가부장 아버지 ‘하응’. 결혼 이후 줄곧 가족들의 밥상을 차려온 아내 ‘순애’의 고마움은 모른 채, 삼시세끼 까탈스럽게 집밥만 찾는다. 어느 날 ‘순애’가 요리를 하지 못하는 ‘요리백지증’에 걸리자 집밥의 평화가 깨진 ‘하응’은 생존을 위해 인생 첫 요리에 도전한다. ‘순애’는 ‘하응’의 요리가 맛있으면 칭찬, 맛 없으면 벌점을 주기로 하고 “벌점 10점을 채우면 이혼!”이라는 청천벽력 선언을 내뱉는데…! 과연 ‘하응’은 집밥에 성공할 수 있을까?",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1708755,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "voteCount": null,
+      "showing": false
     },
     {
       "movieCd": "20265587",
@@ -340,9 +663,22 @@
       "days": 5,
       "bestRank": 6,
       "rank": null,
-      "showing": false,
+      "runtime": 61,
+      "directors": [
+        "호소다 마모루"
+      ],
+      "cast": [],
+      "rating": "전체관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20265587.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "디지몬 어드벤쳐, 그보다 좀 더 이전의 이야기. 야가미 타이치(신태일)와 그의 여동생인 히카리(신나리)가 어릴 적 코로몬과 운명적인 만남을 가졌던 때를 그리고 있다.",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 97787,
+      "score": 7.6,
+      "scoreBy": "TMDB",
+      "voteCount": 97,
+      "showing": false
     },
     {
       "movieCd": "20224573",
@@ -358,9 +694,28 @@
       "days": 1,
       "bestRank": 6,
       "rank": null,
-      "showing": false,
+      "runtime": 101,
+      "directors": [
+        "백"
+      ],
+      "cast": [
+        "구교환",
+        "신승호",
+        "강기영",
+        "김시아",
+        "김성령"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20224573.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "근거 없는 자신감이 유일한 스펙인 취준생 ‘석환’이 죽은 뒤 72시간이면 부활하는 능력을 갖고 있다는 걸 알게 된 후 의문의 추격을 당하며 펼쳐지는 이야기",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 961214,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "voteCount": null,
+      "showing": false
     },
     {
       "movieCd": "20258102",
@@ -377,9 +732,29 @@
       "days": 1,
       "bestRank": 10,
       "rank": null,
-      "showing": false,
+      "runtime": 104,
+      "directors": [
+        "정승오"
+      ],
+      "cast": [
+        "기주봉",
+        "하윤경",
+        "양말복",
+        "원미원",
+        "김종구",
+        "김하언"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20258102.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "용접기사 철택이 암 말기 선고를 받는다. 이 소식은 단역배우인 외동딸 정미뿐만 아니라, 철택과 사실상 이혼한 상태로 공무원 은퇴 후 노후를 즐기던 현숙, 구순을 앞둔 현숙의 어머니 옥남, 철택의 친형 관택과 관택의 손자 동민의 삶까지 영향을 미치기 시작한다. 멀리 지내던 양가 가족들은 과거를 반추하며, 서로에게 곪아 있던 마음의 고름과 마주하게 되는데… 죽음의 그림자와 함께 찾아온 이들의 시간, ‘철들 무렵’이다.",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1532365,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "voteCount": null,
+      "showing": false
     },
     {
       "movieCd": "20247458",
@@ -395,9 +770,28 @@
       "days": 21,
       "bestRank": 3,
       "rank": null,
-      "showing": false,
+      "runtime": 110,
+      "directors": [
+        "김미조"
+      ],
+      "cast": [
+        "이정은",
+        "공효진",
+        "박소담",
+        "이연",
+        "변요한"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20247458.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "엄마 옥실과 세 딸 장주, 영주, 동주는 8년 전 수학여행을 떠난 이후 다시는 돌아오지 못한 막내 경주의 생일을 맞아 단체 티셔츠까지 맞춰 입고 경주로 가족여행을 떠난다. 얼핏 단란하고 화목한 가족여행처럼 보이지만, 봉고차 트렁크에는 낯선 한 남자가 실려 있는데…",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1235769,
+      "score": 9,
+      "scoreBy": "TMDB",
+      "voteCount": 2,
+      "showing": false
     },
     {
       "movieCd": "20204641",
@@ -414,9 +808,29 @@
       "days": 12,
       "bestRank": 4,
       "rank": null,
-      "showing": false,
+      "runtime": 109,
+      "directors": [
+        "이지원"
+      ],
+      "cast": [
+        "류승룡",
+        "하지원",
+        "김시아",
+        "김해숙",
+        "김선영",
+        "김영민"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20204641.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "톱스타 부부 중구와 남미가 갑자기 나타난 중구의 딸 동주로 인해 파경을 맞은 뒤 8년 후 충격적인 사건에 휘말린 동주를 구하기 위해 마지막 남은 모든 것을 걸고 진실을 파헤치는 ‘미쓰백’ 이지원 감독의 찐한 가족 연대기",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 665669,
+      "score": 7,
+      "scoreBy": "TMDB",
+      "voteCount": 3,
+      "showing": false
     },
     {
       "movieCd": "20264918",
@@ -432,9 +846,25 @@
       "days": 14,
       "bestRank": 4,
       "rank": null,
-      "showing": false,
+      "runtime": 98,
+      "directors": [
+        "존 카니"
+      ],
+      "cast": [
+        "폴 러드",
+        "닉 조나스"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20264918.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "팝스타의 꿈은 접었지만 음악만은 놓지 못한 무명 축가 가수, 릭. 한땐 잘나갔지만 지금은 나락 직전인 팝스타, 대니. 우연히 만난 두 사람, 그들이 완성한 단 하나의 노래. 하지만 그 곡은 오직 대니의 이름으로만 세상에 알려지는데…",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1284016,
+      "score": 7.1,
+      "scoreBy": "TMDB",
+      "voteCount": 108,
+      "showing": false
     },
     {
       "movieCd": "20264915",
@@ -451,9 +881,25 @@
       "days": 2,
       "bestRank": 9,
       "rank": null,
-      "showing": false,
+      "runtime": 106,
+      "directors": [
+        "레니 할린"
+      ],
+      "cast": [
+        "아론 에크하트",
+        "벤 킹슬리"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20264915.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "로스앤젤레스발 상하이행 여객기가 화재로 폭발하며 태평양 한복판에 추락한다. 기적적으로 살아남은 승객들. 그러나 침몰하는 기체, 굶주린 식인 상어 떼 속에서 이제부터는 진짜 기적을 바라야 하는데...",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1127384,
+      "score": 7.4,
+      "scoreBy": "TMDB",
+      "voteCount": 632,
+      "showing": false
     },
     {
       "movieCd": "20265344",
@@ -469,9 +915,26 @@
       "days": 4,
       "bestRank": 7,
       "rank": null,
-      "showing": false,
+      "runtime": 122,
+      "directors": [
+        "딜리안 서던",
+        "윌 로벨라스"
+      ],
+      "cast": [
+        "노엘 갤러거",
+        "리암 갤러거"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20265344.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "리암 갤러거와 노엘 갤러거의 재결합 소식 이후 전 세계가 가장 기다려왔던 공연 ‘Oasis Live ’25 Tour’의 여정을 따라가는 다큐멘터리 영화",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1447853,
+      "score": 7.4,
+      "scoreBy": "TMDB",
+      "voteCount": 19,
+      "showing": false
     },
     {
       "movieCd": "20262381",
@@ -487,9 +950,29 @@
       "days": 9,
       "bestRank": 5,
       "rank": null,
-      "showing": false,
+      "runtime": 105,
+      "directors": [
+        "김수훈"
+      ],
+      "cast": [
+        "이지현",
+        "조경이",
+        "여민정",
+        "심규혁",
+        "유혜지",
+        "장예나"
+      ],
+      "rating": "전체관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20262381.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "하츄핑과 단짝이 된 로미는 행복한 나날을 보내고 있지만 하고 싶은 일과 해야만 하는 일 사이에 매번 엄마(벨리타)와 의견이 달라 다투게 되고… 그러던 어느 날, 바다를 뒤흔드는 사건과 함께 엄마는 흔적도 없이 바닷속으로 사라진다. 한 마디 사과도, 한 번의 포옹도 건네지 못한 채 엄마를 잃은 로미. 처음 만나는 바다 앞에서 단짝 하츄핑, 바다소년 카이트, 세 마리의 티니핑들과 함께 용기를 내보는데… 찬란한 바다 도시, 거대한 심해 생명체들과 맞서야 하는 이들. 마침내 로미는 엄마가 한 번도 들려준 적 없던 비밀을 마주하게 된다.",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1436168,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "voteCount": null,
+      "showing": false
     },
     {
       "movieCd": "20018158",
@@ -508,6 +991,24 @@
       "days": 5,
       "bestRank": 6,
       "rank": null,
+      "runtime": 100,
+      "directors": [
+        "시노하라 토시야"
+      ],
+      "cast": [
+        "야마구치 캇페이",
+        "유키노 사츠키"
+      ],
+      "rating": "12세이상관람가",
+      "koficDetailFetched": true,
+      "poster": "",
+      "posterCredit": "",
+      "synopsis": "",
+      "synopsisCredit": "",
+      "tmdbId": null,
+      "score": null,
+      "scoreBy": "",
+      "voteCount": null,
       "showing": false
     },
     {
@@ -524,9 +1025,29 @@
       "days": 1,
       "bestRank": 10,
       "rank": null,
-      "showing": false,
+      "runtime": 105,
+      "directors": [
+        "안재훈"
+      ],
+      "cast": [
+        "정해인",
+        "강하늘",
+        "이청아",
+        "유재명",
+        "김선영",
+        "원옥화"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20224597.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "“이야기가 길어질 텐데 괜찮아요?” 깊은 물 속에 던져진 날, 아가미가 생겨난 세상에서 유일한 아이 ‘곤’ 그리고 그의 세계에 전부였던 존재들의 눈부신 이야기",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1280401,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "voteCount": null,
+      "showing": false
     },
     {
       "movieCd": "20264557",
@@ -546,9 +1067,25 @@
       "days": 14,
       "bestRank": 4,
       "rank": null,
-      "showing": false,
+      "runtime": 99,
+      "directors": [
+        "데이빗 로버트 밋첼"
+      ],
+      "cast": [
+        "앤 해서웨이",
+        "이완 맥그리거"
+      ],
+      "rating": "12세이상관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20264557.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "1982년, 평화롭던 ‘오크 스트리트’ 마을이 하루아침에 통째로 선사시대로 옮겨졌다. 익숙했던 집과 골목은 순식간에 공룡들의 사냥터로 변하고, 육지와 하늘, 물속까지 점령한 거대 포식자들의 무차별 공격이 시작된다! 과연 ‘플랫’ 가족은 무사히 살아남아 원래의 일상으로 돌아갈 수 있을까?",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1101383,
+      "score": 7.1,
+      "scoreBy": "TMDB",
+      "voteCount": 1642,
+      "showing": false
     },
     {
       "movieCd": "20242837",
@@ -565,9 +1102,29 @@
       "days": 2,
       "bestRank": 7,
       "rank": null,
-      "showing": false,
+      "runtime": 116,
+      "directors": [
+        "장항준"
+      ],
+      "cast": [
+        "유해진",
+        "박지훈",
+        "유지태",
+        "전미도",
+        "김민",
+        "이준혁"
+      ],
+      "rating": "12세이상관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20242837.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "계유정난이 조선을 뒤흔들고 어린 왕 이홍위는 왕위에서 쫓겨나 유배길에 오른다. 한편, 강원도 영월 산골 마을 광천골의 촌장 엄흥도는 먹고 살기 힘든 마을 사람들을 위해 청령포를 유배지로 만들기 위해 노력한다. 그러나 촌장이 부푼 꿈으로 맞이한 이는 왕위에서 쫓겨난 이홍위였다. 유배지를 지키는 보수주인으로서 그의 모든 일상을 감시해야만 하는 촌장은 삶의 의지를 잃어버린 이홍위가 점점 신경 쓰이는데…",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1321179,
+      "score": 7.1,
+      "scoreBy": "TMDB",
+      "voteCount": 31,
+      "showing": false
     },
     {
       "movieCd": "20265573",
@@ -584,9 +1141,27 @@
       "days": 5,
       "bestRank": 7,
       "rank": null,
-      "showing": false,
+      "runtime": 96,
+      "directors": [
+        "가이 리치"
+      ],
+      "cast": [
+        "헨리 카빌",
+        "제이크 질렌할",
+        "에이사 곤잘레스",
+        "로자먼드 파이크"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20265573.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "악질 채무 청산을 전담하는 변호사 ‘레이첼’은 스펜서 골드스타인 투자가 '보비’를 찾아가 부패한 거물 ‘매니’에게 받지 못한 채무 10억 달러를 되찾아 주겠다고 제안한다. ‘레이첼’은 시스템의 빈틈을 교묘히 이용해, ‘살라사르’를 공략할 계획을 세우고, 전직 특수부대 요원 '시드’와 ‘브롱코'를 임무에 끌어들여 기상천외한 작전을 세우는데!",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1122573,
+      "score": 7.6,
+      "scoreBy": "TMDB",
+      "voteCount": 1038,
+      "showing": false
     },
     {
       "movieCd": "20255509",
@@ -602,9 +1177,22 @@
       "days": 1,
       "bestRank": 10,
       "rank": null,
-      "showing": false,
+      "runtime": 98,
+      "directors": [
+        "고희영"
+      ],
+      "cast": [],
+      "rating": "12세이상관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20255509.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "\"왜 일본놈이 한국을 찍는가!” 90세 일본 포토저널리즘의 거장 구와바라 시세이. 지난 60년간 100여 차례 한국을 오간 그는 청계천 서민들의 삶부터 민주화 운동, 동두천 기지촌, 베트남 파병, 평양의 일상 등 한반도를 관통한 크고 작은 사건들을 10만 컷의 사진으로 기록해 왔다. “그는 무엇을 보았는가?” ‘남한에서의 국외 추방, 북한에서의 입국 금지 등 갖은 고난을 당하면서도 그가 끝내 놓지 못했던 생생한 얼굴들. 2026년 바로 오늘, 스크린에서 거장의 뷰파인더를 통해 본 ‘사진의 얼굴’을 만난다.",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1522680,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "voteCount": null,
+      "showing": false
     },
     {
       "movieCd": "20264635",
@@ -620,9 +1208,20 @@
       "days": 15,
       "bestRank": 4,
       "rank": null,
-      "showing": false,
+      "runtime": 109,
+      "directors": [],
+      "cast": [],
+      "rating": "12세이상관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20264635.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "‘모터 사이클 페스티벌’이 열리는 요코하마로 향하던 코난 일행은 폭주하는 검은 오토바이 사건에 휘말리고 범인을 쫓던 ‘바람의 여신’ 가나가와현경 교통기동대 하기와라 치하야 경부보와 재회한다. 경찰의 추적을 모두 뿌리친 폭주 오토바이는 도쿄 시내에도 출물하고, 연쇄적으로 사상자가 발생한다. 이러한 가운데 최첨단 AI 기술을 탑재한 싸이카 ‘엔젤’과 폭주 오토바이가 매우 유사하다는 점이 밝혀지고, 이 정체불명의 존재를 ‘루시퍼’라고 명명, 점차 포위망을 좁혀간다. 한편, 사건을 쫓던 치하야는 문득 7년 전 11월 7일, 폭탄을 해체하다 순직한 남동생 하기와라 켄지와, 그의 죽음으로부터 4년 후 11월 7일, 같은 범인을 쫓다가 순직한 켄지의 친구이자 동료 마츠다 진페이에 대한 기억이 떠오르는데….",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1545621,
+      "score": 7.4,
+      "scoreBy": "TMDB",
+      "voteCount": 21,
+      "showing": false
     },
     {
       "movieCd": "20127108",
@@ -641,9 +1240,29 @@
       "days": 3,
       "bestRank": 8,
       "rank": null,
-      "showing": false,
+      "runtime": 120,
+      "directors": [
+        "오키우라 히로유키"
+      ],
+      "cast": [
+        "미야마 카렌",
+        "유카",
+        "이선",
+        "김준현",
+        "양상국",
+        "안윤상"
+      ],
+      "rating": "전체관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20127108.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "우리집 다락방에 요괴가 산다?!  엄마를 따라 작은 섬 시오지마로 이사 온 11살 도시 소녀 모모. 이사온 첫날, 모모는 다락방에서 오래된 그림책 한 권을 발견한다. 그날 이후, 다락방에서 이상한 소리가 들리는가 하면, 냉장고 속 간식이 사라지고, 급기야 그림책 속 요괴들이 모모의 눈앞에 나타나는데…  내 눈에만 보이는 사고뭉치 요괴 3인방~!  모모 덕에 봉인된 그림책에서 나왔다며 자신들을 소개하는 이와, 카와, 마메! 외모와는 다르게 은근 소심하고 먹보에 어리바리하기까지. 자칭 수호신이라며 큰 소리치지만 사고투성인 요괴 3인방과 웃지 못할 한집살이를 시작한 모모에게 어느 날 예상치 못한 위기가 찾아오는데……  도시 소녀 모모에게 찾아온 수상한 요괴 3인방! 그들의 초특급 모험이 시작된다!",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 100271,
+      "score": 7.4,
+      "scoreBy": "TMDB",
+      "voteCount": 416,
+      "showing": false
     },
     {
       "movieCd": "20167922",
@@ -660,9 +1279,26 @@
       "days": 1,
       "bestRank": 9,
       "rank": null,
-      "showing": false,
+      "runtime": 138,
+      "directors": [
+        "멜 깁슨"
+      ],
+      "cast": [
+        "앤드류 가필드",
+        "샘 워싱턴",
+        "휴고 위빙"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20167922.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "비폭력주의자인 도스는 전쟁으로부터 조국과 소중한 사람들을 지키기 위해 총을 들지 않아도 되는 의무병으로 육군에 자진 입대한다. 총을 들 수 없다는 이유로 필수 훈련 중 하나인 총기 훈련 마저 거부한 도스는 동료 병사들과 군 전체의 비난과 조롱을 받게 된다. 결국 군사재판까지 받게 되지만 끝까지 자신의 신념을 굽히지 않은 도스에게 군 상부는 오키나와 전투에 총기 없이 의무병으로 참전할 것을 허락하는데…",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 324786,
+      "score": 8.2,
+      "scoreBy": "TMDB",
+      "voteCount": 15335,
+      "showing": false
     },
     {
       "movieCd": "20264035",
@@ -680,9 +1316,26 @@
       "days": 9,
       "bestRank": 3,
       "rank": null,
-      "showing": false,
+      "runtime": 105,
+      "directors": [
+        "제이콥 체이스"
+      ],
+      "cast": [
+        "브랜든 페레아",
+        "로라 고든",
+        "린 샤예"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20264035.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "사후세계의 악령들로부터 딸과 일상을 지키기 위해 사투를 벌이는 이야기",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1291595,
+      "score": 6.5,
+      "scoreBy": "TMDB",
+      "voteCount": 167,
+      "showing": false
     },
     {
       "movieCd": "20255484",
@@ -699,9 +1352,29 @@
       "days": 8,
       "bestRank": 5,
       "rank": null,
-      "showing": false,
+      "runtime": 108,
+      "directors": [
+        "이철하"
+      ],
+      "cast": [
+        "엄정화",
+        "박성웅",
+        "이상윤",
+        "배정남",
+        "박진주",
+        "려운"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20255484.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "사춘기 딸과의 전쟁, 허세 충만 백수 남편, 꽈배기집 폐업 위기까지. 지긋지긋한 현생을 견뎌오던 미영에게 초호화 크루즈 결혼식 초대장이 도착한다. “우리, 진짜 여행 가자!” 화려한 크루즈 여행을 만끽하던 것도 잠시. 범죄 조직의 리더 안야의 등장에 수백명이 탑승한 크루즈는 순식간에 사상 초유의 납치 사건 현장이 되어버린다. 도망칠 곳 없는 푸른 바다 한복판, 다시 한번 각성한 전직 레전드 요원 미영은 이제 가족을 구하고 세상을 지켜야 할 위험한 작전에 뛰어든다!",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1307247,
+      "score": 5.5,
+      "scoreBy": "TMDB",
+      "voteCount": 2,
+      "showing": false
     },
     {
       "movieCd": "20263307",
@@ -718,9 +1391,28 @@
       "days": 5,
       "bestRank": 7,
       "rank": null,
-      "showing": false,
+      "runtime": 118,
+      "directors": [
+        "리들리 스콧"
+      ],
+      "cast": [
+        "제이콥 엘로디",
+        "조슈 브롤린",
+        "마가렛 퀄리",
+        "앨리슨 제니",
+        "가이 피어스"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20263307.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "인류를 휩쓴 대재앙으로 문명이 무너지고 폐허가 된 세상. 임신한 아내를 잃은 파일럿 힉은 반려견 재스퍼와 함께 살아남기 위해 매일 목숨을 건 사투를 벌이고, 생존을 위해서는 누군가를 죽여야만 하는 냉혹한 현실 속에서 점점 삶의 희망마저 잃어간다. 어느 날, 다른 구역에서 들려온 의문의 라디오 무전은 힉에게 새로운 땅과 삶에 대한 희망을 안겨준다. 유일한 이웃인 뱅리의 염세적인 만류에도 불구하고 무전의 발신지를 찾아 길을 떠난 힉은 다른 구역의 생존자 시마와 팝스를 만나 오랜만에 인간다운 온기와 희망을 되찾는다. 그러나 평화도 잠시, 야만적인 생존자들의 위협이 그들을 덮치고 힉과 동료들은 살아남기 위한 마지막 사투에 뛰어든다.",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1384216,
+      "score": 6.6,
+      "scoreBy": "TMDB",
+      "voteCount": 294,
+      "showing": false
     },
     {
       "movieCd": "20262945",
@@ -736,9 +1428,29 @@
       "days": 2,
       "bestRank": 8,
       "rank": null,
-      "showing": false,
+      "runtime": 88,
+      "directors": [
+        "캘런 브런커"
+      ],
+      "cast": [
+        "은영선",
+        "문남숙",
+        "정선혜",
+        "박지윤",
+        "신용우",
+        "전숙경"
+      ],
+      "rating": "전체관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20262945.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "신비한 폭풍에 휩쓸려 공룡들이 살아 숨쉬는 미지의 섬에 불시착한 퍼피 구조대와 포기를 모르는 용감한 소방견 ‘마셜’! 대원들은 섬의 모든 것을 아는 천재 강아지 ‘렉스’를 만나 위대한 모험을 시작한다. 공룡 친구들이 가득한 그곳에서의 평화도 잠시, 악당 ‘험딩어’가 섬의 천연 자원 다이아몬드를 빼앗기 위해 음모를 꾸미고, 잠들어 있던 거대한 화산마저 폭발할 위기에 처하는데···!",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1185806,
+      "score": 8.1,
+      "scoreBy": "TMDB",
+      "voteCount": 144,
+      "showing": false
     },
     {
       "movieCd": "20265388",
@@ -754,9 +1466,29 @@
       "days": 2,
       "bestRank": 10,
       "rank": null,
-      "showing": false,
+      "runtime": 82,
+      "directors": [
+        "금동호"
+      ],
+      "cast": [
+        "김연우",
+        "엄상현",
+        "이용신",
+        "김보나",
+        "심규혁",
+        "박지윤"
+      ],
+      "rating": "전체관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20265388.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "영혼을 보는 싱어송라이터 '미타'. 어느 날 개성만점 고스트 4인방과 친구가 되어 '고스트밴드'를 결성하고 보컬을 맡아 난생처음 누군가의 앞에서 함께 노래하는 기쁨을 알게 된다. '미타'와 고스트밴드의 공연 영상이 SNS를 강타하며 마침내 꿈꾸던 무대를 눈앞에 둔 순간, 대형 기획사의 거대한 방해 공작으로 위기를 맞게 되는데...",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1734370,
+      "score": 0,
+      "scoreBy": "TMDB",
+      "voteCount": null,
+      "showing": false
     },
     {
       "movieCd": "20253289",
@@ -772,9 +1504,29 @@
       "days": 2,
       "bestRank": 9,
       "rank": null,
-      "showing": false,
+      "runtime": 155,
+      "directors": [
+        "소토자키 하루오"
+      ],
+      "cast": [
+        "하나에 나츠키",
+        "키토 아카리",
+        "시모노 히로",
+        "마츠오카 요시츠구",
+        "오카모토 노부히코",
+        "사쿠라이 타카히로"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20253289.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "혈귀로 변해버린 여동생 네즈코를 인간으로 되돌리기 위해 혈귀를 사냥하는 조직인 《귀살대》에 입대한 카마도 탄지로. 입대 후 동료인 아가츠마 젠이츠, 하시비라 이노스케와 함께 많은 혈귀와 싸우고, 성장하면서 세 사람의 우정과 유대는 깊어진다. 탄지로는 《귀살대》 최고위 검사인 《주》와도 함께 싸웠다. 「무한열차」에서는 염주・렌고쿠 쿄쥬로, 「유곽」에서는 음주・우즈이 텐겐, 「도공 마을」에서는 하주・토키토 무이치로, 연주・칸로지 미츠리와 함께 혈귀를 상대로 격렬한 전투를 벌였다. 그 후 다가올 혈귀와의 결전에 대비해 귀살대원들과 함께 《주》가 주도하는 합동 강화 훈련에 참가해 훈련을 받던 도중 《귀살대》의 본부인 우부야시키 저택에 나타난 키부츠지 무잔. 어르신의 위기에 달려온 《주》들과 탄지로였지만, 무잔의 술수로 의문의 공간으로 떨어지고 말았는데. 탄지로 일행이 떨어진 곳, 그곳은 혈귀의 본거지 《무한성》─ “귀살대”와 “혈귀”의 최종 결전의 포문이 열린다.",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1311031,
+      "score": 8.8,
+      "scoreBy": "TMDB",
+      "voteCount": 2191,
+      "showing": false
     },
     {
       "movieCd": "20264715",
@@ -792,9 +1544,26 @@
       "days": 3,
       "bestRank": 8,
       "rank": null,
-      "showing": false,
+      "runtime": 128,
+      "directors": [
+        "뤽 베송"
+      ],
+      "cast": [
+        "케일럽 랜드리 존스",
+        "크리스토프 왈츠",
+        "조이 블루"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20264715.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "15세기, 전쟁으로 연인을 잃은 남자. 신을 버린 저주로 불멸의 드라큘라가 되고 그녀를 되찾기 위해 세상을 떠돈다. 400년의 기다림. 죽음도, 시간도, 신의 저주도 끝내 막지 못한 운명을 다시 만나는데…",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1246049,
+      "score": 7.3,
+      "scoreBy": "TMDB",
+      "voteCount": 1501,
+      "showing": false
     },
     {
       "movieCd": "20100810",
@@ -810,9 +1579,29 @@
       "days": 2,
       "bestRank": 9,
       "rank": null,
-      "showing": false,
+      "runtime": 94,
+      "directors": [
+        "요네바야시 히로마사"
+      ],
+      "cast": [
+        "시다 미라이",
+        "카미키 류노스케",
+        "미우라 토모카즈",
+        "이선영",
+        "엄상현",
+        "장광"
+      ],
+      "rating": "전체관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20100810.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "교외에 위치한 오래된 저택의 마루 밑에는 인간들의 물건을 몰래 빌려 쓰며 살아가는 소인들이 살고 있다. 그들의 철칙은 인간에게 정체를 들키면 그 집을 당장 떠나야 한다는 것. 14살이 된 아리에티는 부모님의 도움 없이 홀로 인간 세상으로 뛰어든다. 첫 목표는 각설탕. 생쥐와 바퀴벌레의 방해 공작에도 무사히 각설탕을 손에 넣은 아리에티는 두 번째 목표인 티슈를 얻으러 간 방에서 요양을 온 소년 쇼우의 눈에 띄게 된다. 인간은 무서운 존재라고 생각했던 것과 달리 쇼우의 다정한 모습에 조금씩 마음을 열기 시작한 아리에티. 마루 밑 세계의 규칙을 어기고 쇼우에게 다가가던 어느 날, 아리에티 가족에게 예기치 않은 위험이 찾아오는데...",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 51739,
+      "score": 7.7,
+      "scoreBy": "TMDB",
+      "voteCount": 3285,
+      "showing": false
     },
     {
       "movieCd": "20264080",
@@ -830,9 +1619,29 @@
       "days": 2,
       "bestRank": 10,
       "rank": null,
-      "showing": false,
+      "runtime": 95,
+      "directors": [
+        "알렉스 가랜드"
+      ],
+      "cast": [
+        "조셉 퀸",
+        "찰스 멜튼",
+        "코스모 자비스",
+        "윌 폴터",
+        "테일러 존 스미스",
+        "노아 센티네오"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
       "poster": "assets/posters/20264080.webp",
-      "posterCredit": "TMDB"
+      "posterCredit": "TMDB",
+      "synopsis": "2006년 이라크 라마디, 미국 네이비 씰 알파 원 소대는 야간 정찰 임무 수행 중 현지 2층 주택을 점령해 OP1으로 삼는다. 통신병 레이 멘도사는 공중 지원팀과 교신하며 팀의 위치를 모니터링하고, 저격수인 의무병 엘리엇은 동료 저격수 프랭크와 함께 거리를 감시하고 있다. 이때, 한 발의 수류탄이 저격수의 방으로 날아들고 알파 원은 이라크 군의 집중 공격을 받는다. 급습으로 초토화가 된 상황, 폭발물로 중상을 입은 엘리엇과 부사관 샘을 안전하게 기지로 후송해야만 한다.",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1241436,
+      "score": 7.1,
+      "scoreBy": "TMDB",
+      "voteCount": 1628,
+      "showing": false
     }
   ]
 }
