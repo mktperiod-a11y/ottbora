@@ -301,6 +301,18 @@
         return `${m[1]}년 ${seasonKo[m[2].toLowerCase()] || ""} 방영`.trim();
       }
 
+      /*
+       * 애니 줄거리의 출처. 한국어가 없어 원문을 그대로 싣거나 원문을
+       * 옮긴 경우 그렇다는 것을 밝힙니다(scripts/fetch-anime.mjs 참고).
+       */
+      function animeSynopsisCredit(a) {
+        const by = a.synopsisBy || "";
+        if (!by) return "";
+        if (a.synopsisTranslated) return `${by} 원문 번역`;
+        if (a.synopsisLang === "en") return `${by} 영어 원문`;
+        return by;
+      }
+
       function animeWork(a) {
         if (!a) return null;
 
@@ -331,7 +343,9 @@
           tagline: "",
           poster: a.poster || FALLBACK,
           meta: [seasonLabel, genreMeta].filter(Boolean),
-          synopsisText: "현재 줄거리 정보를 확인할 수 없어요.",
+          synopsisText: a.synopsis || "현재 줄거리 정보를 확인할 수 없어요.",
+          synopsisLang: a.synopsis ? a.synopsisLang || "" : "",
+          synopsisCredit: a.synopsis ? animeSynopsisCredit(a) : "",
           detailPoints: points.length ? points : ["작품 정보를 확인할 수 없어요."],
           watch: [],
           partner: partnerWatch(a.title),
@@ -538,7 +552,9 @@
           document.querySelector("#title").textContent = w.title;
           document.querySelector("#tagline").textContent = w.tagline || "";
           renderMeta(w);
-          document.querySelector("#synopsis").textContent = w.synopsisText || "";
+          const synopsisEl = document.querySelector("#synopsis");
+          synopsisEl.textContent = w.synopsisText || "";
+          if (w.synopsisLang) synopsisEl.lang = w.synopsisLang;
           document.querySelector("#points-title").textContent =
             w.sourceKind === "manual" ? "관전 포인트" : "작품 정보";
           renderPoints(w.detailPoints || []);
@@ -557,9 +573,12 @@
             document.querySelector("#official-action").appendChild(a);
           }
 
-          if (w.imageCredit) {
-            document.querySelector("#credit").textContent =
-              "이미지 출처 · " + w.imageCredit;
+          const credits = [
+            w.imageCredit ? "이미지 출처 · " + w.imageCredit : "",
+            w.synopsisCredit ? "줄거리 출처 · " + w.synopsisCredit : "",
+          ].filter(Boolean);
+          if (credits.length) {
+            document.querySelector("#credit").textContent = credits.join(" / ");
           }
         })
         .catch(() => {
