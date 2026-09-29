@@ -62,7 +62,8 @@
       "type": "드라마",
       "genre": "범죄 스릴러",
       "tagline": "8월 17~23일 글로벌 비영어 시리즈 1위",
-      "releasedAt": "2026",
+      "releasedAt": "2026.08.20",
+      "netflixOriginal": true,
       "cast": "Jakob Oftebro · Peter Andersson",
       "synopsis": "경찰 살인 사건을 수사하는 형사가 소원해진 전직 경찰 아버지와 함께 범인을 추적합니다.",
       "points": [
@@ -89,7 +90,8 @@
       "type": "드라마",
       "genre": "로맨틱 코미디",
       "tagline": "8월 17~23일 글로벌 비영어 시리즈 2위",
-      "releasedAt": "2026",
+      "releasedAt": "2026.08.07",
+      "netflixOriginal": true,
       "cast": "정해인 · 하영 · 허성태",
       "synopsis": "기억을 잃은 검사와 그녀의 연인이라고 주장하는 복싱 코치가 함께 살며 서로의 진실에 다가가는 로맨스입니다.",
       "points": [
@@ -116,7 +118,7 @@
       "type": "드라마",
       "genre": "로맨틱 코미디",
       "tagline": "8월 17~23일 글로벌 비영어 시리즈 4위",
-      "releasedAt": "2026",
+      "releasedAt": "2026.07.18",
       "cast": "박은빈 · 양세종 · 옹성우",
       "synopsis": "귀신을 보는 상속녀와 검사가 특별한 능력을 활용해 미제 사건을 추적하며 가까워지는 이야기입니다.",
       "points": [
