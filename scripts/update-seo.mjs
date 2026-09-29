@@ -402,7 +402,27 @@ for (const [path, page] of Object.entries(PAGES)) {
 }
 
 // 5. sitemap.xml
-const works = JSON.parse(read("assets/content-data.json")).works || [];
+// 손으로 넣은 작품 중 종영 후 만료된 것은 뺍니다(content.html 과 같은 규칙).
+const contentData = JSON.parse(read("assets/content-data.json"));
+const manualDate = (raw) => {
+  const m = String(raw || "").match(/(\d{4})[.\-](\d{1,2})[.\-](\d{1,2})/);
+  return m ? new Date(Date.UTC(+m[1], +m[2] - 1, +m[3])) : null;
+};
+const manualExpired = (w, rule) => {
+  if (!rule) return false;
+  let end = manualDate(w.endedAt);
+  if (!end) {
+    const start = manualDate(w.releasedAt);
+    const run = Number(rule.estimatedRunMonths?.[w.type]);
+    if (!start || !run) return false;
+    end = new Date(start);
+    end.setUTCMonth(end.getUTCMonth() + run);
+  }
+  const until = new Date(end);
+  until.setUTCMonth(until.getUTCMonth() + (Number(rule.afterEndMonths) || 6));
+  return Date.now() > until.getTime();
+};
+const works = (contentData.works || []).filter((w) => !manualExpired(w, contentData.expiry));
 const detailModified = modified("content-detail.html");
 const urls = [
   [SITE, modified("")],
