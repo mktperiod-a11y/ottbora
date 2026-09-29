@@ -1056,6 +1056,13 @@ tbody td:first-child .rank-move {
   word-break: keep-all;
 }
 
+/* 추천 문장과 "주요 특징" 사이를 좁힙니다(자리 맞춤용 최소 높이 제거). */
+#more .provider .reason,
+#more .provider.featured .reason {
+  min-height: 0;
+  margin-bottom: 12px;
+}
+
 #more .chips {
   display: flex;
   flex-wrap: wrap;
@@ -1077,8 +1084,10 @@ tbody td:first-child .rank-move {
 }
 
 @media (max-width: 650px) {
-  #more .provider .reason p {
-    font-size: 14.5px;
+  /* 좁은 화면에서는 추천 문장을 빼고 칩과 주요 특징만 둡니다. */
+  #more .provider .reason,
+  #more .provider.featured .reason {
+    display: none;
   }
   #more .chips li {
     padding: 3px 8px;
