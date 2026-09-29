@@ -117,14 +117,14 @@
     fileis: {
       id: "fileis",
       name: "파일이즈",
-      description: "PC·모바일 자료 이용",
+      description: "실시간 스트리밍·할인 콘텐츠",
       logo: "fileis.svg",
       url: "https://www.fileis.com/",
     },
     filecookie: {
       id: "filecookie",
       name: "파일쿠키",
-      description: "PC·모바일 자료 이용",
+      description: "PC 구매 후 모바일 재생",
       logo: "filecookie.png",
       url: "https://www.filekuki.com/",
     },
