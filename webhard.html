@@ -43,7 +43,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css?v=20260928-2" />
-    <link rel="stylesheet" href="assets/webhard.css?v=20260929-4" />
+    <link rel="stylesheet" href="assets/webhard.css?v=20260929-5" />
     <script type="application/ld+json" data-seo-generated>
 {
   "@context": "https://schema.org",
@@ -1352,7 +1352,7 @@
                     `<span class="rank-move ${moveClass}">${move}</span>`;
                 }
                 row.classList.toggle("priority", item.position <= TOP_N);
-                // 1~3위는 금·은·동 색으로 구분합니다(top-1/2/3).
+                // 1~3위는 순위 숫자를 강조색으로 칠합니다(top-1/2/3).
                 for (const n of [1, 2, 3]) row.classList.toggle(`top-${n}`, item.position === n);
               }
 
