@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css?v=20260928-2" />
-    <link rel="stylesheet" href="assets/content-detail.css?v=20260929-2" />
+    <link rel="stylesheet" href="assets/content-detail.css?v=20260929-3" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -470,6 +470,7 @@
           .map((c) => {
             const direct = override?.directUrls?.[c.id];
             return {
+              id: /^[a-z]+$/.test(c.id || "") ? c.id : "",
               name: c.name,
               // 공식 로고 파일명만 받습니다(경로·주소가 섞이면 쓰지 않음).
               logo: /^[\w.-]+\.(png|svg|webp)$/.test(c.logo || "") ? `assets/${c.logo}` : "",
@@ -480,18 +481,20 @@
           .filter((c) => c.href);
         if (!chains.length) return;
 
+        // 극장마다 같은 크기의 타일에 공식 로고만 가운데 둡니다.
+        // "예매" 는 제목이 말하므로 타일 안에는 쓰지 않습니다.
         host.innerHTML =
           "<h2>예매</h2>" +
-          '<div class="watch-links">' +
+          `<div class="cinema-tiles" style="--n:${chains.length}">` +
           chains
             .map(
               (c) =>
-                `<a class="${BTN} cinema-link" href="${c.href}" target="_blank" rel="noopener noreferrer"` +
+                `<a class="cinema-tile" href="${c.href}" target="_blank" rel="noopener noreferrer"` +
                 ` aria-label="${c.name} 예매, 새 창에서 열기">` +
                 (c.logo
-                  ? `<img class="cinema-logo" src="${c.logo}" alt="" aria-hidden="true" />`
+                  ? `<img class="cinema-logo cinema-logo--${c.id}" src="${c.logo}" alt="" aria-hidden="true" />`
                   : `<span class="cinema-name">${c.name}</span>`) +
-                `<span>예매</span></a>`,
+                `<span class="cinema-go" aria-hidden="true">↗</span></a>`,
             )
             .join("") +
           "</div>";
