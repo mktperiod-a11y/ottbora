@@ -23,6 +23,7 @@
       "days": 8,
       "bestRank": 1,
       "rank": 2,
+      "audienceDay": 67406,
       "runtime": 130,
       "directors": [
         "허진호"
@@ -58,7 +59,7 @@
       "titleEn": "The Odyssey",
       "titleOriginal": "",
       "openedAt": "2026-08-05",
-      "audienceAcc": 11814652,
+      "audienceAcc": 11814650,
       "genres": [
         "액션",
         "드라마",
@@ -70,6 +71,7 @@
       "days": 35,
       "bestRank": 1,
       "rank": 3,
+      "audienceDay": 31357,
       "runtime": 172,
       "directors": [
         "크리스토퍼 놀란"
@@ -115,6 +117,7 @@
       "days": 15,
       "bestRank": 1,
       "rank": 5,
+      "audienceDay": 12537,
       "runtime": 132,
       "directors": [
         "김도영"
@@ -153,7 +156,7 @@
       "titleEn": "TAZZA: The Song of Beelzebub",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 901929,
+      "audienceAcc": 901926,
       "genres": [
         "범죄",
         "드라마"
@@ -164,6 +167,7 @@
       "days": 10,
       "bestRank": 1,
       "rank": 1,
+      "audienceDay": 68913,
       "runtime": 129,
       "directors": [
         "최국희"
@@ -213,6 +217,7 @@
       "days": 35,
       "bestRank": 2,
       "rank": 9,
+      "audienceDay": 2075,
       "runtime": 144,
       "directors": [
         "데스틴 다니엘 크리튼"
@@ -258,6 +263,7 @@
       "days": 26,
       "bestRank": 2,
       "rank": 6,
+      "audienceDay": 10030,
       "runtime": 108,
       "directors": [
         "커리 바커"
@@ -303,6 +309,7 @@
       "days": 11,
       "bestRank": 3,
       "rank": 8,
+      "audienceDay": 4634,
       "runtime": 93,
       "directors": [
         "잭 크레거"
@@ -343,6 +350,7 @@
       "days": 6,
       "bestRank": 4,
       "rank": 4,
+      "audienceDay": 14418,
       "runtime": 164,
       "directors": [
         "이창동"
@@ -392,6 +400,7 @@
       "days": 5,
       "bestRank": 5,
       "rank": 7,
+      "audienceDay": 6256,
       "runtime": 183,
       "directors": [
         "안소니 루소",
@@ -438,6 +447,7 @@
       "days": 2,
       "bestRank": 6,
       "rank": 10,
+      "audienceDay": 1896,
       "runtime": 101,
       "directors": [
         "백"
@@ -486,6 +496,7 @@
       "days": 3,
       "bestRank": 6,
       "rank": null,
+      "audienceDay": null,
       "runtime": 98,
       "directors": [
         "오이카와 케이"
@@ -533,6 +544,7 @@
       "days": 2,
       "bestRank": 10,
       "rank": null,
+      "audienceDay": null,
       "runtime": 57,
       "directors": [
         "패트리스 베루베"
@@ -580,6 +592,7 @@
       "days": 3,
       "bestRank": 5,
       "rank": null,
+      "audienceDay": null,
       "runtime": 108,
       "directors": [
         "조엘 크로포드",
@@ -627,6 +640,7 @@
       "days": 13,
       "bestRank": 4,
       "rank": null,
+      "audienceDay": null,
       "runtime": 106,
       "directors": [
         "크리스토퍼 보글리"
@@ -670,6 +684,7 @@
       "days": 7,
       "bestRank": 5,
       "rank": null,
+      "audienceDay": null,
       "runtime": 98,
       "directors": [
         "호소다 마모루"
@@ -715,6 +730,7 @@
       "days": 14,
       "bestRank": 5,
       "rank": null,
+      "audienceDay": null,
       "runtime": 156,
       "directors": [
         "나홍진"
@@ -764,6 +780,7 @@
       "days": 4,
       "bestRank": 8,
       "rank": null,
+      "audienceDay": null,
       "runtime": 123,
       "directors": [
         "오윤동",
@@ -809,6 +826,7 @@
       "days": 1,
       "bestRank": 10,
       "rank": null,
+      "audienceDay": null,
       "runtime": 146,
       "directors": [
         "이준익"
@@ -858,6 +876,7 @@
       "days": 5,
       "bestRank": 6,
       "rank": null,
+      "audienceDay": null,
       "runtime": 61,
       "directors": [
         "호소다 마모루"
@@ -897,6 +916,7 @@
       "days": 1,
       "bestRank": 10,
       "rank": null,
+      "audienceDay": null,
       "runtime": 104,
       "directors": [
         "정승오"
@@ -945,6 +965,7 @@
       "days": 21,
       "bestRank": 3,
       "rank": null,
+      "audienceDay": null,
       "runtime": 110,
       "directors": [
         "김미조"
@@ -992,6 +1013,7 @@
       "days": 12,
       "bestRank": 4,
       "rank": null,
+      "audienceDay": null,
       "runtime": 109,
       "directors": [
         "이지원"
@@ -1042,6 +1064,7 @@
       "days": 14,
       "bestRank": 4,
       "rank": null,
+      "audienceDay": null,
       "runtime": 98,
       "directors": [
         "존 카니"
@@ -1084,6 +1107,7 @@
       "days": 2,
       "bestRank": 9,
       "rank": null,
+      "audienceDay": null,
       "runtime": 106,
       "directors": [
         "레니 할린"
@@ -1125,6 +1149,7 @@
       "days": 4,
       "bestRank": 7,
       "rank": null,
+      "audienceDay": null,
       "runtime": 122,
       "directors": [
         "딜리안 서던",
@@ -1167,6 +1192,7 @@
       "days": 9,
       "bestRank": 5,
       "rank": null,
+      "audienceDay": null,
       "runtime": 105,
       "directors": [
         "김수훈"
@@ -1217,6 +1243,7 @@
       "days": 5,
       "bestRank": 6,
       "rank": null,
+      "audienceDay": null,
       "runtime": 100,
       "directors": [
         "시노하라 토시야"
@@ -1258,6 +1285,7 @@
       "days": 1,
       "bestRank": 10,
       "rank": null,
+      "audienceDay": null,
       "runtime": 105,
       "directors": [
         "안재훈"
@@ -1309,6 +1337,7 @@
       "days": 14,
       "bestRank": 4,
       "rank": null,
+      "audienceDay": null,
       "runtime": 99,
       "directors": [
         "데이빗 로버트 밋첼"
@@ -1351,6 +1380,7 @@
       "days": 2,
       "bestRank": 7,
       "rank": null,
+      "audienceDay": null,
       "runtime": 116,
       "directors": [
         "장항준"
@@ -1400,6 +1430,7 @@
       "days": 5,
       "bestRank": 7,
       "rank": null,
+      "audienceDay": null,
       "runtime": 96,
       "directors": [
         "가이 리치"
@@ -1443,6 +1474,7 @@
       "days": 1,
       "bestRank": 10,
       "rank": null,
+      "audienceDay": null,
       "runtime": 98,
       "directors": [
         "고희영"
@@ -1484,6 +1516,7 @@
       "days": 15,
       "bestRank": 4,
       "rank": null,
+      "audienceDay": null,
       "runtime": 109,
       "directors": [],
       "cast": [],
@@ -1523,6 +1556,7 @@
       "days": 3,
       "bestRank": 8,
       "rank": null,
+      "audienceDay": null,
       "runtime": 120,
       "directors": [
         "오키우라 히로유키"
@@ -1572,6 +1606,7 @@
       "days": 1,
       "bestRank": 9,
       "rank": null,
+      "audienceDay": null,
       "runtime": 138,
       "directors": [
         "멜 깁슨"
@@ -1616,6 +1651,7 @@
       "days": 9,
       "bestRank": 3,
       "rank": null,
+      "audienceDay": null,
       "runtime": 105,
       "directors": [
         "제이콥 체이스"
@@ -1659,6 +1695,7 @@
       "days": 8,
       "bestRank": 5,
       "rank": null,
+      "audienceDay": null,
       "runtime": 108,
       "directors": [
         "이철하"
@@ -1707,6 +1744,7 @@
       "days": 5,
       "bestRank": 7,
       "rank": null,
+      "audienceDay": null,
       "runtime": 118,
       "directors": [
         "리들리 스콧"
@@ -1751,6 +1789,7 @@
       "days": 2,
       "bestRank": 8,
       "rank": null,
+      "audienceDay": null,
       "runtime": 88,
       "directors": [
         "캘런 브런커"
@@ -1798,6 +1837,7 @@
       "days": 2,
       "bestRank": 10,
       "rank": null,
+      "audienceDay": null,
       "runtime": 82,
       "directors": [
         "금동호"
@@ -1845,6 +1885,7 @@
       "days": 2,
       "bestRank": 9,
       "rank": null,
+      "audienceDay": null,
       "runtime": 155,
       "directors": [
         "소토자키 하루오"
@@ -1892,6 +1933,7 @@
       "days": 3,
       "bestRank": 8,
       "rank": null,
+      "audienceDay": null,
       "runtime": 128,
       "directors": [
         "뤽 베송"
@@ -1934,6 +1976,7 @@
       "days": 2,
       "bestRank": 9,
       "rank": null,
+      "audienceDay": null,
       "runtime": 94,
       "directors": [
         "요네바야시 히로마사"
@@ -1984,6 +2027,7 @@
       "days": 2,
       "bestRank": 10,
       "rank": null,
+      "audienceDay": null,
       "runtime": 95,
       "directors": [
         "알렉스 가랜드"
