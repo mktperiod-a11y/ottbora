@@ -625,3 +625,88 @@ section:has(.guide-grid) .head h2 {
   flex-wrap: wrap;
   row-gap: 4px;
 }
+
+/* ===== 홈 "지금 인기 극장 상영작" — 박스오피스 순위 딱지와 관객 수 ===== */
+.picks-status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+/* 웹하드 순위와 같은 초록 점: "지금 갱신되는 정보" 표시 */
+.picks-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22b35e;
+  box-shadow: 0 0 0 4px rgba(34, 179, 94, 0.14);
+  flex: 0 0 auto;
+}
+
+#picks .thumb {
+  position: relative;
+}
+
+/* 포스터 오른쪽 위 순위 딱지. 강조색 규칙에 따라 잉크색을 씁니다. */
+.pick-rank {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+  padding: 4px 9px;
+  border-radius: 8px;
+  background: rgba(23, 32, 45, 0.88);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(4px);
+}
+
+/* 관객 줄: 누적을 크게, 전날 하루 관객을 작게 */
+.pick-audience {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 8px;
+  margin-top: 8px;
+}
+
+.pick-total {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.pick-total strong {
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.pick-day {
+  color: #1a9a52;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  .pick-rank {
+    top: 6px;
+    right: 6px;
+    padding: 3px 7px;
+    font-size: 11.5px;
+  }
+  .pick-total strong {
+    font-size: 14.5px;
+  }
+  .pick-total,
+  .pick-day {
+    font-size: 11px;
+  }
+}

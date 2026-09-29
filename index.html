@@ -82,7 +82,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css?v=20260928-2" />
-    <link rel="stylesheet" href="assets/index.css?v=20260928-3" />
+    <link rel="stylesheet" href="assets/index.css?v=20260929-1" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -138,9 +138,10 @@
         <div class="section-head">
           <div>
             <span class="eyebrow">CONTENT ZONE</span>
-            <h2>지금 볼 만한 것</h2>
-            <p class="head-note" id="picks-note">
-              극장 관객 순위 1~5위입니다.
+            <h2 id="picks-title">지금 인기 극장 상영작</h2>
+            <p class="head-note picks-status" id="picks-note">
+              <span class="picks-dot" aria-hidden="true"></span>
+              <span id="picks-note-text">극장 관객 순위 1~5위</span>
             </p>
           </div>
           <a class="head-action seed-action-button seed-action-button--variant_neutralWeak seed-action-button--size_medium seed-action-button--layout_withText seed-action-button--size_medium-layout_withText" href="content.html">전체 콘텐츠 보기</a>
@@ -285,20 +286,25 @@
         const host = document.querySelector("#picks");
         host.innerHTML = list
           .map(
-            ({ title, sub, id, poster, tags }) =>
+            ({ title, sub, id, poster, tags, rank, audience }) =>
               `<a class="content-card" href="content-detail.html?id=${encodeURIComponent(id)}">` +
-              `<span class="thumb"><img src="${esc(poster || fallback)}" alt="${esc(title)} 포스터"` +
+              `<span class="thumb">` +
+              (rank ? `<span class="pick-rank" aria-label="박스오피스 ${rank}위">${rank}위</span>` : "") +
+              `<img src="${esc(poster || fallback)}" alt="${esc(title)} 포스터"` +
               ` loading="lazy" referrerpolicy="no-referrer"` +
               ` onerror="ottImgFail(this)"></span>` +
               `<div class="content-body"><b>${esc(title)}</b>` +
               `<p>${esc(sub)}</p>` +
-              tagRow(tags) +
+              (audience || tagRow(tags || [])) +
               `</div></a>`,
           )
           .join("");
       };
 
       const drawFallbackPicks = () => {
+        // 집계가 멈췄을 때는 "지금 인기" 라고 쓰지 않습니다.
+        const title = document.querySelector("#picks-title");
+        if (title) title.textContent = "지금 볼 만한 것";
         const note = document.querySelector("#picks-note");
         if (note) note.textContent = "극장 흥행작과 넷플릭스 주간 집계에서 골랐습니다.";
         drawPicks(
@@ -334,11 +340,36 @@
         return (today - then) / 86400000 <= STALE_DAYS;
       };
 
-      /** 콘텐츠ZONE 카드와 같은 표기: 1만 명 미만은 쓰지 않습니다. */
-      const audience = (n) => {
-        if (!n || n < 10000) return "";
-        const man = Math.round(n / 10000);
-        return man >= 10000 ? `누적 ${(man / 10000).toFixed(1)}억` : `누적 ${man}만`;
+      /** 관객 수를 "90만" · "1,181만" · "1.2억" 처럼 줄입니다. 1만 명 미만은 그대로 씁니다. */
+      const people = (n) => {
+        n = Number(n) || 0;
+        if (n >= 1e8) return `${(n / 1e8).toFixed(1)}억`;
+        if (n >= 1e4) return `${Math.round(n / 1e4).toLocaleString("ko-KR")}만`;
+        return n.toLocaleString("ko-KR");
+      };
+
+      /** 하루 관객처럼 작은 수는 10만 미만일 때 소수 한 자리까지: "5.8만". */
+      const peopleFine = (n) => {
+        n = Number(n) || 0;
+        if (n >= 1e4 && n < 1e5) return `${(n / 1e4).toFixed(1).replace(/\.0$/, "")}만`;
+        return people(n);
+      };
+
+      /*
+       * 카드 아래 관객 줄. 누적 관객을 크게, 전날 하루 관객을 작게 둡니다.
+       * 하루 관객(audienceDay)은 수집 스크립트가 마지막 집계일 것만 남기므로
+       * 없으면 누적만 씁니다.
+       */
+      const audienceBlock = (m, dayLabel) => {
+        if (!m.audienceAcc) return "";
+        return (
+          `<div class="pick-audience">` +
+          `<span class="pick-total"><strong>${people(m.audienceAcc)}명</strong> 관람</span>` +
+          (m.audienceDay
+            ? `<span class="pick-day">${esc(dayLabel)} +${peopleFine(m.audienceDay)}명</span>`
+            : "") +
+          `</div>`
+        );
       };
 
       fetch("assets/boxoffice.json")
@@ -352,8 +383,9 @@
           if (top.length < PICK_N) return drawFallbackPicks();
 
           const [, mo, d] = data.latestDt.match(/^\d{4}(\d{2})(\d{2})$/);
-          const note = document.querySelector("#picks-note");
-          if (note) note.textContent = `${+mo}월 ${+d}일 극장 관객 순위 1~${PICK_N}위입니다.`;
+          const dayLabel = `${+mo}/${+d}`;
+          const note = document.querySelector("#picks-note-text");
+          if (note) note.textContent = `${+mo}월 ${+d}일 박스오피스 · 매일 오전 업데이트`;
 
           drawPicks(
             top.map((m) => ({
@@ -361,7 +393,8 @@
               sub: (m.genres || []).slice(0, 2).join(" · ") || "영화",
               id: `kofic-${m.movieCd}`,
               poster: m.poster || "",
-              tags: [`박스오피스 ${m.rank}위`, audience(m.audienceAcc)],
+              rank: m.rank,
+              audience: audienceBlock(m, dayLabel),
             })),
           );
         })
