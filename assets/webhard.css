@@ -501,9 +501,6 @@ tbody td:first-child .rank-move {
 #more #bigfile {
   --logo-scale: 0.78;
 }
-#more #megafile {
-  --logo-scale: 0.84;
-}
 #more #pdpop {
   --logo-scale: 0.9;
 }

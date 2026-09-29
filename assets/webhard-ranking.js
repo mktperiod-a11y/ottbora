@@ -7,7 +7,7 @@
   /* 늘 순위 추첨에 들어가는 곳. */
   const ACTIVE = [
     "ondisk", "kdisk", "wedisk", "filejo", "filenori",
-    "me2disk", "filecast", "smartfile", "filesun",
+    "me2disk", "filecast", "filestar", "filesun",
   ];
 
   /*
@@ -24,7 +24,6 @@
     fileis: true,
     filecookie: true,
     bigfile: true,
-    megafile: true,
     pdpop: true,
   };
 
@@ -93,12 +92,12 @@
       logo: "filecast.png",
       url: "https://filecast.co.kr/",
     },
-    smartfile: {
-      id: "smartfile",
-      name: "스마트파일",
-      description: "화질을 골라 바로보기",
-      logo: "smartfile.png",
-      url: "https://smartfile.co.kr/",
+    filestar: {
+      id: "filestar",
+      name: "파일스타",
+      description: "실시간 스트리밍·모바일 전용 플레이어",
+      logo: "filestar.png",
+      url: "https://filestar.co.kr/",
     },
     filesun: {
       id: "filesun",
@@ -134,13 +133,6 @@
       description: "실시간 TOP100 · 다양한 콘텐츠",
       logo: "bigfile.png",
       url: "https://bigfile.co.kr/",
-    },
-    megafile: {
-      id: "megafile",
-      name: "메가파일",
-      description: "PC·모바일 자료 이용",
-      logo: "megafile.png",
-      url: "https://www.megafile.co.kr/",
     },
     pdpop: {
       id: "pdpop",

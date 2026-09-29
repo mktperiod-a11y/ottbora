@@ -222,7 +222,7 @@ function findCandidates(html, base, siteName = "") {
 async function cssCandidates(html, base) {
   const out = [];
   const sheets = [];
-  // img.megafile.co.kr 처럼 같은 도메인의 이미지 서버는 같은 사이트로 봅니다.
+  // img.example.co.kr 처럼 같은 도메인의 이미지 서버는 같은 사이트로 봅니다.
   const site = new URL(base).hostname.split(".").slice(-3).join(".").replace(/^(www|m)\./, "");
   const sameSite = (h) => h === site || h.endsWith("." + site);
   for (const tag of html.match(/<link\b[^>]*>/gi) || []) {
