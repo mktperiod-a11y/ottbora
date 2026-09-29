@@ -562,10 +562,6 @@ tbody td:first-child .rank-move {
   font-weight: 700;
 }
 
-#more .rank-move.is-up {
-  color: #667386;
-}
-
 #more .reason p {
   color: #344255;
   font-size: 14px;
