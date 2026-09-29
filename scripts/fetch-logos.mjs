@@ -43,7 +43,23 @@ function loadProviders() {
   const src = readFileSync("assets/webhard-ranking.js", "utf8");
   const sandbox = { window: {} };
   vm.runInNewContext(src, sandbox);
-  return sandbox.window.OTT_WEBHARD_RANKING.providers;
+  const providers = { ...sandbox.window.OTT_WEBHARD_RANKING.providers };
+
+  // 작품 상세의 예매 버튼에 쓰는 극장 3사(CGV·메가박스·롯데시네마)도 함께 봅니다.
+  // 로고 파일은 assets/cinema-links.json 의 chains[].logo 에 적습니다.
+  try {
+    const cinema = JSON.parse(readFileSync("assets/cinema-links.json", "utf8"));
+    for (const c of cinema.chains || []) {
+      if (!c.id || !c.host || providers[c.id]) continue;
+      providers[c.id] = {
+        id: c.id,
+        name: c.name,
+        logo: c.logo || "",
+        url: `https://${c.host}/`,
+      };
+    }
+  } catch {}
+  return providers;
 }
 
 /** 로고가 없거나, 글자로 그린 SVG 면 "공식 로고 아님" 으로 봅니다. */
