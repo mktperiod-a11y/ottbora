@@ -1094,3 +1094,39 @@ tbody td:first-child .rank-move {
     font-size: 11.5px;
   }
 }
+
+/*
+ * 1~3위 강조(2026-09): 금·은·동 색.
+ * 순위 숫자에 메달 색을 넣고, 카드는 위쪽 띠와 옅은 테두리, 비교표는 행
+ * 바탕을 같은 색으로 아주 옅게 칠해 상위 세 곳이 한눈에 보이게 합니다.
+ */
+.top-1 { --medal: #e3a008; }
+.top-2 { --medal: #7b8fb0; }
+.top-3 { --medal: #c8702e; }
+
+#more .provider.top-1,
+#more .provider.top-2,
+#more .provider.top-3 {
+  border-color: color-mix(in srgb, var(--medal) 40%, #fff);
+  border-top: 4px solid var(--medal);
+  box-shadow: 0 8px 22px color-mix(in srgb, var(--medal) 14%, transparent);
+}
+
+#more .provider.top-1 .rank-number,
+#more .provider.top-2 .rank-number,
+#more .provider.top-3 .rank-number {
+  color: var(--medal);
+}
+
+#comparison tbody tr.top-1,
+#comparison tbody tr.top-2,
+#comparison tbody tr.top-3 {
+  background: color-mix(in srgb, var(--medal) 8%, #fff);
+}
+
+#comparison tbody tr.top-1 .table-rank-number,
+#comparison tbody tr.top-2 .table-rank-number,
+#comparison tbody tr.top-3 .table-rank-number {
+  color: var(--medal);
+  font-weight: 900;
+}
