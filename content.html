@@ -54,7 +54,7 @@
       "name": "요즘 볼만한 영화·드라마·예능·애니 추천",
       "description": "극장 박스오피스 순위와 화제의 드라마·예능, 인기 애니를 포스터와 줄거리, 작품 정보로 소개합니다.",
       "inLanguage": "ko-KR",
-      "dateModified": "2026-09-28",
+      "dateModified": "2026-09-29",
       "isPartOf": { "@id": "https://mktperiod-a11y.github.io/ottbora/#website" },
       "primaryImageOfPage": "https://mktperiod-a11y.github.io/ottbora/assets/og-content.png"
     }
@@ -731,7 +731,7 @@
           .catch(() => null);
 
       Promise.all([
-        fetch("assets/content-data.json?v=20260928-2").then((r) => r.json()),
+        fetch("assets/content-data.json?v=20260929-1").then((r) => r.json()),
         optional("assets/boxoffice.json"),
         optional("assets/anime.json"),
         optional("assets/tv-ranking.json"),
