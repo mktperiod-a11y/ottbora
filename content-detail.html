@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css?v=20260928-2" />
-    <link rel="stylesheet" href="assets/content-detail.css?v=20260928-8" />
+    <link rel="stylesheet" href="assets/content-detail.css?v=20260929-1" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -471,6 +471,8 @@
             const direct = override?.directUrls?.[c.id];
             return {
               name: c.name,
+              // 공식 로고 파일명만 받습니다(경로·주소가 섞이면 쓰지 않음).
+              logo: /^[\w.-]+\.(png|svg|webp)$/.test(c.logo || "") ? `assets/${c.logo}` : "",
               href: safe(direct || c.bookingUrl, CINEMA_HOSTS),
               direct: Boolean(direct),
             };
@@ -484,7 +486,12 @@
           chains
             .map(
               (c) =>
-                `<a class="${BTN}" href="${c.href}" target="_blank" rel="noopener noreferrer">${c.name} 예매</a>`,
+                `<a class="${BTN} cinema-link" href="${c.href}" target="_blank" rel="noopener noreferrer"` +
+                ` aria-label="${c.name} 예매, 새 창에서 열기">` +
+                (c.logo
+                  ? `<img class="cinema-logo" src="${c.logo}" alt="" aria-hidden="true" />`
+                  : `<span class="cinema-name">${c.name}</span>`) +
+                `<span>예매</span></a>`,
             )
             .join("") +
           "</div>";

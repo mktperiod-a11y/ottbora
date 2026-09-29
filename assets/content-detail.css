@@ -702,3 +702,22 @@ h1 {
     font-size: 14px;
   }
 }
+
+/* 예매 버튼 안 극장 공식 로고(흰색). 로고가 없는 곳은 이름 글자로 둡니다. */
+.watch-links > a.cinema-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.cinema-logo {
+  display: block;
+  height: 16px;
+  width: auto;
+}
+
+@media (max-width: 650px) {
+  .cinema-logo {
+    height: 15px;
+  }
+}
