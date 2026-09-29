@@ -1040,3 +1040,57 @@ tbody td:first-child .rank-move {
     gap: 12px;
   }
 }
+
+/*
+ * MORE TO COMPARE 카드 위계(2026-09).
+ * 서비스 이름 아래 한 줄 소개 자리에 핵심 키워드 칩을 두고,
+ * "~분께 추천해요." 문장을 크고 진하게 둬 눈이 먼저 잡게 합니다.
+ * "주요 특징" 문장은 그대로 둡니다.
+ */
+#more .provider .reason p {
+  color: var(--ink);
+  font-size: 15.5px;
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+  word-break: keep-all;
+}
+
+/* 추천 문장과 "주요 특징" 사이를 좁힙니다(자리 맞춤용 최소 높이 제거). */
+#more .provider .reason,
+#more .provider.featured .reason {
+  min-height: 0;
+  margin-bottom: 12px;
+}
+
+#more .chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+#more .chips li {
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: #f1f3f7;
+  color: #5b6676;
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+@media (max-width: 650px) {
+  /* 좁은 화면에서는 추천 문장을 빼고 칩과 주요 특징만 둡니다. */
+  #more .provider .reason,
+  #more .provider.featured .reason {
+    display: none;
+  }
+  #more .chips li {
+    padding: 3px 8px;
+    font-size: 11.5px;
+  }
+}

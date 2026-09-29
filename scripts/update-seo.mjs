@@ -127,11 +127,14 @@ function providerCards(html) {
   )) {
     const href = card.match(/class="visit[^"]*"\s+href="([^"]+)"/)?.[1] || "";
     cards.set(id, {
-      tagline: text(
-        card.match(
-          /<div class="provider-title">[\s\S]*?<\/h3>\s*<span>([\s\S]*?)<\/span>/,
-        )?.[1] || "",
-      ),
+      // 이름 아래 한 줄 소개는 키워드 칩(<ul class="chips">)으로 바뀌었습니다.
+      tagline: [
+        ...(
+          card.match(/<ul class="chips"[^>]*>([\s\S]*?)<\/ul>/)?.[1] || ""
+        ).matchAll(/<li>([\s\S]*?)<\/li>/g),
+      ]
+        .map(([, li]) => text(li))
+        .join(" · "),
       reason: text(
         card.match(/<div class="reason">[\s\S]*?<p>([\s\S]*?)<\/p>/)?.[1] || "",
       ),
@@ -455,7 +458,7 @@ const listed = rows.map((r) => {
   const status = active.has(r.id) ? "" : " (현재 순위 후보에서 빠짐)";
   return [
     `- ${r.name}${status}: ${c.tagline || r.features}`,
-    c.reason ? `  - 이런 분께: ${c.reason}` : "",
+    c.reason ? `  - 추천: ${c.reason}` : "",
     ...(c.facts || []).map((f) => `  - ${f}`),
     c.official ? `  - 공식 홈페이지: ${c.official}` : "",
   ]
