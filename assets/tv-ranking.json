@@ -819,7 +819,7 @@
       "rankingSource": {
         "provider": "TMDB",
         "metric": "popularity",
-        "rank": 23,
+        "rank": 20,
         "observedAt": "2026-09-29"
       },
       "metadataSource": "TMDB"
@@ -856,7 +856,7 @@
       "rankingSource": {
         "provider": "TMDB",
         "metric": "popularity",
-        "rank": 25,
+        "rank": 21,
         "observedAt": "2026-09-29"
       },
       "metadataSource": "TMDB"
