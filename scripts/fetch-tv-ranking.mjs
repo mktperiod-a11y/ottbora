@@ -53,6 +53,8 @@ let rules = {
   includeKeywords: [],
   excludeKeywords: [],
   excludeNetworks: [],
+  dramaExcludeNetworks: [],
+  dramaRequireNetwork: false,
 };
 try {
   rules = { ...rules, ...JSON.parse(await readFile(RULES, "utf8")) };
@@ -267,6 +269,24 @@ function fromExcludedNetwork(x) {
   );
 }
 
+/*
+ * 드라마만의 추가 조건. 방송사 정보가 없거나 YouTube 로만 공개된 작품은
+ * 대개 1~6화짜리 소규모 웹드라마라 뺍니다. 예능에는 적용하지 않습니다
+ * (유튜브 웹예능·방송사 정보만 빠진 정규 예능이 섞여 있어서).
+ */
+const dramaExcluded = new Set(
+  (rules.dramaExcludeNetworks || []).map((x) => String(x).trim().toLowerCase()),
+);
+function keepAsDrama(x) {
+  const names = (x.networks || [])
+    .map((n) => String(n?.name || n).trim().toLowerCase())
+    .filter(Boolean);
+  // 상세 조회가 잠깐 실패한 작품은 방송사를 모르니 이 조건으로 버리지 않습니다.
+  if (x.detailUnavailable) return true;
+  if (rules.dramaRequireNetwork && !names.length) return false;
+  return !names.some((n) => dramaExcluded.has(n));
+}
+
 function currentlyRelevant(x) {
   if (white.has(x.id)) return true;
   if (x.detailUnavailable) return true;
@@ -290,6 +310,7 @@ const varietyRaw = varietyCandidates
 const dramaRaw = dramaCandidates
   .map(withDetail)
   .filter((x) => !fromExcludedNetwork(x))
+  .filter(keepAsDrama)
   .filter(currentlyRelevant)
   .slice(0, KEEP_PER_TYPE);
 

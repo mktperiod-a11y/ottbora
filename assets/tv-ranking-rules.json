@@ -55,5 +55,10 @@
     "LIKEY",
     "iQIYI International"
   ],
-  "excludeNetworksNote": "숏폼 드라마 플랫폼. 방송사 중 하나라도 여기 있으면 드라마·예능 목록에서 뺍니다. iQIYI International 은 한국 작품을 숏폼으로만 공동 공개해 함께 둡니다."
+  "excludeNetworksNote": "숏폼 드라마 플랫폼. 방송사 중 하나라도 여기 있으면 드라마·예능 목록에서 뺍니다. iQIYI International 은 한국 작품을 숏폼으로만 공동 공개해 함께 둡니다.",
+  "dramaRequireNetwork": true,
+  "dramaExcludeNetworks": [
+    "YouTube"
+  ],
+  "dramaRulesNote": "드라마에만 적용. 방송사 정보가 없거나 YouTube 로만 공개된 소규모 웹드라마를 뺍니다. 예능에는 유튜브 웹예능·방송사 정보가 빠진 정규 예능이 있어 적용하지 않습니다."
 }
