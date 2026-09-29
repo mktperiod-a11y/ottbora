@@ -1,5 +1,10 @@
 {
   "checkedAt": "2026-09-21",
+  "expiry": {
+    "note": "손으로 넣은 작품은 종영 후 afterEndMonths 개월이 지나면 목록·사이트맵에서 뺍니다. 작품에 endedAt(YYYY.MM.DD)을 적으면 그 날짜를, 없으면 releasedAt 에 분류별 estimatedRunMonths 를 더한 날을 종영일로 봅니다. 날짜를 알 수 없는 작품(연도만 있는 경우 등)은 빼지 않습니다.",
+    "afterEndMonths": 6,
+    "estimatedRunMonths": { "드라마": 2, "예능": 3, "영화": 2 }
+  },
   "works": [
     {
       "id": "spider-man-brand-new-day",
