@@ -1096,13 +1096,14 @@ tbody td:first-child .rank-move {
 }
 
 /*
- * 1~3위 강조(2026-09): 순위 숫자를 사이트 강조색(빨강)으로 칠하되
- * 1위 100% · 2위 70% · 3위 45% 로 옅게 해 순위 차이를 둡니다.
+ * 1~3위 강조(2026-09): 순위 숫자를 사이트 강조색(빨강) 계열로 칠하되
+ * 투명도 대신 채도는 같거나 높고 명도만 조금씩 밝힌 단색을 써서,
+ * 3위도 4위 이하 회색보다 확실히 강조돼 보이게 합니다.
  * 공식 홈페이지 버튼(빨강)은 그대로입니다. 카드 띠·메달 색은 쓰지 않습니다.
  */
-.top-1 { --rank-tint: 100%; }
-.top-2 { --rank-tint: 70%; }
-.top-3 { --rank-tint: 45%; }
+.top-1 { --rank-color: var(--accent); }  /* #e52f49 · hsl(352 78% 54%) */
+.top-2 { --rank-color: hsl(352 84% 61%); }
+.top-3 { --rank-color: hsl(352 90% 67%); }
 
 #more .provider.top-1 .rank-number,
 #more .provider.top-2 .rank-number,
@@ -1110,7 +1111,7 @@ tbody td:first-child .rank-move {
 #comparison tbody tr.top-1 .table-rank-number,
 #comparison tbody tr.top-2 .table-rank-number,
 #comparison tbody tr.top-3 .table-rank-number {
-  color: color-mix(in srgb, var(--accent) var(--rank-tint), transparent);
+  color: var(--rank-color);
 }
 
 #comparison tbody tr.top-1 .table-rank-number,
