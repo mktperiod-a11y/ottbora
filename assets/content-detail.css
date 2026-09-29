@@ -755,8 +755,11 @@ h1 {
 }
 
 /* 로고마다 모양이 달라 같은 높이면 크기가 달라 보입니다. 눈으로 맞춘 값입니다. */
+/* CGV 는 오른쪽 위 별 때문에 글자가 이미지 아래쪽에 있어, 가운데 맞춤이면
+   글자가 약 2px 내려가 보입니다. 글자 중심을 타일 가운데로 올립니다. */
 .cinema-logo--cgv {
   height: 22px;
+  transform: translateY(-2px);
 }
 
 .cinema-logo--megabox {
