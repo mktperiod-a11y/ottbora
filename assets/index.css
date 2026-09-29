@@ -618,3 +618,10 @@ section:has(.guide-grid) .head h2 {
     font-size: 23px;
   }
 }
+
+/* 홈 "지금 볼 만한 것" 박스오피스 카드: 순위·누적 관객 태그가 좁은 폭에서
+   말줄임되지 않도록 넘치면 다음 줄로 내립니다. */
+#picks .content-body .tags {
+  flex-wrap: wrap;
+  row-gap: 4px;
+}

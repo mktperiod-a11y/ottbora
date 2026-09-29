@@ -82,7 +82,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css?v=20260928-2" />
-    <link rel="stylesheet" href="assets/index.css?v=20260928-2" />
+    <link rel="stylesheet" href="assets/index.css?v=20260928-3" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -139,8 +139,8 @@
           <div>
             <span class="eyebrow">CONTENT ZONE</span>
             <h2>지금 볼 만한 것</h2>
-            <p class="head-note">
-              극장 흥행작과 넷플릭스 주간 집계에서 골랐습니다.
+            <p class="head-note" id="picks-note">
+              극장 관객 순위 1~5위입니다.
             </p>
           </div>
           <a class="head-action seed-action-button seed-action-button--variant_neutralWeak seed-action-button--size_medium seed-action-button--layout_withText seed-action-button--size_medium-layout_withText" href="content.html">전체 콘텐츠 보기</a>
@@ -214,7 +214,12 @@
       // [제목, 장르, id, 태그들]
       // 태그는 "왜 실렸는가" 만 말합니다. 장르는 제목 아래 부제 자리에 둡니다.
       // 콘텐츠ZONE 카드와 같은 자리, 같은 모양을 씁니다.
-      const picks = [
+      /*
+       * 박스오피스 자료를 못 받거나 집계가 오래됐을 때만 쓰는 예비 목록입니다.
+       * 평소에는 아래에서 어제 박스오피스 1~5위로 채웁니다.
+       * 넷플릭스 작품은 콘텐츠ZONE 전체 목록에서 보여 줍니다.
+       */
+      const FALLBACK_PICKS = [
         [
           "스파이더맨: 브랜드 뉴 데이",
           "액션 · 어드벤처",
@@ -275,38 +280,46 @@
         );
       };
 
-      const drawPicks = () => {
+      /** 카드 한 장: { title, sub, id, poster, tags } */
+      const drawPicks = (list) => {
         const host = document.querySelector("#picks");
-        host.innerHTML = picks
+        host.innerHTML = list
           .map(
-            ([title, genre, id, tags]) =>
-              `<a class="content-card" href="content-detail.html?id=${id}">` +
-              `<span class="thumb"><img src="${posterSource(id)}" alt="${esc(title)} 포스터"` +
+            ({ title, sub, id, poster, tags }) =>
+              `<a class="content-card" href="content-detail.html?id=${encodeURIComponent(id)}">` +
+              `<span class="thumb"><img src="${esc(poster || fallback)}" alt="${esc(title)} 포스터"` +
               ` loading="lazy" referrerpolicy="no-referrer"` +
               ` onerror="ottImgFail(this)"></span>` +
               `<div class="content-body"><b>${esc(title)}</b>` +
-              `<p>${esc(genre)}</p>` +
+              `<p>${esc(sub)}</p>` +
               tagRow(tags) +
               `</div></a>`,
           )
           .join("");
       };
-      drawPicks();
+
+      const drawFallbackPicks = () => {
+        const note = document.querySelector("#picks-note");
+        if (note) note.textContent = "극장 흥행작과 넷플릭스 주간 집계에서 골랐습니다.";
+        drawPicks(
+          FALLBACK_PICKS.map(([title, sub, id, tags]) => ({
+            title,
+            sub,
+            id,
+            poster: posterSource(id),
+            tags,
+          })),
+        );
+      };
 
       /*
-       * 박스오피스 3위 안에 들어 있으면 편집 문구 대신 오늘 순위를 씁니다.
-       * 콘텐츠ZONE 이 쓰는 규칙과 같게 맞춥니다. 같은 작품이 두 화면에서
-       * 다른 근거로 읽히면 안 되기 때문입니다.
-       *
-       * 먼저 편집 문구로 그려 두고, 자료가 오면 그때 갈아 끼웁니다.
-       * 자료를 못 받아도 카드는 그대로 남습니다.
+       * "지금 볼 만한 것" 은 KOFIC 일별 박스오피스 1~5위입니다.
+       * 매일 오전 자동 갱신되는 assets/boxoffice.json 을 씁니다.
+       * 자료를 못 받거나 집계가 10일 넘게 멈춰 있으면(갱신 실패)
+       * 이미 내려간 영화를 순위처럼 보이지 않도록 예비 목록으로 돌아갑니다.
        */
-      const TOP_N = 3;
-      const STALE_DAYS = 10; // 집계가 오래되면 순위를 쓰지 않습니다.
-      const titleKey = (t) =>
-        String(t || "")
-          .toLowerCase()
-          .replace(/[^0-9a-z가-힣]/g, "");
+      const PICK_N = 5;
+      const STALE_DAYS = 10;
 
       const isFresh = (latestDt) => {
         const m = String(latestDt || "").match(/^(\d{4})(\d{2})(\d{2})$/);
@@ -321,23 +334,38 @@
         return (today - then) / 86400000 <= STALE_DAYS;
       };
 
+      /** 콘텐츠ZONE 카드와 같은 표기: 1만 명 미만은 쓰지 않습니다. */
+      const audience = (n) => {
+        if (!n || n < 10000) return "";
+        const man = Math.round(n / 10000);
+        return man >= 10000 ? `누적 ${(man / 10000).toFixed(1)}억` : `누적 ${man}만`;
+      };
+
       fetch("assets/boxoffice.json")
         .then((r) => (r.ok ? r.json() : null))
         .then((data) => {
-          if (!data || !isFresh(data.latestDt)) return;
-          const rankByTitle = new Map();
-          for (const m of data.movies || [])
-            if (m.rank) rankByTitle.set(titleKey(m.title), m.rank);
-          let changed = false;
-          for (const p of picks) {
-            const r = rankByTitle.get(titleKey(p[0]));
-            if (!r || r > TOP_N) continue;
-            p[3] = [`국내 박스오피스 ${r}위`, ...p[3].slice(1)];
-            changed = true;
-          }
-          if (changed) drawPicks();
+          if (!data || !isFresh(data.latestDt)) return drawFallbackPicks();
+          const top = (data.movies || [])
+            .filter((m) => m.rank && m.movieCd && m.title)
+            .sort((a, b) => a.rank - b.rank)
+            .slice(0, PICK_N);
+          if (top.length < PICK_N) return drawFallbackPicks();
+
+          const [, mo, d] = data.latestDt.match(/^\d{4}(\d{2})(\d{2})$/);
+          const note = document.querySelector("#picks-note");
+          if (note) note.textContent = `${+mo}월 ${+d}일 극장 관객 순위 1~${PICK_N}위입니다.`;
+
+          drawPicks(
+            top.map((m) => ({
+              title: m.title,
+              sub: (m.genres || []).slice(0, 2).join(" · ") || "영화",
+              id: `kofic-${m.movieCd}`,
+              poster: m.poster || "",
+              tags: [`박스오피스 ${m.rank}위`, audience(m.audienceAcc)],
+            })),
+          );
         })
-        .catch(() => {});
+        .catch(drawFallbackPicks);
 
       // 모바일에서는 히어로 포스터를 그리지 않습니다. 폭이 넓어지면 채웁니다.
       const heroPosters = document.querySelectorAll(".poster-stack [data-poster]");
