@@ -1042,9 +1042,10 @@ tbody td:first-child .rank-move {
 }
 
 /*
- * MORE TO COMPARE 카드 글 줄이기(2026-09).
- * "이런 분께 추천해요"·"주요 특징" 소제목을 빼고, 추천 문장을 크고 진하게
- * 둬 눈이 먼저 잡게 합니다. 주요 특징은 두 줄 문장 대신 키워드 칩으로 둡니다.
+ * MORE TO COMPARE 카드 위계(2026-09).
+ * 서비스 이름 아래 한 줄 소개 자리에 핵심 키워드 칩을 두고,
+ * "~분께 추천해요." 문장을 크고 진하게 둬 눈이 먼저 잡게 합니다.
+ * "주요 특징" 문장은 그대로 둡니다.
  */
 #more .provider .reason p {
   color: var(--ink);
@@ -1057,12 +1058,10 @@ tbody td:first-child .rank-move {
 
 #more .chips {
   display: flex;
-  flex: 1;
   flex-wrap: wrap;
-  align-content: flex-start;
   gap: 6px;
-  margin: 2px 0 0;
-  padding: 0 0 16px;
+  margin: 8px 0 0;
+  padding: 0;
   list-style: none;
 }
 
