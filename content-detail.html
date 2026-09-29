@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css?v=20260928-2" />
-    <link rel="stylesheet" href="assets/content-detail.css?v=20260929-10" />
+    <link rel="stylesheet" href="assets/content-detail.css?v=20260929-11" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -646,19 +646,26 @@
             "작품 정보를 불러오지 못했습니다.";
         });
     </script>
+    <script src="assets/webhard-ranking.js?v=20260929-2"></script>
     <script>
       /*
-       * 제휴 배너. 들어올 때마다 weight 비율로 하나를 고릅니다.
-       * 온디스크 50% · 케이디스크 30% · 나머지 20% 는 배너를 띄우지 않습니다.
+       * 제휴 배너. 들어올 때마다 하나를 골라 띄웁니다.
+       *
+       *   온디스크 35% · 케이디스크 30%
+       *   나머지 35% 는 이번 주 웹하드 순위(TOP 10)에 올라온 다른 곳끼리 똑같이 나눕니다.
+       *
+       * OTHERS 에는 순위 후보 전체(예비 포함) 배너를 보관해 두고,
+       * 그 주 TOP 10 에 든 곳만 뽑힙니다. 로고·이름·주소는 랭킹 엔진
+       * (assets/webhard-ranking.js)에서 가져오고, 여기서는 색과 문구만 적습니다.
        * 사이트 본문과 구분되도록 각 서비스 색을 쓰고 "광고" 표시를 붙입니다.
        */
       (() => {
         const host = document.querySelector("#promo");
         if (!host) return;
-        const ADS = [
+        const MAIN = [
           {
             id: "ondisk",
-            weight: 50,
+            weight: 35,
             name: "온디스크",
             logo: "assets/promo-ondisk.png",
             url: "go/ondisk/",
@@ -675,11 +682,48 @@
             text: "감상과 다운로드를 한 곳에서",
           },
         ];
-        // 0~100 사이에서 뽑아 누적 weight 구간에 들면 그 배너, 어디에도 안 들면(80~100) 미노출.
+        const OTHERS = {
+          wedisk: { color: "#3d61aa", title: "찜해 두고 <br /><em>다시 보기</em>" },
+          filejo: { color: "#326bb2", title: "인기 TOP100부터 <br /><em>골라 보기</em>" },
+          filenori: { color: "#306dd3", title: "모바일로 찾고 <br /><em>바로 재생</em>" },
+          me2disk: { color: "#4a74c9", title: "다양한 자료를 <br /><em>한 곳에서</em>" },
+          filecast: { color: "#19649a", title: "모바일 감상도 <br /><em>정액관으로</em>" },
+          filestar: { color: "#e7284e", title: "고르면 바로 <br /><em>실시간 재생</em>" },
+          filesun: { color: "#f0500f", title: "장르별로 둘러보고 <br /><em>출석 혜택까지</em>" },
+          fileis: { color: "#2f86e6", title: "할인 콘텐츠를 <br /><em>바로 스트리밍</em>" },
+          filecookie: { color: "#0767db", title: "PC에서 사고 <br /><em>모바일로 재생</em>" },
+          bigfile: { color: "#1b9e52", title: "실시간 TOP100으로 <br /><em>빠르게 찾기</em>" },
+          pdpop: { color: "#f06a0a", title: "인기 콘텐츠를 <br /><em>전용 프로그램으로</em>" },
+        };
+
+        const R = window.OTT_WEBHARD_RANKING;
+        const others = R
+          ? R.snapshot()
+              .order.filter((p) => OTHERS[p.id])
+              .map((p) => ({
+                id: p.id,
+                name: p.name,
+                logo: `assets/${p.logo}`,
+                url: p.url,
+                title: OTHERS[p.id].title,
+                text: p.description,
+                color: OTHERS[p.id].color,
+              }))
+          : [];
+
         let roll = Math.random() * 100;
-        const ad = ADS.find((a) => (roll -= a.weight) < 0);
-        if (!ad) return;
-        host.className = `promo promo--${ad.id}`;
+        let ad = MAIN.find((a) => (roll -= a.weight) < 0);
+        if (!ad) {
+          // 순위를 못 읽었으면 온디스크·케이디스크 비율대로 둘 중 하나.
+          ad = others.length
+            ? others[Math.floor(Math.random() * others.length)]
+            : MAIN[Math.random() * 65 < 35 ? 0 : 1];
+        }
+
+        host.className = ad.color
+          ? `promo promo--brand promo--${ad.id}`
+          : `promo promo--${ad.id}`;
+        if (ad.color) host.style.setProperty("--brand", ad.color);
         host.innerHTML =
           `<a class="promo-link" href="${ad.url}" target="_blank" rel="sponsored noopener noreferrer" aria-label="${ad.name} 광고, 새 창에서 열기">` +
           `<span class="promo-badge">광고</span>` +

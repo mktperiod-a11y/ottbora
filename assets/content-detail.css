@@ -514,6 +514,26 @@ h1 {
   --promo-shadow: 0 12px 28px rgba(10, 12, 18, 0.28);
 }
 
+/*
+ * 그 밖의 웹하드: 흰 판에 서비스 색(--brand)을 옅게 깔고 강조·버튼에 씁니다.
+ * 색은 content-detail.html 의 OTHERS 에서 서비스마다 넣습니다.
+ */
+.promo--brand {
+  --brand: #1583e9;
+  --promo-bg:
+    radial-gradient(90% 70% at 100% 100%, color-mix(in srgb, var(--brand) 14%, transparent) 0%, transparent 70%),
+    linear-gradient(165deg, #fff 0%, color-mix(in srgb, var(--brand) 7%, #fff) 100%);
+  --promo-border: color-mix(in srgb, var(--brand) 22%, #fff);
+  --promo-title: #17202d;
+  --promo-accent: var(--brand);
+  --promo-text: #5b6675;
+  --promo-cta-bg: var(--brand);
+  --promo-cta-ink: #fff;
+  --promo-badge: rgba(23, 32, 45, 0.45);
+  --promo-ring: color-mix(in srgb, var(--brand) 22%, transparent);
+  --promo-shadow: 0 10px 26px color-mix(in srgb, var(--brand) 12%, transparent);
+}
+
 .promo-link {
   position: relative;
   display: flex;
