@@ -1094,3 +1094,22 @@ tbody td:first-child .rank-move {
     font-size: 11.5px;
   }
 }
+
+/*
+ * 1~3위 강조(2026-09): 순위 숫자만 사이트 강조색(빨강)으로 칠합니다.
+ * 카드 띠·메달 색은 쓰지 않습니다.
+ */
+#more .provider.top-1 .rank-number,
+#more .provider.top-2 .rank-number,
+#more .provider.top-3 .rank-number,
+#comparison tbody tr.top-1 .table-rank-number,
+#comparison tbody tr.top-2 .table-rank-number,
+#comparison tbody tr.top-3 .table-rank-number {
+  color: var(--accent);
+}
+
+#comparison tbody tr.top-1 .table-rank-number,
+#comparison tbody tr.top-2 .table-rank-number,
+#comparison tbody tr.top-3 .table-rank-number {
+  font-weight: 900;
+}
