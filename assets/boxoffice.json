@@ -2,8 +2,8 @@
   "note": "일별 박스오피스를 작품 단위로 누적한 목록입니다. 콘텐츠ZONE 의 영화·애니 탭에서 씁니다.",
   "source": "영화진흥위원회 오픈API 일별 박스오피스",
   "sourceUrl": "https://www.kobis.or.kr/kobisopenapi/",
-  "updatedAt": "2026-09-28",
-  "latestDt": "20260927",
+  "updatedAt": "2026-09-29",
+  "latestDt": "20260928",
   "keepDays": 45,
   "movies": [
     {
@@ -12,17 +12,17 @@
       "titleEn": "The Assassin(s)",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 1566215,
+      "audienceAcc": 1633618,
       "genres": [
         "범죄",
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260917",
-      "lastSeenAt": "20260927",
-      "days": 7,
+      "lastSeenAt": "20260928",
+      "days": 8,
       "bestRank": 1,
-      "rank": 1,
+      "rank": 2,
       "runtime": 130,
       "directors": [
         "허진호"
@@ -47,9 +47,9 @@
       "synopsis": "1974년 8월 15일, 제29회 광복절 경축식. 전 국민이 지켜보는 생중계 현장에서 영부인이 저격당하는 초유의 사태가 발생한다. 순식간에 아수라장이 된 식장에서 용의자가 체포되고, 사건은 국가적 비극으로 기록되며 서둘러 종결된다. 하지만, 현장 경호를 담당했던 형사 철구, 사건의 이면을 응시하던 신문사 사회부 부장 재환, 그날의 혼란을 직접 목격한 신입 기자 영일은 발표된 수사 결과와 실제 정황 사이, 지워지지 않는 의문을 품기 시작하는데…",
       "synopsisCredit": "TMDB",
       "tmdbId": 1418428,
-      "score": null,
-      "scoreBy": "",
-      "voteCount": null,
+      "score": 10,
+      "scoreBy": "TMDB",
+      "voteCount": 1,
       "showing": true
     },
     {
@@ -58,7 +58,7 @@
       "titleEn": "The Odyssey",
       "titleOriginal": "",
       "openedAt": "2026-08-05",
-      "audienceAcc": 11783295,
+      "audienceAcc": 11814652,
       "genres": [
         "액션",
         "드라마",
@@ -66,8 +66,8 @@
       ],
       "type": "영화",
       "firstSeenAt": "20260824",
-      "lastSeenAt": "20260927",
-      "days": 34,
+      "lastSeenAt": "20260928",
+      "days": 35,
       "bestRank": 1,
       "rank": 3,
       "runtime": 172,
@@ -105,16 +105,16 @@
       "titleEn": "The Intern",
       "titleOriginal": "",
       "openedAt": "2026-09-16",
-      "audienceAcc": 756056,
+      "audienceAcc": 768591,
       "genres": [
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260904",
-      "lastSeenAt": "20260927",
-      "days": 14,
+      "lastSeenAt": "20260928",
+      "days": 15,
       "bestRank": 1,
-      "rank": 4,
+      "rank": 5,
       "runtime": 132,
       "directors": [
         "김도영"
@@ -148,12 +148,60 @@
       "showing": true
     },
     {
+      "movieCd": "20256161",
+      "title": "타짜: 벨제붑의 노래",
+      "titleEn": "TAZZA: The Song of Beelzebub",
+      "titleOriginal": "",
+      "openedAt": "2026-09-23",
+      "audienceAcc": 901929,
+      "genres": [
+        "범죄",
+        "드라마"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260914",
+      "lastSeenAt": "20260928",
+      "days": 10,
+      "bestRank": 1,
+      "rank": 1,
+      "runtime": 129,
+      "directors": [
+        "최국희"
+      ],
+      "cast": [
+        "변요한",
+        "노재원",
+        "미요시 아야카",
+        "김민호",
+        "임세미",
+        "스테파니 리"
+      ],
+      "producers": [
+        "(주)싸이더스"
+      ],
+      "distributors": [
+        "(주)씨제이이엔엠"
+      ],
+      "rating": "청소년관람불가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20256161.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "타고난 끗발로 사람의 마음을 사로잡는 장태영과 천부적인 머리와 노력으로 스스로를 증명하는 박태영. 학창 시절부터 절친한 친구인 두 사람은 온라인 카지노 사업에 뛰어들며 승승장구하고, 사업의 성공이 커질수록 럭키한 장태만 주목받자, 박태의 질투는 조용히 자라난다. 성공의 꼭대기에서 질투는 배신으로 변한다. 장태영은 베트남 출장 중 박태영의 예상치 못한 배신으로 나락에 떨어지고, 기적적으로 살아남아 전설의 타짜 곽동욱에게 포커를 사사 받는다. 한편, 야쿠자 조직이 배후에 있는 가네코는 한국의 온라인 카지노 사업에 관심을 갖고 일본과 베트남의 거물들이 참여한 거액의 글로벌 도박판을 셋팅 한다. 벼랑 끝 도박판, 같은 이름, 다른 운명의 친구 장태영과 박태영은 마침내 그 곳에서 마주하는데…",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1394740,
+      "score": 4,
+      "scoreBy": "TMDB",
+      "voteCount": 1,
+      "showing": true
+    },
+    {
       "movieCd": "20262770",
       "title": "스파이더맨: 브랜드 뉴 데이",
       "titleEn": "Spider-Man: Brand New Day",
       "titleOriginal": "",
       "openedAt": "2026-07-29",
-      "audienceAcc": 9032428,
+      "audienceAcc": 9034501,
       "genres": [
         "액션",
         "어드벤처",
@@ -161,8 +209,8 @@
       ],
       "type": "영화",
       "firstSeenAt": "20260824",
-      "lastSeenAt": "20260927",
-      "days": 34,
+      "lastSeenAt": "20260928",
+      "days": 35,
       "bestRank": 2,
       "rank": 9,
       "runtime": 144,
@@ -200,14 +248,14 @@
       "titleEn": "Obsession",
       "titleOriginal": "",
       "openedAt": "2026-09-02",
-      "audienceAcc": 849153,
+      "audienceAcc": 859183,
       "genres": [
         "공포(호러)"
       ],
       "type": "영화",
       "firstSeenAt": "20260902",
-      "lastSeenAt": "20260927",
-      "days": 25,
+      "lastSeenAt": "20260928",
+      "days": 26,
       "bestRank": 2,
       "rank": 6,
       "runtime": 108,
@@ -238,60 +286,12 @@
       "showing": true
     },
     {
-      "movieCd": "20256161",
-      "title": "타짜: 벨제붑의 노래",
-      "titleEn": "TAZZA: The Song of Beelzebub",
-      "titleOriginal": "",
-      "openedAt": "2026-09-23",
-      "audienceAcc": 833016,
-      "genres": [
-        "범죄",
-        "드라마"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20260914",
-      "lastSeenAt": "20260927",
-      "days": 9,
-      "bestRank": 2,
-      "rank": 2,
-      "runtime": 129,
-      "directors": [
-        "최국희"
-      ],
-      "cast": [
-        "변요한",
-        "노재원",
-        "미요시 아야카",
-        "김민호",
-        "임세미",
-        "스테파니 리"
-      ],
-      "producers": [
-        "(주)싸이더스"
-      ],
-      "distributors": [
-        "(주)씨제이이엔엠"
-      ],
-      "rating": "청소년관람불가",
-      "koficDetailFetched": true,
-      "koficDetailVersion": 3,
-      "poster": "assets/posters/20256161.webp",
-      "posterCredit": "TMDB",
-      "synopsis": "타고난 끗발로 사람의 마음을 사로잡는 장태영과 천부적인 머리와 노력으로 스스로를 증명하는 박태영. 학창 시절부터 절친한 친구인 두 사람은 온라인 카지노 사업에 뛰어들며 승승장구하고, 사업의 성공이 커질수록 럭키한 장태만 주목받자, 박태의 질투는 조용히 자라난다. 성공의 꼭대기에서 질투는 배신으로 변한다. 장태영은 베트남 출장 중 박태영의 예상치 못한 배신으로 나락에 떨어지고, 기적적으로 살아남아 전설의 타짜 곽동욱에게 포커를 사사 받는다. 한편, 야쿠자 조직이 배후에 있는 가네코는 한국의 온라인 카지노 사업에 관심을 갖고 일본과 베트남의 거물들이 참여한 거액의 글로벌 도박판을 셋팅 한다. 벼랑 끝 도박판, 같은 이름, 다른 운명의 친구 장태영과 박태영은 마침내 그 곳에서 마주하는데…",
-      "synopsisCredit": "TMDB",
-      "tmdbId": 1394740,
-      "score": 4,
-      "scoreBy": "TMDB",
-      "voteCount": 1,
-      "showing": true
-    },
-    {
       "movieCd": "20263870",
       "title": "레지던트 이블: 0번째 밤",
       "titleEn": "Resident Evil",
       "titleOriginal": "",
       "openedAt": "2026-09-17",
-      "audienceAcc": 186950,
+      "audienceAcc": 191584,
       "genres": [
         "공포(호러)",
         "액션",
@@ -299,8 +299,8 @@
       ],
       "type": "영화",
       "firstSeenAt": "20260917",
-      "lastSeenAt": "20260927",
-      "days": 10,
+      "lastSeenAt": "20260928",
+      "days": 11,
       "bestRank": 3,
       "rank": 8,
       "runtime": 93,
@@ -333,16 +333,16 @@
       "titleEn": "Possible Love",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 115936,
+      "audienceAcc": 130353,
       "genres": [
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260921",
-      "lastSeenAt": "20260927",
-      "days": 5,
-      "bestRank": 5,
-      "rank": 5,
+      "lastSeenAt": "20260928",
+      "days": 6,
+      "bestRank": 4,
+      "rank": 4,
       "runtime": 164,
       "directors": [
         "이창동"
@@ -381,15 +381,15 @@
       "titleEn": "Avengers: Endgame Encore",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 107950,
+      "audienceAcc": 114206,
       "genres": [
         "액션",
         "SF"
       ],
       "type": "영화",
       "firstSeenAt": "20260923",
-      "lastSeenAt": "20260927",
-      "days": 4,
+      "lastSeenAt": "20260928",
+      "days": 5,
       "bestRank": 5,
       "rank": 7,
       "runtime": 183,
@@ -423,6 +423,54 @@
       "showing": true
     },
     {
+      "movieCd": "20224573",
+      "title": "부활남: 더 레드",
+      "titleEn": "REAWAKENED MAN",
+      "titleOriginal": "",
+      "openedAt": "2026-09-30",
+      "audienceAcc": 8395,
+      "genres": [
+        "액션"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260918",
+      "lastSeenAt": "20260928",
+      "days": 2,
+      "bestRank": 6,
+      "rank": 10,
+      "runtime": 101,
+      "directors": [
+        "백"
+      ],
+      "cast": [
+        "구교환",
+        "신승호",
+        "강기영",
+        "김시아",
+        "김성령"
+      ],
+      "producers": [
+        "씨제이이엔엠스튜디오스(주)용필름지점",
+        "주식회사 슈퍼픽션",
+        "주식회사 와이랩"
+      ],
+      "distributors": [
+        "롯데컬처웍스(주)롯데엔터테인먼트"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20224573.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "근거 없는 자신감이 유일한 스펙인 취준생 ‘석환’이 죽은 뒤 72시간이면 부활하는 능력을 갖고 있다는 걸 알게 된 후 의문의 추격을 당하며 펼쳐지는 이야기",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 961214,
+      "score": null,
+      "scoreBy": "",
+      "voteCount": null,
+      "showing": true
+    },
+    {
       "movieCd": "20261807",
       "title": "극장판 치이카와: 인어 섬의 비밀",
       "titleEn": "Chiikawa the Movie: The Secret of the Mermaid Island",
@@ -437,7 +485,7 @@
       "lastSeenAt": "20260927",
       "days": 3,
       "bestRank": 6,
-      "rank": 10,
+      "rank": null,
       "runtime": 98,
       "directors": [
         "오이카와 케이"
@@ -465,7 +513,7 @@
       "score": 7.3,
       "scoreBy": "TMDB",
       "voteCount": 8,
-      "showing": true
+      "showing": false
     },
     {
       "movieCd": "20266051",
@@ -830,54 +878,6 @@
       "score": 7.6,
       "scoreBy": "TMDB",
       "voteCount": 97,
-      "showing": false
-    },
-    {
-      "movieCd": "20224573",
-      "title": "부활남: 더 레드",
-      "titleEn": "REAWAKENED MAN",
-      "titleOriginal": "",
-      "openedAt": "2026-09-30",
-      "audienceAcc": 6350,
-      "genres": [
-        "액션"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20260918",
-      "lastSeenAt": "20260918",
-      "days": 1,
-      "bestRank": 6,
-      "rank": null,
-      "runtime": 101,
-      "directors": [
-        "백"
-      ],
-      "cast": [
-        "구교환",
-        "신승호",
-        "강기영",
-        "김시아",
-        "김성령"
-      ],
-      "producers": [
-        "씨제이이엔엠스튜디오스(주)용필름지점",
-        "주식회사 슈퍼픽션",
-        "주식회사 와이랩"
-      ],
-      "distributors": [
-        "롯데컬처웍스(주)롯데엔터테인먼트"
-      ],
-      "rating": "15세이상관람가",
-      "koficDetailFetched": true,
-      "koficDetailVersion": 3,
-      "poster": "assets/posters/20224573.webp",
-      "posterCredit": "TMDB",
-      "synopsis": "근거 없는 자신감이 유일한 스펙인 취준생 ‘석환’이 죽은 뒤 72시간이면 부활하는 능력을 갖고 있다는 걸 알게 된 후 의문의 추격을 당하며 펼쳐지는 이야기",
-      "synopsisCredit": "TMDB",
-      "tmdbId": 961214,
-      "score": null,
-      "scoreBy": "",
-      "voteCount": null,
       "showing": false
     },
     {
