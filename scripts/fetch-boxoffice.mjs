@@ -172,6 +172,7 @@ async function loadPrev(path = OUT) {
       days: Number(m.days) || 1,
       bestRank: Number(m.bestRank) || Number(m.rank) || 99,
       rank: null,
+      audienceDay: null,
       runtime: Number(m.runtime) || null,
       directors: Array.isArray(m.directors) ? m.directors : [],
       cast: Array.isArray(m.cast) ? m.cast : [],
@@ -285,7 +286,11 @@ for (const { targetDt, list } of fetched) {
     e.top = Math.min(e.top, Number(m.rank));
     // bestRank 는 기간 중 최고 순위입니다. 화면에 "지금 몇 위"로 쓰려면
     // 마지막 집계일의 순위가 따로 필요합니다.
-    if (targetDt === latestDt) e.rankNow = Number(m.rank);
+    // 그날 하루 관객(audiCnt)도 마지막 집계일 것만 둡니다. 홈 카드의 "어제 N명".
+    if (targetDt === latestDt) {
+      e.rankNow = Number(m.rank);
+      e.dayNow = Number(m.audiCnt) || null;
+    }
     // 가장 최근 날의 행을 남깁니다. 누적 관객(audiAcc)이 최신값이 되도록.
     if (targetDt > e.rowDt) {
       e.row = m;
@@ -321,6 +326,7 @@ for (const [movieCd, e] of seen) {
       bestRank: e.top,
       // 마지막 집계일에 차트에 없었으면 "지금 순위"는 없습니다.
       rank: e.rankNow ?? null,
+      audienceDay: e.dayNow ?? null,
       runtime: null,
       directors: [],
       cast: [],
@@ -341,6 +347,7 @@ for (const [movieCd, e] of seen) {
   if (last > prev.lastSeenAt) prev.lastSeenAt = last;
   prev.bestRank = Math.min(prev.bestRank, e.top);
   prev.rank = e.rankNow ?? null;
+  prev.audienceDay = e.dayNow ?? null;
   prev.title = String(m.movieNm);
   prev.openedAt = m.openDt || prev.openedAt;
   prev.audienceAcc = m.audiAcc ? Number(m.audiAcc) : prev.audienceAcc;
@@ -353,6 +360,7 @@ for (const [movieCd, m] of movies) {
   if (daysBetween(latestDt, m.lastSeenAt) > KEEP_DAYS) {
     movies.delete(movieCd);
     m.rank = null;
+    m.audienceDay = null;
     m.showing = false;
     archive.set(movieCd, m);
     dropped += 1;
