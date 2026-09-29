@@ -690,7 +690,7 @@
         if (!ad) return;
         host.className = `promo promo--${ad.id}`;
         host.innerHTML =
-          `<a class="promo-link" href="${ad.url}" target="_blank" rel="sponsored noopener noreferrer" aria-label="${ad.name} 광고, 새 창에서 열기">` +
+          `<a class="promo-link" data-provider="${ad.id}" href="${ad.url}" target="_blank" rel="sponsored noopener noreferrer" aria-label="${ad.name} 광고, 새 창에서 열기">` +
           `<span class="promo-badge">광고</span>` +
           `<span class="promo-logo"><img src="${ad.logo}" alt="${ad.name}" /></span>` +
           `<span class="promo-body"><strong class="promo-title">${ad.title}</strong>` +
@@ -698,7 +698,12 @@
           `<span class="promo-cta">${ad.name} 바로가기 <span aria-hidden="true">→</span></span>` +
           `</a>`;
         host.hidden = false;
+        // 배너 노출(클릭은 track.js 가 webhard_click 으로 남깁니다).
+        if (typeof window.gtag === "function") {
+          window.gtag("event", "promo_view", { provider: ad.id, placement: "detail_banner" });
+        }
       })();
     </script>
+    <script src="assets/track.js?v=20260929-1"></script>
   </body>
 </html>
