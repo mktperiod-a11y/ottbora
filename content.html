@@ -365,15 +365,20 @@
         );
       }
 
-      function netflixSeriesTag(w) {
-        if (w.type !== "드라마") return "";
-        const manualNetflix = (w.watch || []).some((x) =>
-          /netflix|넷플릭스/i.test(String(x.name || "")),
-        );
-        const autoNetflix = (w.providers || []).some((x) =>
-          /netflix|넷플릭스/i.test(String(x)),
-        );
-        return manualNetflix || autoNetflix ? "넷플릭스 시리즈" : "";
+      /*
+       * 넷플릭스가 직접 내보낸 작품(오리지널)에만 답니다.
+       *
+       * 전에는 "넷플릭스에서 볼 수 있음"(TMDB 제공처)만 보고 달아서,
+       * JTBC·tvN 드라마가 넷플릭스에도 올라와 있으면 "넷플릭스 시리즈"
+       * 가 붙었습니다. 시청 가능 여부는 태그로 쓰지 않습니다.
+       *
+       * - 자동(TMDB): 방송사(networks)가 Netflix 인 드라마·예능
+       * - 수동(content-data.json): netflixOriginal: true 로 적은 작품
+       */
+      function netflixOriginalTag(w) {
+        if (w.type !== "드라마" && w.type !== "예능") return "";
+        const auto = (w.networks || []).some((n) => /^netflix$/i.test(String(n).trim()));
+        return w.netflixOriginal === true || auto ? "넷플릭스 오리지널" : "";
       }
 
       /** 손으로 고른 작품 — 포스터가 있고 상세 페이지로 넘어갑니다. */
@@ -392,7 +397,7 @@
          * 근거가 없으면 달지 않습니다. content-data.json 의 pickedBy
          * 에 근거를 적으면 그 문구가 그대로 태그가 됩니다.
          */
-        const tags = [credit(w.title, w.pickedBy), netflixSeriesTag(w)];
+        const tags = [credit(w.title, w.pickedBy), netflixOriginalTag(w)];
         return (
           `<a class="card" href="content-detail.html?id=${encodeURIComponent(w.id)}">` +
           `<span class="thumb">` +
@@ -519,7 +524,7 @@
 
         const tags = [
           w.rank && w.rank <= 20 ? `인기 ${w.rank}위` : "",
-          netflixSeriesTag(w),
+          netflixOriginalTag(w),
         ];
 
         const body =
