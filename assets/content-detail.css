@@ -705,7 +705,8 @@ h1 {
 
 /*
  * 예매: 극장마다 같은 크기의 타일에 공식 컬러 로고와 그 옆 극장 이름을 둡니다.
- * 옅은 회색 판이 기본이고, 올리면 흰 판으로 떠오릅니다.
+ * 흰 바탕에 각 극장 브랜드 색 테두리(고스트)이고, 올리면 테두리가 진해지며
+ * 브랜드 색이 아주 옅게 깔립니다. 모바일은 로고만 둡니다.
  * 로고가 없는 곳은 이름 글자로 둡니다.
  */
 .cinema-tiles {
@@ -724,17 +725,19 @@ h1 {
   gap: 10px;
   height: 58px;
   padding: 0 22px 0 14px;
-  border: 1px solid transparent;
+  --brand: #8a94a3;
+  border: 1.5px solid #dfe3ea;
+  border-color: color-mix(in srgb, var(--brand) 38%, #fff);
   border-radius: 12px;
-  background: #f3f5f8;
+  background: #fff;
   text-decoration: none;
   transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
 }
 
 .cinema-tile:hover {
-  background: #fff;
-  border-color: #e1e5ec;
-  box-shadow: 0 6px 18px rgba(23, 32, 45, 0.08);
+  border-color: var(--brand);
+  background: color-mix(in srgb, var(--brand) 5%, #fff);
+  box-shadow: 0 6px 18px rgba(23, 32, 45, 0.07);
   transform: translateY(-1px);
 }
 
@@ -800,36 +803,30 @@ h1 {
 }
 
 .cinema-tile:hover .cinema-go {
-  color: var(--ink);
+  color: var(--brand);
 }
 
 @media (max-width: 650px) {
-  /* 좁은 화면에서는 세 칸에 로고와 이름이 함께 들어가지 않아 한 줄에 하나씩 쌓습니다. */
+  /* 좁은 화면에서는 이름을 빼고 로고만 세 칸에 둡니다(이름은 스크린리더 라벨에 남음). */
   .cinema-tiles {
-    grid-template-columns: minmax(0, 1fr);
     max-width: none;
     gap: 7px;
   }
   .cinema-tile {
-    justify-content: flex-start;
-    height: 54px;
-    gap: 12px;
-    padding: 0 36px 0 16px;
+    height: 52px;
+    padding: 0 10px;
     border-radius: 10px;
   }
   .cinema-mark {
-    justify-content: center;
-    width: 96px;
     height: 20px;
   }
   .cinema-name {
-    font-size: 13px;
+    display: none;
   }
   .cinema-go {
-    top: 50%;
-    right: 16px;
-    transform: translateY(-50%);
-    font-size: 13px;
+    top: 5px;
+    right: 7px;
+    font-size: 10px;
   }
   .cinema-logo {
     height: 16px;

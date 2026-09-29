@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css?v=20260928-2" />
-    <link rel="stylesheet" href="assets/content-detail.css?v=20260929-6" />
+    <link rel="stylesheet" href="assets/content-detail.css?v=20260929-7" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -471,6 +471,7 @@
             const direct = override?.directUrls?.[c.id];
             return {
               id: /^[a-z]+$/.test(c.id || "") ? c.id : "",
+              color: /^#[0-9a-f]{6}$/i.test(c.color || "") ? c.color : "",
               name: c.name,
               // 공식 로고 파일명만 받습니다(경로·주소가 섞이면 쓰지 않음).
               logo: /^[\w.-]+\.(png|svg|webp)$/.test(c.logo || "") ? `assets/${c.logo}` : "",
@@ -490,6 +491,7 @@
             .map(
               (c) =>
                 `<a class="cinema-tile" href="${c.href}" target="_blank" rel="noopener noreferrer"` +
+                (c.color ? ` style="--brand:${c.color}"` : "") +
                 ` aria-label="${c.name} 예매, 새 창에서 열기">` +
                 (c.logo
                   ? `<span class="cinema-mark"><img class="cinema-logo cinema-logo--${c.id}" src="${c.logo}" alt="" aria-hidden="true" /></span>`

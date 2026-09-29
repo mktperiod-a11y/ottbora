@@ -10,6 +10,7 @@
       "name": "CGV",
       "short": "CGV",
       "host": "cgv.co.kr",
+      "color": "#e8321f",
       "logo": "cinema-cgv.png",
       "bookingUrl": "https://cgv.co.kr/cnm/movieBook/movie",
       "searchUrl": ""
@@ -19,6 +20,7 @@
       "name": "메가박스",
       "short": "메가박스",
       "host": "www.megabox.co.kr",
+      "color": "#342363",
       "logo": "cinema-megabox.png",
       "bookingUrl": "https://www.megabox.co.kr/booking",
       "searchUrl": ""
@@ -28,13 +30,14 @@
       "name": "롯데시네마",
       "short": "롯데",
       "host": "www.lottecinema.co.kr",
+      "color": "#d3292b",
       "logo": "cinema-lotte.png",
       "bookingUrl": "https://www.lottecinema.co.kr/NLCHS/ticketing",
       "searchUrl": "",
       "deepLink": "https://www.lottecinema.co.kr/NLCHS/ticketing?movieCd={code}&movieName={title}"
     }
   ],
-  "logoNote": "logo 는 예매 타일에 극장 이름과 나란히 넣는 공식 컬러 로고입니다(assets/). 롯데시네마는 이름과 겹치지 않게 심벌(L)만 씁니다. 없으면 이름 글자로 씁니다. 공식 파일만 씁니다 — scripts/fetch-logos.mjs 로 받습니다.",
+  "logoNote": "logo 는 예매 타일에 극장 이름과 나란히 넣는 공식 컬러 로고입니다(assets/). 롯데시네마는 이름과 겹치지 않게 심벌(L)만 씁니다. color 는 공식 로고에서 뽑은 브랜드 색으로, 예매 타일 테두리에 씁니다. 없으면 이름 글자로 씁니다. 공식 파일만 씁니다 — scripts/fetch-logos.mjs 로 받습니다.",
   "shortNote": "카드 안 칩에 쓰는 짧은 이름입니다. 칩 세 개가 한 줄에 들어가야 해서 따로 둡니다. 전체 이름은 링크 설명(title)에 들어갑니다.",
   "movieOverrides": [
     {
