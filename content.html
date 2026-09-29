@@ -200,6 +200,30 @@
       const STALE_DAYS = 10;
 
       /** 날짜가 오늘로부터 days 일 안쪽인가. 미래 날짜는 항상 거짓입니다. */
+      /*
+       * 손으로 넣은 작품의 만료. 종영 후 몇 달이 지나면 목록에서 뺍니다.
+       * 규칙은 content-data.json 의 expiry 에 있고, 사이트맵을 만드는
+       * scripts/update-seo.mjs 도 같은 규칙을 씁니다.
+       */
+      function manualDate(raw) {
+        const m = String(raw || "").match(/(\d{4})[.\-](\d{1,2})[.\-](\d{1,2})/);
+        return m ? new Date(Date.UTC(+m[1], +m[2] - 1, +m[3])) : null;
+      }
+      function manualExpired(w, rule) {
+        if (!rule) return false;
+        let end = manualDate(w.endedAt);
+        if (!end) {
+          const start = manualDate(w.releasedAt);
+          const run = Number(rule.estimatedRunMonths?.[w.type]);
+          if (!start || !run) return false;
+          end = new Date(start);
+          end.setUTCMonth(end.getUTCMonth() + run);
+        }
+        const until = new Date(end);
+        until.setUTCMonth(until.getUTCMonth() + (Number(rule.afterEndMonths) || 6));
+        return Date.now() > until.getTime();
+      }
+
       function isRecentDate(raw, days) {
         const m = String(raw || "").match(/^(\d{4})-?(\d{2})-?(\d{2})$/);
         if (!m) return false;
@@ -731,13 +755,14 @@
           .catch(() => null);
 
       Promise.all([
-        fetch("assets/content-data.json?v=20260929-2").then((r) => r.json()),
+        fetch("assets/content-data.json?v=20260929-3").then((r) => r.json()),
         optional("assets/boxoffice.json"),
         optional("assets/anime.json"),
         optional("assets/tv-ranking.json"),
       ])
         .then(([d, box, anime, tv]) => {
           DATA = d;
+          DATA.works = (DATA.works || []).filter((w) => !manualExpired(w, DATA.expiry));
           DATA.boxoffice = Array.isArray(box?.movies) ? box.movies : [];
           DATA.anime = Array.isArray(anime?.works) ? anime.works : [];
           /*

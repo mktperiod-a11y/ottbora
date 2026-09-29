@@ -82,7 +82,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css?v=20260928-2" />
-    <link rel="stylesheet" href="assets/index.css?v=20260929-1" />
+    <link rel="stylesheet" href="assets/index.css?v=20260929-2" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -139,10 +139,7 @@
           <div>
             <span class="eyebrow">CONTENT ZONE</span>
             <h2 id="picks-title">지금 인기 극장 상영작</h2>
-            <p class="head-note picks-status" id="picks-note">
-              <span class="picks-dot" aria-hidden="true"></span>
-              <span id="picks-note-text">극장 관객 순위 1~5위</span>
-            </p>
+            <p class="head-note" id="picks-note">극장 관객 순위 1~5위</p>
           </div>
           <a class="head-action seed-action-button seed-action-button--variant_neutralWeak seed-action-button--size_medium seed-action-button--layout_withText seed-action-button--size_medium-layout_withText" href="content.html">전체 콘텐츠 보기</a>
         </div>
@@ -348,26 +345,12 @@
         return n.toLocaleString("ko-KR");
       };
 
-      /** 하루 관객처럼 작은 수는 10만 미만일 때 소수 한 자리까지: "5.8만". */
-      const peopleFine = (n) => {
-        n = Number(n) || 0;
-        if (n >= 1e4 && n < 1e5) return `${(n / 1e4).toFixed(1).replace(/\.0$/, "")}만`;
-        return people(n);
-      };
-
-      /*
-       * 카드 아래 관객 줄. 누적 관객을 크게, 전날 하루 관객을 작게 둡니다.
-       * 하루 관객(audienceDay)은 수집 스크립트가 마지막 집계일 것만 남기므로
-       * 없으면 누적만 씁니다.
-       */
-      const audienceBlock = (m, dayLabel) => {
+      /* 카드 아래 관객 줄: 누적 관객을 크게 둡니다. */
+      const audienceBlock = (m) => {
         if (!m.audienceAcc) return "";
         return (
           `<div class="pick-audience">` +
           `<span class="pick-total"><strong>${people(m.audienceAcc)}명</strong> 관람</span>` +
-          (m.audienceDay
-            ? `<span class="pick-day">${esc(dayLabel)} +${peopleFine(m.audienceDay)}명</span>`
-            : "") +
           `</div>`
         );
       };
@@ -383,9 +366,8 @@
           if (top.length < PICK_N) return drawFallbackPicks();
 
           const [, mo, d] = data.latestDt.match(/^\d{4}(\d{2})(\d{2})$/);
-          const dayLabel = `${+mo}/${+d}`;
-          const note = document.querySelector("#picks-note-text");
-          if (note) note.textContent = `${+mo}월 ${+d}일 박스오피스 · 매일 오전 업데이트`;
+          const note = document.querySelector("#picks-note");
+          if (note) note.textContent = `${+mo}월 ${+d}일 박스오피스`;
 
           drawPicks(
             top.map((m) => ({
@@ -394,7 +376,7 @@
               id: `kofic-${m.movieCd}`,
               poster: m.poster || "",
               rank: m.rank,
-              audience: audienceBlock(m, dayLabel),
+              audience: audienceBlock(m),
             })),
           );
         })

@@ -627,22 +627,6 @@ section:has(.guide-grid) .head h2 {
 }
 
 /* ===== 홈 "지금 인기 극장 상영작" — 박스오피스 순위 딱지와 관객 수 ===== */
-.picks-status {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-/* 웹하드 순위와 같은 초록 점: "지금 갱신되는 정보" 표시 */
-.picks-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #22b35e;
-  box-shadow: 0 0 0 4px rgba(34, 179, 94, 0.14);
-  flex: 0 0 auto;
-}
-
 #picks .thumb {
   position: relative;
 }
@@ -665,7 +649,7 @@ section:has(.guide-grid) .head h2 {
   backdrop-filter: blur(4px);
 }
 
-/* 관객 줄: 누적을 크게, 전날 하루 관객을 작게 */
+/* 관객 줄: 누적 관객을 크게 */
 .pick-audience {
   display: flex;
   flex-wrap: wrap;
@@ -688,13 +672,6 @@ section:has(.guide-grid) .head h2 {
   letter-spacing: -0.02em;
 }
 
-.pick-day {
-  color: #1a9a52;
-  font-size: 12px;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
 @media (max-width: 760px) {
   .pick-rank {
     top: 6px;
@@ -705,8 +682,7 @@ section:has(.guide-grid) .head h2 {
   .pick-total strong {
     font-size: 14.5px;
   }
-  .pick-total,
-  .pick-day {
+  .pick-total {
     font-size: 11px;
   }
 }
