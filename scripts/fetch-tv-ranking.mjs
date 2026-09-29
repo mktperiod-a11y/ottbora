@@ -52,6 +52,7 @@ let rules = {
   blacklistVarietyIds: [],
   includeKeywords: [],
   excludeKeywords: [],
+  excludeNetworks: [],
 };
 try {
   rules = { ...rules, ...JSON.parse(await readFile(RULES, "utf8")) };
@@ -59,6 +60,9 @@ try {
 
 const white = new Set(rules.whitelistVarietyIds || []);
 const black = new Set(rules.blacklistVarietyIds || []);
+const excludedNetworks = new Set(
+  (rules.excludeNetworks || []).map((x) => String(x).trim().toLowerCase()),
+);
 const includes = (rules.includeKeywords || []).map((x) => String(x).toLowerCase());
 const excludes = (rules.excludeKeywords || []).map((x) => String(x).toLowerCase());
 
@@ -250,6 +254,19 @@ function withDetail(x) {
   return { ...x, ...(detailById.get(x.id) || {}) };
 }
 
+/*
+ * 숏폼 드라마 플랫폼(Shortime·Vigloo·ReelShort 등)에서 나온 작품은 뺍니다.
+ * 회당 1~2분짜리 세로 영상이라 TV 드라마와 나란히 두면 목록 성격이
+ * 흐려지고, TMDB 인기도가 해외 팬 조회로 부풀어 위로 올라오기 쉽습니다.
+ * 방송사(networks)는 상세 조회에서 오므로 withDetail 뒤에 거릅니다.
+ * 방송사 하나라도 목록에 있으면 뺍니다(iQIYI + Shortime 공동 공개 등).
+ */
+function fromExcludedNetwork(x) {
+  return (x.networks || []).some((n) =>
+    excludedNetworks.has(String(n?.name || n).trim().toLowerCase()),
+  );
+}
+
 function currentlyRelevant(x) {
   if (white.has(x.id)) return true;
   if (x.detailUnavailable) return true;
@@ -267,10 +284,12 @@ function currentlyRelevant(x) {
 
 const varietyRaw = varietyCandidates
   .map(withDetail)
+  .filter((x) => !fromExcludedNetwork(x))
   .filter(currentlyRelevant)
   .slice(0, KEEP_PER_TYPE);
 const dramaRaw = dramaCandidates
   .map(withDetail)
+  .filter((x) => !fromExcludedNetwork(x))
   .filter(currentlyRelevant)
   .slice(0, KEEP_PER_TYPE);
 

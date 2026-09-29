@@ -46,5 +46,14 @@
   },
   "whitelistNotes": {
     "318167": "유재석 캠프 — 수동 큐레이션 예능이며 TMDB exact match 확인, Discover 후보 누락 보정"
-  }
+  },
+  "excludeNetworks": [
+    "Shortime",
+    "Vigloo",
+    "ReelShort",
+    "Lezhin Snack",
+    "LIKEY",
+    "iQIYI International"
+  ],
+  "excludeNetworksNote": "숏폼 드라마 플랫폼. 방송사 중 하나라도 여기 있으면 드라마·예능 목록에서 뺍니다. iQIYI International 은 한국 작품을 숏폼으로만 공동 공개해 함께 둡니다."
 }

@@ -390,46 +390,11 @@
       "metadataSource": "TMDB"
     },
     {
-      "tmdbId": 323439,
-      "title": "천재 아기의 인생 역전",
-      "originalTitle": "천재 아기의 인생 역전",
-      "type": "드라마",
-      "rank": 10,
-      "popularity": 13.1936,
-      "genres": [
-        18
-      ],
-      "overview": "",
-      "firstAirDate": "2026-05-07",
-      "lastAirDate": "2026-09-23",
-      "status": "Returning Series",
-      "inProduction": true,
-      "nextAirDate": "",
-      "runtime": null,
-      "episodes": 4,
-      "score": null,
-      "scoreBy": "TMDB",
-      "networks": [
-        "Vigloo"
-      ],
-      "creators": [],
-      "providers": [],
-      "poster": "https://image.tmdb.org/t/p/w500/tjaWXpJeLMVaHzJcc9Mf5McyPwf.jpg",
-      "posterCredit": "TMDB",
-      "rankingSource": {
-        "provider": "TMDB",
-        "metric": "popularity",
-        "rank": 10,
-        "observedAt": "2026-09-28"
-      },
-      "metadataSource": "TMDB"
-    },
-    {
       "tmdbId": 321984,
       "title": "하절기",
       "originalTitle": "하절기",
       "type": "드라마",
-      "rank": 11,
+      "rank": 10,
       "popularity": 11.4964,
       "genres": [
         18
@@ -468,7 +433,7 @@
       "title": "사랑이 온다",
       "originalTitle": "사랑이 온다",
       "type": "드라마",
-      "rank": 12,
+      "rank": 11,
       "popularity": 10.7503,
       "genres": [
         10751,
@@ -509,7 +474,7 @@
       "title": "가족관계증명서",
       "originalTitle": "가족관계증명서",
       "type": "드라마",
-      "rank": 13,
+      "rank": 12,
       "popularity": 10.5262,
       "genres": [
         18,
@@ -550,7 +515,7 @@
       "title": "지금 불륜이 문제가 아닙니다",
       "originalTitle": "지금 불륜이 문제가 아닙니다",
       "type": "드라마",
-      "rank": 14,
+      "rank": 13,
       "popularity": 10.3089,
       "genres": [
         80,
@@ -589,7 +554,7 @@
       "title": "신병",
       "originalTitle": "신병",
       "type": "드라마",
-      "rank": 15,
+      "rank": 14,
       "popularity": 8.7878,
       "genres": [
         18,
@@ -629,7 +594,7 @@
       "title": "욕망의 덫",
       "originalTitle": "욕망의 덫",
       "type": "드라마",
-      "rank": 16,
+      "rank": 15,
       "popularity": 8.6928,
       "genres": [
         9648,
@@ -666,7 +631,7 @@
       "title": "기쁜 우리 좋은 날",
       "originalTitle": "기쁜 우리 좋은 날",
       "type": "드라마",
-      "rank": 17,
+      "rank": 16,
       "popularity": 7.7379,
       "genres": [
         10751,
@@ -703,121 +668,11 @@
       "metadataSource": "TMDB"
     },
     {
-      "tmdbId": 331613,
-      "title": "수영부 또라이에게 찍혀버렸다!",
-      "originalTitle": "수영부 또라이에게 찍혀버렸다!",
-      "type": "드라마",
-      "rank": 18,
-      "popularity": 6.5871,
-      "genres": [
-        18
-      ],
-      "overview": "수영 신동이었으나 빽 없이 꼴통이 된 지수, 장학금을 위해 신입 강한의 셔틀이 된다. 모욕과 집착 속에서도 버티는 지수에게 강한은 묘한 정복욕과 사랑을 느낀다.",
-      "firstAirDate": "2026-08-28",
-      "lastAirDate": "2026-08-28",
-      "status": "Ended",
-      "inProduction": false,
-      "nextAirDate": "",
-      "runtime": null,
-      "episodes": 51,
-      "score": 5.5,
-      "scoreBy": "TMDB",
-      "networks": [
-        "iQIYI International",
-        "Shortime",
-        "Lezhin Snack"
-      ],
-      "creators": [],
-      "providers": [],
-      "poster": "https://image.tmdb.org/t/p/w500/ock26TgVrRMxxns3B4lQdTKlM3.jpg",
-      "posterCredit": "TMDB",
-      "rankingSource": {
-        "provider": "TMDB",
-        "metric": "popularity",
-        "rank": 18,
-        "observedAt": "2026-09-28"
-      },
-      "metadataSource": "TMDB"
-    },
-    {
-      "tmdbId": 331622,
-      "title": "안경을 벗으면 회장님이 위험합니다",
-      "originalTitle": "안경을 벗으면 회장님이 위험합니다",
-      "type": "드라마",
-      "rank": 19,
-      "popularity": 6.4044,
-      "genres": [
-        18
-      ],
-      "overview": "위암 말기 시한부 판정을 받은 비서 윤서준은 3년간 짝사랑해온 이그룹 회장 이현우와 하룻밤을 계기로 비밀 파트너 관계를 시작한다. 서로에게 진심을 숨긴 채 가까워지던 두 사람 앞에, 이현우에게 오랫동안 집착해온 소꿉친구 김태훈이 나타나 누명과 사진 유포로 관계를 위협한다. 남은 시간이 얼마 없는 윤서준은 이현우를 지키기 위해 스스로 떠나려 하지만, 이현우는 그의 비밀에 점점 다가서는데. 숨겨진 진심과 시한부의 비밀 앞에서 두 사람의 사랑은 어떤 선택을 하게 될 것인가.",
-      "firstAirDate": "2026-09-16",
-      "lastAirDate": "2026-09-16",
-      "status": "Ended",
-      "inProduction": false,
-      "nextAirDate": "",
-      "runtime": null,
-      "episodes": 50,
-      "score": 6,
-      "scoreBy": "TMDB",
-      "networks": [
-        "iQIYI International",
-        "Shortime"
-      ],
-      "creators": [],
-      "providers": [],
-      "poster": "https://image.tmdb.org/t/p/w500/bPwB9Iqj7DQMvpyRob4fuoCamch.jpg",
-      "posterCredit": "TMDB",
-      "rankingSource": {
-        "provider": "TMDB",
-        "metric": "popularity",
-        "rank": 19,
-        "observedAt": "2026-09-28"
-      },
-      "metadataSource": "TMDB"
-    },
-    {
-      "tmdbId": 321293,
-      "title": "과녁 너머의 너",
-      "originalTitle": "과녁 너머의 너",
-      "type": "드라마",
-      "rank": 20,
-      "popularity": 6.3335,
-      "genres": [
-        18
-      ],
-      "overview": "세계선수권 3관왕에 오른 양궁 스타 이준형은 우승 직후, 6년 전 자신을 돈 때문에 버렸다고 믿는 첫사랑 안시우와 재회한다. 천재 유망주였던 시우는 아버지의 수술비를 대가로 준형의 아버지에게 이별을 강요받고 양궁까지 포기한 채 힘겹게 살아가고 있었다. 진실을 모르는 준형은 시우를 매니저로 고용해 모욕하고 괴롭히지만, 미움 속에서도 남아 있던 사랑과 질투를 숨기지 못한다. 두 사람은 후배 한재준의 방해와 스캔들, 부상과 오해를 겪으며 다시 가까워지고, 준형은 시우가 자신을 위해 모든 것을 희생했다는 사실을 알게 된다. 준형의 도움으로 다시 활을 잡은 시우는 잊혀진 재능을 증명하고, 두 사람은 아버지의 반대와 세상의 시선 앞에서도 서로와 양궁 모두를 포기하지 않기로 한다. 마침내 준형은 시우를 자신의 첫사랑이자 라이벌, 스승이라 공개하며 함께 미래를 선택한다.",
-      "firstAirDate": "2026-08-27",
-      "lastAirDate": "2026-08-27",
-      "status": "Ended",
-      "inProduction": false,
-      "nextAirDate": "",
-      "runtime": 2,
-      "episodes": 51,
-      "score": 7,
-      "scoreBy": "TMDB",
-      "networks": [
-        "iQIYI International",
-        "Shortime",
-        "Vigloo"
-      ],
-      "creators": [],
-      "providers": [],
-      "poster": "https://image.tmdb.org/t/p/w500/AkgHU2rHOXx7RQDoEniaPt5ntqW.jpg",
-      "posterCredit": "TMDB",
-      "rankingSource": {
-        "provider": "TMDB",
-        "metric": "popularity",
-        "rank": 20,
-        "observedAt": "2026-09-28"
-      },
-      "metadataSource": "TMDB"
-    },
-    {
       "tmdbId": 130103,
       "title": "날아올라라 나비",
       "originalTitle": "날아올라라 나비",
       "type": "드라마",
-      "rank": 21,
+      "rank": 17,
       "popularity": 6.1226,
       "genres": [
         18,
@@ -859,7 +714,7 @@
       "title": "엄마가 미쳤어요",
       "originalTitle": "엄마가 미쳤어요",
       "type": "드라마",
-      "rank": 22,
+      "rank": 18,
       "popularity": 5.7953,
       "genres": [
         18,
@@ -897,7 +752,7 @@
       "title": "그래, 이혼하자",
       "originalTitle": "그래, 이혼하자",
       "type": "드라마",
-      "rank": 23,
+      "rank": 19,
       "popularity": 5.724,
       "genres": [
         18,
@@ -935,231 +790,11 @@
       "metadataSource": "TMDB"
     },
     {
-      "tmdbId": 335836,
-      "title": "의붓오빠와 선 넘는 중",
-      "originalTitle": "의붓오빠와 선 넘는 중",
-      "type": "드라마",
-      "rank": 24,
-      "popularity": 5.6297,
-      "genres": [
-        18
-      ],
-      "overview": "",
-      "firstAirDate": "2026-09-17",
-      "lastAirDate": "2026-09-17",
-      "status": "Ended",
-      "inProduction": false,
-      "nextAirDate": "",
-      "runtime": null,
-      "episodes": 2,
-      "score": null,
-      "scoreBy": "TMDB",
-      "networks": [
-        "ReelShort"
-      ],
-      "creators": [],
-      "providers": [],
-      "poster": "https://image.tmdb.org/t/p/w500/dNEDTS0feUfgLnJPJfibk85uLls.jpg",
-      "posterCredit": "TMDB",
-      "rankingSource": {
-        "provider": "TMDB",
-        "metric": "popularity",
-        "rank": 24,
-        "observedAt": "2026-09-28"
-      },
-      "metadataSource": "TMDB"
-    },
-    {
-      "tmdbId": 304303,
-      "title": "키스키스X스",
-      "originalTitle": "키스키스X스",
-      "type": "드라마",
-      "rank": 25,
-      "popularity": 5.9487,
-      "genres": [
-        18
-      ],
-      "overview": "각기 다른 커플이 저마다의 방식으로 사랑을 발견한다. 스쳐 지나간 인연부터 오래 품어온 마음, 금지된 감정, 다시 맞닿은 운명까지",
-      "firstAirDate": "2025-10-29",
-      "lastAirDate": "2026-08-25",
-      "status": "Returning Series",
-      "inProduction": true,
-      "nextAirDate": "",
-      "runtime": null,
-      "episodes": 28,
-      "score": 6.7,
-      "scoreBy": "TMDB",
-      "networks": [
-        "Shortime"
-      ],
-      "creators": [],
-      "providers": [
-        "wavve",
-        "Watcha",
-        "TVING"
-      ],
-      "poster": "https://image.tmdb.org/t/p/w500/w0zmCzvedHPlL7p3xQK1iStA12J.jpg",
-      "posterCredit": "TMDB",
-      "rankingSource": {
-        "provider": "TMDB",
-        "metric": "popularity",
-        "rank": 25,
-        "observedAt": "2026-09-28"
-      },
-      "metadataSource": "TMDB"
-    },
-    {
-      "tmdbId": 333457,
-      "title": "미친 BL소설에서 살아남기",
-      "originalTitle": "미친 BL소설에서 살아남기",
-      "type": "드라마",
-      "rank": 26,
-      "popularity": 5.12,
-      "genres": [
-        18,
-        10765
-      ],
-      "overview": "매일 삼각김밥과 라면으로 연명하는 가난한 인생을 살고 있는 이대원. BL 소설 속 재벌 병약수로 빙의되어 재벌 삶을 지키려 하지만 원작 남주들과 진짜 사랑에 빠지며 소설 밖 탈출을 고민하게 되는데!",
-      "firstAirDate": "2026-09-10",
-      "lastAirDate": "2026-09-10",
-      "status": "Ended",
-      "inProduction": false,
-      "nextAirDate": "",
-      "runtime": null,
-      "episodes": 53,
-      "score": 7,
-      "scoreBy": "TMDB",
-      "networks": [
-        "iQIYI International",
-        "Shortime"
-      ],
-      "creators": [
-        "노가정",
-        "차신환"
-      ],
-      "providers": [],
-      "poster": "https://image.tmdb.org/t/p/w500/nWxPoZbubyjdN2URApinVxjKgLg.jpg",
-      "posterCredit": "TMDB",
-      "rankingSource": {
-        "provider": "TMDB",
-        "metric": "popularity",
-        "rank": 26,
-        "observedAt": "2026-09-28"
-      },
-      "metadataSource": "TMDB"
-    },
-    {
-      "tmdbId": 335821,
-      "title": "뒤바뀐 아들, 스트라이커의 귀환",
-      "originalTitle": "뒤바뀐 아들, 스트라이커의 귀환",
-      "type": "드라마",
-      "rank": 27,
-      "popularity": 5.09,
-      "genres": [
-        18,
-        10751
-      ],
-      "overview": "",
-      "firstAirDate": "2026-09-24",
-      "lastAirDate": "2026-09-24",
-      "status": "Returning Series",
-      "inProduction": true,
-      "nextAirDate": "",
-      "runtime": null,
-      "episodes": 1,
-      "score": null,
-      "scoreBy": "TMDB",
-      "networks": [
-        "ReelShort"
-      ],
-      "creators": [],
-      "providers": [],
-      "poster": "https://image.tmdb.org/t/p/w500/vYfKHIkVw8aa5GL29VeabqMUn7d.jpg",
-      "posterCredit": "TMDB",
-      "rankingSource": {
-        "provider": "TMDB",
-        "metric": "popularity",
-        "rank": 27,
-        "observedAt": "2026-09-28"
-      },
-      "metadataSource": "TMDB"
-    },
-    {
-      "tmdbId": 334716,
-      "title": "위험한 보스의 사라진 신부",
-      "originalTitle": "위험한 보스의 사라진 신부",
-      "type": "드라마",
-      "rank": 28,
-      "popularity": 4.6048,
-      "genres": [
-        18
-      ],
-      "overview": "",
-      "firstAirDate": "2026-09-10",
-      "lastAirDate": "2026-09-10",
-      "status": "Ended",
-      "inProduction": false,
-      "nextAirDate": "",
-      "runtime": null,
-      "episodes": 2,
-      "score": null,
-      "scoreBy": "TMDB",
-      "networks": [
-        "Vigloo"
-      ],
-      "creators": [],
-      "providers": [],
-      "poster": "https://image.tmdb.org/t/p/w500/2AzkImYnkLbDbvQ4InlSn3t7tyu.jpg",
-      "posterCredit": "TMDB",
-      "rankingSource": {
-        "provider": "TMDB",
-        "metric": "popularity",
-        "rank": 28,
-        "observedAt": "2026-09-28"
-      },
-      "metadataSource": "TMDB"
-    },
-    {
-      "tmdbId": 329904,
-      "title": "벗는사이",
-      "originalTitle": "벗는사이",
-      "type": "드라마",
-      "rank": 29,
-      "popularity": 2.5123,
-      "genres": [
-        18
-      ],
-      "overview": "",
-      "firstAirDate": "2026-08-09",
-      "lastAirDate": "2026-09-13",
-      "status": "Ended",
-      "inProduction": false,
-      "nextAirDate": "",
-      "runtime": null,
-      "episodes": 6,
-      "score": null,
-      "scoreBy": "TMDB",
-      "networks": [
-        "LIKEY"
-      ],
-      "creators": [],
-      "providers": [],
-      "poster": "https://image.tmdb.org/t/p/w500/afYF8kGJFb938vnud4K9Pw5QXbG.jpg",
-      "posterCredit": "TMDB",
-      "rankingSource": {
-        "provider": "TMDB",
-        "metric": "popularity",
-        "rank": 29,
-        "observedAt": "2026-09-28"
-      },
-      "metadataSource": "TMDB"
-    },
-    {
       "tmdbId": 330769,
       "title": "Love Class 3 (수업중입니다 시즌 3)",
       "originalTitle": "Love Class 3 (수업중입니다 시즌 3)",
       "type": "드라마",
-      "rank": 30,
+      "rank": 20,
       "popularity": 2.4272,
       "genres": [
         18
@@ -1194,7 +829,7 @@
       "title": "반칙부터 시작할까요?",
       "originalTitle": "반칙부터 시작할까요?",
       "type": "드라마",
-      "rank": 31,
+      "rank": 21,
       "popularity": 2.4079,
       "genres": [
         18
@@ -1227,7 +862,7 @@
       "title": "저스트 프렌드",
       "originalTitle": "저스트 프렌드",
       "type": "드라마",
-      "rank": 32,
+      "rank": 22,
       "popularity": 2.3366,
       "genres": [
         18
@@ -1260,7 +895,7 @@
       "title": "종합광고대행사 찌찌: 광고의 온도편",
       "originalTitle": "종합광고대행사 찌찌: 광고의 온도편",
       "type": "드라마",
-      "rank": 33,
+      "rank": 23,
       "popularity": 2.2052,
       "genres": [
         18,
@@ -1297,7 +932,7 @@
       "title": "백도어",
       "originalTitle": "백도어",
       "type": "드라마",
-      "rank": 34,
+      "rank": 24,
       "popularity": 1.8947,
       "genres": [
         18
@@ -1330,7 +965,7 @@
       "title": "어느 날, 신입사원에게 7명의 선배가 생겼다?!",
       "originalTitle": "어느 날, 신입사원에게 7명의 선배가 생겼다?!",
       "type": "드라마",
-      "rank": 35,
+      "rank": 25,
       "popularity": 1.8868,
       "genres": [
         18
@@ -1365,7 +1000,7 @@
       "title": "썸머 피버",
       "originalTitle": "썸머 피버",
       "type": "드라마",
-      "rank": 36,
+      "rank": 26,
       "popularity": 1.536,
       "genres": [
         18
@@ -1400,7 +1035,7 @@
       "title": "상사에게 저지른 나쁜 짓",
       "originalTitle": "상사에게 저지른 나쁜 짓",
       "type": "드라마",
-      "rank": 37,
+      "rank": 27,
       "popularity": 1.5273,
       "genres": [
         18
@@ -1433,7 +1068,7 @@
       "title": "아버지의 집밥",
       "originalTitle": "아버지의 집밥",
       "type": "드라마",
-      "rank": 38,
+      "rank": 28,
       "popularity": 1.4082,
       "genres": [
         18,
@@ -1467,7 +1102,7 @@
       "title": "베팅맨 : 신의눈",
       "originalTitle": "베팅맨 : 신의눈",
       "type": "드라마",
-      "rank": 39,
+      "rank": 29,
       "popularity": 1.329,
       "genres": [
         18
@@ -1502,7 +1137,7 @@
       "title": "14 Days",
       "originalTitle": "14 Days",
       "type": "드라마",
-      "rank": 40,
+      "rank": 30,
       "popularity": 1.3185,
       "genres": [
         18
@@ -1535,7 +1170,7 @@
       "title": "순결한죄",
       "originalTitle": "순결한죄",
       "type": "드라마",
-      "rank": 41,
+      "rank": 31,
       "popularity": 1.2638,
       "genres": [
         18
@@ -1564,49 +1199,11 @@
       "metadataSource": "TMDB"
     },
     {
-      "tmdbId": 316597,
-      "title": "모두의 경찰",
-      "originalTitle": "모두의 경찰",
-      "type": "드라마",
-      "rank": 42,
-      "popularity": 1.236,
-      "genres": [
-        18,
-        35
-      ],
-      "overview": "",
-      "firstAirDate": "2026-09-24",
-      "lastAirDate": "2026-09-24",
-      "status": "Returning Series",
-      "inProduction": true,
-      "nextAirDate": "",
-      "runtime": null,
-      "episodes": 1,
-      "score": null,
-      "scoreBy": "TMDB",
-      "networks": [
-        "Lezhin Snack"
-      ],
-      "creators": [
-        "붉은코끼리"
-      ],
-      "providers": [],
-      "poster": "https://image.tmdb.org/t/p/w500/g183hH3u5vFmo58Qr84Ph7SqeFn.jpg",
-      "posterCredit": "TMDB",
-      "rankingSource": {
-        "provider": "TMDB",
-        "metric": "popularity",
-        "rank": 42,
-        "observedAt": "2026-09-28"
-      },
-      "metadataSource": "TMDB"
-    },
-    {
       "tmdbId": 326833,
       "title": "첫사랑니",
       "originalTitle": "첫사랑니",
       "type": "드라마",
-      "rank": 43,
+      "rank": 32,
       "popularity": 1.1061,
       "genres": [
         18
@@ -1637,46 +1234,11 @@
       "metadataSource": "TMDB"
     },
     {
-      "tmdbId": 334414,
-      "title": "여왕님의 싸대기를 때렸습니다",
-      "originalTitle": "여왕님의 싸대기를 때렸습니다",
-      "type": "드라마",
-      "rank": 44,
-      "popularity": 1.0685,
-      "genres": [
-        18
-      ],
-      "overview": "",
-      "firstAirDate": "2026-09-08",
-      "lastAirDate": "2026-09-08",
-      "status": "Ended",
-      "inProduction": false,
-      "nextAirDate": "",
-      "runtime": null,
-      "episodes": 1,
-      "score": null,
-      "scoreBy": "TMDB",
-      "networks": [
-        "Shortime"
-      ],
-      "creators": [],
-      "providers": [],
-      "poster": "https://image.tmdb.org/t/p/w500/tW2vt1a6iP7Fy3oe6SFKjx815Ns.jpg",
-      "posterCredit": "TMDB",
-      "rankingSource": {
-        "provider": "TMDB",
-        "metric": "popularity",
-        "rank": 44,
-        "observedAt": "2026-09-28"
-      },
-      "metadataSource": "TMDB"
-    },
-    {
       "tmdbId": 334724,
       "title": "내 남편의 아들",
       "originalTitle": "내 남편의 아들",
       "type": "드라마",
-      "rank": 45,
+      "rank": 33,
       "popularity": 0.4582,
       "genres": [
         18
@@ -1709,7 +1271,7 @@
       "title": "브로맨스?",
       "originalTitle": "브로맨스?",
       "type": "드라마",
-      "rank": 46,
+      "rank": 34,
       "popularity": 0.2986,
       "genres": [
         18
