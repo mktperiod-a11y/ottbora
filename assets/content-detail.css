@@ -703,21 +703,40 @@ h1 {
   }
 }
 
-/* 예매 버튼 안 극장 공식 로고(흰색). 로고가 없는 곳은 이름 글자로 둡니다. */
-.watch-links > a.cinema-link {
+/*
+ * 예매 버튼: 각 극장 공식 컬러 로고가 살도록 흰 바탕 + 옅은 테두리로 둡니다.
+ * 로고가 없는 곳은 이름 글자로 둡니다.
+ */
+.watch-links > a.cinema-link.seed-action-button {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
+  gap: 8px;
+  border: 1px solid #dfe3ea;
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 0 1px 2px rgba(23, 32, 45, 0.04);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.watch-links > a.cinema-link.seed-action-button:hover {
+  border-color: #c9cfd9;
+  background: #fafbfc;
+  box-shadow: 0 3px 10px rgba(23, 32, 45, 0.08);
+}
+
+.watch-links > a.cinema-link.seed-action-button:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
 }
 
 .cinema-logo {
   display: block;
-  height: 16px;
+  height: 17px;
   width: auto;
 }
 
 @media (max-width: 650px) {
   .cinema-logo {
-    height: 15px;
+    height: 16px;
   }
 }
