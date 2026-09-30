@@ -749,7 +749,7 @@ h1 {
   align-self: flex-start;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 0;
   height: 36px;
   padding: 0 14px;
   border-radius: 6px;
@@ -796,8 +796,14 @@ h1 {
   animation: promo-nudge 1.6s ease-in-out infinite;
 }
 
+/* 버튼 글자: '온디스크 바로가기' 는 한 칸, 화살표 앞은 6px 띄웁니다. */
+.promo-cta-name {
+  margin-right: 0.28em;
+}
+
 .promo-arrow {
   display: inline-flex;
+  margin-left: 6px;
   line-height: 0;
 }
 
@@ -834,30 +840,6 @@ h1 {
   line-height: 1.32;
 }
 
-.promo--featured .promo-cta {
-  align-self: stretch;
-  justify-content: center;
-  overflow: hidden;
-  padding: 0 14px;
-  font-size: 13.5px;
-}
-
-.promo--featured .promo-cta > .promo-arrow {
-  animation: promo-nudge 1.6s ease-in-out infinite;
-}
-
-.promo-arrow {
-  display: inline-flex;
-  line-height: 0;
-}
-
-.promo-arrow svg {
-  display: block;
-}
-
-.promo--featured .promo-link:hover .promo-cta {
-  filter: brightness(1.06);
-}
 
 @keyframes promo-nudge {
   0%, 100% { transform: translateX(0); }
@@ -1000,7 +982,7 @@ h1 {
     width: auto;
     height: 30px;
     padding: 0 10px 0 12px;
-    gap: 4px;
+    gap: 0;
     background-image: none;
     font-size: 12.5px;
     font-weight: 800;
@@ -1008,6 +990,7 @@ h1 {
   }
   .promo--featured .promo-cta .promo-arrow {
     display: inline-flex;
+    margin-left: 4px;
   }
   /* 모바일에서는 이름을 빼고 '바로가기'만 — 제목 자리를 넉넉히 둡니다. */
   .promo--featured .promo-cta-name {
