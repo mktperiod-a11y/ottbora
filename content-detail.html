@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css?v=20260928-2" />
-    <link rel="stylesheet" href="assets/content-detail.css?v=20260930-4" />
+    <link rel="stylesheet" href="assets/content-detail.css?v=20260930-5" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -660,6 +660,9 @@
        * 로고는 여백을 깎아 둔 assets/promo/<id>.png 를 쓰고, 가로세로 비율에
        * 맞춰 눈에 보이는 면적이 같아지도록 크기를 정합니다(--k).
        * 글자가 유난히 굵어 커 보이는 로고는 scale 로 조금 줄입니다.
+       * deco 는 배경 장식 모양입니다(기본 lines: 점 격자 + 사선 띠).
+       *   rings 겹친 두 원 · squares 비스듬한 네모 · blob 옅은 큰 원
+       *   stripes 사선 줄무늬 · triangle 모서리 삼각형
        * 사이트 본문과 구분되도록 각 서비스 색을 쓰고 "광고" 표시를 붙입니다.
        */
       (() => {
@@ -682,20 +685,21 @@
             logo: "assets/promo/kdisk.png",
             url: "go/kdisk/",
             color: "#5c9608",
+            deco: "rings",
             title: "PC에서도 <br /><em>모바일에서도</em>",
             text: "감상과 다운로드를 한 곳에서",
           },
         ];
         const OTHERS = {
-          wedisk: { color: "#48659f", title: "찜해 두고 <br /><em>다시 보기</em>" },
-          filejo: { color: "#476d9d", title: "인기 TOP100부터 <br /><em>골라 보기</em>" },
-          filenori: { color: "#496aa2", title: "모바일로 찾고 <br /><em>바로 재생</em>" },
-          me2disk: { color: "#4966a2", title: "다양한 자료를 <br /><em>한 곳에서</em>" },
-          filecast: { color: "#3f6c8d", title: "모바일 감상도 <br /><em>정액관으로</em>" },
-          filestar: { color: "#e7284e", title: "고르면 바로 <br /><em>실시간 재생</em>" },
-          filesun: { color: "#f0500f", title: "장르별로 둘러보고 <br /><em>출석 혜택까지</em>" },
-          fileis: { color: "#4973a2", scale: 0.84, title: "할인 콘텐츠를 <br /><em>바로 스트리밍</em>" },
-          filecookie: { color: "#466d9c", title: "PC에서 사고 <br /><em>모바일로 재생</em>" },
+          wedisk: { color: "#46579b", deco: "squares", title: "찜해 두고 <br /><em>다시 보기</em>" },
+          filejo: { color: "#3b6391", deco: "blob", title: "인기 TOP100부터 <br /><em>골라 보기</em>" },
+          filenori: { color: "#3e61b1", deco: "rings", title: "모바일로 찾고 <br /><em>바로 재생</em>" },
+          me2disk: { color: "#595ca6", deco: "stripes", title: "다양한 자료를 <br /><em>한 곳에서</em>" },
+          filecast: { color: "#346f89", deco: "squares", title: "모바일 감상도 <br /><em>정액관으로</em>" },
+          filestar: { color: "#e7284e", deco: "triangle", title: "고르면 바로 <br /><em>실시간 재생</em>" },
+          filesun: { color: "#f0500f", deco: "blob", title: "장르별로 둘러보고 <br /><em>출석 혜택까지</em>" },
+          fileis: { color: "#3e7aa8", deco: "stripes", scale: 0.84, title: "할인 콘텐츠를 <br /><em>바로 스트리밍</em>" },
+          filecookie: { color: "#315eaa", deco: "triangle", title: "PC에서 사고 <br /><em>모바일로 재생</em>" },
           bigfile: { color: "#1b9e52", title: "실시간 TOP100으로 <br /><em>빠르게 찾기</em>" },
           pdpop: { color: "#f06a0a", title: "인기 콘텐츠를 <br /><em>전용 프로그램으로</em>" },
         };
@@ -713,6 +717,7 @@
                 text: p.description,
                 color: OTHERS[p.id].color,
                 scale: OTHERS[p.id].scale,
+                deco: OTHERS[p.id].deco,
               }))
           : [];
 
@@ -725,9 +730,9 @@
             : MAIN[Math.random() * 65 < 35 ? 0 : 1];
         }
 
-        host.className = ad.color
-          ? `promo promo--brand promo--${ad.id}`
-          : `promo promo--${ad.id}`;
+        host.className =
+          `promo promo--${ad.id} promo--deco-${ad.deco || "lines"}` +
+          (ad.color ? " promo--brand" : "");
         if (ad.color) host.style.setProperty("--brand", ad.color);
         host.innerHTML =
           `<a class="promo-link" href="${ad.url}" target="_blank" rel="sponsored noopener noreferrer" aria-label="${ad.name} 광고, 새 창에서 열기">` +
