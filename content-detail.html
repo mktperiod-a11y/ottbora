@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css?v=20260928-2" />
-    <link rel="stylesheet" href="assets/content-detail.css?v=20260930-26" />
+    <link rel="stylesheet" href="assets/content-detail.css?v=20260930-28" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -676,6 +676,7 @@
             logo: "assets/promo/ondisk.png",
             url: "go/ondisk/",
             title: "오늘 뭐 볼지, <br /><em>고민 끝</em>",
+            titleMobile: "뭐 볼지 고민된다면, <em>온디스크</em>",
             text: "영화·드라마·애니까지 한 번에",
           },
           {
@@ -687,6 +688,7 @@
             color: "#5c9608",
             deco: "rings",
             title: "PC든 폰이든 <br /><em>바로 재생</em>",
+            titleMobile: "PC든 폰이든, 어디서나 <em>케이디스크</em>",
             text: "감상도 다운로드도 한 곳에서",
           },
         ];
@@ -741,7 +743,12 @@
           `<a class="promo-link" href="${ad.url}" target="_blank" rel="sponsored noopener noreferrer" aria-label="${ad.name} 제휴 링크, 새 창에서 열기">` +
           `<span class="promo-badge">제휴</span>` +
           `<span class="promo-logo"><img src="${ad.logo}" alt="${ad.name}" /></span>` +
-          `<span class="promo-body"><strong class="promo-title">${ad.title}</strong>` +
+                    // 모바일 문구가 따로 있으면 좁은 화면에서는 그걸 보여 줍니다.
+          `<span class="promo-body"><strong class="promo-title">` +
+          (ad.titleMobile
+            ? `<span class="promo-title-pc">${ad.title}</span><span class="promo-title-mo">${ad.titleMobile}</span>`
+            : ad.title) +
+          `</strong>` +
           `<span class="promo-text">${ad.text}</span></span>` +
           `<span class="promo-cta"><span class="promo-cta-name">${ad.name}</span>바로가기<span class="promo-arrow" aria-hidden="true">` +
           // 글자 "→" 는 글꼴마다 좌우 여백이 달라 가운데가 어긋나서, 가운데가 정확한 SVG 로 그립니다.

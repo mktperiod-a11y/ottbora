@@ -810,6 +810,11 @@ h1 {
   }
 }
 
+/* 모바일 전용 문구(titleMobile)는 좁은 화면에서만 보입니다. */
+.promo-title-mo {
+  display: none;
+}
+
 /* 설명은 두 줄 자리를 잡아 두어 배너 높이가 모두 같게 합니다. */
 .promo .promo-text {
   min-height: 2.9em;
@@ -903,6 +908,12 @@ h1 {
   /* 모바일: 제목 최대 두 줄, 설명 한 줄, 배너 높이는 모두 같게. */
   .promo .promo-title {
     font-size: 14.5px;
+  }
+  .promo-title-pc {
+    display: none;
+  }
+  .promo-title-mo {
+    display: inline;
   }
   /* 설명이 잘려 "…"로 끝나지 않게, 긴 설명은 모바일에서 빼고 제목(두 줄까지)만 둡니다. */
   .promo .promo-text {
