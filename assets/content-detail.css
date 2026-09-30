@@ -498,20 +498,24 @@ h1 {
   display: none;
 }
 
-/* 케이디스크: 짙은 차콜 판에 주황 빛, 흰 글씨 로고 */
-.promo--kdisk {
+/*
+ * 그 밖의 웹하드: 흰 판에 서비스 색(--brand)을 옅게 깔고 강조·버튼에 씁니다.
+ * 색은 content-detail.html 의 OTHERS 에서 서비스마다 넣습니다.
+ */
+.promo--brand {
+  --brand: #1583e9;
   --promo-bg:
-    radial-gradient(95% 75% at 100% 100%, rgba(255, 111, 26, 0.38) 0%, rgba(255, 111, 26, 0) 62%),
-    linear-gradient(165deg, #222733 0%, #13161d 100%);
-  --promo-border: #2b303c;
-  --promo-title: #fff;
-  --promo-accent: #ff8a3d;
-  --promo-text: rgba(255, 255, 255, 0.7);
-  --promo-cta-bg: #ff6f1a;
+    radial-gradient(90% 70% at 100% 100%, color-mix(in srgb, var(--brand) 14%, transparent) 0%, transparent 70%),
+    linear-gradient(165deg, #fff 0%, color-mix(in srgb, var(--brand) 7%, #fff) 100%);
+  --promo-border: color-mix(in srgb, var(--brand) 22%, #fff);
+  --promo-title: #17202d;
+  --promo-accent: var(--brand);
+  --promo-text: #5b6675;
+  --promo-cta-bg: var(--brand);
   --promo-cta-ink: #fff;
-  --promo-badge: rgba(255, 255, 255, 0.55);
-  --promo-ring: rgba(255, 138, 61, 0.3);
-  --promo-shadow: 0 12px 28px rgba(10, 12, 18, 0.28);
+  --promo-badge: rgba(23, 32, 45, 0.45);
+  --promo-ring: color-mix(in srgb, var(--brand) 22%, transparent);
+  --promo-shadow: 0 10px 26px color-mix(in srgb, var(--brand) 12%, transparent);
 }
 
 .promo-link {
@@ -522,7 +526,7 @@ h1 {
   overflow: hidden;
   padding: 18px 18px 20px;
   border: 1px solid var(--promo-border);
-  border-radius: 14px;
+  border-radius: 8px;
   background: var(--promo-bg);
   color: var(--promo-title);
   font-family: "Pretendard Variable", Pretendard, sans-serif;
@@ -531,28 +535,142 @@ h1 {
   transition: transform 0.18s ease;
 }
 
-/* 오른쪽 아래 겹친 두 원 — 사이트 카드에는 없는 광고용 장식 */
+/*
+ * 광고용 장식 — 사이트 카드에는 없는 무늬.
+ *   ::before 오른쪽 아래로 갈수록 짙어지는 점 격자
+ *   ::after  오른쪽 위에서 비스듬히 내려오는 옅은 띠
+ */
 .promo-link::before,
 .promo-link::after {
   content: "";
   position: absolute;
-  border: 1px solid var(--promo-ring);
-  border-radius: 50%;
   pointer-events: none;
 }
 
 .promo-link::before {
-  width: 170px;
-  height: 170px;
-  right: -70px;
-  bottom: -70px;
+  right: 0;
+  bottom: 0;
+  width: 62%;
+  height: 70%;
+  background-image: radial-gradient(var(--promo-ring) 1.3px, transparent 1.7px);
+  background-size: 11px 11px;
+  -webkit-mask-image: linear-gradient(315deg, #000 0%, transparent 72%);
+  mask-image: linear-gradient(315deg, #000 0%, transparent 72%);
 }
 
 .promo-link::after {
+  top: -40%;
+  right: 14%;
+  width: 34px;
+  height: 180%;
+  background: var(--promo-ring);
+  opacity: 0.55;
+  transform: rotate(28deg);
+}
+
+/* ── 배경 장식 변주 (content-detail.html 의 deco) ── */
+
+/* rings: 오른쪽 아래 겹친 두 원 */
+.promo--deco-rings .promo-link::before,
+.promo--deco-rings .promo-link::after {
+  width: 170px;
+  height: 170px;
+  top: auto;
+  right: -70px;
+  bottom: -70px;
+  border: 1px solid var(--promo-ring);
+  border-radius: 50%;
+  background: none;
+  opacity: 1;
+  transform: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+.promo--deco-rings .promo-link::after {
   width: 110px;
   height: 110px;
   right: -40px;
   bottom: -40px;
+}
+
+/* squares: 비스듬히 겹친 두 네모 테두리 */
+.promo--deco-squares .promo-link::before,
+.promo--deco-squares .promo-link::after {
+  width: 120px;
+  height: 120px;
+  top: auto;
+  right: -34px;
+  bottom: -44px;
+  border: 1.5px solid var(--promo-ring);
+  border-radius: 18px;
+  background: none;
+  opacity: 1;
+  transform: rotate(24deg);
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+.promo--deco-squares .promo-link::after {
+  width: 70px;
+  height: 70px;
+  right: 58px;
+  bottom: -22px;
+  transform: rotate(-12deg);
+}
+
+/* blob: 옅게 채운 큰 원 + 작은 원 */
+.promo--deco-blob .promo-link::before,
+.promo--deco-blob .promo-link::after {
+  width: 190px;
+  height: 190px;
+  top: auto;
+  right: -80px;
+  bottom: -90px;
+  border-radius: 50%;
+  background: var(--promo-ring);
+  opacity: 0.55;
+  transform: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+.promo--deco-blob .promo-link::after {
+  width: 26px;
+  height: 26px;
+  right: 22px;
+  bottom: 118px;
+  opacity: 0.7;
+}
+
+/* stripes: 오른쪽 아래 모서리의 가는 사선 줄무늬 */
+.promo--deco-stripes .promo-link::before {
+  width: 70%;
+  height: 65%;
+  background: repeating-linear-gradient(135deg, var(--promo-ring) 0 2px, transparent 2px 10px);
+  -webkit-mask-image: linear-gradient(315deg, #000 0%, transparent 70%);
+  mask-image: linear-gradient(315deg, #000 0%, transparent 70%);
+}
+.promo--deco-stripes .promo-link::after {
+  display: none;
+}
+
+/* triangle: 오른쪽 아래 옅은 삼각형 두 겹 */
+.promo--deco-triangle .promo-link::before,
+.promo--deco-triangle .promo-link::after {
+  top: auto;
+  right: 0;
+  bottom: 0;
+  width: 150px;
+  height: 130px;
+  background: var(--promo-ring);
+  opacity: 0.45;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  transform: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+.promo--deco-triangle .promo-link::after {
+  width: 90px;
+  height: 78px;
+  opacity: 0.6;
 }
 
 .promo-link:hover {
@@ -578,24 +696,24 @@ h1 {
   line-height: 1.4;
 }
 
-/* 로고는 배경을 뺀 파일이라 판 없이 바로 놓습니다. */
+/*
+ * 로고는 여백을 깎은 파일(assets/promo/<id>.png)입니다.
+ * 스크립트가 가로세로 비율로 --k(=1/√비율)를 넣어, 로고마다 눈에 보이는
+ * 면적이 같도록 높이를 정합니다. 넓은 워드마크는 낮게, 네모난 아이콘은 높게.
+ */
 .promo-logo {
   position: relative;
   display: flex;
   align-items: center;
-  height: 30px;
+  height: 36px;
 }
 
 .promo-logo img {
   display: block;
   width: auto;
-  height: 100%;
-  max-width: 128px;
+  height: min(36px, calc(var(--k, 0.55) * 56px));
+  max-width: 140px;
   object-fit: contain;
-}
-
-.promo--kdisk .promo-logo {
-  height: 24px;
 }
 
 .promo-body {
@@ -631,9 +749,10 @@ h1 {
   align-self: flex-start;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 9px 14px;
-  border-radius: 999px;
+  gap: 0;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 6px;
   background: var(--promo-cta-bg);
   color: var(--promo-cta-ink);
   font-size: 12.5px;
@@ -641,6 +760,85 @@ h1 {
   line-height: 1.2;
   letter-spacing: -0.02em;
   white-space: nowrap;
+}
+
+/*
+ * 온디스크·케이디스크(promo--featured): 누르고 싶게.
+ *   - 흰 버튼을 폭에 꽉 채우고(모바일은 '바로가기' 글자가 보이는 버튼), 화살표가 살짝 움직입니다.
+ * 딱지·밑줄·빛 효과는 쓰지 않습니다. 움직임 줄이기 설정이면 움직이지 않습니다.
+ */
+.promo--featured .promo-cta {
+  align-self: stretch;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 14px;
+  font-size: 13.5px;
+  font-weight: 800;
+}
+
+.promo--featured .promo-cta > .promo-arrow {
+  animation: promo-nudge 1.6s ease-in-out infinite;
+}
+
+/* 버튼 글자: '온디스크 바로가기' 는 한 칸, 화살표 앞은 6px 띄웁니다. */
+.promo-cta-name {
+  margin-right: 0.28em;
+}
+
+.promo-arrow {
+  display: inline-flex;
+  margin-left: 6px;
+  line-height: 0;
+}
+
+.promo-arrow svg {
+  display: block;
+}
+
+.promo--featured .promo-link:hover .promo-cta {
+  filter: brightness(1.06);
+}
+
+@keyframes promo-nudge {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .promo--featured .promo-cta > .promo-arrow {
+    animation: none;
+  }
+}
+
+/* 모바일 전용 문구(titleMobile)는 좁은 화면에서만 보입니다. */
+.promo-title-mo {
+  display: none;
+}
+
+/* 설명은 두 줄 자리를 잡아 두어 배너 높이가 모두 같게 합니다. */
+.promo .promo-text {
+  min-height: 2.9em;
+}
+
+.promo .promo-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font-size: 19px;
+  line-height: 1.32;
+}
+
+
+@keyframes promo-nudge {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .promo--featured .promo-cta > .promo-arrow {
+    animation: none;
+  }
 }
 
 @media (max-width: 650px) {
@@ -660,24 +858,39 @@ h1 {
     position: static;
     margin-top: 14px;
   }
+  /* 오른쪽 칸은 위에 제휴 표시, 아래에 버튼 — 서로 겹치지 않게 세로로 쌓습니다. */
   .promo-link {
     display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-columns: auto minmax(0, 1fr) 32px;
+    grid-template-areas:
+      "logo body badge"
+      "logo body cta";
     align-items: center;
-    gap: 14px;
-    padding: 15px 14px 15px 16px;
-    border-radius: 12px;
+    align-content: center;
+    column-gap: 12px;
+    row-gap: 6px;
+    padding: 10px 10px 10px 12px;
+    border-radius: 8px;
   }
-  .promo-logo,
-  .promo--kdisk .promo-logo {
-    height: 20px;
+  .promo-logo {
+    grid-area: logo;
+  }
+  .promo-body {
+    grid-area: body;
+  }
+  .promo-logo {
+    height: 28px;
   }
   .promo-logo img {
-    max-width: 78px;
+    height: min(28px, calc(var(--k, 0.55) * 40px));
+    max-width: 92px;
   }
   .promo-badge {
-    top: 6px;
-    right: 8px;
+    grid-area: badge;
+    position: static;
+    justify-self: center;
+    align-self: end;
+    padding: 0 4px;
     font-size: 9px;
   }
   .promo-body {
@@ -692,14 +905,95 @@ h1 {
   .promo-text {
     font-size: 11.5px;
   }
-  .promo-cta {
-    align-self: center;
-    margin-top: 12px;
-    padding: 8px 10px;
+  /* 모바일: 제목 최대 두 줄, 설명 한 줄, 배너 높이는 모두 같게. */
+  .promo .promo-title {
+    font-size: 14.5px;
+  }
+  .promo-title-pc {
+    display: none;
+  }
+  .promo-title-mo {
+    display: inline;
+  }
+  /* 설명이 잘려 "…"로 끝나지 않게, 긴 설명은 모바일에서 빼고 제목(두 줄까지)만 둡니다. */
+  .promo .promo-text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    min-height: 0;
+  }
+  .promo .promo-text {
+    display: none;
+  }
+  .promo-link {
+    min-height: 80px;
+  }
+  .promo-cta,
+  .promo--featured .promo-cta {
+    grid-area: cta;
+    justify-self: center;
+    align-self: start;
+    width: 28px;
+    height: 28px;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    border-radius: 6px;
     font-size: 0;
   }
-  .promo-cta span {
-    font-size: 14px;
+  /* 글자는 숨기고 화살표만: 숨긴 글자 몫의 간격·움직임을 없애야 화살표가 정가운데에 옵니다. */
+  /*
+   * 화살표를 버튼 자신의 배경으로 그립니다. 버튼이 소수점 위치에 놓여도
+   * 버튼과 화살표가 같은 픽셀로 맞춰져 늘 정가운데에 옵니다.
+   */
+  .promo-arrow {
+    display: none;
+  }
+  .promo-cta,
+  .promo--featured .promo-cta {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8h9M9 4.5 12.5 8 9 11.5' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px 14px;
+  }
+  .promo-cta,
+  .promo--featured .promo-cta {
+    gap: 0;
+    align-items: center;
+  }
+  .promo--featured .promo-cta > .promo-arrow {
+    animation: none;
+  }
+  /* 강조 배너: 화살표만이 아니라 '바로가기' 글자가 보이는 흰 버튼 */
+  .promo--featured .promo-link {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+  .promo--featured .promo-badge {
+    justify-self: end;
+  }
+  .promo--featured .promo-cta {
+    justify-self: end;
+    width: auto;
+    height: 30px;
+    padding: 0 10px 0 12px;
+    gap: 0;
+    background-image: none;
+    font-size: 12.5px;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+  .promo--featured .promo-cta .promo-arrow {
+    display: inline-flex;
+    margin-left: 4px;
+  }
+  /* 모바일에서는 이름을 빼고 '바로가기'만 — 제목 자리를 넉넉히 둡니다. */
+  .promo--featured .promo-cta-name {
+    display: none;
+  }
+  .promo--featured .promo-cta .promo-arrow svg {
+    width: 12px;
+    height: 12px;
   }
 }
 
