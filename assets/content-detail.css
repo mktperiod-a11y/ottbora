@@ -761,6 +761,78 @@ h1 {
   white-space: nowrap;
 }
 
+/*
+ * 온디스크·케이디스크(promo--featured): 더 눌러 보고 싶게.
+ *   - 서비스 색 테두리와 짙은 그림자
+ *   - 로고 위 "오티티보라 추천" 표시
+ *   - 버튼을 꽉 채우고, 화살표가 살짝 움직이며, 빛이 한 번씩 지나갑니다.
+ * 움직임 줄이기 설정을 켠 사람에게는 움직이지 않습니다.
+ */
+.promo--featured .promo-link {
+  border: 1.5px solid color-mix(in srgb, var(--promo-cta-bg) 45%, transparent);
+  box-shadow:
+    0 14px 30px color-mix(in srgb, var(--promo-cta-bg) 22%, transparent),
+    0 2px 6px rgba(15, 23, 42, 0.06);
+}
+
+.promo-pick {
+  position: relative;
+  align-self: flex-start;
+  margin-bottom: -6px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--promo-cta-bg);
+  color: var(--promo-cta-ink);
+  font-size: 10.5px;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.promo--featured .promo-cta {
+  align-self: stretch;
+  justify-content: center;
+  overflow: hidden;
+  padding: 11px 14px;
+  font-size: 13.5px;
+  box-shadow: 0 6px 14px color-mix(in srgb, var(--promo-cta-bg) 35%, transparent);
+}
+
+.promo--featured .promo-cta > span {
+  display: inline-block;
+  animation: promo-nudge 1.6s ease-in-out infinite;
+}
+
+.promo--featured .promo-cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 30%, rgba(255, 255, 255, 0.45) 50%, transparent 70%);
+  transform: translateX(-120%);
+  animation: promo-shine 3.2s ease-in-out infinite;
+}
+
+.promo--featured .promo-link:hover .promo-cta {
+  filter: brightness(1.06);
+}
+
+@keyframes promo-nudge {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
+}
+
+@keyframes promo-shine {
+  0%, 55% { transform: translateX(-120%); }
+  100% { transform: translateX(120%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .promo--featured .promo-cta > span,
+  .promo--featured .promo-cta::after {
+    animation: none;
+  }
+}
+
 @media (max-width: 650px) {
   .detail {
     grid-template-rows: none;
@@ -809,6 +881,22 @@ h1 {
   }
   .promo-text {
     font-size: 11.5px;
+  }
+  .promo-pick {
+    position: absolute;
+    top: 6px;
+    left: 10px;
+    margin: 0;
+    padding: 1px 6px;
+    font-size: 9px;
+  }
+  .promo--featured .promo-link {
+    padding-top: 22px;
+  }
+  .promo--featured .promo-cta {
+    align-self: center;
+    padding: 10px 12px;
+    font-size: 0;
   }
   .promo-cta {
     align-self: center;

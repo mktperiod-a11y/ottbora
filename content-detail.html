@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css?v=20260928-2" />
-    <link rel="stylesheet" href="assets/content-detail.css?v=20260930-5" />
+    <link rel="stylesheet" href="assets/content-detail.css?v=20260930-6" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -730,13 +730,17 @@
             : MAIN[Math.random() * 65 < 35 ? 0 : 1];
         }
 
+        // 온디스크·케이디스크는 눈에 더 띄게(추천 표시·꽉 찬 버튼·움직이는 화살표).
+        const featured = MAIN.includes(ad);
         host.className =
           `promo promo--${ad.id} promo--deco-${ad.deco || "lines"}` +
-          (ad.color ? " promo--brand" : "");
+          (ad.color ? " promo--brand" : "") +
+          (featured ? " promo--featured" : "");
         if (ad.color) host.style.setProperty("--brand", ad.color);
         host.innerHTML =
           `<a class="promo-link" href="${ad.url}" target="_blank" rel="sponsored noopener noreferrer" aria-label="${ad.name} 광고, 새 창에서 열기">` +
           `<span class="promo-badge">광고</span>` +
+          (featured ? `<span class="promo-pick">오티티보라 추천</span>` : "") +
           `<span class="promo-logo"><img src="${ad.logo}" alt="${ad.name}" /></span>` +
           `<span class="promo-body"><strong class="promo-title">${ad.title}</strong>` +
           `<span class="promo-text">${ad.text}</span></span>` +
