@@ -598,24 +598,24 @@ h1 {
   line-height: 1.4;
 }
 
-/* 로고는 배경을 뺀 파일이라 판 없이 바로 놓습니다. */
+/*
+ * 로고는 여백을 깎은 파일(assets/promo/<id>.png)입니다.
+ * 스크립트가 가로세로 비율로 --k(=1/√비율)를 넣어, 로고마다 눈에 보이는
+ * 면적이 같도록 높이를 정합니다. 넓은 워드마크는 낮게, 네모난 아이콘은 높게.
+ */
 .promo-logo {
   position: relative;
   display: flex;
   align-items: center;
-  height: 30px;
+  height: 36px;
 }
 
 .promo-logo img {
   display: block;
   width: auto;
-  height: 100%;
-  max-width: 128px;
+  height: min(36px, calc(var(--k, 0.55) * 56px));
+  max-width: 140px;
   object-fit: contain;
-}
-
-.promo--kdisk .promo-logo {
-  height: 24px;
 }
 
 .promo-body {
@@ -688,12 +688,12 @@ h1 {
     padding: 15px 14px 15px 16px;
     border-radius: 12px;
   }
-  .promo-logo,
-  .promo--kdisk .promo-logo {
-    height: 20px;
+  .promo-logo {
+    height: 28px;
   }
   .promo-logo img {
-    max-width: 78px;
+    height: min(28px, calc(var(--k, 0.55) * 40px));
+    max-width: 92px;
   }
   .promo-badge {
     top: 6px;
