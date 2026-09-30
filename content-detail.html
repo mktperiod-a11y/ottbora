@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css?v=20260928-2" />
-    <link rel="stylesheet" href="assets/content-detail.css?v=20260930-30" />
+    <link rel="stylesheet" href="assets/content-detail.css?v=20260930-31" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -535,9 +535,7 @@
         for (const item of rows) {
           const li = document.createElement("li");
           if (item && typeof item === "object") {
-            // 모바일 두 칸에서 값이 길면(출연·원제 등) 한 줄을 통째로 씁니다.
-            const long = /^(출연|원제)$/.test(item.label || "") || String(item.value || "").length > 11;
-            li.className = long ? "fact-item fact-item--wide" : "fact-item";
+            li.className = "fact-item";
             const label = document.createElement("span");
             label.className = "fact-label";
             label.textContent = item.label || "";
@@ -550,7 +548,32 @@
           }
           ul.appendChild(li);
         }
+        fitFacts();
       }
+
+      /*
+       * 모바일 두 칸에서 한 칸에 안 들어가는 항목(값이나 이름이 두 줄로 넘어가는 것)만
+       * 한 줄 전체를 쓰게 합니다. 글자 수가 아니라 실제로 그려진 높이로 판단합니다.
+       */
+      function fitFacts() {
+        const items = [...document.querySelectorAll("#points .fact-item")];
+        items.forEach((li) => li.classList.remove("fact-item--wide"));
+        if (!matchMedia("(max-width: 650px)").matches) return;
+        const lines = (el) =>
+          el.getBoundingClientRect().height / (parseFloat(getComputedStyle(el).lineHeight) || 20);
+        const wide = items.filter((li) => {
+          const l = li.querySelector(".fact-label");
+          const v = li.querySelector(".fact-value");
+          return (v && lines(v) > 1.5) || (l && lines(l) > 1.5);
+        });
+        wide.forEach((li) => li.classList.add("fact-item--wide"));
+      }
+
+      let fitTimer;
+      addEventListener("resize", () => {
+        clearTimeout(fitTimer);
+        fitTimer = setTimeout(fitFacts, 150);
+      });
 
       /*
        * 검색엔진은 스크립트를 실행한 뒤의 설명·대표 주소를 읽습니다.

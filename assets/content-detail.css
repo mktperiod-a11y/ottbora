@@ -433,7 +433,7 @@ h1 {
   .copy .fact-item {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
     min-height: 56px;
     padding: 9px 2px;
