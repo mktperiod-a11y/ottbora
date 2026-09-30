@@ -499,24 +499,23 @@ h1 {
 }
 
 /*
- * 제휴 배너 공용 틀: 서비스 색(--brand)을 꽉 채운 판에 흰 글씨·흰 로고.
- * 사이트 본문(흰 카드)과 한눈에 구분되도록 광고답게 칠합니다.
- * 색은 content-detail.html 의 MAIN·OTHERS 에서 서비스마다 넣습니다.
+ * 그 밖의 웹하드: 흰 판에 서비스 색(--brand)을 옅게 깔고 강조·버튼에 씁니다.
+ * 색은 content-detail.html 의 OTHERS 에서 서비스마다 넣습니다.
  */
 .promo--brand {
   --brand: #1583e9;
   --promo-bg:
-    radial-gradient(95% 75% at 100% 0%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 60%),
-    linear-gradient(165deg, var(--brand) 0%, color-mix(in srgb, var(--brand) 78%, #000) 100%);
-  --promo-border: transparent;
-  --promo-title: #fff;
-  --promo-accent: color-mix(in srgb, var(--brand) 25%, #fff);
-  --promo-text: rgba(255, 255, 255, 0.78);
-  --promo-cta-bg: #fff;
-  --promo-cta-ink: color-mix(in srgb, var(--brand) 85%, #000);
-  --promo-badge: rgba(255, 255, 255, 0.6);
-  --promo-ring: rgba(255, 255, 255, 0.18);
-  --promo-shadow: 0 12px 28px color-mix(in srgb, var(--brand) 30%, transparent);
+    radial-gradient(90% 70% at 100% 100%, color-mix(in srgb, var(--brand) 14%, transparent) 0%, transparent 70%),
+    linear-gradient(165deg, #fff 0%, color-mix(in srgb, var(--brand) 7%, #fff) 100%);
+  --promo-border: color-mix(in srgb, var(--brand) 22%, #fff);
+  --promo-title: #17202d;
+  --promo-accent: var(--brand);
+  --promo-text: #5b6675;
+  --promo-cta-bg: var(--brand);
+  --promo-cta-ink: #fff;
+  --promo-badge: rgba(23, 32, 45, 0.45);
+  --promo-ring: color-mix(in srgb, var(--brand) 22%, transparent);
+  --promo-shadow: 0 10px 26px color-mix(in srgb, var(--brand) 12%, transparent);
 }
 
 .promo-link {
