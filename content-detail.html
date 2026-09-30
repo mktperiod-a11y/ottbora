@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css?v=20260928-2" />
-    <link rel="stylesheet" href="assets/content-detail.css?v=20260930-12" />
+    <link rel="stylesheet" href="assets/content-detail.css?v=20260930-15" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -743,7 +743,10 @@
           `<span class="promo-logo"><img src="${ad.logo}" alt="${ad.name}" /></span>` +
           `<span class="promo-body"><strong class="promo-title">${ad.title}</strong>` +
           `<span class="promo-text">${ad.text}</span></span>` +
-          `<span class="promo-cta">${ad.name} 바로가기 <span aria-hidden="true">→</span></span>` +
+          `<span class="promo-cta">${ad.name} 바로가기 <span class="promo-arrow" aria-hidden="true">` +
+          // 글자 "→" 는 글꼴마다 좌우 여백이 달라 가운데가 어긋나서, 가운데가 정확한 SVG 로 그립니다.
+          `<svg viewBox="0 0 16 16" width="14" height="14"><path d="M3.5 8h9M9 4.5 12.5 8 9 11.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>` +
+          `</span></span>` +
           `</a>`;
         // 넓은 로고는 낮게, 네모난 로고는 높게: 높이 ∝ 1/√(가로÷세로).
         const img = host.querySelector(".promo-logo img");

@@ -784,6 +784,15 @@ h1 {
   animation: promo-nudge 1.6s ease-in-out infinite;
 }
 
+.promo-arrow {
+  display: inline-flex;
+  line-height: 0;
+}
+
+.promo-arrow svg {
+  display: block;
+}
+
 .promo--featured .promo-link:hover .promo-cta {
   filter: brightness(1.06);
 }
@@ -827,7 +836,7 @@ h1 {
     align-content: center;
     column-gap: 12px;
     row-gap: 6px;
-    padding: 11px 12px 11px 18px;
+    padding: 10px 10px 10px 12px;
     border-radius: 8px;
   }
   .promo-logo {
@@ -879,8 +888,28 @@ h1 {
     border-radius: 6px;
     font-size: 0;
   }
-  .promo-cta span {
-    font-size: 13px;
+  /* 글자는 숨기고 화살표만: 숨긴 글자 몫의 간격·움직임을 없애야 화살표가 정가운데에 옵니다. */
+  /*
+   * 화살표를 버튼 자신의 배경으로 그립니다. 버튼이 소수점 위치에 놓여도
+   * 버튼과 화살표가 같은 픽셀로 맞춰져 늘 정가운데에 옵니다.
+   */
+  .promo-arrow {
+    display: none;
+  }
+  .promo-cta,
+  .promo--featured .promo-cta {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8h9M9 4.5 12.5 8 9 11.5' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px 14px;
+  }
+  .promo-cta,
+  .promo--featured .promo-cta {
+    gap: 0;
+    align-items: center;
+  }
+  .promo--featured .promo-cta > span {
+    animation: none;
   }
 }
 
