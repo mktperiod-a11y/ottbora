@@ -218,11 +218,35 @@ function findCandidates(html, base, siteName = "") {
   return out;
 }
 
+/*
+ * 사이트 키 컬러를 고를 때 쓰려고, 읽은 CSS 를 모아 두었다가
+ * 자주 쓰인 유채색을 colors.json 으로 남깁니다(무채색은 뺍니다).
+ */
+let cssTexts = [];
+
+function colorStats(texts) {
+  const count = new Map();
+  const hex = (r, g, b) => "#" + [r, g, b].map((v) => v.toString(16).padStart(2, "0")).join("");
+  for (const t of texts) {
+    for (const m of t.matchAll(/#([0-9a-f]{6}|[0-9a-f]{3})\b|rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/gi)) {
+      let r, g, b;
+      if (m[1]) {
+        const h = m[1].length === 3 ? [...m[1]].map((c) => c + c).join("") : m[1];
+        [r, g, b] = [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16));
+      } else [r, g, b] = [m[2], m[3], m[4]].map(Number);
+      if (Math.max(r, g, b) - Math.min(r, g, b) < 40) continue; // 회색·흑백
+      const k = hex(r, g, b);
+      count.set(k, (count.get(k) || 0) + 1);
+    }
+  }
+  return [...count].sort((a, b) => b[1] - a[1]).slice(0, 25).map(([color, n]) => ({ color, n }));
+}
+
 /** 같은 사이트 CSS 에서 logo 가 들어간 선택자의 배경 이미지를 찾습니다. */
 async function cssCandidates(html, base) {
   const out = [];
   const sheets = [];
-  // img.megafile.co.kr 처럼 같은 도메인의 이미지 서버는 같은 사이트로 봅니다.
+  // img.example.co.kr 처럼 같은 도메인의 이미지 서버는 같은 사이트로 봅니다.
   const site = new URL(base).hostname.split(".").slice(-3).join(".").replace(/^(www|m)\./, "");
   const sameSite = (h) => h === site || h.endsWith("." + site);
   for (const tag of html.match(/<link\b[^>]*>/gi) || []) {
@@ -242,10 +266,12 @@ async function cssCandidates(html, base) {
       }
     }
   };
+  cssTexts.push(html);
   for (const block of html.match(/<style\b[\s\S]*?<\/style>/gi) || []) scan(block, base);
   for (const href of sheets.slice(0, 8)) {
     try {
       const { text } = await get(href, { referer: base, asText: true });
+      cssTexts.push(text);
       scan(text, href);
     } catch {}
   }
@@ -297,7 +323,7 @@ await rm(OUT, { recursive: true, force: true });
 const report = [];
 
 for (const p of targets) {
-  const home = /^https?:/.test(p.url) ? p.url : p.official || "";
+  const home = /^https?:/.test(p.url) ? p.url : p.official || p.home || "";
   const dir = `${OUT}/${p.id}`;
   await mkdir(dir, { recursive: true });
   const entry = { id: p.id, name: p.name, home, candidates: [], error: "" };
@@ -389,10 +415,12 @@ for (const p of targets) {
 
   const seen = new Set();
   const found = [];
+  cssTexts = [];
   for (const d of docs) {
     found.push(...findCandidates(d.text, d.url, p.name));
     found.push(...(await cssCandidates(d.text, d.url)));
   }
+  await writeFile(`${dir}/colors.json`, JSON.stringify(colorStats(cssTexts), null, 2) + "\n");
   const unique = found.filter((c) => !seen.has(c.url) && seen.add(c.url));
   // 로고일 가능성이 높은 순서로 둡니다. 개수 상한에 걸려도 좋은 후보가 남게.
   const ORDER = { ld: 0, img: 1, h1: 2, css: 3, og: 4, icon: 5 };

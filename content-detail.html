@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css?v=20260928-2" />
-    <link rel="stylesheet" href="assets/content-detail.css?v=20260929-10" />
+    <link rel="stylesheet" href="assets/content-detail.css?v=20260930-28" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -53,7 +53,7 @@
       <a class="detail-back" href="content.html" aria-label="콘텐츠ZONE 목록으로 돌아가기">← 콘텐츠ZONE</a>
       <div class="detail">
         <img class="detail-poster" id="poster" alt="" />
-        <aside class="promo" id="promo" aria-label="광고" hidden></aside>
+        <aside class="promo" id="promo" aria-label="제휴 배너" hidden></aside>
         <section>
           <span class="ey" id="category"></span>
           <h1 id="title"></h1>
@@ -646,48 +646,125 @@
             "작품 정보를 불러오지 못했습니다.";
         });
     </script>
+    <script src="assets/webhard-ranking.js?v=20260929-2"></script>
     <script>
       /*
-       * 제휴 배너. 들어올 때마다 weight 비율로 하나를 고릅니다.
-       * 온디스크 50% · 케이디스크 30% · 나머지 20% 는 배너를 띄우지 않습니다.
-       * 사이트 본문과 구분되도록 각 서비스 색을 쓰고 "광고" 표시를 붙입니다.
+       * 제휴 배너. 들어올 때마다 하나를 골라 띄웁니다.
+       *
+       *   온디스크 35% · 케이디스크 30%
+       *   나머지 35% 는 이번 주 웹하드 순위(TOP 10)에 올라온 다른 곳끼리 똑같이 나눕니다.
+       *
+       * OTHERS 에는 순위 후보 전체(예비 포함) 배너를 보관해 두고,
+       * 그 주 TOP 10 에 든 곳만 뽑힙니다. 이름·주소는 랭킹 엔진
+       * (assets/webhard-ranking.js)에서 가져오고, 여기서는 색과 문구만 적습니다.
+       * 로고는 여백을 깎아 둔 assets/promo/<id>.png 를 쓰고, 가로세로 비율에
+       * 맞춰 눈에 보이는 면적이 같아지도록 크기를 정합니다(--k).
+       * 글자가 유난히 굵어 커 보이는 로고는 scale 로 조금 줄입니다.
+       * deco 는 배경 장식 모양입니다(기본 lines: 점 격자 + 사선 띠).
+       *   rings 겹친 두 원 · squares 비스듬한 네모 · blob 옅은 큰 원
+       *   stripes 사선 줄무늬 · triangle 모서리 삼각형
+       * 사이트 본문과 구분되도록 각 서비스 색을 쓰고 "제휴" 표시를 붙입니다.
        */
       (() => {
         const host = document.querySelector("#promo");
         if (!host) return;
-        const ADS = [
+        const MAIN = [
           {
             id: "ondisk",
-            weight: 50,
+            weight: 35,
             name: "온디스크",
-            logo: "assets/promo-ondisk.png",
+            logo: "assets/promo/ondisk.png",
             url: "go/ondisk/",
-            title: "보고 싶던 작품, <br /><em>지금 바로</em>",
-            text: "영화·드라마·애니까지 다양한 장르",
+            title: "오늘 뭐 볼지, <br /><em>고민 끝</em>",
+            titleMobile: "뭐 볼지 고민된다면, <em>온디스크</em>",
+            text: "영화·드라마·애니까지 한 번에",
           },
           {
             id: "kdisk",
             weight: 30,
             name: "케이디스크",
-            logo: "assets/promo-kdisk.png",
+            logo: "assets/promo/kdisk.png",
             url: "go/kdisk/",
-            title: "PC에서도 <br /><em>모바일에서도</em>",
-            text: "감상과 다운로드를 한 곳에서",
+            color: "#5c9608",
+            deco: "rings",
+            title: "PC든 폰이든 <br /><em>바로 재생</em>",
+            titleMobile: "PC든 폰이든, 어디서나 <em>케이디스크</em>",
+            text: "감상도 다운로드도 한 곳에서",
           },
         ];
-        // 0~100 사이에서 뽑아 누적 weight 구간에 들면 그 배너, 어디에도 안 들면(80~100) 미노출.
+        const OTHERS = {
+          wedisk: { color: "#46579b", deco: "squares", title: "찜해 둔 자료를 나중에 <br /><em>다시 보고 싶을 때</em>", text: "찜·다시보기 기능과 화면 전송을 함께 이용할 수 있는 웹하드예요" },
+          filejo: { color: "#3b6391", deco: "blob", title: "인기 TOP100 목록부터 <br /><em>차근차근 보고 싶을 때</em>", text: "파일조 안에서 많이 찾는 콘텐츠를 순위로 먼저 살펴볼 수 있어요" },
+          filenori: { color: "#3e61b1", deco: "rings", title: "모바일에서 찾은 작품을 <br /><em>전용 플레이어로 볼 때</em>", text: "모바일 탐색과 전용 플레이어를 함께 제공하는 서비스예요" },
+          me2disk: { color: "#595ca6", deco: "stripes", title: "여러 장르의 자료를 <br /><em>한 곳에서 보고 싶을 때</em>", text: "다양한 자료와 고객지원을 함께 안내하는 웹하드예요" },
+          filecast: { color: "#346f89", deco: "squares", title: "모바일 감상과 정액관을 <br /><em>함께 비교하고 싶을 때</em>", text: "개별 구매와 자유이용권 정액관을 함께 안내하는 서비스예요" },
+          filestar: { color: "#e7284e", deco: "triangle", title: "고른 콘텐츠를 기다림 없이 <br /><em>실시간으로 볼 때</em>", text: "실시간 스트리밍과 모바일 전용 플레이어 앱을 함께 제공해요" },
+          filesun: { color: "#f0500f", deco: "blob", title: "장르별로 둘러보면서 <br /><em>출석 혜택도 챙길 때</em>", text: "다양한 장르와 출석·쿠폰 이벤트를 안내하는 웹하드예요" },
+          fileis: { color: "#3e7aa8", deco: "stripes", scale: 0.84, title: "할인 중인 콘텐츠를 <br /><em>바로 스트리밍할 때</em>", text: "실시간 스트리밍과 할인 콘텐츠를 함께 안내하는 서비스예요" },
+          filecookie: { color: "#315eaa", deco: "triangle", title: "PC에서 구매한 자료를 <br /><em>모바일로 다시 볼 때</em>", text: "PC에서 산 자료를 모바일에서 재생할 수 있다고 안내해요" },
+          bigfile: { color: "#1b9e52", title: "실시간 TOP100에서 <br /><em>인기 자료를 찾을 때</em>", text: "실시간·주간·월간 TOP100과 여러 카테고리를 함께 제공해요" },
+          pdpop: { color: "#f06a0a", title: "인기 콘텐츠를 <br /><em>전용 프로그램으로 볼 때</em>", text: "인기 콘텐츠와 전용 프로그램 이용을 함께 안내하는 서비스예요" },
+        };
+
+        const R = window.OTT_WEBHARD_RANKING;
+        const others = R
+          ? R.snapshot()
+              .order.filter((p) => OTHERS[p.id])
+              .map((p) => ({
+                id: p.id,
+                name: p.name,
+                logo: `assets/promo/${p.id}.png`,
+                url: p.url,
+                title: OTHERS[p.id].title,
+                text: OTHERS[p.id].text || p.description,
+                color: OTHERS[p.id].color,
+                scale: OTHERS[p.id].scale,
+                deco: OTHERS[p.id].deco,
+              }))
+          : [];
+
         let roll = Math.random() * 100;
-        const ad = ADS.find((a) => (roll -= a.weight) < 0);
-        if (!ad) return;
-        host.className = `promo promo--${ad.id}`;
+        let ad = MAIN.find((a) => (roll -= a.weight) < 0);
+        if (!ad) {
+          // 순위를 못 읽었으면 온디스크·케이디스크 비율대로 둘 중 하나.
+          ad = others.length
+            ? others[Math.floor(Math.random() * others.length)]
+            : MAIN[Math.random() * 65 < 35 ? 0 : 1];
+        }
+
+        // 온디스크·케이디스크는 눈에 더 띄게(큰 제목·꽉 찬 버튼).
+        const featured = MAIN.includes(ad);
+        host.className =
+          `promo promo--${ad.id} promo--deco-${ad.deco || "lines"}` +
+          (ad.color ? " promo--brand" : "") +
+          (featured ? " promo--featured" : "");
+        if (ad.color) host.style.setProperty("--brand", ad.color);
         host.innerHTML =
-          `<a class="promo-link" href="${ad.url}" target="_blank" rel="sponsored noopener noreferrer" aria-label="${ad.name} 광고, 새 창에서 열기">` +
-          `<span class="promo-badge">광고</span>` +
+          `<a class="promo-link" href="${ad.url}" target="_blank" rel="sponsored noopener noreferrer" aria-label="${ad.name} 제휴 링크, 새 창에서 열기">` +
+          `<span class="promo-badge">제휴</span>` +
           `<span class="promo-logo"><img src="${ad.logo}" alt="${ad.name}" /></span>` +
-          `<span class="promo-body"><strong class="promo-title">${ad.title}</strong>` +
+                    // 모바일 문구가 따로 있으면 좁은 화면에서는 그걸 보여 줍니다.
+          `<span class="promo-body"><strong class="promo-title">` +
+          (ad.titleMobile
+            ? `<span class="promo-title-pc">${ad.title}</span><span class="promo-title-mo">${ad.titleMobile}</span>`
+            : ad.title) +
+          `</strong>` +
           `<span class="promo-text">${ad.text}</span></span>` +
-          `<span class="promo-cta">${ad.name} 바로가기 <span aria-hidden="true">→</span></span>` +
+          `<span class="promo-cta"><span class="promo-cta-name">${ad.name}</span>바로가기<span class="promo-arrow" aria-hidden="true">` +
+          // 글자 "→" 는 글꼴마다 좌우 여백이 달라 가운데가 어긋나서, 가운데가 정확한 SVG 로 그립니다.
+          `<svg viewBox="0 0 16 16" width="14" height="14"><path d="M3.5 8h9M9 4.5 12.5 8 9 11.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>` +
+          `</span></span>` +
           `</a>`;
+        // 넓은 로고는 낮게, 네모난 로고는 높게: 높이 ∝ 1/√(가로÷세로).
+        const img = host.querySelector(".promo-logo img");
+        const fit = () => {
+          if (img.naturalWidth && img.naturalHeight) {
+            const k = 1 / Math.sqrt(img.naturalWidth / img.naturalHeight);
+            img.style.setProperty("--k", (k * (ad.scale || 1)).toFixed(3));
+          }
+        };
+        if (img.complete) fit();
+        else img.addEventListener("load", fit, { once: true });
         host.hidden = false;
       })();
     </script>
