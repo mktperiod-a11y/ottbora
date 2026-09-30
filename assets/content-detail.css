@@ -764,25 +764,9 @@ h1 {
 
 /*
  * 온디스크·케이디스크(promo--featured): 누르고 싶게.
- *   - 다른 배너는 밝은 판인데 이 둘만 서비스 색을 꽉 채운 판 + 흰 글씨·흰 로고
  *   - 흰 버튼을 폭에 꽉 채우고(모바일은 '바로가기' 글자가 보이는 버튼), 화살표가 살짝 움직입니다.
  * 딱지·밑줄·빛 효과는 쓰지 않습니다. 움직임 줄이기 설정이면 움직이지 않습니다.
  */
-.promo--featured {
-  --promo-bg:
-    radial-gradient(90% 80% at 100% 100%, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0) 65%),
-    linear-gradient(160deg, color-mix(in srgb, var(--brand) 92%, #fff) 0%, color-mix(in srgb, var(--brand) 82%, #000) 100%);
-  --promo-border: transparent;
-  --promo-title: #fff;
-  --promo-accent: #ffe066;
-  --promo-text: rgba(255, 255, 255, 0.86);
-  --promo-cta-bg: #fff;
-  --promo-cta-ink: color-mix(in srgb, var(--brand) 80%, #000);
-  --promo-badge: rgba(255, 255, 255, 0.72);
-  --promo-ring: rgba(255, 255, 255, 0.22);
-  --promo-shadow: 0 14px 30px color-mix(in srgb, var(--brand) 32%, transparent);
-}
-
 .promo--featured .promo-cta {
   align-self: stretch;
   justify-content: center;
@@ -812,7 +796,7 @@ h1 {
 }
 
 .promo--featured .promo-link:hover .promo-cta {
-  background: color-mix(in srgb, #fff 90%, var(--brand));
+  filter: brightness(1.06);
 }
 
 @keyframes promo-nudge {
