@@ -763,35 +763,10 @@ h1 {
 
 /*
  * 온디스크·케이디스크(promo--featured): 글자 딱지 없이 디자인으로 눈길을 끕니다.
- *   - 서비스 색 빛이 테두리를 따라 천천히 돌고, 둘레에 은은한 빛번짐
  *   - 제목을 키웁니다
  *   - 버튼을 꽉 채우고, 화살표가 살짝 움직입니다.
  * 움직임 줄이기 설정을 켠 사람에게는 움직이지 않습니다.
  */
-@property --promo-angle {
-  syntax: "<angle>";
-  inherits: false;
-  initial-value: 0deg;
-}
-
-.promo--featured .promo-link {
-  border: 2px solid transparent;
-  background:
-    var(--promo-bg) padding-box,
-    conic-gradient(
-        from var(--promo-angle),
-        color-mix(in srgb, var(--promo-cta-bg) 18%, #fff) 0deg,
-        var(--promo-cta-bg) 70deg,
-        color-mix(in srgb, var(--promo-cta-bg) 18%, #fff) 150deg,
-        color-mix(in srgb, var(--promo-cta-bg) 18%, #fff) 360deg
-      )
-      border-box;
-  box-shadow:
-    0 16px 34px color-mix(in srgb, var(--promo-cta-bg) 26%, transparent),
-    0 0 0 6px color-mix(in srgb, var(--promo-cta-bg) 7%, transparent);
-  animation: promo-spin 5s linear infinite;
-}
-
 .promo--featured .promo-title {
   font-size: 23px;
 }
@@ -813,17 +788,12 @@ h1 {
   filter: brightness(1.06);
 }
 
-@keyframes promo-spin {
-  to { --promo-angle: 360deg; }
-}
-
 @keyframes promo-nudge {
   0%, 100% { transform: translateX(0); }
   50% { transform: translateX(4px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .promo--featured .promo-link,
   .promo--featured .promo-cta > span {
     animation: none;
   }

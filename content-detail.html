@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css?v=20260928-2" />
-    <link rel="stylesheet" href="assets/content-detail.css?v=20260930-9" />
+    <link rel="stylesheet" href="assets/content-detail.css?v=20260930-10" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -730,7 +730,7 @@
             : MAIN[Math.random() * 65 < 35 ? 0 : 1];
         }
 
-        // 온디스크·케이디스크는 눈에 더 띄게(돌아가는 테두리 빛·큰 제목·꽉 찬 버튼).
+        // 온디스크·케이디스크는 눈에 더 띄게(큰 제목·꽉 찬 버튼).
         const featured = MAIN.includes(ad);
         host.className =
           `promo promo--${ad.id} promo--deco-${ad.deco || "lines"}` +
