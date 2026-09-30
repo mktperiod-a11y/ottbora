@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css?v=20260928-2" />
-    <link rel="stylesheet" href="assets/content-detail.css?v=20260930-8" />
+    <link rel="stylesheet" href="assets/content-detail.css?v=20260930-9" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -53,7 +53,7 @@
       <a class="detail-back" href="content.html" aria-label="콘텐츠ZONE 목록으로 돌아가기">← 콘텐츠ZONE</a>
       <div class="detail">
         <img class="detail-poster" id="poster" alt="" />
-        <aside class="promo" id="promo" aria-label="광고" hidden></aside>
+        <aside class="promo" id="promo" aria-label="제휴 배너" hidden></aside>
         <section>
           <span class="ey" id="category"></span>
           <h1 id="title"></h1>
@@ -663,7 +663,7 @@
        * deco 는 배경 장식 모양입니다(기본 lines: 점 격자 + 사선 띠).
        *   rings 겹친 두 원 · squares 비스듬한 네모 · blob 옅은 큰 원
        *   stripes 사선 줄무늬 · triangle 모서리 삼각형
-       * 사이트 본문과 구분되도록 각 서비스 색을 쓰고 "광고" 표시를 붙입니다.
+       * 사이트 본문과 구분되도록 각 서비스 색을 쓰고 "제휴" 표시를 붙입니다.
        */
       (() => {
         const host = document.querySelector("#promo");
@@ -738,8 +738,8 @@
           (featured ? " promo--featured" : "");
         if (ad.color) host.style.setProperty("--brand", ad.color);
         host.innerHTML =
-          `<a class="promo-link" href="${ad.url}" target="_blank" rel="sponsored noopener noreferrer" aria-label="${ad.name} 광고, 새 창에서 열기">` +
-          `<span class="promo-badge">광고</span>` +
+          `<a class="promo-link" href="${ad.url}" target="_blank" rel="sponsored noopener noreferrer" aria-label="${ad.name} 제휴 링크, 새 창에서 열기">` +
+          `<span class="promo-badge">제휴</span>` +
           `<span class="promo-logo"><img src="${ad.logo}" alt="${ad.name}" /></span>` +
           `<span class="promo-body"><strong class="promo-title">${ad.title}</strong>` +
           `<span class="promo-text">${ad.text}</span></span>` +

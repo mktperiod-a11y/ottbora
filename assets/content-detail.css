@@ -526,7 +526,7 @@ h1 {
   overflow: hidden;
   padding: 18px 18px 20px;
   border: 1px solid var(--promo-border);
-  border-radius: 14px;
+  border-radius: 8px;
   background: var(--promo-bg);
   color: var(--promo-title);
   font-family: "Pretendard Variable", Pretendard, sans-serif;
@@ -751,7 +751,7 @@ h1 {
   align-items: center;
   gap: 6px;
   padding: 9px 14px;
-  border-radius: 999px;
+  border-radius: 6px;
   background: var(--promo-cta-bg);
   color: var(--promo-cta-ink);
   font-size: 12.5px;
@@ -764,8 +764,8 @@ h1 {
 /*
  * 온디스크·케이디스크(promo--featured): 글자 딱지 없이 디자인으로 눈길을 끕니다.
  *   - 서비스 색 빛이 테두리를 따라 천천히 돌고, 둘레에 은은한 빛번짐
- *   - 제목을 키우고 강조 글자 아래 형광펜 밑줄
- *   - 버튼을 꽉 채우고, 화살표가 살짝 움직이며 빛이 한 번씩 지나갑니다.
+ *   - 제목을 키웁니다
+ *   - 버튼을 꽉 채우고, 화살표가 살짝 움직입니다.
  * 움직임 줄이기 설정을 켠 사람에게는 움직이지 않습니다.
  */
 @property --promo-angle {
@@ -796,34 +796,17 @@ h1 {
   font-size: 23px;
 }
 
-.promo--featured .promo-title em {
-  background: linear-gradient(
-    transparent 62%,
-    color-mix(in srgb, var(--promo-cta-bg) 22%, transparent) 62%
-  );
-}
-
 .promo--featured .promo-cta {
   align-self: stretch;
   justify-content: center;
   overflow: hidden;
   padding: 11px 14px;
   font-size: 13.5px;
-  box-shadow: 0 6px 14px color-mix(in srgb, var(--promo-cta-bg) 35%, transparent);
 }
 
 .promo--featured .promo-cta > span {
   display: inline-block;
   animation: promo-nudge 1.6s ease-in-out infinite;
-}
-
-.promo--featured .promo-cta::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(100deg, transparent 30%, rgba(255, 255, 255, 0.45) 50%, transparent 70%);
-  transform: translateX(-120%);
-  animation: promo-shine 3.2s ease-in-out infinite;
 }
 
 .promo--featured .promo-link:hover .promo-cta {
@@ -839,15 +822,9 @@ h1 {
   50% { transform: translateX(4px); }
 }
 
-@keyframes promo-shine {
-  0%, 55% { transform: translateX(-120%); }
-  100% { transform: translateX(120%); }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .promo--featured .promo-link,
-  .promo--featured .promo-cta > span,
-  .promo--featured .promo-cta::after {
+  .promo--featured .promo-cta > span {
     animation: none;
   }
 }
@@ -869,13 +846,24 @@ h1 {
     position: static;
     margin-top: 14px;
   }
+  /* 오른쪽 칸은 위에 제휴 표시, 아래에 버튼 — 서로 겹치지 않게 세로로 쌓습니다. */
   .promo-link {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      "logo body badge"
+      "logo body cta";
     align-items: center;
-    gap: 12px;
-    padding: 12px 12px 12px 12px;
-    border-radius: 12px;
+    column-gap: 12px;
+    row-gap: 6px;
+    padding: 10px 10px 10px 12px;
+    border-radius: 8px;
+  }
+  .promo-logo {
+    grid-area: logo;
+  }
+  .promo-body {
+    grid-area: body;
   }
   .promo-logo {
     height: 28px;
@@ -885,8 +873,11 @@ h1 {
     max-width: 92px;
   }
   .promo-badge {
-    top: 6px;
-    right: 8px;
+    grid-area: badge;
+    position: static;
+    justify-self: end;
+    align-self: start;
+    padding: 0 4px;
     font-size: 9px;
   }
   .promo-body {
@@ -904,19 +895,21 @@ h1 {
   .promo--featured .promo-title {
     font-size: 16px;
   }
+  .promo-cta,
   .promo--featured .promo-cta {
-    align-self: center;
-    padding: 8px 10px;
-    font-size: 0;
-  }
-  .promo-cta {
-    align-self: center;
-    margin-top: 10px;
-    padding: 8px 10px;
+    grid-area: cta;
+    justify-self: end;
+    align-self: end;
+    width: 28px;
+    height: 28px;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    border-radius: 6px;
     font-size: 0;
   }
   .promo-cta span {
-    font-size: 14px;
+    font-size: 13px;
   }
 }
 
