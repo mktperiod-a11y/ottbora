@@ -498,22 +498,6 @@ h1 {
   display: none;
 }
 
-/* 케이디스크: 짙은 차콜 판에 주황 빛, 흰 글씨 로고 */
-.promo--kdisk {
-  --promo-bg:
-    radial-gradient(95% 75% at 100% 100%, rgba(255, 111, 26, 0.38) 0%, rgba(255, 111, 26, 0) 62%),
-    linear-gradient(165deg, #222733 0%, #13161d 100%);
-  --promo-border: #2b303c;
-  --promo-title: #fff;
-  --promo-accent: #ff8a3d;
-  --promo-text: rgba(255, 255, 255, 0.7);
-  --promo-cta-bg: #ff6f1a;
-  --promo-cta-ink: #fff;
-  --promo-badge: rgba(255, 255, 255, 0.55);
-  --promo-ring: rgba(255, 138, 61, 0.3);
-  --promo-shadow: 0 12px 28px rgba(10, 12, 18, 0.28);
-}
-
 /*
  * 그 밖의 웹하드: 흰 판에 서비스 색(--brand)을 옅게 깔고 강조·버튼에 씁니다.
  * 색은 content-detail.html 의 OTHERS 에서 서비스마다 넣습니다.

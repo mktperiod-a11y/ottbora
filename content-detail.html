@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css?v=20260928-2" />
-    <link rel="stylesheet" href="assets/content-detail.css?v=20260930-1" />
+    <link rel="stylesheet" href="assets/content-detail.css?v=20260930-2" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -659,6 +659,7 @@
        * (assets/webhard-ranking.js)에서 가져오고, 여기서는 색과 문구만 적습니다.
        * 로고는 여백을 깎아 둔 assets/promo/<id>.png 를 쓰고, 가로세로 비율에
        * 맞춰 눈에 보이는 면적이 같아지도록 크기를 정합니다(--k).
+       * 글자가 유난히 굵어 커 보이는 로고는 scale 로 조금 줄입니다.
        * 사이트 본문과 구분되도록 각 서비스 색을 쓰고 "광고" 표시를 붙입니다.
        */
       (() => {
@@ -680,6 +681,7 @@
             name: "케이디스크",
             logo: "assets/promo/kdisk.png",
             url: "go/kdisk/",
+            color: "#e36b12",
             title: "PC에서도 <br /><em>모바일에서도</em>",
             text: "감상과 다운로드를 한 곳에서",
           },
@@ -692,7 +694,7 @@
           filecast: { color: "#3f6c8d", title: "모바일 감상도 <br /><em>정액관으로</em>" },
           filestar: { color: "#e7284e", title: "고르면 바로 <br /><em>실시간 재생</em>" },
           filesun: { color: "#f0500f", title: "장르별로 둘러보고 <br /><em>출석 혜택까지</em>" },
-          fileis: { color: "#4973a2", title: "할인 콘텐츠를 <br /><em>바로 스트리밍</em>" },
+          fileis: { color: "#4973a2", scale: 0.84, title: "할인 콘텐츠를 <br /><em>바로 스트리밍</em>" },
           filecookie: { color: "#466d9c", title: "PC에서 사고 <br /><em>모바일로 재생</em>" },
           bigfile: { color: "#1b9e52", title: "실시간 TOP100으로 <br /><em>빠르게 찾기</em>" },
           pdpop: { color: "#f06a0a", title: "인기 콘텐츠를 <br /><em>전용 프로그램으로</em>" },
@@ -710,6 +712,7 @@
                 title: OTHERS[p.id].title,
                 text: p.description,
                 color: OTHERS[p.id].color,
+                scale: OTHERS[p.id].scale,
               }))
           : [];
 
@@ -739,7 +742,7 @@
         const fit = () => {
           if (img.naturalWidth && img.naturalHeight) {
             const k = 1 / Math.sqrt(img.naturalWidth / img.naturalHeight);
-            img.style.setProperty("--k", k.toFixed(3));
+            img.style.setProperty("--k", (k * (ad.scale || 1)).toFixed(3));
           }
         };
         if (img.complete) fit();
