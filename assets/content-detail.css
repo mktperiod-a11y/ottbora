@@ -771,6 +771,12 @@ h1 {
   font-size: 23px;
 }
 
+/* 그 밖의 배너는 문구가 길어 제목을 조금 작게 둡니다. */
+.promo:not(.promo--featured) .promo-title {
+  font-size: 17px;
+  line-height: 1.35;
+}
+
 .promo--featured .promo-cta {
   align-self: stretch;
   justify-content: center;
@@ -874,6 +880,9 @@ h1 {
   }
   .promo--featured .promo-title {
     font-size: 16px;
+  }
+  .promo:not(.promo--featured) .promo-title {
+    font-size: 13.5px;
   }
   .promo-cta,
   .promo--featured .promo-cta {
