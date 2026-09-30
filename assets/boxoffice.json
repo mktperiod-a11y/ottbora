@@ -2,8 +2,8 @@
   "note": "일별 박스오피스를 작품 단위로 누적한 목록입니다. 콘텐츠ZONE 의 영화·애니 탭에서 씁니다.",
   "source": "영화진흥위원회 오픈API 일별 박스오피스",
   "sourceUrl": "https://www.kobis.or.kr/kobisopenapi/",
-  "updatedAt": "2026-09-29",
-  "latestDt": "20260928",
+  "updatedAt": "2026-09-30",
+  "latestDt": "20260929",
   "keepDays": 45,
   "movies": [
     {
@@ -12,18 +12,18 @@
       "titleEn": "The Assassin(s)",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 1633616,
+      "audienceAcc": 1695020,
       "genres": [
         "범죄",
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260917",
-      "lastSeenAt": "20260928",
-      "days": 8,
+      "lastSeenAt": "20260929",
+      "days": 9,
       "bestRank": 1,
-      "rank": 2,
-      "audienceDay": 67406,
+      "rank": 1,
+      "audienceDay": 61414,
       "runtime": 130,
       "directors": [
         "허진호"
@@ -59,7 +59,7 @@
       "titleEn": "The Odyssey",
       "titleOriginal": "",
       "openedAt": "2026-08-05",
-      "audienceAcc": 11814650,
+      "audienceAcc": 11837353,
       "genres": [
         "액션",
         "드라마",
@@ -67,11 +67,11 @@
       ],
       "type": "영화",
       "firstSeenAt": "20260824",
-      "lastSeenAt": "20260928",
-      "days": 35,
+      "lastSeenAt": "20260929",
+      "days": 36,
       "bestRank": 1,
       "rank": 3,
-      "audienceDay": 31357,
+      "audienceDay": 22707,
       "runtime": 172,
       "directors": [
         "크리스토퍼 놀란"
@@ -107,17 +107,17 @@
       "titleEn": "The Intern",
       "titleOriginal": "",
       "openedAt": "2026-09-16",
-      "audienceAcc": 768591,
+      "audienceAcc": 782609,
       "genres": [
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260904",
-      "lastSeenAt": "20260928",
-      "days": 15,
+      "lastSeenAt": "20260929",
+      "days": 16,
       "bestRank": 1,
       "rank": 5,
-      "audienceDay": 12537,
+      "audienceDay": 14020,
       "runtime": 132,
       "directors": [
         "김도영"
@@ -156,18 +156,18 @@
       "titleEn": "TAZZA: The Song of Beelzebub",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 901924,
+      "audienceAcc": 958054,
       "genres": [
         "범죄",
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260914",
-      "lastSeenAt": "20260928",
-      "days": 10,
+      "lastSeenAt": "20260929",
+      "days": 11,
       "bestRank": 1,
-      "rank": 1,
-      "audienceDay": 68913,
+      "rank": 2,
+      "audienceDay": 56136,
       "runtime": 129,
       "directors": [
         "최국희"
@@ -205,7 +205,7 @@
       "titleEn": "Spider-Man: Brand New Day",
       "titleOriginal": "",
       "openedAt": "2026-07-29",
-      "audienceAcc": 9034501,
+      "audienceAcc": 9036863,
       "genres": [
         "액션",
         "어드벤처",
@@ -213,11 +213,11 @@
       ],
       "type": "영화",
       "firstSeenAt": "20260824",
-      "lastSeenAt": "20260928",
-      "days": 35,
+      "lastSeenAt": "20260929",
+      "days": 36,
       "bestRank": 2,
       "rank": 9,
-      "audienceDay": 2075,
+      "audienceDay": 2362,
       "runtime": 144,
       "directors": [
         "데스틴 다니엘 크리튼"
@@ -253,17 +253,17 @@
       "titleEn": "Obsession",
       "titleOriginal": "",
       "openedAt": "2026-09-02",
-      "audienceAcc": 859183,
+      "audienceAcc": 868484,
       "genres": [
         "공포(호러)"
       ],
       "type": "영화",
       "firstSeenAt": "20260902",
-      "lastSeenAt": "20260928",
-      "days": 26,
+      "lastSeenAt": "20260929",
+      "days": 27,
       "bestRank": 2,
       "rank": 6,
-      "audienceDay": 10030,
+      "audienceDay": 9301,
       "runtime": 108,
       "directors": [
         "커리 바커"
@@ -297,7 +297,7 @@
       "titleEn": "Resident Evil",
       "titleOriginal": "",
       "openedAt": "2026-09-17",
-      "audienceAcc": 191584,
+      "audienceAcc": 195640,
       "genres": [
         "공포(호러)",
         "액션",
@@ -305,11 +305,11 @@
       ],
       "type": "영화",
       "firstSeenAt": "20260917",
-      "lastSeenAt": "20260928",
-      "days": 11,
+      "lastSeenAt": "20260929",
+      "days": 12,
       "bestRank": 3,
       "rank": 8,
-      "audienceDay": 4634,
+      "audienceDay": 4056,
       "runtime": 93,
       "directors": [
         "잭 크레거"
@@ -340,17 +340,17 @@
       "titleEn": "Possible Love",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 130353,
+      "audienceAcc": 144530,
       "genres": [
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260921",
-      "lastSeenAt": "20260928",
-      "days": 6,
+      "lastSeenAt": "20260929",
+      "days": 7,
       "bestRank": 4,
       "rank": 4,
-      "audienceDay": 14418,
+      "audienceDay": 14177,
       "runtime": 164,
       "directors": [
         "이창동"
@@ -389,18 +389,18 @@
       "titleEn": "Avengers: Endgame Encore",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 114206,
+      "audienceAcc": 119886,
       "genres": [
         "액션",
         "SF"
       ],
       "type": "영화",
       "firstSeenAt": "20260923",
-      "lastSeenAt": "20260928",
-      "days": 5,
+      "lastSeenAt": "20260929",
+      "days": 6,
       "bestRank": 5,
       "rank": 7,
-      "audienceDay": 6256,
+      "audienceDay": 5680,
       "runtime": 183,
       "directors": [
         "안소니 루소",
@@ -432,6 +432,56 @@
       "showing": true
     },
     {
+      "movieCd": "20266148",
+      "title": "아버지의 집밥",
+      "titleEn": "My Father’s Table",
+      "titleOriginal": "",
+      "openedAt": "2026-09-09",
+      "audienceAcc": 14256,
+      "genres": [
+        "드라마"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260922",
+      "lastSeenAt": "20260929",
+      "days": 2,
+      "bestRank": 10,
+      "rank": 10,
+      "audienceDay": 991,
+      "runtime": 146,
+      "directors": [
+        "이준익"
+      ],
+      "cast": [
+        "정진영",
+        "이정은",
+        "변요한",
+        "박지연",
+        "강형석",
+        "박세준"
+      ],
+      "producers": [
+        "(주)레진엔터테인먼트",
+        "(주)영화사두둥"
+      ],
+      "distributors": [
+        "(주)키다리스튜디오",
+        "(주)삼백상회"
+      ],
+      "rating": "12세이상관람가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20266148.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "평생 부엌 근처엔 가본 적도 없는 가부장 아버지 ‘하응’. 결혼 이후 줄곧 가족들의 밥상을 차려온 아내 ‘순애’의 고마움은 모른 채, 삼시세끼 까탈스럽게 집밥만 찾는다. 어느 날 ‘순애’가 요리를 하지 못하는 ‘요리백지증’에 걸리자 집밥의 평화가 깨진 ‘하응’은 생존을 위해 인생 첫 요리에 도전한다. ‘순애’는 ‘하응’의 요리가 맛있으면 칭찬, 맛 없으면 벌점을 주기로 하고 “벌점 10점을 채우면 이혼!”이라는 청천벽력 선언을 내뱉는데…! 과연 ‘하응’은 집밥에 성공할 수 있을까?",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1708755,
+      "score": null,
+      "scoreBy": "",
+      "voteCount": null,
+      "showing": true
+    },
+    {
       "movieCd": "20224573",
       "title": "부활남: 더 레드",
       "titleEn": "REAWAKENED MAN",
@@ -446,8 +496,8 @@
       "lastSeenAt": "20260928",
       "days": 2,
       "bestRank": 6,
-      "rank": 10,
-      "audienceDay": 1896,
+      "rank": null,
+      "audienceDay": null,
       "runtime": 101,
       "directors": [
         "백"
@@ -478,7 +528,7 @@
       "score": null,
       "scoreBy": "",
       "voteCount": null,
-      "showing": true
+      "showing": false
     },
     {
       "movieCd": "20261807",
@@ -808,56 +858,6 @@
       "score": 8.2,
       "scoreBy": "TMDB",
       "voteCount": 4,
-      "showing": false
-    },
-    {
-      "movieCd": "20266148",
-      "title": "아버지의 집밥",
-      "titleEn": "My Father’s Table",
-      "titleOriginal": "",
-      "openedAt": "2026-09-09",
-      "audienceAcc": 12304,
-      "genres": [
-        "드라마"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20260922",
-      "lastSeenAt": "20260922",
-      "days": 1,
-      "bestRank": 10,
-      "rank": null,
-      "audienceDay": null,
-      "runtime": 146,
-      "directors": [
-        "이준익"
-      ],
-      "cast": [
-        "정진영",
-        "이정은",
-        "변요한",
-        "박지연",
-        "강형석",
-        "박세준"
-      ],
-      "producers": [
-        "(주)레진엔터테인먼트",
-        "(주)영화사두둥"
-      ],
-      "distributors": [
-        "(주)키다리스튜디오",
-        "(주)삼백상회"
-      ],
-      "rating": "12세이상관람가",
-      "koficDetailFetched": true,
-      "koficDetailVersion": 3,
-      "poster": "assets/posters/20266148.webp",
-      "posterCredit": "TMDB",
-      "synopsis": "평생 부엌 근처엔 가본 적도 없는 가부장 아버지 ‘하응’. 결혼 이후 줄곧 가족들의 밥상을 차려온 아내 ‘순애’의 고마움은 모른 채, 삼시세끼 까탈스럽게 집밥만 찾는다. 어느 날 ‘순애’가 요리를 하지 못하는 ‘요리백지증’에 걸리자 집밥의 평화가 깨진 ‘하응’은 생존을 위해 인생 첫 요리에 도전한다. ‘순애’는 ‘하응’의 요리가 맛있으면 칭찬, 맛 없으면 벌점을 주기로 하고 “벌점 10점을 채우면 이혼!”이라는 청천벽력 선언을 내뱉는데…! 과연 ‘하응’은 집밥에 성공할 수 있을까?",
-      "synopsisCredit": "TMDB",
-      "tmdbId": 1708755,
-      "score": null,
-      "scoreBy": "",
-      "voteCount": null,
       "showing": false
     },
     {
