@@ -302,6 +302,12 @@ tbody a:hover {
   margin-bottom: 10px;
 }
 
+/* 질문 목록: 굵기를 빼고 2px 작게 — 제목처럼 크고 무겁게 보이지 않게 */
+.faq .seed-accordion__title {
+  font-weight: var(--seed-font-weight-medium);
+  font-size: calc(var(--seed-font-size-t5) - 2px);
+}
+
 /* ===== 추천 순서 자동 갱신 ===== */
 .ranking-status {
   display: flex;
@@ -967,6 +973,35 @@ tbody td:first-child .rank-move {
 
   #comparison tbody tr.priority td:first-child {
     color: var(--ink);
+  }
+
+  /*
+   * 모바일 1~3위: 판 색·테두리·숫자 크기를 한 단계씩 달리해 순위 차이가 바로 보이게.
+   * (카드 띠·메달 색은 쓰지 않습니다)
+   */
+  #comparison tbody tr.top-1 {
+    background: #ffeef1;
+    border-color: #f5c3cc;
+  }
+  #comparison tbody tr.top-2 {
+    background: #fff4f6;
+    border-color: #f8d6dc;
+  }
+  #comparison tbody tr.top-3 {
+    background: #fffafb;
+    border-color: #fbe3e7;
+  }
+  #comparison tbody tr.top-1 .table-rank-number {
+    font-size: 22px;
+  }
+  #comparison tbody tr.top-2 .table-rank-number {
+    font-size: 19px;
+  }
+  #comparison tbody tr.top-3 .table-rank-number {
+    font-size: 17px;
+  }
+  #comparison tbody tr.top-1 th[scope="row"] {
+    font-size: 17px;
   }
 
   #comparison tbody th[scope="row"] {

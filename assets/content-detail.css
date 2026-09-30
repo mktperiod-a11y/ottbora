@@ -420,19 +420,26 @@ h1 {
     line-height: 1.4;
     font-size: 14.5px;
   }
+  /* 모바일도 두 칸: 항목 이름 위, 값 아래. */
   .copy ul.fact-grid {
     margin-top: 7px;
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-flow: row dense;
+    column-gap: 16px;
+  }
+  .copy .fact-item--wide {
+    grid-column: 1 / -1;
   }
   .copy .fact-item {
-    display: grid;
-    grid-template-columns: 76px minmax(0, 1fr);
-    align-items: center;
-    min-height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 56px;
     padding: 9px 2px;
   }
   .copy .fact-label {
-    margin: 0;
+    margin: 0 0 3px;
   }
 }
 @media (max-width: 380px) {
