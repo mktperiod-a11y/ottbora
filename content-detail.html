@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css?v=20260928-2" />
-    <link rel="stylesheet" href="assets/content-detail.css?v=20260930-2" />
+    <link rel="stylesheet" href="assets/content-detail.css?v=20260930-3" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -657,7 +657,9 @@
        * OTHERS 에는 순위 후보 전체(예비 포함) 배너를 보관해 두고,
        * 그 주 TOP 10 에 든 곳만 뽑힙니다. 이름·주소는 랭킹 엔진
        * (assets/webhard-ranking.js)에서 가져오고, 여기서는 색과 문구만 적습니다.
-       * 로고는 여백을 깎아 둔 assets/promo/<id>.png 를 쓰고, 가로세로 비율에
+       * 배너는 서비스 색을 꽉 채운 판에 흰 글씨·흰 로고입니다.
+       * 로고는 여백을 깎고 흰색으로 바꾼 assets/promo/<id>.png 를 쓰고
+       * (파일썬은 앱 아이콘이라 원래 색 그대로), 가로세로 비율에
        * 맞춰 눈에 보이는 면적이 같아지도록 크기를 정합니다(--k).
        * 글자가 유난히 굵어 커 보이는 로고는 scale 로 조금 줄입니다.
        * 사이트 본문과 구분되도록 각 서비스 색을 쓰고 "광고" 표시를 붙입니다.
@@ -672,6 +674,7 @@
             name: "온디스크",
             logo: "assets/promo/ondisk.png",
             url: "go/ondisk/",
+            color: "#1583e9",
             title: "보고 싶던 작품, <br /><em>지금 바로</em>",
             text: "영화·드라마·애니까지 다양한 장르",
           },
