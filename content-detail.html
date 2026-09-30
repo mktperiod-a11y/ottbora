@@ -685,8 +685,8 @@
       /*
        * 제휴 배너. 들어올 때마다 하나를 골라 띄웁니다.
        *
-       *   온디스크 35% · 케이디스크 30%
-       *   나머지 35% 는 이번 주 웹하드 순위(TOP 10)에 올라온 다른 곳끼리 똑같이 나눕니다.
+       *   온디스크 40% · 케이디스크 40%
+       *   나머지 20% 는 이번 주 웹하드 순위(TOP 10)에 올라온 다른 곳끼리 똑같이 나눕니다.
        *
        * OTHERS 에는 순위 후보 전체(예비 포함) 배너를 보관해 두고,
        * 그 주 TOP 10 에 든 곳만 뽑힙니다. 이름·주소는 랭킹 엔진
@@ -705,7 +705,7 @@
         const MAIN = [
           {
             id: "ondisk",
-            weight: 35,
+            weight: 40,
             name: "온디스크",
             logo: "assets/promo/ondisk.png",
             url: "go/ondisk/",
@@ -715,7 +715,7 @@
           },
           {
             id: "kdisk",
-            weight: 30,
+            weight: 40,
             name: "케이디스크",
             logo: "assets/promo/kdisk.png",
             url: "go/kdisk/",
@@ -763,7 +763,7 @@
           // 순위를 못 읽었으면 온디스크·케이디스크 비율대로 둘 중 하나.
           ad = others.length
             ? others[Math.floor(Math.random() * others.length)]
-            : MAIN[Math.random() * 65 < 35 ? 0 : 1];
+            : MAIN[Math.random() < 0.5 ? 0 : 1];
         }
 
         // 온디스크·케이디스크는 눈에 더 띄게(큰 제목·꽉 찬 버튼).
