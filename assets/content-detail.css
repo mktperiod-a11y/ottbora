@@ -819,11 +819,12 @@ h1 {
   /* 오른쪽 칸은 위에 제휴 표시, 아래에 버튼 — 서로 겹치지 않게 세로로 쌓습니다. */
   .promo-link {
     display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-columns: auto minmax(0, 1fr) 32px;
     grid-template-areas:
       "logo body badge"
       "logo body cta";
     align-items: center;
+    align-content: center;
     column-gap: 12px;
     row-gap: 6px;
     padding: 10px 10px 10px 12px;
@@ -845,8 +846,8 @@ h1 {
   .promo-badge {
     grid-area: badge;
     position: static;
-    justify-self: end;
-    align-self: start;
+    justify-self: center;
+    align-self: end;
     padding: 0 4px;
     font-size: 9px;
   }
@@ -868,8 +869,8 @@ h1 {
   .promo-cta,
   .promo--featured .promo-cta {
     grid-area: cta;
-    justify-self: end;
-    align-self: end;
+    justify-self: center;
+    align-self: start;
     width: 28px;
     height: 28px;
     margin: 0;
