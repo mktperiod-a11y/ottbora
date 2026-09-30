@@ -1,0 +1,55 @@
+[
+  {
+    "id": "kdisk",
+    "name": "케이디스크",
+    "home": "https://kdisk.co.kr/",
+    "candidates": [
+      {
+        "file": "01-img.jpg",
+        "kind": "img",
+        "note": "케이디스크 로고",
+        "url": "https://cimage.kdisk.co.kr/main/data/2025/06/11/adm_1749618174_klogo.jpg",
+        "bytes": 8830,
+        "width": 240,
+        "height": 128
+      },
+      {
+        "file": "02-img.gif",
+        "kind": "img",
+        "note": "케이디스크",
+        "url": "https://webimage.kdisk.co.kr/images/layout/logo_20120716.gif",
+        "bytes": 7094,
+        "width": 193,
+        "height": 103
+      },
+      {
+        "file": "03-css.jpg",
+        "kind": "css",
+        "note": ".mnLayer_agree_bnnr .ml_logo",
+        "url": "https://webimage.kdisk.co.kr/images/main/mn_layer_agree_logo_bg.jpg",
+        "bytes": 1183,
+        "width": 1,
+        "height": 74
+      },
+      {
+        "file": "04-css.gif",
+        "kind": "css",
+        "note": "#mnShare .topArea h1",
+        "url": "https://webimage.kdisk.co.kr/images/layout/pageNavi_bg.gif",
+        "bytes": 1211,
+        "width": 13,
+        "height": 13
+      },
+      {
+        "file": "05-icon.ico",
+        "kind": "icon",
+        "note": "shortcut icon",
+        "url": "https://www.kdisk.co.kr/favicon.ico",
+        "bytes": 84896,
+        "width": null,
+        "height": null
+      }
+    ],
+    "error": ""
+  }
+]
