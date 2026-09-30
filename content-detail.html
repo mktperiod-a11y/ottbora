@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css?v=20260928-2" />
-    <link rel="stylesheet" href="assets/content-detail.css?v=20260930-28" />
+    <link rel="stylesheet" href="assets/content-detail.css?v=20260930-33" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -259,7 +259,14 @@
             "소니픽쳐스엔터테인먼트코리아주식회사극장배급지점") {
           return "소니픽쳐스";
         }
-        return name;
+        // 괄호 속 약칭이 있으면 그걸로: (주)넥스트엔터테인먼트월드(NEW) → NEW
+        const abbr = String(name || "").match(/\(([A-Z0-9&]{2,})\)\s*$/);
+        if (abbr) return abbr[1];
+        // 법인 표기는 빼고: 앤솔로지스튜디오(주) → 앤솔로지스튜디오
+        return String(name || "")
+          .replace(/\((주|유|사|재)\)|㈜|주식회사|유한회사/g, "")
+          .replace(/\s{2,}/g, " ")
+          .trim();
       }
 
       function shortCompanies(list) {
@@ -269,15 +276,17 @@
       function filmFacts(m, latestDt) {
         if (!m) return [];
         const audienceText = audience(m.audienceAcc).replace(/^누적 관객\s*/, "");
-        const rankDate = latestDt ? ` · ${prettyDate(latestDt)} 기준` : "";
+        // 기준일은 값 쪽에 짧게 붙여 항목 이름이 한 줄에 들어가게 합니다.
+        const [, mm, dd] = prettyDate(latestDt).split(".");
+        const rankDate = latestDt && dd ? ` · ${+mm}.${+dd} 기준` : "";
         return [
-          fact(`박스오피스 순위${rankDate}`, m.rank ? `${m.rank}위` : ""),
+          fact("박스오피스 순위", m.rank ? `${m.rank}위${rankDate}` : ""),
           fact("TMDB 평점", Number(m.score) > 0 ? `${m.score} / 10` : ""),
           fact("상영시간", m.runtime ? `${m.runtime}분` : ""),
           fact("관람등급", m.rating),
           fact("누적 관객", audienceText),
           fact("감독", shortPeople(m.directors, 2)),
-          fact("출연", shortPeople(m.cast, 4)),
+          fact("출연", shortPeople(m.cast, 3)),
           fact("제작", shortCompanies(m.producers)),
           fact("배급", shortCompanies(m.distributors)),
         ].filter(Boolean);
@@ -539,7 +548,32 @@
           }
           ul.appendChild(li);
         }
+        fitFacts();
       }
+
+      /*
+       * 모바일 두 칸에서 한 칸에 안 들어가는 항목(값이나 이름이 두 줄로 넘어가는 것)만
+       * 한 줄 전체를 쓰게 합니다. 글자 수가 아니라 실제로 그려진 높이로 판단합니다.
+       */
+      function fitFacts() {
+        const items = [...document.querySelectorAll("#points .fact-item")];
+        items.forEach((li) => li.classList.remove("fact-item--wide"));
+        if (!matchMedia("(max-width: 650px)").matches) return;
+        const lines = (el) =>
+          el.getBoundingClientRect().height / (parseFloat(getComputedStyle(el).lineHeight) || 20);
+        const wide = items.filter((li) => {
+          const l = li.querySelector(".fact-label");
+          const v = li.querySelector(".fact-value");
+          return (v && lines(v) > 1.5) || (l && lines(l) > 1.5);
+        });
+        wide.forEach((li) => li.classList.add("fact-item--wide"));
+      }
+
+      let fitTimer;
+      addEventListener("resize", () => {
+        clearTimeout(fitTimer);
+        fitTimer = setTimeout(fitFacts, 150);
+      });
 
       /*
        * 검색엔진은 스크립트를 실행한 뒤의 설명·대표 주소를 읽습니다.
