@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css?v=20260928-2" />
-    <link rel="stylesheet" href="assets/content-detail.css?v=20260930-20" />
+    <link rel="stylesheet" href="assets/content-detail.css?v=20260930-23" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -673,8 +673,9 @@
             id: "ondisk",
             weight: 35,
             name: "온디스크",
-            logo: "assets/promo/ondisk.png",
+            logo: "assets/promo/ondisk-white.png",
             url: "go/ondisk/",
+            color: "#1583e9",
             title: "오늘 뭐 볼지, <br /><em>고민 끝</em>",
             text: "영화·드라마·애니까지 한 번에",
           },
@@ -682,7 +683,7 @@
             id: "kdisk",
             weight: 30,
             name: "케이디스크",
-            logo: "assets/promo/kdisk.png",
+            logo: "assets/promo/kdisk-white.png",
             url: "go/kdisk/",
             color: "#5c9608",
             deco: "rings",
@@ -743,7 +744,7 @@
           `<span class="promo-logo"><img src="${ad.logo}" alt="${ad.name}" /></span>` +
           `<span class="promo-body"><strong class="promo-title">${ad.title}</strong>` +
           `<span class="promo-text">${ad.text}</span></span>` +
-          `<span class="promo-cta">${ad.name} 바로가기 <span class="promo-arrow" aria-hidden="true">` +
+          `<span class="promo-cta"><span class="promo-cta-name">${ad.name}</span>바로가기<span class="promo-arrow" aria-hidden="true">` +
           // 글자 "→" 는 글꼴마다 좌우 여백이 달라 가운데가 어긋나서, 가운데가 정확한 SVG 로 그립니다.
           `<svg viewBox="0 0 16 16" width="14" height="14"><path d="M3.5 8h9M9 4.5 12.5 8 9 11.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>` +
           `</span></span>` +

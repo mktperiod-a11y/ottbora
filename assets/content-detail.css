@@ -763,12 +763,63 @@ h1 {
 }
 
 /*
- * 온디스크·케이디스크(promo--featured): 글자 딱지 없이 디자인으로 눈길을 끕니다.
- *   - 제목을 키웁니다
- *   - 버튼을 꽉 채우고, 화살표가 살짝 움직입니다.
- * 움직임 줄이기 설정을 켠 사람에게는 움직이지 않습니다.
+ * 온디스크·케이디스크(promo--featured): 누르고 싶게.
+ *   - 다른 배너는 밝은 판인데 이 둘만 서비스 색을 꽉 채운 판 + 흰 글씨·흰 로고
+ *   - 흰 버튼을 폭에 꽉 채우고(모바일은 '바로가기' 글자가 보이는 버튼), 화살표가 살짝 움직입니다.
+ * 딱지·밑줄·빛 효과는 쓰지 않습니다. 움직임 줄이기 설정이면 움직이지 않습니다.
  */
-/* 제목 크기는 모든 배너가 같습니다. 두 줄을 넘지 않게 문구를 맞추고, 넘치면 자릅니다. */
+.promo--featured {
+  --promo-bg:
+    radial-gradient(90% 80% at 100% 100%, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0) 65%),
+    linear-gradient(160deg, color-mix(in srgb, var(--brand) 92%, #fff) 0%, color-mix(in srgb, var(--brand) 82%, #000) 100%);
+  --promo-border: transparent;
+  --promo-title: #fff;
+  --promo-accent: #ffe066;
+  --promo-text: rgba(255, 255, 255, 0.86);
+  --promo-cta-bg: #fff;
+  --promo-cta-ink: color-mix(in srgb, var(--brand) 80%, #000);
+  --promo-badge: rgba(255, 255, 255, 0.72);
+  --promo-ring: rgba(255, 255, 255, 0.22);
+  --promo-shadow: 0 14px 30px color-mix(in srgb, var(--brand) 32%, transparent);
+}
+
+.promo--featured .promo-cta {
+  align-self: stretch;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 14px;
+  font-size: 13.5px;
+  font-weight: 800;
+}
+
+.promo--featured .promo-cta > .promo-arrow {
+  animation: promo-nudge 1.6s ease-in-out infinite;
+}
+
+.promo-arrow {
+  display: inline-flex;
+  line-height: 0;
+}
+
+.promo-arrow svg {
+  display: block;
+}
+
+.promo--featured .promo-link:hover .promo-cta {
+  background: color-mix(in srgb, #fff 90%, var(--brand));
+}
+
+@keyframes promo-nudge {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .promo--featured .promo-cta > .promo-arrow {
+    animation: none;
+  }
+}
+
 /* 설명은 두 줄 자리를 잡아 두어 배너 높이가 모두 같게 합니다. */
 .promo .promo-text {
   min-height: 2.9em;
@@ -791,8 +842,7 @@ h1 {
   font-size: 13.5px;
 }
 
-.promo--featured .promo-cta > span {
-  display: inline-block;
+.promo--featured .promo-cta > .promo-arrow {
   animation: promo-nudge 1.6s ease-in-out infinite;
 }
 
@@ -815,7 +865,7 @@ h1 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .promo--featured .promo-cta > span {
+  .promo--featured .promo-cta > .promo-arrow {
     animation: none;
   }
 }
@@ -896,7 +946,7 @@ h1 {
     overflow: hidden;
     min-height: 0;
   }
-  .promo:not(.promo--featured) .promo-text {
+  .promo .promo-text {
     display: none;
   }
   .promo-link {
@@ -935,8 +985,37 @@ h1 {
     gap: 0;
     align-items: center;
   }
-  .promo--featured .promo-cta > span {
+  .promo--featured .promo-cta > .promo-arrow {
     animation: none;
+  }
+  /* 강조 배너: 화살표만이 아니라 '바로가기' 글자가 보이는 흰 버튼 */
+  .promo--featured .promo-link {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+  .promo--featured .promo-badge {
+    justify-self: end;
+  }
+  .promo--featured .promo-cta {
+    justify-self: end;
+    width: auto;
+    height: 30px;
+    padding: 0 10px 0 12px;
+    gap: 4px;
+    background-image: none;
+    font-size: 12.5px;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+  .promo--featured .promo-cta .promo-arrow {
+    display: inline-flex;
+  }
+  /* 모바일에서는 이름을 빼고 '바로가기'만 — 제목 자리를 넉넉히 둡니다. */
+  .promo--featured .promo-cta-name {
+    display: none;
+  }
+  .promo--featured .promo-cta .promo-arrow svg {
+    width: 12px;
+    height: 12px;
   }
 }
 
