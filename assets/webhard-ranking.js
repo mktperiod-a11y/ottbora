@@ -56,6 +56,7 @@
       description: "PC·모바일 감상과 다운로드",
       logo: "kdisk.svg",
       url: "go/kdisk/",
+      home: "https://kdisk.co.kr/",
     },
     wedisk: {
       id: "wedisk",
