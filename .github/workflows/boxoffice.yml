@@ -1,9 +1,16 @@
 name: 콘텐츠 갱신
 
-# KOFIC 은 전날 집계를 오전에 공개하므로 한국 시간 오전 10시에 실행합니다.
+# KOFIC 은 전날 집계를 자정 뒤부터 내지만 다음 날 오전까지 보정합니다.
+# 그래서 보정이 끝난 오전 늦게 한 번, 저녁에 한 번 더 예약합니다.
+#
+# GitHub 예약 실행은 붐비면 몇 시간씩 밀립니다(실측: 10:00 예약이 매일
+# 14:45~15:30 에 시작). 특히 정각이 붐비므로 분을 23 으로 둡니다.
+# 저녁 실행은 대비용입니다. 그날 박스오피스를 이미 받았으면 확인만 하고
+# 몇 초 만에 끝냅니다(외부 요청·커밋 없음).
 on:
   schedule:
-    - cron: "0 1 * * *" # 01:00 UTC = 10:00 KST
+    - cron: "23 2 * * *" # 02:23 UTC = 11:23 KST
+    - cron: "23 10 * * *" # 10:23 UTC = 19:23 KST (오늘 이미 받았으면 건너뜀)
   push:
     branches: [main]
     paths:
@@ -37,28 +44,44 @@ jobs:
     # 건너뛴 날이 있었습니다(2026-09-27). 실패한 단계가 있으면 잡은 여전히
     # 실패로 끝나므로 알림은 그대로 옵니다.
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: "24"
 
       # 매일 도는 예약 실행은 전날 하루치만 받아 기존 목록에 더합니다.
       # 수동 실행일 때만 며칠치를 한 번에 훑습니다.
+      # 예약 실행만 해당: 어제 박스오피스를 이미 받았으면 오늘 몫은 끝난 것이라
+      # 나머지 단계를 모두 건너뜁니다. 수동 실행·코드 변경 실행은 늘 돌립니다.
+      - name: 오늘 이미 받았는지 확인
+        id: check
+        run: |
+          yesterday=$(TZ=Asia/Seoul date -d "yesterday" +%Y%m%d)
+          latest=$(node -p "require('./assets/boxoffice.json').latestDt || ''" 2>/dev/null || echo "")
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$latest" = "$yesterday" ]; then
+            echo "어제($yesterday) 박스오피스를 이미 받았습니다 — 이번 예약 실행은 건너뜁니다."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "받을 차례입니다 (최근 집계일: ${latest:-없음}, 받을 날: $yesterday)."
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: 박스오피스 내려받기
+        if: ${{ steps.check.outputs.skip != 'true' }}
         env:
           KOFIC_API_KEY: ${{ secrets.KOFIC_API_KEY }}
         run: node scripts/fetch-boxoffice.mjs --days=${{ inputs.days || '1' }}
 
       # 포스터 변환에만 쓰는 의존성입니다. 사이트 자체는 빌드가 없습니다.
       - name: 의존성 설치
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && steps.check.outputs.skip != 'true' }}
         run: npm ci
 
       # KOFIC 은 포스터를 주지 않으므로 이미지는 따로 받습니다.
       # 두 키 중 등록된 쪽을 쓰고, 둘 다 없으면 건너뜁니다(실패 아님).
       - name: 포스터 내려받기
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && steps.check.outputs.skip != 'true' }}
         env:
           KMDB_API_KEY: ${{ secrets.KMDB_API_KEY }}
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
@@ -69,7 +92,7 @@ jobs:
       # ANTHROPIC_API_KEY 가 있으면 남은 영어 제목·줄거리를 번역해
       # assets/anime-title-auto.json 과 anime-synopsis-auto.json 에 저장합니다.
       - name: 애니 내려받기
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && steps.check.outputs.skip != 'true' }}
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -78,7 +101,7 @@ jobs:
       # 드라마·예능은 TMDB 한국 TV 후보를 받아 한국형 규칙으로 나눕니다.
       # 실패해도 기존 파일 또는 수동 content-data.json 이 자리를 지킵니다.
       - name: 드라마·예능 내려받기
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && steps.check.outputs.skip != 'true' }}
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
         run: node scripts/fetch-tv-ranking.mjs
@@ -86,11 +109,11 @@ jobs:
       # 제목의 기준 월, 구조화 데이터, 홈 순위 기본 마크업, sitemap.xml,
       # llms.txt 를 사이트 내용에 맞춥니다. 네트워크를 쓰지 않습니다.
       - name: 검색 태그·사이트맵 맞추기
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && steps.check.outputs.skip != 'true' }}
         run: node scripts/update-seo.mjs
 
       - name: 변경분 커밋
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && steps.check.outputs.skip != 'true' }}
         run: |
           # 경로를 하나하나 적으면 아직 없는 파일에서 git add 가 exit 128 로
           # 죽습니다(assets/anime.json). 그러면 같은 실행에서 이미 성공한
