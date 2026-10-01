@@ -3,7 +3,7 @@
   "source": "영화진흥위원회 오픈API 일별 박스오피스",
   "sourceUrl": "https://www.kobis.or.kr/kobisopenapi/",
   "updatedAt": "2026-10-01",
-  "latestDt": "20260930",
+  "latestDt": "20261001",
   "keepDays": 45,
   "movies": [
     {
@@ -12,17 +12,17 @@
       "titleEn": "Chiikawa the Movie: The Secret of the Mermaid Island",
       "titleOriginal": "映画ちいかわ 人魚の島のひみつ",
       "openedAt": "2026-09-30",
-      "audienceAcc": 153018,
+      "audienceAcc": 198793,
       "genres": [
         "애니메이션"
       ],
       "type": "영화",
       "firstSeenAt": "20260919",
-      "lastSeenAt": "20260930",
-      "days": 4,
+      "lastSeenAt": "20261001",
+      "days": 5,
       "bestRank": 1,
-      "rank": 1,
-      "audienceDay": 122293,
+      "rank": 3,
+      "audienceDay": 45775,
       "runtime": 98,
       "directors": [
         "오이카와 케이"
@@ -58,18 +58,18 @@
       "titleEn": "The Assassin(s)",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 1766946,
+      "audienceAcc": 1821889,
       "genres": [
         "범죄",
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260917",
-      "lastSeenAt": "20260930",
-      "days": 10,
+      "lastSeenAt": "20261001",
+      "days": 11,
       "bestRank": 1,
-      "rank": 2,
-      "audienceDay": 71942,
+      "rank": 1,
+      "audienceDay": 54944,
       "runtime": 130,
       "directors": [
         "허진호"
@@ -105,7 +105,7 @@
       "titleEn": "The Odyssey",
       "titleOriginal": "",
       "openedAt": "2026-08-05",
-      "audienceAcc": 11857153,
+      "audienceAcc": 11875157,
       "genres": [
         "액션",
         "드라마",
@@ -113,11 +113,11 @@
       ],
       "type": "영화",
       "firstSeenAt": "20260824",
-      "lastSeenAt": "20260930",
-      "days": 37,
+      "lastSeenAt": "20261001",
+      "days": 38,
       "bestRank": 1,
       "rank": 5,
-      "audienceDay": 19827,
+      "audienceDay": 18008,
       "runtime": 172,
       "directors": [
         "크리스토퍼 놀란"
@@ -153,17 +153,17 @@
       "titleEn": "The Intern",
       "titleOriginal": "",
       "openedAt": "2026-09-16",
-      "audienceAcc": 794489,
+      "audienceAcc": 801374,
       "genres": [
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260904",
-      "lastSeenAt": "20260930",
-      "days": 17,
+      "lastSeenAt": "20261001",
+      "days": 18,
       "bestRank": 1,
       "rank": 7,
-      "audienceDay": 11880,
+      "audienceDay": 6885,
       "runtime": 132,
       "directors": [
         "김도영"
@@ -202,18 +202,18 @@
       "titleEn": "TAZZA: The Song of Beelzebub",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 1015905,
+      "audienceAcc": 1065716,
       "genres": [
         "범죄",
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260914",
-      "lastSeenAt": "20260930",
-      "days": 12,
+      "lastSeenAt": "20261001",
+      "days": 13,
       "bestRank": 1,
-      "rank": 3,
-      "audienceDay": 57853,
+      "rank": 2,
+      "audienceDay": 49813,
       "runtime": 129,
       "directors": [
         "최국희"
@@ -251,17 +251,17 @@
       "titleEn": "Obsession",
       "titleOriginal": "",
       "openedAt": "2026-09-02",
-      "audienceAcc": 876091,
+      "audienceAcc": 882854,
       "genres": [
         "공포(호러)"
       ],
       "type": "영화",
       "firstSeenAt": "20260902",
-      "lastSeenAt": "20260930",
-      "days": 28,
+      "lastSeenAt": "20261001",
+      "days": 29,
       "bestRank": 2,
       "rank": 8,
-      "audienceDay": 7611,
+      "audienceDay": 6763,
       "runtime": 108,
       "directors": [
         "커리 바커"
@@ -295,7 +295,7 @@
       "titleEn": "Resident Evil",
       "titleOriginal": "",
       "openedAt": "2026-09-17",
-      "audienceAcc": 198340,
+      "audienceAcc": 200466,
       "genres": [
         "공포(호러)",
         "액션",
@@ -303,11 +303,11 @@
       ],
       "type": "영화",
       "firstSeenAt": "20260917",
-      "lastSeenAt": "20260930",
-      "days": 13,
+      "lastSeenAt": "20261001",
+      "days": 14,
       "bestRank": 3,
       "rank": 9,
-      "audienceDay": 2702,
+      "audienceDay": 2126,
       "runtime": 93,
       "directors": [
         "잭 크레거"
@@ -338,17 +338,17 @@
       "titleEn": "Possible Love",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 158204,
+      "audienceAcc": 169949,
       "genres": [
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260921",
-      "lastSeenAt": "20260930",
-      "days": 8,
+      "lastSeenAt": "20261001",
+      "days": 9,
       "bestRank": 4,
       "rank": 6,
-      "audienceDay": 13674,
+      "audienceDay": 11745,
       "runtime": 164,
       "directors": [
         "이창동"
@@ -387,17 +387,17 @@
       "titleEn": "REAWAKENED MAN",
       "titleOriginal": "",
       "openedAt": "2026-09-30",
-      "audienceAcc": 51675,
+      "audienceAcc": 73895,
       "genres": [
         "액션"
       ],
       "type": "영화",
       "firstSeenAt": "20260918",
-      "lastSeenAt": "20260930",
-      "days": 3,
+      "lastSeenAt": "20261001",
+      "days": 4,
       "bestRank": 4,
       "rank": 4,
-      "audienceDay": 42872,
+      "audienceDay": 22220,
       "runtime": 101,
       "directors": [
         "백"
@@ -431,6 +431,54 @@
       "showing": true
     },
     {
+      "movieCd": "20266766",
+      "title": "어벤져스: 엔드게임 앙코르",
+      "titleEn": "Avengers: Endgame Encore",
+      "titleOriginal": "",
+      "openedAt": "2026-09-23",
+      "audienceAcc": 122968,
+      "genres": [
+        "액션",
+        "SF"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260923",
+      "lastSeenAt": "20261001",
+      "days": 7,
+      "bestRank": 5,
+      "rank": 10,
+      "audienceDay": 1477,
+      "runtime": 183,
+      "directors": [
+        "안소니 루소",
+        "조 루소"
+      ],
+      "cast": [
+        "로버트 다우니 주니어",
+        "크리스 에반스",
+        "스칼렛 요한슨",
+        "마크 러팔로",
+        "크리스 헴스워스",
+        "제레미 레너"
+      ],
+      "producers": [],
+      "distributors": [
+        "월트디즈니컴퍼니코리아 유한책임회사"
+      ],
+      "rating": "12세이상관람가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20266766.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "어벤져스의 패배 이후 지구는 초토화됐고 남은 절반의 사람들은 정신적 고통을 호소하며 하루하루를 근근이 버텨나간다. 와칸다에서 싸우다 생존한 히어로들과 우주의 타이탄 행성에서 싸우다 생존한 히어로들이 뿔뿔이 흩어졌는데, 아이언맨과 네뷸라는 우주를 떠돌고 있고 지구에 남아 있는 어벤져스 멤버들은 닉 퓨리가 마지막에 신호를 보내다 만 송신기만 들여다보며 혹시 모를 우주의 응답을 기다리는 중이다. 애초 히어로의 삶을 잠시 내려놓고 가족과 시간을 보내던 호크아이 역시 헤아릴 수 없는 마음의 상처를 입은 채 사라지고 마는데...",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 299534,
+      "score": 8.2,
+      "scoreBy": "TMDB",
+      "voteCount": 28819,
+      "showing": true
+    },
+    {
       "movieCd": "20262961",
       "title": "이방인",
       "titleEn": "The Stranger",
@@ -445,8 +493,8 @@
       "lastSeenAt": "20260930",
       "days": 1,
       "bestRank": 10,
-      "rank": 10,
-      "audienceDay": 1637,
+      "rank": null,
+      "audienceDay": null,
       "runtime": 122,
       "directors": [
         "프랑수아 오종"
@@ -472,7 +520,7 @@
       "score": 6.8,
       "scoreBy": "TMDB",
       "voteCount": 240,
-      "showing": true
+      "showing": false
     },
     {
       "movieCd": "20262770",
@@ -520,54 +568,6 @@
       "score": 7.9,
       "scoreBy": "TMDB",
       "voteCount": 2906,
-      "showing": false
-    },
-    {
-      "movieCd": "20266766",
-      "title": "어벤져스: 엔드게임 앙코르",
-      "titleEn": "Avengers: Endgame Encore",
-      "titleOriginal": "",
-      "openedAt": "2026-09-23",
-      "audienceAcc": 119886,
-      "genres": [
-        "액션",
-        "SF"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20260923",
-      "lastSeenAt": "20260929",
-      "days": 6,
-      "bestRank": 5,
-      "rank": null,
-      "audienceDay": null,
-      "runtime": 183,
-      "directors": [
-        "안소니 루소",
-        "조 루소"
-      ],
-      "cast": [
-        "로버트 다우니 주니어",
-        "크리스 에반스",
-        "스칼렛 요한슨",
-        "마크 러팔로",
-        "크리스 헴스워스",
-        "제레미 레너"
-      ],
-      "producers": [],
-      "distributors": [
-        "월트디즈니컴퍼니코리아 유한책임회사"
-      ],
-      "rating": "12세이상관람가",
-      "koficDetailFetched": true,
-      "koficDetailVersion": 3,
-      "poster": "assets/posters/20266766.webp",
-      "posterCredit": "TMDB",
-      "synopsis": "어벤져스의 패배 이후 지구는 초토화됐고 남은 절반의 사람들은 정신적 고통을 호소하며 하루하루를 근근이 버텨나간다. 와칸다에서 싸우다 생존한 히어로들과 우주의 타이탄 행성에서 싸우다 생존한 히어로들이 뿔뿔이 흩어졌는데, 아이언맨과 네뷸라는 우주를 떠돌고 있고 지구에 남아 있는 어벤져스 멤버들은 닉 퓨리가 마지막에 신호를 보내다 만 송신기만 들여다보며 혹시 모를 우주의 응답을 기다리는 중이다. 애초 히어로의 삶을 잠시 내려놓고 가족과 시간을 보내던 호크아이 역시 헤아릴 수 없는 마음의 상처를 입은 채 사라지고 마는데...",
-      "synopsisCredit": "TMDB",
-      "tmdbId": 299534,
-      "score": 8.2,
-      "scoreBy": "TMDB",
-      "voteCount": 28819,
       "showing": false
     },
     {
