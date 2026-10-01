@@ -464,15 +464,15 @@
       "rating": "15세이상관람가",
       "koficDetailFetched": true,
       "koficDetailVersion": 3,
-      "showing": true,
+      "poster": "assets/posters/20262961.webp",
+      "posterCredit": "TMDB",
       "synopsis": "청년 ‘뫼르소’는 어머니의 부고 소식을 듣고 장례를 치르지만 어딘가 무감하다. 집으로 돌아온 그는 해수욕장에서 옛 동료 ‘마리’를 우연히 만나 사랑을 나눈다. 이웃 ‘레몽’과 가깝게 지내던 ‘뫼르소’는 예상치 못한 비극에 휘말린다.",
       "synopsisCredit": "TMDB",
       "tmdbId": 1429348,
       "score": 6.8,
       "scoreBy": "TMDB",
       "voteCount": 240,
-      "poster": "assets/posters/20262961.webp",
-      "posterCredit": "TMDB"
+      "showing": true
     },
     {
       "movieCd": "20262770",
