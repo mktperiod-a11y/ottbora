@@ -157,6 +157,54 @@ h1 {
   max-width: 72ch;
 }
 
+/*
+ * 모바일에서 줄거리가 5줄을 넘으면 접어 두고 "더보기"를 답니다.
+ * 넘는지는 스크립트가 실제 높이를 재서 판단합니다(.is-clampable).
+ */
+.synopsis-more {
+  display: none;
+}
+
+@media (max-width: 650px) {
+  #synopsis.is-clampable.is-collapsed {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+    overflow: hidden;
+  }
+  .synopsis-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin: 6px 0 0;
+    padding: 4px 0;
+    border: 0;
+    background: none;
+    color: var(--ink);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .synopsis-more[hidden] {
+    display: none;
+  }
+  .synopsis-more::after {
+    content: "";
+    width: 7px;
+    height: 7px;
+    margin-top: -3px;
+    border-right: 1.6px solid currentColor;
+    border-bottom: 1.6px solid currentColor;
+    transform: rotate(45deg);
+  }
+  .synopsis-more[aria-expanded="true"]::after {
+    margin-top: 3px;
+    transform: rotate(-135deg);
+  }
+}
+
 .fact-label {
   display: block;
   margin-bottom: 3px;
@@ -881,8 +929,8 @@ h1 {
     align-items: center;
     align-content: center;
     column-gap: 12px;
-    row-gap: 6px;
-    padding: 10px 10px 10px 12px;
+    row-gap: 4px;
+    padding: 8px 10px 8px 12px;
     border-radius: 8px;
   }
   .promo-logo {
@@ -940,7 +988,7 @@ h1 {
     display: none;
   }
   .promo-link {
-    min-height: 80px;
+    min-height: 66px;
   }
   .promo-cta,
   .promo--featured .promo-cta {
@@ -988,7 +1036,7 @@ h1 {
   .promo--featured .promo-cta {
     justify-self: end;
     width: auto;
-    height: 30px;
+    height: 28px;
     padding: 0 10px 0 12px;
     gap: 0;
     background-image: none;
@@ -1007,6 +1055,26 @@ h1 {
   .promo--featured .promo-cta .promo-arrow svg {
     width: 12px;
     height: 12px;
+  }
+}
+
+/*
+ * 좁은 휴대폰(폭 380px 이하)에서는 로고와 제목을 한 단계 줄여
+ * 강조 배너의 '바로가기' 버튼이 있어도 제목이 "…"으로 잘리지 않게 합니다.
+ */
+@media (max-width: 380px) {
+  .promo-link {
+    column-gap: 10px;
+  }
+  .promo-logo {
+    height: 24px;
+  }
+  .promo-logo img {
+    height: min(24px, calc(var(--k, 0.55) * 33px));
+    max-width: 74px;
+  }
+  .promo .promo-title {
+    font-size: 13.5px;
   }
 }
 
