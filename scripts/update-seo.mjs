@@ -284,7 +284,7 @@ const rankCards = homeOrder
   .map((r, i) => {
     const p = must(ranking.providers[r.id], `PROVIDERS.${r.id}`);
     const logo = p.logo
-      ? `<img src="assets/${esc(p.logo)}" alt="${esc(p.name)} 로고" loading="lazy" decoding="async">`
+      ? `<img src="assets/${esc(p.logo)}" style="--k: ${p.logoK || 0.55}" alt="${esc(p.name)} 로고" loading="lazy" decoding="async">`
       : `<span class="brand-name">${esc(p.name)}</span>`;
     return (
       `<article class="rank-card"><div class="rank"><span class="home-rank-number">${i + 1}</span>` +

@@ -1,11 +1,11 @@
 {
   "": {
-    "hash": "f1594887d3610ac5",
+    "hash": "7d29dfd2bd087bc1",
     "modified": "2026-10-01"
   },
   "webhard.html": {
-    "hash": "56994494efc6d595",
-    "modified": "2026-09-30"
+    "hash": "a12acf4a62b0e18e",
+    "modified": "2026-10-01"
   },
   "content.html": {
     "hash": "804ca7562b93df47",
@@ -16,7 +16,7 @@
     "modified": "2026-09-29"
   },
   "content-detail.html": {
-    "hash": "8937f48e2ee95fcd",
+    "hash": "b0a152ca014aeefa",
     "modified": "2026-10-01"
   }
 }
