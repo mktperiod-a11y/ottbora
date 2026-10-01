@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>페이지를 찾을 수 없어요 | 오티티보라</title>
+    <script>
+      /*
+       * 없는 주소는 어느 깊이에서든 이 파일이 뜹니다(GitHub Pages).
+       * 사이트 뿌리를 정해 <base> 와 스타일 주소를 그 기준으로 씁니다.
+       * github.io/ottbora/ 와 나중의 자기 도메인(/) 둘 다 맞게 열립니다.
+       * (스타일을 <link> 로 바로 적으면 브라우저가 <base> 보다 먼저 잘못된 경로로 받으러 갑니다.)
+       */
+      (() => {
+        const root = location.pathname.startsWith("/ottbora/") ? "/ottbora/" : "/";
+        document.write(
+          `<base href="${root}">` +
+            `<link rel="icon" href="${root}assets/favicon.svg" type="image/svg+xml">` +
+            ["fonts/gmarketsans/gmarketsans.css", "fonts/pretendard/pretendardvariable-dynamic-subset.css", "site.css?v=20260928-2"]
+              .map((f) => `<link rel="stylesheet" href="${root}assets/${f}">`)
+              .join(""),
+        );
+      })();
+    </script>
+    <style>
+      .notfound {
+        display: grid;
+        place-items: center;
+        min-height: calc(100vh - 160px);
+        padding: 48px 16px 64px;
+        text-align: center;
+      }
+      .notfound-code {
+        margin: 0;
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+      }
+      .notfound h1 {
+        margin: 10px 0 0;
+        color: var(--ink);
+        font-size: 28px;
+        letter-spacing: -0.04em;
+      }
+      .notfound p.lead {
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.7;
+        word-break: keep-all;
+      }
+      .notfound-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin: 28px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+      .notfound-links a {
+        display: inline-flex;
+        align-items: center;
+        height: 44px;
+        padding: 0 18px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: #fff;
+        color: var(--ink);
+        font-size: 15px;
+        font-weight: 700;
+        text-decoration: none;
+      }
+      .notfound-links a.primary {
+        border-color: var(--ink);
+        background: var(--ink);
+        color: #fff;
+      }
+      .notfound-links a:hover {
+        border-color: var(--ink);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="wrap nav" aria-label="주요 메뉴">
+        <a class="logo" href="index.html"><i aria-hidden="true">▶</i>오티티<span>보라</span></a>
+        <div class="menu">
+          <a href="webhard.html">웹하드 순위</a><a href="content.html">콘텐츠ZONE</a><a href="criteria.html">이용 가이드</a>
+        </div>
+      </nav>
+    </header>
+    <main id="main" class="notfound">
+      <div>
+        <p class="notfound-code">404</p>
+        <h1>페이지를 찾을 수 없어요</h1>
+        <p class="lead">
+          주소가 바뀌었거나 더 이상 소개하지 않는 페이지예요.<br />
+          아래에서 다시 둘러보세요.
+        </p>
+        <ul class="notfound-links">
+          <li><a class="primary" href="index.html">홈</a></li>
+          <li><a href="webhard.html">웹하드 순위</a></li>
+          <li><a href="content.html">콘텐츠ZONE</a></li>
+        </ul>
+      </div>
+    </main>
+  </body>
+</html>
