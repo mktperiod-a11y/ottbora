@@ -120,7 +120,7 @@
       name: "파일썬",
       description: "다양한 장르·출석 이벤트",
       logo: "logos/filesun.png",
-      logoK: 1.0,
+      logoK: 0.519,
       url: "https://www.filesun.com/",
     },
 
