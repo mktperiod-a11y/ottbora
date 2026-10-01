@@ -2,28 +2,74 @@
   "note": "일별 박스오피스를 작품 단위로 누적한 목록입니다. 콘텐츠ZONE 의 영화·애니 탭에서 씁니다.",
   "source": "영화진흥위원회 오픈API 일별 박스오피스",
   "sourceUrl": "https://www.kobis.or.kr/kobisopenapi/",
-  "updatedAt": "2026-09-30",
-  "latestDt": "20260929",
+  "updatedAt": "2026-10-01",
+  "latestDt": "20260930",
   "keepDays": 45,
   "movies": [
+    {
+      "movieCd": "20261807",
+      "title": "극장판 치이카와: 인어 섬의 비밀",
+      "titleEn": "Chiikawa the Movie: The Secret of the Mermaid Island",
+      "titleOriginal": "映画ちいかわ 人魚の島のひみつ",
+      "openedAt": "2026-09-30",
+      "audienceAcc": 153018,
+      "genres": [
+        "애니메이션"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260919",
+      "lastSeenAt": "20260930",
+      "days": 4,
+      "bestRank": 1,
+      "rank": 1,
+      "audienceDay": 122293,
+      "runtime": 98,
+      "directors": [
+        "오이카와 케이"
+      ],
+      "cast": [
+        "아오키 하루카",
+        "타나카 마코토",
+        "오자와 아리",
+        "이주은",
+        "손정민",
+        "권다예"
+      ],
+      "producers": [],
+      "distributors": [
+        "(주)씨제이이엔엠"
+      ],
+      "rating": "전체관람가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20261807.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "어느 날, 광장에서 쉬고 있던 치이카와와 가르마 앞에 얼굴에 전단지를 붙인 토끼가 나타난다. 그곳엔 “특별한 섬으로의 초대”라는 글귀가 적혀 있는데... “섬에서 간단한 토벌만 해도 보수 100배!” “한정 섬라멘과 한정 디저트까지, 달콤한 것도 매콤한 것도 사실상 무료.” 솔깃한 문구에 이끌린 치이카와와 친구들은 섬에서 열리는 행사에 참가하기로 한다. 초대장의 내용이 어딘가 수상하다고 느끼는 해달과, 부푼 마음으로 배에 오르는 치이카와와 친구들. 모두가 기대를 안은 채 특별한 섬에 도착하는데! 과연 그 섬에는 어떤 비밀이 숨겨져 있을까...?!",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1586876,
+      "score": 7.3,
+      "scoreBy": "TMDB",
+      "voteCount": 8,
+      "showing": true
+    },
     {
       "movieCd": "20255033",
       "title": "암살자(들)",
       "titleEn": "The Assassin(s)",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 1695020,
+      "audienceAcc": 1766946,
       "genres": [
         "범죄",
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260917",
-      "lastSeenAt": "20260929",
-      "days": 9,
+      "lastSeenAt": "20260930",
+      "days": 10,
       "bestRank": 1,
-      "rank": 1,
-      "audienceDay": 61414,
+      "rank": 2,
+      "audienceDay": 71942,
       "runtime": 130,
       "directors": [
         "허진호"
@@ -59,7 +105,7 @@
       "titleEn": "The Odyssey",
       "titleOriginal": "",
       "openedAt": "2026-08-05",
-      "audienceAcc": 11837353,
+      "audienceAcc": 11857153,
       "genres": [
         "액션",
         "드라마",
@@ -67,11 +113,11 @@
       ],
       "type": "영화",
       "firstSeenAt": "20260824",
-      "lastSeenAt": "20260929",
-      "days": 36,
+      "lastSeenAt": "20260930",
+      "days": 37,
       "bestRank": 1,
-      "rank": 3,
-      "audienceDay": 22707,
+      "rank": 5,
+      "audienceDay": 19827,
       "runtime": 172,
       "directors": [
         "크리스토퍼 놀란"
@@ -107,17 +153,17 @@
       "titleEn": "The Intern",
       "titleOriginal": "",
       "openedAt": "2026-09-16",
-      "audienceAcc": 782609,
+      "audienceAcc": 794489,
       "genres": [
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260904",
-      "lastSeenAt": "20260929",
-      "days": 16,
+      "lastSeenAt": "20260930",
+      "days": 17,
       "bestRank": 1,
-      "rank": 5,
-      "audienceDay": 14020,
+      "rank": 7,
+      "audienceDay": 11880,
       "runtime": 132,
       "directors": [
         "김도영"
@@ -156,18 +202,18 @@
       "titleEn": "TAZZA: The Song of Beelzebub",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 958054,
+      "audienceAcc": 1015905,
       "genres": [
         "범죄",
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260914",
-      "lastSeenAt": "20260929",
-      "days": 11,
+      "lastSeenAt": "20260930",
+      "days": 12,
       "bestRank": 1,
-      "rank": 2,
-      "audienceDay": 56136,
+      "rank": 3,
+      "audienceDay": 57853,
       "runtime": 129,
       "directors": [
         "최국희"
@@ -200,70 +246,22 @@
       "showing": true
     },
     {
-      "movieCd": "20262770",
-      "title": "스파이더맨: 브랜드 뉴 데이",
-      "titleEn": "Spider-Man: Brand New Day",
-      "titleOriginal": "",
-      "openedAt": "2026-07-29",
-      "audienceAcc": 9036863,
-      "genres": [
-        "액션",
-        "어드벤처",
-        "판타지"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20260824",
-      "lastSeenAt": "20260929",
-      "days": 36,
-      "bestRank": 2,
-      "rank": 9,
-      "audienceDay": 2362,
-      "runtime": 144,
-      "directors": [
-        "데스틴 다니엘 크리튼"
-      ],
-      "cast": [
-        "톰 홀랜드",
-        "젠데이아 콜먼",
-        "세이디 싱크",
-        "제이콥 배덜런",
-        "존 번탈",
-        "트라멜 틸먼"
-      ],
-      "producers": [],
-      "distributors": [
-        "소니픽쳐스엔터테인먼트코리아주식회사극장배급지점"
-      ],
-      "rating": "12세이상관람가",
-      "koficDetailFetched": true,
-      "koficDetailVersion": 3,
-      "poster": "assets/posters/20262770.webp",
-      "posterCredit": "TMDB",
-      "synopsis": "4년 전 소중한 사람들을 지키기 위해 모두의 기억에서 사라진 피터 파커. 친절한 이웃 스파이더맨으로서 뉴욕을 지키며 고독한 삶을 살아가던 피터는 어느 날, 예상치 못한 DNA 변이로 인해 통제 불가능한 힘에 사로잡히고 그의 진짜 정체를 알고 있는 적까지 마주하게 된다. 타인의 의식을 조종하는 정체불명의 존재로 인해 모두가 피터를 노리는 적이 될 수 있는 혼란 속에서 피터는 다시 위협에 빠진 MJ와 모두를 지키기 위해 스파이더맨으로 그들 앞에 서게 되는데...",
-      "synopsisCredit": "TMDB",
-      "tmdbId": 969681,
-      "score": 7.9,
-      "scoreBy": "TMDB",
-      "voteCount": 2906,
-      "showing": true
-    },
-    {
       "movieCd": "20265146",
       "title": "옵세션",
       "titleEn": "Obsession",
       "titleOriginal": "",
       "openedAt": "2026-09-02",
-      "audienceAcc": 868484,
+      "audienceAcc": 876091,
       "genres": [
         "공포(호러)"
       ],
       "type": "영화",
       "firstSeenAt": "20260902",
-      "lastSeenAt": "20260929",
-      "days": 27,
+      "lastSeenAt": "20260930",
+      "days": 28,
       "bestRank": 2,
-      "rank": 6,
-      "audienceDay": 9301,
+      "rank": 8,
+      "audienceDay": 7611,
       "runtime": 108,
       "directors": [
         "커리 바커"
@@ -297,7 +295,7 @@
       "titleEn": "Resident Evil",
       "titleOriginal": "",
       "openedAt": "2026-09-17",
-      "audienceAcc": 195640,
+      "audienceAcc": 198340,
       "genres": [
         "공포(호러)",
         "액션",
@@ -305,11 +303,11 @@
       ],
       "type": "영화",
       "firstSeenAt": "20260917",
-      "lastSeenAt": "20260929",
-      "days": 12,
+      "lastSeenAt": "20260930",
+      "days": 13,
       "bestRank": 3,
-      "rank": 8,
-      "audienceDay": 4056,
+      "rank": 9,
+      "audienceDay": 2702,
       "runtime": 93,
       "directors": [
         "잭 크레거"
@@ -340,17 +338,17 @@
       "titleEn": "Possible Love",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 144530,
+      "audienceAcc": 158204,
       "genres": [
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260921",
-      "lastSeenAt": "20260929",
-      "days": 7,
+      "lastSeenAt": "20260930",
+      "days": 8,
       "bestRank": 4,
-      "rank": 4,
-      "audienceDay": 14177,
+      "rank": 6,
+      "audienceDay": 13674,
       "runtime": 164,
       "directors": [
         "이창동"
@@ -384,6 +382,147 @@
       "showing": true
     },
     {
+      "movieCd": "20224573",
+      "title": "부활남: 더 레드",
+      "titleEn": "REAWAKENED MAN",
+      "titleOriginal": "",
+      "openedAt": "2026-09-30",
+      "audienceAcc": 51675,
+      "genres": [
+        "액션"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260918",
+      "lastSeenAt": "20260930",
+      "days": 3,
+      "bestRank": 4,
+      "rank": 4,
+      "audienceDay": 42872,
+      "runtime": 101,
+      "directors": [
+        "백"
+      ],
+      "cast": [
+        "구교환",
+        "신승호",
+        "강기영",
+        "김시아",
+        "김성령"
+      ],
+      "producers": [
+        "씨제이이엔엠스튜디오스(주)용필름지점",
+        "주식회사 슈퍼픽션",
+        "주식회사 와이랩"
+      ],
+      "distributors": [
+        "롯데컬처웍스(주)롯데엔터테인먼트"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20224573.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "근거 없는 자신감이 유일한 스펙인 취준생 ‘석환’이 죽은 뒤 72시간이면 부활하는 능력을 갖고 있다는 걸 알게 된 후 의문의 추격을 당하며 펼쳐지는 이야기",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 961214,
+      "score": 5,
+      "scoreBy": "TMDB",
+      "voteCount": 1,
+      "showing": true
+    },
+    {
+      "movieCd": "20262961",
+      "title": "이방인",
+      "titleEn": "The Stranger",
+      "titleOriginal": "L'étranger",
+      "openedAt": "2026-09-30",
+      "audienceAcc": 3723,
+      "genres": [
+        "드라마"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260930",
+      "lastSeenAt": "20260930",
+      "days": 1,
+      "bestRank": 10,
+      "rank": 10,
+      "audienceDay": 1637,
+      "runtime": 122,
+      "directors": [
+        "프랑수아 오종"
+      ],
+      "cast": [
+        "벤자민 부아쟁",
+        "드니 라방",
+        "스완 아를로"
+      ],
+      "producers": [],
+      "distributors": [
+        "(주)영화사 진진",
+        "(주)레드아이스 엔터테인먼트"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "showing": true,
+      "synopsis": "청년 ‘뫼르소’는 어머니의 부고 소식을 듣고 장례를 치르지만 어딘가 무감하다. 집으로 돌아온 그는 해수욕장에서 옛 동료 ‘마리’를 우연히 만나 사랑을 나눈다. 이웃 ‘레몽’과 가깝게 지내던 ‘뫼르소’는 예상치 못한 비극에 휘말린다.",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1429348,
+      "score": 6.8,
+      "scoreBy": "TMDB",
+      "voteCount": 240,
+      "poster": "assets/posters/20262961.webp",
+      "posterCredit": "TMDB"
+    },
+    {
+      "movieCd": "20262770",
+      "title": "스파이더맨: 브랜드 뉴 데이",
+      "titleEn": "Spider-Man: Brand New Day",
+      "titleOriginal": "",
+      "openedAt": "2026-07-29",
+      "audienceAcc": 9036863,
+      "genres": [
+        "액션",
+        "어드벤처",
+        "판타지"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260824",
+      "lastSeenAt": "20260929",
+      "days": 36,
+      "bestRank": 2,
+      "rank": null,
+      "audienceDay": null,
+      "runtime": 144,
+      "directors": [
+        "데스틴 다니엘 크리튼"
+      ],
+      "cast": [
+        "톰 홀랜드",
+        "젠데이아 콜먼",
+        "세이디 싱크",
+        "제이콥 배덜런",
+        "존 번탈",
+        "트라멜 틸먼"
+      ],
+      "producers": [],
+      "distributors": [
+        "소니픽쳐스엔터테인먼트코리아주식회사극장배급지점"
+      ],
+      "rating": "12세이상관람가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20262770.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "4년 전 소중한 사람들을 지키기 위해 모두의 기억에서 사라진 피터 파커. 친절한 이웃 스파이더맨으로서 뉴욕을 지키며 고독한 삶을 살아가던 피터는 어느 날, 예상치 못한 DNA 변이로 인해 통제 불가능한 힘에 사로잡히고 그의 진짜 정체를 알고 있는 적까지 마주하게 된다. 타인의 의식을 조종하는 정체불명의 존재로 인해 모두가 피터를 노리는 적이 될 수 있는 혼란 속에서 피터는 다시 위협에 빠진 MJ와 모두를 지키기 위해 스파이더맨으로 그들 앞에 서게 되는데...",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 969681,
+      "score": 7.9,
+      "scoreBy": "TMDB",
+      "voteCount": 2906,
+      "showing": false
+    },
+    {
       "movieCd": "20266766",
       "title": "어벤져스: 엔드게임 앙코르",
       "titleEn": "Avengers: Endgame Encore",
@@ -399,8 +538,8 @@
       "lastSeenAt": "20260929",
       "days": 6,
       "bestRank": 5,
-      "rank": 7,
-      "audienceDay": 5680,
+      "rank": null,
+      "audienceDay": null,
       "runtime": 183,
       "directors": [
         "안소니 루소",
@@ -429,7 +568,7 @@
       "score": 8.2,
       "scoreBy": "TMDB",
       "voteCount": 28819,
-      "showing": true
+      "showing": false
     },
     {
       "movieCd": "20266148",
@@ -446,8 +585,8 @@
       "lastSeenAt": "20260929",
       "days": 2,
       "bestRank": 10,
-      "rank": 10,
-      "audienceDay": 991,
+      "rank": null,
+      "audienceDay": null,
       "runtime": 146,
       "directors": [
         "이준익"
@@ -479,101 +618,6 @@
       "score": null,
       "scoreBy": "",
       "voteCount": null,
-      "showing": true
-    },
-    {
-      "movieCd": "20224573",
-      "title": "부활남: 더 레드",
-      "titleEn": "REAWAKENED MAN",
-      "titleOriginal": "",
-      "openedAt": "2026-09-30",
-      "audienceAcc": 8395,
-      "genres": [
-        "액션"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20260918",
-      "lastSeenAt": "20260928",
-      "days": 2,
-      "bestRank": 6,
-      "rank": null,
-      "audienceDay": null,
-      "runtime": 101,
-      "directors": [
-        "백"
-      ],
-      "cast": [
-        "구교환",
-        "신승호",
-        "강기영",
-        "김시아",
-        "김성령"
-      ],
-      "producers": [
-        "씨제이이엔엠스튜디오스(주)용필름지점",
-        "주식회사 슈퍼픽션",
-        "주식회사 와이랩"
-      ],
-      "distributors": [
-        "롯데컬처웍스(주)롯데엔터테인먼트"
-      ],
-      "rating": "15세이상관람가",
-      "koficDetailFetched": true,
-      "koficDetailVersion": 3,
-      "poster": "assets/posters/20224573.webp",
-      "posterCredit": "TMDB",
-      "synopsis": "근거 없는 자신감이 유일한 스펙인 취준생 ‘석환’이 죽은 뒤 72시간이면 부활하는 능력을 갖고 있다는 걸 알게 된 후 의문의 추격을 당하며 펼쳐지는 이야기",
-      "synopsisCredit": "TMDB",
-      "tmdbId": 961214,
-      "score": null,
-      "scoreBy": "",
-      "voteCount": null,
-      "showing": false
-    },
-    {
-      "movieCd": "20261807",
-      "title": "극장판 치이카와: 인어 섬의 비밀",
-      "titleEn": "Chiikawa the Movie: The Secret of the Mermaid Island",
-      "titleOriginal": "映画ちいかわ 人魚の島のひみつ",
-      "openedAt": "2026-09-30",
-      "audienceAcc": 30725,
-      "genres": [
-        "애니메이션"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20260919",
-      "lastSeenAt": "20260927",
-      "days": 3,
-      "bestRank": 6,
-      "rank": null,
-      "audienceDay": null,
-      "runtime": 98,
-      "directors": [
-        "오이카와 케이"
-      ],
-      "cast": [
-        "아오키 하루카",
-        "타나카 마코토",
-        "오자와 아리",
-        "이주은",
-        "손정민",
-        "권다예"
-      ],
-      "producers": [],
-      "distributors": [
-        "(주)씨제이이엔엠"
-      ],
-      "rating": "전체관람가",
-      "koficDetailFetched": true,
-      "koficDetailVersion": 3,
-      "poster": "assets/posters/20261807.webp",
-      "posterCredit": "TMDB",
-      "synopsis": "어느 날, 광장에서 쉬고 있던 치이카와와 가르마 앞에 얼굴에 전단지를 붙인 토끼가 나타난다. 그곳엔 “특별한 섬으로의 초대”라는 글귀가 적혀 있는데... “섬에서 간단한 토벌만 해도 보수 100배!” “한정 섬라멘과 한정 디저트까지, 달콤한 것도 매콤한 것도 사실상 무료.” 솔깃한 문구에 이끌린 치이카와와 친구들은 섬에서 열리는 행사에 참가하기로 한다. 초대장의 내용이 어딘가 수상하다고 느끼는 해달과, 부푼 마음으로 배에 오르는 치이카와와 친구들. 모두가 기대를 안은 채 특별한 섬에 도착하는데! 과연 그 섬에는 어떤 비밀이 숨겨져 있을까...?!",
-      "synopsisCredit": "TMDB",
-      "tmdbId": 1586876,
-      "score": 7.3,
-      "scoreBy": "TMDB",
-      "voteCount": 8,
       "showing": false
     },
     {
