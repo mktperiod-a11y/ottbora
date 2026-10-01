@@ -33,7 +33,14 @@
   ];
 
   /*
-   * logo 는 반드시 그 사이트의 공식 파일입니다. 글자로 흉내 낸 로고를
+   * logo 는 반드시 그 사이트의 공식 파일입니다. assets/logos/ 에는 공식 파일에서
+   * 바깥 여백(흰 배경·투명 테두리)만 깎아 낸 것을 둡니다.
+   *
+   * logoK 는 로고마다 "눈에 보이는 면적"을 같게 맞추는 높이 배율입니다
+   * (= 1/√(가로÷세로)). 넓은 워드마크는 낮게, 네모난 아이콘은 높게 그립니다.
+   * 글자가 유난히 굵어 커 보이는 로고(파일이즈)는 조금 더 줄여 두었습니다.
+   * 로고 파일을 바꾸면 이 값도 다시 계산합니다.
+   * 글자로 흉내 낸 로고를
    * 만들어 넣지 않습니다(한 번 그렇게 들어간 가짜 로고 여섯 개를 모두
    * 걷어 냈습니다).
    *
@@ -47,14 +54,16 @@
       id: "ondisk",
       name: "온디스크",
       description: "다양한 장르·폭넓은 콘텐츠",
-      logo: "ondisk.svg",
+      logo: "logos/ondisk.png",
+      logoK: 0.611,
       url: "go/ondisk/",
     },
     kdisk: {
       id: "kdisk",
       name: "케이디스크",
       description: "PC·모바일 감상과 다운로드",
-      logo: "kdisk.svg",
+      logo: "logos/kdisk.png",
+      logoK: 0.53,
       url: "go/kdisk/",
       home: "https://kdisk.co.kr/",
     },
@@ -62,49 +71,56 @@
       id: "wedisk",
       name: "위디스크",
       description: "찜·다시보기와 화면 전송",
-      logo: "wedisk.png",
+      logo: "logos/wedisk.png",
+      logoK: 0.617,
       url: "https://www.wedisk.co.kr/",
     },
     filejo: {
       id: "filejo",
       name: "파일조",
       description: "인기 TOP100으로 콘텐츠 탐색",
-      logo: "filejo.gif",
+      logo: "logos/filejo.png",
+      logoK: 0.515,
       url: "https://www.filejo.com/main/",
     },
     filenori: {
       id: "filenori",
       name: "파일노리",
       description: "모바일 탐색과 전용 플레이어",
-      logo: "filenori.gif",
+      logo: "logos/filenori.png",
+      logoK: 0.49,
       url: "https://www.filenori.com/",
     },
     me2disk: {
       id: "me2disk",
       name: "미투디스크",
       description: "다양한 자료와 고객지원",
-      logo: "me2disk.jpg",
+      logo: "logos/me2disk.png",
+      logoK: 0.548,
       url: "https://me2disk.com/",
     },
     filecast: {
       id: "filecast",
       name: "파일캐스트",
       description: "모바일 감상·정액관 이용",
-      logo: "filecast.png",
+      logo: "logos/filecast.png",
+      logoK: 0.543,
       url: "https://filecast.co.kr/",
     },
     filestar: {
       id: "filestar",
       name: "파일스타",
       description: "실시간 스트리밍·모바일 전용 플레이어",
-      logo: "filestar.png",
+      logo: "logos/filestar.png",
+      logoK: 0.436,
       url: "https://filestar.co.kr/",
     },
     filesun: {
       id: "filesun",
       name: "파일썬",
       description: "다양한 장르·출석 이벤트",
-      logo: "filesun.png",
+      logo: "logos/filesun.png",
+      logoK: 1.0,
       url: "https://www.filesun.com/",
     },
 
@@ -118,28 +134,32 @@
       id: "fileis",
       name: "파일이즈",
       description: "실시간 스트리밍·할인 콘텐츠",
-      logo: "fileis.svg",
+      logo: "logos/fileis.png",
+      logoK: 0.476,
       url: "https://www.fileis.com/",
     },
     filecookie: {
       id: "filecookie",
       name: "파일쿠키",
       description: "PC 구매 후 모바일 재생",
-      logo: "filecookie.png",
+      logo: "logos/filecookie.png",
+      logoK: 0.458,
       url: "https://www.filekuki.com/",
     },
     bigfile: {
       id: "bigfile",
       name: "빅파일",
       description: "실시간 TOP100 · 다양한 콘텐츠",
-      logo: "bigfile.png",
+      logo: "logos/bigfile.png",
+      logoK: 0.588,
       url: "https://bigfile.co.kr/",
     },
     pdpop: {
       id: "pdpop",
       name: "피디팝",
       description: "인기콘텐츠 · 전용 프로그램",
-      logo: "pdpop.png",
+      logo: "logos/pdpop.png",
+      logoK: 0.547,
       url: "https://new.pdpop.com/",
     },
   };
