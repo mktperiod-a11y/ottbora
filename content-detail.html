@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css?v=20260928-2" />
-    <link rel="stylesheet" href="assets/content-detail.css?v=20260930-33" />
+    <link rel="stylesheet" href="assets/content-detail.css?v=20261001-1" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -679,7 +679,7 @@
             "작품 정보를 불러오지 못했습니다.";
         });
     </script>
-    <script src="assets/webhard-ranking.js?v=20260929-2"></script>
+    <script src="assets/webhard-ranking.js?v=20261001-1"></script>
     <script>
       /*
        * 제휴 배너. 들어올 때마다 하나를 골라 띄웁니다.
@@ -690,9 +690,8 @@
        * OTHERS 에는 순위 후보 전체(예비 포함) 배너를 보관해 두고,
        * 그 주 TOP 10 에 든 곳만 뽑힙니다. 이름·주소는 랭킹 엔진
        * (assets/webhard-ranking.js)에서 가져오고, 여기서는 색과 문구만 적습니다.
-       * 로고는 여백을 깎아 둔 assets/promo/<id>.png 를 쓰고, 가로세로 비율에
+       * 로고는 여백을 깎아 둔 assets/logos/<id>.png 를 쓰고, 가로세로 비율에
        * 맞춰 눈에 보이는 면적이 같아지도록 크기를 정합니다(--k).
-       * 글자가 유난히 굵어 커 보이는 로고는 scale 로 조금 줄입니다.
        * deco 는 배경 장식 모양입니다(기본 lines: 점 격자 + 사선 띠).
        *   rings 겹친 두 원 · squares 비스듬한 네모 · blob 옅은 큰 원
        *   stripes 사선 줄무늬 · triangle 모서리 삼각형
@@ -706,7 +705,8 @@
             id: "ondisk",
             weight: 40,
             name: "온디스크",
-            logo: "assets/promo/ondisk.png",
+            logo: "assets/logos/ondisk.png",
+            logoK: 0.611,
             url: "go/ondisk/",
             title: "오늘 뭐 볼지, <br /><em>고민 끝</em>",
             titleMobile: "뭐 볼지 고민된다면, <em>온디스크</em>",
@@ -716,7 +716,8 @@
             id: "kdisk",
             weight: 40,
             name: "케이디스크",
-            logo: "assets/promo/kdisk.png",
+            logo: "assets/logos/kdisk.png",
+            logoK: 0.53,
             url: "go/kdisk/",
             color: "#5c9608",
             deco: "rings",
@@ -733,7 +734,7 @@
           filecast: { color: "#346f89", deco: "squares", title: "모바일 감상과 정액관을 <br /><em>함께 비교하고 싶을 때</em>", text: "개별 구매와 자유이용권 정액관을 함께 안내하는 서비스예요" },
           filestar: { color: "#e7284e", deco: "triangle", title: "고른 콘텐츠를 기다림 없이 <br /><em>실시간으로 볼 때</em>", text: "실시간 스트리밍과 모바일 전용 플레이어 앱을 함께 제공해요" },
           filesun: { color: "#f0500f", deco: "blob", title: "장르별로 둘러보면서 <br /><em>출석 혜택도 챙길 때</em>", text: "다양한 장르와 출석·쿠폰 이벤트를 안내하는 웹하드예요" },
-          fileis: { color: "#3e7aa8", deco: "stripes", scale: 0.84, title: "할인 중인 콘텐츠를 <br /><em>바로 스트리밍할 때</em>", text: "실시간 스트리밍과 할인 콘텐츠를 함께 안내하는 서비스예요" },
+          fileis: { color: "#3e7aa8", deco: "stripes", title: "할인 중인 콘텐츠를 <br /><em>바로 스트리밍할 때</em>", text: "실시간 스트리밍과 할인 콘텐츠를 함께 안내하는 서비스예요" },
           filecookie: { color: "#315eaa", deco: "triangle", title: "PC에서 구매한 자료를 <br /><em>모바일로 다시 볼 때</em>", text: "PC에서 산 자료를 모바일에서 재생할 수 있다고 안내해요" },
           bigfile: { color: "#1b9e52", title: "실시간 TOP100에서 <br /><em>인기 자료를 찾을 때</em>", text: "실시간·주간·월간 TOP100과 여러 카테고리를 함께 제공해요" },
           pdpop: { color: "#f06a0a", title: "인기 콘텐츠를 <br /><em>전용 프로그램으로 볼 때</em>", text: "인기 콘텐츠와 전용 프로그램 이용을 함께 안내하는 서비스예요" },
@@ -746,12 +747,12 @@
               .map((p) => ({
                 id: p.id,
                 name: p.name,
-                logo: `assets/promo/${p.id}.png`,
+                logo: `assets/${p.logo}`,
+                logoK: p.logoK,
                 url: p.url,
                 title: OTHERS[p.id].title,
                 text: OTHERS[p.id].text || p.description,
                 color: OTHERS[p.id].color,
-                scale: OTHERS[p.id].scale,
                 deco: OTHERS[p.id].deco,
               }))
           : [];
@@ -788,16 +789,8 @@
           `<svg viewBox="0 0 16 16" width="14" height="14"><path d="M3.5 8h9M9 4.5 12.5 8 9 11.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>` +
           `</span></span>` +
           `</a>`;
-        // 넓은 로고는 낮게, 네모난 로고는 높게: 높이 ∝ 1/√(가로÷세로).
-        const img = host.querySelector(".promo-logo img");
-        const fit = () => {
-          if (img.naturalWidth && img.naturalHeight) {
-            const k = 1 / Math.sqrt(img.naturalWidth / img.naturalHeight);
-            img.style.setProperty("--k", (k * (ad.scale || 1)).toFixed(3));
-          }
-        };
-        if (img.complete) fit();
-        else img.addEventListener("load", fit, { once: true });
+        // 넓은 로고는 낮게, 네모난 로고는 높게: 배율(logoK)은 랭킹 엔진에 계산해 둔 값.
+        host.querySelector(".promo-logo img").style.setProperty("--k", ad.logoK || 0.55);
         host.hidden = false;
       })();
     </script>

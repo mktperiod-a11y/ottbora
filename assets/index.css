@@ -215,12 +215,13 @@ button:focus-visible {
   padding: 4px;
   justify-content: center;
 }
+/* 로고 크기 맞추기: 여백을 깎은 파일 + 보이는 면적이 같도록 높이를 --k(logoK)에 비례. */
 .brand img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
   display: block;
-  object-position: center;
+  width: auto;
+  max-width: 100%;
+  height: min(100%, calc(var(--k, 0.55) * 50px));
+  object-fit: contain;
 }
 .rank-card {
   display: grid;
@@ -473,6 +474,9 @@ section:has(.guide-grid) .head h2 {
   .brand {
     height: 44px;
     padding: 3px 5px;
+  }
+  .brand img {
+    height: min(100%, calc(var(--k, 0.55) * 46px));
   }
   .rank-info {
     min-width: 0;
