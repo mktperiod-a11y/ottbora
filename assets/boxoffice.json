@@ -3,7 +3,7 @@
   "source": "영화진흥위원회 오픈API 일별 박스오피스",
   "sourceUrl": "https://www.kobis.or.kr/kobisopenapi/",
   "updatedAt": "2026-10-02",
-  "latestDt": "20261001",
+  "latestDt": "20261002",
   "keepDays": 45,
   "movies": [
     {
@@ -12,17 +12,17 @@
       "titleEn": "Chiikawa the Movie: The Secret of the Mermaid Island",
       "titleOriginal": "映画ちいかわ 人魚の島のひみつ",
       "openedAt": "2026-09-30",
-      "audienceAcc": 198786,
+      "audienceAcc": 259215,
       "genres": [
         "애니메이션"
       ],
       "type": "영화",
       "firstSeenAt": "20260919",
-      "lastSeenAt": "20261001",
-      "days": 5,
+      "lastSeenAt": "20261002",
+      "days": 6,
       "bestRank": 1,
-      "rank": 3,
-      "audienceDay": 45770,
+      "rank": 2,
+      "audienceDay": 60429,
       "runtime": 98,
       "directors": [
         "오이카와 케이"
@@ -58,18 +58,18 @@
       "titleEn": "The Assassin(s)",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 1821960,
+      "audienceAcc": 1890360,
       "genres": [
         "범죄",
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260917",
-      "lastSeenAt": "20261001",
-      "days": 11,
+      "lastSeenAt": "20261002",
+      "days": 12,
       "bestRank": 1,
       "rank": 1,
-      "audienceDay": 55015,
+      "audienceDay": 68404,
       "runtime": 130,
       "directors": [
         "허진호"
@@ -105,7 +105,7 @@
       "titleEn": "The Odyssey",
       "titleOriginal": "",
       "openedAt": "2026-08-05",
-      "audienceAcc": 11875153,
+      "audienceAcc": 11898817,
       "genres": [
         "액션",
         "드라마",
@@ -113,11 +113,11 @@
       ],
       "type": "영화",
       "firstSeenAt": "20260824",
-      "lastSeenAt": "20261001",
-      "days": 38,
+      "lastSeenAt": "20261002",
+      "days": 39,
       "bestRank": 1,
       "rank": 5,
-      "audienceDay": 18010,
+      "audienceDay": 23664,
       "runtime": 172,
       "directors": [
         "크리스토퍼 놀란"
@@ -153,17 +153,17 @@
       "titleEn": "The Intern",
       "titleOriginal": "",
       "openedAt": "2026-09-16",
-      "audienceAcc": 801375,
+      "audienceAcc": 809229,
       "genres": [
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260904",
-      "lastSeenAt": "20261001",
-      "days": 18,
+      "lastSeenAt": "20261002",
+      "days": 19,
       "bestRank": 1,
-      "rank": 7,
-      "audienceDay": 6888,
+      "rank": 8,
+      "audienceDay": 7854,
       "runtime": 132,
       "directors": [
         "김도영"
@@ -202,18 +202,18 @@
       "titleEn": "TAZZA: The Song of Beelzebub",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 1065735,
+      "audienceAcc": 1125960,
       "genres": [
         "범죄",
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260914",
-      "lastSeenAt": "20261001",
-      "days": 13,
+      "lastSeenAt": "20261002",
+      "days": 14,
       "bestRank": 1,
-      "rank": 2,
-      "audienceDay": 49832,
+      "rank": 3,
+      "audienceDay": 60225,
       "runtime": 129,
       "directors": [
         "최국희"
@@ -251,17 +251,17 @@
       "titleEn": "Obsession",
       "titleOriginal": "",
       "openedAt": "2026-09-02",
-      "audienceAcc": 882854,
+      "audienceAcc": 892160,
       "genres": [
         "공포(호러)"
       ],
       "type": "영화",
       "firstSeenAt": "20260902",
-      "lastSeenAt": "20261001",
-      "days": 29,
+      "lastSeenAt": "20261002",
+      "days": 30,
       "bestRank": 2,
-      "rank": 8,
-      "audienceDay": 6763,
+      "rank": 7,
+      "audienceDay": 9308,
       "runtime": 108,
       "directors": [
         "커리 바커"
@@ -295,7 +295,7 @@
       "titleEn": "Resident Evil",
       "titleOriginal": "",
       "openedAt": "2026-09-17",
-      "audienceAcc": 200466,
+      "audienceAcc": 203356,
       "genres": [
         "공포(호러)",
         "액션",
@@ -303,11 +303,11 @@
       ],
       "type": "영화",
       "firstSeenAt": "20260917",
-      "lastSeenAt": "20261001",
-      "days": 14,
+      "lastSeenAt": "20261002",
+      "days": 15,
       "bestRank": 3,
-      "rank": 9,
-      "audienceDay": 2126,
+      "rank": 10,
+      "audienceDay": 2890,
       "runtime": 93,
       "directors": [
         "잭 크레거"
@@ -338,17 +338,17 @@
       "titleEn": "Possible Love",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 169949,
+      "audienceAcc": 183652,
       "genres": [
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260921",
-      "lastSeenAt": "20261001",
-      "days": 9,
+      "lastSeenAt": "20261002",
+      "days": 10,
       "bestRank": 4,
       "rank": 6,
-      "audienceDay": 11745,
+      "audienceDay": 13703,
       "runtime": 164,
       "directors": [
         "이창동"
@@ -387,17 +387,17 @@
       "titleEn": "REAWAKENED MAN",
       "titleOriginal": "",
       "openedAt": "2026-09-30",
-      "audienceAcc": 73908,
+      "audienceAcc": 100117,
       "genres": [
         "액션"
       ],
       "type": "영화",
       "firstSeenAt": "20260918",
-      "lastSeenAt": "20261001",
-      "days": 4,
+      "lastSeenAt": "20261002",
+      "days": 5,
       "bestRank": 4,
       "rank": 4,
-      "audienceDay": 22233,
+      "audienceDay": 26209,
       "runtime": 101,
       "directors": [
         "백"
@@ -436,18 +436,18 @@
       "titleEn": "Avengers: Endgame Encore",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 122968,
+      "audienceAcc": 126928,
       "genres": [
         "액션",
         "SF"
       ],
       "type": "영화",
       "firstSeenAt": "20260923",
-      "lastSeenAt": "20261001",
-      "days": 7,
+      "lastSeenAt": "20261002",
+      "days": 8,
       "bestRank": 5,
-      "rank": 10,
-      "audienceDay": 1477,
+      "rank": 9,
+      "audienceDay": 3962,
       "runtime": 183,
       "directors": [
         "안소니 루소",
