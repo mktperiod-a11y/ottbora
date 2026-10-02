@@ -64,7 +64,7 @@
       "originalTitle": "포핸즈",
       "type": "드라마",
       "rank": 2,
-      "popularity": 32.5025,
+      "popularity": 32.3286,
       "genres": [
         18
       ],
@@ -159,7 +159,7 @@
       "nextAirDate": "",
       "runtime": null,
       "episodes": 12,
-      "score": 8.1,
+      "score": 8.2,
       "scoreBy": "TMDB",
       "networks": [
         "Disney+"
@@ -234,7 +234,7 @@
       ],
       "overview": "어디에서나 볼 수 있는 흔한 영업직원 공은태가 꿈에 그리던 로또 1등에 당첨이 된 후 '든든한 내 마음의 보험'이라고 생각하며 어제와는 다른 마음가짐으로 오늘도 회사에 출근하는 이야기",
       "firstAirDate": "2026-09-10",
-      "lastAirDate": "2026-09-24",
+      "lastAirDate": "2026-10-01",
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-10-08",
@@ -435,7 +435,7 @@
       "originalTitle": "사랑이 온다",
       "type": "드라마",
       "rank": 11,
-      "popularity": 11.5292,
+      "popularity": 11.105,
       "genres": [
         10751,
         18
@@ -805,7 +805,8 @@
       "score": null,
       "scoreBy": "TMDB",
       "networks": [
-        "Netflix"
+        "Netflix",
+        "TVING"
       ],
       "creators": [],
       "providers": [],
@@ -941,7 +942,7 @@
       "originalTitle": "런닝맨",
       "type": "예능",
       "rank": 1,
-      "popularity": 574.5382,
+      "popularity": 504.5097,
       "genres": [
         35,
         10764
@@ -1189,7 +1190,7 @@
       "originalTitle": "놀면 뭐하니?",
       "type": "예능",
       "rank": 7,
-      "popularity": 97.0214,
+      "popularity": 93.3135,
       "genres": [
         10764,
         35
@@ -1554,7 +1555,7 @@
       "originalTitle": "나는 SOLO, 그 후 사랑은 계속된다",
       "type": "예능",
       "rank": 16,
-      "popularity": 28.1249,
+      "popularity": 27.0454,
       "genres": [
         10764
       ],
@@ -1749,7 +1750,7 @@
       "originalTitle": "너에게 다이브",
       "type": "예능",
       "rank": 21,
-      "popularity": 20.0848,
+      "popularity": 20.1906,
       "genres": [
         35,
         18,
@@ -2052,7 +2053,7 @@
       "originalTitle": "용감한 형사들",
       "type": "예능",
       "rank": 29,
-      "popularity": 13.6027,
+      "popularity": 13.6548,
       "genres": [
         80,
         10764
@@ -2592,7 +2593,7 @@
       "originalTitle": "Strong Girl:배지전쟁",
       "type": "예능",
       "rank": 43,
-      "popularity": 6.092,
+      "popularity": 6,
       "genres": [
         10764
       ],
@@ -2636,7 +2637,7 @@
       "lastAirDate": "2026-09-24",
       "status": "Returning Series",
       "inProduction": true,
-      "nextAirDate": "",
+      "nextAirDate": "2026-10-08",
       "runtime": 90,
       "episodes": 101,
       "score": 10,
@@ -2773,7 +2774,7 @@
       "originalTitle": "남겨서 뭐하게",
       "type": "예능",
       "rank": 48,
-      "popularity": 5.5363,
+      "popularity": 5.6343,
       "genres": [
         10764
       ],
@@ -2879,11 +2880,54 @@
       "metadataSource": "TMDB"
     },
     {
+      "tmdbId": 318167,
+      "title": "유재석 캠프",
+      "originalTitle": "유재석 캠프",
+      "type": "예능",
+      "rank": 51,
+      "popularity": 5.4347,
+      "genres": [
+        10764,
+        35
+      ],
+      "overview": "초보 캠프장 유재석과 예측 불가 직원 이광수, 변우석, 지예은이 숙박객들과 떠들어 재끼고, 놀아 재끼고, 까불어 재끼며 일상 탈출을 완성하는 단체 캠프 예능",
+      "firstAirDate": "2026-05-26",
+      "lastAirDate": "2026-06-02",
+      "status": "Ended",
+      "inProduction": false,
+      "nextAirDate": "",
+      "runtime": null,
+      "episodes": 10,
+      "score": 8.6,
+      "scoreBy": "TMDB",
+      "networks": [
+        "Netflix"
+      ],
+      "creators": [
+        "Jung Hyo-min",
+        "Lee So-min",
+        "Hwang Yoon-seo"
+      ],
+      "providers": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "poster": "https://image.tmdb.org/t/p/w500/6hZSVmI97kfa29C1CYTjPzE8pqO.jpg",
+      "posterCredit": "TMDB",
+      "rankingSource": {
+        "provider": "TMDB",
+        "metric": "popularity",
+        "rank": 51,
+        "observedAt": "2026-10-02"
+      },
+      "metadataSource": "TMDB"
+    },
+    {
       "tmdbId": 299008,
       "title": "EPIKASE",
       "originalTitle": "EPIKASE",
       "type": "예능",
-      "rank": 51,
+      "rank": 52,
       "popularity": 5.3755,
       "genres": [
         35,
@@ -2913,7 +2957,7 @@
       "rankingSource": {
         "provider": "TMDB",
         "metric": "popularity",
-        "rank": 51,
+        "rank": 52,
         "observedAt": "2026-10-02"
       },
       "metadataSource": "TMDB"
@@ -2923,7 +2967,7 @@
       "title": "LENIVERSE",
       "originalTitle": "LENIVERSE",
       "type": "예능",
-      "rank": 52,
+      "rank": 53,
       "popularity": 4.9938,
       "genres": [
         10764
@@ -2945,49 +2989,6 @@
       "creators": [],
       "providers": [],
       "poster": "https://image.tmdb.org/t/p/w500/g9bJg9DzXALSsPW3XGKXzwLucT5.jpg",
-      "posterCredit": "TMDB",
-      "rankingSource": {
-        "provider": "TMDB",
-        "metric": "popularity",
-        "rank": 52,
-        "observedAt": "2026-10-02"
-      },
-      "metadataSource": "TMDB"
-    },
-    {
-      "tmdbId": 318167,
-      "title": "유재석 캠프",
-      "originalTitle": "유재석 캠프",
-      "type": "예능",
-      "rank": 53,
-      "popularity": 4.9549,
-      "genres": [
-        10764,
-        35
-      ],
-      "overview": "초보 캠프장 유재석과 예측 불가 직원 이광수, 변우석, 지예은이 숙박객들과 떠들어 재끼고, 놀아 재끼고, 까불어 재끼며 일상 탈출을 완성하는 단체 캠프 예능",
-      "firstAirDate": "2026-05-26",
-      "lastAirDate": "2026-06-02",
-      "status": "Ended",
-      "inProduction": false,
-      "nextAirDate": "",
-      "runtime": null,
-      "episodes": 10,
-      "score": 8.6,
-      "scoreBy": "TMDB",
-      "networks": [
-        "Netflix"
-      ],
-      "creators": [
-        "Jung Hyo-min",
-        "Lee So-min",
-        "Hwang Yoon-seo"
-      ],
-      "providers": [
-        "Netflix",
-        "Netflix Standard with Ads"
-      ],
-      "poster": "https://image.tmdb.org/t/p/w500/6hZSVmI97kfa29C1CYTjPzE8pqO.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
         "provider": "TMDB",
@@ -3182,7 +3183,7 @@
       "originalTitle": "해봤튜",
       "type": "예능",
       "rank": 59,
-      "popularity": 3.1964,
+      "popularity": 3.4468,
       "genres": [
         10767,
         35
