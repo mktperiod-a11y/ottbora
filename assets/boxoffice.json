@@ -2,7 +2,7 @@
   "note": "일별 박스오피스를 작품 단위로 누적한 목록입니다. 콘텐츠ZONE 의 영화·애니 탭에서 씁니다.",
   "source": "영화진흥위원회 오픈API 일별 박스오피스",
   "sourceUrl": "https://www.kobis.or.kr/kobisopenapi/",
-  "updatedAt": "2026-10-01",
+  "updatedAt": "2026-10-02",
   "latestDt": "20261001",
   "keepDays": 45,
   "movies": [
@@ -12,7 +12,7 @@
       "titleEn": "Chiikawa the Movie: The Secret of the Mermaid Island",
       "titleOriginal": "映画ちいかわ 人魚の島のひみつ",
       "openedAt": "2026-09-30",
-      "audienceAcc": 198793,
+      "audienceAcc": 198786,
       "genres": [
         "애니메이션"
       ],
@@ -22,7 +22,7 @@
       "days": 5,
       "bestRank": 1,
       "rank": 3,
-      "audienceDay": 45775,
+      "audienceDay": 45770,
       "runtime": 98,
       "directors": [
         "오이카와 케이"
@@ -58,7 +58,7 @@
       "titleEn": "The Assassin(s)",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 1821889,
+      "audienceAcc": 1821960,
       "genres": [
         "범죄",
         "드라마"
@@ -69,7 +69,7 @@
       "days": 11,
       "bestRank": 1,
       "rank": 1,
-      "audienceDay": 54944,
+      "audienceDay": 55015,
       "runtime": 130,
       "directors": [
         "허진호"
@@ -105,7 +105,7 @@
       "titleEn": "The Odyssey",
       "titleOriginal": "",
       "openedAt": "2026-08-05",
-      "audienceAcc": 11875157,
+      "audienceAcc": 11875153,
       "genres": [
         "액션",
         "드라마",
@@ -117,7 +117,7 @@
       "days": 38,
       "bestRank": 1,
       "rank": 5,
-      "audienceDay": 18008,
+      "audienceDay": 18010,
       "runtime": 172,
       "directors": [
         "크리스토퍼 놀란"
@@ -153,7 +153,7 @@
       "titleEn": "The Intern",
       "titleOriginal": "",
       "openedAt": "2026-09-16",
-      "audienceAcc": 801374,
+      "audienceAcc": 801375,
       "genres": [
         "드라마"
       ],
@@ -163,7 +163,7 @@
       "days": 18,
       "bestRank": 1,
       "rank": 7,
-      "audienceDay": 6885,
+      "audienceDay": 6888,
       "runtime": 132,
       "directors": [
         "김도영"
@@ -202,7 +202,7 @@
       "titleEn": "TAZZA: The Song of Beelzebub",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 1065716,
+      "audienceAcc": 1065735,
       "genres": [
         "범죄",
         "드라마"
@@ -213,7 +213,7 @@
       "days": 13,
       "bestRank": 1,
       "rank": 2,
-      "audienceDay": 49813,
+      "audienceDay": 49832,
       "runtime": 129,
       "directors": [
         "최국희"
@@ -387,7 +387,7 @@
       "titleEn": "REAWAKENED MAN",
       "titleOriginal": "",
       "openedAt": "2026-09-30",
-      "audienceAcc": 73895,
+      "audienceAcc": 73908,
       "genres": [
         "액션"
       ],
@@ -397,7 +397,7 @@
       "days": 4,
       "bestRank": 4,
       "rank": 4,
-      "audienceDay": 22220,
+      "audienceDay": 22233,
       "runtime": 101,
       "directors": [
         "백"
