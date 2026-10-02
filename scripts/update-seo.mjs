@@ -159,7 +159,7 @@ function officialUrl(href) {
   return must(
     page.match(/http-equiv="refresh"\s+content="0;url=([^"]+)"/)?.[1],
     `${href} 이동 주소`,
-  );
+  ).replace(/&amp;/g, "&");
 }
 
 function faqItems(html) {
