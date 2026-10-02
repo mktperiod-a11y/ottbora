@@ -20,7 +20,10 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { createHash } from "node:crypto";
 import vm from "node:vm";
 
-const SITE = "https://mktperiod-a11y.github.io/ottbora/";
+// 사이트 주소. 저장소 뿌리의 CNAME(사용자 도메인)을 따르고, 없으면 GitHub Pages 주소.
+const SITE = existsSync("CNAME")
+  ? `https://${readFileSync("CNAME", "utf8").trim()}/`
+  : "https://mktperiod-a11y.github.io/ottbora/";
 const ROOT = new URL("../", import.meta.url).pathname;
 const STATE_FILE = "assets/seo-state.json";
 
