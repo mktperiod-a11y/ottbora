@@ -62,6 +62,119 @@ main {
   line-height: 1.8;
 }
 
+/*
+ * 제휴·비제휴 비교. 체크리스트 카드 아래에 같은 흰 카드 톤으로 이어 붙입니다.
+ * 표처럼 읽히되, 좁은 화면에서는 항목 이름을 위로 올리고 두 칸만 나란히 둡니다.
+ */
+.partnership {
+  margin-top: 44px;
+}
+
+.partnership .label {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  line-height: 1.4;
+}
+
+.partnership h2 {
+  margin: 8px 0 0;
+  color: var(--ink);
+  font-size: 22px;
+  line-height: 1.4;
+  letter-spacing: -0.6px;
+  word-break: keep-all;
+}
+
+.partnership-lead {
+  max-width: 640px;
+  margin: 10px 0 0;
+  color: #657080;
+  font-size: 14px;
+  line-height: 1.75;
+  word-break: keep-all;
+}
+
+.compare {
+  margin-top: 18px;
+  overflow: hidden;
+  border: 1px solid #dfe4eb;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 6px 22px rgba(23, 32, 45, 0.035);
+}
+
+.compare-row {
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr) minmax(0, 1fr);
+  border-top: 1px solid #edf0f4;
+}
+
+.compare-row:first-child {
+  border-top: 0;
+}
+
+.compare-label,
+.compare-cell {
+  padding: 15px 18px;
+  font-size: 14px;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+
+.compare-label {
+  color: var(--ink);
+  font-weight: 700;
+  background: #f8f9fb;
+}
+
+.compare-cell {
+  color: #4a5666;
+}
+
+.compare-cell.is-risk {
+  border-left: 1px solid #edf0f4;
+}
+
+.compare-head .compare-cell {
+  font-size: 13.5px;
+  font-weight: 800;
+}
+
+.compare-head .compare-cell.is-ok {
+  color: var(--ink);
+}
+
+.compare-head .compare-cell.is-risk {
+  color: #c42740;
+  background: #fff7f8;
+}
+
+.partnership-tip {
+  margin: 14px 0 0;
+  color: #657080;
+  font-size: 13.5px;
+  line-height: 1.75;
+  word-break: keep-all;
+}
+
+.partnership-tip a {
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
 @media (max-width: 700px) {
   /* 작은 화면에서는 공용 헤더를 그대로 두고 카드만 1열로 접습니다. */
   main {
@@ -93,6 +206,47 @@ main {
   .card p {
     max-width: none;
     font-size: 13.5px;
+    line-height: 1.68;
+  }
+  .partnership {
+    margin-top: 32px;
+  }
+  .partnership .label {
+    font-size: 11px;
+    letter-spacing: 1.35px;
+  }
+  .partnership h2 {
+    font-size: 19px;
+  }
+  .partnership-lead {
+    font-size: 13.5px;
+    line-height: 1.68;
+  }
+  .compare {
+    border-radius: 14px;
+  }
+  /* 항목 이름은 위 한 줄로, 두 칸은 그 아래 나란히 */
+  .compare-row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .compare-label {
+    grid-column: 1 / -1;
+    padding: 9px 14px;
+    font-size: 12.5px;
+  }
+  .compare-head .compare-label {
+    display: none;
+  }
+  .compare-cell {
+    padding: 11px 14px 12px;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .compare-head .compare-cell {
+    font-size: 12.5px;
+  }
+  .partnership-tip {
+    font-size: 13px;
     line-height: 1.68;
   }
 }
