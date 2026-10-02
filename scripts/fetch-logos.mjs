@@ -304,8 +304,9 @@ const targets = Object.values(providers).filter((p) =>
 if (hostsOnly) {
   const hosts = new Set();
   for (const p of targets) {
-    if (!/^https?:/.test(p.url)) continue;
-    const h = new URL(p.url).hostname;
+    const site = /^https?:/.test(p.url) ? p.url : p.home || "";
+    if (!site) continue;
+    const h = new URL(site).hostname;
     const bare = h.replace(/^(www|m)\./, "");
     hosts.add(h).add(bare).add(`www.${bare}`);
   }
@@ -323,7 +324,7 @@ await rm(OUT, { recursive: true, force: true });
 const report = [];
 
 for (const p of targets) {
-  const home = /^https?:/.test(p.url) ? p.url : p.official || p.home || "";
+  const home = /^https?:/.test(p.url) ? p.url : p.home || p.official || "";
   const dir = `${OUT}/${p.id}`;
   await mkdir(dir, { recursive: true });
   const entry = { id: p.id, name: p.name, home, candidates: [], error: "" };

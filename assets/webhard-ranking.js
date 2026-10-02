@@ -57,6 +57,7 @@
       logo: "logos/ondisk.png",
       logoK: 0.611,
       url: "go/ondisk/",
+      home: "https://ondisk.co.kr/",
     },
     kdisk: {
       id: "kdisk",
@@ -73,7 +74,8 @@
       description: "찜·다시보기와 화면 전송",
       logo: "logos/wedisk.png",
       logoK: 0.617,
-      url: "https://www.wedisk.co.kr/",
+      url: "go/wedisk/",
+      home: "https://www.wedisk.co.kr/",
     },
     filejo: {
       id: "filejo",
@@ -81,7 +83,8 @@
       description: "인기 TOP100으로 콘텐츠 탐색",
       logo: "logos/filejo.png",
       logoK: 0.515,
-      url: "https://www.filejo.com/main/",
+      url: "go/filejo/",
+      home: "https://www.filejo.com/main/",
     },
     filenori: {
       id: "filenori",
@@ -89,7 +92,8 @@
       description: "모바일 탐색과 전용 플레이어",
       logo: "logos/filenori.png",
       logoK: 0.49,
-      url: "https://www.filenori.com/",
+      url: "go/filenori/",
+      home: "https://www.filenori.com/",
     },
     me2disk: {
       id: "me2disk",
@@ -97,7 +101,8 @@
       description: "다양한 자료와 고객지원",
       logo: "logos/me2disk.png",
       logoK: 0.548,
-      url: "https://me2disk.com/",
+      url: "go/me2disk/",
+      home: "https://me2disk.com/",
     },
     filecast: {
       id: "filecast",
@@ -105,7 +110,8 @@
       description: "모바일 감상·정액관 이용",
       logo: "logos/filecast.png",
       logoK: 0.543,
-      url: "https://filecast.co.kr/",
+      url: "go/filecast/",
+      home: "https://filecast.co.kr/",
     },
     filestar: {
       id: "filestar",
@@ -113,7 +119,8 @@
       description: "실시간 스트리밍·모바일 전용 플레이어",
       logo: "logos/filestar.png",
       logoK: 0.436,
-      url: "https://filestar.co.kr/",
+      url: "go/filestar/",
+      home: "https://filestar.co.kr/",
     },
     filesun: {
       id: "filesun",
@@ -121,7 +128,8 @@
       description: "다양한 장르·출석 이벤트",
       logo: "logos/filesun.png",
       logoK: 0.519,
-      url: "https://www.filesun.com/",
+      url: "go/filesun/",
+      home: "https://www.filesun.com/",
     },
 
     /*
@@ -136,7 +144,8 @@
       description: "실시간 스트리밍·할인 콘텐츠",
       logo: "logos/fileis.png",
       logoK: 0.476,
-      url: "https://www.fileis.com/",
+      url: "go/fileis/",
+      home: "https://www.fileis.com/",
     },
     filecookie: {
       id: "filecookie",
@@ -144,7 +153,8 @@
       description: "PC 구매 후 모바일 재생",
       logo: "logos/filecookie.png",
       logoK: 0.458,
-      url: "https://www.filekuki.com/",
+      url: "go/filecookie/",
+      home: "https://www.filekuki.com/",
     },
     bigfile: {
       id: "bigfile",
@@ -152,7 +162,8 @@
       description: "실시간 TOP100 · 다양한 콘텐츠",
       logo: "logos/bigfile.png",
       logoK: 0.588,
-      url: "https://bigfile.co.kr/",
+      url: "go/bigfile/",
+      home: "https://bigfile.co.kr/",
     },
     pdpop: {
       id: "pdpop",
@@ -160,7 +171,8 @@
       description: "인기콘텐츠 · 전용 프로그램",
       logo: "logos/pdpop.png",
       logoK: 0.547,
-      url: "https://new.pdpop.com/",
+      url: "go/pdpop/",
+      home: "https://new.pdpop.com/",
     },
   };
 
