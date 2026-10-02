@@ -550,7 +550,6 @@ h1 {
   --promo-text: #4d6680;
   --promo-cta-bg: #1583e9;
   --promo-cta-ink: #fff;
-  --promo-badge: rgba(15, 39, 64, 0.45);
   --promo-ring: rgba(21, 131, 233, 0.2);
   --promo-shadow: 0 10px 26px rgba(21, 99, 170, 0.12);
 }
@@ -574,7 +573,6 @@ h1 {
   --promo-text: #5b6675;
   --promo-cta-bg: var(--brand);
   --promo-cta-ink: #fff;
-  --promo-badge: rgba(23, 32, 45, 0.45);
   --promo-ring: color-mix(in srgb, var(--brand) 22%, transparent);
   --promo-shadow: 0 10px 26px color-mix(in srgb, var(--brand) 12%, transparent);
 }
@@ -743,20 +741,6 @@ h1 {
   outline-offset: 3px;
 }
 
-.promo-badge {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  z-index: 1;
-  padding: 1px 5px;
-  border: 1px solid var(--promo-badge);
-  border-radius: 4px;
-  color: var(--promo-badge);
-  font-size: 10px;
-  font-weight: 600;
-  line-height: 1.4;
-}
-
 /*
  * 로고는 여백을 깎은 파일(assets/logos/<id>.png)입니다.
  * 랭킹 엔진의 logoK(=1/√비율)를 --k 로 넣어, 로고마다 눈에 보이는
@@ -919,13 +903,11 @@ h1 {
     position: static;
     margin-top: 14px;
   }
-  /* 오른쪽 칸은 위에 제휴 표시, 아래에 버튼 — 서로 겹치지 않게 세로로 쌓습니다. */
+  /* 로고 · 문구 · 버튼을 한 줄로 둡니다. */
   .promo-link {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr) 32px;
-    grid-template-areas:
-      "logo body badge"
-      "logo body cta";
+    grid-template-areas: "logo body cta";
     align-items: center;
     align-content: center;
     column-gap: 12px;
@@ -945,14 +927,6 @@ h1 {
   .promo-logo img {
     height: min(28px, calc(var(--k, 0.55) * 40px));
     max-width: 92px;
-  }
-  .promo-badge {
-    grid-area: badge;
-    position: static;
-    justify-self: center;
-    align-self: end;
-    padding: 0 4px;
-    font-size: 9px;
   }
   .promo-body {
     gap: 3px;
@@ -994,7 +968,7 @@ h1 {
   .promo--featured .promo-cta {
     grid-area: cta;
     justify-self: center;
-    align-self: start;
+    align-self: center;
     width: 28px;
     height: 28px;
     margin: 0;
@@ -1029,9 +1003,6 @@ h1 {
   /* 강조 배너: 화살표만이 아니라 '바로가기' 글자가 보이는 흰 버튼 */
   .promo--featured .promo-link {
     grid-template-columns: auto minmax(0, 1fr) auto;
-  }
-  .promo--featured .promo-badge {
-    justify-self: end;
   }
   .promo--featured .promo-cta {
     justify-self: end;
