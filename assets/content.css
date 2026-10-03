@@ -617,3 +617,32 @@ button:focus-visible {
     min-height: 0;
   }
 }
+
+/* 콘텐츠 갱신 표시: 홈 웹하드 순위의 "최근 업데이트" 줄과 같은 모양(초록 점 + 회색 글자). */
+.update-status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.update-dot {
+  flex: 0 0 auto;
+  /* 둘레 빛(4px)까지 글자 왼쪽 선에 맞춥니다. */
+  margin-left: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #36c66f;
+  box-shadow: 0 0 0 4px rgba(54, 198, 111, 0.12);
+}
+
+@media (max-width: 600px) {
+  .update-status {
+    margin-top: 8px;
+    font-size: 12px;
+  }
+}
