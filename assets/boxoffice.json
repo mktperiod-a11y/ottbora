@@ -2,8 +2,8 @@
   "note": "일별 박스오피스를 작품 단위로 누적한 목록입니다. 콘텐츠ZONE 의 영화·애니 탭에서 씁니다.",
   "source": "영화진흥위원회 오픈API 일별 박스오피스",
   "sourceUrl": "https://www.kobis.or.kr/kobisopenapi/",
-  "updatedAt": "2026-10-02",
-  "latestDt": "20261002",
+  "updatedAt": "2026-10-04",
+  "latestDt": "20261003",
   "keepDays": 45,
   "movies": [
     {
@@ -12,17 +12,17 @@
       "titleEn": "Chiikawa the Movie: The Secret of the Mermaid Island",
       "titleOriginal": "映画ちいかわ 人魚の島のひみつ",
       "openedAt": "2026-09-30",
-      "audienceAcc": 259215,
+      "audienceAcc": 463609,
       "genres": [
         "애니메이션"
       ],
       "type": "영화",
       "firstSeenAt": "20260919",
-      "lastSeenAt": "20261002",
-      "days": 6,
+      "lastSeenAt": "20261003",
+      "days": 7,
       "bestRank": 1,
-      "rank": 2,
-      "audienceDay": 60429,
+      "rank": 1,
+      "audienceDay": 204393,
       "runtime": 98,
       "directors": [
         "오이카와 케이"
@@ -58,18 +58,18 @@
       "titleEn": "The Assassin(s)",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 1890360,
+      "audienceAcc": 2045499,
       "genres": [
         "범죄",
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260917",
-      "lastSeenAt": "20261002",
-      "days": 12,
+      "lastSeenAt": "20261003",
+      "days": 13,
       "bestRank": 1,
-      "rank": 1,
-      "audienceDay": 68404,
+      "rank": 2,
+      "audienceDay": 155086,
       "runtime": 130,
       "directors": [
         "허진호"
@@ -105,7 +105,7 @@
       "titleEn": "The Odyssey",
       "titleOriginal": "",
       "openedAt": "2026-08-05",
-      "audienceAcc": 11898817,
+      "audienceAcc": 11945221,
       "genres": [
         "액션",
         "드라마",
@@ -113,11 +113,11 @@
       ],
       "type": "영화",
       "firstSeenAt": "20260824",
-      "lastSeenAt": "20261002",
-      "days": 39,
+      "lastSeenAt": "20261003",
+      "days": 40,
       "bestRank": 1,
-      "rank": 5,
-      "audienceDay": 23664,
+      "rank": 4,
+      "audienceDay": 46412,
       "runtime": 172,
       "directors": [
         "크리스토퍼 놀란"
@@ -153,17 +153,17 @@
       "titleEn": "The Intern",
       "titleOriginal": "",
       "openedAt": "2026-09-16",
-      "audienceAcc": 809229,
+      "audienceAcc": 821122,
       "genres": [
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260904",
-      "lastSeenAt": "20261002",
-      "days": 19,
+      "lastSeenAt": "20261003",
+      "days": 20,
       "bestRank": 1,
       "rank": 8,
-      "audienceDay": 7854,
+      "audienceDay": 11884,
       "runtime": 132,
       "directors": [
         "김도영"
@@ -202,18 +202,18 @@
       "titleEn": "TAZZA: The Song of Beelzebub",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 1125960,
+      "audienceAcc": 1236932,
       "genres": [
         "범죄",
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260914",
-      "lastSeenAt": "20261002",
-      "days": 14,
+      "lastSeenAt": "20261003",
+      "days": 15,
       "bestRank": 1,
       "rank": 3,
-      "audienceDay": 60225,
+      "audienceDay": 110960,
       "runtime": 129,
       "directors": [
         "최국희"
@@ -251,17 +251,17 @@
       "titleEn": "Obsession",
       "titleOriginal": "",
       "openedAt": "2026-09-02",
-      "audienceAcc": 892160,
+      "audienceAcc": 903867,
       "genres": [
         "공포(호러)"
       ],
       "type": "영화",
       "firstSeenAt": "20260902",
-      "lastSeenAt": "20261002",
-      "days": 30,
+      "lastSeenAt": "20261003",
+      "days": 31,
       "bestRank": 2,
-      "rank": 7,
-      "audienceDay": 9308,
+      "rank": 9,
+      "audienceDay": 11705,
       "runtime": 108,
       "directors": [
         "커리 바커"
@@ -290,65 +290,22 @@
       "showing": true
     },
     {
-      "movieCd": "20263870",
-      "title": "레지던트 이블: 0번째 밤",
-      "titleEn": "Resident Evil",
-      "titleOriginal": "",
-      "openedAt": "2026-09-17",
-      "audienceAcc": 203356,
-      "genres": [
-        "공포(호러)",
-        "액션",
-        "SF"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20260917",
-      "lastSeenAt": "20261002",
-      "days": 15,
-      "bestRank": 3,
-      "rank": 10,
-      "audienceDay": 2890,
-      "runtime": 93,
-      "directors": [
-        "잭 크레거"
-      ],
-      "cast": [
-        "오스틴 에이브람스"
-      ],
-      "producers": [],
-      "distributors": [
-        "소니픽쳐스엔터테인먼트코리아주식회사극장배급지점"
-      ],
-      "rating": "청소년관람불가",
-      "koficDetailFetched": true,
-      "koficDetailVersion": 3,
-      "poster": "assets/posters/20263870.webp",
-      "posterCredit": "TMDB",
-      "synopsis": "의료 택배 기사 브라이언은 긴급 배달을 맡아 심야에 라쿤 시티 종합 병원으로 향한다. 눈발을 헤치며 가던 중 갑자기 차로 뛰어든 누군가를 치게 되고, 죽은 줄 알았던 이가 다시 그를 덮쳐온다. 하나인 줄 알았던 정체불명의 존재들은 끊임없이 늘어나고, 통신마저 끊긴다. 브라이언은 자신이 무엇을 배달하고 있는지도 모른 채 눈앞에 닥친 존재들을 피해 필사의 사투를 벌이는데…",
-      "synopsisCredit": "TMDB",
-      "tmdbId": 1423191,
-      "score": 7.3,
-      "scoreBy": "TMDB",
-      "voteCount": 540,
-      "showing": true
-    },
-    {
       "movieCd": "20254904",
       "title": "가능한 사랑",
       "titleEn": "Possible Love",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 183652,
+      "audienceAcc": 203929,
       "genres": [
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260921",
-      "lastSeenAt": "20261002",
-      "days": 10,
+      "lastSeenAt": "20261003",
+      "days": 11,
       "bestRank": 4,
       "rank": 6,
-      "audienceDay": 13703,
+      "audienceDay": 20277,
       "runtime": 164,
       "directors": [
         "이창동"
@@ -387,17 +344,17 @@
       "titleEn": "REAWAKENED MAN",
       "titleOriginal": "",
       "openedAt": "2026-09-30",
-      "audienceAcc": 100117,
+      "audienceAcc": 145075,
       "genres": [
         "액션"
       ],
       "type": "영화",
       "firstSeenAt": "20260918",
-      "lastSeenAt": "20261002",
-      "days": 5,
+      "lastSeenAt": "20261003",
+      "days": 6,
       "bestRank": 4,
-      "rank": 4,
-      "audienceDay": 26209,
+      "rank": 5,
+      "audienceDay": 44944,
       "runtime": 101,
       "directors": [
         "백"
@@ -436,18 +393,18 @@
       "titleEn": "Avengers: Endgame Encore",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 126928,
+      "audienceAcc": 138091,
       "genres": [
         "액션",
         "SF"
       ],
       "type": "영화",
       "firstSeenAt": "20260923",
-      "lastSeenAt": "20261002",
-      "days": 8,
+      "lastSeenAt": "20261003",
+      "days": 9,
       "bestRank": 5,
-      "rank": 9,
-      "audienceDay": 3962,
+      "rank": 10,
+      "audienceDay": 11158,
       "runtime": 183,
       "directors": [
         "안소니 루소",
@@ -477,6 +434,94 @@
       "scoreBy": "TMDB",
       "voteCount": 28819,
       "showing": true
+    },
+    {
+      "movieCd": "20264775",
+      "title": "디거",
+      "titleEn": "Digger",
+      "titleOriginal": "",
+      "openedAt": "2026-10-03",
+      "audienceAcc": 15438,
+      "genres": [
+        "코미디",
+        "드라마"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20261003",
+      "lastSeenAt": "20261003",
+      "days": 1,
+      "bestRank": 7,
+      "rank": 7,
+      "audienceDay": 13541,
+      "runtime": 128,
+      "directors": [
+        "알레한드로 곤잘레스 이냐리투"
+      ],
+      "cast": [
+        "톰 크루즈",
+        "산드라 휠러",
+        "존 굿맨",
+        "제시 플레먼스"
+      ],
+      "producers": [],
+      "distributors": [
+        "워너브러더스 코리아(주)"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "showing": true,
+      "synopsis": "\"끝까지 파거나, 죽거나! 전 세계를 뒤흔든 대재앙. ‘디거 록웰’의 삽 끝에서 시작된 이야기를 확인하라!\" 3대째 석유 재벌로 살아온 ‘디거 록웰’은 최소한의 손실, 최대한의 이익을 추구하며 돈이 되는 일이라면 무엇이든 마다하지 않는다. 그러던 어느 날, 그린란드의 빙하 시추 시설에서 작은 균열이 발견되지만 ‘디거’는 대수롭지 않은 문제라 여기고 넘긴다. 하지만 사소하게 여겼던 균열은 걷잡을 수 없이 커지며 전 세계를 날려버릴 거대한 재난으로 번져가고 결국 ‘디거’는 초유의 사태를 해결하기 위해 직접 나서는데…",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1248832,
+      "score": 7.4,
+      "scoreBy": "TMDB",
+      "voteCount": 109,
+      "poster": "assets/posters/20264775.webp",
+      "posterCredit": "TMDB"
+    },
+    {
+      "movieCd": "20263870",
+      "title": "레지던트 이블: 0번째 밤",
+      "titleEn": "Resident Evil",
+      "titleOriginal": "",
+      "openedAt": "2026-09-17",
+      "audienceAcc": 203356,
+      "genres": [
+        "공포(호러)",
+        "액션",
+        "SF"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260917",
+      "lastSeenAt": "20261002",
+      "days": 15,
+      "bestRank": 3,
+      "rank": null,
+      "audienceDay": null,
+      "runtime": 93,
+      "directors": [
+        "잭 크레거"
+      ],
+      "cast": [
+        "오스틴 에이브람스"
+      ],
+      "producers": [],
+      "distributors": [
+        "소니픽쳐스엔터테인먼트코리아주식회사극장배급지점"
+      ],
+      "rating": "청소년관람불가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20263870.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "의료 택배 기사 브라이언은 긴급 배달을 맡아 심야에 라쿤 시티 종합 병원으로 향한다. 눈발을 헤치며 가던 중 갑자기 차로 뛰어든 누군가를 치게 되고, 죽은 줄 알았던 이가 다시 그를 덮쳐온다. 하나인 줄 알았던 정체불명의 존재들은 끊임없이 늘어나고, 통신마저 끊긴다. 브라이언은 자신이 무엇을 배달하고 있는지도 모른 채 눈앞에 닥친 존재들을 피해 필사의 사투를 벌이는데…",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1423191,
+      "score": 7.3,
+      "scoreBy": "TMDB",
+      "voteCount": 540,
+      "showing": false
     },
     {
       "movieCd": "20262961",
