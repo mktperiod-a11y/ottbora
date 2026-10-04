@@ -3,7 +3,7 @@
   "source": "영화진흥위원회 오픈API 일별 박스오피스",
   "sourceUrl": "https://www.kobis.or.kr/kobisopenapi/",
   "updatedAt": "2026-10-04",
-  "latestDt": "20261003",
+  "latestDt": "20261004",
   "keepDays": 45,
   "movies": [
     {
@@ -12,17 +12,17 @@
       "titleEn": "Chiikawa the Movie: The Secret of the Mermaid Island",
       "titleOriginal": "映画ちいかわ 人魚の島のひみつ",
       "openedAt": "2026-09-30",
-      "audienceAcc": 463609,
+      "audienceAcc": 604728,
       "genres": [
         "애니메이션"
       ],
       "type": "영화",
       "firstSeenAt": "20260919",
-      "lastSeenAt": "20261003",
-      "days": 7,
+      "lastSeenAt": "20261004",
+      "days": 8,
       "bestRank": 1,
-      "rank": 1,
-      "audienceDay": 204393,
+      "rank": 2,
+      "audienceDay": 141119,
       "runtime": 98,
       "directors": [
         "오이카와 케이"
@@ -58,18 +58,18 @@
       "titleEn": "The Assassin(s)",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 2045499,
+      "audienceAcc": 2233910,
       "genres": [
         "범죄",
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260917",
-      "lastSeenAt": "20261003",
-      "days": 13,
+      "lastSeenAt": "20261004",
+      "days": 14,
       "bestRank": 1,
-      "rank": 2,
-      "audienceDay": 155086,
+      "rank": 1,
+      "audienceDay": 188415,
       "runtime": 130,
       "directors": [
         "허진호"
@@ -105,7 +105,7 @@
       "titleEn": "The Odyssey",
       "titleOriginal": "",
       "openedAt": "2026-08-05",
-      "audienceAcc": 11945221,
+      "audienceAcc": 11998219,
       "genres": [
         "액션",
         "드라마",
@@ -113,11 +113,11 @@
       ],
       "type": "영화",
       "firstSeenAt": "20260824",
-      "lastSeenAt": "20261003",
-      "days": 40,
+      "lastSeenAt": "20261004",
+      "days": 41,
       "bestRank": 1,
       "rank": 4,
-      "audienceDay": 46412,
+      "audienceDay": 52998,
       "runtime": 172,
       "directors": [
         "크리스토퍼 놀란"
@@ -153,17 +153,17 @@
       "titleEn": "The Intern",
       "titleOriginal": "",
       "openedAt": "2026-09-16",
-      "audienceAcc": 821122,
+      "audienceAcc": 834859,
       "genres": [
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260904",
-      "lastSeenAt": "20261003",
-      "days": 20,
+      "lastSeenAt": "20261004",
+      "days": 21,
       "bestRank": 1,
-      "rank": 8,
-      "audienceDay": 11884,
+      "rank": 7,
+      "audienceDay": 13737,
       "runtime": 132,
       "directors": [
         "김도영"
@@ -202,18 +202,18 @@
       "titleEn": "TAZZA: The Song of Beelzebub",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 1236932,
+      "audienceAcc": 1365525,
       "genres": [
         "범죄",
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260914",
-      "lastSeenAt": "20261003",
-      "days": 15,
+      "lastSeenAt": "20261004",
+      "days": 16,
       "bestRank": 1,
       "rank": 3,
-      "audienceDay": 110960,
+      "audienceDay": 128594,
       "runtime": 129,
       "directors": [
         "최국희"
@@ -251,17 +251,17 @@
       "titleEn": "Obsession",
       "titleOriginal": "",
       "openedAt": "2026-09-02",
-      "audienceAcc": 903867,
+      "audienceAcc": 916719,
       "genres": [
         "공포(호러)"
       ],
       "type": "영화",
       "firstSeenAt": "20260902",
-      "lastSeenAt": "20261003",
-      "days": 31,
+      "lastSeenAt": "20261004",
+      "days": 32,
       "bestRank": 2,
       "rank": 9,
-      "audienceDay": 11705,
+      "audienceDay": 12852,
       "runtime": 108,
       "directors": [
         "커리 바커"
@@ -295,17 +295,17 @@
       "titleEn": "Possible Love",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 203929,
+      "audienceAcc": 230481,
       "genres": [
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260921",
-      "lastSeenAt": "20261003",
-      "days": 11,
+      "lastSeenAt": "20261004",
+      "days": 12,
       "bestRank": 4,
       "rank": 6,
-      "audienceDay": 20277,
+      "audienceDay": 26552,
       "runtime": 164,
       "directors": [
         "이창동"
@@ -344,17 +344,17 @@
       "titleEn": "REAWAKENED MAN",
       "titleOriginal": "",
       "openedAt": "2026-09-30",
-      "audienceAcc": 145075,
+      "audienceAcc": 189780,
       "genres": [
         "액션"
       ],
       "type": "영화",
       "firstSeenAt": "20260918",
-      "lastSeenAt": "20261003",
-      "days": 6,
+      "lastSeenAt": "20261004",
+      "days": 7,
       "bestRank": 4,
       "rank": 5,
-      "audienceDay": 44944,
+      "audienceDay": 44705,
       "runtime": 101,
       "directors": [
         "백"
@@ -393,18 +393,18 @@
       "titleEn": "Avengers: Endgame Encore",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 138091,
+      "audienceAcc": 148737,
       "genres": [
         "액션",
         "SF"
       ],
       "type": "영화",
       "firstSeenAt": "20260923",
-      "lastSeenAt": "20261003",
-      "days": 9,
+      "lastSeenAt": "20261004",
+      "days": 10,
       "bestRank": 5,
       "rank": 10,
-      "audienceDay": 11158,
+      "audienceDay": 10646,
       "runtime": 183,
       "directors": [
         "안소니 루소",
@@ -441,18 +441,18 @@
       "titleEn": "Digger",
       "titleOriginal": "",
       "openedAt": "2026-10-03",
-      "audienceAcc": 15438,
+      "audienceAcc": 28532,
       "genres": [
         "코미디",
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20261003",
-      "lastSeenAt": "20261003",
-      "days": 1,
+      "lastSeenAt": "20261004",
+      "days": 2,
       "bestRank": 7,
-      "rank": 7,
-      "audienceDay": 13541,
+      "rank": 8,
+      "audienceDay": 13094,
       "runtime": 128,
       "directors": [
         "알레한드로 곤잘레스 이냐리투"
@@ -470,15 +470,15 @@
       "rating": "15세이상관람가",
       "koficDetailFetched": true,
       "koficDetailVersion": 3,
-      "showing": true,
+      "poster": "assets/posters/20264775.webp",
+      "posterCredit": "TMDB",
       "synopsis": "\"끝까지 파거나, 죽거나! 전 세계를 뒤흔든 대재앙. ‘디거 록웰’의 삽 끝에서 시작된 이야기를 확인하라!\" 3대째 석유 재벌로 살아온 ‘디거 록웰’은 최소한의 손실, 최대한의 이익을 추구하며 돈이 되는 일이라면 무엇이든 마다하지 않는다. 그러던 어느 날, 그린란드의 빙하 시추 시설에서 작은 균열이 발견되지만 ‘디거’는 대수롭지 않은 문제라 여기고 넘긴다. 하지만 사소하게 여겼던 균열은 걷잡을 수 없이 커지며 전 세계를 날려버릴 거대한 재난으로 번져가고 결국 ‘디거’는 초유의 사태를 해결하기 위해 직접 나서는데…",
       "synopsisCredit": "TMDB",
       "tmdbId": 1248832,
       "score": 7.4,
       "scoreBy": "TMDB",
       "voteCount": 109,
-      "poster": "assets/posters/20264775.webp",
-      "posterCredit": "TMDB"
+      "showing": true
     },
     {
       "movieCd": "20263870",
