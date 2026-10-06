@@ -2,8 +2,8 @@
   "note": "일별 박스오피스를 작품 단위로 누적한 목록입니다. 콘텐츠ZONE 의 영화·애니 탭에서 씁니다.",
   "source": "영화진흥위원회 오픈API 일별 박스오피스",
   "sourceUrl": "https://www.kobis.or.kr/kobisopenapi/",
-  "updatedAt": "2026-10-04",
-  "latestDt": "20261004",
+  "updatedAt": "2026-10-06",
+  "latestDt": "20261005",
   "keepDays": 45,
   "movies": [
     {
@@ -12,17 +12,17 @@
       "titleEn": "Chiikawa the Movie: The Secret of the Mermaid Island",
       "titleOriginal": "映画ちいかわ 人魚の島のひみつ",
       "openedAt": "2026-09-30",
-      "audienceAcc": 604728,
+      "audienceAcc": 736036,
       "genres": [
         "애니메이션"
       ],
       "type": "영화",
       "firstSeenAt": "20260919",
-      "lastSeenAt": "20261004",
-      "days": 8,
+      "lastSeenAt": "20261005",
+      "days": 9,
       "bestRank": 1,
       "rank": 2,
-      "audienceDay": 141119,
+      "audienceDay": 131280,
       "runtime": 98,
       "directors": [
         "오이카와 케이"
@@ -58,18 +58,18 @@
       "titleEn": "The Assassin(s)",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 2233910,
+      "audienceAcc": 2412815,
       "genres": [
         "범죄",
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260917",
-      "lastSeenAt": "20261004",
-      "days": 14,
+      "lastSeenAt": "20261005",
+      "days": 15,
       "bestRank": 1,
       "rank": 1,
-      "audienceDay": 188415,
+      "audienceDay": 178856,
       "runtime": 130,
       "directors": [
         "허진호"
@@ -105,7 +105,7 @@
       "titleEn": "The Odyssey",
       "titleOriginal": "",
       "openedAt": "2026-08-05",
-      "audienceAcc": 11998219,
+      "audienceAcc": 12045159,
       "genres": [
         "액션",
         "드라마",
@@ -113,11 +113,11 @@
       ],
       "type": "영화",
       "firstSeenAt": "20260824",
-      "lastSeenAt": "20261004",
-      "days": 41,
+      "lastSeenAt": "20261005",
+      "days": 42,
       "bestRank": 1,
       "rank": 4,
-      "audienceDay": 52998,
+      "audienceDay": 46945,
       "runtime": 172,
       "directors": [
         "크리스토퍼 놀란"
@@ -153,17 +153,17 @@
       "titleEn": "The Intern",
       "titleOriginal": "",
       "openedAt": "2026-09-16",
-      "audienceAcc": 834859,
+      "audienceAcc": 844383,
       "genres": [
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260904",
-      "lastSeenAt": "20261004",
-      "days": 21,
+      "lastSeenAt": "20261005",
+      "days": 22,
       "bestRank": 1,
-      "rank": 7,
-      "audienceDay": 13737,
+      "rank": 8,
+      "audienceDay": 9517,
       "runtime": 132,
       "directors": [
         "김도영"
@@ -202,18 +202,18 @@
       "titleEn": "TAZZA: The Song of Beelzebub",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 1365525,
+      "audienceAcc": 1462358,
       "genres": [
         "범죄",
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260914",
-      "lastSeenAt": "20261004",
-      "days": 16,
+      "lastSeenAt": "20261005",
+      "days": 17,
       "bestRank": 1,
       "rank": 3,
-      "audienceDay": 128594,
+      "audienceDay": 96714,
       "runtime": 129,
       "directors": [
         "최국희"
@@ -251,17 +251,17 @@
       "titleEn": "Obsession",
       "titleOriginal": "",
       "openedAt": "2026-09-02",
-      "audienceAcc": 916719,
+      "audienceAcc": 926973,
       "genres": [
         "공포(호러)"
       ],
       "type": "영화",
       "firstSeenAt": "20260902",
-      "lastSeenAt": "20261004",
-      "days": 32,
+      "lastSeenAt": "20261005",
+      "days": 33,
       "bestRank": 2,
-      "rank": 9,
-      "audienceDay": 12852,
+      "rank": 7,
+      "audienceDay": 10237,
       "runtime": 108,
       "directors": [
         "커리 바커"
@@ -290,71 +290,22 @@
       "showing": true
     },
     {
-      "movieCd": "20254904",
-      "title": "가능한 사랑",
-      "titleEn": "Possible Love",
-      "titleOriginal": "",
-      "openedAt": "2026-09-23",
-      "audienceAcc": 230481,
-      "genres": [
-        "드라마"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20260921",
-      "lastSeenAt": "20261004",
-      "days": 12,
-      "bestRank": 4,
-      "rank": 6,
-      "audienceDay": 26552,
-      "runtime": 164,
-      "directors": [
-        "이창동"
-      ],
-      "cast": [
-        "전도연",
-        "설경구",
-        "조인성",
-        "조여정",
-        "조유리",
-        "송근창"
-      ],
-      "producers": [
-        "파인하우스필름(주)",
-        "나우필름(주)"
-      ],
-      "distributors": [
-        "(주)넥스트엔터테인먼트월드(NEW)"
-      ],
-      "rating": "청소년관람불가",
-      "koficDetailFetched": true,
-      "koficDetailVersion": 3,
-      "poster": "assets/posters/20254904.webp",
-      "posterCredit": "TMDB",
-      "synopsis": "해고 노동자와 그의 아내 그리고 다큐멘터리 감독과 그녀의 남편. 두 부부가 다큐멘터리 제작을 계기로 만나, 서로의 다른 삶과 숨은 욕망을 마주한다.",
-      "synopsisCredit": "TMDB",
-      "tmdbId": 1483525,
-      "score": 9,
-      "scoreBy": "TMDB",
-      "voteCount": 1,
-      "showing": true
-    },
-    {
       "movieCd": "20224573",
       "title": "부활남: 더 레드",
       "titleEn": "REAWAKENED MAN",
       "titleOriginal": "",
       "openedAt": "2026-09-30",
-      "audienceAcc": 189780,
+      "audienceAcc": 225892,
       "genres": [
         "액션"
       ],
       "type": "영화",
       "firstSeenAt": "20260918",
-      "lastSeenAt": "20261004",
-      "days": 7,
+      "lastSeenAt": "20261005",
+      "days": 8,
       "bestRank": 4,
       "rank": 5,
-      "audienceDay": 44705,
+      "audienceDay": 36090,
       "runtime": 101,
       "directors": [
         "백"
@@ -393,18 +344,18 @@
       "titleEn": "Avengers: Endgame Encore",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 148737,
+      "audienceAcc": 157616,
       "genres": [
         "액션",
         "SF"
       ],
       "type": "영화",
       "firstSeenAt": "20260923",
-      "lastSeenAt": "20261004",
-      "days": 10,
+      "lastSeenAt": "20261005",
+      "days": 11,
       "bestRank": 5,
-      "rank": 10,
-      "audienceDay": 10646,
+      "rank": 9,
+      "audienceDay": 8869,
       "runtime": 183,
       "directors": [
         "안소니 루소",
@@ -441,18 +392,18 @@
       "titleEn": "Digger",
       "titleOriginal": "",
       "openedAt": "2026-10-03",
-      "audienceAcc": 28532,
+      "audienceAcc": 40399,
       "genres": [
         "코미디",
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20261003",
-      "lastSeenAt": "20261004",
-      "days": 2,
-      "bestRank": 7,
-      "rank": 8,
-      "audienceDay": 13094,
+      "lastSeenAt": "20261005",
+      "days": 3,
+      "bestRank": 6,
+      "rank": 6,
+      "audienceDay": 11848,
       "runtime": 128,
       "directors": [
         "알레한드로 곤잘레스 이냐리투"
@@ -479,6 +430,95 @@
       "scoreBy": "TMDB",
       "voteCount": 109,
       "showing": true
+    },
+    {
+      "movieCd": "20266850",
+      "title": "극장판 래브라도: 망고축제를 지켜라",
+      "titleEn": "Sheriff Labrador: Save the Mango Festival",
+      "titleOriginal": "《啦啦啦哆：保卫芒果书》剧场版]",
+      "openedAt": "2026-10-03",
+      "audienceAcc": 21086,
+      "genres": [
+        "애니메이션"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20261005",
+      "lastSeenAt": "20261005",
+      "days": 1,
+      "bestRank": 10,
+      "rank": 10,
+      "audienceDay": 8001,
+      "runtime": 63,
+      "directors": [],
+      "cast": [
+        "정재헌",
+        "김은아",
+        "김연우",
+        "엄상현"
+      ],
+      "producers": [],
+      "distributors": [
+        "와이드 릴리즈(주)",
+        "씨제이 씨지브이(CJ CGV)(주)"
+      ],
+      "rating": "전체관람가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "showing": true,
+      "synopsis": "성대한 망고축제를 앞두고 고향 망고 마을로 돌아온 래브라도 경장! 하지만 마을 곳곳에서 수상한 사건들이 벌어지며 망고축제가 위험에 빠졌다?! 도베르만, 파피용 그리고 래브라도 경장과 함께 사건의 단서를 찾고 모두가 기다려온 망고축제를 무사히 지키자!",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1765609,
+      "poster": "assets/posters/20266850.webp",
+      "posterCredit": "TMDB"
+    },
+    {
+      "movieCd": "20254904",
+      "title": "가능한 사랑",
+      "titleEn": "Possible Love",
+      "titleOriginal": "",
+      "openedAt": "2026-09-23",
+      "audienceAcc": 230481,
+      "genres": [
+        "드라마"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260921",
+      "lastSeenAt": "20261004",
+      "days": 12,
+      "bestRank": 4,
+      "rank": null,
+      "audienceDay": null,
+      "runtime": 164,
+      "directors": [
+        "이창동"
+      ],
+      "cast": [
+        "전도연",
+        "설경구",
+        "조인성",
+        "조여정",
+        "조유리",
+        "송근창"
+      ],
+      "producers": [
+        "파인하우스필름(주)",
+        "나우필름(주)"
+      ],
+      "distributors": [
+        "(주)넥스트엔터테인먼트월드(NEW)"
+      ],
+      "rating": "청소년관람불가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20254904.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "해고 노동자와 그의 아내 그리고 다큐멘터리 감독과 그녀의 남편. 두 부부가 다큐멘터리 제작을 계기로 만나, 서로의 다른 삶과 숨은 욕망을 마주한다.",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1483525,
+      "score": 9,
+      "scoreBy": "TMDB",
+      "voteCount": 1,
+      "showing": false
     },
     {
       "movieCd": "20263870",
