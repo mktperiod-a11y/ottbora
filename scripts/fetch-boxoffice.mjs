@@ -1,19 +1,3 @@
-/**
- * 영화진흥위원회(KOFIC) 오픈API 에서 일별 박스오피스를 받아
- * assets/boxoffice.json 에 누적합니다.
- *
- * 실행:
- *   KOFIC_API_KEY=... node scripts/fetch-boxoffice.mjs            하루치(전날)
- *   KOFIC_API_KEY=... node scripts/fetch-boxoffice.mjs --days=28  지난 28일치
- *
- * 하루치만 받으면 10편뿐이라 목록이 되지 않습니다. 그래서 받은 날짜를
- * 덮어쓰지 않고 작품 단위로 합칩니다. 같은 작품이 여러 날 나오면
- * 처음 본 날 / 마지막으로 본 날 / 오른 날 수를 갱신합니다.
- *
- * 이 스크립트는 응답 형태를 먼저 검증합니다. API 가 예상과 다른 모양을 주면
- * 파일을 건드리지 않고 실제로 받은 구조를 출력한 뒤 종료합니다.
- * 잘못된 데이터가 사이트에 실리는 것보다 갱신이 멈추는 편이 낫기 때문입니다.
- */
 
 import { writeFile, readFile } from "node:fs/promises";
 
@@ -25,20 +9,9 @@ const ENDPOINT =
 const DETAIL_ENDPOINT =
   "https://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json";
 
-/*
- * 애니 탭은 MyAnimeList 쪽(scripts/fetch-anime.mjs)에서 채웁니다.
- * 그 탭은 "극장 개봉"이 아니라 "지금 화제인 애니" 기준이라, 여기서 오는
- * 극장 애니메이션은 애니로 따로 묶지 않고 영화로 둡니다.
- * 장르 목록에 "애니메이션" 이 남아 있어 정보는 잃지 않습니다.
- */
 
-/**
- * 마지막으로 차트에 오른 지 이 일수가 지나면 목록에서 내립니다.
- * 상세 정보는 별도 아카이브에 보존합니다.
- */
 const KEEP_DAYS = 45;
 
-/** 한 번에 거슬러 올라갈 수 있는 최대 일수. 실수로 API 를 과하게 두드리지 않도록. */
 const MAX_DAYS = 60;
 
 if (!KEY) {
@@ -52,13 +25,11 @@ const DAYS = Math.min(
   Math.max(1, Number(daysArg?.slice(7)) || 1),
 );
 
-/** KOFIC 는 전날 집계를 제공합니다. 집계 기준이 한국 시간이라 KST 로 환산해 셉니다. */
 function kstDateBefore(days) {
   const t = Date.now() + 9 * 60 * 60 * 1000 - days * 24 * 60 * 60 * 1000;
   return new Date(t).toISOString().slice(0, 10).replace(/-/g, "");
 }
 
-/** "20260920" 사이의 날짜 차이(일). 둘 다 KST 기준 날짜 문자열입니다. */
 function daysBetween(a, b) {
   const p = (s) => Date.UTC(+s.slice(0, 4), +s.slice(4, 6) - 1, +s.slice(6, 8));
   return Math.round((p(a) - p(b)) / 86400000);
@@ -73,11 +44,6 @@ function fail(msg, got) {
   process.exit(1);
 }
 
-/**
- * KOFIC 에 붙습니다. 연결이 실패하거나 느릴 때가 있어 몇 번 다시 시도합니다.
- * 응답 이상과 달리 연결 실패는 상대 사정이라, 재시도 후에도 안 되면
- * 그대로 멈추고 기존 파일을 유지합니다.
- */
 async function getJson(url, label, { attempts = 3, timeout = 20000 } = {}) {
   const ATTEMPTS = attempts;
   let last;
@@ -97,7 +63,6 @@ async function getJson(url, label, { attempts = 3, timeout = 20000 } = {}) {
   throw last;
 }
 
-/** 하루치를 조회합니다. 아직 집계 전이면 빈 목록이 오므로 null 을 돌려줍니다. */
 async function fetchDay(targetDt) {
   const url = `${ENDPOINT}?key=${encodeURIComponent(KEY)}&targetDt=${targetDt}`;
   let res;
@@ -131,11 +96,6 @@ async function fetchDay(targetDt) {
   return list.length ? list : null;
 }
 
-/**
- * 이전 파일을 읽어 movieCd 로 찾을 수 있게 돌려줍니다.
- * 누적 이전의 옛 형식(하루치만 담긴 파일)도 그대로 받아들입니다.
- * 파일이 없거나 깨져 있으면 빈 상태에서 시작합니다 — 다시 모으면 되기 때문입니다.
- */
 async function loadPrev(path = OUT) {
   let raw;
   try {
@@ -156,7 +116,6 @@ async function loadPrev(path = OUT) {
   const out = new Map();
   for (const m of movies) {
     if (!m?.movieCd) continue;
-    // 옛 형식에는 firstSeenAt 이 없고 그 파일이 받은 날짜(targetDt)만 있습니다.
     const seen = m.lastSeenAt || prev.targetDt || "";
     out.set(String(m.movieCd), {
       movieCd: String(m.movieCd),
@@ -194,11 +153,6 @@ async function loadPrev(path = OUT) {
   return out;
 }
 
-/**
- * 작품 상세에서 장르를 받아 옵니다.
- * 이 호출은 보조 정보라, 실패해도 그 작품만 장르 없이 두고 넘어갑니다.
- * 목록 자체가 날아가는 편보다 장르 한 칸이 비는 편이 낫기 때문입니다.
- */
 async function fetchMovieDetails(movieCd) {
   const url = `${DETAIL_ENDPOINT}?key=${encodeURIComponent(KEY)}&movieCd=${encodeURIComponent(movieCd)}`;
   const res = await getJson(url, `상세 ${movieCd}`, { attempts: 2, timeout: 8000 });
@@ -239,7 +193,6 @@ async function fetchMovieDetails(movieCd) {
   };
 }
 
-// ---- 1. 날짜별로 받아서 작품 단위로 합치기 -------------------------------
 
 const movies = await loadPrev();
 const archive = await loadPrev(ARCHIVE);
@@ -250,8 +203,6 @@ for (let back = 1; back <= DAYS; back += 1) {
   const targetDt = kstDateBefore(back);
   const list = await fetchDay(targetDt);
   if (!list) {
-    // 전날 집계가 아직 안 올라온 시각일 수 있습니다. 하루치만 받는 중이라면
-    // 하루 더 거슬러 올라가고, 여러 날을 훑는 중이라면 그 날만 건너뜁니다.
     console.log(`${targetDt} 집계 없음 — 건너뜁니다.`);
     if (DAYS === 1) {
       const retryDt = kstDateBefore(2);
@@ -274,9 +225,7 @@ if (missing.length) fail("항목에 " + missing.join(", ") + " 필드가 없음"
 
 const latestDt = fetched[0].targetDt;
 
-// 날짜별 행을 작품 단위로 먼저 모읍니다. 하루씩 바로 합치면, 이미 알고 있는
-// 기간 안쪽으로 거슬러 올라갈 때 오른 날 수를 잘못 세게 됩니다.
-const seen = new Map(); // movieCd -> { dates, top, row, rowDt }
+const seen = new Map();
 for (const { targetDt, list } of fetched) {
   for (const m of list) {
     const movieCd = String(m.movieCd);
@@ -284,14 +233,10 @@ for (const { targetDt, list } of fetched) {
     if (!e) seen.set(movieCd, (e = { dates: new Set(), top: 99, row: null, rowDt: "" }));
     e.dates.add(targetDt);
     e.top = Math.min(e.top, Number(m.rank));
-    // bestRank 는 기간 중 최고 순위입니다. 화면에 "지금 몇 위"로 쓰려면
-    // 마지막 집계일의 순위가 따로 필요합니다.
-    // 그날 하루 관객(audiCnt)도 마지막 집계일 것만 둡니다. 홈 카드의 "어제 N명".
     if (targetDt === latestDt) {
       e.rankNow = Number(m.rank);
       e.dayNow = Number(m.audiCnt) || null;
     }
-    // 가장 최근 날의 행을 남깁니다. 누적 관객(audiAcc)이 최신값이 되도록.
     if (targetDt > e.rowDt) {
       e.row = m;
       e.rowDt = targetDt;
@@ -324,7 +269,6 @@ for (const [movieCd, e] of seen) {
       lastSeenAt: last,
       days: dates.length,
       bestRank: e.top,
-      // 마지막 집계일에 차트에 없었으면 "지금 순위"는 없습니다.
       rank: e.rankNow ?? null,
       audienceDay: e.dayNow ?? null,
       runtime: null,
@@ -339,8 +283,6 @@ for (const [movieCd, e] of seen) {
     continue;
   }
 
-  // 이미 알고 있던 기간(firstSeenAt~lastSeenAt) 안쪽 날짜는 지난 실행에서 세었습니다.
-  // 바깥으로 늘어난 날만 더합니다.
   const fresh = dates.filter((d) => d < prev.firstSeenAt || d > prev.lastSeenAt);
   prev.days += fresh.length;
   if (first < prev.firstSeenAt) prev.firstSeenAt = first;
@@ -353,7 +295,6 @@ for (const [movieCd, e] of seen) {
   prev.audienceAcc = m.audiAcc ? Number(m.audiAcc) : prev.audienceAcc;
 }
 
-// ---- 2. 오래된 작품 내리기 -----------------------------------------------
 
 let dropped = 0;
 for (const [movieCd, m] of movies) {
@@ -367,7 +308,6 @@ for (const [movieCd, m] of movies) {
   }
 }
 
-// ---- 3. 작품 상세 채우기 -----------------------------------------------
 
 const KOFIC_DETAIL_VERSION = 3;
 const needDetails = [...movies.values()].filter(
@@ -376,11 +316,6 @@ const needDetails = [...movies.values()].filter(
     !m.genres.length ||
     Number(m.koficDetailVersion || 0) < KOFIC_DETAIL_VERSION,
 );
-/*
- * KOFIC 작품 상세에는 장르뿐 아니라 상영시간·감독·배우·관람등급이 있습니다.
- * 한 번 성공한 작품은 koficDetailFetched=true 로 기록해 같은 정보를 매일
- * 다시 묻지 않습니다. 실패한 작품은 다음 실행에서 다시 시도합니다.
- */
 const DETAIL_BUDGET_MS = 6 * 60 * 1000;
 const detailStart = Date.now();
 let failed = 0;
@@ -420,10 +355,7 @@ if (skipped) {
   );
 }
 
-// ---- 4. 정렬하고 저장 ----------------------------------------------------
 
-// 최근까지 걸려 있던 작품이 앞으로 옵니다. 같은 날까지 걸렸다면 더 높이 올라갔던 쪽이 먼저.
-// 지금 극장에 걸려 있는 작품이 위에 오게 하려는 정렬입니다.
 const sorted = [...movies.values()].sort(
   (a, b) =>
     b.lastSeenAt.localeCompare(a.lastSeenAt) ||
@@ -431,8 +363,6 @@ const sorted = [...movies.values()].sort(
     a.title.localeCompare(b.title, "ko"),
 );
 
-// showing 은 "마지막 집계일에도 차트에 있었는가" 입니다.
-// 예매 링크를 붙일 근거로 쓰므로, 추측하지 않고 이 사실만 기록합니다.
 for (const m of sorted) m.showing = m.lastSeenAt === latestDt;
 
 const out = {
@@ -445,8 +375,6 @@ const out = {
   movies: sorted,
 };
 
-// 내용이 같으면 커밋이 생기지 않도록 그대로 둡니다.
-// updatedAt 은 매일 바뀌므로 비교에서 뺍니다.
 const next = JSON.stringify(out, null, 2) + "\n";
 let prevMovies = null;
 try {

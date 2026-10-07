@@ -28,7 +28,6 @@
   margin-top: 6px;
 }
 
-/* 작품 정보 칸(grid)에는 위 목록 간격을 주지 않습니다 — 같은 줄의 칸 높이가 어긋납니다. */
 .copy .fact-item + .fact-item {
   margin-top: 0;
 }
@@ -62,7 +61,6 @@ button:focus-visible {
   margin-bottom: 14px;
 }
 
-/* ===== 콘텐츠 상세 정보 밀도 개선 ===== */
 .site-header + main.wrap#main {
   padding-top: 30px;
   padding-bottom: 64px;
@@ -122,7 +120,6 @@ h1 {
   margin-top: 13px;
 }
 
-/* 상세 메타 칩은 모든 콘텐츠 타입에서 같은 컴포넌트를 사용합니다. */
 
 .meta > span {
   border: 1px solid var(--line);
@@ -150,17 +147,12 @@ h1 {
   line-height: 1.65;
 }
 
-/* 애니 줄거리 원문은 문단이 나뉘어 옵니다. 그 줄바꿈을 살립니다. */
 
 #synopsis {
   white-space: pre-line;
   max-width: 72ch;
 }
 
-/*
- * 모바일에서 줄거리가 5줄을 넘으면 접어 두고 "더보기"를 답니다.
- * 넘는지는 스크립트가 실제 높이를 재서 판단합니다(.is-clampable).
- */
 .synopsis-more {
   display: none;
 }
@@ -262,7 +254,6 @@ h1 {
   font-size: 10.5px;
 }
 
-/* 상세 화면: 포스터의 존재감과 본문 가독성을 함께 유지합니다. */
 .detail-poster {
   width: 100%;
   aspect-ratio: 2 / 3;
@@ -290,7 +281,6 @@ h1 {
   background: #fafbfc;
 }
 
-/* 작품 정보는 안쪽 카드 대신 같은 높이의 정보 행으로 표현합니다. */
 .copy ul.fact-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -315,7 +305,6 @@ h1 {
   background: transparent;
 }
 
-/* 정보 행의 마지막 밑줄이 다음 섹션 구분선과 겹쳐 보이지 않게 합니다. */
 #points.fact-grid:not(:empty) + #booking-block:not(:empty),
 #points.fact-grid:not(:empty)
   + #booking-block:empty
@@ -323,7 +312,6 @@ h1 {
   border-top: 0;
 }
 
-/* 출처 줄도 정보 행 바로 뒤에 오면 마지막 밑줄 하나만 남깁니다. */
 #points.fact-grid:not(:empty)
   + #booking-block:empty
   + #official-action:empty
@@ -473,7 +461,6 @@ h1 {
     line-height: 1.4;
     font-size: 14.5px;
   }
-  /* 모바일도 두 칸: 항목 이름 위, 값 아래. */
   .copy ul.fact-grid {
     margin-top: 7px;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -511,12 +498,6 @@ h1 {
   }
 }
 
-/*
- * 제휴 배너(온디스크·케이디스크 무작위).
- * 사이트 카드와 섞여 보이지 않도록 각 서비스 색과 굵은 글꼴을 쓰고
- * "광고" 표시를 붙입니다. PC 는 포스터 아래에 붙어 따라오고,
- * 모바일은 본문 카드 아래에 가로형으로 놓입니다.
- */
 .detail {
   grid-template-rows: auto 1fr;
   row-gap: 0;
@@ -540,7 +521,6 @@ h1 {
   top: 94px;
   margin-top: 18px;
 
-  /* 온디스크: 밝은 하늘색 판 위에 컬러 로고 */
   --promo-bg:
     radial-gradient(90% 70% at 100% 100%, rgba(21, 131, 233, 0.16) 0%, rgba(21, 131, 233, 0) 70%),
     linear-gradient(165deg, #f5fbff 0%, #e2f1ff 100%);
@@ -558,10 +538,6 @@ h1 {
   display: none;
 }
 
-/*
- * 그 밖의 웹하드: 흰 판에 서비스 색(--brand)을 옅게 깔고 강조·버튼에 씁니다.
- * 색은 content-detail.html 의 OTHERS 에서 서비스마다 넣습니다.
- */
 .promo--brand {
   --brand: #1583e9;
   --promo-bg:
@@ -594,11 +570,6 @@ h1 {
   transition: transform 0.18s ease;
 }
 
-/*
- * 광고용 장식 — 사이트 카드에는 없는 무늬.
- *   ::before 오른쪽 아래로 갈수록 짙어지는 점 격자
- *   ::after  오른쪽 위에서 비스듬히 내려오는 옅은 띠
- */
 .promo-link::before,
 .promo-link::after {
   content: "";
@@ -627,9 +598,7 @@ h1 {
   transform: rotate(28deg);
 }
 
-/* ── 배경 장식 변주 (content-detail.html 의 deco) ── */
 
-/* rings: 오른쪽 아래 겹친 두 원 */
 .promo--deco-rings .promo-link::before,
 .promo--deco-rings .promo-link::after {
   width: 170px;
@@ -652,7 +621,6 @@ h1 {
   bottom: -40px;
 }
 
-/* squares: 비스듬히 겹친 두 네모 테두리 */
 .promo--deco-squares .promo-link::before,
 .promo--deco-squares .promo-link::after {
   width: 120px;
@@ -676,7 +644,6 @@ h1 {
   transform: rotate(-12deg);
 }
 
-/* blob: 옅게 채운 큰 원 + 작은 원 */
 .promo--deco-blob .promo-link::before,
 .promo--deco-blob .promo-link::after {
   width: 190px;
@@ -699,7 +666,6 @@ h1 {
   opacity: 0.7;
 }
 
-/* stripes: 오른쪽 아래 모서리의 가는 사선 줄무늬 */
 .promo--deco-stripes .promo-link::before {
   width: 70%;
   height: 65%;
@@ -711,7 +677,6 @@ h1 {
   display: none;
 }
 
-/* triangle: 오른쪽 아래 옅은 삼각형 두 겹 */
 .promo--deco-triangle .promo-link::before,
 .promo--deco-triangle .promo-link::after {
   top: auto;
@@ -741,11 +706,6 @@ h1 {
   outline-offset: 3px;
 }
 
-/*
- * 로고는 여백을 깎은 파일(assets/logos/<id>.png)입니다.
- * 랭킹 엔진의 logoK(=1/√비율)를 --k 로 넣어, 로고마다 눈에 보이는
- * 면적이 같도록 높이를 정합니다. 넓은 워드마크는 낮게, 네모난 아이콘은 높게.
- */
 .promo-logo {
   position: relative;
   display: flex;
@@ -807,11 +767,6 @@ h1 {
   white-space: nowrap;
 }
 
-/*
- * 온디스크·케이디스크(promo--featured): 누르고 싶게.
- *   - 흰 버튼을 폭에 꽉 채우고(모바일은 '바로가기' 글자가 보이는 버튼), 화살표가 살짝 움직입니다.
- * 딱지·밑줄·빛 효과는 쓰지 않습니다. 움직임 줄이기 설정이면 움직이지 않습니다.
- */
 .promo--featured .promo-cta {
   align-self: stretch;
   justify-content: center;
@@ -825,7 +780,6 @@ h1 {
   animation: promo-nudge 1.6s ease-in-out infinite;
 }
 
-/* 버튼 글자: '온디스크 바로가기' 는 한 칸, 화살표 앞은 6px 띄웁니다. */
 .promo-cta-name {
   margin-right: 0.28em;
 }
@@ -855,12 +809,10 @@ h1 {
   }
 }
 
-/* 모바일 전용 문구(titleMobile)는 좁은 화면에서만 보입니다. */
 .promo-title-mo {
   display: none;
 }
 
-/* 설명은 두 줄 자리를 잡아 두어 배너 높이가 모두 같게 합니다. */
 .promo .promo-text {
   min-height: 2.9em;
 }
@@ -903,7 +855,6 @@ h1 {
     position: static;
     margin-top: 14px;
   }
-  /* 로고 · 문구 · 버튼을 한 줄로 둡니다. */
   .promo-link {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr) 32px;
@@ -940,7 +891,6 @@ h1 {
   .promo-text {
     font-size: 11.5px;
   }
-  /* 모바일: 제목 최대 두 줄, 설명 한 줄, 배너 높이는 모두 같게. */
   .promo .promo-title {
     font-size: 14.5px;
   }
@@ -950,7 +900,6 @@ h1 {
   .promo-title-mo {
     display: inline;
   }
-  /* 설명이 잘려 "…"로 끝나지 않게, 긴 설명은 모바일에서 빼고 제목(두 줄까지)만 둡니다. */
   .promo .promo-text {
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -977,11 +926,6 @@ h1 {
     border-radius: 6px;
     font-size: 0;
   }
-  /* 글자는 숨기고 화살표만: 숨긴 글자 몫의 간격·움직임을 없애야 화살표가 정가운데에 옵니다. */
-  /*
-   * 화살표를 버튼 자신의 배경으로 그립니다. 버튼이 소수점 위치에 놓여도
-   * 버튼과 화살표가 같은 픽셀로 맞춰져 늘 정가운데에 옵니다.
-   */
   .promo-arrow {
     display: none;
   }
@@ -1000,7 +944,6 @@ h1 {
   .promo--featured .promo-cta > .promo-arrow {
     animation: none;
   }
-  /* 강조 배너: 화살표만이 아니라 '바로가기' 글자가 보이는 흰 버튼 */
   .promo--featured .promo-link {
     grid-template-columns: auto minmax(0, 1fr) auto;
   }
@@ -1019,7 +962,6 @@ h1 {
     display: inline-flex;
     margin-left: 4px;
   }
-  /* 모바일에서는 이름을 빼고 '바로가기'만 — 제목 자리를 넉넉히 둡니다. */
   .promo--featured .promo-cta-name {
     display: none;
   }
@@ -1029,10 +971,6 @@ h1 {
   }
 }
 
-/*
- * 좁은 휴대폰(폭 380px 이하)에서는 로고와 제목을 한 단계 줄여
- * 강조 배너의 '바로가기' 버튼이 있어도 제목이 "…"으로 잘리지 않게 합니다.
- */
 @media (max-width: 380px) {
   .promo-link {
     column-gap: 10px;
@@ -1049,12 +987,6 @@ h1 {
   }
 }
 
-/*
- * 예매: 극장마다 같은 크기의 타일에 공식 컬러 로고와 그 옆 극장 이름을 둡니다.
- * 흰 바탕에 각 극장 브랜드 색 테두리(고스트)이고, 올리면 테두리가 진해지며
- * 브랜드 색이 아주 옅게 깔립니다. 모바일은 로고만 둡니다.
- * 로고가 없는 곳은 이름 글자로 둡니다.
- */
 .cinema-tiles {
   display: grid;
   grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr));
@@ -1100,9 +1032,6 @@ h1 {
   object-fit: contain;
 }
 
-/* 로고마다 모양이 달라 같은 높이면 크기가 달라 보입니다. 눈으로 맞춘 값입니다. */
-/* CGV 는 오른쪽 위 별 때문에 글자가 이미지 아래쪽에 있어, 가운데 맞춤이면
-   글자가 약 2px 내려가 보입니다. 글자 중심을 타일 가운데로 올립니다. */
 .cinema-logo--cgv {
   height: 22px;
   transform: translateY(-2px);
@@ -1112,7 +1041,6 @@ h1 {
   height: 16px;
 }
 
-/* 롯데시네마는 옆에 이름이 붙으므로 워드마크 대신 심벌(L)만 씁니다. */
 .cinema-logo--lotte {
   height: 21px;
 }
@@ -1140,7 +1068,6 @@ h1 {
   color: var(--ink);
 }
 
-/* 새 창으로 열린다는 작은 표시 */
 .cinema-go {
   position: absolute;
   top: 6px;
@@ -1156,7 +1083,6 @@ h1 {
 }
 
 @media (max-width: 650px) {
-  /* 좁은 화면에서는 이름을 빼고 로고만 세 칸에 둡니다(이름은 스크린리더 라벨에 남음). */
   .cinema-tiles {
     max-width: none;
     gap: 7px;
