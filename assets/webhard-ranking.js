@@ -6,11 +6,11 @@
 
   const ACTIVE = [
     "ondisk", "kdisk", "wedisk", "filejo", "filenori",
-    "me2disk", "filecast", "filestar", "filesun",
+    "filebogo", "applefile", "filestar", "filesun",
   ];
 
   const RESERVE = {
-    fileis: true,
+    yesfile: true,
     filecookie: true,
     bigfile: true,
     pdpop: true,
@@ -67,23 +67,23 @@
       url: "go/filenori/",
       home: "https://www.filenori.com/",
     },
-    me2disk: {
-      id: "me2disk",
-      name: "미투디스크",
-      description: "다양한 자료와 고객지원",
-      logo: "logos/me2disk.png",
-      logoK: 0.548,
-      url: "go/me2disk/",
-      home: "https://me2disk.com/",
+    filebogo: {
+      id: "filebogo",
+      name: "파일보고",
+      description: "실시간 인기·장르별 탐색",
+      logo: "logos/filebogo.png",
+      logoK: 0.6,
+      url: "go/filebogo/",
+      home: "https://www.filebogo.com/",
     },
-    filecast: {
-      id: "filecast",
-      name: "파일캐스트",
-      description: "모바일 감상·정액관 이용",
-      logo: "logos/filecast.png",
-      logoK: 0.543,
-      url: "go/filecast/",
-      home: "https://filecast.co.kr/",
+    applefile: {
+      id: "applefile",
+      name: "애플파일",
+      description: "통합검색·정액제 이용",
+      logo: "logos/applefile.png",
+      logoK: 0.6,
+      url: "go/applefile/",
+      home: "https://www.applefile.com/",
     },
     filestar: {
       id: "filestar",
@@ -104,14 +104,14 @@
       home: "https://www.filesun.com/",
     },
 
-    fileis: {
-      id: "fileis",
-      name: "파일이즈",
-      description: "실시간 스트리밍·할인 콘텐츠",
-      logo: "logos/fileis.png",
-      logoK: 0.476,
-      url: "go/fileis/",
-      home: "https://www.fileis.com/",
+    yesfile: {
+      id: "yesfile",
+      name: "예스파일",
+      description: "실시간 인기·정액제 이용",
+      logo: "logos/yesfile.png",
+      logoK: 0.6,
+      url: "go/yesfile/",
+      home: "https://www.yesfile.com/",
     },
     filecookie: {
       id: "filecookie",
