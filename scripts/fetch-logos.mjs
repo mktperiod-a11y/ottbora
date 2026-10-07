@@ -1,30 +1,3 @@
-/**
- * 웹하드 공식 홈페이지에서 로고 후보를 모읍니다.
- *
- * 실행: node scripts/fetch-logos.mjs [id ...]
- *       (id 를 안 주면 로고가 없거나 손으로 그린 곳만 봅니다)
- *
- * 왜 이 스크립트가 있나
- * ─────────────────────
- * 작업 환경(샌드박스)에서는 웹하드 사이트가 막혀 있어 로고를 받을 수
- * 없습니다. 그래서 새 곳을 넣을 때마다 로고를 Arial 글자로 "그려서"
- * 채우는 일이 반복됐습니다. 공식 로고처럼 보이지만 공식이 아닌 것은
- * 없는 것보다 나쁩니다.
- *
- * GitHub Actions 러너는 이 사이트들에 닿습니다. 여기서 홈페이지를 열어
- * 로고로 보이는 이미지를 전부 받아 logo-candidates/<id>/ 에 둡니다.
- * 어느 것이 진짜 워드마크인지는 사람이(또는 다음 작업자가) 눈으로
- * 보고 고릅니다. 자동으로 하나를 골라 끼우지 않는 이유는, og:image 는
- * 대개 홍보 배너이고 파비콘은 너무 작아서, 기계가 고르면 틀리기 쉽기
- * 때문입니다.
- *
- * 찾는 곳
- *   ld       schema.org(JSON-LD)의 "logo" — 사이트가 스스로 밝힌 공식 로고
- *   img      src·alt·class·id 에 logo 가 들어간 <img>
- *   css      같은 사이트 CSS 에서 선택자에 logo 가 들어간 규칙의 url()
- *   icon     <link rel="apple-touch-icon" / "icon">
- *   og       <meta property="og:image">
- */
 
 import { mkdir, writeFile, readFile, rm } from "node:fs/promises";
 import { existsSync, readFileSync } from "node:fs";
@@ -38,15 +11,12 @@ const UA =
 const MAX_BYTES = 3 * 1024 * 1024;
 const MAX_PER_SITE = 14;
 
-// ── 후보 목록은 랭킹 엔진에서 그대로 읽습니다 (따로 적어 두면 어긋납니다) ──
 function loadProviders() {
   const src = readFileSync("assets/webhard-ranking.js", "utf8");
   const sandbox = { window: {} };
   vm.runInNewContext(src, sandbox);
   const providers = { ...sandbox.window.OTT_WEBHARD_RANKING.providers };
 
-  // 작품 상세의 예매 버튼에 쓰는 극장 3사(CGV·메가박스·롯데시네마)도 함께 봅니다.
-  // 로고 파일은 assets/cinema-links.json 의 chains[].logo 에 적습니다.
   try {
     const cinema = JSON.parse(readFileSync("assets/cinema-links.json", "utf8"));
     for (const c of cinema.chains || []) {
@@ -62,28 +32,21 @@ function loadProviders() {
   return providers;
 }
 
-/** 로고가 없거나, 글자로 그린 SVG 면 "공식 로고 아님" 으로 봅니다. */
 function isHandmade(p) {
   if (!p.logo) return true;
   const file = `assets/${p.logo}`;
   if (!existsSync(file)) return true;
   if (!file.endsWith(".svg")) return false;
   const svg = readFileSync(file, "utf8");
-  // 글자(<text>)로 워드마크를 흉내 낸 파일
   return /<text[\s>]/.test(svg);
 }
 
-/** fetch 는 "fetch failed" 만 말하고 진짜 이유(DNS·TLS·연결 거부)는 cause 에 둡니다. */
 const why = (e) =>
   [e?.message, e?.cause?.code, e?.cause?.reason, e?.cause?.message]
     .filter(Boolean)
     .filter((v, i, a) => a.indexOf(v) === i)
     .join(" / ");
 
-/*
- * 쿠키 보관함. 첫 방문에 쿠키를 심고 같은 주소로 되돌려 보내는
- * 사이트(빅파일)가 있어, 받은 쿠키를 다음 요청에 돌려줍니다.
- */
 const jar = new Map();
 function remember(res) {
   const list = res.headers.getSetCookie?.() || [];
@@ -96,11 +59,6 @@ function remember(res) {
 const cookieHeader = () =>
   jar.size ? { cookie: [...jar].map(([k, v]) => `${k}=${v}`).join("; ") } : {};
 
-/*
- * 국내 웹하드는 EUC-KR(CP949) 로 쓴 페이지가 많습니다. res.text() 는
- * 늘 UTF-8 로 풀어 alt="로고" 같은 한글이 깨지고, 그래서 로고를 못
- * 알아봤습니다(피디팝). 머리글이나 <meta charset> 을 보고 풉니다.
- */
 function decode(buf, type) {
   const head = buf.subarray(0, 4096).toString("latin1");
   const cs =
@@ -114,18 +72,6 @@ function decode(buf, type) {
   }
 }
 
-/*
- * 리다이렉트는 직접 따라갑니다.
- *
- * fetch 가 알아서 따라가게 두면 중간 단계에서 심은 쿠키를 다음 단계에
- * 돌려주지 않습니다. 빅파일은 리다이렉트 도중에 쿠키를 심고 그 쿠키가
- * 있어야 본문을 주는데, 그게 빠져 301 에서 멈췄습니다.
- *
- * 이동할 곳은 Location 에 있습니다. 값이 비어 있으면 "같은 주소로 다시"
- * 라는 뜻입니다(쿠키 확인 페이지가 이렇게 합니다). Location 이 아예
- * 없으면 Refresh 헤더를 보고, 그것도 없으면 본문을 그대로 돌려줘 본문
- * 속 안내(meta refresh, 스크립트)를 따라가게 합니다.
- */
 async function get(url, { referer, asText = false } = {}) {
   let cur = url;
   let res;
@@ -149,7 +95,6 @@ async function get(url, { referer, asText = false } = {}) {
       ?? null;
     if (loc === null) break;
     const next = new URL(loc, cur).href;
-    // 같은 주소를 같은 쿠키로 또 여는 것은 되풀이일 뿐이라 멈춥니다
     const key = `${next}\n${JSON.stringify(cookieHeader())}`;
     if (tried.has(key)) break;
     tried.add(key);
@@ -157,7 +102,6 @@ async function get(url, { referer, asText = false } = {}) {
     cur = next;
     if (hop === 9) throw new Error("리다이렉트가 너무 많음");
   }
-  // res.url 은 manual 모드에서 비어 있을 수 있어 직접 따라간 주소를 씁니다.
   Object.defineProperty(res, "finalUrl", { value: cur });
   const redirectBody = asText && res.status >= 300 && res.status < 400;
   if (!res.ok && !redirectBody) throw new Error(`HTTP ${res.status}`);
@@ -186,8 +130,6 @@ function findCandidates(html, base, siteName = "") {
     } catch {}
   };
 
-  // JSON 이 깨져 있어도 읽히도록 "logo" 값만 짚어 냅니다(문자열 또는
-  // { "url": ... } 꼴).
   for (const block of html.match(/<script[^>]+application\/ld\+json[^>]*>[\s\S]*?<\/script>/gi) || []) {
     for (const m of block.matchAll(/"logo"\s*:\s*(?:"([^"]+)"|\{[^}]*?"(?:url|contentUrl)"\s*:\s*"([^"]+)")/g)) {
       add((m[1] || m[2]).replace(/\\\//g, "/"), "ld", "schema.org logo");
@@ -197,11 +139,9 @@ function findCandidates(html, base, siteName = "") {
     const src = attr(tag, "src") || attr(tag, "data-src");
     const alt = attr(tag, "alt");
     const hay = [src, alt, attr(tag, "class"), attr(tag, "id")].join(" ");
-    // alt 가 사이트 이름 그대로인 이미지는 대개 로고입니다("피디팝", "빅파일").
     const named = siteName && alt.replace(/\s/g, "") === siteName.replace(/\s/g, "");
     if (/logo|로고|\bci\b|brand/i.test(hay) || named) add(src, "img", alt);
   }
-  // 머리 <h1> 안의 이미지는 거의 늘 로고입니다.
   for (const h1 of html.match(/<h1\b[\s\S]{0,600}?<\/h1>/gi) || []) {
     for (const tag of h1.match(/<img\b[^>]*>/gi) || []) {
       add(attr(tag, "src") || attr(tag, "data-src"), "h1", attr(tag, "alt"));
@@ -218,10 +158,6 @@ function findCandidates(html, base, siteName = "") {
   return out;
 }
 
-/*
- * 사이트 키 컬러를 고를 때 쓰려고, 읽은 CSS 를 모아 두었다가
- * 자주 쓰인 유채색을 colors.json 으로 남깁니다(무채색은 뺍니다).
- */
 let cssTexts = [];
 
 function colorStats(texts) {
@@ -234,7 +170,7 @@ function colorStats(texts) {
         const h = m[1].length === 3 ? [...m[1]].map((c) => c + c).join("") : m[1];
         [r, g, b] = [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16));
       } else [r, g, b] = [m[2], m[3], m[4]].map(Number);
-      if (Math.max(r, g, b) - Math.min(r, g, b) < 40) continue; // 회색·흑백
+      if (Math.max(r, g, b) - Math.min(r, g, b) < 40) continue;
       const k = hex(r, g, b);
       count.set(k, (count.get(k) || 0) + 1);
     }
@@ -242,11 +178,9 @@ function colorStats(texts) {
   return [...count].sort((a, b) => b[1] - a[1]).slice(0, 25).map(([color, n]) => ({ color, n }));
 }
 
-/** 같은 사이트 CSS 에서 logo 가 들어간 선택자의 배경 이미지를 찾습니다. */
 async function cssCandidates(html, base) {
   const out = [];
   const sheets = [];
-  // img.example.co.kr 처럼 같은 도메인의 이미지 서버는 같은 사이트로 봅니다.
   const site = new URL(base).hostname.split(".").slice(-3).join(".").replace(/^(www|m)\./, "");
   const sameSite = (h) => h === site || h.endsWith("." + site);
   for (const tag of html.match(/<link\b[^>]*>/gi) || []) {
@@ -257,7 +191,6 @@ async function cssCandidates(html, base) {
     } catch {}
   }
   const scan = (text, from) => {
-    // 선택자에 logo·ci·h1 이 들어간 규칙의 배경 이미지
     for (const rule of text.match(/[^{}]*(logo|\bci\b|\bh1\b)[^{}]*\{[^}]*\}/gi) || []) {
       for (const m of rule.matchAll(/url\(\s*['"]?([^'")]+)['"]?\s*\)/gi)) {
         try {
@@ -288,7 +221,6 @@ function extOf(type, url) {
   return "";
 }
 
-// ── 실행 ────────────────────────────────────────────────────────────────
 const providers = loadProviders();
 const args = process.argv.slice(2);
 const hostsOnly = args.includes("--hosts");
@@ -297,10 +229,6 @@ const targets = Object.values(providers).filter((p) =>
   wanted.length ? wanted.includes(p.id) : isHandmade(p),
 );
 
-/*
- * --hosts: 대상 사이트의 호스트 이름만 한 줄씩 찍고 끝냅니다.
- * 워크플로가 인증서 사슬을 보완할 호스트를 고를 때 씁니다.
- */
 if (hostsOnly) {
   const hosts = new Set();
   for (const p of targets) {
@@ -336,10 +264,6 @@ for (const p of targets) {
     continue;
   }
 
-  /*
-   * 한 주소로 안 열리면 몇 가지를 더 해 봅니다. www 유무에 따라 인증서가
-   * 다르거나, 해외 접속을 모바일 주소로만 받는 곳이 있습니다.
-   */
   const tries = (() => {
     const u = new URL(home);
     const bare = u.hostname.replace(/^(www|m)\./, "");
@@ -368,22 +292,11 @@ for (const p of targets) {
     report.push(entry);
     continue;
   }
-  /*
-   * 껍데기 페이지를 따라 들어갑니다.
-   *
-   *   meta refresh  <meta http-equiv="refresh" content="1;url=...">
-   *                 빅파일은 첫 방문에 쿠키를 심고 같은 주소로 되돌려
-   *                 보냅니다. 쿠키를 들고 다시 열면 본문이 옵니다.
-   *   frameset      파일노리는 <frameset> 안에 진짜 페이지
-   *                 (/noriNew/home.do)를 담아 둡니다.
-   */
   const docs = [page];
   for (let hop = 0; hop < 3; hop += 1) {
     const cur = docs[docs.length - 1];
     const refresh = (cur.text.match(/<meta[^>]+http-equiv=["']?refresh["']?[^>]*>/i) || [])[0];
     let target = refresh && (attr(refresh, "content").match(/url\s*=\s*['"]?([^'";]+)/i) || [])[1];
-    // 스크립트로 옮기는 껍데기. 짧은 페이지에서만 봅니다(일반 페이지의
-    // 버튼 onclick 같은 것을 이동 안내로 잘못 읽지 않도록).
     if (!target && cur.text.length < 4000) {
       const js = cur.text.match(/location(?:\.href)?\s*=\s*['"]([^'"]+)['"]|location\.replace\(\s*['"]([^'"]+)['"]/i);
       target = js && (js[1] || js[2]);
@@ -412,7 +325,7 @@ for (const p of targets) {
     }
   }
 
-  await writeFile(`${dir}/home.html`, docs.map((d) => `<!-- ${d.url} -->\n${d.text}`).join("\n\n"));
+  await writeFile(`${dir}/home.html`, docs.map((d) => `\n${d.text}`).join("\n\n"));
 
   const seen = new Set();
   const found = [];
@@ -423,7 +336,6 @@ for (const p of targets) {
   }
   await writeFile(`${dir}/colors.json`, JSON.stringify(colorStats(cssTexts), null, 2) + "\n");
   const unique = found.filter((c) => !seen.has(c.url) && seen.add(c.url));
-  // 로고일 가능성이 높은 순서로 둡니다. 개수 상한에 걸려도 좋은 후보가 남게.
   const ORDER = { ld: 0, img: 1, h1: 2, css: 3, og: 4, icon: 5 };
   unique.sort((a, b) => (ORDER[a.kind] ?? 9) - (ORDER[b.kind] ?? 9));
 
@@ -437,7 +349,6 @@ for (const p of targets) {
       const base = `${String(n).padStart(2, "0")}-${c.kind}`;
       await writeFile(`${dir}/${base}.${ext}`, img.buf);
 
-      // 눈으로 고를 수 있게 PNG 미리보기를 만듭니다(SVG·ICO 포함).
       let meta = {};
       try {
         const s = sharp(img.buf, { density: 200 });

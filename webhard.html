@@ -934,14 +934,6 @@
               >
             </div>
           </article>
-          <!--
-            예비 후보입니다. assets/webhard-ranking.js 의 RESERVE 스위치가
-            켜져 있는 회차에만 순위에 들어갑니다. 꺼 두면 숨겨집니다.
-
-            아래 칩·추천·특징 문구는 공식 앱 소개(2026-09 확인)에서
-            이 서비스만의 내용으로 적었습니다. 바꿀 때는 비교표 행
-            (#comparison)과 랭킹 엔진의 description 도 함께 맞춰 주세요.
-          -->
           <article class="provider" id="fileis" aria-labelledby="fileis-name" hidden>
             <div class="provider-top">
               <span class="rank" aria-label="추천 순서"><span class="rank-number">–</span><span class="rank-move is-same">–</span></span>
@@ -990,14 +982,6 @@
               >
             </div>
           </article>
-          <!--
-            예비 후보입니다. assets/webhard-ranking.js 의 RESERVE 스위치가
-            켜져 있는 회차에만 순위에 들어갑니다. 꺼 두면 숨겨집니다.
-
-            아래 칩·추천·특징 문구는 공식 앱 소개(2026-09 확인)에서
-            이 서비스만의 내용으로 적었습니다. 바꿀 때는 비교표 행
-            (#comparison)과 랭킹 엔진의 description 도 함께 맞춰 주세요.
-          -->
           <article class="provider" id="filecookie" aria-labelledby="filecookie-name" hidden>
             <div class="provider-top">
               <span class="rank" aria-label="추천 순서"><span class="rank-number">–</span><span class="rank-move is-same">–</span></span>
@@ -1310,10 +1294,6 @@
     <script src="assets/webhard-ranking.js?v=20261002-1"></script>
     <script>
 
-      /*
-       * 공유 랭킹 엔진을 이용해 비교표와 상세 카드 순서를 동시에 갱신합니다.
-       * 숫자 옆의 ▲/▼는 직전 주 대비 순위 변화입니다.
-       */
       (() => {
         const ranking = window.OTT_WEBHARD_RANKING;
         if (!ranking) return;
@@ -1337,12 +1317,10 @@
           ]),
         );
 
-        // 강조하는 상위 순위 수. 표 행·카드·공식 홈페이지 버튼이 함께 따릅니다.
         const TOP_N = 3;
 
         ranking.watch((data, changed) => {
           if (changed) {
-            // 후보 풀은 더 넓게 유지하되 매 구간 상위 10곳만 노출합니다.
             for (const row of rows.values()) row.hidden = true;
             for (const card of cards.values()) card.hidden = true;
 
@@ -1363,7 +1341,6 @@
                     `<span class="rank-move ${moveClass}">${move}</span>`;
                 }
                 row.classList.toggle("priority", item.position <= TOP_N);
-                // 1~3위는 순위 숫자를 강조색으로 칠합니다(top-1/2/3).
                 for (const n of [1, 2, 3]) row.classList.toggle(`top-${n}`, item.position === n);
               }
 
@@ -1409,13 +1386,6 @@
         });
       })();
 
-      /*
-       * 페이지 안 바로가기 칩에 현재 위치를 표시합니다.
-       * 지금까지는 눌러서 이동만 하고 지금 어느 구간을 보고 있는지는
-       * 알 수 없었습니다. 목록이 길어 스크롤 중에 방향을 잃기 쉽습니다.
-       *
-       * aria-current 를 그대로 쓰므로 스크린리더에도 같은 상태가 갑니다.
-       */
       (() => {
         const chips = [...document.querySelectorAll(".section-links a")];
         const targets = chips
@@ -1426,11 +1396,6 @@
           .filter(Boolean);
         if (targets.length < 2) return;
 
-        /*
-         * 기준선(고정 헤더 아래)이 어느 구간 안에 있는지로 정합니다.
-         * IntersectionObserver 로 "보이는 구간 중 첫째"를 고르면, 구간이
-         * 화면보다 길어 앞 구간이 띠에 걸쳐 있는 동안 한 칸씩 밀립니다.
-         */
         const LINE = 140;
         let queued = false;
 
@@ -1441,7 +1406,6 @@
           for (const t of targets) {
             if (t.el.getBoundingClientRect().top + scrollY <= y) cur = t;
           }
-          // 맨 아래까지 내려가면 마지막 구간을 현재로 둡니다.
           if (innerHeight + scrollY >= document.body.scrollHeight - 2) {
             cur = targets[targets.length - 1];
           }

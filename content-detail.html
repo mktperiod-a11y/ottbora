@@ -99,16 +99,6 @@
         " seed-action-button--size_medium seed-action-button--layout_withText" +
         " seed-action-button--size_medium-layout_withText";
 
-      /*
-       * 목록으로 돌아갈 자리.
-       *
-       * 콘텐츠ZONE 은 보고 있던 탭·페이지를 주소에 적어 둡니다
-       * (?tab=애니&page=2). 여기서 돌아가는 링크를 그 주소로 바꿔,
-       * 카드를 눌러 들어왔다가 나가면 보던 자리로 돌아가게 합니다.
-       *
-       * 앞 화면이 콘텐츠ZONE 이 아니면(검색 결과로 바로 들어온 경우 등)
-       * 그냥 목록 첫 화면으로 보냅니다.
-       */
       (() => {
         const LIST = "content.html";
         let back = LIST;
@@ -121,7 +111,6 @@
             back = LIST + ref.search;
           }
         } catch {
-          // 앞 화면을 알 수 없으면 기본값을 씁니다.
         }
         for (const a of document.querySelectorAll(
           `.detail-back, .site-header .menu a[href="${LIST}"]`,
@@ -253,16 +242,13 @@
         return rows.slice(0, max).join(" · ") + (rows.length > max ? ` +${rows.length - max}` : "");
       }
 
-      // KOBIS의 법인명은 원본 데이터에 두고, 상세 화면에서만 짧게 표기합니다.
       function displayCompany(name) {
         if (String(name || "").replace(/\s/g, "") ===
             "소니픽쳐스엔터테인먼트코리아주식회사극장배급지점") {
           return "소니픽쳐스";
         }
-        // 괄호 속 약칭이 있으면 그걸로: (주)넥스트엔터테인먼트월드(NEW) → NEW
         const abbr = String(name || "").match(/\(([A-Z0-9&]{2,})\)\s*$/);
         if (abbr) return abbr[1];
-        // 법인 표기는 빼고: 앤솔로지스튜디오(주) → 앤솔로지스튜디오
         return String(name || "")
           .replace(/\((주|유|사|재)\)|㈜|주식회사|유한회사/g, "")
           .replace(/\s{2,}/g, " ")
@@ -276,7 +262,6 @@
       function filmFacts(m, latestDt) {
         if (!m) return [];
         const audienceText = audience(m.audienceAcc).replace(/^누적 관객\s*/, "");
-        // 기준일은 값 쪽에 짧게 붙여 항목 이름이 한 줄에 들어가게 합니다.
         const [, mm, dd] = prettyDate(latestDt).split(".");
         const rankDate = latestDt && dd ? ` · ${+mm}.${+dd} 기준` : "";
         return [
@@ -369,10 +354,6 @@
         return `${m[1]}년 ${seasonKo[m[2].toLowerCase()] || ""} 방영`.trim();
       }
 
-      /*
-       * 애니 줄거리의 출처. 한국어가 없어 원문을 그대로 싣거나 원문을
-       * 옮긴 경우 그렇다는 것을 밝힙니다(scripts/fetch-anime.mjs 참고).
-       */
       function animeSynopsisCredit(a) {
         const by = a.synopsisBy || "";
         if (!by) return "";
@@ -482,7 +463,6 @@
               id: /^[a-z]+$/.test(c.id || "") ? c.id : "",
               color: /^#[0-9a-f]{6}$/i.test(c.color || "") ? c.color : "",
               name: c.name,
-              // 공식 로고 파일명만 받습니다(경로·주소가 섞이면 쓰지 않음).
               logo: /^[\w.-]+\.(png|svg|webp)$/.test(c.logo || "") ? `assets/${c.logo}` : "",
               href: safe(direct || c.bookingUrl, CINEMA_HOSTS),
               direct: Boolean(direct),
@@ -491,8 +471,6 @@
           .filter((c) => c.href);
         if (!chains.length) return;
 
-        // 극장마다 같은 크기의 타일에 공식 로고와 그 옆 극장 이름을 둡니다.
-        // "예매" 는 제목이 말하므로 타일 안에는 쓰지 않습니다.
         host.innerHTML =
           "<h2>예매</h2>" +
           `<div class="cinema-tiles" style="--n:${chains.length}">` +
@@ -512,11 +490,6 @@
           "</div>";
       }
 
-      /*
-       * 모바일에서 줄거리가 5줄을 넘을 때만 접고 "더보기"를 보여 줍니다.
-       * 접힌 상태에서 실제로 잘리는지(scrollHeight > clientHeight)를 재므로
-       * 짧은 줄거리에는 버튼이 붙지 않습니다. 화면을 돌리면 다시 잽니다.
-       */
       function setupSynopsisMore(el) {
         const btn = document.querySelector("#synopsis-more");
         if (!btn) return;
@@ -583,10 +556,6 @@
         fitFacts();
       }
 
-      /*
-       * 모바일 두 칸에서 한 칸에 안 들어가는 항목(값이나 이름이 두 줄로 넘어가는 것)만
-       * 한 줄 전체를 쓰게 합니다. 글자 수가 아니라 실제로 그려진 높이로 판단합니다.
-       */
       function fitFacts() {
         const items = [...document.querySelectorAll("#points .fact-item")];
         items.forEach((li) => li.classList.remove("fact-item--wide"));
@@ -607,11 +576,6 @@
         fitTimer = setTimeout(fitFacts, 150);
       });
 
-      /*
-       * 검색엔진은 스크립트를 실행한 뒤의 설명·대표 주소를 읽습니다.
-       * 작품마다 바꿔 주지 않으면 상세 페이지가 모두 같은 문서로 보입니다.
-       * 정적 HTML 에는 canonical 을 두지 않습니다(여기서만 정합니다).
-       */
       function applySeo(w) {
         const url =
           "https://ottbora.co.kr/content-detail.html?id=" +
@@ -655,7 +619,6 @@
         .then(([d, box, cinema, tv, anime, archive]) => {
           const w = resolveWork(d, box, tv, anime, archive);
           if (!w) {
-            // 없는 작품 주소가 검색 결과에 남지 않게 합니다.
             document.querySelector('meta[name="robots"]').content = "noindex,follow";
             document.querySelector("#title").textContent = "작품 정보를 찾지 못했습니다.";
             document.querySelector("#tagline").textContent =
@@ -715,22 +678,6 @@
     </script>
     <script src="assets/webhard-ranking.js?v=20261002-1"></script>
     <script>
-      /*
-       * 제휴 배너. 들어올 때마다 하나를 골라 띄웁니다.
-       *
-       *   온디스크 40% · 케이디스크 40%
-       *   나머지 20% 는 이번 주 웹하드 순위(TOP 10)에 올라온 다른 곳끼리 똑같이 나눕니다.
-       *
-       * OTHERS 에는 순위 후보 전체(예비 포함) 배너를 보관해 두고,
-       * 그 주 TOP 10 에 든 곳만 뽑힙니다. 이름·주소는 랭킹 엔진
-       * (assets/webhard-ranking.js)에서 가져오고, 여기서는 색과 문구만 적습니다.
-       * 로고는 여백을 깎아 둔 assets/logos/<id>.png 를 쓰고, 가로세로 비율에
-       * 맞춰 눈에 보이는 면적이 같아지도록 크기를 정합니다(--k).
-       * deco 는 배경 장식 모양입니다(기본 lines: 점 격자 + 사선 띠).
-       *   rings 겹친 두 원 · squares 비스듬한 네모 · blob 옅은 큰 원
-       *   stripes 사선 줄무늬 · triangle 모서리 삼각형
-       * 사이트 본문과 구분되도록 각 서비스 색을 씁니다.
-       */
       (() => {
         const host = document.querySelector("#promo");
         if (!host) return;
@@ -794,13 +741,11 @@
         let roll = Math.random() * 100;
         let ad = MAIN.find((a) => (roll -= a.weight) < 0);
         if (!ad) {
-          // 순위를 못 읽었으면 온디스크·케이디스크 비율대로 둘 중 하나.
           ad = others.length
             ? others[Math.floor(Math.random() * others.length)]
             : MAIN[Math.random() < 0.5 ? 0 : 1];
         }
 
-        // 온디스크·케이디스크는 눈에 더 띄게(큰 제목·꽉 찬 버튼).
         const featured = MAIN.includes(ad);
         host.className =
           `promo promo--${ad.id} promo--deco-${ad.deco || "lines"}` +
@@ -810,7 +755,6 @@
         host.innerHTML =
           `<a class="promo-link" href="${ad.url}" target="_blank" rel="sponsored noopener noreferrer" aria-label="${ad.name} 제휴 링크, 새 창에서 열기">` +
           `<span class="promo-logo"><img src="${ad.logo}" alt="${ad.name}" /></span>` +
-                    // 모바일 문구가 따로 있으면 좁은 화면에서는 그걸 보여 줍니다.
           `<span class="promo-body"><strong class="promo-title">` +
           (ad.titleMobile
             ? `<span class="promo-title-pc">${ad.title}</span><span class="promo-title-mo">${ad.titleMobile}</span>`
@@ -818,11 +762,9 @@
           `</strong>` +
           `<span class="promo-text">${ad.text}</span></span>` +
           `<span class="promo-cta"><span class="promo-cta-name">${ad.name}</span>바로가기<span class="promo-arrow" aria-hidden="true">` +
-          // 글자 "→" 는 글꼴마다 좌우 여백이 달라 가운데가 어긋나서, 가운데가 정확한 SVG 로 그립니다.
           `<svg viewBox="0 0 16 16" width="14" height="14"><path d="M3.5 8h9M9 4.5 12.5 8 9 11.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>` +
           `</span></span>` +
           `</a>`;
-        // 넓은 로고는 낮게, 네모난 로고는 높게: 배율(logoK)은 랭킹 엔진에 계산해 둔 값.
         host.querySelector(".promo-logo img").style.setProperty("--k", ad.logoK || 0.55);
         host.hidden = false;
       })();
