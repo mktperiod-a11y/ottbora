@@ -1,14 +1,14 @@
 {
   "": {
-    "hash": "1ec4e476eda69fe5",
-    "modified": "2026-10-02"
+    "hash": "f38545b4cc9e06e2",
+    "modified": "2026-10-07"
   },
   "webhard.html": {
-    "hash": "082186b83395134c",
-    "modified": "2026-10-02"
+    "hash": "3e4b95ca6a1a3184",
+    "modified": "2026-10-07"
   },
   "content.html": {
-    "hash": "94eda9bd4fc498b0",
+    "hash": "c513c62658562536",
     "modified": "2026-10-07"
   },
   "criteria.html": {
@@ -16,7 +16,7 @@
     "modified": "2026-10-02"
   },
   "content-detail.html": {
-    "hash": "f5a97d716403a9ba",
-    "modified": "2026-10-02"
+    "hash": "5a753bcdf9bde79e",
+    "modified": "2026-10-07"
   }
 }
