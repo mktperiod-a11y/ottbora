@@ -3,7 +3,7 @@
   "source": "영화진흥위원회 오픈API 일별 박스오피스",
   "sourceUrl": "https://www.kobis.or.kr/kobisopenapi/",
   "updatedAt": "2026-10-07",
-  "latestDt": "20261006",
+  "latestDt": "20261007",
   "keepDays": 45,
   "movies": [
     {
@@ -12,17 +12,17 @@
       "titleEn": "Chiikawa the Movie: The Secret of the Mermaid Island",
       "titleOriginal": "映画ちいかわ 人魚の島のひみつ",
       "openedAt": "2026-09-30",
-      "audienceAcc": 769127,
+      "audienceAcc": 818352,
       "genres": [
         "애니메이션"
       ],
       "type": "영화",
       "firstSeenAt": "20260919",
-      "lastSeenAt": "20261006",
-      "days": 10,
+      "lastSeenAt": "20261007",
+      "days": 11,
       "bestRank": 1,
       "rank": 2,
-      "audienceDay": 33091,
+      "audienceDay": 49225,
       "runtime": 98,
       "directors": [
         "오이카와 케이"
@@ -58,18 +58,18 @@
       "titleEn": "The Assassin(s)",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 2466979,
+      "audienceAcc": 2520849,
       "genres": [
         "범죄",
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260917",
-      "lastSeenAt": "20261006",
-      "days": 16,
+      "lastSeenAt": "20261007",
+      "days": 17,
       "bestRank": 1,
       "rank": 1,
-      "audienceDay": 54171,
+      "audienceDay": 53871,
       "runtime": 130,
       "directors": [
         "허진호"
@@ -105,7 +105,7 @@
       "titleEn": "The Odyssey",
       "titleOriginal": "",
       "openedAt": "2026-08-05",
-      "audienceAcc": 12057325,
+      "audienceAcc": 12068517,
       "genres": [
         "액션",
         "드라마",
@@ -113,11 +113,11 @@
       ],
       "type": "영화",
       "firstSeenAt": "20260824",
-      "lastSeenAt": "20261006",
-      "days": 43,
+      "lastSeenAt": "20261007",
+      "days": 44,
       "bestRank": 1,
       "rank": 4,
-      "audienceDay": 12170,
+      "audienceDay": 11192,
       "runtime": 172,
       "directors": [
         "크리스토퍼 놀란"
@@ -153,17 +153,17 @@
       "titleEn": "The Intern",
       "titleOriginal": "",
       "openedAt": "2026-09-16",
-      "audienceAcc": 849101,
+      "audienceAcc": 853912,
       "genres": [
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260904",
-      "lastSeenAt": "20261006",
-      "days": 23,
+      "lastSeenAt": "20261007",
+      "days": 24,
       "bestRank": 1,
       "rank": 7,
-      "audienceDay": 4718,
+      "audienceDay": 4811,
       "runtime": 132,
       "directors": [
         "김도영"
@@ -202,18 +202,18 @@
       "titleEn": "TAZZA: The Song of Beelzebub",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 1491925,
+      "audienceAcc": 1520772,
       "genres": [
         "범죄",
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260914",
-      "lastSeenAt": "20261006",
-      "days": 18,
+      "lastSeenAt": "20261007",
+      "days": 19,
       "bestRank": 1,
       "rank": 3,
-      "audienceDay": 29569,
+      "audienceDay": 28847,
       "runtime": 129,
       "directors": [
         "최국희"
@@ -246,70 +246,22 @@
       "showing": true
     },
     {
-      "movieCd": "20262770",
-      "title": "스파이더맨: 브랜드 뉴 데이",
-      "titleEn": "Spider-Man: Brand New Day",
-      "titleOriginal": "",
-      "openedAt": "2026-07-29",
-      "audienceAcc": 9046973,
-      "genres": [
-        "액션",
-        "어드벤처",
-        "판타지"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20260824",
-      "lastSeenAt": "20261006",
-      "days": 37,
-      "bestRank": 2,
-      "rank": 10,
-      "audienceDay": 1435,
-      "runtime": 144,
-      "directors": [
-        "데스틴 다니엘 크리튼"
-      ],
-      "cast": [
-        "톰 홀랜드",
-        "젠데이아 콜먼",
-        "세이디 싱크",
-        "제이콥 배덜런",
-        "존 번탈",
-        "트라멜 틸먼"
-      ],
-      "producers": [],
-      "distributors": [
-        "소니픽쳐스엔터테인먼트코리아주식회사극장배급지점"
-      ],
-      "rating": "12세이상관람가",
-      "koficDetailFetched": true,
-      "koficDetailVersion": 3,
-      "poster": "assets/posters/20262770.webp",
-      "posterCredit": "TMDB",
-      "synopsis": "4년 전 소중한 사람들을 지키기 위해 모두의 기억에서 사라진 피터 파커. 친절한 이웃 스파이더맨으로서 뉴욕을 지키며 고독한 삶을 살아가던 피터는 어느 날, 예상치 못한 DNA 변이로 인해 통제 불가능한 힘에 사로잡히고 그의 진짜 정체를 알고 있는 적까지 마주하게 된다. 타인의 의식을 조종하는 정체불명의 존재로 인해 모두가 피터를 노리는 적이 될 수 있는 혼란 속에서 피터는 다시 위협에 빠진 MJ와 모두를 지키기 위해 스파이더맨으로 그들 앞에 서게 되는데...",
-      "synopsisCredit": "TMDB",
-      "tmdbId": 969681,
-      "score": 7.9,
-      "scoreBy": "TMDB",
-      "voteCount": 2906,
-      "showing": true
-    },
-    {
       "movieCd": "20265146",
       "title": "옵세션",
       "titleEn": "Obsession",
       "titleOriginal": "",
       "openedAt": "2026-09-02",
-      "audienceAcc": 931444,
+      "audienceAcc": 934137,
       "genres": [
         "공포(호러)"
       ],
       "type": "영화",
       "firstSeenAt": "20260902",
-      "lastSeenAt": "20261006",
-      "days": 34,
+      "lastSeenAt": "20261007",
+      "days": 35,
       "bestRank": 2,
-      "rank": 8,
-      "audienceDay": 4471,
+      "rank": 10,
+      "audienceDay": 2693,
       "runtime": 108,
       "directors": [
         "커리 바커"
@@ -338,65 +290,22 @@
       "showing": true
     },
     {
-      "movieCd": "20263870",
-      "title": "레지던트 이블: 0번째 밤",
-      "titleEn": "Resident Evil",
-      "titleOriginal": "",
-      "openedAt": "2026-09-17",
-      "audienceAcc": 214628,
-      "genres": [
-        "공포(호러)",
-        "액션",
-        "SF"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20260917",
-      "lastSeenAt": "20261006",
-      "days": 16,
-      "bestRank": 3,
-      "rank": 9,
-      "audienceDay": 1443,
-      "runtime": 93,
-      "directors": [
-        "잭 크레거"
-      ],
-      "cast": [
-        "오스틴 에이브람스"
-      ],
-      "producers": [],
-      "distributors": [
-        "소니픽쳐스엔터테인먼트코리아주식회사극장배급지점"
-      ],
-      "rating": "청소년관람불가",
-      "koficDetailFetched": true,
-      "koficDetailVersion": 3,
-      "poster": "assets/posters/20263870.webp",
-      "posterCredit": "TMDB",
-      "synopsis": "의료 택배 기사 브라이언은 긴급 배달을 맡아 심야에 라쿤 시티 종합 병원으로 향한다. 눈발을 헤치며 가던 중 갑자기 차로 뛰어든 누군가를 치게 되고, 죽은 줄 알았던 이가 다시 그를 덮쳐온다. 하나인 줄 알았던 정체불명의 존재들은 끊임없이 늘어나고, 통신마저 끊긴다. 브라이언은 자신이 무엇을 배달하고 있는지도 모른 채 눈앞에 닥친 존재들을 피해 필사의 사투를 벌이는데…",
-      "synopsisCredit": "TMDB",
-      "tmdbId": 1423191,
-      "score": 7.3,
-      "scoreBy": "TMDB",
-      "voteCount": 540,
-      "showing": true
-    },
-    {
       "movieCd": "20224573",
       "title": "부활남: 더 레드",
       "titleEn": "REAWAKENED MAN",
       "titleOriginal": "",
       "openedAt": "2026-09-30",
-      "audienceAcc": 235685,
+      "audienceAcc": 243831,
       "genres": [
         "액션"
       ],
       "type": "영화",
       "firstSeenAt": "20260918",
-      "lastSeenAt": "20261006",
-      "days": 9,
+      "lastSeenAt": "20261007",
+      "days": 10,
       "bestRank": 4,
-      "rank": 5,
-      "audienceDay": 9796,
+      "rank": 6,
+      "audienceDay": 8146,
       "runtime": 101,
       "directors": [
         "백"
@@ -430,23 +339,65 @@
       "showing": true
     },
     {
+      "movieCd": "20266610",
+      "title": "입에 대한 앙케트",
+      "titleEn": "The Mouths",
+      "titleOriginal": "",
+      "openedAt": "2026-10-07",
+      "audienceAcc": 8415,
+      "genres": [
+        "공포(호러)"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20261007",
+      "lastSeenAt": "20261007",
+      "days": 1,
+      "bestRank": 5,
+      "rank": 5,
+      "audienceDay": 8415,
+      "runtime": 88,
+      "directors": [
+        "시미즈 다카시"
+      ],
+      "cast": [
+        "츠나 케이토",
+        "요시카와 아이미"
+      ],
+      "producers": [],
+      "distributors": [
+        "(주)바이포엠스튜디오"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "showing": true,
+      "synopsis": "“그날 밤, 무슨 일이 있었는지 말씀드릴게요” 심령 명소로 유명한 묘지. 그곳에 저주받은 나무가 있다는 괴담에 이끌려 ‘쇼타’ 일행은 담력 시험에 나선다. 그리고 다음 날, 일행 중 한 명이 흔적도 없이 사라진다. 그날 이후, 남겨진 친구들의 주변에서 알 수 없는 일들이 하나둘씩 벌어지기 시작하는데… 사라진 한 명, 남겨진 5명의 증언. 증언이 쌓일수록 섬뜩한 진실이 드러난다.",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1587473,
+      "score": 7,
+      "scoreBy": "TMDB",
+      "voteCount": 1,
+      "poster": "assets/posters/20266610.webp",
+      "posterCredit": "TMDB"
+    },
+    {
       "movieCd": "20264775",
       "title": "디거",
       "titleEn": "Digger",
       "titleOriginal": "",
       "openedAt": "2026-10-03",
-      "audienceAcc": 45550,
+      "audienceAcc": 49717,
       "genres": [
         "코미디",
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20261003",
-      "lastSeenAt": "20261006",
-      "days": 4,
+      "lastSeenAt": "20261007",
+      "days": 5,
       "bestRank": 6,
-      "rank": 6,
-      "audienceDay": 5151,
+      "rank": 8,
+      "audienceDay": 4167,
       "runtime": 128,
       "directors": [
         "알레한드로 곤잘레스 이냐리투"
@@ -473,6 +424,141 @@
       "scoreBy": "TMDB",
       "voteCount": 109,
       "showing": true
+    },
+    {
+      "movieCd": "20265486",
+      "title": "퓨리어스",
+      "titleEn": "The Furious",
+      "titleOriginal": "",
+      "openedAt": "2026-10-07",
+      "audienceAcc": 3941,
+      "genres": [
+        "액션",
+        "범죄"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20261007",
+      "lastSeenAt": "20261007",
+      "days": 1,
+      "bestRank": 9,
+      "rank": 9,
+      "audienceDay": 3282,
+      "runtime": 113,
+      "directors": [
+        "타니가키 켄지"
+      ],
+      "cast": [
+        "사묘",
+        "조 타슬림",
+        "야얀 루히안"
+      ],
+      "producers": [],
+      "distributors": [
+        "(주)스튜디오디에이치엘"
+      ],
+      "rating": "청소년관람불가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "showing": true,
+      "synopsis": "말을 할 수 없는 평범한 아버지 왕웨이. 어느 날 그의 딸 레이니가 거대 범죄 조직에 납치되고, 부패한 경찰마저 외면하자 직접 딸을 찾아 나선다. 그는 실종된 아내를 찾는 기자인 나빈과 힘을 합쳐 거침없이 조직의 심장부로 돌진한다. 마침내 마주한 딸 레이니. 하지만 그곳에는 수많은 아이들이 갇혀 있었고, 참담한 광경에 그들은 분노한다. 왕웨이와 나빈 그리고 레이니는 범죄 조직을 향해 거침없이 몸을 던지며, 폭발적인 무술 액션의 사투를 벌인다.",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1280738,
+      "score": 8.2,
+      "scoreBy": "TMDB",
+      "voteCount": 816,
+      "poster": "assets/posters/20265486.webp",
+      "posterCredit": "TMDB"
+    },
+    {
+      "movieCd": "20262770",
+      "title": "스파이더맨: 브랜드 뉴 데이",
+      "titleEn": "Spider-Man: Brand New Day",
+      "titleOriginal": "",
+      "openedAt": "2026-07-29",
+      "audienceAcc": 9046973,
+      "genres": [
+        "액션",
+        "어드벤처",
+        "판타지"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260824",
+      "lastSeenAt": "20261006",
+      "days": 37,
+      "bestRank": 2,
+      "rank": null,
+      "audienceDay": null,
+      "runtime": 144,
+      "directors": [
+        "데스틴 다니엘 크리튼"
+      ],
+      "cast": [
+        "톰 홀랜드",
+        "젠데이아 콜먼",
+        "세이디 싱크",
+        "제이콥 배덜런",
+        "존 번탈",
+        "트라멜 틸먼"
+      ],
+      "producers": [],
+      "distributors": [
+        "소니픽쳐스엔터테인먼트코리아주식회사극장배급지점"
+      ],
+      "rating": "12세이상관람가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20262770.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "4년 전 소중한 사람들을 지키기 위해 모두의 기억에서 사라진 피터 파커. 친절한 이웃 스파이더맨으로서 뉴욕을 지키며 고독한 삶을 살아가던 피터는 어느 날, 예상치 못한 DNA 변이로 인해 통제 불가능한 힘에 사로잡히고 그의 진짜 정체를 알고 있는 적까지 마주하게 된다. 타인의 의식을 조종하는 정체불명의 존재로 인해 모두가 피터를 노리는 적이 될 수 있는 혼란 속에서 피터는 다시 위협에 빠진 MJ와 모두를 지키기 위해 스파이더맨으로 그들 앞에 서게 되는데...",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 969681,
+      "score": 7.9,
+      "scoreBy": "TMDB",
+      "voteCount": 2906,
+      "showing": false
+    },
+    {
+      "movieCd": "20263870",
+      "title": "레지던트 이블: 0번째 밤",
+      "titleEn": "Resident Evil",
+      "titleOriginal": "",
+      "openedAt": "2026-09-17",
+      "audienceAcc": 214628,
+      "genres": [
+        "공포(호러)",
+        "액션",
+        "SF"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260917",
+      "lastSeenAt": "20261006",
+      "days": 16,
+      "bestRank": 3,
+      "rank": null,
+      "audienceDay": null,
+      "runtime": 93,
+      "directors": [
+        "잭 크레거"
+      ],
+      "cast": [
+        "오스틴 에이브람스"
+      ],
+      "producers": [],
+      "distributors": [
+        "소니픽쳐스엔터테인먼트코리아주식회사극장배급지점"
+      ],
+      "rating": "청소년관람불가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20263870.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "의료 택배 기사 브라이언은 긴급 배달을 맡아 심야에 라쿤 시티 종합 병원으로 향한다. 눈발을 헤치며 가던 중 갑자기 차로 뛰어든 누군가를 치게 되고, 죽은 줄 알았던 이가 다시 그를 덮쳐온다. 하나인 줄 알았던 정체불명의 존재들은 끊임없이 늘어나고, 통신마저 끊긴다. 브라이언은 자신이 무엇을 배달하고 있는지도 모른 채 눈앞에 닥친 존재들을 피해 필사의 사투를 벌이는데…",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1423191,
+      "score": 7.3,
+      "scoreBy": "TMDB",
+      "voteCount": 540,
+      "showing": false
     },
     {
       "movieCd": "20266766",
