@@ -1,8 +1,3 @@
-/*
- * 손으로 고른 작품(content-data.json)의 포스터 주소표입니다.
- * 이미지는 assets/posters/picks/ 에 파일로 두고, 페이지는 보여 줄 작품의 것만 받습니다.
- * (예전에는 포스터 25장을 글자로 바꿔 스크립트 두 개에 담아, 어느 페이지든 전부 받았습니다.)
- */
 window.OTT_POSTERS = Object.assign(window.OTT_POSTERS || {}, {
   "1795": "assets/posters/picks/1795.webp",
   "1799": "assets/posters/picks/1799.webp",

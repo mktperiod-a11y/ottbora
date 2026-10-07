@@ -4,7 +4,6 @@ nav {
   align-items: center;
   justify-content: space-between;
 }
-/* 위 여백은 공용 .page-head 가 줍니다. 여기서 또 주면 겹칩니다. */
 main {
   padding: 0 0 80px;
 }
@@ -81,19 +80,14 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
-/* ===== 콘텐츠ZONE 재설계에서 추가된 규칙 ===== */
 
 .filters {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  /* 위 22 / 아래 6 이라 칩이 그리드에 붙어 있었습니다.
-     탭은 아래 내용과 한 덩어리로 읽혀야 하므로 아래를 조금 좁게 둡니다. */
   margin: 30px 0 20px;
 }
 
-/* SEED action-chip 에는 선택 상태 variant 가 없어, 탭 선택은 여기서 표현합니다.
-   aria-selected 를 그대로 쓰므로 스크린리더에도 같은 상태가 전달됩니다. */
 .filters [aria-selected="true"] {
   background: var(--seed-color-bg-brand-solid);
   color: var(--seed-color-palette-static-white);
@@ -114,7 +108,6 @@ button:focus-visible {
   margin: 0;
 }
 
-/* .cb span 이 block 이라 부제 안의 조각까지 줄바꿈됩니다. 되돌립니다. */
 .cb .genre span {
   display: inline;
   margin: 0;
@@ -122,35 +115,19 @@ button:focus-visible {
   line-height: inherit;
 }
 
-/*
- * 가운뎃점은 앞 조각에 붙입니다. 따로 두면 줄이 바뀔 때
- * "· 액션" 처럼 점이 다음 줄 맨 앞에 떨어집니다.
- */
 .cb .genre > *:not(:last-child)::after {
   content: " · ";
   font-weight: var(--seed-font-weight-regular);
   color: var(--muted);
 }
 
-/* ===== 포스터 없는 글자 카드 (박스오피스) ===== */
 
-/*
- * KOFIC 은 포스터를 주지 않습니다. 빈 회색 네모를 두면 이미지가 깨진 것처럼
- * 보이므로, 제목을 아래에 앉힌 글자 카드로 그 자리를 채웁니다.
- * 포스터 카드와 같은 2/3 비율이라 그리드 줄이 흐트러지지 않습니다.
- */
 .card--text {
   display: flex;
   flex-direction: column;
 }
 
-/*
- * 글자 카드의 판은 제목만 담습니다.
- * 분류·태그·개봉일은 모두 아래 본문으로 내려, 포스터 카드와 순서를 맞췄습니다.
- */
 .panel {
-  /* 같은 줄의 다른 카드가 더 길면 이 카드도 그만큼 늘어납니다.
-     판이 남는 높이를 먹게 해서 카드 아래에 흰 띠가 생기지 않게 합니다. */
   flex: 1;
   display: flex;
   align-items: center;
@@ -159,7 +136,6 @@ button:focus-visible {
   border-bottom: 1px solid var(--line);
 }
 
-/* 포스터가 없으니 제목 자체를 그림처럼 씁니다. 판 가운데에 크게 앉힙니다. */
 .panel-title {
   font-size: 26px;
   font-weight: 800;
@@ -168,10 +144,6 @@ button:focus-visible {
   overflow-wrap: anywhere;
 }
 
-/*
- * 바탕색 여섯 가지. 모두 옅어서 본문색(#17202d)이 7:1 이상으로 읽힙니다.
- * 목록이 한 가지 색으로 깔리지 않게 하려는 것이라 채도는 낮게 둡니다.
- */
 .panel--t0 {
   background: linear-gradient(165deg, #eef2f8, #dbe4f0);
 }
@@ -211,11 +183,6 @@ button:focus-visible {
   white-space: nowrap;
 }
 
-/*
- * 부제 줄 맨 앞의 대분류(영화/드라마/예능/애니).
- * 이 카드가 어느 탭에서 추려진 것인지 말합니다. 줄의 시작점이라
- * 굵게 두고, 나머지 회색 글자보다 한 단계 진하게 씁니다.
- */
 
 .cb .genre b {
   color: var(--ink);
@@ -224,11 +191,8 @@ button:focus-visible {
   white-space: nowrap !important;
 }
 
-/* 포스터 카드. 2/3 비율이라 180px 면 세로가 270px 쯤 됩니다. */
 
-/* ===== 콘텐츠ZONE 목록 밀도 개선 ===== */
 .grid {
-  /* 같은 행의 카드는 콘텐츠 양과 관계없이 같은 높이로 맞춥니다. */
   align-items: stretch;
   --card-min: 160px;
   --cards-gap: 12px;
@@ -245,18 +209,7 @@ button:focus-visible {
   flex-direction: column;
   padding: 10px 10px 11px;
 }
-/* 제목. 부제 줄 안의 <b>(대분류)는 여기 해당하지 않습니다. */
-/*
- * 제목은 두 줄까지 씁니다.
- *
- * 한 줄로 자르니 애니 20편 중 11편이 "추방당한 전생 중기사는…" 처럼
- * 뭉텅 잘렸습니다. 두 줄이면 대부분 다 들어갑니다.
- * min-height 로 두 줄 자리를 늘 비워 둬, 제목이 짧은 카드와 긴 카드의
- * 부제·태그 줄이 같은 높이에서 시작합니다.
- */
 
-/* ===== 카드 텍스트 줄 수 최종 규칙 ===== */
-/* 제목: 최대 2줄 */
 
 .cb > b {
   font-weight: 800;
@@ -272,9 +225,7 @@ button:focus-visible {
   letter-spacing: -0.3px;
 }
 
-/* ===== 카드 표기 ===== */
 
-/* 메타 라인 강제 1줄: 구조도 단일 inline 흐름으로 맞췄습니다. */
 
 .cb .genre {
   color: var(--muted);
@@ -292,25 +243,8 @@ button:focus-visible {
   line-height: 1.4;
 }
 
-/* ===== 카드 표기 — 한 자리에 한 종류 ===== */
 
-/*
- * 전에는 "왜 실렸는가" 가 카드 종류마다 다른 자리에 있었습니다.
- * 포스터 카드는 그림 위 칩, 글자 카드는 판 위에 장르와 나란히,
- * 애니는 그림 위 평점. 같은 줄에 다른 종류가 와서 읽히지 않았습니다.
- *
- * 이제 모든 카드가 같은 순서를 갖습니다.
- *   그림 → 제목 → 장르 → 태그
- */
 
-/*
- * 태그 줄. 늘 한 줄입니다.
- *
- * 두 줄로 흘려 봤더니 카드마다 태그 줄 높이가 달라져 목록이
- * 들쭉날쭉해 보였습니다. 자리가 모자라면 태그마다 줄어들며 말줄임 합니다.
- *
- * margin-top:auto 가 태그를 늘 카드 아래에 붙여 둡니다.
- */
 .tags {
   margin-top: auto;
   display: flex;
@@ -338,7 +272,6 @@ button:focus-visible {
   line-height: 1.45;
 }
 
-/* 건수는 탭 종류와 화면 폭에 관계없이 항상 탭 아래에 둡니다. */
 
 .filter-row {
   display: grid;
@@ -349,13 +282,6 @@ button:focus-visible {
   margin-bottom: 15px;
 }
 
-/*
- * 탭 줄 아래 건수.
- *
- * nowrap 이면 좁은 화면에서 문장이 화면 밖으로 밀려 잘립니다.
- * 줄을 바꾸게 둡니다 — 한 줄이 두 줄이 되는 편이 말이 끊기는
- * 것보다 낫습니다.
- */
 
 .count {
   margin: 0;
@@ -366,7 +292,6 @@ button:focus-visible {
   font-size: 11.5px;
 }
 
-/* ===== 페이지 넘기기 ===== */
 
 .pager {
   display: flex;
@@ -376,11 +301,7 @@ button:focus-visible {
   margin-top: 22px;
 }
 
-/* 목록의 간격과 텍스트 대비를 모바일에서도 읽기 편하게 맞춥니다. */
 .card {
-  /* 한 줄 안에서 카드 높이는 그리드가 맞춰 줍니다. 짧은 카드는
-           아래에 빈 띠가 생기는데, 본문 칸이 남는 높이를 먹게 해서
-           그 여백이 카드 안쪽 패딩처럼 보이게 합니다. */
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -481,23 +402,6 @@ button:focus-visible {
     margin-bottom: 16px;
   }
 
-  /*
-   * 모바일 분류 탭.
-   *
-   * 예전엔 칩을 정확히 1/4 폭으로 나눠 한 화면에 4개만 딱 맞게 채웠습니다.
-   * 그래서 5번째(애니)가 화면 오른쪽 끝에 한 조각도 안 보이고 통째로
-   * 숨어, 옆으로 더 있다는 걸 알 방법이 없었습니다.
-   *
-   * 대신 칩을 글자 수만큼만 차지하게(natural width) 두고, 웹하드 순위
-   * 페이지의 같은 성격의 탭(.section-links, 페이지 내 바로가기 칩)과
-   * 크기·모양을 그대로 맞춥니다 — 새로 만들지 않고 그 값을 그대로
-   * 가져옵니다(굵은 채움 빨강 대신 옅은 테두리 칩, 선택 상태도 옅은
-   * 로즈 톤). 다섯 개를 다 더해도 가장 좁은 화면(320px)보다 좁아 보통은
-   * 스크롤 없이 다 보이고, 글자 크기를 키우는 등 화면이 더 좁아지는
-   * 경우에만 오른쪽 끝 칩이 자연스럽게 일부만 보이며 잘려 "더 있다"는
-   * 것을 그대로 알려 줍니다 — 억지로 자르는 값을 넣지 않아도 좁을 때만
-   * 저절로 그렇게 됩니다.
-   */
   .filter-row .filters {
     padding-bottom: 4px;
     display: flex;
@@ -510,7 +414,6 @@ button:focus-visible {
     gap: 6px;
   }
 
-  /* .section-links > a 와 같은 값(높이 36px·여백·글자·테두리·색). 새로 만들지 않고 그대로 가져옵니다. */
   .filter-row .filters > * {
     flex: 0 0 auto;
     min-width: 0;
@@ -527,12 +430,6 @@ button:focus-visible {
     min-height: 36px;
   }
 
-  /*
-   * 선택 상태도 .section-links [aria-current="true"] 와 같은 옅은 로즈
-   * 톤으로 맞춥니다(진한 채움 빨강 대신). 기본(.filters [aria-selected])
-   * 규칙보다 자세히 적어(부모 클래스 .filter-row 하나 더) 화면 폭과 관계없이 이겨야
-   * 하므로, 여기 값이 항상 적용되게 해 줍니다.
-   */
   .filter-row .filters > *[aria-selected="true"] {
     border-color: #f3ccd2;
     background: #fff1f3;
@@ -546,7 +443,6 @@ button:focus-visible {
     min-height: 44px;
   }
 
-  /* 모바일 카드에서 작품명이 먼저 읽히고 근거 칩은 보조로 남습니다. */
   .card .cb,
   .card--text .cb {
     flex: 1;
@@ -604,11 +500,6 @@ button:focus-visible {
   }
 }
 
-/*
- * 아주 좁은 화면(폭 320px 이하)에서는 태그가 "#국내 박…" 처럼 잘려 읽히지 않아
- * 아예 빼고, 제목 두 줄 자리 비워 두기도 풀어 제목 바로 아래에 메타가 오게 합니다
- * (제목이 한 줄인 카드에서 제목과 메타 사이가 벌어지지 않게).
- */
 @media (max-width: 320px) {
   .tags {
     display: none;
