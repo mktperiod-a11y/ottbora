@@ -69,7 +69,7 @@
     <link rel="stylesheet" href="assets/seed/seed.css" />
     <link rel="stylesheet" href="assets/seed-theme.css" />
     <link rel="stylesheet" href="assets/site.css?v=20260928-2" />
-    <link rel="stylesheet" href="assets/content.css?v=20261001-1" />
+    <link rel="stylesheet" href="assets/content.css?v=20261002-1" />
   </head>
   <body>
     <a class="skip" href="#main">본문으로 바로가기</a>
@@ -91,6 +91,10 @@
         <h1>오늘 뭐 볼까?</h1>
         <p class="lead">
           분류를 고르고 포스터를 누르면 줄거리와 작품 정보를 볼 수 있습니다.
+        </p>
+        <p class="update-status" aria-live="polite">
+          <span class="update-dot" aria-hidden="true"></span>
+          <span id="update-status">매일 갱신</span>
         </p>
       </div>
 
@@ -776,6 +780,14 @@
               ]
             : [];
           FRESH = isFresh(box?.latestDt);
+          // 박스오피스·애니·드라마·예능 중 가장 최근에 받은 날을 보여 줍니다.
+          const updated = [box?.updatedAt, anime?.updatedAt, tv?.updatedAt]
+            .filter((v) => /^\d{4}-\d{2}-\d{2}$/.test(v || ""))
+            .sort()
+            .pop();
+          if (updated)
+            document.querySelector("#update-status").textContent =
+              `최근 업데이트 ${updated.replaceAll("-", ".")} · 매일 갱신`;
           // 손으로 고른 작품이 지금 차트에도 있으면 그 순위를 씁니다.
           // 같은 작품에 옛 근거 문구와 오늘 순위가 따로 놀지 않도록.
           for (const m of DATA.boxoffice) {
