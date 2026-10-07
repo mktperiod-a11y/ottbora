@@ -2,7 +2,7 @@
   "note": "일별 박스오피스를 작품 단위로 누적한 목록입니다. 콘텐츠ZONE 의 영화·애니 탭에서 씁니다.",
   "source": "영화진흥위원회 오픈API 일별 박스오피스",
   "sourceUrl": "https://www.kobis.or.kr/kobisopenapi/",
-  "updatedAt": "2026-10-06",
+  "updatedAt": "2026-10-07",
   "latestDt": "20261006",
   "keepDays": 45,
   "movies": [
@@ -58,7 +58,7 @@
       "titleEn": "The Assassin(s)",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 2466976,
+      "audienceAcc": 2466979,
       "genres": [
         "범죄",
         "드라마"
@@ -69,7 +69,7 @@
       "days": 16,
       "bestRank": 1,
       "rank": 1,
-      "audienceDay": 54162,
+      "audienceDay": 54171,
       "runtime": 130,
       "directors": [
         "허진호"
@@ -105,7 +105,7 @@
       "titleEn": "The Odyssey",
       "titleOriginal": "",
       "openedAt": "2026-08-05",
-      "audienceAcc": 12057329,
+      "audienceAcc": 12057325,
       "genres": [
         "액션",
         "드라마",
@@ -153,7 +153,7 @@
       "titleEn": "The Intern",
       "titleOriginal": "",
       "openedAt": "2026-09-16",
-      "audienceAcc": 849102,
+      "audienceAcc": 849101,
       "genres": [
         "드라마"
       ],
@@ -163,7 +163,7 @@
       "days": 23,
       "bestRank": 1,
       "rank": 7,
-      "audienceDay": 4719,
+      "audienceDay": 4718,
       "runtime": 132,
       "directors": [
         "김도영"
@@ -202,7 +202,7 @@
       "titleEn": "TAZZA: The Song of Beelzebub",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 1491922,
+      "audienceAcc": 1491925,
       "genres": [
         "범죄",
         "드라마"
@@ -213,7 +213,7 @@
       "days": 18,
       "bestRank": 1,
       "rank": 3,
-      "audienceDay": 29564,
+      "audienceDay": 29569,
       "runtime": 129,
       "directors": [
         "최국희"
@@ -386,7 +386,7 @@
       "titleEn": "REAWAKENED MAN",
       "titleOriginal": "",
       "openedAt": "2026-09-30",
-      "audienceAcc": 235687,
+      "audienceAcc": 235685,
       "genres": [
         "액션"
       ],
@@ -396,7 +396,7 @@
       "days": 9,
       "bestRank": 4,
       "rank": 5,
-      "audienceDay": 9798,
+      "audienceDay": 9796,
       "runtime": 101,
       "directors": [
         "백"
@@ -435,7 +435,7 @@
       "titleEn": "Digger",
       "titleOriginal": "",
       "openedAt": "2026-10-03",
-      "audienceAcc": 45549,
+      "audienceAcc": 45550,
       "genres": [
         "코미디",
         "드라마"
@@ -446,7 +446,7 @@
       "days": 4,
       "bestRank": 6,
       "rank": 6,
-      "audienceDay": 5150,
+      "audienceDay": 5151,
       "runtime": 128,
       "directors": [
         "알레한드로 곤잘레스 이냐리투"
