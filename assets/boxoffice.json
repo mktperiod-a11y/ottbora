@@ -2,8 +2,8 @@
   "note": "일별 박스오피스를 작품 단위로 누적한 목록입니다. 콘텐츠ZONE 의 영화·애니 탭에서 씁니다.",
   "source": "영화진흥위원회 오픈API 일별 박스오피스",
   "sourceUrl": "https://www.kobis.or.kr/kobisopenapi/",
-  "updatedAt": "2026-10-08",
-  "latestDt": "20261008",
+  "updatedAt": "2026-10-10",
+  "latestDt": "20261009",
   "keepDays": 45,
   "movies": [
     {
@@ -12,17 +12,17 @@
       "titleEn": "Chiikawa the Movie: The Secret of the Mermaid Island",
       "titleOriginal": "映画ちいかわ 人魚の島のひみつ",
       "openedAt": "2026-09-30",
-      "audienceAcc": 873584,
+      "audienceAcc": 1025729,
       "genres": [
         "애니메이션"
       ],
       "type": "영화",
       "firstSeenAt": "20260919",
-      "lastSeenAt": "20261008",
-      "days": 12,
+      "lastSeenAt": "20261009",
+      "days": 13,
       "bestRank": 1,
       "rank": 2,
-      "audienceDay": 55236,
+      "audienceDay": 152139,
       "runtime": 98,
       "directors": [
         "오이카와 케이"
@@ -58,18 +58,18 @@
       "titleEn": "The Assassin(s)",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 2584841,
+      "audienceAcc": 2745971,
       "genres": [
         "범죄",
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260917",
-      "lastSeenAt": "20261008",
-      "days": 18,
+      "lastSeenAt": "20261009",
+      "days": 19,
       "bestRank": 1,
       "rank": 1,
-      "audienceDay": 63978,
+      "audienceDay": 161107,
       "runtime": 130,
       "directors": [
         "허진호"
@@ -105,7 +105,7 @@
       "titleEn": "The Odyssey",
       "titleOriginal": "",
       "openedAt": "2026-08-05",
-      "audienceAcc": 12083941,
+      "audienceAcc": 12121277,
       "genres": [
         "액션",
         "드라마",
@@ -113,11 +113,11 @@
       ],
       "type": "영화",
       "firstSeenAt": "20260824",
-      "lastSeenAt": "20261008",
-      "days": 45,
+      "lastSeenAt": "20261009",
+      "days": 46,
       "bestRank": 1,
-      "rank": 5,
-      "audienceDay": 15424,
+      "rank": 4,
+      "audienceDay": 37332,
       "runtime": 172,
       "directors": [
         "크리스토퍼 놀란"
@@ -148,72 +148,23 @@
       "showing": true
     },
     {
-      "movieCd": "20256308",
-      "title": "인턴",
-      "titleEn": "The Intern",
-      "titleOriginal": "",
-      "openedAt": "2026-09-16",
-      "audienceAcc": 860359,
-      "genres": [
-        "드라마"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20260904",
-      "lastSeenAt": "20261008",
-      "days": 25,
-      "bestRank": 1,
-      "rank": 8,
-      "audienceDay": 6415,
-      "runtime": 132,
-      "directors": [
-        "김도영"
-      ],
-      "cast": [
-        "최민식",
-        "한소희",
-        "김준한",
-        "류혜영",
-        "김금순",
-        "박예니"
-      ],
-      "producers": [
-        "앤솔로지스튜디오(주)",
-        "워너브러더스 코리아(주)"
-      ],
-      "distributors": [
-        "워너브러더스 코리아(주)"
-      ],
-      "rating": "12세이상관람가",
-      "koficDetailFetched": true,
-      "koficDetailVersion": 3,
-      "poster": "assets/posters/20256308.webp",
-      "posterCredit": "TMDB",
-      "synopsis": "창업 3년 만에 100억대 매출을 달성하며 브랜드 WOO22를 패션 업계의 다크호스로 성장시킨 젊은 CEO 선우. 성공을 향해 쉼 없이 달려온 열정 과부하 상태의 그녀 앞에 막내로 입사한 실버 인턴 기호가 나타난다. 경력 37년 사회생활 만렙의 베테랑이지만, 낯선 디지털 업무 환경과 자유분방한 문화에 좀처럼 적응하지 못하던 기호. 그러나 특유의 성실함과 인간미 넘치는 소통이 선우의 마음을 움직이고 모든 점에서 전혀 다른 두 사람은 서로에게 없는 시선과 경험을 나누며 쉼 없이 달리던 일상에 뜻밖의 온기를 더하는데…",
-      "synopsisCredit": "TMDB",
-      "tmdbId": 607833,
-      "score": 7,
-      "scoreBy": "TMDB",
-      "voteCount": 3,
-      "showing": true
-    },
-    {
       "movieCd": "20256161",
       "title": "타짜: 벨제붑의 노래",
       "titleEn": "TAZZA: The Song of Beelzebub",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 1554076,
+      "audienceAcc": 1622935,
       "genres": [
         "범죄",
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260914",
-      "lastSeenAt": "20261008",
-      "days": 20,
+      "lastSeenAt": "20261009",
+      "days": 21,
       "bestRank": 1,
       "rank": 3,
-      "audienceDay": 33294,
+      "audienceDay": 68855,
       "runtime": 129,
       "directors": [
         "최국희"
@@ -251,17 +202,17 @@
       "titleEn": "Obsession",
       "titleOriginal": "",
       "openedAt": "2026-09-02",
-      "audienceAcc": 937773,
+      "audienceAcc": 944475,
       "genres": [
         "공포(호러)"
       ],
       "type": "영화",
       "firstSeenAt": "20260902",
-      "lastSeenAt": "20261008",
-      "days": 36,
+      "lastSeenAt": "20261009",
+      "days": 37,
       "bestRank": 2,
-      "rank": 10,
-      "audienceDay": 3634,
+      "rank": 8,
+      "audienceDay": 6702,
       "runtime": 108,
       "directors": [
         "커리 바커"
@@ -295,17 +246,17 @@
       "titleEn": "Look Back",
       "titleOriginal": "",
       "openedAt": "2026-10-08",
-      "audienceAcc": 20962,
+      "audienceAcc": 35971,
       "genres": [
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20261008",
-      "lastSeenAt": "20261008",
-      "days": 1,
+      "lastSeenAt": "20261009",
+      "days": 2,
       "bestRank": 4,
-      "rank": 4,
-      "audienceDay": 20558,
+      "rank": 6,
+      "audienceDay": 15011,
       "runtime": 100,
       "directors": [
         "고레에다 히로카즈"
@@ -323,15 +274,15 @@
       "rating": "전체관람가",
       "koficDetailFetched": true,
       "koficDetailVersion": 3,
-      "showing": true,
+      "poster": "assets/posters/20265062.webp",
+      "posterCredit": "TMDB",
       "synopsis": "학교 신문에서 네컷 만화를 그리는 자신만만한 소녀 ‘후지노’와 그를 동경하지만 세상 밖이 두려워 방 안에 틀어박힌 외톨이 ‘쿄모토’. “너는 왜 만화를 그리는 거야?” 만화가 세상의 전부였던 그 시절, 두 소녀의 사계절이 눈부신 색깔로 채워지기 시작한다.",
       "synopsisCredit": "TMDB",
       "tmdbId": 1591675,
       "score": 8,
       "scoreBy": "TMDB",
       "voteCount": 14,
-      "poster": "assets/posters/20265062.webp",
-      "posterCredit": "TMDB"
+      "showing": true
     },
     {
       "movieCd": "20224573",
@@ -339,17 +290,17 @@
       "titleEn": "REAWAKENED MAN",
       "titleOriginal": "",
       "openedAt": "2026-09-30",
-      "audienceAcc": 253008,
+      "audienceAcc": 273287,
       "genres": [
         "액션"
       ],
       "type": "영화",
       "firstSeenAt": "20260918",
-      "lastSeenAt": "20261008",
-      "days": 11,
+      "lastSeenAt": "20261009",
+      "days": 12,
       "bestRank": 4,
-      "rank": 6,
-      "audienceDay": 9179,
+      "rank": 5,
+      "audienceDay": 20277,
       "runtime": 101,
       "directors": [
         "백"
@@ -383,22 +334,70 @@
       "showing": true
     },
     {
+      "movieCd": "20266766",
+      "title": "어벤져스: 엔드게임 앙코르",
+      "titleEn": "Avengers: Endgame Encore",
+      "titleOriginal": "",
+      "openedAt": "2026-09-23",
+      "audienceAcc": 165778,
+      "genres": [
+        "액션",
+        "SF"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260923",
+      "lastSeenAt": "20261009",
+      "days": 12,
+      "bestRank": 5,
+      "rank": 10,
+      "audienceDay": 5482,
+      "runtime": 183,
+      "directors": [
+        "안소니 루소",
+        "조 루소"
+      ],
+      "cast": [
+        "로버트 다우니 주니어",
+        "크리스 에반스",
+        "스칼렛 요한슨",
+        "마크 러팔로",
+        "크리스 헴스워스",
+        "제레미 레너"
+      ],
+      "producers": [],
+      "distributors": [
+        "월트디즈니컴퍼니코리아 유한책임회사"
+      ],
+      "rating": "12세이상관람가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20266766.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "어벤져스의 패배 이후 지구는 초토화됐고 남은 절반의 사람들은 정신적 고통을 호소하며 하루하루를 근근이 버텨나간다. 와칸다에서 싸우다 생존한 히어로들과 우주의 타이탄 행성에서 싸우다 생존한 히어로들이 뿔뿔이 흩어졌는데, 아이언맨과 네뷸라는 우주를 떠돌고 있고 지구에 남아 있는 어벤져스 멤버들은 닉 퓨리가 마지막에 신호를 보내다 만 송신기만 들여다보며 혹시 모를 우주의 응답을 기다리는 중이다. 애초 히어로의 삶을 잠시 내려놓고 가족과 시간을 보내던 호크아이 역시 헤아릴 수 없는 마음의 상처를 입은 채 사라지고 마는데...",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 299534,
+      "score": 8.2,
+      "scoreBy": "TMDB",
+      "voteCount": 28819,
+      "showing": true
+    },
+    {
       "movieCd": "20266610",
       "title": "입에 대한 앙케트",
       "titleEn": "The Mouths",
       "titleOriginal": "",
       "openedAt": "2026-10-07",
-      "audienceAcc": 17203,
+      "audienceAcc": 30219,
       "genres": [
         "공포(호러)"
       ],
       "type": "영화",
       "firstSeenAt": "20261007",
-      "lastSeenAt": "20261008",
-      "days": 2,
+      "lastSeenAt": "20261009",
+      "days": 3,
       "bestRank": 5,
       "rank": 7,
-      "audienceDay": 8787,
+      "audienceDay": 13016,
       "runtime": 88,
       "directors": [
         "시미즈 다카시"
@@ -430,18 +429,18 @@
       "titleEn": "Digger",
       "titleOriginal": "",
       "openedAt": "2026-10-03",
-      "audienceAcc": 53694,
+      "audienceAcc": 60225,
       "genres": [
         "코미디",
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20261003",
-      "lastSeenAt": "20261008",
-      "days": 6,
+      "lastSeenAt": "20261009",
+      "days": 7,
       "bestRank": 6,
       "rank": 9,
-      "audienceDay": 3975,
+      "audienceDay": 6528,
       "runtime": 128,
       "directors": [
         "알레한드로 곤잘레스 이냐리투"
@@ -468,6 +467,55 @@
       "scoreBy": "TMDB",
       "voteCount": 109,
       "showing": true
+    },
+    {
+      "movieCd": "20256308",
+      "title": "인턴",
+      "titleEn": "The Intern",
+      "titleOriginal": "",
+      "openedAt": "2026-09-16",
+      "audienceAcc": 860359,
+      "genres": [
+        "드라마"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260904",
+      "lastSeenAt": "20261008",
+      "days": 25,
+      "bestRank": 1,
+      "rank": null,
+      "audienceDay": null,
+      "runtime": 132,
+      "directors": [
+        "김도영"
+      ],
+      "cast": [
+        "최민식",
+        "한소희",
+        "김준한",
+        "류혜영",
+        "김금순",
+        "박예니"
+      ],
+      "producers": [
+        "앤솔로지스튜디오(주)",
+        "워너브러더스 코리아(주)"
+      ],
+      "distributors": [
+        "워너브러더스 코리아(주)"
+      ],
+      "rating": "12세이상관람가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20256308.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "창업 3년 만에 100억대 매출을 달성하며 브랜드 WOO22를 패션 업계의 다크호스로 성장시킨 젊은 CEO 선우. 성공을 향해 쉼 없이 달려온 열정 과부하 상태의 그녀 앞에 막내로 입사한 실버 인턴 기호가 나타난다. 경력 37년 사회생활 만렙의 베테랑이지만, 낯선 디지털 업무 환경과 자유분방한 문화에 좀처럼 적응하지 못하던 기호. 그러나 특유의 성실함과 인간미 넘치는 소통이 선우의 마음을 움직이고 모든 점에서 전혀 다른 두 사람은 서로에게 없는 시선과 경험을 나누며 쉼 없이 달리던 일상에 뜻밖의 온기를 더하는데…",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 607833,
+      "score": 7,
+      "scoreBy": "TMDB",
+      "voteCount": 3,
+      "showing": false
     },
     {
       "movieCd": "20265486",
@@ -602,54 +650,6 @@
       "score": 7.3,
       "scoreBy": "TMDB",
       "voteCount": 540,
-      "showing": false
-    },
-    {
-      "movieCd": "20266766",
-      "title": "어벤져스: 엔드게임 앙코르",
-      "titleEn": "Avengers: Endgame Encore",
-      "titleOriginal": "",
-      "openedAt": "2026-09-23",
-      "audienceAcc": 157616,
-      "genres": [
-        "액션",
-        "SF"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20260923",
-      "lastSeenAt": "20261005",
-      "days": 11,
-      "bestRank": 5,
-      "rank": null,
-      "audienceDay": null,
-      "runtime": 183,
-      "directors": [
-        "안소니 루소",
-        "조 루소"
-      ],
-      "cast": [
-        "로버트 다우니 주니어",
-        "크리스 에반스",
-        "스칼렛 요한슨",
-        "마크 러팔로",
-        "크리스 헴스워스",
-        "제레미 레너"
-      ],
-      "producers": [],
-      "distributors": [
-        "월트디즈니컴퍼니코리아 유한책임회사"
-      ],
-      "rating": "12세이상관람가",
-      "koficDetailFetched": true,
-      "koficDetailVersion": 3,
-      "poster": "assets/posters/20266766.webp",
-      "posterCredit": "TMDB",
-      "synopsis": "어벤져스의 패배 이후 지구는 초토화됐고 남은 절반의 사람들은 정신적 고통을 호소하며 하루하루를 근근이 버텨나간다. 와칸다에서 싸우다 생존한 히어로들과 우주의 타이탄 행성에서 싸우다 생존한 히어로들이 뿔뿔이 흩어졌는데, 아이언맨과 네뷸라는 우주를 떠돌고 있고 지구에 남아 있는 어벤져스 멤버들은 닉 퓨리가 마지막에 신호를 보내다 만 송신기만 들여다보며 혹시 모를 우주의 응답을 기다리는 중이다. 애초 히어로의 삶을 잠시 내려놓고 가족과 시간을 보내던 호크아이 역시 헤아릴 수 없는 마음의 상처를 입은 채 사라지고 마는데...",
-      "synopsisCredit": "TMDB",
-      "tmdbId": 299534,
-      "score": 8.2,
-      "scoreBy": "TMDB",
-      "voteCount": 28819,
       "showing": false
     },
     {
