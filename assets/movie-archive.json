@@ -48,8 +48,7 @@
       "tmdbId": 51739,
       "score": 7.7,
       "scoreBy": "TMDB",
-      "voteCount": 3285,
-      "showing": false
+      "voteCount": 3285
     },
     {
       "movieCd": "20264080",
@@ -96,8 +95,7 @@
       "tmdbId": 1241436,
       "score": 7.1,
       "scoreBy": "TMDB",
-      "voteCount": 1628,
-      "showing": false
+      "voteCount": 1628
     }
   ]
 }
