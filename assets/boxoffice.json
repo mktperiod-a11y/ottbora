@@ -2,8 +2,8 @@
   "note": "일별 박스오피스를 작품 단위로 누적한 목록입니다. 콘텐츠ZONE 의 영화·애니 탭에서 씁니다.",
   "source": "영화진흥위원회 오픈API 일별 박스오피스",
   "sourceUrl": "https://www.kobis.or.kr/kobisopenapi/",
-  "updatedAt": "2026-10-02",
-  "latestDt": "20261001",
+  "updatedAt": "2026-10-11",
+  "latestDt": "20261011",
   "keepDays": 45,
   "movies": [
     {
@@ -12,17 +12,17 @@
       "titleEn": "Chiikawa the Movie: The Secret of the Mermaid Island",
       "titleOriginal": "映画ちいかわ 人魚の島のひみつ",
       "openedAt": "2026-09-30",
-      "audienceAcc": 198786,
+      "audienceAcc": 1281481,
       "genres": [
         "애니메이션"
       ],
       "type": "영화",
       "firstSeenAt": "20260919",
-      "lastSeenAt": "20261001",
-      "days": 5,
+      "lastSeenAt": "20261011",
+      "days": 15,
       "bestRank": 1,
-      "rank": 3,
-      "audienceDay": 45770,
+      "rank": 1,
+      "audienceDay": 119954,
       "runtime": 98,
       "directors": [
         "오이카와 케이"
@@ -58,18 +58,18 @@
       "titleEn": "The Assassin(s)",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 1821960,
+      "audienceAcc": 2992529,
       "genres": [
         "범죄",
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260917",
-      "lastSeenAt": "20261001",
-      "days": 11,
+      "lastSeenAt": "20261011",
+      "days": 21,
       "bestRank": 1,
-      "rank": 1,
-      "audienceDay": 55015,
+      "rank": 2,
+      "audienceDay": 108032,
       "runtime": 130,
       "directors": [
         "허진호"
@@ -105,7 +105,7 @@
       "titleEn": "The Odyssey",
       "titleOriginal": "",
       "openedAt": "2026-08-05",
-      "audienceAcc": 11875153,
+      "audienceAcc": 12179163,
       "genres": [
         "액션",
         "드라마",
@@ -113,11 +113,11 @@
       ],
       "type": "영화",
       "firstSeenAt": "20260824",
-      "lastSeenAt": "20261001",
-      "days": 38,
+      "lastSeenAt": "20261011",
+      "days": 48,
       "bestRank": 1,
-      "rank": 5,
-      "audienceDay": 18010,
+      "rank": 4,
+      "audienceDay": 25270,
       "runtime": 172,
       "directors": [
         "크리스토퍼 놀란"
@@ -148,72 +148,23 @@
       "showing": true
     },
     {
-      "movieCd": "20256308",
-      "title": "인턴",
-      "titleEn": "The Intern",
-      "titleOriginal": "",
-      "openedAt": "2026-09-16",
-      "audienceAcc": 801375,
-      "genres": [
-        "드라마"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20260904",
-      "lastSeenAt": "20261001",
-      "days": 18,
-      "bestRank": 1,
-      "rank": 7,
-      "audienceDay": 6888,
-      "runtime": 132,
-      "directors": [
-        "김도영"
-      ],
-      "cast": [
-        "최민식",
-        "한소희",
-        "김준한",
-        "류혜영",
-        "김금순",
-        "박예니"
-      ],
-      "producers": [
-        "앤솔로지스튜디오(주)",
-        "워너브러더스 코리아(주)"
-      ],
-      "distributors": [
-        "워너브러더스 코리아(주)"
-      ],
-      "rating": "12세이상관람가",
-      "koficDetailFetched": true,
-      "koficDetailVersion": 3,
-      "poster": "assets/posters/20256308.webp",
-      "posterCredit": "TMDB",
-      "synopsis": "창업 3년 만에 100억대 매출을 달성하며 브랜드 WOO22를 패션 업계의 다크호스로 성장시킨 젊은 CEO 선우. 성공을 향해 쉼 없이 달려온 열정 과부하 상태의 그녀 앞에 막내로 입사한 실버 인턴 기호가 나타난다. 경력 37년 사회생활 만렙의 베테랑이지만, 낯선 디지털 업무 환경과 자유분방한 문화에 좀처럼 적응하지 못하던 기호. 그러나 특유의 성실함과 인간미 넘치는 소통이 선우의 마음을 움직이고 모든 점에서 전혀 다른 두 사람은 서로에게 없는 시선과 경험을 나누며 쉼 없이 달리던 일상에 뜻밖의 온기를 더하는데…",
-      "synopsisCredit": "TMDB",
-      "tmdbId": 607833,
-      "score": 7,
-      "scoreBy": "TMDB",
-      "voteCount": 3,
-      "showing": true
-    },
-    {
       "movieCd": "20256161",
       "title": "타짜: 벨제붑의 노래",
       "titleEn": "TAZZA: The Song of Beelzebub",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 1065735,
+      "audienceAcc": 1744153,
       "genres": [
         "범죄",
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260914",
-      "lastSeenAt": "20261001",
-      "days": 13,
+      "lastSeenAt": "20261011",
+      "days": 23,
       "bestRank": 1,
-      "rank": 2,
-      "audienceDay": 49832,
+      "rank": 3,
+      "audienceDay": 53752,
       "runtime": 129,
       "directors": [
         "최국희"
@@ -251,17 +202,17 @@
       "titleEn": "Obsession",
       "titleOriginal": "",
       "openedAt": "2026-09-02",
-      "audienceAcc": 882854,
+      "audienceAcc": 955134,
       "genres": [
         "공포(호러)"
       ],
       "type": "영화",
       "firstSeenAt": "20260902",
-      "lastSeenAt": "20261001",
-      "days": 29,
+      "lastSeenAt": "20261011",
+      "days": 39,
       "bestRank": 2,
-      "rank": 8,
-      "audienceDay": 6763,
+      "rank": 9,
+      "audienceDay": 4467,
       "runtime": 108,
       "directors": [
         "커리 바커"
@@ -290,95 +241,47 @@
       "showing": true
     },
     {
-      "movieCd": "20263870",
-      "title": "레지던트 이블: 0번째 밤",
-      "titleEn": "Resident Evil",
+      "movieCd": "20265062",
+      "title": "룩백",
+      "titleEn": "Look Back",
       "titleOriginal": "",
-      "openedAt": "2026-09-17",
-      "audienceAcc": 200466,
-      "genres": [
-        "공포(호러)",
-        "액션",
-        "SF"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20260917",
-      "lastSeenAt": "20261001",
-      "days": 14,
-      "bestRank": 3,
-      "rank": 9,
-      "audienceDay": 2126,
-      "runtime": 93,
-      "directors": [
-        "잭 크레거"
-      ],
-      "cast": [
-        "오스틴 에이브람스"
-      ],
-      "producers": [],
-      "distributors": [
-        "소니픽쳐스엔터테인먼트코리아주식회사극장배급지점"
-      ],
-      "rating": "청소년관람불가",
-      "koficDetailFetched": true,
-      "koficDetailVersion": 3,
-      "poster": "assets/posters/20263870.webp",
-      "posterCredit": "TMDB",
-      "synopsis": "의료 택배 기사 브라이언은 긴급 배달을 맡아 심야에 라쿤 시티 종합 병원으로 향한다. 눈발을 헤치며 가던 중 갑자기 차로 뛰어든 누군가를 치게 되고, 죽은 줄 알았던 이가 다시 그를 덮쳐온다. 하나인 줄 알았던 정체불명의 존재들은 끊임없이 늘어나고, 통신마저 끊긴다. 브라이언은 자신이 무엇을 배달하고 있는지도 모른 채 눈앞에 닥친 존재들을 피해 필사의 사투를 벌이는데…",
-      "synopsisCredit": "TMDB",
-      "tmdbId": 1423191,
-      "score": 7.3,
-      "scoreBy": "TMDB",
-      "voteCount": 540,
-      "showing": true
-    },
-    {
-      "movieCd": "20254904",
-      "title": "가능한 사랑",
-      "titleEn": "Possible Love",
-      "titleOriginal": "",
-      "openedAt": "2026-09-23",
-      "audienceAcc": 169949,
+      "openedAt": "2026-10-08",
+      "audienceAcc": 62379,
       "genres": [
         "드라마"
       ],
       "type": "영화",
-      "firstSeenAt": "20260921",
-      "lastSeenAt": "20261001",
-      "days": 9,
+      "firstSeenAt": "20261008",
+      "lastSeenAt": "20261011",
+      "days": 4,
       "bestRank": 4,
       "rank": 6,
-      "audienceDay": 11745,
-      "runtime": 164,
+      "audienceDay": 10733,
+      "runtime": 100,
       "directors": [
-        "이창동"
+        "고레에다 히로카즈"
       ],
       "cast": [
-        "전도연",
-        "설경구",
-        "조인성",
-        "조여정",
-        "조유리",
-        "송근창"
+        "데구치 나츠키",
+        "마키타 아쥬",
+        "나나세 후리",
+        "오카다 로카"
       ],
-      "producers": [
-        "파인하우스필름(주)",
-        "나우필름(주)"
-      ],
+      "producers": [],
       "distributors": [
-        "(주)넥스트엔터테인먼트월드(NEW)"
+        "메가박스중앙(주)"
       ],
-      "rating": "청소년관람불가",
+      "rating": "전체관람가",
       "koficDetailFetched": true,
       "koficDetailVersion": 3,
-      "poster": "assets/posters/20254904.webp",
+      "poster": "assets/posters/20265062.webp",
       "posterCredit": "TMDB",
-      "synopsis": "해고 노동자와 그의 아내 그리고 다큐멘터리 감독과 그녀의 남편. 두 부부가 다큐멘터리 제작을 계기로 만나, 서로의 다른 삶과 숨은 욕망을 마주한다.",
+      "synopsis": "학교 신문에서 네컷 만화를 그리는 자신만만한 소녀 ‘후지노’와 그를 동경하지만 세상 밖이 두려워 방 안에 틀어박힌 외톨이 ‘쿄모토’. “너는 왜 만화를 그리는 거야?” 만화가 세상의 전부였던 그 시절, 두 소녀의 사계절이 눈부신 색깔로 채워지기 시작한다.",
       "synopsisCredit": "TMDB",
-      "tmdbId": 1483525,
-      "score": 9,
+      "tmdbId": 1591675,
+      "score": 8,
       "scoreBy": "TMDB",
-      "voteCount": 1,
+      "voteCount": 14,
       "showing": true
     },
     {
@@ -387,17 +290,17 @@
       "titleEn": "REAWAKENED MAN",
       "titleOriginal": "",
       "openedAt": "2026-09-30",
-      "audienceAcc": 73908,
+      "audienceAcc": 302354,
       "genres": [
         "액션"
       ],
       "type": "영화",
       "firstSeenAt": "20260918",
-      "lastSeenAt": "20261001",
-      "days": 4,
+      "lastSeenAt": "20261011",
+      "days": 14,
       "bestRank": 4,
-      "rank": 4,
-      "audienceDay": 22233,
+      "rank": 5,
+      "audienceDay": 15182,
       "runtime": 101,
       "directors": [
         "백"
@@ -431,23 +334,153 @@
       "showing": true
     },
     {
+      "movieCd": "20266610",
+      "title": "입에 대한 앙케트",
+      "titleEn": "The Mouths",
+      "titleOriginal": "",
+      "openedAt": "2026-10-07",
+      "audienceAcc": 50471,
+      "genres": [
+        "공포(호러)"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20261007",
+      "lastSeenAt": "20261011",
+      "days": 5,
+      "bestRank": 5,
+      "rank": 7,
+      "audienceDay": 9346,
+      "runtime": 88,
+      "directors": [
+        "시미즈 다카시"
+      ],
+      "cast": [
+        "츠나 케이토",
+        "요시카와 아이미"
+      ],
+      "producers": [],
+      "distributors": [
+        "(주)바이포엠스튜디오"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20266610.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "“그날 밤, 무슨 일이 있었는지 말씀드릴게요” 심령 명소로 유명한 묘지. 그곳에 저주받은 나무가 있다는 괴담에 이끌려 ‘쇼타’ 일행은 담력 시험에 나선다. 그리고 다음 날, 일행 중 한 명이 흔적도 없이 사라진다. 그날 이후, 남겨진 친구들의 주변에서 알 수 없는 일들이 하나둘씩 벌어지기 시작하는데… 사라진 한 명, 남겨진 5명의 증언. 증언이 쌓일수록 섬뜩한 진실이 드러난다.",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1587473,
+      "score": 7,
+      "scoreBy": "TMDB",
+      "voteCount": 1,
+      "showing": true
+    },
+    {
+      "movieCd": "20264775",
+      "title": "디거",
+      "titleEn": "Digger",
+      "titleOriginal": "",
+      "openedAt": "2026-10-03",
+      "audienceAcc": 70497,
+      "genres": [
+        "코미디",
+        "드라마"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20261003",
+      "lastSeenAt": "20261011",
+      "days": 9,
+      "bestRank": 6,
+      "rank": 8,
+      "audienceDay": 4618,
+      "runtime": 128,
+      "directors": [
+        "알레한드로 곤잘레스 이냐리투"
+      ],
+      "cast": [
+        "톰 크루즈",
+        "산드라 휠러",
+        "존 굿맨",
+        "제시 플레먼스"
+      ],
+      "producers": [],
+      "distributors": [
+        "워너브러더스 코리아(주)"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20264775.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "\"끝까지 파거나, 죽거나! 전 세계를 뒤흔든 대재앙. ‘디거 록웰’의 삽 끝에서 시작된 이야기를 확인하라!\" 3대째 석유 재벌로 살아온 ‘디거 록웰’은 최소한의 손실, 최대한의 이익을 추구하며 돈이 되는 일이라면 무엇이든 마다하지 않는다. 그러던 어느 날, 그린란드의 빙하 시추 시설에서 작은 균열이 발견되지만 ‘디거’는 대수롭지 않은 문제라 여기고 넘긴다. 하지만 사소하게 여겼던 균열은 걷잡을 수 없이 커지며 전 세계를 날려버릴 거대한 재난으로 번져가고 결국 ‘디거’는 초유의 사태를 해결하기 위해 직접 나서는데…",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1248832,
+      "score": 7.4,
+      "scoreBy": "TMDB",
+      "voteCount": 109,
+      "showing": true
+    },
+    {
+      "movieCd": "20266850",
+      "title": "극장판 래브라도: 망고축제를 지켜라",
+      "titleEn": "Sheriff Labrador: Save the Mango Festival",
+      "titleOriginal": "《啦啦啦哆：保卫芒果书》剧场版]",
+      "openedAt": "2026-10-03",
+      "audienceAcc": 34805,
+      "genres": [
+        "애니메이션"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20261005",
+      "lastSeenAt": "20261011",
+      "days": 2,
+      "bestRank": 10,
+      "rank": 10,
+      "audienceDay": 4085,
+      "runtime": 63,
+      "directors": [],
+      "cast": [
+        "정재헌",
+        "김은아",
+        "김연우",
+        "엄상현"
+      ],
+      "producers": [],
+      "distributors": [
+        "와이드 릴리즈(주)",
+        "씨제이 씨지브이(CJ CGV)(주)"
+      ],
+      "rating": "전체관람가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20266850.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "성대한 망고축제를 앞두고 고향 망고 마을로 돌아온 래브라도 경장! 하지만 마을 곳곳에서 수상한 사건들이 벌어지며 망고축제가 위험에 빠졌다?! 도베르만, 파피용 그리고 래브라도 경장과 함께 사건의 단서를 찾고 모두가 기다려온 망고축제를 무사히 지키자!",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1765609,
+      "score": null,
+      "scoreBy": "",
+      "voteCount": null,
+      "showing": true
+    },
+    {
       "movieCd": "20266766",
       "title": "어벤져스: 엔드게임 앙코르",
       "titleEn": "Avengers: Endgame Encore",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 122968,
+      "audienceAcc": 169898,
       "genres": [
         "액션",
         "SF"
       ],
       "type": "영화",
       "firstSeenAt": "20260923",
-      "lastSeenAt": "20261001",
-      "days": 7,
+      "lastSeenAt": "20261010",
+      "days": 13,
       "bestRank": 5,
-      "rank": 10,
-      "audienceDay": 1477,
+      "rank": null,
+      "audienceDay": null,
       "runtime": 183,
       "directors": [
         "안소니 루소",
@@ -476,7 +509,240 @@
       "score": 8.2,
       "scoreBy": "TMDB",
       "voteCount": 28819,
-      "showing": true
+      "showing": false
+    },
+    {
+      "movieCd": "20256308",
+      "title": "인턴",
+      "titleEn": "The Intern",
+      "titleOriginal": "",
+      "openedAt": "2026-09-16",
+      "audienceAcc": 860359,
+      "genres": [
+        "드라마"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260904",
+      "lastSeenAt": "20261008",
+      "days": 25,
+      "bestRank": 1,
+      "rank": null,
+      "audienceDay": null,
+      "runtime": 132,
+      "directors": [
+        "김도영"
+      ],
+      "cast": [
+        "최민식",
+        "한소희",
+        "김준한",
+        "류혜영",
+        "김금순",
+        "박예니"
+      ],
+      "producers": [
+        "앤솔로지스튜디오(주)",
+        "워너브러더스 코리아(주)"
+      ],
+      "distributors": [
+        "워너브러더스 코리아(주)"
+      ],
+      "rating": "12세이상관람가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20256308.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "창업 3년 만에 100억대 매출을 달성하며 브랜드 WOO22를 패션 업계의 다크호스로 성장시킨 젊은 CEO 선우. 성공을 향해 쉼 없이 달려온 열정 과부하 상태의 그녀 앞에 막내로 입사한 실버 인턴 기호가 나타난다. 경력 37년 사회생활 만렙의 베테랑이지만, 낯선 디지털 업무 환경과 자유분방한 문화에 좀처럼 적응하지 못하던 기호. 그러나 특유의 성실함과 인간미 넘치는 소통이 선우의 마음을 움직이고 모든 점에서 전혀 다른 두 사람은 서로에게 없는 시선과 경험을 나누며 쉼 없이 달리던 일상에 뜻밖의 온기를 더하는데…",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 607833,
+      "score": 7,
+      "scoreBy": "TMDB",
+      "voteCount": 3,
+      "showing": false
+    },
+    {
+      "movieCd": "20265486",
+      "title": "퓨리어스",
+      "titleEn": "The Furious",
+      "titleOriginal": "",
+      "openedAt": "2026-10-07",
+      "audienceAcc": 3941,
+      "genres": [
+        "액션",
+        "범죄"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20261007",
+      "lastSeenAt": "20261007",
+      "days": 1,
+      "bestRank": 9,
+      "rank": null,
+      "audienceDay": null,
+      "runtime": 113,
+      "directors": [
+        "타니가키 켄지"
+      ],
+      "cast": [
+        "사묘",
+        "조 타슬림",
+        "야얀 루히안"
+      ],
+      "producers": [],
+      "distributors": [
+        "(주)스튜디오디에이치엘"
+      ],
+      "rating": "청소년관람불가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20265486.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "말을 할 수 없는 평범한 아버지 왕웨이. 어느 날 그의 딸 레이니가 거대 범죄 조직에 납치되고, 부패한 경찰마저 외면하자 직접 딸을 찾아 나선다. 그는 실종된 아내를 찾는 기자인 나빈과 힘을 합쳐 거침없이 조직의 심장부로 돌진한다. 마침내 마주한 딸 레이니. 하지만 그곳에는 수많은 아이들이 갇혀 있었고, 참담한 광경에 그들은 분노한다. 왕웨이와 나빈 그리고 레이니는 범죄 조직을 향해 거침없이 몸을 던지며, 폭발적인 무술 액션의 사투를 벌인다.",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1280738,
+      "score": 8.2,
+      "scoreBy": "TMDB",
+      "voteCount": 816,
+      "showing": false
+    },
+    {
+      "movieCd": "20262770",
+      "title": "스파이더맨: 브랜드 뉴 데이",
+      "titleEn": "Spider-Man: Brand New Day",
+      "titleOriginal": "",
+      "openedAt": "2026-07-29",
+      "audienceAcc": 9046973,
+      "genres": [
+        "액션",
+        "어드벤처",
+        "판타지"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260824",
+      "lastSeenAt": "20261006",
+      "days": 37,
+      "bestRank": 2,
+      "rank": null,
+      "audienceDay": null,
+      "runtime": 144,
+      "directors": [
+        "데스틴 다니엘 크리튼"
+      ],
+      "cast": [
+        "톰 홀랜드",
+        "젠데이아 콜먼",
+        "세이디 싱크",
+        "제이콥 배덜런",
+        "존 번탈",
+        "트라멜 틸먼"
+      ],
+      "producers": [],
+      "distributors": [
+        "소니픽쳐스엔터테인먼트코리아주식회사극장배급지점"
+      ],
+      "rating": "12세이상관람가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20262770.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "4년 전 소중한 사람들을 지키기 위해 모두의 기억에서 사라진 피터 파커. 친절한 이웃 스파이더맨으로서 뉴욕을 지키며 고독한 삶을 살아가던 피터는 어느 날, 예상치 못한 DNA 변이로 인해 통제 불가능한 힘에 사로잡히고 그의 진짜 정체를 알고 있는 적까지 마주하게 된다. 타인의 의식을 조종하는 정체불명의 존재로 인해 모두가 피터를 노리는 적이 될 수 있는 혼란 속에서 피터는 다시 위협에 빠진 MJ와 모두를 지키기 위해 스파이더맨으로 그들 앞에 서게 되는데...",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 969681,
+      "score": 7.9,
+      "scoreBy": "TMDB",
+      "voteCount": 2906,
+      "showing": false
+    },
+    {
+      "movieCd": "20263870",
+      "title": "레지던트 이블: 0번째 밤",
+      "titleEn": "Resident Evil",
+      "titleOriginal": "",
+      "openedAt": "2026-09-17",
+      "audienceAcc": 214628,
+      "genres": [
+        "공포(호러)",
+        "액션",
+        "SF"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260917",
+      "lastSeenAt": "20261006",
+      "days": 16,
+      "bestRank": 3,
+      "rank": null,
+      "audienceDay": null,
+      "runtime": 93,
+      "directors": [
+        "잭 크레거"
+      ],
+      "cast": [
+        "오스틴 에이브람스"
+      ],
+      "producers": [],
+      "distributors": [
+        "소니픽쳐스엔터테인먼트코리아주식회사극장배급지점"
+      ],
+      "rating": "청소년관람불가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20263870.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "의료 택배 기사 브라이언은 긴급 배달을 맡아 심야에 라쿤 시티 종합 병원으로 향한다. 눈발을 헤치며 가던 중 갑자기 차로 뛰어든 누군가를 치게 되고, 죽은 줄 알았던 이가 다시 그를 덮쳐온다. 하나인 줄 알았던 정체불명의 존재들은 끊임없이 늘어나고, 통신마저 끊긴다. 브라이언은 자신이 무엇을 배달하고 있는지도 모른 채 눈앞에 닥친 존재들을 피해 필사의 사투를 벌이는데…",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1423191,
+      "score": 7.3,
+      "scoreBy": "TMDB",
+      "voteCount": 540,
+      "showing": false
+    },
+    {
+      "movieCd": "20254904",
+      "title": "가능한 사랑",
+      "titleEn": "Possible Love",
+      "titleOriginal": "",
+      "openedAt": "2026-09-23",
+      "audienceAcc": 230481,
+      "genres": [
+        "드라마"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260921",
+      "lastSeenAt": "20261004",
+      "days": 12,
+      "bestRank": 4,
+      "rank": null,
+      "audienceDay": null,
+      "runtime": 164,
+      "directors": [
+        "이창동"
+      ],
+      "cast": [
+        "전도연",
+        "설경구",
+        "조인성",
+        "조여정",
+        "조유리",
+        "송근창"
+      ],
+      "producers": [
+        "파인하우스필름(주)",
+        "나우필름(주)"
+      ],
+      "distributors": [
+        "(주)넥스트엔터테인먼트월드(NEW)"
+      ],
+      "rating": "청소년관람불가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20254904.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "해고 노동자와 그의 아내 그리고 다큐멘터리 감독과 그녀의 남편. 두 부부가 다큐멘터리 제작을 계기로 만나, 서로의 다른 삶과 숨은 욕망을 마주한다.",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1483525,
+      "score": 9,
+      "scoreBy": "TMDB",
+      "voteCount": 1,
+      "showing": false
     },
     {
       "movieCd": "20262961",
@@ -520,54 +786,6 @@
       "score": 6.8,
       "scoreBy": "TMDB",
       "voteCount": 240,
-      "showing": false
-    },
-    {
-      "movieCd": "20262770",
-      "title": "스파이더맨: 브랜드 뉴 데이",
-      "titleEn": "Spider-Man: Brand New Day",
-      "titleOriginal": "",
-      "openedAt": "2026-07-29",
-      "audienceAcc": 9036863,
-      "genres": [
-        "액션",
-        "어드벤처",
-        "판타지"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20260824",
-      "lastSeenAt": "20260929",
-      "days": 36,
-      "bestRank": 2,
-      "rank": null,
-      "audienceDay": null,
-      "runtime": 144,
-      "directors": [
-        "데스틴 다니엘 크리튼"
-      ],
-      "cast": [
-        "톰 홀랜드",
-        "젠데이아 콜먼",
-        "세이디 싱크",
-        "제이콥 배덜런",
-        "존 번탈",
-        "트라멜 틸먼"
-      ],
-      "producers": [],
-      "distributors": [
-        "소니픽쳐스엔터테인먼트코리아주식회사극장배급지점"
-      ],
-      "rating": "12세이상관람가",
-      "koficDetailFetched": true,
-      "koficDetailVersion": 3,
-      "poster": "assets/posters/20262770.webp",
-      "posterCredit": "TMDB",
-      "synopsis": "4년 전 소중한 사람들을 지키기 위해 모두의 기억에서 사라진 피터 파커. 친절한 이웃 스파이더맨으로서 뉴욕을 지키며 고독한 삶을 살아가던 피터는 어느 날, 예상치 못한 DNA 변이로 인해 통제 불가능한 힘에 사로잡히고 그의 진짜 정체를 알고 있는 적까지 마주하게 된다. 타인의 의식을 조종하는 정체불명의 존재로 인해 모두가 피터를 노리는 적이 될 수 있는 혼란 속에서 피터는 다시 위협에 빠진 MJ와 모두를 지키기 위해 스파이더맨으로 그들 앞에 서게 되는데...",
-      "synopsisCredit": "TMDB",
-      "tmdbId": 969681,
-      "score": 7.9,
-      "scoreBy": "TMDB",
-      "voteCount": 2906,
       "showing": false
     },
     {
@@ -2002,103 +2220,6 @@
       "score": 7.3,
       "scoreBy": "TMDB",
       "voteCount": 1501,
-      "showing": false
-    },
-    {
-      "movieCd": "20100810",
-      "title": "마루 밑 아리에티",
-      "titleEn": "The Secret World of Arrietty",
-      "titleOriginal": "借りぐらしのアリエッティ",
-      "openedAt": "2010-09-09",
-      "audienceAcc": 1088832,
-      "genres": [
-        "애니메이션"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20260824",
-      "lastSeenAt": "20260825",
-      "days": 2,
-      "bestRank": 9,
-      "rank": null,
-      "audienceDay": null,
-      "runtime": 94,
-      "directors": [
-        "요네바야시 히로마사"
-      ],
-      "cast": [
-        "시다 미라이",
-        "카미키 류노스케",
-        "미우라 토모카즈",
-        "이선영",
-        "엄상현",
-        "장광"
-      ],
-      "producers": [
-        "스튜디오 지브리"
-      ],
-      "distributors": [
-        "(주)넥스트엔터테인먼트월드(NEW)",
-        "씨제이엔터테인먼트"
-      ],
-      "rating": "전체관람가",
-      "koficDetailFetched": true,
-      "koficDetailVersion": 3,
-      "poster": "assets/posters/20100810.webp",
-      "posterCredit": "TMDB",
-      "synopsis": "교외에 위치한 오래된 저택의 마루 밑에는 인간들의 물건을 몰래 빌려 쓰며 살아가는 소인들이 살고 있다. 그들의 철칙은 인간에게 정체를 들키면 그 집을 당장 떠나야 한다는 것. 14살이 된 아리에티는 부모님의 도움 없이 홀로 인간 세상으로 뛰어든다. 첫 목표는 각설탕. 생쥐와 바퀴벌레의 방해 공작에도 무사히 각설탕을 손에 넣은 아리에티는 두 번째 목표인 티슈를 얻으러 간 방에서 요양을 온 소년 쇼우의 눈에 띄게 된다. 인간은 무서운 존재라고 생각했던 것과 달리 쇼우의 다정한 모습에 조금씩 마음을 열기 시작한 아리에티. 마루 밑 세계의 규칙을 어기고 쇼우에게 다가가던 어느 날, 아리에티 가족에게 예기치 않은 위험이 찾아오는데...",
-      "synopsisCredit": "TMDB",
-      "tmdbId": 51739,
-      "score": 7.7,
-      "scoreBy": "TMDB",
-      "voteCount": 3285,
-      "showing": false
-    },
-    {
-      "movieCd": "20264080",
-      "title": "워페어",
-      "titleEn": "Warfare",
-      "titleOriginal": "",
-      "openedAt": "2026-08-19",
-      "audienceAcc": 16374,
-      "genres": [
-        "액션",
-        "드라마",
-        "전쟁"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20260824",
-      "lastSeenAt": "20260825",
-      "days": 2,
-      "bestRank": 10,
-      "rank": null,
-      "audienceDay": null,
-      "runtime": 95,
-      "directors": [
-        "알렉스 가랜드"
-      ],
-      "cast": [
-        "조셉 퀸",
-        "찰스 멜튼",
-        "코스모 자비스",
-        "윌 폴터",
-        "테일러 존 스미스",
-        "노아 센티네오"
-      ],
-      "producers": [],
-      "distributors": [
-        "주식회사 올랄라스토리"
-      ],
-      "rating": "15세이상관람가",
-      "koficDetailFetched": true,
-      "koficDetailVersion": 3,
-      "poster": "assets/posters/20264080.webp",
-      "posterCredit": "TMDB",
-      "synopsis": "2006년 이라크 라마디, 미국 네이비 씰 알파 원 소대는 야간 정찰 임무 수행 중 현지 2층 주택을 점령해 OP1으로 삼는다. 통신병 레이 멘도사는 공중 지원팀과 교신하며 팀의 위치를 모니터링하고, 저격수인 의무병 엘리엇은 동료 저격수 프랭크와 함께 거리를 감시하고 있다. 이때, 한 발의 수류탄이 저격수의 방으로 날아들고 알파 원은 이라크 군의 집중 공격을 받는다. 급습으로 초토화가 된 상황, 폭발물로 중상을 입은 엘리엇과 부사관 샘을 안전하게 기지로 후송해야만 한다.",
-      "synopsisCredit": "TMDB",
-      "tmdbId": 1241436,
-      "score": 7.1,
-      "scoreBy": "TMDB",
-      "voteCount": 1628,
       "showing": false
     }
   ]

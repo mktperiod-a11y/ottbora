@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-08-28",
+  "checkedAt": "2026-10-07",
   "logos": [
     {
       "name": "위디스크",
@@ -12,14 +12,22 @@
       "source": "https://wimg.filejo.com/top/logo.gif"
     },
     {
-      "name": "미투디스크",
-      "file": "me2disk.jpg",
-      "source": "https://me2disk.com/images/main/me2disk_logo.jpg"
+      "name": "파일보고",
+      "file": "filebogo.png",
+      "source": "https://play-lh.googleusercontent.com/UOcf7G-s8FGHUoHIxVoJP5O2X8jrFOwfBtesFOpFJ8F6LoFg3zP3LN1TCQOqxwP3G_XaXydCDEXKdfioSFiD_g=w240-h480",
+      "note": "공식 Google Play 앱 아이콘을 assets/logos/에 저장"
     },
     {
-      "name": "파일캐스트",
-      "file": "filecast.png",
-      "source": "https://filecast.co.kr/static/_img/common/logo_common.png"
+      "name": "애플파일",
+      "file": "applefile.png",
+      "source": "https://play-lh.googleusercontent.com/2rWC7jqeMt8Sz8QqujzUhDlrZwFpqFiC037L3VSiCuxBIlmbVnZcE153kbVIdHS3CrFUlFIjF2lhgGdlvOYM=w240-h480",
+      "note": "공식 Google Play 앱 아이콘을 assets/logos/에 저장"
+    },
+    {
+      "name": "예스파일",
+      "file": "yesfile.png",
+      "source": "https://play-lh.googleusercontent.com/jHHc9Jb7Y3N565nKc-ekajw7E8r-VtBzpSB-u4dIpEgQdbeJGzyomXxnKS8KqD8VlVR71O5SiuzMWVjvfzoS=w240-h480",
+      "note": "공식 Google Play 앱 아이콘을 assets/logos/에 저장"
     },
     {
       "name": "파일썬",

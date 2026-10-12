@@ -1,17 +1,3 @@
-/**
- * TMDB에서 최근 한국 TV 프로그램을 받아 드라마/예능 후보를 자동 분류합니다.
- *
- * 출력: assets/tv-ranking.json
- * - 드라마: TMDB Drama 장르 중심
- * - 예능: Reality/Talk + 한국형 키워드 + whitelist/blacklist
- * - 순위: 각 분류 안에서 TMDB popularity 내림차순
- * - 저장 상한: 드라마 60편 + 예능 60편
- * - 종영작 보정: TV 상세 status/last_air_date/next_episode_to_air 확인
- * - 한국 제공처: TV 상세 watch/providers의 KR flatrate/free/ads 저장
- *
- * 외부 API가 실패하면 기존 파일을 보존하고 exit 0 합니다.
- * 기존 파일이 없으면 수동 content-data.json이 프론트 fallback 역할을 합니다.
- */
 
 import { readFile, writeFile } from "node:fs/promises";
 import { getJson } from "./lib/poster.mjs";
@@ -117,8 +103,6 @@ for (let page = 1; page <= PAGES; page += 1) {
 
 const uniq = [...new Map(raw.map((x) => [x.id, x])).values()];
 
-// whitelist는 단순 분류 보정이 아니라 Discover 후보에서 빠진 작품도
-// 강제로 후보군에 주입합니다. 수동 큐레이션으로 현재작임을 확인한 경우에만 씁니다.
 for (const id of white) {
   if (uniq.some((x) => x.id === id)) continue;
   try {
@@ -245,7 +229,6 @@ for (const x of detailTargets) {
     );
     detailById.set(x.id, detail);
   } catch (e) {
-    // 상세 조회가 잠깐 실패했다고 정상 후보를 버리지는 않습니다.
     detailById.set(x.id, { detailUnavailable: true });
     console.warn(`  상세 확인 실패 — ${x.name || x.id}: ${e.message}`);
   }
@@ -256,24 +239,12 @@ function withDetail(x) {
   return { ...x, ...(detailById.get(x.id) || {}) };
 }
 
-/*
- * 숏폼 드라마 플랫폼(Shortime·Vigloo·ReelShort 등)에서 나온 작품은 뺍니다.
- * 회당 1~2분짜리 세로 영상이라 TV 드라마와 나란히 두면 목록 성격이
- * 흐려지고, TMDB 인기도가 해외 팬 조회로 부풀어 위로 올라오기 쉽습니다.
- * 방송사(networks)는 상세 조회에서 오므로 withDetail 뒤에 거릅니다.
- * 방송사 하나라도 목록에 있으면 뺍니다(iQIYI + Shortime 공동 공개 등).
- */
 function fromExcludedNetwork(x) {
   return (x.networks || []).some((n) =>
     excludedNetworks.has(String(n?.name || n).trim().toLowerCase()),
   );
 }
 
-/*
- * 드라마만의 추가 조건. 방송사 정보가 없거나 YouTube 로만 공개된 작품은
- * 대개 1~6화짜리 소규모 웹드라마라 뺍니다. 예능에는 적용하지 않습니다
- * (유튜브 웹예능·방송사 정보만 빠진 정규 예능이 섞여 있어서).
- */
 const dramaExcluded = new Set(
   (rules.dramaExcludeNetworks || []).map((x) => String(x).trim().toLowerCase()),
 );
@@ -281,7 +252,6 @@ function keepAsDrama(x) {
   const names = (x.networks || [])
     .map((n) => String(n?.name || n).trim().toLowerCase())
     .filter(Boolean);
-  // 상세 조회가 잠깐 실패한 작품은 방송사를 모르니 이 조건으로 버리지 않습니다.
   if (x.detailUnavailable) return true;
   if (rules.dramaRequireNetwork && !names.length) return false;
   return !names.some((n) => dramaExcluded.has(n));
@@ -293,9 +263,6 @@ function currentlyRelevant(x) {
   if (x.next_episode_to_air) return true;
   if (dateWithin(x.last_air_date, LOOKBACK_DAYS)) return true;
 
-  // TMDB의 Returning Series / in_production 값은 오래된 웹예능에도
-  // 남아 있는 경우가 있어 이것만으로는 "현재성"을 보장하지 않습니다.
-  // 다음 방송일이 없으면 최근 방영 기록이 일정 기간 안에 있어야 유지합니다.
   const activeStatus =
     x.in_production ||
     ["Returning Series", "In Production", "Planned", "Pilot"].includes(x.status);

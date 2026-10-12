@@ -1,26 +1,7 @@
-/**
- * 검색엔진·AI 검색이 읽는 부분을 사이트 내용과 맞춰 둡니다.
- * "콘텐츠 갱신" 워크플로가 매일 실행합니다. 네트워크는 쓰지 않습니다.
- *
- *  1. 기준 월 — webhard.html 의 <head> 와 <time data-seo-month> 에 있는
- *     "YYYY년 M월" 을 이번 달로 바꿉니다. 순위는 매주 월요일 바뀌므로
- *     "이번 달 기준" 은 늘 사실입니다.
- *  2. 구조화 데이터 — webhard.html 의 JSON-LD 를 비교표와 FAQ 에서 다시
- *     만듭니다. 화면의 질문·답과 JSON-LD 가 어긋나면 검색엔진이 무시합니다.
- *  3. 홈 순위 기본 마크업 — 스크립트를 실행하지 않는 수집기(네이버·AI
- *     크롤러 일부)도 목록을 읽도록 #ranking 안에 미리 그려 둡니다.
- *  4. 수정일 — 페이지 내용이 실제로 바뀐 날만 assets/seo-state.json 에
- *     적고 dateModified·sitemap lastmod 에 씁니다. 기준 월만 바뀐 것은
- *     수정으로 치지 않습니다.
- *  5. sitemap.xml, llms.txt 를 새로 씁니다.
- *
- * 쓰임: node scripts/update-seo.mjs [--date=YYYY-MM-DD]
- */
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { createHash } from "node:crypto";
 import vm from "node:vm";
 
-// 사이트 주소. 저장소 뿌리의 CNAME(사용자 도메인)을 따르고, 없으면 GitHub Pages 주소.
 const SITE = existsSync("CNAME")
   ? `https://${readFileSync("CNAME", "utf8").trim()}/`
   : "https://mktperiod-a11y.github.io/ottbora/";
@@ -35,7 +16,6 @@ const write = (f, s) => {
   written.push(f);
 };
 
-// 오늘(한국 시간)
 const dateArg = process.argv.find((a) => a.startsWith("--date="));
 const today = dateArg
   ? dateArg.slice(7)
@@ -44,7 +24,6 @@ const [yyyy, mm] = today.split("-");
 const MONTH_LABEL = `${yyyy}년 ${Number(mm)}월`;
 const MONTH_RE = /20\d{2}년 (?:1[0-2]|[1-9])월/g;
 
-// ── HTML 조각 다루기 ─────────────────────────────────────────────
 const ENTITIES = {
   amp: "&",
   lt: "<",
@@ -80,7 +59,6 @@ const section = (html, id) =>
     `#${id} 구획`,
   );
 
-// ── 웹하드 자료 ─────────────────────────────────────────────────
 function loadRanking() {
   const window = {};
   vm.runInNewContext(read("assets/webhard-ranking.js"), {
@@ -93,7 +71,6 @@ function loadRanking() {
   return must(window.OTT_WEBHARD_RANKING, "OTT_WEBHARD_RANKING");
 }
 
-/** 비교표 행: 화면에 보이는 순서 그대로, 숨긴 예비 후보 포함. */
 function comparisonRows(html) {
   const tbody = must(
     section(html, "comparison").match(/<tbody>([\s\S]*?)<\/tbody>/)?.[1],
@@ -122,7 +99,6 @@ function comparisonRows(html) {
   );
 }
 
-/** 추천 이유 카드: 한 줄 소개·추천 대상·주요 특징·공식 주소. */
 function providerCards(html) {
   const cards = new Map();
   for (const [card, id] of section(html, "more").matchAll(
@@ -130,7 +106,6 @@ function providerCards(html) {
   )) {
     const href = card.match(/class="visit[^"]*"\s+href="([^"]+)"/)?.[1] || "";
     cards.set(id, {
-      // 이름 아래 한 줄 소개는 키워드 칩(<ul class="chips">)으로 바뀌었습니다.
       tagline: [
         ...(
           card.match(/<ul class="chips"[^>]*>([\s\S]*?)<\/ul>/)?.[1] || ""
@@ -152,7 +127,6 @@ function providerCards(html) {
   return cards;
 }
 
-/** go/<id>/ 이동 페이지면 실제 공식 주소를 읽어 옵니다. */
 function officialUrl(href) {
   if (!href.startsWith("go/")) return href;
   const page = read(`${href.replace(/\/?$/, "/")}index.html`);
@@ -208,7 +182,6 @@ const descriptionOf = (html) =>
   );
 const pageName = (html) => titleOf(html).replace(/\s+[-|]\s+오티티보라$/, "");
 
-// ── 1. 기준 월 ──────────────────────────────────────────────────
 function applyMonth(html) {
   const head = headOf(html);
   return html
@@ -219,8 +192,6 @@ function applyMonth(html) {
     );
 }
 
-// ── 4. 수정일 ───────────────────────────────────────────────────
-/** 기준 월·수정일·자동 생성 부분을 빼고 잰 내용 지문. */
 function fingerprint(files) {
   const h = createHash("sha1");
   for (const f of files) {
@@ -265,17 +236,14 @@ const PAGES = {
   },
 };
 
-// ── 실행 ────────────────────────────────────────────────────────
 const state = existsSync(ROOT + STATE_FILE) ? JSON.parse(read(STATE_FILE)) : {};
 const ranking = loadRanking();
 
-// 1·2. webhard.html
 let webhard = applyMonth(read("webhard.html"));
 const rows = comparisonRows(webhard);
 const cards = providerCards(webhard);
 const faq = faqItems(webhard);
 
-// 3. 홈 순위 기본 마크업: 비교표의 정적 순서에서 지금 후보인 곳만 DISPLAY_LIMIT 개.
 const active = new Set(ranking.allIds);
 const homeOrder = [
   ...rows.filter((r) => !r.hidden),
@@ -303,7 +271,6 @@ let index = read("index.html").replace(
 );
 must(index.includes("<!-- seo:ranking -->"), "index.html 의 seo:ranking 표시");
 
-// 2. webhard.html 구조화 데이터
 const url = `${SITE}webhard.html`;
 const graph = {
   "@context": "https://schema.org",
@@ -335,7 +302,6 @@ const graph = {
       name: pageName(webhard),
       description: descriptionOf(webhard),
       inLanguage: "ko-KR",
-      // 실제 날짜는 아래 dateModified 맞추기에서 씁니다.
       dateModified: state["webhard.html"]?.modified || today,
       isPartOf: { "@id": `${SITE}#website` },
       publisher: { "@id": `${SITE}#organization` },
@@ -346,7 +312,6 @@ const graph = {
       "@type": "ItemList",
       "@id": `${url}#list`,
       name: "오티티보라 웹하드 비교 후보",
-      // 추천 순서는 매주 월요일 바뀌므로 목록 자체는 순서 없는 후보 목록입니다.
       itemListOrder: "https://schema.org/ItemListUnordered",
       numberOfItems: rows.length,
       itemListElement: rows.map((r, i) => ({
@@ -380,7 +345,6 @@ webhard = webhard.replace(
   () => jsonLd,
 );
 
-// JSON-LD·홈 순위는 지문에서 빠지므로 먼저 써 두어도 됩니다.
 write("webhard.html", webhard);
 write("index.html", index);
 
@@ -395,7 +359,6 @@ for (const [path, page] of Object.entries(PAGES)) {
 }
 const modified = (path) => nextState[path].modified;
 
-// 모든 JSON-LD 의 dateModified 를 지문으로 정한 날짜에 맞춥니다.
 for (const [path, page] of Object.entries(PAGES)) {
   const html = read(page.html);
   write(
@@ -407,8 +370,6 @@ for (const [path, page] of Object.entries(PAGES)) {
   );
 }
 
-// 5. sitemap.xml
-// 손으로 넣은 작품 중 종영 후 만료된 것은 뺍니다(content.html 과 같은 규칙).
 const contentData = JSON.parse(read("assets/content-data.json"));
 const manualDate = (raw) => {
   const m = String(raw || "").match(/(\d{4})[.\-](\d{1,2})[.\-](\d{1,2})/);
@@ -454,7 +415,6 @@ write(
     `\n</urlset>\n`,
 );
 
-// 5. llms.txt — AI 검색이 인용하기 쉬운 요약
 const method = methodology(webhard);
 const listed = rows.map((r) => {
   const c = cards.get(r.id) || {};
