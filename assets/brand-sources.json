@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-07",
+  "checkedAt": "2026-10-12",
   "logos": [
     {
       "name": "위디스크",
@@ -14,20 +14,20 @@
     {
       "name": "파일보고",
       "file": "filebogo.png",
-      "source": "https://play-lh.googleusercontent.com/UOcf7G-s8FGHUoHIxVoJP5O2X8jrFOwfBtesFOpFJ8F6LoFg3zP3LN1TCQOqxwP3G_XaXydCDEXKdfioSFiD_g=w240-h480",
-      "note": "공식 Google Play 앱 아이콘을 assets/logos/에 저장"
+      "source": "https://wimg.filebogo.com/images_bogo/common/logo.png",
+      "note": "공식 홈페이지 상단(웹) 로고. 여백만 깎아 assets/logos/에 둠"
     },
     {
       "name": "애플파일",
       "file": "applefile.png",
-      "source": "https://play-lh.googleusercontent.com/2rWC7jqeMt8Sz8QqujzUhDlrZwFpqFiC037L3VSiCuxBIlmbVnZcE153kbVIdHS3CrFUlFIjF2lhgGdlvOYM=w240-h480",
-      "note": "공식 Google Play 앱 아이콘을 assets/logos/에 저장"
+      "source": "https://www.applefile.com/img/common/logo_applefile.png",
+      "note": "공식 홈페이지 상단(웹) 로고. 여백만 깎아 assets/logos/에 둠"
     },
     {
       "name": "예스파일",
       "file": "yesfile.png",
-      "source": "https://play-lh.googleusercontent.com/jHHc9Jb7Y3N565nKc-ekajw7E8r-VtBzpSB-u4dIpEgQdbeJGzyomXxnKS8KqD8VlVR71O5SiuzMWVjvfzoS=w240-h480",
-      "note": "공식 Google Play 앱 아이콘을 assets/logos/에 저장"
+      "source": "https://www.yesfile.com/img/main/top_logo.png",
+      "note": "공식 홈페이지 상단(웹) 로고. 여백만 깎아 assets/logos/에 둠"
     },
     {
       "name": "파일썬",
