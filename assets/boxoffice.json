@@ -2,7 +2,7 @@
   "note": "일별 박스오피스를 작품 단위로 누적한 목록입니다. 콘텐츠ZONE 의 영화·애니 탭에서 씁니다.",
   "source": "영화진흥위원회 오픈API 일별 박스오피스",
   "sourceUrl": "https://www.kobis.or.kr/kobisopenapi/",
-  "updatedAt": "2026-10-11",
+  "updatedAt": "2026-10-12",
   "latestDt": "20261011",
   "keepDays": 45,
   "movies": [
@@ -12,7 +12,7 @@
       "titleEn": "Chiikawa the Movie: The Secret of the Mermaid Island",
       "titleOriginal": "映画ちいかわ 人魚の島のひみつ",
       "openedAt": "2026-09-30",
-      "audienceAcc": 1281481,
+      "audienceAcc": 1281483,
       "genres": [
         "애니메이션"
       ],
@@ -22,7 +22,7 @@
       "days": 15,
       "bestRank": 1,
       "rank": 1,
-      "audienceDay": 119954,
+      "audienceDay": 119961,
       "runtime": 98,
       "directors": [
         "오이카와 케이"
@@ -58,7 +58,7 @@
       "titleEn": "The Assassin(s)",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 2992529,
+      "audienceAcc": 2992543,
       "genres": [
         "범죄",
         "드라마"
@@ -69,7 +69,7 @@
       "days": 21,
       "bestRank": 1,
       "rank": 2,
-      "audienceDay": 108032,
+      "audienceDay": 108047,
       "runtime": 130,
       "directors": [
         "허진호"
@@ -105,7 +105,7 @@
       "titleEn": "The Odyssey",
       "titleOriginal": "",
       "openedAt": "2026-08-05",
-      "audienceAcc": 12179163,
+      "audienceAcc": 12179160,
       "genres": [
         "액션",
         "드라마",
@@ -153,7 +153,7 @@
       "titleEn": "TAZZA: The Song of Beelzebub",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 1744153,
+      "audienceAcc": 1744160,
       "genres": [
         "범죄",
         "드라마"
@@ -164,7 +164,7 @@
       "days": 23,
       "bestRank": 1,
       "rank": 3,
-      "audienceDay": 53752,
+      "audienceDay": 53759,
       "runtime": 129,
       "directors": [
         "최국희"
@@ -202,7 +202,7 @@
       "titleEn": "Obsession",
       "titleOriginal": "",
       "openedAt": "2026-09-02",
-      "audienceAcc": 955134,
+      "audienceAcc": 955136,
       "genres": [
         "공포(호러)"
       ],
@@ -212,7 +212,7 @@
       "days": 39,
       "bestRank": 2,
       "rank": 9,
-      "audienceDay": 4467,
+      "audienceDay": 4469,
       "runtime": 108,
       "directors": [
         "커리 바커"
@@ -246,7 +246,7 @@
       "titleEn": "Look Back",
       "titleOriginal": "",
       "openedAt": "2026-10-08",
-      "audienceAcc": 62379,
+      "audienceAcc": 62383,
       "genres": [
         "드라마"
       ],
@@ -256,7 +256,7 @@
       "days": 4,
       "bestRank": 4,
       "rank": 6,
-      "audienceDay": 10733,
+      "audienceDay": 10737,
       "runtime": 100,
       "directors": [
         "고레에다 히로카즈"
@@ -290,7 +290,7 @@
       "titleEn": "REAWAKENED MAN",
       "titleOriginal": "",
       "openedAt": "2026-09-30",
-      "audienceAcc": 302354,
+      "audienceAcc": 302355,
       "genres": [
         "액션"
       ],
@@ -300,7 +300,7 @@
       "days": 14,
       "bestRank": 4,
       "rank": 5,
-      "audienceDay": 15182,
+      "audienceDay": 15183,
       "runtime": 101,
       "directors": [
         "백"
@@ -339,7 +339,7 @@
       "titleEn": "The Mouths",
       "titleOriginal": "",
       "openedAt": "2026-10-07",
-      "audienceAcc": 50471,
+      "audienceAcc": 50473,
       "genres": [
         "공포(호러)"
       ],
@@ -349,7 +349,7 @@
       "days": 5,
       "bestRank": 5,
       "rank": 7,
-      "audienceDay": 9346,
+      "audienceDay": 9349,
       "runtime": 88,
       "directors": [
         "시미즈 다카시"

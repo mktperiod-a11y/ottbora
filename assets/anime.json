@@ -4,7 +4,7 @@
   "sourceUrl": "https://anilist.co/",
   "rankedBy": "목록에 넣은 사람 수 순",
   "season": "1999 fall",
-  "updatedAt": "2026-10-11",
+  "updatedAt": "2026-10-12",
   "koreanTitles": "수동 보정 · TMDB · 자동 번역",
   "works": [
     {
@@ -25,7 +25,7 @@
       ],
       "episodes": null,
       "score": 8.7,
-      "members": 758608,
+      "members": 759071,
       "studio": "Toei Animation",
       "season": "1999 fall",
       "poster": "assets/posters/anime-21.webp",
@@ -116,7 +116,7 @@
       ],
       "episodes": null,
       "score": 8.2,
-      "members": 80529,
+      "members": 80574,
       "studio": "TMS Entertainment",
       "season": "1996 winter",
       "poster": "assets/posters/anime-235.webp",
