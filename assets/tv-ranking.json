@@ -78,7 +78,7 @@
       "nextAirDate": "2026-10-16",
       "runtime": null,
       "episodes": 12,
-      "score": 8.6,
+      "score": 8.5,
       "scoreBy": "TMDB",
       "networks": [
         "SBS"
@@ -129,7 +129,10 @@
         "유인식",
         "김윤진"
       ],
-      "providers": [],
+      "providers": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
       "poster": "https://image.tmdb.org/t/p/w500/wf7l8ZfGGkOKcQGF3Htt5DDhBxD.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
@@ -187,7 +190,7 @@
       "originalTitle": "연애박사",
       "type": "드라마",
       "rank": 5,
-      "popularity": 50.3602,
+      "popularity": 46.2603,
       "genres": [
         18,
         35
@@ -278,7 +281,7 @@
       "nextAirDate": "",
       "runtime": null,
       "episodes": 10,
-      "score": 7.4,
+      "score": 7.5,
       "scoreBy": "TMDB",
       "networks": [
         "TVING"
@@ -1064,12 +1067,12 @@
       ],
       "overview": "대한민국 최고의 연예인들이 곳곳에 있는 미션을 해결하고, 끊임없는 질주와 긴박감 넘치는 대결을 통해 대한민국 랜드마크들의 숨겨진 뒷모습을 전격 공개하는 프로그램",
       "firstAirDate": "2010-07-11",
-      "lastAirDate": "2026-10-04",
+      "lastAirDate": "2026-10-11",
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "2026-10-18",
       "runtime": 85,
-      "episodes": 825,
+      "episodes": 826,
       "score": 8.2,
       "scoreBy": "TMDB",
       "networks": [
@@ -1223,7 +1226,7 @@
       "originalTitle": "놀라운 토요일",
       "type": "예능",
       "rank": 5,
-      "popularity": 174.1766,
+      "popularity": 168.6845,
       "genres": [
         35,
         10764
@@ -3114,11 +3117,50 @@
       "metadataSource": "TMDB"
     },
     {
+      "tmdbId": 301379,
+      "title": "우리들의 발라드",
+      "originalTitle": "우리들의 발라드",
+      "type": "예능",
+      "rank": 54,
+      "popularity": 4.2142,
+      "genres": [
+        10764
+      ],
+      "overview": "요즘 아이들이 부르는 그 시절 너와 나의 노래!\n\n음악 전문가부터 일반 남녀노소까지 150명의 '탑백귀 대표단'이 대중픽 감별사로 나서 새로운 목소리를 찾는 집단 지성 음악 서바이벌 오디션!",
+      "firstAirDate": "2025-09-23",
+      "lastAirDate": "2025-12-09",
+      "status": "Returning Series",
+      "inProduction": true,
+      "nextAirDate": "2026-10-12",
+      "runtime": null,
+      "episodes": 12,
+      "score": 10,
+      "scoreBy": "TMDB",
+      "networks": [
+        "SBS",
+        "Netflix"
+      ],
+      "creators": [],
+      "providers": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "poster": "https://image.tmdb.org/t/p/w500/2aVyjksEovs1QdFk9pjCZkGKol5.jpg",
+      "posterCredit": "TMDB",
+      "rankingSource": {
+        "provider": "TMDB",
+        "metric": "popularity",
+        "rank": 54,
+        "observedAt": "2026-10-12"
+      },
+      "metadataSource": "TMDB"
+    },
+    {
       "tmdbId": 244601,
       "title": "더 커뮤니티",
       "originalTitle": "더 커뮤니티",
       "type": "예능",
-      "rank": 54,
+      "rank": 55,
       "popularity": 4.0479,
       "genres": [
         10764,
@@ -3126,7 +3168,7 @@
       ],
       "overview": "정치, 젠더, 계급, 사회윤리에 대한 서로 다른 생각을 가진 12인의 젊은 남녀가 9일 동안 합숙하며 리더를 선발하고 상금을 분배하는 정치 서바이벌 사회실험",
       "firstAirDate": "2024-01-26",
-      "lastAirDate": "2026-10-02",
+      "lastAirDate": "2026-10-09",
       "status": "Returning Series",
       "inProduction": true,
       "nextAirDate": "",
@@ -3148,7 +3190,7 @@
       "rankingSource": {
         "provider": "TMDB",
         "metric": "popularity",
-        "rank": 54,
+        "rank": 55,
         "observedAt": "2026-10-12"
       },
       "metadataSource": "TMDB"
@@ -3158,7 +3200,7 @@
       "title": "원티즈",
       "originalTitle": "원티즈",
       "type": "예능",
-      "rank": 55,
+      "rank": 56,
       "popularity": 4.0353,
       "genres": [
         10764
@@ -3183,7 +3225,7 @@
       "rankingSource": {
         "provider": "TMDB",
         "metric": "popularity",
-        "rank": 55,
+        "rank": 56,
         "observedAt": "2026-10-12"
       },
       "metadataSource": "TMDB"
@@ -3193,7 +3235,7 @@
       "title": "왕자와 거지",
       "originalTitle": "왕자와 거지",
       "type": "예능",
-      "rank": 56,
+      "rank": 57,
       "popularity": 3.8869,
       "genres": [
         10764
@@ -3220,7 +3262,7 @@
       "rankingSource": {
         "provider": "TMDB",
         "metric": "popularity",
-        "rank": 56,
+        "rank": 57,
         "observedAt": "2026-10-12"
       },
       "metadataSource": "TMDB"
@@ -3230,7 +3272,7 @@
       "title": "개와 늑대의 시간",
       "originalTitle": "개와 늑대의 시간",
       "type": "예능",
-      "rank": 57,
+      "rank": 58,
       "popularity": 3.835,
       "genres": [
         10764
@@ -3259,7 +3301,7 @@
       "rankingSource": {
         "provider": "TMDB",
         "metric": "popularity",
-        "rank": 57,
+        "rank": 58,
         "observedAt": "2026-10-12"
       },
       "metadataSource": "TMDB"
@@ -3269,7 +3311,7 @@
       "title": "구르미 다시 그린 달빛",
       "originalTitle": "구르미 다시 그린 달빛",
       "type": "예능",
-      "rank": 58,
+      "rank": 59,
       "popularity": 3.5225,
       "genres": [
         10764
@@ -3296,7 +3338,7 @@
       "rankingSource": {
         "provider": "TMDB",
         "metric": "popularity",
-        "rank": 58,
+        "rank": 59,
         "observedAt": "2026-10-12"
       },
       "metadataSource": "TMDB"
@@ -3306,7 +3348,7 @@
       "title": "우주떡집",
       "originalTitle": "우주떡집",
       "type": "예능",
-      "rank": 59,
+      "rank": 60,
       "popularity": 3.4068,
       "genres": [
         10764
@@ -3331,42 +3373,6 @@
         "TVING"
       ],
       "poster": "https://image.tmdb.org/t/p/w500/fj6x2sGpndSZVvoPfA8KzRT4xt.jpg",
-      "posterCredit": "TMDB",
-      "rankingSource": {
-        "provider": "TMDB",
-        "metric": "popularity",
-        "rank": 59,
-        "observedAt": "2026-10-12"
-      },
-      "metadataSource": "TMDB"
-    },
-    {
-      "tmdbId": 334553,
-      "title": "식스센스: B사이드",
-      "originalTitle": "식스센스: B사이드",
-      "type": "예능",
-      "rank": 60,
-      "popularity": 3.2239,
-      "genres": [
-        35,
-        10764
-      ],
-      "overview": "더 치밀해진 가짜 찾기. 정답은 언제나 그 뒷면에 숨어 있다. 반전에 반전을 거듭하는 추리 끝 '식스센스: B사이드'",
-      "firstAirDate": "2026-09-13",
-      "lastAirDate": "2026-10-04",
-      "status": "Returning Series",
-      "inProduction": true,
-      "nextAirDate": "2026-10-18",
-      "runtime": 90,
-      "episodes": 10,
-      "score": 8,
-      "scoreBy": "TMDB",
-      "networks": [
-        "tvN"
-      ],
-      "creators": [],
-      "providers": [],
-      "poster": "https://image.tmdb.org/t/p/w500/mGCQQlLobyKPianz2gU0vtVcnvT.jpg",
       "posterCredit": "TMDB",
       "rankingSource": {
         "provider": "TMDB",
