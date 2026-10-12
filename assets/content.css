@@ -508,3 +508,30 @@ button:focus-visible {
     min-height: 0;
   }
 }
+
+.update-status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.update-dot {
+  flex: 0 0 auto;
+  margin-left: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #36c66f;
+  box-shadow: 0 0 0 4px rgba(54, 198, 111, 0.12);
+}
+
+@media (max-width: 600px) {
+  .update-status {
+    margin-top: 8px;
+    font-size: 12px;
+  }
+}
