@@ -1,0 +1,134 @@
+[
+  {
+    "id": "filebogo",
+    "name": "파일보고",
+    "home": "https://www.filebogo.com/",
+    "candidates": [
+      {
+        "file": "01-img.png",
+        "kind": "img",
+        "note": "",
+        "url": "https://wimg.filebogo.com/images_bogo/common/logo.png",
+        "bytes": 4096,
+        "width": 224,
+        "height": 58
+      },
+      {
+        "file": "02-icon.png",
+        "kind": "icon",
+        "note": "shortcut icon",
+        "url": "https://wimg.filebogo.com/icon/16_logo.png",
+        "bytes": 1575,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "file": "03-icon.png",
+        "kind": "icon",
+        "note": "shortcut icon",
+        "url": "https://wimg.filebogo.com/icon/24_logo.png",
+        "bytes": 1900,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "file": "04-icon.png",
+        "kind": "icon",
+        "note": "shortcut icon",
+        "url": "https://wimg.filebogo.com/icon/256_logo.png",
+        "bytes": 10176,
+        "width": 256,
+        "height": 256
+      }
+    ],
+    "error": ""
+  },
+  {
+    "id": "applefile",
+    "name": "애플파일",
+    "home": "https://www.applefile.com/",
+    "candidates": [
+      {
+        "file": "01-css.png",
+        "kind": "css",
+        "note": ".header .logo a",
+        "url": "https://www.applefile.com/img/common/logo_applefile.png",
+        "bytes": 2078,
+        "width": 153,
+        "height": 33
+      },
+      {
+        "file": "02-og.png",
+        "kind": "og",
+        "note": "og:image",
+        "url": "https://www.applefile.com/img/applefile_og.png",
+        "bytes": 54538,
+        "width": 534,
+        "height": 279
+      },
+      {
+        "file": "03-icon.ico",
+        "kind": "icon",
+        "note": "shortcut icon",
+        "url": "https://applefile.com/favicon.ico",
+        "bytes": 9662,
+        "width": null,
+        "height": null
+      }
+    ],
+    "error": ""
+  },
+  {
+    "id": "yesfile",
+    "name": "예스파일",
+    "home": "https://www.yesfile.com/",
+    "candidates": [
+      {
+        "file": "01-ld.png",
+        "kind": "ld",
+        "note": "schema.org logo",
+        "url": "https://www.yesfile.com/img/yesfile_og.png",
+        "bytes": 63671,
+        "width": 534,
+        "height": 279
+      },
+      {
+        "file": "02-css.png",
+        "kind": "css",
+        "note": ".top_bar>div #yes_logo",
+        "url": "https://www.yesfile.com/img/main/top_logo.png",
+        "bytes": 2203,
+        "width": 179,
+        "height": 35
+      },
+      {
+        "file": "03-css.jpg",
+        "kind": "css",
+        "note": ".help_con>h1",
+        "url": "https://www.yesfile.com/img/contents/help/help_icon01.jpg",
+        "bytes": 11820,
+        "width": 10,
+        "height": 10
+      },
+      {
+        "file": "04-icon.ico",
+        "kind": "icon",
+        "note": "icon",
+        "url": "https://www.yesfile.com/img/favicon.ico",
+        "bytes": 1150,
+        "width": null,
+        "height": null
+      },
+      {
+        "file": "05-icon.ico",
+        "kind": "icon",
+        "note": "apple-touch-icon",
+        "url": "https://www.yesfile.com/img/favicon-touch-icon-180x180.ico",
+        "bytes": 133982,
+        "width": null,
+        "height": null
+      }
+    ],
+    "error": ""
+  }
+]
