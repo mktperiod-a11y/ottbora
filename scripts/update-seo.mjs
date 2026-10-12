@@ -2,9 +2,7 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { createHash } from "node:crypto";
 import vm from "node:vm";
 
-const SITE = existsSync("CNAME")
-  ? `https://${readFileSync("CNAME", "utf8").trim()}/`
-  : "https://mktperiod-a11y.github.io/ottbora/";
+const SITE = "https://site-url.invalid/";
 const ROOT = new URL("../", import.meta.url).pathname;
 const STATE_FILE = "assets/seo-state.json";
 

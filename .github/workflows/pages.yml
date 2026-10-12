@@ -1,0 +1,55 @@
+name: 사이트 배포
+
+on:
+  push:
+    branches: [main]
+  workflow_run:
+    workflows: ["콘텐츠 갱신"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - id: pages
+        uses: actions/configure-pages@v5
+      - name: 사이트 파일 모으기
+        env:
+          SITE_URL: ${{ steps.pages.outputs.base_url }}
+        run: |
+          set -euo pipefail
+          site="${SITE_URL%/}"
+          [ -n "$site" ] || { echo "Pages 설정에서 사이트 주소를 받지 못했습니다"; exit 1; }
+          mkdir _site
+          git ls-files -z \
+            | grep -zvE '^(\.github|\.claude|\.agents|scripts)/|^(package\.json|package-lock\.json|skills-lock\.json|\.gitignore)$' \
+            | xargs -0 cp --parents -t _site
+          grep -rlZ 'https://site-url.invalid/' _site | xargs -0 -r sed -i "s#https://site-url.invalid/#${site}/#g"
+          if grep -rlq 'site-url.invalid' _site; then echo "사이트 주소가 바뀌지 않은 파일이 있습니다"; exit 1; fi
+          echo "배포 파일 $(find _site -type f | wc -l)개"
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
