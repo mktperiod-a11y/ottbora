@@ -119,7 +119,10 @@
         }
       })();
 
-      const id = new URLSearchParams(location.search).get("id") || "";
+      const id =
+        new URLSearchParams(location.search).get("id") ||
+        document.documentElement.dataset.workId ||
+        "";
 
       const TMDB_TV_GENRE = {
         10759: "액션",
@@ -578,8 +581,7 @@
 
       function applySeo(w) {
         const url =
-          "https://site-url.invalid/content-detail.html?id=" +
-          encodeURIComponent(id);
+          "https://site-url.invalid/content/" + encodeURIComponent(id) + ".html";
         const about = String(w.synopsisText || w.tagline || "")
           .replace(/\s+/g, " ")
           .trim();
@@ -606,6 +608,23 @@
           document.head.appendChild(document.createElement("link"));
         link.rel = "canonical";
         link.href = url;
+
+        const ld =
+          document.head.querySelector("#work-ld") ||
+          document.head.appendChild(document.createElement("script"));
+        ld.id = "work-ld";
+        ld.type = "application/ld+json";
+        ld.textContent = JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": w.type === "영화" ? "Movie" : "TVSeries",
+          name: w.title,
+          url,
+          description,
+          ...(w.poster && !w.poster.startsWith("data:")
+            ? { image: new URL(w.poster, url.replace(/content\/[^/]*$/, "")).href }
+            : {}),
+          inLanguage: "ko",
+        });
       }
 
       Promise.all([
@@ -628,7 +647,7 @@
             return;
           }
 
-          document.title = w.title + " | 콘텐츠ZONE - 오티티보라";
+          document.title = w.title + " 줄거리·정보 | 콘텐츠ZONE - 오티티보라";
           applySeo(w);
           const img = document.querySelector("#poster");
           img.src = w.poster || FALLBACK;
@@ -660,7 +679,7 @@
             a.target = "_blank";
             a.rel = "noopener noreferrer";
             a.textContent = w.official.label || "공식 작품 정보 보기 →";
-            document.querySelector("#official-action").appendChild(a);
+            document.querySelector("#official-action").replaceChildren(a);
           }
 
           const credits = [
