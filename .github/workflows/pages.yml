@@ -40,6 +40,18 @@ jobs:
           grep -rlZ 'https://site-url.invalid/' _site | xargs -0 -r sed -i "s#https://site-url.invalid/#${site}/#g"
           if grep -rlq 'site-url.invalid' _site; then echo "사이트 주소가 바뀌지 않은 파일이 있습니다"; exit 1; fi
           echo "배포 파일 $(find _site -type f | wc -l)개"
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "24"
+      - name: 작품 페이지 미리 만들기
+        env:
+          SITE_URL: ${{ steps.pages.outputs.base_url }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/pw"
+          npm install --prefix "$RUNNER_TEMP/pw" --no-save --no-package-lock playwright@1.56.1
+          "$RUNNER_TEMP/pw/node_modules/.bin/playwright" install --with-deps chromium
+          PLAYWRIGHT_MODULE="$RUNNER_TEMP/pw/node_modules/playwright/index.mjs" node scripts/prerender.mjs _site
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
