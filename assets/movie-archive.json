@@ -3,6 +3,51 @@
   "source": "영화진흥위원회 오픈API 일별 박스오피스",
   "movies": [
     {
+      "movieCd": "20264715",
+      "title": "드라큘라: 러브 테일",
+      "titleEn": "Dracula: A Love Tale",
+      "titleOriginal": "",
+      "openedAt": "2026-08-26",
+      "audienceAcc": 8527,
+      "genres": [
+        "판타지",
+        "멜로/로맨스",
+        "공포(호러)"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260826",
+      "lastSeenAt": "20260828",
+      "days": 3,
+      "bestRank": 8,
+      "rank": null,
+      "audienceDay": null,
+      "runtime": 128,
+      "directors": [
+        "뤽 베송"
+      ],
+      "cast": [
+        "케일럽 랜드리 존스",
+        "크리스토프 왈츠",
+        "조이 블루"
+      ],
+      "producers": [],
+      "distributors": [
+        "와이드 릴리즈(주)"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20264715.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "15세기, 전쟁으로 연인을 잃은 남자. 신을 버린 저주로 불멸의 드라큘라가 되고 그녀를 되찾기 위해 세상을 떠돈다. 400년의 기다림. 죽음도, 시간도, 신의 저주도 끝내 막지 못한 운명을 다시 만나는데…",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1246049,
+      "score": 7.3,
+      "scoreBy": "TMDB",
+      "voteCount": 1501,
+      "showing": false
+    },
+    {
       "movieCd": "20100810",
       "title": "마루 밑 아리에티",
       "titleEn": "The Secret World of Arrietty",
