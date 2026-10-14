@@ -5,18 +5,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="robots" content="noindex" />
     <title>페이지를 찾을 수 없어요 | 오티티보라</title>
-    <script>
-      (() => {
-        const root = location.pathname.startsWith("/ottbora/") ? "/ottbora/" : "/";
-        document.write(
-          `<base href="${root}">` +
-            `<link rel="icon" href="${root}assets/favicon.svg" type="image/svg+xml">` +
-            ["fonts/gmarketsans/gmarketsans.css", "fonts/pretendard/pretendardvariable-dynamic-subset.css", "site.css?v=20260928-2"]
-              .map((f) => `<link rel="stylesheet" href="${root}assets/${f}">`)
-              .join(""),
-        );
-      })();
-    </script>
+    <base href="/" />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/assets/fonts/gmarketsans/gmarketsans.css" />
+    <link rel="stylesheet" href="/assets/fonts/pretendard/pretendardvariable-dynamic-subset.css" />
+    <link rel="stylesheet" href="/assets/site.css?v=20260928-2" />
     <style>
       .notfound {
         display: grid;
