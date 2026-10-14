@@ -3,6 +3,52 @@
   "source": "영화진흥위원회 오픈API 일별 박스오피스",
   "movies": [
     {
+      "movieCd": "20253289",
+      "title": "극장판 귀멸의 칼날: 무한성편",
+      "titleEn": "Demon Slayer: Kimetsu No Yaiba Infinity Castle Arc",
+      "titleOriginal": "",
+      "openedAt": "2025-08-22",
+      "audienceAcc": 5822719,
+      "genres": [
+        "애니메이션"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260826",
+      "lastSeenAt": "20260829",
+      "days": 2,
+      "bestRank": 9,
+      "rank": null,
+      "audienceDay": null,
+      "runtime": 155,
+      "directors": [
+        "소토자키 하루오"
+      ],
+      "cast": [
+        "하나에 나츠키",
+        "키토 아카리",
+        "시모노 히로",
+        "마츠오카 요시츠구",
+        "오카모토 노부히코",
+        "사쿠라이 타카히로"
+      ],
+      "producers": [],
+      "distributors": [
+        "(주)씨제이이엔엠"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20253289.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "혈귀로 변해버린 여동생 네즈코를 인간으로 되돌리기 위해 혈귀를 사냥하는 조직인 《귀살대》에 입대한 카마도 탄지로. 입대 후 동료인 아가츠마 젠이츠, 하시비라 이노스케와 함께 많은 혈귀와 싸우고, 성장하면서 세 사람의 우정과 유대는 깊어진다. 탄지로는 《귀살대》 최고위 검사인 《주》와도 함께 싸웠다. 「무한열차」에서는 염주・렌고쿠 쿄쥬로, 「유곽」에서는 음주・우즈이 텐겐, 「도공 마을」에서는 하주・토키토 무이치로, 연주・칸로지 미츠리와 함께 혈귀를 상대로 격렬한 전투를 벌였다. 그 후 다가올 혈귀와의 결전에 대비해 귀살대원들과 함께 《주》가 주도하는 합동 강화 훈련에 참가해 훈련을 받던 도중 《귀살대》의 본부인 우부야시키 저택에 나타난 키부츠지 무잔. 어르신의 위기에 달려온 《주》들과 탄지로였지만, 무잔의 술수로 의문의 공간으로 떨어지고 말았는데. 탄지로 일행이 떨어진 곳, 그곳은 혈귀의 본거지 《무한성》─ “귀살대”와 “혈귀”의 최종 결전의 포문이 열린다.",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1311031,
+      "score": 8.8,
+      "scoreBy": "TMDB",
+      "voteCount": 2191,
+      "showing": false
+    },
+    {
       "movieCd": "20264715",
       "title": "드라큘라: 러브 테일",
       "titleEn": "Dracula: A Love Tale",
@@ -44,8 +90,7 @@
       "tmdbId": 1246049,
       "score": 7.3,
       "scoreBy": "TMDB",
-      "voteCount": 1501,
-      "showing": false
+      "voteCount": 1501
     },
     {
       "movieCd": "20100810",
