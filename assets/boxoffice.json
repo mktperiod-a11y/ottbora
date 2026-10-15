@@ -2,8 +2,8 @@
   "note": "일별 박스오피스를 작품 단위로 누적한 목록입니다. 콘텐츠ZONE 의 영화·애니 탭에서 씁니다.",
   "source": "영화진흥위원회 오픈API 일별 박스오피스",
   "sourceUrl": "https://www.kobis.or.kr/kobisopenapi/",
-  "updatedAt": "2026-10-14",
-  "latestDt": "20261014",
+  "updatedAt": "2026-10-15",
+  "latestDt": "20261015",
   "keepDays": 45,
   "movies": [
     {
@@ -12,17 +12,17 @@
       "titleEn": "Chiikawa the Movie: The Secret of the Mermaid Island",
       "titleOriginal": "映画ちいかわ 人魚の島のひみつ",
       "openedAt": "2026-09-30",
-      "audienceAcc": 1415011,
+      "audienceAcc": 1450439,
       "genres": [
         "애니메이션"
       ],
       "type": "영화",
       "firstSeenAt": "20260919",
-      "lastSeenAt": "20261014",
-      "days": 18,
+      "lastSeenAt": "20261015",
+      "days": 19,
       "bestRank": 1,
       "rank": 1,
-      "audienceDay": 75229,
+      "audienceDay": 35414,
       "runtime": 98,
       "directors": [
         "오이카와 케이"
@@ -58,18 +58,18 @@
       "titleEn": "The Assassin(s)",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 3085553,
+      "audienceAcc": 3109145,
       "genres": [
         "범죄",
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260917",
-      "lastSeenAt": "20261014",
-      "days": 24,
+      "lastSeenAt": "20261015",
+      "days": 25,
       "bestRank": 1,
       "rank": 2,
-      "audienceDay": 28188,
+      "audienceDay": 23494,
       "runtime": 130,
       "directors": [
         "허진호"
@@ -105,7 +105,7 @@
       "titleEn": "The Odyssey",
       "titleOriginal": "",
       "openedAt": "2026-08-05",
-      "audienceAcc": 12206638,
+      "audienceAcc": 12215226,
       "genres": [
         "액션",
         "드라마",
@@ -113,11 +113,11 @@
       ],
       "type": "영화",
       "firstSeenAt": "20260824",
-      "lastSeenAt": "20261014",
-      "days": 51,
+      "lastSeenAt": "20261015",
+      "days": 52,
       "bestRank": 1,
-      "rank": 7,
-      "audienceDay": 8842,
+      "rank": 4,
+      "audienceDay": 8608,
       "runtime": 172,
       "directors": [
         "크리스토퍼 놀란"
@@ -153,17 +153,17 @@
       "titleEn": "The Intern",
       "titleOriginal": "",
       "openedAt": "2026-09-16",
-      "audienceAcc": 881840,
+      "audienceAcc": 886190,
       "genres": [
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260904",
-      "lastSeenAt": "20261014",
-      "days": 28,
+      "lastSeenAt": "20261015",
+      "days": 29,
       "bestRank": 1,
-      "rank": 9,
-      "audienceDay": 3364,
+      "rank": 8,
+      "audienceDay": 4506,
       "runtime": 132,
       "directors": [
         "김도영"
@@ -202,18 +202,18 @@
       "titleEn": "TAZZA: The Song of Beelzebub",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 1800344,
+      "audienceAcc": 1816884,
       "genres": [
         "범죄",
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260914",
-      "lastSeenAt": "20261014",
-      "days": 26,
+      "lastSeenAt": "20261015",
+      "days": 27,
       "bestRank": 1,
       "rank": 3,
-      "audienceDay": 17043,
+      "audienceDay": 16533,
       "runtime": 129,
       "directors": [
         "최국희"
@@ -251,17 +251,17 @@
       "titleEn": "Look Back",
       "titleOriginal": "",
       "openedAt": "2026-10-08",
-      "audienceAcc": 77263,
+      "audienceAcc": 80731,
       "genres": [
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20261008",
-      "lastSeenAt": "20261014",
-      "days": 7,
+      "lastSeenAt": "20261015",
+      "days": 8,
       "bestRank": 4,
-      "rank": 8,
-      "audienceDay": 6041,
+      "rank": 9,
+      "audienceDay": 3468,
       "runtime": 100,
       "directors": [
         "고레에다 히로카즈"
@@ -290,6 +290,182 @@
       "showing": true
     },
     {
+      "movieCd": "20266263",
+      "title": "전자오락수호대",
+      "titleEn": "Guardians of the Video Game",
+      "titleOriginal": "",
+      "openedAt": "2026-10-14",
+      "audienceAcc": 20221,
+      "genres": [
+        "애니메이션"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20261014",
+      "lastSeenAt": "20261015",
+      "days": 2,
+      "bestRank": 4,
+      "rank": 7,
+      "audienceDay": 5530,
+      "runtime": 110,
+      "directors": [
+        "엄영식"
+      ],
+      "cast": [],
+      "producers": [
+        "(주)로커스"
+      ],
+      "distributors": [
+        "(주)로커스",
+        "씨제이 씨지브이(CJ CGV)(주)"
+      ],
+      "rating": "12세이상관람가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20266263.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "플레이어가 게임을 즐길 수 있도록 무대 뒤에서 세팅하는 비밀 조직 ‘전자오락수호대’. 게임 속 모든 것을 만드는 그들의 최우선 수칙은 보안 유지다. “절대로 게임 플레이어에게 정체를 들키지 말 것!” 모바일 게임 부서의 최연소 팀장 승진을 앞둔 사내 최고 에이스 요원 ‘패치’. 하지만 의문의 음모에 휘말려 망해가는 고전 게임 부서 ‘용검 전설’로 좌천되고 만다. 설상가상 마을을 청소하던 패치의 실수로 게임의 핵심 아이템 ‘용검’이 버려지고 아무도 찾지 않던 ‘용검 전설’에 마침 새로운 플레이어 ‘용사’가 접속하는데…! 과연 ‘패치’는 게임의 강제 종료를 막고, ‘용사’를 무사히 엔딩까지 이끌 수 있을까? 극악의 난이도로 돌아온 전설적인 게임이 다시 시작된다!",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1688392,
+      "score": null,
+      "scoreBy": "",
+      "voteCount": null,
+      "showing": true
+    },
+    {
+      "movieCd": "20263410",
+      "title": "스트리트 파이터",
+      "titleEn": "Street Fighter",
+      "titleOriginal": "",
+      "openedAt": "2026-10-14",
+      "audienceAcc": 18104,
+      "genres": [
+        "액션"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20261014",
+      "lastSeenAt": "20261015",
+      "days": 2,
+      "bestRank": 5,
+      "rank": 5,
+      "audienceDay": 7061,
+      "runtime": 119,
+      "directors": [
+        "키타오 사쿠라이"
+      ],
+      "cast": [
+        "앤드류 코지",
+        "노아 센티네오",
+        "칼리나 리앙",
+        "제이슨 모모아",
+        "데이비드 다스트말치안"
+      ],
+      "producers": [],
+      "distributors": [
+        "롯데컬처웍스(주)롯데엔터테인먼트"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20263410.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "1993년, 숙명의 라이벌 류와 켄은 미스터리한 여성 춘리의 제안으로 세계 최강의 파이터들이 모인 '월드 워리어 토너먼트'에 참여하게 된다. 라운드가 거듭될수록 두 사람은 목숨을 건 배틀 로얄 속에 숨겨진 거대한 음모의 실체를 마주하게 되는데…",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1153576,
+      "score": 6,
+      "scoreBy": "TMDB",
+      "voteCount": 7,
+      "showing": true
+    },
+    {
+      "movieCd": "20266610",
+      "title": "입에 대한 앙케트",
+      "titleEn": "The Mouths",
+      "titleOriginal": "",
+      "openedAt": "2026-10-07",
+      "audienceAcc": 62125,
+      "genres": [
+        "공포(호러)"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20261007",
+      "lastSeenAt": "20261015",
+      "days": 8,
+      "bestRank": 5,
+      "rank": 10,
+      "audienceDay": 2685,
+      "runtime": 88,
+      "directors": [
+        "시미즈 다카시"
+      ],
+      "cast": [
+        "츠나 케이토",
+        "요시카와 아이미"
+      ],
+      "producers": [],
+      "distributors": [
+        "(주)바이포엠스튜디오"
+      ],
+      "rating": "15세이상관람가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20266610.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "“그날 밤, 무슨 일이 있었는지 말씀드릴게요” 심령 명소로 유명한 묘지. 그곳에 저주받은 나무가 있다는 괴담에 이끌려 ‘쇼타’ 일행은 담력 시험에 나선다. 그리고 다음 날, 일행 중 한 명이 흔적도 없이 사라진다. 그날 이후, 남겨진 친구들의 주변에서 알 수 없는 일들이 하나둘씩 벌어지기 시작하는데… 사라진 한 명, 남겨진 5명의 증언. 증언이 쌓일수록 섬뜩한 진실이 드러난다.",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1587473,
+      "score": 7,
+      "scoreBy": "TMDB",
+      "voteCount": 1,
+      "showing": true
+    },
+    {
+      "movieCd": "20264444",
+      "title": " 웨일폴: 고래에 먹힌 남자",
+      "titleEn": "Whalefall",
+      "titleOriginal": "",
+      "openedAt": "2026-10-14",
+      "audienceAcc": 17721,
+      "genres": [
+        "어드벤처",
+        "스릴러"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20261014",
+      "lastSeenAt": "20261015",
+      "days": 2,
+      "bestRank": 6,
+      "rank": 6,
+      "audienceDay": 6945,
+      "runtime": 105,
+      "directors": [
+        "브라이언 더필드"
+      ],
+      "cast": [
+        "오스틴 에이브람스",
+        "조슈 브롤린",
+        "엘리자베스 슈",
+        "존 오티즈",
+        "제인 레비",
+        "에밀리 러드"
+      ],
+      "producers": [],
+      "distributors": [
+        "월트디즈니컴퍼니코리아 유한책임회사"
+      ],
+      "rating": "12세이상관람가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20264444.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "사라진 아버지의 유해를 찾기 위해 바다로 뛰어든 다이버 ‘제이’. 하지만 심해에서 거센 물살에 휩쓸려 무게 60톤, 길이 24m에 다르는 거대한 향유고래에게 산 채로 먹히고 만다. 공기 탱크의 잔압계는 점점 빠르게 줄어들고, 빠져나갈 곳도, 멈출 수도 없는 살아있는 고래 뱃속에서 살아남기 위한 필사의 사투를 벌이는데…",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1255833,
+      "score": 9.3,
+      "scoreBy": "TMDB",
+      "voteCount": 3,
+      "showing": true
+    },
+    {
       "movieCd": "20224573",
       "title": "부활남: 더 레드",
       "titleEn": "REAWAKENED MAN",
@@ -304,8 +480,8 @@
       "lastSeenAt": "20261014",
       "days": 17,
       "bestRank": 4,
-      "rank": 10,
-      "audienceDay": 3266,
+      "rank": null,
+      "audienceDay": null,
       "runtime": 101,
       "directors": [
         "백"
@@ -336,138 +512,7 @@
       "score": 5,
       "scoreBy": "TMDB",
       "voteCount": 1,
-      "showing": true
-    },
-    {
-      "movieCd": "20266263",
-      "title": "전자오락수호대",
-      "titleEn": "Guardians of the Video Game",
-      "titleOriginal": "",
-      "openedAt": "2026-10-14",
-      "audienceAcc": 14691,
-      "genres": [
-        "애니메이션"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20261014",
-      "lastSeenAt": "20261014",
-      "days": 1,
-      "bestRank": 4,
-      "rank": 4,
-      "audienceDay": 11037,
-      "runtime": 110,
-      "directors": [
-        "엄영식"
-      ],
-      "cast": [],
-      "producers": [
-        "(주)로커스"
-      ],
-      "distributors": [
-        "(주)로커스",
-        "씨제이 씨지브이(CJ CGV)(주)"
-      ],
-      "rating": "12세이상관람가",
-      "koficDetailFetched": true,
-      "koficDetailVersion": 3,
-      "showing": true,
-      "synopsis": "플레이어가 게임을 즐길 수 있도록 무대 뒤에서 세팅하는 비밀 조직 ‘전자오락수호대’. 게임 속 모든 것을 만드는 그들의 최우선 수칙은 보안 유지다. “절대로 게임 플레이어에게 정체를 들키지 말 것!” 모바일 게임 부서의 최연소 팀장 승진을 앞둔 사내 최고 에이스 요원 ‘패치’. 하지만 의문의 음모에 휘말려 망해가는 고전 게임 부서 ‘용검 전설’로 좌천되고 만다. 설상가상 마을을 청소하던 패치의 실수로 게임의 핵심 아이템 ‘용검’이 버려지고 아무도 찾지 않던 ‘용검 전설’에 마침 새로운 플레이어 ‘용사’가 접속하는데…! 과연 ‘패치’는 게임의 강제 종료를 막고, ‘용사’를 무사히 엔딩까지 이끌 수 있을까? 극악의 난이도로 돌아온 전설적인 게임이 다시 시작된다!",
-      "synopsisCredit": "TMDB",
-      "tmdbId": 1688392,
-      "poster": "assets/posters/20266263.webp",
-      "posterCredit": "TMDB"
-    },
-    {
-      "movieCd": "20263410",
-      "title": "스트리트 파이터",
-      "titleEn": "Street Fighter",
-      "titleOriginal": "",
-      "openedAt": "2026-10-14",
-      "audienceAcc": 11040,
-      "genres": [
-        "액션"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20261014",
-      "lastSeenAt": "20261014",
-      "days": 1,
-      "bestRank": 5,
-      "rank": 5,
-      "audienceDay": 10526,
-      "runtime": 119,
-      "directors": [
-        "키타오 사쿠라이"
-      ],
-      "cast": [
-        "앤드류 코지",
-        "노아 센티네오",
-        "칼리나 리앙",
-        "제이슨 모모아",
-        "데이비드 다스트말치안"
-      ],
-      "producers": [],
-      "distributors": [
-        "롯데컬처웍스(주)롯데엔터테인먼트"
-      ],
-      "rating": "15세이상관람가",
-      "koficDetailFetched": true,
-      "koficDetailVersion": 3,
-      "showing": true,
-      "synopsis": "1993년, 숙명의 라이벌 류와 켄은 미스터리한 여성 춘리의 제안으로 세계 최강의 파이터들이 모인 '월드 워리어 토너먼트'에 참여하게 된다. 라운드가 거듭될수록 두 사람은 목숨을 건 배틀 로얄 속에 숨겨진 거대한 음모의 실체를 마주하게 되는데…",
-      "synopsisCredit": "TMDB",
-      "tmdbId": 1153576,
-      "score": 6,
-      "scoreBy": "TMDB",
-      "voteCount": 7,
-      "poster": "assets/posters/20263410.webp",
-      "posterCredit": "TMDB"
-    },
-    {
-      "movieCd": "20264444",
-      "title": " 웨일폴: 고래에 먹힌 남자",
-      "titleEn": "Whalefall",
-      "titleOriginal": "",
-      "openedAt": "2026-10-14",
-      "audienceAcc": 9684,
-      "genres": [
-        "어드벤처",
-        "스릴러"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20261014",
-      "lastSeenAt": "20261014",
-      "days": 1,
-      "bestRank": 6,
-      "rank": 6,
-      "audienceDay": 9395,
-      "runtime": 105,
-      "directors": [
-        "브라이언 더필드"
-      ],
-      "cast": [
-        "오스틴 에이브람스",
-        "조슈 브롤린",
-        "엘리자베스 슈",
-        "존 오티즈",
-        "제인 레비",
-        "에밀리 러드"
-      ],
-      "producers": [],
-      "distributors": [
-        "월트디즈니컴퍼니코리아 유한책임회사"
-      ],
-      "rating": "12세이상관람가",
-      "koficDetailFetched": true,
-      "koficDetailVersion": 3,
-      "showing": true,
-      "synopsis": "사라진 아버지의 유해를 찾기 위해 바다로 뛰어든 다이버 ‘제이’. 하지만 심해에서 거센 물살에 휩쓸려 무게 60톤, 길이 24m에 다르는 거대한 향유고래에게 산 채로 먹히고 만다. 공기 탱크의 잔압계는 점점 빠르게 줄어들고, 빠져나갈 곳도, 멈출 수도 없는 살아있는 고래 뱃속에서 살아남기 위한 필사의 사투를 벌이는데…",
-      "synopsisCredit": "TMDB",
-      "tmdbId": 1255833,
-      "score": 9.3,
-      "scoreBy": "TMDB",
-      "voteCount": 3,
-      "poster": "assets/posters/20264444.webp",
-      "posterCredit": "TMDB"
+      "showing": false
     },
     {
       "movieCd": "20265146",
@@ -511,48 +556,6 @@
       "score": 8.2,
       "scoreBy": "TMDB",
       "voteCount": 5771,
-      "showing": false
-    },
-    {
-      "movieCd": "20266610",
-      "title": "입에 대한 앙케트",
-      "titleEn": "The Mouths",
-      "titleOriginal": "",
-      "openedAt": "2026-10-07",
-      "audienceAcc": 57289,
-      "genres": [
-        "공포(호러)"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20261007",
-      "lastSeenAt": "20261013",
-      "days": 7,
-      "bestRank": 5,
-      "rank": null,
-      "audienceDay": null,
-      "runtime": 88,
-      "directors": [
-        "시미즈 다카시"
-      ],
-      "cast": [
-        "츠나 케이토",
-        "요시카와 아이미"
-      ],
-      "producers": [],
-      "distributors": [
-        "(주)바이포엠스튜디오"
-      ],
-      "rating": "15세이상관람가",
-      "koficDetailFetched": true,
-      "koficDetailVersion": 3,
-      "poster": "assets/posters/20266610.webp",
-      "posterCredit": "TMDB",
-      "synopsis": "“그날 밤, 무슨 일이 있었는지 말씀드릴게요” 심령 명소로 유명한 묘지. 그곳에 저주받은 나무가 있다는 괴담에 이끌려 ‘쇼타’ 일행은 담력 시험에 나선다. 그리고 다음 날, 일행 중 한 명이 흔적도 없이 사라진다. 그날 이후, 남겨진 친구들의 주변에서 알 수 없는 일들이 하나둘씩 벌어지기 시작하는데… 사라진 한 명, 남겨진 5명의 증언. 증언이 쌓일수록 섬뜩한 진실이 드러난다.",
-      "synopsisCredit": "TMDB",
-      "tmdbId": 1587473,
-      "score": 7,
-      "scoreBy": "TMDB",
-      "voteCount": 1,
       "showing": false
     },
     {
@@ -2164,102 +2167,6 @@
       "score": 6.6,
       "scoreBy": "TMDB",
       "voteCount": 294,
-      "showing": false
-    },
-    {
-      "movieCd": "20262945",
-      "title": "퍼피 구조대: 더 다이노 무비",
-      "titleEn": "PAW Patrol: The Dino Movie",
-      "titleOriginal": "",
-      "openedAt": "2026-08-13",
-      "audienceAcc": 106540,
-      "genres": [
-        "애니메이션"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20260829",
-      "lastSeenAt": "20260830",
-      "days": 2,
-      "bestRank": 8,
-      "rank": null,
-      "audienceDay": null,
-      "runtime": 88,
-      "directors": [
-        "캘런 브런커"
-      ],
-      "cast": [
-        "은영선",
-        "문남숙",
-        "정선혜",
-        "박지윤",
-        "신용우",
-        "전숙경"
-      ],
-      "producers": [
-        "파라마운트 픽쳐스"
-      ],
-      "distributors": [
-        "롯데컬처웍스(주)롯데엔터테인먼트"
-      ],
-      "rating": "전체관람가",
-      "koficDetailFetched": true,
-      "koficDetailVersion": 3,
-      "poster": "assets/posters/20262945.webp",
-      "posterCredit": "TMDB",
-      "synopsis": "신비한 폭풍에 휩쓸려 공룡들이 살아 숨쉬는 미지의 섬에 불시착한 퍼피 구조대와 포기를 모르는 용감한 소방견 ‘마셜’! 대원들은 섬의 모든 것을 아는 천재 강아지 ‘렉스’를 만나 위대한 모험을 시작한다. 공룡 친구들이 가득한 그곳에서의 평화도 잠시, 악당 ‘험딩어’가 섬의 천연 자원 다이아몬드를 빼앗기 위해 음모를 꾸미고, 잠들어 있던 거대한 화산마저 폭발할 위기에 처하는데···!",
-      "synopsisCredit": "TMDB",
-      "tmdbId": 1185806,
-      "score": 8.1,
-      "scoreBy": "TMDB",
-      "voteCount": 144,
-      "showing": false
-    },
-    {
-      "movieCd": "20265388",
-      "title": "고스트밴드",
-      "titleEn": "GHOST BAND",
-      "titleOriginal": "",
-      "openedAt": "2026-08-26",
-      "audienceAcc": 13803,
-      "genres": [
-        "애니메이션"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20260829",
-      "lastSeenAt": "20260830",
-      "days": 2,
-      "bestRank": 10,
-      "rank": null,
-      "audienceDay": null,
-      "runtime": 82,
-      "directors": [
-        "금동호"
-      ],
-      "cast": [
-        "김연우",
-        "엄상현",
-        "이용신",
-        "김보나",
-        "심규혁",
-        "박지윤"
-      ],
-      "producers": [
-        "(주)슈퍼빅"
-      ],
-      "distributors": [
-        "(주)넥스트엔터테인먼트월드(NEW)"
-      ],
-      "rating": "전체관람가",
-      "koficDetailFetched": true,
-      "koficDetailVersion": 3,
-      "poster": "assets/posters/20265388.webp",
-      "posterCredit": "TMDB",
-      "synopsis": "영혼을 보는 싱어송라이터 '미타'. 어느 날 개성만점 고스트 4인방과 친구가 되어 '고스트밴드'를 결성하고 보컬을 맡아 난생처음 누군가의 앞에서 함께 노래하는 기쁨을 알게 된다. '미타'와 고스트밴드의 공연 영상이 SNS를 강타하며 마침내 꿈꾸던 무대를 눈앞에 둔 순간, 대형 기획사의 거대한 방해 공작으로 위기를 맞게 되는데...",
-      "synopsisCredit": "TMDB",
-      "tmdbId": 1734370,
-      "score": null,
-      "scoreBy": "",
-      "voteCount": null,
       "showing": false
     }
   ]

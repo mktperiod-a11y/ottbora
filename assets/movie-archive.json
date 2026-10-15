@@ -3,6 +3,102 @@
   "source": "영화진흥위원회 오픈API 일별 박스오피스",
   "movies": [
     {
+      "movieCd": "20265388",
+      "title": "고스트밴드",
+      "titleEn": "GHOST BAND",
+      "titleOriginal": "",
+      "openedAt": "2026-08-26",
+      "audienceAcc": 13803,
+      "genres": [
+        "애니메이션"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260829",
+      "lastSeenAt": "20260830",
+      "days": 2,
+      "bestRank": 10,
+      "rank": null,
+      "audienceDay": null,
+      "runtime": 82,
+      "directors": [
+        "금동호"
+      ],
+      "cast": [
+        "김연우",
+        "엄상현",
+        "이용신",
+        "김보나",
+        "심규혁",
+        "박지윤"
+      ],
+      "producers": [
+        "(주)슈퍼빅"
+      ],
+      "distributors": [
+        "(주)넥스트엔터테인먼트월드(NEW)"
+      ],
+      "rating": "전체관람가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20265388.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "영혼을 보는 싱어송라이터 '미타'. 어느 날 개성만점 고스트 4인방과 친구가 되어 '고스트밴드'를 결성하고 보컬을 맡아 난생처음 누군가의 앞에서 함께 노래하는 기쁨을 알게 된다. '미타'와 고스트밴드의 공연 영상이 SNS를 강타하며 마침내 꿈꾸던 무대를 눈앞에 둔 순간, 대형 기획사의 거대한 방해 공작으로 위기를 맞게 되는데...",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1734370,
+      "score": null,
+      "scoreBy": "",
+      "voteCount": null,
+      "showing": false
+    },
+    {
+      "movieCd": "20262945",
+      "title": "퍼피 구조대: 더 다이노 무비",
+      "titleEn": "PAW Patrol: The Dino Movie",
+      "titleOriginal": "",
+      "openedAt": "2026-08-13",
+      "audienceAcc": 106540,
+      "genres": [
+        "애니메이션"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20260829",
+      "lastSeenAt": "20260830",
+      "days": 2,
+      "bestRank": 8,
+      "rank": null,
+      "audienceDay": null,
+      "runtime": 88,
+      "directors": [
+        "캘런 브런커"
+      ],
+      "cast": [
+        "은영선",
+        "문남숙",
+        "정선혜",
+        "박지윤",
+        "신용우",
+        "전숙경"
+      ],
+      "producers": [
+        "파라마운트 픽쳐스"
+      ],
+      "distributors": [
+        "롯데컬처웍스(주)롯데엔터테인먼트"
+      ],
+      "rating": "전체관람가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20262945.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "신비한 폭풍에 휩쓸려 공룡들이 살아 숨쉬는 미지의 섬에 불시착한 퍼피 구조대와 포기를 모르는 용감한 소방견 ‘마셜’! 대원들은 섬의 모든 것을 아는 천재 강아지 ‘렉스’를 만나 위대한 모험을 시작한다. 공룡 친구들이 가득한 그곳에서의 평화도 잠시, 악당 ‘험딩어’가 섬의 천연 자원 다이아몬드를 빼앗기 위해 음모를 꾸미고, 잠들어 있던 거대한 화산마저 폭발할 위기에 처하는데···!",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1185806,
+      "score": 8.1,
+      "scoreBy": "TMDB",
+      "voteCount": 144,
+      "showing": false
+    },
+    {
       "movieCd": "20253289",
       "title": "극장판 귀멸의 칼날: 무한성편",
       "titleEn": "Demon Slayer: Kimetsu No Yaiba Infinity Castle Arc",
@@ -45,8 +141,7 @@
       "tmdbId": 1311031,
       "score": 8.8,
       "scoreBy": "TMDB",
-      "voteCount": 2191,
-      "showing": false
+      "voteCount": 2191
     },
     {
       "movieCd": "20264715",
