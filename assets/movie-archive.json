@@ -47,8 +47,7 @@
       "tmdbId": 1734370,
       "score": null,
       "scoreBy": "",
-      "voteCount": null,
-      "showing": false
+      "voteCount": null
     },
     {
       "movieCd": "20262945",
@@ -95,8 +94,7 @@
       "tmdbId": 1185806,
       "score": 8.1,
       "scoreBy": "TMDB",
-      "voteCount": 144,
-      "showing": false
+      "voteCount": 144
     },
     {
       "movieCd": "20253289",

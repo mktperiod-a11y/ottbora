@@ -2,8 +2,8 @@
   "note": "일별 박스오피스를 작품 단위로 누적한 목록입니다. 콘텐츠ZONE 의 영화·애니 탭에서 씁니다.",
   "source": "영화진흥위원회 오픈API 일별 박스오피스",
   "sourceUrl": "https://www.kobis.or.kr/kobisopenapi/",
-  "updatedAt": "2026-10-15",
-  "latestDt": "20261015",
+  "updatedAt": "2026-10-17",
+  "latestDt": "20261016",
   "keepDays": 45,
   "movies": [
     {
@@ -12,17 +12,17 @@
       "titleEn": "Chiikawa the Movie: The Secret of the Mermaid Island",
       "titleOriginal": "映画ちいかわ 人魚の島のひみつ",
       "openedAt": "2026-09-30",
-      "audienceAcc": 1450439,
+      "audienceAcc": 1507879,
       "genres": [
         "애니메이션"
       ],
       "type": "영화",
       "firstSeenAt": "20260919",
-      "lastSeenAt": "20261015",
-      "days": 19,
+      "lastSeenAt": "20261016",
+      "days": 20,
       "bestRank": 1,
       "rank": 1,
-      "audienceDay": 35414,
+      "audienceDay": 57442,
       "runtime": 98,
       "directors": [
         "오이카와 케이"
@@ -58,18 +58,18 @@
       "titleEn": "The Assassin(s)",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 3109145,
+      "audienceAcc": 3139216,
       "genres": [
         "범죄",
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260917",
-      "lastSeenAt": "20261015",
-      "days": 25,
+      "lastSeenAt": "20261016",
+      "days": 26,
       "bestRank": 1,
       "rank": 2,
-      "audienceDay": 23494,
+      "audienceDay": 30059,
       "runtime": 130,
       "directors": [
         "허진호"
@@ -105,7 +105,7 @@
       "titleEn": "The Odyssey",
       "titleOriginal": "",
       "openedAt": "2026-08-05",
-      "audienceAcc": 12215226,
+      "audienceAcc": 12227452,
       "genres": [
         "액션",
         "드라마",
@@ -113,11 +113,11 @@
       ],
       "type": "영화",
       "firstSeenAt": "20260824",
-      "lastSeenAt": "20261015",
-      "days": 52,
+      "lastSeenAt": "20261016",
+      "days": 53,
       "bestRank": 1,
       "rank": 4,
-      "audienceDay": 8608,
+      "audienceDay": 12227,
       "runtime": 172,
       "directors": [
         "크리스토퍼 놀란"
@@ -153,17 +153,17 @@
       "titleEn": "The Intern",
       "titleOriginal": "",
       "openedAt": "2026-09-16",
-      "audienceAcc": 886190,
+      "audienceAcc": 890324,
       "genres": [
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260904",
-      "lastSeenAt": "20261015",
-      "days": 29,
+      "lastSeenAt": "20261016",
+      "days": 30,
       "bestRank": 1,
-      "rank": 8,
-      "audienceDay": 4506,
+      "rank": 10,
+      "audienceDay": 4134,
       "runtime": 132,
       "directors": [
         "김도영"
@@ -202,18 +202,18 @@
       "titleEn": "TAZZA: The Song of Beelzebub",
       "titleOriginal": "",
       "openedAt": "2026-09-23",
-      "audienceAcc": 1816884,
+      "audienceAcc": 1838530,
       "genres": [
         "범죄",
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20260914",
-      "lastSeenAt": "20261015",
-      "days": 27,
+      "lastSeenAt": "20261016",
+      "days": 28,
       "bestRank": 1,
       "rank": 3,
-      "audienceDay": 16533,
+      "audienceDay": 21654,
       "runtime": 129,
       "directors": [
         "최국희"
@@ -251,17 +251,17 @@
       "titleEn": "Look Back",
       "titleOriginal": "",
       "openedAt": "2026-10-08",
-      "audienceAcc": 80731,
+      "audienceAcc": 86623,
       "genres": [
         "드라마"
       ],
       "type": "영화",
       "firstSeenAt": "20261008",
-      "lastSeenAt": "20261015",
-      "days": 8,
+      "lastSeenAt": "20261016",
+      "days": 9,
       "bestRank": 4,
-      "rank": 9,
-      "audienceDay": 3468,
+      "rank": 6,
+      "audienceDay": 5892,
       "runtime": 100,
       "directors": [
         "고레에다 히로카즈"
@@ -295,17 +295,17 @@
       "titleEn": "Guardians of the Video Game",
       "titleOriginal": "",
       "openedAt": "2026-10-14",
-      "audienceAcc": 20221,
+      "audienceAcc": 25259,
       "genres": [
         "애니메이션"
       ],
       "type": "영화",
       "firstSeenAt": "20261014",
-      "lastSeenAt": "20261015",
-      "days": 2,
+      "lastSeenAt": "20261016",
+      "days": 3,
       "bestRank": 4,
       "rank": 7,
-      "audienceDay": 5530,
+      "audienceDay": 5039,
       "runtime": 110,
       "directors": [
         "엄영식"
@@ -332,22 +332,69 @@
       "showing": true
     },
     {
+      "movieCd": "20264444",
+      "title": " 웨일폴: 고래에 먹힌 남자",
+      "titleEn": "Whalefall",
+      "titleOriginal": "",
+      "openedAt": "2026-10-14",
+      "audienceAcc": 27636,
+      "genres": [
+        "어드벤처",
+        "스릴러"
+      ],
+      "type": "영화",
+      "firstSeenAt": "20261014",
+      "lastSeenAt": "20261016",
+      "days": 3,
+      "bestRank": 5,
+      "rank": 5,
+      "audienceDay": 9910,
+      "runtime": 105,
+      "directors": [
+        "브라이언 더필드"
+      ],
+      "cast": [
+        "오스틴 에이브람스",
+        "조슈 브롤린",
+        "엘리자베스 슈",
+        "존 오티즈",
+        "제인 레비",
+        "에밀리 러드"
+      ],
+      "producers": [],
+      "distributors": [
+        "월트디즈니컴퍼니코리아 유한책임회사"
+      ],
+      "rating": "12세이상관람가",
+      "koficDetailFetched": true,
+      "koficDetailVersion": 3,
+      "poster": "assets/posters/20264444.webp",
+      "posterCredit": "TMDB",
+      "synopsis": "사라진 아버지의 유해를 찾기 위해 바다로 뛰어든 다이버 ‘제이’. 하지만 심해에서 거센 물살에 휩쓸려 무게 60톤, 길이 24m에 다르는 거대한 향유고래에게 산 채로 먹히고 만다. 공기 탱크의 잔압계는 점점 빠르게 줄어들고, 빠져나갈 곳도, 멈출 수도 없는 살아있는 고래 뱃속에서 살아남기 위한 필사의 사투를 벌이는데…",
+      "synopsisCredit": "TMDB",
+      "tmdbId": 1255833,
+      "score": 9.3,
+      "scoreBy": "TMDB",
+      "voteCount": 3,
+      "showing": true
+    },
+    {
       "movieCd": "20263410",
       "title": "스트리트 파이터",
       "titleEn": "Street Fighter",
       "titleOriginal": "",
       "openedAt": "2026-10-14",
-      "audienceAcc": 18104,
+      "audienceAcc": 22741,
       "genres": [
         "액션"
       ],
       "type": "영화",
       "firstSeenAt": "20261014",
-      "lastSeenAt": "20261015",
-      "days": 2,
+      "lastSeenAt": "20261016",
+      "days": 3,
       "bestRank": 5,
-      "rank": 5,
-      "audienceDay": 7061,
+      "rank": 8,
+      "audienceDay": 4634,
       "runtime": 119,
       "directors": [
         "키타오 사쿠라이"
@@ -382,17 +429,17 @@
       "titleEn": "The Mouths",
       "titleOriginal": "",
       "openedAt": "2026-10-07",
-      "audienceAcc": 62125,
+      "audienceAcc": 66270,
       "genres": [
         "공포(호러)"
       ],
       "type": "영화",
       "firstSeenAt": "20261007",
-      "lastSeenAt": "20261015",
-      "days": 8,
+      "lastSeenAt": "20261016",
+      "days": 9,
       "bestRank": 5,
-      "rank": 10,
-      "audienceDay": 2685,
+      "rank": 9,
+      "audienceDay": 4147,
       "runtime": 88,
       "directors": [
         "시미즈 다카시"
@@ -416,53 +463,6 @@
       "score": 7,
       "scoreBy": "TMDB",
       "voteCount": 1,
-      "showing": true
-    },
-    {
-      "movieCd": "20264444",
-      "title": " 웨일폴: 고래에 먹힌 남자",
-      "titleEn": "Whalefall",
-      "titleOriginal": "",
-      "openedAt": "2026-10-14",
-      "audienceAcc": 17721,
-      "genres": [
-        "어드벤처",
-        "스릴러"
-      ],
-      "type": "영화",
-      "firstSeenAt": "20261014",
-      "lastSeenAt": "20261015",
-      "days": 2,
-      "bestRank": 6,
-      "rank": 6,
-      "audienceDay": 6945,
-      "runtime": 105,
-      "directors": [
-        "브라이언 더필드"
-      ],
-      "cast": [
-        "오스틴 에이브람스",
-        "조슈 브롤린",
-        "엘리자베스 슈",
-        "존 오티즈",
-        "제인 레비",
-        "에밀리 러드"
-      ],
-      "producers": [],
-      "distributors": [
-        "월트디즈니컴퍼니코리아 유한책임회사"
-      ],
-      "rating": "12세이상관람가",
-      "koficDetailFetched": true,
-      "koficDetailVersion": 3,
-      "poster": "assets/posters/20264444.webp",
-      "posterCredit": "TMDB",
-      "synopsis": "사라진 아버지의 유해를 찾기 위해 바다로 뛰어든 다이버 ‘제이’. 하지만 심해에서 거센 물살에 휩쓸려 무게 60톤, 길이 24m에 다르는 거대한 향유고래에게 산 채로 먹히고 만다. 공기 탱크의 잔압계는 점점 빠르게 줄어들고, 빠져나갈 곳도, 멈출 수도 없는 살아있는 고래 뱃속에서 살아남기 위한 필사의 사투를 벌이는데…",
-      "synopsisCredit": "TMDB",
-      "tmdbId": 1255833,
-      "score": 9.3,
-      "scoreBy": "TMDB",
-      "voteCount": 3,
       "showing": true
     },
     {
